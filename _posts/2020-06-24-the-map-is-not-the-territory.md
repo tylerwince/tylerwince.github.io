@@ -63,7 +63,7 @@ This is the same in building products. Removing the fidelity from the map can be
 
 > “A model might show you some risks, but not the risks of using it. Moreover, models are built on a finite set of parameters, while reality affords us infinite sources of risks.” - Nassam Taleb
 
-If you are an amateur in part of the domain in which you work, you are not going to work as effectively as you could. **This means that most of your job as a product person should be [learning and understanding the problem](https://productsolving.substack.com/p/problem-space-solution-space), and how the industry surrounding the problem works.** Becoming an expert in your domain helps you understand not only what risks the model shows, but what the risks are in using that specific model.
+If you are an amateur in part of the domain in which you work, you are not going to work as effectively as you could. **This means that most of your job as a product person should be [learning and understanding the problem](https://tylerwince.com/2020/06/17/problem-space-solution-space.html), and how the industry surrounding the problem works.** Becoming an expert in your domain helps you understand not only what risks the model shows, but what the risks are in using that specific model.
 
 In chemistry, many different maps are used to understand the territory. The way we visualize molecules is a great example. Most visualizations of a water molecule look something like this:
 
