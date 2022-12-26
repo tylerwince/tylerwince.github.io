@@ -2,7 +2,7 @@
 layout: post
 title: The Product Imperative
 description:
-date: 2020-06-03 19:00:35 +0100
+date: 2020-07-29 19:00:35 +0100
 published: true
 tags: product-management
 ---
