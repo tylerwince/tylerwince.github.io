@@ -31,7 +31,7 @@ These are books I've read in (generally) reverse chronological order since 2023.
                                 ★
                             {% endfor %}
                         {% else %}
-                            In Progress
+                            <span style="display: block; font-size: 0.8em; color: #999;">Currently Reading</span>
                         {% endif %}
                     </span>
                 </li>
