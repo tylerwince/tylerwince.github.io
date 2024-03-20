@@ -64,6 +64,9 @@ list:
       - title: Going Infinite
         author: Michael Lewis
         stars: 4
+      - title: How The World Really Works
+        author: Vaclav Smil
+        stars: 5
       - title: Never Split The Difference
         author: Chris Voss
         stars: 4
@@ -105,4 +108,30 @@ list:
         stars: 4
       - title: Where Is My Flying Car?
         author: J. Storrs Hall
+        stars: 5
+  - year: "Previous Years"
+    books:
+      - title: Atomic Habits
+        author: James Clear
+        stars: 5
+      - title: Love Does
+        author: Bob Goff
+        stars: 5
+      - title: Ender's Game
+        author: Orson Scott Card
+        stars: 5
+      - title: A Brief History Of Time
+        author: Stephen Hawking
+        stars: 5
+      - title: Finite and Infinite Games
+        author: James P. Carse
+        stars: 5
+      - title: Algorithms To Live By
+        author: Brian Christian and Tom Griffiths
+        stars: 5
+      - title: How To Avoid A Climate Disaster
+        author: Bill Gates
+        stars: 5
+      - title: Radical Candor
+        author: Kim Scott
         stars: 5
