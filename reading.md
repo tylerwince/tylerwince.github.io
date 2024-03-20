@@ -1,10 +1,9 @@
 ---
-layout: page
 title: Reading
 permalink: /reading/
 ---
 
-
+<div>
 {% for entry in site.data.reading.list %}
     <div>
         <h2>{{ entry.year }}</h2>
@@ -20,3 +19,4 @@ permalink: /reading/
         </ul>
     </div>
 {% endfor %}
+</div>
