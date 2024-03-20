@@ -88,8 +88,6 @@ list:
       - title: Remote
         author: Jason Fried and David Heinemeir Hansson
         stars: 1
-  - year: "2022"
-    books:
       - title: Why We're Polarized
         author: Ezra Klein
         stars: 4
@@ -105,3 +103,8 @@ list:
       - title: Stubborn Attachments
         author: Tyler Cowen
         stars: 4
+  - year: "Previous Years"
+    books:
+      - title: Where Is My Flying Car?
+        author: J. Storrs Hall
+        stars: 5
