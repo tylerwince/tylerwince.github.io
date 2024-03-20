@@ -10,8 +10,8 @@ permalink: /reading/
         <p>{{ entry.books | size }} books</p>
         <ul style="list-style-type: none; padding: 0;">
             {% for book in entry.books %}
-                <li style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <a href="{{ book.link }}" target="_blank" rel="nofollow noopener" style="flex-grow: 1; text-decoration: none; margin-right: 10px;">
+                <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: center; margin-bottom: 10px;">
+                    <a href="{{ book.link }}" target="_blank" rel="nofollow noopener" style="text-decoration: none;">
                         {{ book.title }} by {{ book.author }}
                     </a>
                     <span style="white-space: nowrap;">
