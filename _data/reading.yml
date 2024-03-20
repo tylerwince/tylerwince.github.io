@@ -46,7 +46,62 @@ list:
       - title: Size
         author: Vaclav Smil
         stars: 3
+      - title: How To Know a Person
+        author: David Brooks
+        stars: 4
+      - title: Same As Ever
+        author: Morgan Housel
+        stars: 3
+      - title: Unclobber
+        author: Colby Martin
+        stars: 4
       - title: Poor Charlie's Almanack
         author: Peter D. Kaufman
         stars: 3
-      - 
+      - title: Invention and Innovation
+        author: Vaclav Smil
+        stars: 3
+      - title: Going Infinite
+        author: Michael Lewis
+        stars: 4
+      - title: Never Split The Difference
+        author: Chris Voss
+        stars: 4
+      - title: An Elegant Puzzle
+        author: Will Larson
+        stars: 4
+      - title: It's Okay To Be Angry About Capitalism
+        author: Bernie Sanders
+        stars: 3
+      - title: Elon Musk
+        author: Walter Isaacson
+        stars: 4
+      - title: Subversive Witness
+        author: Dominique Dubois Gilliard
+        stars: 4
+      - title: Beautiful Union
+        author: Josh Butler
+        stars: 4
+      - title: The Skeletons In God's Closet
+        author: Josh Butler
+        stars: 5
+      - title: Remote
+        author: Jason Fried and David Heinemeir Hansson
+        stars: 1
+  - year: "2022"
+    books:
+      - title: Why We're Polarized
+        author: Ezra Klein
+        stars: 4
+      - title: Blitzed
+        author: Norman Ohler
+        stars: 3
+      - title: How To Drive a Nuclear Reactor
+        author: Colin Tucker
+        stars: 4
+      - title: The Art of Doing Science and Engineering
+        author: Richard W. Hamming
+        stars: 3
+      - title: Stubborn Attachments
+        author: Tyler Cowen
+        stars: 4
