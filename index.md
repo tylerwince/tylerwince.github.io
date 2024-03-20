@@ -4,3 +4,7 @@
 
 layout: home
 ---
+
+👋 I'm Tyler and this is where I write. I primarily write about product management, technology, leadership, climate, energy, and healthcare. 
+
+Check out what I'm [reading](/reading) or read my writing below.
