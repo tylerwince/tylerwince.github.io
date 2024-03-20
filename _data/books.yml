@@ -1,0 +1,34 @@
+lastupdate: September 3, 2019
+list:
+  - year: "2019"
+    books:
+      - title: The Summer Book
+        author: Tove Jansson
+        link: https://amzn.to/2ZMtUuC
+        star: yes
+      - title: "The Last Pirate of New York"
+        author: Rich Cohen
+        link: https://amzn.to/34h0Oa3
+        star: yes
+      - title: "Fall; or, Dodge in Hell"
+        author: Neal Stephenson
+        link: https://www.amazon.com/Fall-Dodge-Hell-Neal-Stephenson/dp/006245871X
+        star: yes
+      - title: The Boatbuilder
+        author: Daniel Gumbiner
+        link: https://amzn.to/2Lgvh0l
+  - year: "2018"
+    books:
+      - title: "The World is a Narrow Bridge"
+        author: Aaron Thier
+        link: https://amzn.to/2PK3OZc
+      - title: "Fashion Climbing"
+        author: Bill Cunningham
+        link: https://amzn.to/2PJqkgz
+      - title: "Cape Cod"
+        author: Henry David Thoreau
+        link: https://amzn.to/2ZIISBV
+      - title: "The Outermost House"
+        author: Henry Beston
+        link: https://amzn.to/2MOf3hb
+        star: yes
