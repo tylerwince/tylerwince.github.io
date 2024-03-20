@@ -12,15 +12,15 @@ These are books I've read in (generally) reverse chronological order.
         <p>{{ entry.books | size }} books</p>
         <ul style="list-style-type: none; padding: 0;">
             {% for book in entry.books %}
-                <li style="{% if book.stars == 5 %}background-color: #fffbea;{% endif %} display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
+                <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
                     <div>
                         {% if book.link %}
-                            <a href="{{ book.link }}" target="_blank" rel="nofollow noopener" style="text-decoration: none; display: block;">
+                            <a href="{{ book.link }}" target="_blank" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %}  text-decoration: none; display: block;">
                                 {{ book.title }}
                             </a>
                             <span style="display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
                         {% else %}
-                            <span style="display: block;">{{ book.title }}</span>
+                            <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
                             <span style="display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
                         {% endif %}
                     </div>
