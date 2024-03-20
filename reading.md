@@ -13,12 +13,12 @@ permalink: /reading/
                 <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: center; margin-bottom: 10px;">
                     {% if book.link %}
                         <a href="{{ book.link }}" target="_blank" rel="nofollow noopener" style="text-decoration: none;">
-                            {{ book.title }} by {{ book.author }}
+                            <span style="font-weight: bold;">{{ book.title }}</span> <span style="font-size: 0.8em; color: #999;">by {{ book.author }}</span>
                         </a>
                     {% else %}
-                        <span>{{ book.title }} by {{ book.author }}</span>
+                        <span><span style="font-weight: bold;">{{ book.title }}</span> <span style="font-size: 0.8em; color: #999;">by {{ book.author }}</span></span>
                     {% endif %}
-                    <span style="white-space: nowrap;">
+                    <span style="white-space: nowrap; {% if book.stars == 5 %}color: gold;{% endif %}">
                         {% if book.stars %}
                             {% assign star_count = book.stars %}
                             {% for i in (1..star_count) %}
