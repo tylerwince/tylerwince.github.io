@@ -5,15 +5,15 @@ list:
       - title: The Summer Book
         author: Tove Jansson
         link: https://amzn.to/2ZMtUuC
-        star: yes
+        stars: 2
       - title: "The Last Pirate of New York"
         author: Rich Cohen
         link: https://amzn.to/34h0Oa3
-        star: yes
+        stars: 5
       - title: "Fall; or, Dodge in Hell"
         author: Neal Stephenson
         link: https://www.amazon.com/Fall-Dodge-Hell-Neal-Stephenson/dp/006245871X
-        star: yes
+        stars: 1
       - title: The Boatbuilder
         author: Daniel Gumbiner
         link: https://amzn.to/2Lgvh0l
@@ -31,4 +31,4 @@ list:
       - title: "The Outermost House"
         author: Henry Beston
         link: https://amzn.to/2MOf3hb
-        star: yes
+        stars: 3
