@@ -4,7 +4,6 @@ list:
     books:
       - title: Not The End Of The World
         author: Hannah Ritchie
-        link: reviews/testing-review.html
       - title: The Dream Machine
         author: M. Mitchell Waldrop
       - title: "Practicing The Way"
