@@ -15,7 +15,7 @@ These are books I've read in (generally) reverse chronological order since 2023.
                 <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
                     <div>
                         {% if book.link %}
-                            <a href="{{ book.link }}" target="_blank" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
+                            <a href="/{{ book.link }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
                                 {{ book.title }}
                             </a>
                             <span style="display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
