@@ -4,11 +4,13 @@ list:
     books:
       - title: Why the Gospel?
         author: Matthew W. Bates
+        stars: 2
       - title: Not The End Of The World
         author: Hannah Ritchie
         stars: 5
       - title: The Dream Machine
         author: M. Mitchell Waldrop
+        stars: 4
       - title: "Practicing The Way"
         author: John Mark Comer
         stars: 4
