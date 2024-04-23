@@ -2,8 +2,14 @@ lastupdate: March 20th, 2024
 list:
   - year: "2024"
     books:
+      - title: Listen Listen Speak
+        author: Jay Y. Kim
+      - title: How God Became King
+        author: N.T. Wright
+        stars: 3
       - title: The Revolt of the Public
         author: Martin Gurri
+        stars: 2
       - title: The Dream Machine
         author: M. Mitchell Waldrop
         stars: 4
