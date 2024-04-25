@@ -4,6 +4,7 @@ list:
     books:
       - title: Listen Listen Speak
         author: Jay Y. Kim
+        stars: 2
       - title: How God Became King
         author: N.T. Wright
         stars: 3
