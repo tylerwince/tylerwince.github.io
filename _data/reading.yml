@@ -2,8 +2,19 @@ lastupdate: May 3rd, 2024
 list:
   - year: "2024"
     books:
+      - title: When Everything's on Fire
+        author: Brian Zahnd
+      - title: The Kingdom, the Power, and the Glory
+        author: Tim Alberta
+      - title: Poverty, By America
+        author: Matthew Desmond
+        stars: 4
+      - title: Death to Deconstruction
+        author: Joshua S. Porter
+        stars: 3
       - title: The Anxious Generation
         author: Jonathan Haidt
+        starts: 5
       - title: Listen Listen Speak
         author: Jay Y. Kim
         stars: 2
