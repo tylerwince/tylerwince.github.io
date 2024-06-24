@@ -1,9 +1,10 @@
 ---
 title: Reading
 permalink: /reading/
+layout: default
 ---
 
-These are books I've read in (generally) reverse chronological order since 2023. 
+These are books I've read in (generally) reverse chronological order since 2023.
 
 <div>
 {% for entry in site.data.reading.list %}
