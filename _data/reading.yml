@@ -4,6 +4,7 @@ list:
     books:
       - title: When Everything's on Fire
         author: Brian Zahnd
+        stars: 4
       - title: The Kingdom, the Power, and the Glory
         author: Tim Alberta
       - title: Poverty, By America
