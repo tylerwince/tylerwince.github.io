@@ -2,11 +2,14 @@ lastupdate: May 3rd, 2024
 list:
   - year: "2024"
     books:
+      - title: Co-Intelligence
+        author: Ethan Mollick
       - title: When Everything's on Fire
         author: Brian Zahnd
         stars: 4
       - title: The Kingdom, the Power, and the Glory
         author: Tim Alberta
+        stars: 4
       - title: Poverty, By America
         author: Matthew Desmond
         stars: 4
