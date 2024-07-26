@@ -2,7 +2,7 @@
 layout: book
 title: "Practicing The Way"
 author: "John Mark Comer"
-year_read: 2024
+date: 2024-03-19
 stars: 4
 ---
 

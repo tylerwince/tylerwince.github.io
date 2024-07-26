@@ -2,7 +2,7 @@
 layout: book
 title: "Same As Ever"
 author: "Morgan Housel"
-year_read: 2023
+date: 2023-11-20
 stars: 3
 ---
 

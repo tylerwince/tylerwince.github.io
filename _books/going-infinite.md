@@ -2,7 +2,7 @@
 layout: book
 title: "Going Infinite"
 author: "Michael Lewis"
-year_read: 2023
+date: 2023-09-13
 stars: 4
 ---
 

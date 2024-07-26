@@ -2,7 +2,7 @@
 layout: book
 title: "Learning Domain-Driven Design"
 author: "Vlad Khononov"
-year_read: 2024
+date: 2024-12-30
 stars: 3
 ---
 

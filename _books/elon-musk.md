@@ -2,7 +2,7 @@
 layout: book
 title: "Elon Musk"
 author: "Walter Isaacson"
-year_read: 2023
+date: 2023-06-20
 stars: 4
 ---
 

@@ -2,7 +2,7 @@
 layout: book
 title: "It's Okay To Be Angry About Capitalism"
 author: "Bernie Sanders"
-year_read: 2023
+date: 2023-07-07
 stars: 3
 ---
 

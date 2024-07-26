@@ -2,7 +2,7 @@
 layout: book
 title: "An Elegant Puzzle"
 author: "Will Larson"
-year_read: 2023
+date: 2023-07-24
 stars: 4
 ---
 

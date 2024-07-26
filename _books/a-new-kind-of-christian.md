@@ -2,7 +2,7 @@
 layout: book
 title: "A New Kind of Christian"
 author: "Brian McLaren"
-year_read: 2024
+date: 2024-01-20
 stars: 3
 ---
 

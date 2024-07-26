@@ -2,7 +2,7 @@
 layout: book
 title: "supercommunicators"
 author: "Charles Duhigg"
-year_read: 2024
+date: 2024-03-10
 stars: 4
 ---
 

@@ -2,7 +2,7 @@
 layout: book
 title: "Soonish"
 author: "Kelly and Zach Weinersmith"
-year_read: 2024
+date: 2024-01-05
 stars: 2
 ---
 

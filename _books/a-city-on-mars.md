@@ -2,7 +2,7 @@
 layout: book
 title: "A City on Mars"
 author: "Kelly and Zach Weinersmith"
-year_read: 2024
+date: 2024-02-23
 stars: 4
 ---
 

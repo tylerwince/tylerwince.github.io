@@ -2,7 +2,7 @@
 layout: book
 title: "How To Drive a Nuclear Reactor"
 author: "Colin Tucker"
-year_read: 2023
+date: 2023-02-21
 stars: 4
 ---
 

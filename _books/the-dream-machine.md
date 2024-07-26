@@ -2,7 +2,7 @@
 layout: book
 title: "The Dream Machine"
 author: "M. Mitchell Waldrop"
-year_read: 2024
+date: 2024-03-31
 stars: 4
 ---
 

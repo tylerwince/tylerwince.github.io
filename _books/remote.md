@@ -2,7 +2,7 @@
 layout: book
 title: "Remote"
 author: "Jason Fried and David Heinemeir Hansson"
-year_read: 2023
+date: 2023-04-13
 stars: 1
 ---
 

@@ -2,7 +2,7 @@
 layout: book
 title: "Poor Charlie's Almanack"
 author: "Peter D. Kaufman"
-year_read: 2023
+date: 2023-10-17
 stars: 3
 ---
 

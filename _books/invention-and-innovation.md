@@ -2,7 +2,7 @@
 layout: book
 title: "Invention and Innovation"
 author: "Vaclav Smil"
-year_read: 2023
+date: 2023-09-30
 stars: 3
 ---
 

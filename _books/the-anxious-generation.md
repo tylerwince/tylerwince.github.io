@@ -2,7 +2,7 @@
 layout: book
 title: "The Anxious Generation"
 author: "Jonathan Haidt"
-year_read: 2024
+date: 2024-06-02
 stars: 5
 ---
 

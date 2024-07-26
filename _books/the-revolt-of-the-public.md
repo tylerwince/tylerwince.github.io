@@ -2,7 +2,7 @@
 layout: book
 title: "The Revolt of the Public"
 author: "Martin Gurri"
-year_read: 2024
+date: 2024-04-15
 stars: 2
 ---
 

@@ -2,7 +2,7 @@
 layout: book
 title: "something incredibly wonderful happens"
 author: "K.C. Cole"
-year_read: 2024
+date: 2024-01-02
 stars: 4
 ---
 

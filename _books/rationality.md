@@ -2,7 +2,7 @@
 layout: book
 title: "Rationality"
 author: "Steven Pinker"
-year_read: 2024
+date: 2024-01-12
 stars: 3
 ---
 

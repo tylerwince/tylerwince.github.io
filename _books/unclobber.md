@@ -2,7 +2,7 @@
 layout: book
 title: "Unclobber"
 author: "Colby Martin"
-year_read: 2023
+date: 2023-11-03
 stars: 4
 ---
 

@@ -2,7 +2,7 @@
 layout: book
 title: "Size"
 author: "Vaclav Smil"
-year_read: 2023
+date: 2023-12-31
 stars: 3
 ---
 
