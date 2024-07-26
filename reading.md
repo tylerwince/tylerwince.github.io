@@ -8,17 +8,20 @@ These are books I've read in (generally) reverse chronological order since 2023.
 
 <div>
 {% assign dated_books = site.books | where_exp: "book", "book.date" %}
+{% assign year_only_books = site.books | where_exp: "book", "book.year_read and book.year_read != 'Previous Years'" %}
 {% assign previous_years_books = site.books | where_exp: "book", "book.year_read == 'Previous Years'" %}
 
-{% assign years = dated_books | group_by_exp: "book", "book.date | date: '%Y'" | sort: "name" | reverse %}
+{% assign all_years = dated_books | map: "date" | map: "year" | concat: year_only_books | map: "year_read" | uniq | sort | reverse %}
 
-{% for year in years %}
+{% for year in all_years %}
     <div>
-        <h2>{{ year.name }}</h2>
-        <p>{{ year.items | size }} books</p>
+        <h2>{{ year }}</h2>
+        {% assign year_dated_books = dated_books | where_exp: "book", "book.date | date: '%Y' == year" %}
+        {% assign year_only_books_for_year = year_only_books | where: "year_read", year %}
+        {% assign all_year_books = year_dated_books | concat: year_only_books_for_year | sort: "date" | reverse %}
+        <p>{{ all_year_books | size }} books</p>
         <ul style="list-style-type: none; padding: 0;">
-            {% assign sorted_books = year.items | sort: "date" | reverse %}
-            {% for book in sorted_books %}
+            {% for book in all_year_books %}
                 <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
                     <div>
                         {% if book.content != "" %}
