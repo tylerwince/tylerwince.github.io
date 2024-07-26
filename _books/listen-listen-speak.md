@@ -2,7 +2,7 @@
 layout: book
 title: "Listen Listen Speak"
 author: "Jay Y. Kim"
-year_read: 2024
+date: 2024-05-08
 stars: 2
 ---
 

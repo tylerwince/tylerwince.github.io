@@ -2,7 +2,7 @@
 layout: book
 title: "Why We're Polarized"
 author: "Ezra Klein"
-year_read: 2023
+date: 2023-03-27
 stars: 4
 ---
 

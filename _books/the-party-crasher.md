@@ -2,7 +2,7 @@
 layout: book
 title: "The Party Crasher"
 author: "Josh Butler"
-year_read: 2024
+date: 2024-02-15
 stars: 5
 ---
 

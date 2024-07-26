@@ -2,7 +2,7 @@
 layout: book
 title: "The Order of Time"
 author: "Carlo Rovelli"
-year_read: 2024
+date: 2024-02-20
 stars: 5
 ---
 

@@ -2,7 +2,7 @@
 layout: book
 title: "Why the Gospel?"
 author: "Matthew W. Bates"
-year_read: 2024
+date: 2024-03-26
 stars: 2
 ---
 

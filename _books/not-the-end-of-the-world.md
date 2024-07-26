@@ -2,7 +2,7 @@
 layout: book
 title: "Not The End Of The World"
 author: "Hannah Ritchie"
-year_read: 2024
+date: 2024-03-25
 stars: 5
 ---
 

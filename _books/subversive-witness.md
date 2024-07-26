@@ -2,7 +2,7 @@
 layout: book
 title: "Subversive Witness"
 author: "Dominique Dubois Gilliard"
-year_read: 2023
+date: 2023-06-03
 stars: 4
 ---
 

@@ -2,7 +2,7 @@
 layout: book
 title: "Glad We Met"
 author: "Steven Rogleberg"
-year_read: 2024
+date: 2024-03-01
 stars: 2
 ---
 

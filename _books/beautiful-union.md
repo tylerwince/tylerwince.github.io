@@ -2,7 +2,7 @@
 layout: book
 title: "Beautiful Union"
 author: "Josh Butler"
-year_read: 2023
+date: 2023-05-17
 stars: 4
 ---
 

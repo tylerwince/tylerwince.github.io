@@ -2,7 +2,7 @@
 layout: book
 title: "How To Know a Person"
 author: "David Brooks"
-year_read: 2023
+date: 2023-12-07
 stars: 4
 ---
 
