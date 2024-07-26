@@ -2,6 +2,6 @@
 layout: book
 title: "King: A Life"
 author: "Jonathan Eig"
-date: 
+date: 2024-07-25
 ---
 
