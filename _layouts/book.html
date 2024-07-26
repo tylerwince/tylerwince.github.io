@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+<p>by {{ page.author }}</p>
+<p>Read in {{ page.year_read }}</p>
+<p>Rating: {% for i in (1..page.stars) %}★{% endfor %}</p>
+
+{{ content }}

@@ -22,20 +22,20 @@ title: Tyler Wince
 email: me@tylerwince.com
 description: >- # this means to ignore newlines until "baseurl:"
   I write mostly about product management,
-  technology, leadership, climate, energy, and healthcare. 
+  technology, leadership, climate, energy, and healthcare.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  tylerwince
+github_username: tylerwince
 
 collections:
-  notes:
+  books:
     output: true
+    permalink: /books/:name/
 
 # Build settings
 theme: minima
 plugins:
   - jekyll-feed
-
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
