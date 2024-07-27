@@ -1,9 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'fileutils'
+
+# Get book details from user input
+print "Enter book title: "
+title = gets.chomp
+
+print "Enter author name: "
+author = gets.chomp
+
+print "Enter star rating (1-5): "
+stars = gets.chomp.to_i
+
+# Create the file name
+date = Date.today.strftime("%Y-%m-%d")
+file_name = "#{title.downcase.gsub(/[^a-z0-9]+/, '-')}.md"
+
+# Create the file content
+content = <<-CONTENT
 ---
 layout: book
-title: "Entangled Life"
-author: "Merlin Sheldrake"
-date: 2024-07-24
-stars: 4
+title: "#{title}"
+author: "#{author}"
+date: #{date}
+stars: #{stars}
 ---
 
 <!--
@@ -44,4 +65,14 @@ stars: 4
 [Any new insights or changed perspectives upon rereading or reflecting on the book over time]
 
 ---
-Last updated: [Date] -->
+Last updated: #{date}
+-->
+CONTENT
+
+# Ensure the _books directory exists
+FileUtils.mkdir_p('_books')
+
+# Write the content to the file
+File.write(File.join('_books', file_name), content)
+
+puts "Book review template created: _books/#{file_name}"
