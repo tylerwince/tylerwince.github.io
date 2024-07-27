@@ -2,7 +2,7 @@
 layout: book
 title: "Ender's Game"
 author: "Orson Scott Card"
-year_read: Previous Years
+date: 2000-01-01
 stars: 5
 ---
 
