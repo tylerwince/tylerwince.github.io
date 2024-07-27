@@ -2,7 +2,7 @@
 layout: book
 title: "Radical Candor"
 author: "Kim Scott"
-year_read: Previous Years
+date: 2000-01-01
 stars: 5
 ---
 

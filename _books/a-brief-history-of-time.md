@@ -2,7 +2,7 @@
 layout: book
 title: "A Brief History Of Time"
 author: "Stephen Hawking"
-year_read: Previous Years
+date: 2000-01-01
 stars: 5
 ---
 

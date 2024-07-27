@@ -2,9 +2,80 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
-<p>by {{ page.author }}</p>
-<p>Read in {{ page.year_read }}</p>
-<p>Rating: {% for i in (1..page.stars) %}★{% endfor %}</p>
+<article class="book-details">
+  <header>
+    <h1 class="book-title">{{ page.title }}</h1>
+    <p class="book-author">by {{ page.author }}</p>
+  </header>
 
-{{ content }}
+  <div class="book-meta">
+    {% assign year = page.date | date: "%Y" | to_integer %}
+    {% if year >= 2020 %}
+      <p class="book-date">Read on <strong>{{ page.date | date: "%B %d, %Y" }}</strong></p>
+    {% endif %}
+
+    {% if page.stars %}
+      <p class="book-rating">
+        Rating: 
+        <span class="stars">
+          {% for i in (1..page.stars) %}★{% endfor %}
+        </span>
+        <span class="stars-empty">
+          {% for i in (page.stars..4) %}☆{% endfor %}
+        </span>
+      </p>
+    {% endif %}
+  </div>
+
+  <div class="book-content">
+    {{ content }}
+  </div>
+</article>
+
+<style>
+  .book-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  .book-title {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 5px;
+  }
+
+  .book-author {
+    color: #666;
+    font-size: 1.2em;
+    font-style: italic;
+    margin-top: 0;
+  }
+
+  .book-meta {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  }
+
+  .book-date, .book-rating {
+    margin: 5px 0;
+  }
+
+  .stars {
+    color: gold;
+    letter-spacing: 2px;
+  }
+
+  .stars-empty {
+    color: #ccc;
+    letter-spacing: 2px;
+  }
+
+  .book-content {
+    line-height: 1.6;
+    color: #333;
+  }
+</style>

@@ -2,7 +2,7 @@
 layout: book
 title: "Finite and Infinite Games"
 author: "James P. Carse"
-year_read: Previous Years
+date: 2000-01-01
 stars: 5
 ---
 
