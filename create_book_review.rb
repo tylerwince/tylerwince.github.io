@@ -13,6 +13,9 @@ author = gets.chomp
 print "Enter star rating (1-5): "
 stars = gets.chomp.to_i
 
+print "Enter difficulty level (1-5, where 1 is easiest): "
+difficulty = gets.chomp.to_i
+
 # Create the file name
 date = Date.today.strftime("%Y-%m-%d")
 file_name = "#{title.downcase.gsub(/[^a-z0-9]+/, '-')}.md"
@@ -25,18 +28,18 @@ title: "#{title}"
 author: "#{author}"
 date: #{date}
 stars: #{stars}
+difficulty: #{difficulty}
 ---
 
-<!--
 ## Summary
 [3-5 sentences summarizing the book's main thesis, arguments, or story]
 
 ## Key Takeaways
-1. [First key point]
-2. [Second key point]
-3. [Third key point]
-4. [Fourth key point]
-5. [Fifth key point]
+1. [First key takeaway]
+2. [Second key takeaway]
+3. [Third key takeaway]
+4. [Fourth key takeaway]
+5. [Fifth key takeaway]
 
 ## Favorite Quotes
 > Your favorite quote goes here
@@ -44,29 +47,49 @@ stars: #{stars}
 > <span class="page-number">- Page XXX</span>
 
 ## Personal Thoughts
-[Your reflections on the book, how it impacted you, or how it relates to your experiences and worldview]
+### How this book changed my perspective
+[Reflections on how the book altered your viewpoint]
 
-## Strengths
-- [Strength 1]
-- [Strength 2]
-- [Strength 3]
+### Practical applications
+[How you plan to apply the book's insights in your life or work]
 
-## Weaknesses
-- [Weakness 1]
-- [Weakness 2]
-- [Weakness 3]
+### Questions for further exploration
+[Questions raised by the book that you'd like to investigate further]
 
-## Related Books
-- [Related Book 1]: [Brief explanation of relation]
-- [Related Book 2]: [Brief explanation of relation]
-- [Related Book 3]: [Brief explanation of relation]
+## Connections
+### Related Books
+1. [Book Title] by [Author]
+   - Similarity: [Brief explanation of how this book relates to the current one]
+   - Difference: [How this book contrasts with or complements the current one]
+
+2. [Book Title] by [Author]
+   - Similarity: [Brief explanation of how this book relates to the current one]
+   - Difference: [How this book contrasts with or complements the current one]
+
+### Related Concepts
+1. [Concept or Theory Name]
+   - Relation: [How this concept connects to ideas in the current book]
+   - Application: [How understanding both enhances comprehension or practical use]
+
+2. [Concept or Theory Name]
+   - Relation: [How this concept connects to ideas in the current book]
+   - Application: [How understanding both enhances comprehension or practical use]
+
+### Interdisciplinary Connections
+1. [Field or Discipline]
+   - Connection: [How ideas from this book apply to or inform this field]
+   - Insight: [What new understanding this connection provides]
+
+## Action Items
+- [Specific action 1 based on what you've learned]
+- [Specific action 2 based on what you've learned]
+- [Specific action 3 based on what you've learned]
 
 ## Updates
 [Any new insights or changed perspectives upon rereading or reflecting on the book over time]
 
 ---
 Last updated: #{date}
--->
 CONTENT
 
 # Ensure the _books directory exists
@@ -75,4 +98,4 @@ FileUtils.mkdir_p('_books')
 # Write the content to the file
 File.write(File.join('_books', file_name), content)
 
-puts "Book review template created: _books/#{file_name}"
+puts "Book review template with structured connections created: _books/#{file_name}"
