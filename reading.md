@@ -20,9 +20,10 @@ These are books I've read in (generally) reverse chronological order since 2023.
                 {% for book in year_group.items %}
                     <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
                         <div>
-                            {% if book.content != "" %}
+                            {% assign content_size = book.content | strip | size %}
+                            {% if content_size > 0 %}
                                 <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
-                                    {{ book.title }}
+                                    {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
                                 </a>
                             {% else %}
                                 <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
@@ -49,9 +50,10 @@ These are books I've read in (generally) reverse chronological order since 2023.
                 {% for book in year_group.items %}
                     <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
                         <div>
-                            {% if book.content != "" %}
+                            {% assign content_size = book.content | strip | size %}
+                            {% if content_size > 0 %}
                                 <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
-                                    {{ book.title }}
+                                    {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
                                 </a>
                             {% else %}
                                 <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
