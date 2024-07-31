@@ -18,28 +18,25 @@ Anybody can be a supercommunicator with a little practice and willingness to ada
 
 1. Leadership via dominating the conversation actually has the opposite effect. You should lead by asking questions. Supercommunicators are quick to admit their own confusion and repeat others' ideas. They tend to ask ten to twenty times as many questions as other participants.
 2. There are four rules for meaningful conversation:
-1. Pay attention to what kind of conversation is occurring.
-     - Every time you speak you should ask: "Why am I opening my mouth?"
-2. Share your goals, and ask what others are seeking.
-3. Ask about others' feelings, and share your own.
-4. Explore if identities are important to this discussion.
+    1. Pay attention to what kind of conversation is occurring.
+        - Every time you speak you should ask: "Why am I opening my mouth?"
+    2. Share your goals, and ask what others are seeking.
+    3. Ask about others' feelings, and share your own.
+    4. Explore if identities are important to this discussion.
 3. Do some prep work before your conversations begin. It's not disingenuous... it's actually a sign of respect and that you value them and their company. Even if you never talk about these topics, the preparation makes you feel more confident and prepared, increasing the likelihood you'll engage in a meaningful conversation.
-
-- What are two topics you might discuss?
-- What is one thing you hope to say?
-- What is one question you will ask?
-
+  - What are two topics you might discuss?
+  - What is one thing you hope to say?
+  - What is one question you will ask?
 4. Ask questions about the other person's emotions, not informational questions.
-
-- NOT: Where do you live?
-- INSTEAD: What do you like most about your neighborhood?
-- NOT: Are you married?
-- INSTEAD: Tell me about your family.
-- NOT: Do you have any hobbies?
-- INSTEAD: If you could learn anything, what would it be?
+  - NOT: Where do you live?
+  - INSTEAD: What do you like most about your neighborhood?
+  - NOT: Are you married?
+  - INSTEAD: Tell me about your family.
+  - NOT: Do you have any hobbies?
+  - INSTEAD: If you could learn anything, what would it be?
 
 ## Favorite Quotes
->
+
 > She had assumed that the goal of discussing a conflict and engaging in debate was achieving victor, defeating the other side. But that's not right. Rather, the real goal is figuring out _why_ a conflict exists in the first place.
 >
 > <span class="page-number">- Page 137</span>
