@@ -35,8 +35,6 @@ collections:
 google_analytics: "G-7VKS3S1FCV"
 
 # Build settings
-theme: minima
-
 remote_theme: jekyll/minima
 
 minima:
