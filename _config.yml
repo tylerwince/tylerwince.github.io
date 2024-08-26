@@ -32,6 +32,8 @@ collections:
     output: true
     permalink: /books/:name/
 
+google_analytics: "G-7VKS3S1FCV"
+
 # Build settings
 theme: minima
 plugins:
