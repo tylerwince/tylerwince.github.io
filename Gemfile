@@ -34,3 +34,5 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 # Ensure google has a sitemap to actually index all the pages on my site
 gem "jekyll-sitemap"
+
+gem "jekyll-remote-theme"

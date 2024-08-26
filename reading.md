@@ -1,7 +1,7 @@
 ---
 title: Reading
 permalink: /reading/
-layout: default
+layout: base
 ---
 
 These are books I've read in (generally) reverse chronological order since 2023.
@@ -30,7 +30,7 @@ These are books I've read in (generally) reverse chronological order since 2023.
                             {% endif %}
                             <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
                         </div>
-                        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% else %}black{% endif %};">
+                        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% endif %};">
                             {% if book.currently_reading %}
                                 <span style="display: block; font-size: 0.8em; color: #999;">Started: {{ book.date | date: "%b %d" }}</span>
                             {% elsif book.stars %}
