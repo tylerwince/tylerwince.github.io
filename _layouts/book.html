@@ -92,4 +92,51 @@ layout: base
     font-size: 0.9em;
   }
 
+  h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    text-decoration: underline;
+    position: relative;
+  }
+
+  .header-link {
+    color: inherit !important;  /* Force the color to remain unchanged */
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .header-link:hover {
+    color: inherit !important;  /* Ensure color doesn't change on hover */
+  }
+
+  .header-link::before {
+    content: "#";
+    position: absolute;
+    left: -1em;  /* Position the # to the left of the header */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  h2:hover .header-link::before,
+  h3:hover .header-link::before,
+  h4:hover .header-link::before,
+  h5:hover .header-link::before,
+  h6:hover .header-link::before {
+    opacity: 1;
+  }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.querySelectorAll('h2, h3, h4, h5, h6').forEach((header) => {
+    const id = header.id;
+    if (id) {
+      const link = document.createElement('a');
+      link.className = 'header-link';
+      link.href = `#${id}`;
+      link.innerHTML = header.innerHTML;
+      header.innerHTML = '';
+      header.appendChild(link);
+    }
+  });
+});
+</script>
