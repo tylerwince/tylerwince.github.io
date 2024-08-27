@@ -11,8 +11,9 @@ layout: base
 </p>
 <p>  You can sort this list by
   <a href="#" onclick="showList('date'); return false;">date</a>,
-  <a href="#" onclick="showList('rating'); return false;">rating</a>, or
-  <a href="#" onclick="showList('title'); return false;">title</a>.
+  <a href="#" onclick="showList('rating'); return false;">rating</a>,
+  <a href="#" onclick="showList('title'); return false;">title</a>, or
+  <a href="#" onclick="showList('author'); return false;">author</a>.
 </p>
 
 <hr/>
@@ -154,11 +155,61 @@ layout: base
   </ul>
 </div>
 
+<div id="author-list" style="display: none;">
+  {% assign sorted_books = site.books | sort_natural: "author" %}
+  <ul style="list-style-type: none; padding: 0;">
+    {% for book in sorted_books %}
+      {% assign words = book.author | split: ' ' %}
+      {% assign last_name = words | last %}
+      <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;" data-last-name="{{ last_name }}">
+        <div>
+          {% assign content_size = book.content | strip | size %}
+          {% if content_size > 0 %}
+            <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
+              {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
+            </a>
+          {% else %}
+            <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
+          {% endif %}
+          <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
+        </div>
+        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% endif %};">
+          {% if book.stars %}
+            {% assign star_count = book.stars %}
+            {% for i in (1..star_count) %}★{% endfor %}
+          {% endif %}
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
 <script>
 function showList(listType) {
   document.getElementById('date-list').style.display = 'none';
   document.getElementById('rating-list').style.display = 'none';
   document.getElementById('title-list').style.display = 'none';
+  document.getElementById('author-list').style.display = 'none';
   document.getElementById(listType + '-list').style.display = 'block';
+
+  if (listType === 'author') {
+    sortAuthorList();
+  }
+}
+
+function sortAuthorList() {
+  var list = document.querySelector("#author-list ul");
+  var items = list.querySelectorAll("li");
+  var itemsArray = Array.from(items);
+
+  itemsArray.sort(function(a, b) {
+    var lastNameA = a.getAttribute('data-last-name').toLowerCase();
+    var lastNameB = b.getAttribute('data-last-name').toLowerCase();
+    return lastNameA.localeCompare(lastNameB);
+  });
+
+  itemsArray.forEach(function(item) {
+    list.appendChild(item);
+  });
 }
 </script>
