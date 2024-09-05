@@ -31,6 +31,9 @@ collections:
   books:
     output: true
     permalink: /books/:name/
+  etch:
+    output: true
+    permalink: /etch/:name/
 
 google_analytics: "G-7VKS3S1FCV"
 
