@@ -1,9 +1,7 @@
 ---
 layout: page
-title: Anki Export Instructions
+title: Exporting Your Anki Deck for Etch
 ---
-
-# Exporting Your Anki Deck for Etch
 
 To import your Anki flashcards into Etch Flashcards, you'll need to export your deck in a specific format. Follow these steps to ensure a smooth transition:
 
