@@ -82,8 +82,8 @@ To truly connect with others, it's important to understand that much of our mora
 
 ### Related Books
 
-- **[How to Hide an Empire](_books/how-to-hide-an-empire)** by Daniel Immerwahr: Provides a historical perspective on American imperialism, connecting with the themes of groupishness and moral blindness to the larger impacts of our actions.
-- **[King: A Life](_books/king-a-life)** by Jonathan Eig: A biography of Martin Luther King Jr., highlighting the power of moral leadership and the role of shared moral values in social movements.
-- **[How The World Really Works](_books/how-the-world-really-works)** by Vaclav Smil: Offers insights into the mechanisms underlying human societies, connecting with Haidt's exploration of moral foundations and societal functioning.
-- **[The Anxious Generation](_books/the-anxious-generation)** by Jonathan Haidt: This book dives into the psychological challenges faced by the younger generation, linking closely to his theories on moral psychology and social behavior.
-- **[Algorithms to Live By](_books/algorithms-to-live-by)** by Brian Christian and Tom Griffiths: Discusses decision-making strategies, offering a practical complement to Haidt's theories on intuition and reasoning.
+- **[How to Hide an Empire](/books/how-to-hide-an-empire)** by Daniel Immerwahr: Provides a historical perspective on American imperialism, connecting with the themes of groupishness and moral blindness to the larger impacts of our actions.
+- **[King: A Life](/books/king-a-life)** by Jonathan Eig: A biography of Martin Luther King Jr., highlighting the power of moral leadership and the role of shared moral values in social movements.
+- **[How The World Really Works](/books/how-the-world-really-works)** by Vaclav Smil: Offers insights into the mechanisms underlying human societies, connecting with Haidt's exploration of moral foundations and societal functioning.
+- **[The Anxious Generation](/books/the-anxious-generation)** by Jonathan Haidt: This book dives into the psychological challenges faced by the younger generation, linking closely to his theories on moral psychology and social behavior.
+- **[Algorithms to Live By](/books/algorithms-to-live-by)** by Brian Christian and Tom Griffiths: Discusses decision-making strategies, offering a practical complement to Haidt's theories on intuition and reasoning.
