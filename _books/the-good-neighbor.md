@@ -2,7 +2,7 @@
 layout: book
 title: "The Good Neighbor"
 author: "Maxwell King"
-date: 2024-10-12
+date: 2024-09-29
 stars: 3
 difficulty: 2
 ---

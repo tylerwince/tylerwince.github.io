@@ -2,7 +2,7 @@
 layout: book
 title: "The Righteous Mind"
 author: "Jonathan Haidt"
-date: 2024-10-11
+date: 2024-10-10
 stars: 5
 difficulty: 3
 ---
@@ -38,15 +38,15 @@ Haidt’s ultimate message is that understanding moral diversity is key to foste
 ## Favorite Quotes
 
 > "Extreme partisanship may be literally addictive."
-> 
+>
 > <span class="page-number">- Page 88</span>
 
 > "If we had no sense of disgust, I believe we would also have no sense of the sacred."
-> 
+>
 > <span class="page-number">- Page 149</span>
 
 > "The hive switch is another way of stating Durkheim's idea that we are *Homo Duplex*; we live most of our lives in the ordinary (profane) world, but we achieve our greatest joys in those brief moments of transit to the sacred world, in which we become 'simply part of the whole.'"
-> 
+>
 > <span class="page-number">- Page 244</span>
 
 ## Personal Thoughts
