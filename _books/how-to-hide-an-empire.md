@@ -23,10 +23,10 @@ Ultimately, Immerwahr poses a provocative question: Is the United States truly a
 
 1. The United States of America is definitely an empire. We've always been an empire and will likely always be an empire. Whether it's territorial conquest or our heavy influence on globalization, the influence of the United States around the world runs deep.
 2. One of the main reasons we've resisted extending statehood to territories is that, once a state, the residents go from U.S. Nationals to U.S. Citizens, gaining many important protections and rights in the process. In some cases, the United States didn't want to extend those rights because it's harder to control people with the rights of U.S. citizens. It also would put the U.S. in a position that required us to defend the land from enemies, which is something we frequently didn't do when territories were attacked. The second main reason is that the U.S. government didn't want to "tarnish" the white culture of the United States with foreign cultures.
-3. The primary way the United States exerts it's influence as an empire today is via pushing our standards and cultures. Immerwahr tells the story of how 60* became the international thread type standard, and another of how English was subtly positioned as the primary universal language in nearly every professional industry.
-4. Douglas McArthur, an American, drafted the Japanese constitution after getting frustrated at the poor quality of the constitution created by the Japanese. Interestingly, the constitution is still in place more than sixty years later with zero amendments.
-5. One of the primary catalysts to Osama Bin Laden's extremist hatred of the United States was our empire of military bases in the middle east - something Bin Laden saw as offensive to the religion of Islam. However, the major military base near Osama Bin Laden's home was built in large part by his family's construction company.
-6. The only reason Jefferson cared to execute the Louisiana Purchase was because of the sea ports it would afford in the gulf. Initially, the Louisiana Purchase would be shut up against whites with the exception of a small area around and including New Orleans. This obviously didn't last long as white frontiersman journeyed into the restricted land, claiming much of it for themselves and driving out native populations.
+3. The primary way the United States exerts its influence as an empire today is via pushing our standards and cultures. Immerwahr tells the story of how 60* became the international thread type standard, and another of how English was subtly positioned as the primary universal language in nearly every professional industry.
+4. Douglas MacArthur, an American, drafted the Japanese constitution after getting frustrated at the poor quality of the constitution created by the Japanese. Interestingly, the constitution is still in place more than sixty years later with zero amendments.
+5. One of the primary catalysts to Osama Bin Laden's extremist hatred of the United States was our empire of military bases in the Middle East - something Bin Laden saw as offensive to the religion of Islam. However, the major military base near Osama Bin Laden's home was built in large part by his family's construction company.
+6. The only reason Jefferson cared to execute the Louisiana Purchase was because of the sea ports it would afford in the gulf. Initially, the Louisiana Purchase would be shut up against whites with the exception of a small area around and including New Orleans. This obviously didn't last long as white frontiersmen journeyed into the restricted land, claiming much of it for themselves and driving out native populations.
 
 ## Favorite Quotes
 
@@ -38,11 +38,11 @@ Ultimately, Immerwahr poses a provocative question: Is the United States truly a
 >
 > <span class="page-number">- Page 233</span>
 
-> Less touted in the textbooks are the admission of Alaska and Hawai'i as blows against racism. For the first time, the logic of white supremacy had not dictated which parts of the Greater United States were eligible for statement.
+> Less touted in the textbooks are the admission of Alaska and Hawai'i as blows against racism. For the first time, the logic of white supremacy had not dictated which parts of the Greater United States were eligible for statehood.
 >
 > <span class="page-number">- Page 241</span>
 
-> College football was a popular sport in the 1920s, yet it wasn't until 1940 that colleges agreed on what a "football" was. Home teams would just supply whatever vaguely football-shaped objects they wanted. Teams that liked to pass used slim balls, teams that emphasized kicking (which early football rules encouraged) proferred short and fat ones.
+> College football was a popular sport in the 1920s, yet it wasn't until 1940 that colleges agreed on what a "football" was. Home teams would just supply whatever vaguely football-shaped objects they wanted. Teams that liked to pass used slim balls, teams that emphasized kicking (which early football rules encouraged) proffered short and fat ones.
 >
 > <span class="page-number">- Page 299</span>
 
