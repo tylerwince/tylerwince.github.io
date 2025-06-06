@@ -9,12 +9,14 @@ layout: base
 <p>These are books I've read since January 2023 (plus some greats from previous years).
   Any book with a 📝 icon contains my reading notes, favorite quotes, and a summary.
 </p>
-<p>  You can sort this list by
+<div class="sort-menu">
+<p>You can sort this list by
   <a href="#" onclick="showList('date'); return false;">date</a>,
   <a href="#" onclick="showList('rating'); return false;">rating</a>,
   <a href="#" onclick="showList('title'); return false;">title</a>, or
   <a href="#" onclick="showList('author'); return false;">author</a>.
 </p>
+</div>
 
 <hr/>
 
@@ -28,29 +30,9 @@ layout: base
         <div>
             <h2>{{ year }}</h2>
             <p>{{ year_group.items | size }} books</p>
-            <ul style="list-style-type: none; padding: 0;">
+            <ul class="book-list">
                 {% for book in year_group.items %}
-                    <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
-                        <div>
-                            {% assign content_size = book.content | strip | size %}
-                            {% if content_size > 0 %}
-                                <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
-                                    {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
-                                </a>
-                            {% else %}
-                                <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
-                            {% endif %}
-                            <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
-                        </div>
-                        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% endif %};">
-                            {% if book.currently_reading %}
-                                <span style="display: block; font-size: 0.8em; color: #999;">Started: {{ book.date | date: "%b %d" }}</span>
-                            {% elsif book.stars %}
-                                {% assign star_count = book.stars %}
-                                {% for i in (1..star_count) %}★{% endfor %}
-                            {% endif %}
-                        </span>
-                    </li>
+                    {% include book_item.html book=book %}
                 {% endfor %}
             </ul>
         </div>
@@ -58,27 +40,9 @@ layout: base
         <div>
             <h2>Previous Years</h2>
             <p>{{ year_group.items | size }} books</p>
-            <ul style="list-style-type: none; padding: 0;">
+            <ul class="book-list">
                 {% for book in year_group.items %}
-                    <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
-                        <div>
-                            {% assign content_size = book.content | strip | size %}
-                            {% if content_size > 0 %}
-                                <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
-                                    {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
-                                </a>
-                            {% else %}
-                                <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
-                            {% endif %}
-                            <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
-                        </div>
-                        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% else %}black{% endif %};">
-                            {% if book.stars %}
-                                {% assign star_count = book.stars %}
-                                {% for i in (1..star_count) %}★{% endfor %}
-                            {% endif %}
-                        </span>
-                    </li>
+                    {% include book_item.html book=book %}
                 {% endfor %}
             </ul>
         </div>
@@ -89,100 +53,84 @@ layout: base
 <div id="rating-list" style="display: none;">
   {% assign rated_books = site.books | where_exp: "book", "book.stars" | sort: "stars" | reverse %}
   {% assign unrated_books = site.books | where_exp: "book", "book.stars == nil" %}
-  <ul style="list-style-type: none; padding: 0;">
+  <ul class="book-list">
     {% for book in rated_books %}
-      <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
-        <div>
-          {% assign content_size = book.content | strip | size %}
-          {% if content_size > 0 %}
-            <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
-              {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
-            </a>
-          {% else %}
-            <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
-          {% endif %}
-          <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
-        </div>
-        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% endif %};">
-          {% assign star_count = book.stars %}
-          {% for i in (1..star_count) %}★{% endfor %}
-        </span>
-      </li>
+      {% include book_item.html book=book %}
     {% endfor %}
     {% for book in unrated_books %}
-      <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
-        <div>
-          {% assign content_size = book.content | strip | size %}
-          {% if content_size > 0 %}
-            <a href="{{ book.url }}" rel="nofollow noopener" style="text-decoration: none; display: block;">
-              {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
-            </a>
-          {% else %}
-            <span style="display: block;">{{ book.title }}</span>
-          {% endif %}
-          <span style="display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
-        </div>
-        <span style="white-space: nowrap;">Unrated</span>
-      </li>
+      {% include book_item.html book=book unrated=true %}
     {% endfor %}
   </ul>
 </div>
 
 <div id="title-list" style="display: none;">
   {% assign sorted_books = site.books | sort: "title" %}
-  <ul style="list-style-type: none; padding: 0;">
+  <ul class="book-list">
     {% for book in sorted_books %}
-      <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;">
-        <div>
-          {% assign content_size = book.content | strip | size %}
-          {% if content_size > 0 %}
-            <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
-              {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
-            </a>
-          {% else %}
-            <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
-          {% endif %}
-          <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
-        </div>
-        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% endif %};">
-          {% if book.stars %}
-            {% assign star_count = book.stars %}
-            {% for i in (1..star_count) %}★{% endfor %}
-          {% endif %}
-        </span>
-      </li>
+      {% include book_item.html book=book %}
     {% endfor %}
   </ul>
 </div>
 
 <div id="author-list" style="display: none;">
   {% assign sorted_books = site.books | sort_natural: "author" %}
-  <ul style="list-style-type: none; padding: 0;">
+  <ul class="book-list">
     {% for book in sorted_books %}
       {% assign words = book.author | split: ' ' %}
       {% assign last_name = words | last %}
-      <li style="display: grid; grid-template-columns: auto min-content; gap: 10px; align-items: start; margin-bottom: 10px;" data-last-name="{{ last_name }}">
-        <div>
-          {% assign content_size = book.content | strip | size %}
-          {% if content_size > 0 %}
-            <a href="{{ book.url }}" rel="nofollow noopener" style="{% if book.stars == 5 %}font-weight: bold;{% endif %} text-decoration: none; display: block;">
-              {{ book.title }} <span style="font-size: 0.8em; color: #4a4a4a;">📝</span>
-            </a>
-          {% else %}
-            <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block;">{{ book.title }}</span>
-          {% endif %}
-          <span style="{% if book.stars == 5 %}font-weight: bold;{% endif %} display: block; font-size: 0.8em; color: #999;">by {{ book.author }}</span>
-        </div>
-        <span style="white-space: nowrap; color: {% if book.stars == 5 %}gold{% endif %};">
-          {% if book.stars %}
-            {% assign star_count = book.stars %}
-            {% for i in (1..star_count) %}★{% endfor %}
-          {% endif %}
-        </span>
-      </li>
+      {% include book_item.html book=book last_name=last_name %}
     {% endfor %}
   </ul>
 </div>
+
+<style>
+  .sort-menu {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 0.5em 0;
+  }
+  .book-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .book-item {
+    display: grid;
+    grid-template-columns: auto min-content;
+    gap: 10px;
+    align-items: start;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+  }
+  .book-title-link, .book-title {
+    display: block;
+    text-decoration: none;
+  }
+  .book-author {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+  }
+  .note-icon {
+    font-size: 0.8em;
+    color: #4a4a4a;
+  }
+  .highlight {
+    font-weight: bold;
+  }
+  .book-rating {
+    white-space: nowrap;
+  }
+  .book-rating .currently-reading {
+    display: block;
+    font-size: 0.8em;
+    color: #999;
+  }
+  .stars {
+    color: gold;
+  }
+</style>
 
 <script>
 function showList(listType) {

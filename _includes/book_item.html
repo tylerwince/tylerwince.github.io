@@ -1,0 +1,25 @@
+<li class="book-item"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}>
+  <div>
+    {% assign content_size = include.book.content | strip | size %}
+    {% if content_size > 0 %}
+      <a href="{{ include.book.url }}" rel="nofollow noopener" class="book-title-link{% if include.book.stars == 5 %} highlight{% endif %}">
+        {{ include.book.title }} <span class="note-icon">📝</span>
+      </a>
+    {% else %}
+      <span class="book-title{% if include.book.stars == 5 %} highlight{% endif %}">{{ include.book.title }}</span>
+    {% endif %}
+    <span class="book-author{% if include.book.stars == 5 %} highlight{% endif %}">by {{ include.book.author }}</span>
+  </div>
+  <span class="book-rating">
+    {% if include.unrated %}
+      Unrated
+    {% else %}
+      {% if include.book.currently_reading %}
+        <span class="currently-reading">Started: {{ include.book.date | date: "%b %d" }}</span>
+      {% elsif include.book.stars %}
+        {% assign star_count = include.book.stars %}
+        <span class="stars">{% for i in (1..star_count) %}★{% endfor %}</span>
+      {% endif %}
+    {% endif %}
+  </span>
+</li>
