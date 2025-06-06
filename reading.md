@@ -100,7 +100,7 @@ layout: base
     gap: 10px;
     align-items: start;
     margin-bottom: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--minima-table-header-bg-color);
     padding-bottom: 10px;
   }
   .book-title-link, .book-title {
