@@ -87,7 +87,6 @@ layout: base
   .sort-menu {
     position: sticky;
     top: 0;
-    background: white;
     padding: 0.5em 0;
   }
   .book-list {
