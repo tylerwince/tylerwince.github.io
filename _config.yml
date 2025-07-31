@@ -34,6 +34,9 @@ collections:
   etch:
     output: true
     permalink: /etch/:name/
+  waymark:
+    output: true
+    permalink: /waymark/:name/
 
 google_analytics: "G-7VKS3S1FCV"
 
