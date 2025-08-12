@@ -13,7 +13,7 @@ Etch Flashcards does not display any advertisements, or include any trackers/ana
 
 ## Support
 
-If you have questions about this privacy policy or need support with Waymark Prayer, please contact us at: [tyler@mgtechworks.com](mailto:tyler@mgtechworks.com)
+If you have questions about this privacy policy or need support with Etch Memory, please contact us at: [tyler@mgtechworks.com](mailto:tyler@mgtechworks.com)
 
 ---
 Last updated: 2024-09-04
