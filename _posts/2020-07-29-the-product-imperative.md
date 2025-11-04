@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Product Imperative
-description:
+description: Product managers fall prey to six default behaviors that kill innovation. Organize your work to actively resist these traps.
 date: 2020-07-29 19:00:35 +0100
 published: true
 tags: product-management
