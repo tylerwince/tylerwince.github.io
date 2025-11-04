@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Inversion <> uoᴉsɹǝʌuI
-description:
+description: Use inversion thinking to ensure your team works on high-impact features by defining what success looks like and what will guarantee failure.
 date: 2020-05-27 19:00:27 +0100
 published: true
 tags: product-management

@@ -1,10 +1,11 @@
 ---
 layout: post
 title: Problem Space vs Solution Space
-description:
+description: Product managers own the "what" by living in problem space—understanding target customers, their needs, and value proposition—while engineering focuses on the "how."
 date: 2020-06-17 19:01:00 +0100
 published: true
 tags: product-management
+category: frameworks
 ---
 
 ![](/assets/4d7fe1d9-e419-4cf5-a3eb-5bf9083b4a7a_1844x965.jpeg)

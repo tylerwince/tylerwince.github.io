@@ -1,4 +1,4 @@
-<li class="book-item"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}>
+<li class="book-item"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
   <div>
     {% assign content_size = include.book.content | strip | size %}
     {% if content_size > 0 %}

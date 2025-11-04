@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Collaborative Writing as a Product Manager
-description:
+description: Write in public from day one to generate better ideas, let people read your mind, and build team ownership of product decisions.
 date: 2020-07-01 19:00:46 +0100
 published: true
 tags: product-management

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Removing Product Friction Isn't Always Good
-description:
+description: Removing too much friction can hurt user safety, impact other features, or cause system failures. Balance friction reduction with your product goals.
 date: 2020-08-28 19:00:27 +0100
 published: true
 tags: product-management

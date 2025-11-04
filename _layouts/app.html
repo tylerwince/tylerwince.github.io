@@ -1,0 +1,207 @@
+---
+layout: base
+---
+
+<article class="app-showcase">
+  <header class="app-header">
+    <div class="app-icon">{{ page.icon }}</div>
+    <h1 class="app-title">{{ page.title }}</h1>
+    <p class="app-tagline">{{ page.tagline }}</p>
+
+    {% if page.app_store_link or page.website_link %}
+    <div class="app-links">
+      {% if page.app_store_link %}
+      <a href="{{ page.app_store_link }}" class="app-store-button" target="_blank" rel="noopener">
+        Download on the App Store
+      </a>
+      {% endif %}
+      {% if page.website_link %}
+      <a href="{{ page.website_link }}" class="website-button" target="_blank" rel="noopener">
+        Visit Website
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="app-content">
+    {{ content }}
+  </div>
+
+  {% if page.tech_stack %}
+  <div class="tech-stack">
+    <h2>Built With</h2>
+    <ul class="tech-list">
+      {% for tech in page.tech_stack %}
+      <li>{{ tech }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <footer class="app-footer">
+    <p>Built by <a href="/about/">Tyler Wince</a></p>
+  </footer>
+</article>
+
+<style>
+  .app-showcase {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .app-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+    border-radius: 12px;
+    background: var(--minima-table-header-bg-color);
+  }
+
+  .app-icon {
+    font-size: 5em;
+    margin-bottom: 15px;
+  }
+
+  .app-title {
+    font-size: 3em;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+
+  .app-tagline {
+    font-size: 1.3em;
+    margin: 15px 0 25px 0;
+    color: #666;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .app-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+  }
+
+  .app-store-button,
+  .website-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .app-store-button {
+    background: #007AFF;
+    color: white;
+  }
+
+  .website-button {
+    background: #5856D6;
+    color: white;
+  }
+
+  .app-store-button:hover,
+  .website-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+  }
+
+  .app-content {
+    line-height: 1.8;
+    font-size: 1.1em;
+  }
+
+  .app-content h2 {
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+
+  .app-content h3 {
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+
+  .app-content ul,
+  .app-content ol {
+    margin: 20px 0;
+    padding-left: 30px;
+  }
+
+  .app-content li {
+    margin: 10px 0;
+  }
+
+  .app-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 30px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .tech-stack {
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 12px;
+    background: var(--minima-table-header-bg-color);
+  }
+
+  .tech-stack h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+  }
+
+  .tech-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tech-list li {
+    background: var(--minima-background-color);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-family: monospace;
+  }
+
+  .app-footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--minima-table-header-bg-color);
+    color: #666;
+  }
+
+  .app-footer a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .app-title {
+      font-size: 2.2em;
+    }
+
+    .app-tagline {
+      font-size: 1.1em;
+    }
+
+    .app-icon {
+      font-size: 4em;
+    }
+  }
+</style>
