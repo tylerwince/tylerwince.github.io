@@ -21,11 +21,13 @@
 title: Tyler Wince
 email: me@tylerwince.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Chief Product Officer by day, iOS developer by night.
-  Building products that matter and sharing what I learn along the way.
+  Building iOS apps, leading product teams, and writing about what I learn along the way.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://tylerwince.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: tylerwince
+twitter_username: tylerwince
+instagram_username: tylerwince
+linkedin_username: tylerwince
 
 collections:
   books:
@@ -54,7 +56,6 @@ header_pages:
   - apps.md
   - writing.md
   - reading.md
-  - about.md
 
 plugins:
   - jekyll-feed

@@ -4,190 +4,634 @@ title: Apps
 permalink: /apps/
 ---
 
-I build iOS apps that help people learn better and grow spiritually. Each app is designed with care, focusing on beautiful design and thoughtful features.
-
-<div class="apps-grid">
-  <div class="app-card">
-    <div class="app-logo">
-      <img src="/assets/etch_logo.png" alt="Etch logo">
-    </div>
-    <h2><a href="/apps/etch/">Etch</a></h2>
-    <p class="app-card-tagline">Scientifically-advanced flashcard learning</p>
-    <p>Native iOS spaced repetition app powered by AI. Study less, remember more—what Anki would have been if developed by Apple.</p>
-    <ul class="app-features">
-      <li>FSRS spaced repetition algorithm</li>
-      <li>AI-powered insights & card generation</li>
-      <li>Multimodal AI chat for studying</li>
-      <li>Import from Anki & Obsidian</li>
-      <li>Beautiful native iOS design</li>
-    </ul>
-    <div class="app-card-links">
-      <a href="/apps/etch/" class="learn-more">Learn More →</a>
-      <a href="https://apps.apple.com/app/etch" class="app-store" target="_blank" rel="noopener">App Store</a>
-    </div>
-  </div>
-
-  <div class="app-card">
-    <div class="app-logo">
-      <img src="/assets/waymark_logo.png" alt="Waymark logo">
-    </div>
-    <h2><a href="/apps/waymark/">Waymark</a></h2>
-    <p class="app-card-tagline">Beautiful prayer tracking for iOS</p>
-    <p>Build consistent prayer habits, track spiritual progress, celebrate answered prayers, and share your faith journey with community.</p>
-    <ul class="app-features">
-      <li>Smart prayer reminders & scheduling</li>
-      <li>Answered prayer tracking</li>
-      <li>Anniversary notifications</li>
-      <li>iCloud sync & sharing</li>
-      <li>Privacy-first design</li>
-    </ul>
-    <div class="app-card-links">
-      <a href="/apps/waymark/" class="learn-more">Learn More →</a>
-      <a href="https://apps.apple.com/app/waymark" class="app-store" target="_blank" rel="noopener">App Store</a>
-    </div>
-  </div>
+<div class="hero-section">
+  <span class="hero-eyebrow">Purpose-built iOS products crafted with native design, thoughtful systems, and a clear sense of purpose.</span>
 </div>
 
-## Why I Build Apps
+<div class="apps-stage">
+  <div class="apps-tabs" role="tablist">
+    <button class="app-tab active" id="tab-etch" data-target="app-etch" role="tab" aria-controls="app-etch" aria-selected="true">
+      <span class="app-tab-icon">
+        <img src="/assets/etch_logo.png" alt="Etch icon">
+      </span>
+      <span class="app-tab-label">Etch</span>
+    </button>
+    <button class="app-tab" id="tab-waymark" data-target="app-waymark" role="tab" aria-controls="app-waymark" aria-selected="false">
+      <span class="app-tab-icon">
+        <img src="/assets/waymark_logo.png" alt="Waymark icon">
+      </span>
+      <span class="app-tab-label">Waymark</span>
+    </button>
+  </div>
 
-As Chief Product Officer at Myndshft Technologies by day, I spend my nights building apps that solve real problems for real people. Each app reflects my passion for:
+  <section class="app-detail active" id="app-etch" role="tabpanel" aria-labelledby="tab-etch">
+    <div class="app-overview">
+      <div class="app-icon">
+        <img src="/assets/etch_logo.png" alt="Etch logo">
+      </div>
+      <div class="app-overview-text">
+        <h2>Etch</h2>
+        <p class="app-tagline">Anki, but if it was built by Apple.</p>
+      </div>
+    </div>
+    <p class="app-description">Etch is the spaced repetition app you've always wanted: beautiful design, native on all Apple platforms, and actually expands your knowledge based on what you already know.</p>
+    <div class="app-detail-lower">
+      <ul class="app-feature-list">
+        <li>Industry-leading algorithms</li>
+        <li>AI Tutor and custom articles</li>
+        <li>Anki &amp; Obsidian import</li>
+        <li>Native Apple design</li>
+        <li>Widgets &amp; Siri Shortcuts</li>
+      </ul>
+      <div class="app-actions">
+        <form id="etch-waitlist" class="waitlist-form-inline" action="https://formspree.io/f/xovpogje" method="POST">
+          <label class="waitlist-label" for="waitlist-email-inline">Join the Etch beta</label>
+          <input id="waitlist-email-inline" class="waitlist-input" type="email" name="email" placeholder="you@example.com" required>
+          <button class="waitlist-submit" type="submit">Join Waitlist</button>
+          <p class="waitlist-note">No spam—we'll add you to the beta waitlist.</p>
+        </form>
+        <a href="/apps/etch/" class="app-link">Learn about Etch</a>
+      </div>
+    </div>
+  </section>
 
-- **Native iOS Design**: Beautiful, thoughtful interfaces that feel at home on Apple devices
-- **Purposeful Technology**: Apps that genuinely improve people's lives
-- **Scientific Principles**: Leveraging research-backed approaches (like spaced repetition)
-- **Privacy & Ethics**: Building with respect for users and their data
+  <section class="app-detail" id="app-waymark" role="tabpanel" aria-labelledby="tab-waymark" hidden>
+    <div class="app-overview">
+      <div class="app-icon">
+        <img src="/assets/waymark_logo.png" alt="Waymark logo">
+      </div>
+      <div class="app-overview-text">
+        <h2>Waymark</h2>
+        <p class="app-tagline">Remember God's Faithfulness</p>
+      </div>
+    </div>
+    <p class="app-description">Waymark keeps prayer commitments meaningful with gentle reminders, journaling, and space to celebrate answered prayers. Build rhythms alone or invite your community into the journey.</p>
+    <div class="app-detail-lower">
+      <ul class="app-feature-list">
+        <li>Guided prayer cadences</li>
+        <li>Answered prayer timeline</li>
+        <li>Shared prayer groups</li>
+        <li>iCloud sync &amp; privacy</li>
+      </ul>
+      <div class="app-actions">
+        <a href="https://apple.co/3Jgd1Fy" class="app-primary app-store-button" target="_blank" rel="noopener">
+          <span class="sr-only">Download Waymark on the App Store</span>
+          <picture>
+            <source srcset="/assets/white.svg" media="(prefers-color-scheme: dark)">
+            <img src="/assets/black.svg" alt="" aria-hidden="true">
+          </picture>
+        </a>
+        <a href="/apps/waymark/" class="app-link">Learn about Waymark</a>
+      </div>
+    </div>
+  </section>
+</div>
 
----
+<section class="principles-section">
+  <h2>Why I build apps</h2>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <h3>Native iOS craft</h3>
+      <p>Interfaces that feel unmistakably at home on Apple platforms—fluid gestures, crisp typography, and purposeful motion.</p>
+    </div>
+    <div class="principle-card">
+      <h3>Purposeful technology</h3>
+      <p>Every feature earns its place by helping people learn deeply, grow spiritually, or connect with their community.</p>
+    </div>
+    <div class="principle-card">
+      <h3>Scientific foundations</h3>
+      <p>Research-backed systems like spaced repetition and habit theory shape the product roadmap, not trend chasing.</p>
+    </div>
+    <div class="principle-card">
+      <h3>Privacy by default</h3>
+      <p>Respect for user data is table stakes—sensible defaults, transparent controls, and sync you can trust.</p>
+    </div>
+  </div>
+</section>
 
-Want to learn more about how these apps were built? Check out my [writing](/writing/) for development insights and product lessons.
+<p class="closing-note">Want to see how these products come together? Dive into my <a href="/writing/">writing</a> for product lessons and build logs.</p>
 
 <style>
-  .apps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px;
-    margin: 48px 0;
+  .hero-section {
+    text-align: center;
+    padding: 40px 20px 0;
+    max-width: 720px;
+    margin: 0 auto 64px;
   }
 
-  .app-card {
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .page-title {
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .page-subtitle {
+    margin: 16px auto 0;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #666;
+    max-width: 60ch;
+  }
+
+  .apps-stage {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .apps-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .app-tab {
     border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 40px 32px;
+    border-radius: 18px;
+    padding: 12px 18px;
     background: var(--minima-background-color);
-    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font: inherit;
+    font-weight: 600;
+    color: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s;
   }
 
-  .app-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  .app-tab:hover {
+    border-color: #d1d5db;
   }
 
-  .app-logo {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 24px auto;
+  .app-tab.active,
+  .app-tab[aria-selected="true"] {
+    border-color: rgba(0, 122, 255, 0.6);
+  }
+
+  .app-tab:focus-visible {
+    outline: 2px solid #007AFF;
+    outline-offset: 2px;
+  }
+
+  .app-tab-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
     background: white;
-    border-radius: 16px;
-    padding: 20px;
+    border: 1px solid #e5e7eb;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #e5e7eb;
+    padding: 8px;
   }
 
-  .app-logo img {
+  .app-tab-icon img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
 
-  .app-card h2 {
-    text-align: center;
-    margin: 16px 0;
+  .app-tab-label {
+    font-size: 0.9375rem;
+  }
+
+  .app-detail {
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 32px;
+    background: var(--minima-background-color);
+    display: none;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .app-detail.active {
+    display: flex;
+  }
+
+  .app-detail[hidden] {
+    display: none !important;
+  }
+
+  .app-overview {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .app-overview-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+    flex-shrink: 0;
+  }
+
+  .app-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .app-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #007AFF;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .app-detail h2 {
+    margin: 0;
     font-size: 1.875rem;
+    font-weight: 700;
   }
 
-  .app-card h2 a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .app-card h2 a:hover {
-    text-decoration: underline;
-  }
-
-  .app-card-tagline {
-    text-align: center;
-    font-style: italic;
+  .app-tagline {
+    margin: 8px 0 0;
     color: #666;
-    margin: 8px 0 24px 0;
-    font-size: 1.125rem;
-  }
-
-  .app-card > p {
-    line-height: 1.75;
-    margin: 16px 0;
     font-size: 1rem;
   }
 
-  .app-features {
+  .app-description {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .app-detail-lower {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+
+  .app-feature-list {
+    flex: 1;
     list-style: none;
+    margin: 0;
     padding: 0;
-    margin: 24px 0;
+    display: grid;
+    gap: 10px;
   }
 
-  .app-features li {
-    padding: 10px 0;
-    padding-left: 32px;
+  .app-feature-list li {
     position: relative;
+    padding-left: 28px;
     line-height: 1.6;
+    font-size: 0.9375rem;
   }
 
-  .app-features li::before {
+  .app-feature-list li::before {
     content: "✓";
     position: absolute;
     left: 0;
     color: #007AFF;
-    font-weight: bold;
-    font-size: 1.125rem;
-  }
-
-  .app-card-links {
-    display: flex;
-    gap: 16px;
-    margin-top: 32px;
-    flex-wrap: wrap;
-  }
-
-  .app-card-links a {
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
     font-weight: 600;
-    transition: opacity 0.2s, transform 0.2s;
-    flex: 1;
-    text-align: center;
   }
 
-  .app-card-links a:hover {
+  .app-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    min-width: 220px;
+  }
+
+  .waitlist-form-inline {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .waitlist-form-inline .waitlist-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    font-weight: 600;
+  }
+
+  .waitlist-form-inline .waitlist-note {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin: 0;
+  }
+
+  .waitlist-form-inline .waitlist-input {
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 0.9375rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .waitlist-form-inline .waitlist-input:focus {
+    outline: none;
+    border-color: #007AFF;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+  }
+
+  .waitlist-form-inline .waitlist-submit {
+    align-self: stretch;
+    border: 1px solid #007AFF;
+    background: #007AFF;
+    color: white;
+    font-weight: 600;
+    padding: 11px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .waitlist-form-inline .waitlist-submit:hover {
     opacity: 0.9;
     transform: translateY(-1px);
   }
 
-  .learn-more {
-    background: var(--minima-table-header-bg-color);
-    color: inherit;
-    border: 1px solid #e5e7eb;
+  .waitlist-form-inline .waitlist-submit:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
   }
 
-  .app-store {
-    background: #007AFF;
-    color: white;
+  .app-actions .app-link {
+    margin-top: auto;
+  }
+
+  .app-link {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .app-link::after {
+    content: "→";
+    transition: transform 0.2s;
+  }
+
+  .app-link:hover {
+    color: #007AFF;
+  }
+
+  .app-link:hover::after {
+    transform: translateX(2px);
+  }
+
+  .app-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+    background: transparent;
+    transition: transform 0.2s;
+  }
+
+  .app-primary:hover {
+    transform: translateY(-1px);
+  }
+
+  .app-store-button picture,
+  .app-store-button img {
+    display: block;
+    height: 64px;
+  }
+
+  .app-store-button img {
+    width: auto;
+  }
+
+  .principles-section {
+    max-width: 840px;
+    margin: 80px auto 0;
+    padding: 0 20px 80px;
+  }
+
+  .principles-section h2 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .principle-card {
+    border-left: 2px solid #e5e7eb;
+    padding-left: 16px;
+  }
+
+  .principle-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.125rem;
+  }
+
+  .principle-card p {
+    margin: 0;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .closing-note {
+    max-width: 640px;
+    margin: 32px auto 80px;
+    text-align: center;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .closing-note a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0, 122, 255, 0.3);
+  }
+
+  .closing-note a:hover {
+    color: #007AFF;
+    border-bottom-color: #007AFF;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   @media (max-width: 768px) {
-    .apps-grid {
+    .hero-section {
+      padding-top: 20px;
+      margin-bottom: 48px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .apps-tabs {
+      gap: 12px;
+    }
+
+    .app-tab {
+      width: 100%;
+      justify-content: flex-start;
+    }
+
+    .app-overview {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+    }
+
+    .app-detail-lower {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .app-actions {
+      align-items: flex-start;
+      min-width: 0;
+    }
+
+    .app-actions .app-link {
+      margin-top: 0;
+    }
+
+    .principles-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
+
+<script>
+  (function() {
+    var tabs = document.querySelectorAll('.app-tab');
+    var panels = document.querySelectorAll('.app-detail');
+
+    if (!tabs.length || !panels.length) {
+      return;
+    }
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var targetId = tab.getAttribute('data-target');
+        var targetPanel = document.getElementById(targetId);
+
+        if (!targetPanel || tab.classList.contains('active')) {
+          return;
+        }
+
+        tabs.forEach(function(t) {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+
+        panels.forEach(function(panel) {
+          panel.classList.remove('active');
+          panel.setAttribute('hidden', 'true');
+        });
+
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        targetPanel.classList.add('active');
+        targetPanel.removeAttribute('hidden');
+      });
+    });
+  })();
+
+  (function() {
+    var form = document.getElementById('etch-waitlist');
+    if (!form) {
+      return;
+    }
+
+    var submitButton = form.querySelector('.waitlist-submit');
+    var note = form.querySelector('.waitlist-note');
+    var defaultButtonText = submitButton.textContent;
+    var defaultNote = note ? note.textContent : '';
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      if (submitButton.disabled) {
+        return;
+      }
+
+      var formData = new FormData(form);
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+      if (note) {
+        note.textContent = defaultNote;
+      }
+
+      fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData
+      }).then(function(response) {
+        if (response.ok) {
+          form.reset();
+          submitButton.textContent = 'Added!';
+          if (note) {
+            note.textContent = "Thanks! You're on the waitlist.";
+          }
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      }).catch(function() {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Try again';
+        if (note) {
+          note.textContent = 'Something went wrong. Please try again.';
+        }
+      });
+    });
+  })();
+</script>

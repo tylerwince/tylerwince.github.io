@@ -4,8 +4,6 @@ permalink: /reading/
 layout: page
 ---
 
-<h1>Reading</h1>
-
 <p>Books I've read since 2023, plus some favorites from earlier years. Books marked with 📝 have my notes.</p>
 
 {% assign all_books = site.books | sort: "date" | reverse %}
