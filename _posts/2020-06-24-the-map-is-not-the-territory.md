@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Map Is Not the Territory
-description:
+description: Great product managers understand that mental models and abstractions are useful but imperfect representations of reality. Build better maps of your domain.
 date: 2020-06-24 19:00:56 +0100
 published: true
 tags: product-management

@@ -21,16 +21,21 @@
 title: Tyler Wince
 email: me@tylerwince.com
 description: >- # this means to ignore newlines until "baseurl:"
-  I write mostly about product management,
-  technology, leadership, climate, energy, and healthcare.
+  Building iOS apps, leading product teams, and writing about what I learn along the way.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://tylerwince.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: tylerwince
+twitter_username: tylerwince
+instagram_username: tylerwince
+linkedin_username: tylerwince
 
 collections:
   books:
     output: true
     permalink: /books/:name/
+  apps:
+    output: true
+    permalink: /apps/:name/
   etch:
     output: true
     permalink: /etch/:name/
@@ -41,15 +46,20 @@ collections:
 google_analytics: "G-7VKS3S1FCV"
 
 # Build settings
-remote_theme: jekyll/minima
+theme: minima
 
 minima:
   skin: auto
 
+# Navigation
+header_pages:
+  - apps.md
+  - writing.md
+  - reading.md
+
 plugins:
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-remote-theme
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

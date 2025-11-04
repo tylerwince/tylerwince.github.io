@@ -1,10 +1,11 @@
 ---
 layout: post
 title: Customer Interview Frameworks
-description:
+description: Six proven frameworks—Voice of Customer, Jobs to be Done, Follow Me Home, Focus Groups, SPIN, and Four Helpful Lists—for conducting effective customer interviews.
 date: 2020-08-19 19:00:46 +0100
 published: true
 tags: product-management
+category: frameworks
 ---
 
 > "It isn't the customer's job to know what they want." - Steve Jobs

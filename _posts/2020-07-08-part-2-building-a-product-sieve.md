@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Part 2 - Building a Product Sieve
-description:
+description: Build a product sieve using problem statements, vision, and sieve questions to separate high-quality ideas from low-quality ones.
 date: 2020-07-08 19:00:46 +0100
 published: true
 tags: product-management

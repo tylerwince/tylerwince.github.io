@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Competitors Who Aren't
-description:
+description: Companies with the same problem space but different market spaces will eventually compete as they grow. Plan for future overlap now or risk becoming the next Blackberry.
 date: 2020-08-05 19:00:46 +0100
 published: true
 tags: product-management
