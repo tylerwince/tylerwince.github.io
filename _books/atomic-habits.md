@@ -4,6 +4,7 @@ title: "Atomic Habits"
 author: "James Clear"
 date: 2000-01-01
 stars: 5
+genre: leadership
 ---
 
 ## Summary

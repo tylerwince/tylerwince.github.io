@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Part 1 - Building a Product Sieve
-description:
+description: Stop working on valueless features by creating a product sieve that filters high-value ideas from motion without results.
 date: 2020-07-01 19:00:46 +0100
 published: true
 tags: product-management

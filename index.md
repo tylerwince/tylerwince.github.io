@@ -1,10 +1,198 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
 ---
 
-👋 I'm Tyler and this is where I write. I primarily write about product management, technology, leadership, climate, energy, and healthcare. 
+<div class="hero-section">
+  <h1 class="hero-title">Building products that matter</h1>
+  <p class="hero-subtitle">Building iOS apps, leading product teams, and writing about what I learn along the way.</p>
+</div>
 
-Check out what I'm [reading](/reading) or read what I'm writing below ⬇️.
+<div class="content-section">
+  <div class="section-group">
+    <h2>Apps</h2>
+    <div class="apps-list">
+      <a href="/apps/etch/" class="app-link">
+        <div class="app-icon">
+          <img src="/assets/etch_logo.png" alt="Etch">
+        </div>
+        <span>Etch</span>
+      </a>
+      <a href="/apps/waymark/" class="app-link">
+        <div class="app-icon">
+          <img src="/assets/waymark_logo.png" alt="Waymark">
+        </div>
+        <span>Waymark</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="dual-section">
+    <div class="section-group">
+      <h2>Latest Post</h2>
+      <div class="latest-item">
+        <a href="/2025/06/05/subtract-to-ship.html">Subtract to Ship</a>
+        <p>The way a product team moves quickly, delivers value, and achieves perfection.</p>
+      </div>
+    </div>
+
+    <div class="section-group">
+      <h2>Currently Reading</h2>
+      <div class="latest-item">
+        <span class="book-title">A Brief History of Time</span>
+        <p class="book-author">Stephen Hawking</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero-section {
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+    margin-bottom: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 60ch;
+    margin: 0 auto;
+    color: #666;
+  }
+
+  .content-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 80px 20px;
+  }
+
+  .section-group {
+    margin-bottom: 48px;
+  }
+
+  .dual-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .dual-section .section-group {
+    margin-bottom: 0;
+  }
+
+  .section-group h2 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #999;
+    margin-bottom: 16px;
+  }
+
+  .apps-list {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .app-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+
+  .app-link:hover {
+    opacity: 0.7;
+  }
+
+  .app-icon {
+    width: 64px;
+    height: 64px;
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+  }
+
+  .app-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .app-link span {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .latest-item {
+    border-left: 2px solid #e5e7eb;
+    padding-left: 16px;
+  }
+
+  .latest-item a {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .latest-item a:hover {
+    color: #007AFF;
+  }
+
+  .latest-item p {
+    margin: 4px 0 0 0;
+    color: #666;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .book-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .book-author {
+    margin: 4px 0 0 0;
+    color: #666;
+    font-size: 0.9375rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .dual-section {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

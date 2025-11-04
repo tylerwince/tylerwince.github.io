@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Bike Shed Effect
-description:
+description: Teams waste time debating trivial issues while ignoring complex, important decisions. Force people to write and think deeply to solve this.
 date: 2020-06-03 19:00:35 +0100
 published: true
 tags: product-management
