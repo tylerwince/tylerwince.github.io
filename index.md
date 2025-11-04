@@ -36,11 +36,21 @@ layout: home
     </div>
 
     <div class="section-group">
+      {% assign currently_reading_books = site.books | where_exp: "book", "book.currently_reading == true" %}
       <h2>Currently Reading</h2>
-      <div class="latest-item">
-        <span class="book-title">A Brief History of Time</span>
-        <p class="book-author">Stephen Hawking</p>
-      </div>
+      {% if currently_reading_books.size > 0 %}
+        {% for book in currently_reading_books %}
+          <div class="latest-item currently-reading-item">
+            <span class="book-title">{{ book.title }}</span>
+            <p class="book-author">{{ book.author }}</p>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="latest-item">
+          <span class="book-title">Nothing on deck right now</span>
+          <p class="book-author">Check back soon</p>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -146,6 +156,7 @@ layout: home
   .latest-item {
     border-left: 2px solid #e5e7eb;
     padding-left: 16px;
+    position: relative;
   }
 
   .latest-item a {
@@ -166,6 +177,19 @@ layout: home
     color: #666;
     font-size: 0.9375rem;
     line-height: 1.5;
+  }
+
+  .currently-reading-item + .currently-reading-item {
+    padding-top: 12px;
+  }
+
+  .currently-reading-item + .currently-reading-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 16px;
+    right: 0;
+    border-top: 1px solid #e5e7eb;
   }
 
   .book-title {
