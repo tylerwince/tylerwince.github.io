@@ -45,6 +45,9 @@ collections:
 
 google_analytics: "G-7VKS3S1FCV"
 
+# Permalink structure for posts
+permalink: /:year/:month/:day/:title/
+
 # Build settings
 theme: minima
 

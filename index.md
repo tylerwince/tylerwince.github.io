@@ -12,7 +12,7 @@ layout: home
     <h2>Apps</h2>
     <div class="apps-list">
       <a href="/apps/etch/" class="app-link">
-        <div class="app-icon">
+        <div class="app-icon app-icon-etch">
           <img src="/assets/etch_logo.png" alt="Etch">
         </div>
         <span>Etch</span>
@@ -29,10 +29,13 @@ layout: home
   <div class="dual-section">
     <div class="section-group">
       <h2>Latest Post</h2>
+      {% assign latest_post = site.posts | where: "published", true | first %}
+      {% if latest_post %}
       <div class="latest-item">
-        <a href="/2025/06/05/subtract-to-ship.html">Subtract to Ship</a>
-        <p>The way a product team moves quickly, delivers value, and achieves perfection.</p>
+        <a href="{{ latest_post.url }}">{{ latest_post.title }}</a>
+        <p>{{ latest_post.description }}</p>
       </div>
+      {% endif %}
     </div>
 
     <div class="section-group">
@@ -146,6 +149,14 @@ layout: home
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  .app-icon-etch {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 88px !important;
+    height: 88px !important;
   }
 
   .app-link span {
