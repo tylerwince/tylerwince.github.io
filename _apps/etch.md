@@ -15,14 +15,15 @@ tech_stack:
 <div class="app-hero">
   <div class="app-hero-content">
     <p class="app-tagline-display">{{ page.tagline }}</p>
-    <form class="waitlist-form" action="https://formspree.io/f/xovpogje" method="POST">
-      <label class="waitlist-label" for="waitlist-email">Join the Etch beta</label>
-      <div class="waitlist-controls">
-        <input id="waitlist-email" class="waitlist-input" type="email" name="email" placeholder="you@example.com" required>
-        <button class="waitlist-submit" type="submit">Join Waitlist</button>
-      </div>
-      <p class="waitlist-note">No spam—we'll add you to the beta waitlist.</p>
-    </form>
+    <div class="app-hero-actions">
+      <a href="https://apps.apple.com/us/app/etch-memory/id6741780207" class="app-store-button" target="_blank" rel="noopener">
+        <span class="sr-only">Download Etch on the App Store</span>
+        <picture>
+          <source srcset="/assets/white.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/black.svg" alt="" aria-hidden="true">
+        </picture>
+      </a>
+    </div>
     <ul class="app-hero-meta">
       <li><span>Platform</span><strong>iOS, iPadOS, macOS</strong></li>
       <li><span>Made for</span><strong>Polyglots, lifelong learners, students</strong></li>
@@ -30,7 +31,7 @@ tech_stack:
     </ul>
   </div>
   <div class="app-hero-art">
-    <div class="app-hero-icon">
+    <div class="app-hero-icon app-hero-icon-etch">
       <img src="/assets/etch_logo.png" alt="Etch logo">
     </div>
   </div>
@@ -78,11 +79,6 @@ tech_stack:
   <h2>Related writing</h2>
   <p>Curious about the build process? Watch for upcoming deep dives on spaced repetition, AI-powered studying, and product craft in <a href="/writing/">my writing</a>.</p>
 </section>
-
-<footer class="app-footer">
-  <p><strong>Bundle ID</strong> com.mgtechworks.etch</p>
-  <p><strong>Built for</strong> iOS 15+, iPadOS 15+, macOS (via Catalyst)</p>
-</footer>
 
 <style>
   .app-hero {
@@ -156,6 +152,12 @@ tech_stack:
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  .app-hero-icon-etch {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
   }
 
   .app-section {

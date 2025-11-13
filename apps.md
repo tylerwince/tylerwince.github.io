@@ -11,7 +11,7 @@ permalink: /apps/
 <div class="apps-stage">
   <div class="apps-tabs" role="tablist">
     <button class="app-tab active" id="tab-etch" data-target="app-etch" role="tab" aria-controls="app-etch" aria-selected="true">
-      <span class="app-tab-icon">
+      <span class="app-tab-icon app-tab-icon-etch">
         <img src="/assets/etch_logo.png" alt="Etch icon">
       </span>
       <span class="app-tab-label">Etch</span>
@@ -26,7 +26,7 @@ permalink: /apps/
 
   <section class="app-detail active" id="app-etch" role="tabpanel" aria-labelledby="tab-etch">
     <div class="app-overview">
-      <div class="app-icon">
+      <div class="app-icon app-icon-etch">
         <img src="/assets/etch_logo.png" alt="Etch logo">
       </div>
       <div class="app-overview-text">
@@ -44,12 +44,13 @@ permalink: /apps/
         <li>Widgets &amp; Siri Shortcuts</li>
       </ul>
       <div class="app-actions">
-        <form id="etch-waitlist" class="waitlist-form-inline" action="https://formspree.io/f/xovpogje" method="POST">
-          <label class="waitlist-label" for="waitlist-email-inline">Join the Etch beta</label>
-          <input id="waitlist-email-inline" class="waitlist-input" type="email" name="email" placeholder="you@example.com" required>
-          <button class="waitlist-submit" type="submit">Join Waitlist</button>
-          <p class="waitlist-note">No spam—we'll add you to the beta waitlist.</p>
-        </form>
+        <a href="https://apps.apple.com/us/app/etch-memory/id6741780207" class="app-primary app-store-button" target="_blank" rel="noopener">
+          <span class="sr-only">Download Etch on the App Store</span>
+          <picture>
+            <source srcset="/assets/white.svg" media="(prefers-color-scheme: dark)">
+            <img src="/assets/black.svg" alt="" aria-hidden="true">
+          </picture>
+        </a>
         <a href="/apps/etch/" class="app-link">Learn about Etch</a>
       </div>
     </div>
@@ -171,6 +172,7 @@ permalink: /apps/
     color: inherit;
     cursor: pointer;
     transition: border-color 0.2s;
+    min-width: 180px;
   }
 
   .app-tab:hover {
@@ -203,6 +205,12 @@ permalink: /apps/
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  .app-tab-icon-etch {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
   }
 
   .app-tab-label {
@@ -256,6 +264,14 @@ permalink: /apps/
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  .app-icon-etch {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    width: 108px !important;
+    height: 108px !important;
   }
 
   .app-badge {
@@ -582,55 +598,6 @@ permalink: /apps/
         tab.setAttribute('aria-selected', 'true');
         targetPanel.classList.add('active');
         targetPanel.removeAttribute('hidden');
-      });
-    });
-  })();
-
-  (function() {
-    var form = document.getElementById('etch-waitlist');
-    if (!form) {
-      return;
-    }
-
-    var submitButton = form.querySelector('.waitlist-submit');
-    var note = form.querySelector('.waitlist-note');
-    var defaultButtonText = submitButton.textContent;
-    var defaultNote = note ? note.textContent : '';
-
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      if (submitButton.disabled) {
-        return;
-      }
-
-      var formData = new FormData(form);
-      submitButton.disabled = true;
-      submitButton.textContent = 'Sending…';
-      if (note) {
-        note.textContent = defaultNote;
-      }
-
-      fetch(form.action, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: formData
-      }).then(function(response) {
-        if (response.ok) {
-          form.reset();
-          submitButton.textContent = 'Added!';
-          if (note) {
-            note.textContent = "Thanks! You're on the waitlist.";
-          }
-        } else {
-          throw new Error('Network response was not ok');
-        }
-      }).catch(function() {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Try again';
-        if (note) {
-          note.textContent = 'Something went wrong. Please try again.';
-        }
       });
     });
   })();
