@@ -2,82 +2,73 @@
 layout: page
 title: Writing
 permalink: /writing/
+description: Essays on product management, technology, and building better software.
 ---
-
-<p>Essays on product management, technology, and building better software.</p>
 
 <div class="posts-list">
   {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
   {% for post in sorted_posts %}
   <article class="post-item">
-    <div class="post-content">
-      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <a href="{{ post.url | relative_url }}">
+      <h3>{{ post.title }}</h3>
       {% if post.description %}
       <p class="post-description">{{ post.description }}</p>
       {% endif %}
-    </div>
-    <span class="post-date">{{ post.date | date: "%B %Y" }}</span>
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+    </a>
   </article>
   {% endfor %}
 </div>
 
 <style>
-  .posts-list {
-    margin-top: 40px;
-  }
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
 
-  .post-item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 24px;
-    align-items: baseline;
-    padding: 24px 0;
-    border-bottom: 1px solid #e5e7eb;
-  }
+.post-item a {
+  display: block;
+  padding: var(--space-5);
+  background: var(--color-surface-elevated);
+  border: 0.5px solid var(--color-border-light);
+  border-radius: var(--border-radius);
+  color: var(--color-text-primary);
+  transition: all var(--transition-base);
+}
 
-  .post-item:last-child {
-    border-bottom: none;
-  }
+.post-item a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-border);
+}
 
-  .post-content h2 {
-    margin: 0 0 8px 0;
-    font-size: 1.25rem;
-    font-weight: 600;
+@media (prefers-color-scheme: dark) {
+  .post-item a:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   }
+}
 
-  .post-content h2 a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+.post-item h3 {
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.015em;
+  line-height: 1.381;
+}
 
-  .post-content h2 a:hover {
-    color: #007AFF;
-  }
+.post-description {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  margin: 0 0 12px 0;
+}
 
-  .post-description {
-    margin: 0;
-    color: #666;
-    font-size: 0.9375rem;
-    line-height: 1.5;
-  }
-
-  .post-date {
-    color: #666;
-    font-size: 0.875rem;
-    white-space: nowrap;
-  }
-
-  @media (max-width: 768px) {
-    .post-item {
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
-    .post-date {
-      order: -1;
-      font-size: 0.8125rem;
-    }
-  }
+.post-item time {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
 </style>
-

@@ -1,0 +1,125 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header content-wrapper-narrow animate-in">
+    {% if page.tags %}
+      <p class="eyebrow mb-3">{{ page.tags | join: ', ' | upcase }}</p>
+    {% endif %}
+    <h1 class="post-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="post-description">{{ page.description }}</p>
+    {% endif %}
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">
+        {{ page.date | date: "%B %-d, %Y" }}
+      </time>
+    </div>
+  </header>
+
+  <div class="post-content content-wrapper-narrow animate-in animate-in-delay-1">
+    {{ content }}
+  </div>
+
+  <footer class="post-footer content-wrapper-narrow">
+    <div class="divider"></div>
+    <p class="post-footer-text">
+      <a href="{{ '/writing/' | relative_url }}">More writing</a> · <a href="{{ '/apps/' | relative_url }}">Apps I build</a>
+    </p>
+  </footer>
+</article>
+
+<style>
+.post {
+  padding: var(--space-8) 0;
+}
+
+.post-header {
+  margin-bottom: var(--space-16);
+}
+
+.post-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.0833;
+  letter-spacing: -0.025em;
+}
+
+.post-description {
+  font-size: 21px;
+  color: var(--color-text-secondary);
+  line-height: 1.381;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 14px;
+  color: var(--color-text-tertiary);
+}
+
+.post-content {
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+}
+
+.post-content h2 {
+  margin-top: var(--space-16);
+  margin-bottom: var(--space-4);
+}
+
+.post-content h3 {
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-3);
+}
+
+.post-content h2:first-child,
+.post-content h3:first-child {
+  margin-top: 0;
+}
+
+.post-content a {
+  color: var(--color-accent);
+}
+
+.post-content strong {
+  font-weight: 600;
+}
+
+.post-content ul,
+.post-content ol {
+  margin-left: 1.2em;
+  margin-bottom: 1.2em;
+}
+
+.post-content li {
+  margin-bottom: 0.4em;
+}
+
+.post-content img {
+  margin: var(--space-8) 0;
+  border: 0.5px solid var(--color-border-light);
+}
+
+.post-footer {
+  margin-top: var(--space-20);
+}
+
+.post-footer-text {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  margin: var(--space-6) 0 0;
+}
+
+.post-footer-text a {
+  color: var(--color-accent);
+  font-weight: 400;
+}
+</style>

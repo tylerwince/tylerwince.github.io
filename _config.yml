@@ -21,7 +21,7 @@
 title: Tyler Wince
 email: me@tylerwince.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Building iOS apps, leading product teams, and writing about what I learn along the way.
+  Building with intention.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://tylerwince.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: tylerwince
@@ -49,10 +49,7 @@ google_analytics: "G-7VKS3S1FCV"
 permalink: /:year/:month/:day/:title/
 
 # Build settings
-theme: minima
-
-minima:
-  skin: auto
+# Using custom theme in _layouts and assets
 
 # Navigation
 header_pages:
