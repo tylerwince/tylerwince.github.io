@@ -1,207 +1,329 @@
 ---
-layout: base
+layout: default
 ---
 
-<article class="app-showcase">
-  <header class="app-header">
-    <div class="app-icon">{{ page.icon }}</div>
-    <h1 class="app-title">{{ page.title }}</h1>
-    <p class="app-tagline">{{ page.tagline }}</p>
+<article class="app-page">
+  <!-- Hero Section -->
+  <section class="app-hero">
+    <div class="content-wrapper">
+      <div class="app-hero-grid">
+        <div class="app-hero-content">
+          <h1 class="app-title">{{ page.title }}</h1>
+          <p class="app-tagline">{{ page.tagline }}</p>
 
-    {% if page.app_store_link or page.website_link %}
-    <div class="app-links">
-      {% if page.app_store_link %}
-      <a href="{{ page.app_store_link }}" class="app-store-button" target="_blank" rel="noopener">
-        Download on the App Store
-      </a>
-      {% endif %}
-      {% if page.website_link %}
-      <a href="{{ page.website_link }}" class="website-button" target="_blank" rel="noopener">
-        Visit Website
-      </a>
-      {% endif %}
+          <div class="app-hero-actions">
+            <a href="{{ page.app_store_link }}" class="app-download-button" target="_blank" rel="noopener">
+              <picture>
+                <source srcset="/assets/white.svg" media="(prefers-color-scheme: dark)">
+                <img src="/assets/black.svg" alt="Download on the App Store">
+              </picture>
+            </a>
+          </div>
+
+          <dl class="app-meta">
+            <div class="app-meta-item">
+              <dt class="eyebrow">Platform</dt>
+              <dd>{{ page.platform }}</dd>
+            </div>
+            <div class="app-meta-item">
+              <dt class="eyebrow">Built with</dt>
+              <dd>{{ page.tech_stack | join: ", " }}</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="app-hero-icon-wrapper">
+          <div class="app-hero-icon{% if page.title == 'Etch' %} app-hero-icon-etch{% endif %}">
+            <img src="{{ page.icon_path }}" alt="{{ page.title }} icon">
+          </div>
+        </div>
+      </div>
     </div>
-    {% endif %}
-  </header>
+  </section>
 
-  <div class="app-content">
+  <!-- Content -->
+  <div class="app-content content-wrapper-narrow">
     {{ content }}
   </div>
-
-  {% if page.tech_stack %}
-  <div class="tech-stack">
-    <h2>Built With</h2>
-    <ul class="tech-list">
-      {% for tech in page.tech_stack %}
-      <li>{{ tech }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
-
-  <footer class="app-footer">
-    <p>Built by <a href="/about/">Tyler Wince</a></p>
-  </footer>
 </article>
 
 <style>
-  .app-showcase {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
+.app-page {
+  padding: var(--space-8) 0;
+}
+
+/* Hero Section */
+.app-hero {
+  padding: var(--space-12) 0;
+  background: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  margin-bottom: var(--space-16);
+}
+
+.app-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-12);
+  align-items: center;
+}
+
+.app-title {
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+  line-height: 1.07143;
+  letter-spacing: -0.025em;
+}
+
+.app-tagline {
+  font-size: 21px;
+  color: var(--color-text-secondary);
+  line-height: 1.381;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-8);
+}
+
+.app-hero-actions {
+  margin-bottom: var(--space-8);
+}
+
+.app-download-button {
+  display: inline-block;
+  transition: opacity var(--transition-fast);
+}
+
+.app-download-button:hover {
+  opacity: 0.8;
+}
+
+.app-download-button img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
+
+.app-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6);
+  margin: 0;
+  padding-top: var(--space-6);
+  border-top: 0.5px solid var(--color-border-light);
+}
+
+.app-meta-item {
+  margin: 0;
+}
+
+.app-meta dt {
+  margin-bottom: var(--space-1);
+}
+
+.app-meta dd {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.app-hero-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-hero-icon {
+  width: 120px;
+  height: 120px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.app-hero-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-hero-icon-etch {
+  background: transparent;
+  box-shadow: none;
+  width: 140px;
+  height: 140px;
+}
+
+/* Content Sections */
+.app-content h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: var(--space-16) 0 var(--space-6);
+  letter-spacing: -0.015em;
+}
+
+.app-content h2:first-child {
+  margin-top: 0;
+}
+
+.app-content h3 {
+  font-size: 21px;
+  font-weight: 600;
+  margin: var(--space-8) 0 var(--space-3);
+  letter-spacing: -0.01em;
+}
+
+.app-content p {
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.app-content ul {
+  margin: var(--space-4) 0;
+  padding-left: 1.2em;
+}
+
+.app-content li {
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  margin-bottom: var(--space-2);
+}
+
+.app-content a {
+  color: var(--color-accent);
+}
+
+/* Feature Grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.feature-card {
+  background: var(--color-surface-elevated);
+  border: 0.5px solid var(--color-border-light);
+  border-radius: var(--border-radius);
+  padding: var(--space-6);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-2);
+}
+
+.feature-card p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-text-secondary);
+}
+
+/* Callout Box */
+.callout {
+  background: var(--color-surface-elevated);
+  border: 0.5px solid var(--color-border-light);
+  border-radius: var(--border-radius);
+  padding: var(--space-6);
+  margin: var(--space-6) 0;
+}
+
+.callout p {
+  margin-bottom: var(--space-3);
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout strong {
+  color: var(--color-text-primary);
+}
+
+/* Screenshot Strip */
+.screenshot-strip {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--space-4) 0;
+  margin: var(--space-6) 0;
+  scroll-snap-type: x mandatory;
+}
+
+.screenshot-strip::-webkit-scrollbar {
+  height: 8px;
+}
+
+.screenshot-strip::-webkit-scrollbar-track {
+  background: var(--color-surface);
+  border-radius: 4px;
+}
+
+.screenshot-strip::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+.screenshot-strip::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-tertiary);
+}
+
+.screenshot-card {
+  flex: 0 0 auto;
+  width: 280px;
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.screenshot-card img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  border: 0.5px solid var(--color-border-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .screenshot-card img {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .app-hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
   }
 
-  .app-header {
-    text-align: center;
-    margin-bottom: 40px;
-    padding: 40px 20px;
-    border-radius: 12px;
-    background: var(--minima-table-header-bg-color);
+  .app-hero-icon-wrapper {
+    order: -1;
   }
 
-  .app-icon {
-    font-size: 5em;
-    margin-bottom: 15px;
+  .app-hero-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 24px;
   }
 
-  .app-title {
-    font-size: 3em;
-    margin: 10px 0;
-    font-weight: bold;
+  .app-hero-icon-etch {
+    width: 120px;
+    height: 120px;
   }
 
-  .app-tagline {
-    font-size: 1.3em;
-    margin: 15px 0 25px 0;
-    color: #666;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+  .feature-grid {
+    grid-template-columns: 1fr;
   }
 
-  .app-links {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 25px;
+  .app-meta {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
-
-  .app-store-button,
-  .website-button {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: transform 0.2s, opacity 0.2s;
-  }
-
-  .app-store-button {
-    background: #007AFF;
-    color: white;
-  }
-
-  .website-button {
-    background: #5856D6;
-    color: white;
-  }
-
-  .app-store-button:hover,
-  .website-button:hover {
-    transform: translateY(-2px);
-    opacity: 0.9;
-  }
-
-  .app-content {
-    line-height: 1.8;
-    font-size: 1.1em;
-  }
-
-  .app-content h2 {
-    font-size: 2em;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    font-weight: bold;
-  }
-
-  .app-content h3 {
-    font-size: 1.5em;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
-
-  .app-content ul,
-  .app-content ol {
-    margin: 20px 0;
-    padding-left: 30px;
-  }
-
-  .app-content li {
-    margin: 10px 0;
-  }
-
-  .app-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-    margin: 30px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .tech-stack {
-    margin-top: 50px;
-    padding: 30px;
-    border-radius: 12px;
-    background: var(--minima-table-header-bg-color);
-  }
-
-  .tech-stack h2 {
-    margin-top: 0;
-    font-size: 1.5em;
-  }
-
-  .tech-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  .tech-list li {
-    background: var(--minima-background-color);
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 0.9em;
-    font-family: monospace;
-  }
-
-  .app-footer {
-    text-align: center;
-    margin-top: 60px;
-    padding-top: 30px;
-    border-top: 1px solid var(--minima-table-header-bg-color);
-    color: #666;
-  }
-
-  .app-footer a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  @media (max-width: 768px) {
-    .app-title {
-      font-size: 2.2em;
-    }
-
-    .app-tagline {
-      font-size: 1.1em;
-    }
-
-    .app-icon {
-      font-size: 4em;
-    }
-  }
+}
 </style>
