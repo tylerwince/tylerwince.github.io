@@ -114,7 +114,7 @@ description: Purpose-built iOS products crafted with native design and thoughtfu
   flex-shrink: 0;
   border-radius: 14px;
   overflow: hidden;
-  background: white;
+  background: clear;
 }
 
 .app-feature-icon img {
