@@ -51,7 +51,7 @@ Archives don't make you smarter. They just make you feel prepared, like owning a
 When your notes sit in an app unused, they're inert. You start every project from scratch even though you've captured ideas that would be useful.  
   
 When you force yourself to retrieve notes regularly, you're testing ideas against your current thinking. You notice connections to recent work. You see which ideas have aged well and which need revision. That's the difference between archived knowledge and working material.  
-##   
+
 ## What actually works  
   
 **Stop re-reading as review.** Hide the content first and try to retrieve it. Only check the answer after you've tried.  
