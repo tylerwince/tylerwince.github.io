@@ -40,8 +40,18 @@ Pull down to type, attach photos, and save. No friction, even when your hands ar
 **Smart organization you don't have to manage**  
 Profiles, tagging, and instant search keep every quote easy to find. A beautiful timeline shows how your littles' voices grow over time.
 
-**Share privately with the people who matter**  
+**Share privately with the people who matter**
 Invite family to contribute and see updates in real time. Everything syncs through iCloud so memories stay in your circle.
+
+## Screenshots
+
+<div class="screenshot-strip">
+  {% for screenshot in (1..5) %}
+  <figure class="screenshot-card">
+    <img src="/assets/littleQuotes-screenshots/{{ screenshot }}.png" alt="Little Quotes screenshot {{ screenshot }}" loading="lazy">
+  </figure>
+  {% endfor %}
+</div>
 
 ## Privacy & Security
 
