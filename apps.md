@@ -60,6 +60,34 @@ description: Purpose-built iOS products crafted with native design and thoughtfu
       <a href="/apps/waymark/" class="link-arrow">Learn more</a>
     </div>
   </div>
+
+  <div class="app-feature">
+    <div class="app-feature-header">
+      <div class="app-feature-icon">
+        <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
+      </div>
+      <div class="app-feature-meta">
+        <h2>Little Quotes</h2>
+        <p class="app-tagline">Capture and share kids' priceless words.</p>
+      </div>
+    </div>
+    <p class="app-description">Save the hilarious, sweet, and profound things your kids say—complete with audio, photos, videos, and location—before the moments disappear.</p>
+    <ul class="app-features">
+      <li>Quick capture from anywhere</li>
+      <li>Transcribe audio or video recordings</li>
+      <li>Private iCloud sharing with family</li>
+      <li>Powerful search and filtering</li>
+    </ul>
+    <div class="app-actions">
+      <a href="https://apps.apple.com/TBD" class="app-store-button" target="_blank" rel="noopener">
+        <picture>
+          <source srcset="/assets/white.svg" media="(prefers-color-scheme: dark)">
+          <img src="/assets/black.svg" alt="Download on the App Store">
+        </picture>
+      </a>
+      <a href="/apps/little-quotes/" class="link-arrow">Learn more</a>
+    </div>
+  </div>
 </div>
 
 <div class="divider"></div>
