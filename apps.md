@@ -79,7 +79,7 @@ description: Purpose-built iOS products crafted with native design and thoughtfu
       <li>Powerful search and filtering</li>
     </ul>
     <div class="app-actions">
-      <a href="https://apps.apple.com/TBD" class="app-store-button" target="_blank" rel="noopener">
+      <a href="https://apps.apple.com/us/app/little-quotes/id6755783257" class="app-store-button" target="_blank" rel="noopener">
         <picture>
           <source srcset="/assets/white.svg" media="(prefers-color-scheme: dark)">
           <img src="/assets/black.svg" alt="Download on the App Store">
