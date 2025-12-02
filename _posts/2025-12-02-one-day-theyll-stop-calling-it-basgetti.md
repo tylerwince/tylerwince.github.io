@@ -56,3 +56,5 @@ In five years, you'll want to hear those words. **In twenty years, they'll want 
 ---
 
 [Download Little Quotes →](https://apps.apple.com/us/app/little-quotes/id6755783257)
+
+[Learn More](https://littlequotes.app)
