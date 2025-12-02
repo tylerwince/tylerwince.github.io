@@ -3,7 +3,7 @@ layout: post
 title: One day, they'll stop calling it "basgetti"
 description: Childhood doesn’t slam doors. It slips out quietly while you're busy making lunches and answering emails.
 date: 2025-12-02 09:19:21 +0000
-published: false
+published: true
 tags: product-management
 ---
 
@@ -14,8 +14,6 @@ Somewhere between Tuesday breakfast and Saturday dinner, "basgetti" becomes "spa
 **And you realize you don't remember the last time they said it wrong.**
 
 Childhood doesn't slam doors. It slips out quietly while you're busy making lunches and answering emails.
-
----
 
 ## The Apple Note
 
@@ -31,8 +29,6 @@ We couldn't share it. I'd miss things for days. We couldn't attach their voices.
 
 So we built something better.
 
----
-
 ## Little Quotes
 
 Now when one of our kids says something worth saving, I pull down and type it in. If I’m quick enough, I hit record and catch their actual voice. Sometimes I snap a photo—the backseat, the park bench, the kitchen table at 7am.
@@ -43,8 +39,6 @@ And it’s not just me. My wife adds quotes when I’m at work. The grandparents
 
 When you half-remember something they said about the moon three years ago? You search it, and it’s right there.
 
----
-
 ## The real feature
 
 Kids don't announce the last time they'll say something in that tiny voice. The moments just slip, unceremonious and irreversible.
@@ -52,8 +46,6 @@ Kids don't announce the last time they'll say something in that tiny voice. The 
 Little Quotes is how you pin them to time instead of letting them vanish.
 
 In five years, you'll want to hear those words. **In twenty years, they'll want to hear them too.**
-
----
 
 [Download Little Quotes →](https://apps.apple.com/us/app/little-quotes/id6755783257)
 
