@@ -3,7 +3,7 @@ layout: app
 title: Little Quotes
 tagline: Capture kids' priceless words.
 platform: iOS (iPhone & iPad)
-app_store_link: https://apps.apple.com/TBD
+app_store_link: https://apps.apple.com/us/app/little-quotes/id6755783257
 icon_path: /assets/littleQuotes_icon.png
 tech_stack:
   - SwiftUI
