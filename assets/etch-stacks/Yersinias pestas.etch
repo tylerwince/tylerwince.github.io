@@ -1,0 +1,114 @@
+{
+  "data" : {
+    "stack" : {
+      "color" : "Bittersweet",
+      "flashcards" : [
+        {
+          "answer" : "What was **The Third Pandemic**?",
+          "content" : "What was **the third major plague caused by *Yersinia pestis***?",
+          "id" : "CA36B316-2D94-481B-8511-04EAD9410770",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What was **The Black Death**?",
+          "content" : "What was **the second major plague caused by *Yersinia pestis***?",
+          "id" : "9634BCBC-412A-44E2-ACFB-D9A978DD3B00",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "It is rare and treatable with antibiotics.",
+          "content" : "Is bubonic plague still a threat today?",
+          "id" : "4BC8331E-54A7-4524-9BAD-693DA9FADD5B",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The oriental rat flea (*Xenopsylla cheopis*).",
+          "content" : "What is the primary vector for transmitting *Yersinia pestis* from rats to humans?",
+          "id" : "F3346D1C-6FEB-4081-80B9-D1A872EDCF92",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **1351 AD**?",
+          "content" : "When did the **Black Death end**?",
+          "id" : "19FAD591-5B16-42D3-87E7-D6675E0B601C",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Three ",
+          "content" : "How many major pandemics of *Yersinia pestis* have there been?",
+          "id" : "5DC1287F-1C7C-4F6C-98EA-7EADC0FDD7DA",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **1855 AD**?",
+          "content" : "When did the **Third Pandemic start**?",
+          "id" : "494D60B4-BBA3-40E5-895C-F81863CF32A7",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What was **The Plague of Justinian**?",
+          "content" : "What was the **first major plague caused by *Yersinia pestis***?",
+          "id" : "AB4DFC7B-5CF6-468D-9F69-B888E95616A4",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What happened in **549 AD**?",
+          "content" : "When did the **Plague of Justinian end**?",
+          "id" : "E05259EF-F08F-4DEE-AD40-E1808156A95E",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What happened in **1347 AD**?",
+          "content" : "When did the **Black Death start**?",
+          "id" : "5A5233D9-1F24-47F0-A83B-B069BE9B508B",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What does ***Yersinias pestis*** cause?",
+          "content" : "What is the name of the bacteria that causes **the bubonic plague**?",
+          "id" : "79EC6F25-E2DB-4E60-8861-F03F6E7288D5",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What happened in **1959 AD**?",
+          "content" : "When did the **Third Pandemic finish**?",
+          "id" : "ED20AAD0-4833-4B36-841B-F88B39E45792",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Its starvation drives it to bite more frequently, and the blockage forces it to regurgitate a large bacterial load directly into each new bite wound.",
+          "content" : "Why is a 'blocked flea' a more aggressive and effective vector for plague?",
+          "id" : "560493DB-17D6-459E-B378-978AD27569EB",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **541 AD**?",
+          "content" : "When did the **Plague of Justinian start**?",
+          "id" : "7B0E3B15-83A3-4FAB-990B-F234D1B6C692",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        }
+      ],
+      "id" : "2476BDC1-C7DA-4DC3-92E4-789D7A44CFD2",
+      "instructions" : "",
+      "name" : "Yersinias pestas",
+      "symbol" : "ladybug.fill"
+    }
+  },
+  "exportedAt" : "2025-12-05T22:23:26Z",
+  "type" : "stack",
+  "version" : "1.0"
+}

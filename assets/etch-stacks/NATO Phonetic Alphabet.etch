@@ -1,0 +1,198 @@
+{
+  "data" : {
+    "stack" : {
+      "color" : "Gray",
+      "flashcards" : [
+        {
+          "answer" : "Golf",
+          "content" : "G",
+          "id" : "6F3C0ECA-813A-4656-89CA-6A9F74456954",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Yankee",
+          "content" : "Y",
+          "id" : "BCCF5D90-D768-44D0-8F97-2857754220D1",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Juliet",
+          "content" : "J",
+          "id" : "22CEF9B2-AD42-44F0-BB96-6F70298792F1",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Sierra",
+          "content" : "S",
+          "id" : "653F510D-E928-4017-9032-D24A4D89848A",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Romeo",
+          "content" : "R",
+          "id" : "B611D4A2-0B32-46A0-9098-79CDC1181046",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "X-Ray",
+          "content" : "X",
+          "id" : "2A32FD88-17FC-4B8B-923B-FDF0C7BFA825",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Whiskey",
+          "content" : "W",
+          "id" : "88E594C7-5B62-4C61-A410-08A2C1394120",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Delta",
+          "content" : "D",
+          "id" : "7C3C7B56-72B6-4DEE-9FB4-0604474E087D",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Echo",
+          "content" : "E",
+          "id" : "072BA661-41B6-4CE4-8781-A3DECB41E148",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Alpha",
+          "content" : "A",
+          "id" : "4FD2321F-D46F-45E4-A630-FE8ACAD67784",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Quebec",
+          "content" : "Q",
+          "id" : "4DE2F4B9-83EE-4300-8F4B-C4F5753AC3B8",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Oscar",
+          "content" : "O",
+          "id" : "239F74C3-86E6-47E5-8666-BC1763C26AF5",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Tango",
+          "content" : "T",
+          "id" : "4E2DBC34-9726-40C9-9BDF-3FCEDC47F06D",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Lima",
+          "content" : "L",
+          "id" : "4344F2C9-77D7-495F-A678-5A6047A9988E",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Kilo",
+          "content" : "K",
+          "id" : "C4E96D82-961B-415C-BCB7-D736637E66AF",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Charlie",
+          "content" : "C",
+          "id" : "09E24CAB-74B5-4609-A352-3D295F8B0825",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Victor",
+          "content" : "V",
+          "id" : "9084AEFA-6ADD-4095-8D28-B03BDE5358CD",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Bravo",
+          "content" : "B",
+          "id" : "063B9822-B7A4-4FF3-8F50-8088673DB5C7",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Foxtrot",
+          "content" : "F",
+          "id" : "0AAB1864-4F99-4AD0-ACC6-FC69D82B1246",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Papa",
+          "content" : "P",
+          "id" : "20DEFC0D-1632-4238-8B6F-15CB6A338125",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Zulu",
+          "content" : "Z",
+          "id" : "DA70FC50-C2EC-473D-A48E-9BD4060804B8",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "November",
+          "content" : "N",
+          "id" : "C221884A-B476-4D71-A3F9-04DFF911F6AB",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Hotel",
+          "content" : "H",
+          "id" : "C40F3FF4-64D6-4090-86A8-5C29F583F4AD",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Mike",
+          "content" : "M",
+          "id" : "1017FDC2-D566-441B-96B6-DE4F8BB30AA0",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Uniform",
+          "content" : "U",
+          "id" : "E79DAC9F-A74B-463A-A671-C57D579F2893",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "India",
+          "content" : "I",
+          "id" : "DAFB9FCF-74BE-4267-8270-A44A41A20CD8",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        }
+      ],
+      "id" : "74A66997-B8F8-4A4C-B7C4-C4C46D99DD72",
+      "instructions" : "",
+      "name" : "NATO Phonetic Alphabet",
+      "symbol" : "abc"
+    }
+  },
+  "exportedAt" : "2025-12-05T22:05:44Z",
+  "type" : "stack",
+  "version" : "1.0"
+}

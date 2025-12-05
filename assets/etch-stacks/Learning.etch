@@ -1,0 +1,443 @@
+{
+  "data" : {
+    "stack" : {
+      "color" : "Moonstone",
+      "flashcards" : [
+        {
+          "answer" : "More intelligent scheduling",
+          "content" : "What is the main reason for FSRS requiring fewer reviews than SM-2?",
+          "id" : "7C3B3CFD-8061-4BEB-8CDF-5E30B8555EE7",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "It suggests we attribute more value to an information source with higher entropy",
+          "content" : "What does the concept of \"information entropy\" suggest?",
+          "id" : "024915CB-0ABD-40FF-80CA-963D0AA8E721",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "By updating the review interval for all cards",
+          "content" : "How does SM-4 accommodate for easier-than-expected recalls?",
+          "id" : "D6A380DD-9267-4DAD-B1ED-2B8D811D48FC",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "10-30 seconds",
+          "content" : "How much time does an easy prompt consume in the first year of practice in spaced repetition systems?",
+          "id" : "204174A1-32BB-47A8-9FF9-E14E5DDA4FD8",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Higher difficulty leads to a lower increase in stability",
+          "content" : "How does higher difficulty affect increase in stability (Ci)?",
+          "id" : "1C9C1CA8-8BB2-4E5F-A00F-F0BB375A9F5C",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Automating the tracking of memory states and finding the most efficient review schedule for each bit of knowledge",
+          "content" : "What is the role of SR algorithms?",
+          "id" : "18DDA53B-34FF-4D21-99E3-A5ECBE6FF84E",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Because these tend to equate with learning opportunities",
+          "content" : "Why do humans scan for high entropy sources?",
+          "id" : "C1E035F3-AD7B-4E06-A575-57F6735F1A5C",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "1. Stability \n2. Retrievability \n3. Difficulty",
+          "content" : "What are the three components of the Three-Component Model of Memory?",
+          "id" : "B662FE58-99E9-4995-A401-BF073B532481",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "If a memory is really strong, it's hard to further strengthen it by a large amount",
+          "content" : "Why does a higher stability (S) of a memory lead to a smaller increase in stability (Ci)?",
+          "id" : "0D203320-C5C7-4F86-82E6-D6FF2BE942E9",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The learner must have enough prior knowledge to make sense of the entropy (i.e. know the language)",
+          "content" : "What condition must be met for the learner to make sense of the entropy?",
+          "id" : "AA6FD771-0C48-40BD-B117-A47761A6D43A",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "A higher stability leads to a smaller increase in stability",
+          "content" : "What is the relationship between a higher stability (S) and the corresponding increase in Stability (Ci)?",
+          "id" : "DA0A8460-38F4-4EDE-B947-4209ADADC3D8",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Upon a new discovery",
+          "content" : "When is the \"wow! signal\" emitted?",
+          "id" : "BC7B205F-F998-4639-BD89-7B9EBAF1F289",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Claude Shannon",
+          "content" : "Who suggested the idea of \"information entropy\"?",
+          "id" : "C42F384D-B116-4D41-9556-7A3BD98DFB58",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "The right amount of entropy through a given channel for a single person's brain",
+          "content" : "What is \"learntropy\"?",
+          "id" : "421A7839-5E32-4663-BA87-998BA7B362F4",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "If you wait longer until it's hard to recall something, and you're successful, you make a stronger memory",
+          "content" : "Why does a lower retrievability (R) leads to a higher increase in stability (Ci)?",
+          "id" : "FE4CB3A0-A29A-4A83-A5F6-126DA8CBFC62",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "It proves that reviewing material too often is detrimental to the learner",
+          "content" : "What does the research on memory instability during review imply about reviewing material too often?",
+          "id" : "BE149A63-18D3-4FE5-886D-A7A69AC57BDC",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "SM-4 uses an optimal interval matrix",
+          "content" : "What is the key difference between SM-2 and SM-4?",
+          "id" : "EEB5400E-B987-43F5-97E8-55D2CE1457A3",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Memory instability increases during review",
+          "content" : "What does molecular-level research suggest about memory during review?",
+          "id" : "B0E382E0-9D71-4DFD-ACAE-15B4771AFE17",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The brain will process this entropic data and pass it to the hippocampus",
+          "content" : "What does the brain do with data?",
+          "id" : "E68B2FFE-CDAE-47D2-A827-FA66549483FF",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Longetivy. There are faster ways to learn something but you won't remember it as long",
+          "content" : "Do SRS systems optimize for speed of learning or longevity of learning?",
+          "id" : "2CF813CA-65CF-460A-94C1-8B90CE2C6145",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "20",
+          "content" : "How many cards can you add to a spaced repetition system each day while keeping review time <10 minutes per day?",
+          "id" : "8203B128-133D-4D70-88A1-87EBEFADAA19",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "They pattern match and relate the data to other concepts before passing data to the hippocampus",
+          "content" : "Why can someone who is smarter process higher entropy sources of data?",
+          "id" : "0EB3DC0A-43BE-4548-B3F7-64A1F3419647",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Probability of recall at a specific moment",
+          "content" : "How is Retrievability defined in the Three-Component Model of Memory?",
+          "id" : "A172050E-6620-4065-84DD-5BDEA787DE24",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "If stuff is complex, it's harder to strengthen the memory",
+          "content" : "Why does a higher difficulty leads to a lower increase in stability (Ci)?",
+          "id" : "27530C89-247A-473D-A82D-3CDA8130D18E",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "A lower retrievability leads to a higher increase in stability",
+          "content" : "How does a lower retrievability (R) affect increase in stability (Ci)?",
+          "id" : "2F16F843-38DC-4A46-8B6A-1989005E97F1",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "increase in stability may fall below 1 when retrievability is 100%, meaning you're damaging your ability to remember",
+          "content" : "What happens to increase in stability (Ci) when retrievability (R) is 100%?",
+          "id" : "40D08E88-1C12-4045-83D1-B921F8A60DAD",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "It poses a challenge when smart kids can't slow down to maintain attention and other kids can't speed it up",
+          "content" : "What challenge does individual variation in information processing speed pose in a classroom setting?",
+          "id" : "F4F6F129-D7D5-4D36-B42A-E018D1C88E75",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Free Spaced Repetition Scheduler",
+          "content" : "What does FSRS stand for in the context of learning algorithms?",
+          "id" : "25E2C791-D8D3-4E77-80CC-97D0FF765978",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Fluency matters in thinking.",
+          "content" : "Why is it important to memorize information in the age of instant search?",
+          "id" : "DA86E473-6440-49A5-8849-48A469D8516B",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The goal is to have Rmeasured == Rpredicted",
+          "content" : "What is the goal of SRS in terms of R (Probability of recall)?",
+          "id" : "AEF46493-D895-4572-BE58-B2E9AD375EFA",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The awareness and understanding of one's own thought processes.",
+          "content" : "What is metacognition?",
+          "id" : "B8B726DB-9597-4B18-A16E-FAA82BFA7ABB",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Time required for recall probability to drop from 100% to 90%",
+          "content" : "How is Stability defined in the Three-Component Model of Memory?",
+          "id" : "B4EE5235-96B9-4783-A418-0A704A57FF5A",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Introducing challenges that slow initial learning can enhance long-term retention and transfer.",
+          "content" : "What is the central idea of \"desirable difficulty\"?",
+          "id" : "58FB2A71-6EDF-4C29-8F41-A587D0B1F86D",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "~20-30%",
+          "content" : "How many fewer reviews does FSRS require compared to SM-2?",
+          "id" : "07A5421E-2498-4849-ACA3-95674579114A",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "It strengthens the neural connections that led to the unexpected positive outcome.",
+          "content" : "How does a positive reward prediction error reinforce learning?",
+          "id" : "F1CF08EA-C6E7-45D5-8AC3-58D78958165A",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The mistaken belief that because information is easy to process or recall right now, it is well-learned.",
+          "content" : "What is the \"illusion of fluency\" in learning?",
+          "id" : "39354831-C5C3-4D5E-903C-2F4DF1F0300C",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The neocortex.",
+          "content" : "To which brain region are memories gradually transferred from the hippocampus for long-term storage during sleep?",
+          "id" : "756E9024-7FAA-449C-AC1D-6761ED39A8B6",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Procedural memory consolidation and fostering creative insights.",
+          "content" : "What two key cognitive processes related to learning are primarily associated with REM sleep?",
+          "id" : "7B8D35B4-AB1B-4A76-B3AA-7D7A9EC9A1AB",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The brain has a highly pleasurable reaction",
+          "content" : "How does the brain respond to the \"wow! signal\"?",
+          "id" : "59E07A0F-B25B-4F79-B237-A10900C9C958",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The mismatch between the expected reward and the actual reward received.",
+          "content" : "What is a 'reward prediction error' in neuroscience?",
+          "id" : "2C266C69-A384-40A8-AA93-A87FE044FF7F",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Complexity associated with a memory",
+          "content" : "How is Difficulty defined in the Three-Component Model of Memory?",
+          "id" : "D752B2D5-0463-4353-9616-47A5CF84BFF6",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "1. Can we estimate how much knowledge we have forgotten? 2. How quickly are we forgetting it? 3. What's the best review schedule to minimize forgetting?",
+          "content" : "What are the three questions SRS algorithms must answer?",
+          "id" : "75BC6961-B6D6-4D8A-9E58-C50EF5960959",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Improved discrimination (distinguishing between different concepts or problem types).",
+          "content" : "What is a primary cognitive benefit of using interleaving during study?",
+          "id" : "0B540814-D6A1-4595-9712-0C67B773A663",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Slow-wave sleep (SWS).",
+          "content" : "During which sleep stage does the hippocampus typically \"replay\" recent experiences to aid declarative memory consolidation?",
+          "id" : "D130CBC0-A0AA-458C-9657-BE9D3D338D9B",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Mixing practice of different skills or topics within a single study session.",
+          "content" : "What is interleaving in the context of learning?",
+          "id" : "12DE9F10-7679-484C-8B6F-E7375EF47AE1",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "About 4-7 minutes (8 sec per card review)",
+          "content" : "What’s the total amount of time you’d spend studying a single flashcard using SRS to remember it for 20 years? ",
+          "id" : "06289AF7-3467-49A4-ACBC-A4C5E91986E5",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Hermann Ebbinghaus",
+          "content" : "Who conducted the pioneering experiments that led to the concept of the forgetting curve?",
+          "id" : "7CCA4F8C-69C3-454F-A4F5-ABA7546CE806",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What is the term for **the long-term rise in average IQ scores observed across many countries during the 20th century**?",
+          "content" : "What is the **Flynn Effect**?",
+          "id" : "6CA8D339-E672-4DE2-90C0-D79519569790",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Memorizing components of concepts and ideas makes it easier to think about the higher level concepts fluidly",
+          "content" : "Why is memory augmentation important in reducing cognitive load?",
+          "id" : "B9910C13-501F-4301-91F3-50E9BFF4F8AB",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The active monitoring and control of one's own learning process.",
+          "content" : "What is metacognitive regulation?",
+          "id" : "61736905-DF75-439E-9FB9-AC98E5A0C720",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "In order to do effective reasoning, you need memory.",
+          "content" : "Quote by **Francis Chollet** on memory",
+          "id" : "083995E0-FB18-4456-9FAD-E456271BB2AB",
+          "isQuoteMode" : true,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Dopamine",
+          "content" : "Which neurotransmitter is central to the brain's motivation and reward-driven learning system?",
+          "id" : "FF26A8C7-50B7-4152-801F-8D6A78299466",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "It uses them as a signal to update and refine its internal models of the world.",
+          "content" : "How does the brain typically respond to **prediction errors** within the **Predictive Coding** model?",
+          "id" : "4AC8A66F-37F5-43AF-AC64-5C4AF2315119",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "\"Good learning is inherently pleasurable, and without pleasure there is no good learning\"",
+          "content" : "Piotr Wozniak quote about \"good learning\"",
+          "id" : "A4F477B5-3857-4127-89A6-3B1CF6C7A5DD",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "It enables learners to plan, monitor, and evaluate their own learning, leading to more effective strategy use and self-direction.",
+          "content" : "How does metacognition enhance learning?",
+          "id" : "63D55D37-204C-4A1C-A286-5423675E7B23",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Damian Elmes ",
+          "content" : "Who is the creator of Anki?",
+          "id" : "164A200E-A309-4073-8D3E-4874583FBEA6",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "The \"prediction error\", which is the mismatch between the brain's expectations and actual sensory input.",
+          "content" : "According to the **Predictive Coding** framework, what is the primary signal that drives learning in the brain?",
+          "id" : "93DCA33D-43E4-4BD4-AF69-0BCEF6D0FEBC",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "To minimize 'surprise' or 'free energy' through continuous updates to its internal models and by initiating actions.",
+          "content" : "What is the primary objective of the brain within the Active Inference framework?",
+          "id" : "01BE193C-D26D-4B55-87F2-FD14D228E081",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Metacognitive knowledge and metacognitive regulation.",
+          "content" : "What are the two primary components of metacognition?",
+          "id" : "6457D379-A395-4FBB-95D8-B6B1DB919864",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What an individual knows about their own cognitive abilities, learning tasks, and effective strategies.",
+          "content" : "What is metacognitive knowledge?",
+          "id" : "8D6AA9DB-CAC8-4F04-9ACD-74F15B69B62D",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The phenomenon where high-confidence errors are more easily corrected and remembered than low-confidence errors",
+          "content" : "What is the Hypercorrection Effect?",
+          "id" : "B3783F17-747B-4EAF-A695-B1726DD10E55",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        }
+      ],
+      "id" : "B20DF6FE-58FD-463A-9FAB-BDAEDA4F2AFA",
+      "instructions" : "",
+      "name" : "Learning",
+      "symbol" : "studentdesk"
+    }
+  },
+  "exportedAt" : "2025-12-05T22:07:45Z",
+  "type" : "stack",
+  "version" : "1.0"
+}
