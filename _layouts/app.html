@@ -296,6 +296,157 @@ layout: default
   }
 }
 
+/* Stack Cards - Flashcard Stack Design */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: var(--space-6);
+  margin: var(--space-8) 0;
+}
+
+.stack-card {
+  position: relative;
+  height: 180px;
+  cursor: pointer;
+  transition: transform var(--transition-base);
+  text-decoration: none;
+}
+
+.stack-card:hover {
+  transform: translateY(-2px);
+}
+
+.stack-card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-top: 16px;
+}
+
+/* Third card in stack (back) */
+.stack-card-stack::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  bottom: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  z-index: 1;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+/* Second card in stack (middle) */
+.stack-card-stack::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 6%;
+  right: 6%;
+  bottom: 12px;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-sm);
+  z-index: 2;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Front card */
+.stack-card-front {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow var(--transition-base);
+  z-index: 3;
+  overflow: hidden;
+}
+
+.stack-card:hover .stack-card-front {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.stack-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: auto;
+}
+
+.stack-card-count {
+  font-size: 16px;
+  color: var(--color-text-tertiary) !important;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.stack-card-download-icon {
+  color: var(--color-text-tertiary);
+  font-size: 16px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  line-height: 1;
+}
+
+.stack-card:hover .stack-card-download-icon {
+  color: var(--color-accent);
+  transform: translateY(2px);
+}
+
+.stack-card-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - var(--space-6));
+  text-align: center;
+}
+
+.stack-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.stack-card-loading {
+  opacity: 0.6;
+}
+
+.stack-card-loading .stack-card-title::after {
+  content: '...';
+}
+
+@media (prefers-color-scheme: dark) {
+  .stack-card-front {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .stack-card:hover .stack-card-front {
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+  }
+
+  .stack-card-stack::before {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .stack-card-stack::after {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .app-hero-grid {
@@ -326,5 +477,58 @@ layout: default
     grid-template-columns: 1fr;
     gap: var(--space-4);
   }
+
+  .stack-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .stack-card {
+    height: 160px;
+  }
+
+  .stack-card-title {
+    font-size: 15px;
+  }
+
+  .stack-card-count {
+    font-size: 14px;
+  }
+
+  .stack-card-download-icon {
+    font-size: 14px;
+  }
 }
 </style>
+
+<script>
+// Load and display Etch stack information
+document.addEventListener('DOMContentLoaded', function() {
+  const stackCards = document.querySelectorAll('.stack-card');
+
+  stackCards.forEach(async (card) => {
+    const etchUrl = card.getAttribute('href');
+    if (!etchUrl || !etchUrl.endsWith('.etch')) return;
+
+    try {
+      const response = await fetch(etchUrl);
+      const data = await response.json();
+
+      const stackName = data.data?.stack?.name || 'Unknown Stack';
+      const cardCount = data.data?.stack?.flashcards?.length || 0;
+
+      const titleEl = card.querySelector('.stack-card-title');
+      const countEl = card.querySelector('.stack-card-count');
+
+      if (titleEl) titleEl.textContent = stackName;
+      if (countEl) countEl.textContent = `${cardCount} card${cardCount !== 1 ? 's' : ''}`;
+
+      card.classList.remove('stack-card-loading');
+    } catch (error) {
+      console.error('Failed to load stack:', etchUrl, error);
+      const titleEl = card.querySelector('.stack-card-title');
+      if (titleEl) titleEl.textContent = 'Error loading stack';
+      card.classList.remove('stack-card-loading');
+    }
+  });
+});
+</script>

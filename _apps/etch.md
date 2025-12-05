@@ -53,6 +53,29 @@ Your cards, stacks, and study history stay on your device and in your private iC
   {% endfor %}
 </div>
 
+## Some of My Stacks
+
+These are a few flashcard stacks I study in Etch. Tap to download and import directly into Etch on your iPhone, iPad, or Mac.
+
+<div class="stack-grid">
+  {% assign etch_files = site.static_files | where_exp: "file", "file.path contains '/assets/etch-stacks/'" | where_exp: "file", "file.extname == '.etch'" %}
+  {% for file in etch_files %}
+  <a href="{{ file.path }}" class="stack-card stack-card-loading" download>
+    <div class="stack-card-stack">
+      <div class="stack-card-front">
+        <div class="stack-card-header">
+          <p class="stack-card-count">...</p>
+          <span class="stack-card-download-icon">↓</span>
+        </div>
+        <div class="stack-card-content">
+          <h3 class="stack-card-title">Loading</h3>
+        </div>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
 ## Privacy & Support
 
 <div class="callout">

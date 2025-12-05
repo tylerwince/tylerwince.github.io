@@ -1,0 +1,499 @@
+{
+  "data" : {
+    "stack" : {
+      "color" : "red",
+      "flashcards" : [
+        {
+          "answer" : "Diamondbacks\n(location)",
+          "content" : "Arizona\n(name)",
+          "id" : "0BA60748-2B26-4EA2-8A1B-A4558840BBA8",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Royals\n(location)",
+          "content" : "Kansas City\n(name)",
+          "id" : "A77A1C3B-BB8D-4083-8FC2-3030D7F75C3D",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Tigers\n(location)",
+          "content" : "Detroit\n(name)",
+          "id" : "594ED0BD-79EA-4386-A717-2C26D3840129",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Reds\n(location)",
+          "content" : "Cincinnati\n(name)",
+          "id" : "F3B3A9D8-A7B2-46E6-B42B-B2614C5002E2",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Dodgers\n(location)",
+          "content" : "Los Angeles (NL)\n(name)",
+          "id" : "E4560881-4B61-4103-9416-6161429ACBC8",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Marlins\n(location)",
+          "content" : "Miami\n(name)",
+          "id" : "2981A72B-75CB-46A3-8EA0-C690A674ACD8",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Mets\n(location)",
+          "content" : "New York (NL)\n(name)",
+          "id" : "03D4F0A8-0FBE-4B5F-8540-32DDA4781680",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Orioles\n(location)",
+          "content" : "Baltimore\n(name)",
+          "id" : "C7915CEC-133F-40C3-B77B-A8DE3FA5FFFF",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Padres\n(location)",
+          "content" : "San Diego\n(name)",
+          "id" : "9816F97D-B8FB-4F4B-8175-03A7DEE99210",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Mariners\n(location)",
+          "content" : "Seattle\n(name)",
+          "id" : "A7588039-2E6B-45A5-957D-89637775A693",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Angels\n(location)",
+          "content" : "Los Angeles (AL)\n(name)",
+          "id" : "87E7AB57-65C9-4AD9-843B-FB6390AD21D0",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Pirates\n(location)",
+          "content" : "Pittsburgh\n(name)",
+          "id" : "72133517-B1F4-484D-A2E8-D930862B30E7",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Cardinals\n(location)",
+          "content" : "St. Louis\n(name)",
+          "id" : "5F30BC74-338B-4C97-8B47-1BE3672F0997",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Rockies\n(location)",
+          "content" : "Colorado\n(name)",
+          "id" : "4764D355-0C44-4BAA-B1A0-B8D612E24F1B",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Brewers\n(location)",
+          "content" : "Milwaukee\n(name)",
+          "id" : "E097DDA9-87F6-428D-874B-68E6053DDF88",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Rays\n(location)",
+          "content" : "Tampa Bay\n(name)",
+          "id" : "D6A01340-E0FC-400F-9DFD-A0537DF03112",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Braves\n(location)",
+          "content" : "Atlanta\n(name)",
+          "id" : "4E8817B2-6884-4945-836E-C0D1D3F92969",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Athletics\n(location)",
+          "content" : "Oakland\n(name)",
+          "id" : "DC50771B-1BB8-4340-AB2C-729A0BCA07D8",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Astros\n(location)",
+          "content" : "Houston\n(name)",
+          "id" : "CA16CFF2-DF3D-412B-89EF-46FF53B7046B",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Truist Park",
+          "content" : "Atlanta Braves\n(stadium)",
+          "id" : "225F639F-804F-4820-B938-0EC6AB401AF5",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Oriole Park at Camden Yards",
+          "content" : "Baltimore Orioles\n(stadium)",
+          "id" : "59B0322B-6277-4A75-A34B-A4D3E48AF050",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Great American Ball Park",
+          "content" : "Cincinnati Reds\n(stadium)",
+          "id" : "73F8AE0D-6B59-4C39-B748-6AA234619692",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Petco Park",
+          "content" : "San Diego Padres\n(stadium)",
+          "id" : "CAB22B70-326A-4372-8C0B-F9984973B5A1",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Coors Field",
+          "content" : "Colorado Rockies\n(stadium)",
+          "id" : "9AD52D63-0BA4-4572-A54F-A852CD1D97DC",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Yankee Stadium",
+          "content" : "New York Yankees\n(stadium)",
+          "id" : "28EBAB3F-9849-42BE-B481-94DBFCE61488",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Yankees\n(location)",
+          "content" : "New York (AL)\n(name)",
+          "id" : "F0F7C4BA-0313-4468-B175-6E9C35FA0FEA",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Twins\n(location)",
+          "content" : "Minnesota\n(name)",
+          "id" : "1D816631-883A-4D26-92D7-8429CC229021",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Oakland-Alameda County Coliseum",
+          "content" : "Oakland Athletics\n(stadium)",
+          "id" : "DAE243FD-04D8-46A2-A5D4-2FA93C18E798",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Giants\n(location)",
+          "content" : "San Francisco\n(name)",
+          "id" : "A7621485-E27C-4C50-97C9-1B70FD54066A",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Red Sox\n(location)",
+          "content" : "Boston\n(name)",
+          "id" : "6B3C2429-FE96-4C04-8556-50F8C26D3320",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Tropicana Field",
+          "content" : "Tampa Bay Rays\n(stadium)",
+          "id" : "728162F3-A283-4C80-A129-D5C3937FC1BF",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Rangers\n(location)",
+          "content" : "Texas\n(name)",
+          "id" : "ABCD9D5E-1B1A-4C91-A584-F09149AED668",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Phillies\n(location)",
+          "content" : "Philadelphia\n(name)",
+          "id" : "20EEFA01-5C02-47C2-B63D-4E6337E22D91",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Dodger Stadium",
+          "content" : "Los Angeles Dodgers\n(stadium)",
+          "id" : "956C8086-784D-4D0E-8B35-999F438CB2CE",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Nationals\n(location)",
+          "content" : "Washington\n(name)",
+          "id" : "7292A9E6-561B-4F43-88D6-98DC3334A201",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Chase Field",
+          "content" : "Arizona Diamondbacks\n(stadium)",
+          "id" : "EB6C379B-8F26-4C0F-8CFC-17322F8FC8F8",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Cubs\n(location)",
+          "content" : "Chicago (NL)\n(name)",
+          "id" : "24B21CB4-7FEF-4041-A763-F06BE2AAE191",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Globe Life Field",
+          "content" : "Texas Rangers\n(stadium)",
+          "id" : "C80ABB82-86F9-4D76-925F-1299318E1C92",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Wrigley Field",
+          "content" : "Chicago Cubs\n(stadium)",
+          "id" : "F3CBC956-F790-4B02-B2DE-6E269C9C5365",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "American Family Field",
+          "content" : "Milwaukee Brewers\n(stadium)",
+          "id" : "FD056F7A-2FD2-4F12-B155-BC39D40C3187",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Guaranteed Rate Field",
+          "content" : "Chicago White Sox\n(stadium)",
+          "id" : "4D3D82CE-3B23-4FAD-A31E-37CBD975C807",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Fenway Park",
+          "content" : "Boston Red Sox\n(stadium)",
+          "id" : "DFFA0A0D-68FD-4F64-832A-9A311648BFA2",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "T-Mobile Park",
+          "content" : "Seattle Mariners\n(stadium)",
+          "id" : "D7AB8761-9270-49EF-89AD-89E10BB40049",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Citi Field",
+          "content" : "New York Mets\n(stadium)",
+          "id" : "67AD1EBF-08F6-4E11-9E1D-9842D87635A9",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Kauffman Stadium",
+          "content" : "Kansas City Royals\n(stadium)",
+          "id" : "416B2F04-638C-47FE-981D-7968C6D587CE",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Nationals Park",
+          "content" : "Washington Nationals\n(stadium)",
+          "id" : "BC261CD0-92D7-4E3C-8054-43386FA84741",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "12 innings \n(1924 - **Senators** vs Giants)",
+          "content" : "What’s the longest World Series game 7 in history?",
+          "id" : "D4231C21-75DC-4EC8-B325-D207B84C2E6F",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "They must choose one of the two submitted figures, not a compromise or number between them.",
+          "content" : "In salary arbitration, what is the critical constraint placed on the panel when deciding between the team's and player's submitted salaries?",
+          "id" : "6EB412EF-E060-4EF0-834F-AB72E2F0AE9E",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Progressive Field\n(Team)",
+          "content" : "Cleveland Guardians\n(Stadium)",
+          "id" : "BF2FDD6E-E8F4-4CAD-B355-C47F2937DC17",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Busch Stadium\n(Team)",
+          "content" : "St. Louis Cardinals\n(Stadium)",
+          "id" : "E291FCB8-D922-488C-ACEA-A4747A00537C",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "The 40-man roster.",
+          "content" : "A player is eligible for the Rule 5 Draft if they have sufficient minor league service time and are not protected on which specific roster?",
+          "id" : "4C80C428-6E28-43CC-AABC-4351E6780EC8",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Comerica Park\n(Team)",
+          "content" : "Detroit Tigers\n(Stadium)",
+          "id" : "37100E25-8627-4F17-A8FD-A502470357F3",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Oracle Park",
+          "content" : "San Francisco Giants\n(stadium)",
+          "id" : "CB3A2184-737D-460E-8D56-4EF7976023E1",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "November 2nd\n(2016 **Cubs** vs Indians)",
+          "content" : "What was the latest calendar date an MLB game has been played? ",
+          "id" : "C35A4230-BE32-464E-B022-B39C38516AE8",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Rogers Centre\n(Team)",
+          "content" : "Toronto Blue Jays\n(Stadium)",
+          "id" : "78F853E7-E18D-4C1B-8950-9325B3A70DCF",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Minute Maid Park\n(Team)",
+          "content" : "Houston Astros\n(Stadium)",
+          "id" : "AFB433A0-DEE6-4B73-A931-05AE428904AD",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "The Rule 5 Draft.",
+          "content" : "The \"must-stick\" rule, which forces a drafted player to remain on the active roster all season, is the central tenet of what MLB process?",
+          "id" : "B7A92A25-DCD6-4B90-9455-3705DCB704C9",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Target Field\n(team)",
+          "content" : "Minnesota Twins\n(stadium)",
+          "id" : "DECDF06B-EBDF-409A-9473-85736B8A761F",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Angel Stadium",
+          "content" : "Los Angeles Angels\n(stadium)",
+          "id" : "D41B050A-F599-444B-AD31-7C6167AA13F2",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "LoanDepot Park\n(Team)",
+          "content" : "Miami Marlins\n(Stadium)",
+          "id" : "126E6823-604C-4FAA-B701-E0D514558A2C",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Citizens Bank Park\n(Team)",
+          "content" : "Philadelphia Phillies\n(Stadium)",
+          "id" : "086ECB8E-EECE-4896-B00B-ABE330641C45",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Blue Jays\n(location)",
+          "content" : "Toronto\n(name)",
+          "id" : "25D83042-630C-4AF6-A003-D2E95FC27D2D",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "The player must be kept on the 26-man active (major league) roster for the entire following season.",
+          "content" : "What is the primary restriction a team faces after selecting a player in the Rule 5 Draft?",
+          "id" : "84E49E87-D9ED-4FCD-A7D1-48BF44AEA202",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "To prevent teams from stockpiling talented players in their minor league systems and give those players an opportunity in the majors.",
+          "content" : "What is the main purpose of the MLB Rule 5 Draft?",
+          "id" : "BFB597B4-D020-4B11-8062-B88A70F79902",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "PNC Park",
+          "content" : "Pittsburgh Pirates\n(stadium)",
+          "id" : "183E6940-19EB-4D55-A34A-BF2E4528BE51",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "White Sox\n(location)",
+          "content" : "Chicago (AL)\n(name)",
+          "id" : "8BDD825B-A51F-4B7B-90A8-36A7EA681A9D",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Guardians\n(location)",
+          "content" : "Cleveland\n(name)",
+          "id" : "1B34CCB1-E000-4647-94DF-2FC944F5A310",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Salary arbitration",
+          "content" : "A player is not yet a free agent but has accrued four full years of Major League service time. What process will determine their salary for the next season if they cannot agree to a contract with their team?",
+          "id" : "B320108B-C8F7-4A24-8AAF-452B560C2A3B",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Designated for Assignment (DFA)",
+          "content" : "What is the specific roster status that removes a player from the 40-man roster immediately and triggers a 7-day window to trade, release, or waive them?",
+          "id" : "F957932D-02E2-4FE8-932C-E0B3D045B915",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        }
+      ],
+      "id" : "2EBDAA15-189E-4113-A529-D36B4A1C6392",
+      "instructions" : "This stack is a bunch of factoids about baseball, teams, and their history. Anything generated for this stack should help me expand my useless but prized knowledge of baseball.",
+      "name" : "MLB",
+      "symbol" : "baseball.fill"
+    }
+  },
+  "exportedAt" : "2025-12-05T22:23:37Z",
+  "type" : "stack",
+  "version" : "1.0"
+}

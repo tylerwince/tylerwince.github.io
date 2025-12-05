@@ -1,0 +1,534 @@
+{
+  "data" : {
+    "stack" : {
+      "color" : "Cream",
+      "flashcards" : [
+        {
+          "answer" : "Who was **Tiberius**?",
+          "content" : "Who was the **second emperor of Rome**?",
+          "id" : "E763D743-7E75-48FA-821F-576E93CE14C3",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Appointments to high government positions, influence as advisors, and laws changed to favor Christians",
+          "content" : "What political advantages did Christians gain as the emperors favored Christianity?",
+          "id" : "434F91CE-D2DF-460B-86C0-2E07329D5FD2",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Its message of salvation and equality, and the Church's organizational structure and social services",
+          "content" : "What social factors made Christianity attractive to many Romans?",
+          "id" : "22C14DDD-F09F-43D6-939C-DEB615B1E08E",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Through tax exemptions, land grants, and exemptions from certain civic duties for clergy",
+          "content" : "How did imperial favor economically benefit the Christian Church in the Roman Empire?",
+          "id" : "D7357CA2-5A56-4579-AAB4-E53730239DA7",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Imperial favor \nMissionary activity \nAppeal to lower classes and women",
+          "content" : "Name three factors that contributed to the rapid spread of Christianity in the Roman Empire.",
+          "id" : "5B5145C8-3EFE-456D-9A3E-FEA57866571D",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Between 30-50%",
+          "content" : "By 380 AD, what percentage of the Roman Empire was estimated to be Christian?",
+          "id" : "345D8A15-A6A1-4339-9784-A2A2B70BE6A9",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "380 AD",
+          "content" : "When was the Edict of Thessalonica?",
+          "id" : "60012B7D-7C4A-45B1-9803-20C334B4960B",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Soldiers spread their faith to the provinces where they were stationed, often by force",
+          "content" : "How did the Christianization of the Roman army affect the spread of the religion?",
+          "id" : "8D190DE7-50C0-41E1-84B5-9E758E79D679",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Romulus",
+          "content" : "According to legend, who was the **founder of Rome**?",
+          "id" : "AB013294-BA45-4BD9-9CCF-E674A625880A",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "An edict that granted religious tolerance to Christians in the Roman Empire",
+          "content" : "What was the Edict of Milan?",
+          "id" : "6BD4BB41-78E4-4B05-901D-63E54F7868BC",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Emperor Constantine I",
+          "content" : "Who issued the Edict of Milan?",
+          "id" : "FFA9A470-7F1E-4C8F-851E-17E82A46D750",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **70 AD**?",
+          "content" : "What year was the **second temple in Jerusalem destroyed**?",
+          "id" : "29BE73C8-161C-4469-A6AE-D899579440AB",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What happened in **1299 AD**?",
+          "content" : "What year was the **Ottoman Empire founded**?",
+          "id" : "B04951C6-6B26-4282-9769-AAF75A16C198",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What happened in **395 AD**?",
+          "content" : "When did the **Roman Empire divide**?",
+          "id" : "21844259-91F0-4F6B-85B8-FB40495CFDBA",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Kingdom",
+          "content" : "What was the **first** type of government in Roman history?",
+          "id" : "29E090A9-DB3E-467A-8907-42B6DD648F71",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "It granted full legal heirship, status, and the right to rule, often surpassing biological heirs.",
+          "content" : "What did adoption by a Roman emperor mean?\n",
+          "id" : "5BBCA03A-8842-4B6A-B3C4-AF667D80A2DB",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Emperor Theodosius I",
+          "content" : "Who issued the Edict of Thessalonica?",
+          "id" : "61E04664-68DB-499E-B67B-A35572DC2AE9",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Made Nicene Christianity the state religion of the Roman Empire",
+          "content" : "What did the Edict of Thessalonica do?",
+          "id" : "857110AC-3041-426F-B48C-893DC566FE3C",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Constantinople",
+          "content" : "What was the capitol of the Eastern Roman Empire?",
+          "id" : "213DD5CD-1B35-4DD7-B32B-8A27CD07AF9A",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Civil war",
+          "content" : "How did the Roman Republic collapse?",
+          "id" : "6BDDAB97-0AEC-48EF-90E9-D0C510C1848D",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **AD79**?",
+          "content" : "What year did **Mount Vesuvius erupt and destroy the city of Pompeii**? ",
+          "id" : "58150607-3314-40E0-B035-A16B4B39DF28",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "The Ottoman Empire",
+          "content" : "Who conquered the city of Constantinople (and thus the final remnants of the Roman Empire)?\n(Group, not person)",
+          "id" : "2D0730AF-0E6B-4247-96B7-15045A3DF2BB",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Who was the **stepson and adopted heir** of Augustus?",
+          "content" : "How was **Tiberius** related to Augustus?",
+          "id" : "76C0FDB8-D670-4432-B211-606DA1E0FE05",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "It led to imperial patronage, including building churches and granting privileges to Christian clergy",
+          "content" : "How did Constantine's conversion affect Christianity in the Roman Empire?",
+          "id" : "D75F9A4E-37BD-41E1-A496-EB091C798B77",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The pomp and circumstance around sacrifices, chastity, and dignity and titles of priesthood. ",
+          "content" : "What constituted “religion” in first and second century Rome?",
+          "id" : "FBE89111-A1BF-4DD4-88D4-491C596C7C5F",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The great fire of Rome",
+          "content" : "What started state-sponsored persecution of Christians in Rome?",
+          "id" : "AA2C078F-9191-4662-BB46-A39175997C69",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Nero",
+          "content" : "Who was the emperor during the great fire of Rome?",
+          "id" : "48D8BA7A-01C6-4AE7-87AD-AF019C50C34B",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Concrete",
+          "content" : "What material did Romans invent that allowed them to build massive structures?",
+          "id" : "2A9327A1-0A44-48D0-A2FC-1B09C81C1247",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What is the term for **Correct religious practice and ritual**?",
+          "content" : "What does **orthopraxy** emphasize in religious observance?",
+          "id" : "B1B14A36-D446-4B7E-A125-D4C7620A357C",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Nero",
+          "content" : "Who was emperor of Rome when Paul wrote the letter to the **Romans**?",
+          "id" : "A149648C-6D7E-47B4-9CC8-EFFF0415653F",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The Roman poet Juvenal.",
+          "content" : "Who coined the phrase \"bread and circuses\" (*panem et circenses*) to criticize the Roman populace's focus on food and entertainment over civic duty?",
+          "id" : "21FC4A10-FDF9-4673-8DD5-D5C2FD2F00C4",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **1922 AD**?",
+          "content" : "What year was the **Ottoman Empire abolished**?",
+          "id" : "FBD15612-1AB9-417E-BA08-6A610B8A7B86",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "A melting pot of cultures \n\n(Greek, Roman, Jew, Gentile, Rich, and Poor)",
+          "content" : "What was the social makeup of the ancient city of Corinth?",
+          "id" : "F2631FE4-08C8-455D-B45A-5484D0A71F79",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Estimated hundreds of thousands",
+          "content" : "How many Jews were killed during the destruction of Jerusalem?",
+          "id" : "2EB4BAE8-F468-45A2-B03A-BDCF760E8C63",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What city was destroyed by **Mount Vesuvius**? ",
+          "content" : "What volcano erupted and destroyed the city of **Pompeii**?",
+          "id" : "76725564-E5FE-4BF2-AE56-D55DB7674F06",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : ">20,000 people",
+          "content" : "What was the population of Pompeii before it was destroyed by Mount Vesuvius? ",
+          "id" : "A8653F3E-5E4D-4422-8FB7-6D4EEA786916",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The era of the \"Five Good Emperors\" (96-180 AD), known for the Pax Romana.",
+          "content" : "Which period in Roman history is often cited as the prime example of the success of **adoptive succession**?",
+          "id" : "01DC077D-CC4D-423B-8EE4-B554601407D3",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "An extensive network of **Roman roads**.",
+          "content" : "Beyond military conquest, what key infrastructure did Rome develop to facilitate rapid communication and control across its vast empire?",
+          "id" : "E7079353-AC97-4548-913D-A4657FFDBF03",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Practice, not belief",
+          "content" : "What was the emphasis of religion in Rome?",
+          "id" : "F1B740E4-17DE-47E4-9F95-7656EC77EE11",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Continues as Byzantine Empire",
+          "content" : "What happened to the Eastern Roman Empire after the fall of the Western Empire?",
+          "id" : "983C99D4-0182-4D0D-AF4F-AE0B0FE3B791",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "It granted Roman citizenship to almost all free inhabitants of the empire.",
+          "content" : "What significant change did the **Constitutio Antoniniana** introduce regarding Roman citizenship?",
+          "id" : "0072BA3C-7C3D-4CF0-B266-37A84E55EFCE",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Republic",
+          "content" : "What was the **second** type of government in Roman history?",
+          "id" : "B0F5180F-453F-4851-899D-3A58D5275504",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Gaius Cassius Longinus and Marcus Junius Brutus, leading a group of ~60 senators",
+          "content" : "Who primarily led the conspiracy to assassinate Julius Caesar?",
+          "id" : "0D1DC59B-156B-44FD-A2BB-CD6323BA19C9",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What is **Mehmed II** primarily known for?",
+          "content" : "Who **lead the Ottoman Empire to conquer Constantinople**?",
+          "id" : "71D0888A-96B7-4F33-871F-FF51DE64CFC8",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Approximately 10%",
+          "content" : "What percentage of the Roman Empire was Christian around 300 AD?",
+          "id" : "A0A5CEC5-59F1-4F9F-A667-52C45332E008",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **44 BC**?",
+          "content" : "What year was **Julius Caesar assassinated**?",
+          "id" : "AE34D119-3E8A-4F2C-B2B9-3C2E21E21941",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "476 AD",
+          "content" : "In what year did the **Western Roman Empire fall**?",
+          "id" : "C12C6828-6AC7-4AC1-8DB6-ED40782E9910",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Who was **Augustus**?",
+          "content" : "Who was the **first emperor of Rome**?",
+          "id" : "6E1016B1-2C7A-41DD-A260-46CB62FAA01D",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "To govern the province, collect taxes, and maintain order.",
+          "content" : "What was the primary role of a Roman **proconsul** or **propraetor** in a province?",
+          "id" : "8F30F9DF-93E1-4787-80F7-9037B8F70566",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What is **the unwritten code of ancestral customs, moral principles, and traditions that guided public and private life** in the Roman Empire called?",
+          "content" : "What was the **mos maiorum** in Roman society?",
+          "id" : "1303B3C2-DD7B-475B-A9E0-D75B54BF5973",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Anti-king, tracing their lineage to Lucius Junius Brutus",
+          "content" : "What was the historical political stance of Brutus's clan, the Junii?",
+          "id" : "9DE75E3F-27C9-4DAF-9092-7B2379018DB0",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Empire",
+          "content" : "What was the **third** type of government in Roman history?",
+          "id" : "EF3E4B44-E64F-4152-90D9-A443B60E6461",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Latin",
+          "content" : "What language did the Romans speak?",
+          "id" : "F68BDB0B-7190-4D97-8815-B7E7E020DC15",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **1453 AD**?",
+          "content" : "What year did **Constantinople fall**?",
+          "id" : "539B0CCC-BCFD-4DCD-880A-4628D5509521",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "An ancestor of Marcus Junius Brutus who expelled Rome's last monarch in 509 BC",
+          "content" : "Who was Lucius Junius Brutus?",
+          "id" : "B89B079B-6416-445F-8928-BE66328C1350",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "By citing the deeds of famous ancestors as a precedent or model for correct behavior in a similar situation.",
+          "content" : "How did a Roman politician use **exempla** to justify their actions?",
+          "id" : "FB76B679-BD78-494D-9E4E-2F7A949A1FDF",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Mark Antony",
+          "content" : "Who had a famous and politically significant affair with **Cleopatra VII** of Egypt?",
+          "id" : "7DA389B8-3D9C-4CBC-A6BE-813DC4566B37",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "753 BC",
+          "content" : "What year was **Rome founded**?",
+          "id" : "DEB5C84D-CA13-425B-BDEE-EE5CFADD863F",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What happened in **64 AD**?",
+          "content" : "When was the **great fire of Rome**?",
+          "id" : "880AEE84-097F-4FCA-9ECB-62725551B205",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "Roman general Titus ",
+          "content" : "Who destroyed the second temple in Jerusalem?",
+          "id" : "BD6D4A89-0A13-4DBE-B3B5-C4C97E979D10",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **27 BC**?",
+          "content" : "In what year did Rome become an **Empire**?",
+          "id" : "EF42098F-3947-4EF5-A576-B9EFFA2C908E",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "It replaced formal trials and legal due process with state-sanctioned murder and property seizure by decree, eliminating legal protections for citizens.",
+          "content" : "How did the use of proscription lists by the Second Triumvirate undermine the traditional Roman legal system?",
+          "id" : "C24C0812-BAA7-43EA-8C97-A2FD16CD64D5",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "His hyper-vigilance against tyranny, seeing Caesar's power as a comeback of monarchy and acting 'for the republic'",
+          "content" : "What specific concern stemming from his ancestral ethos motivated Marcus Junius Brutus to assassinate Julius Caesar?",
+          "id" : "7957621A-3A62-4DCF-A400-CB54858F3F53",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What was **Proscription** in late Republican Rome?",
+          "content" : "**The act of publishing a list of political enemies who could be killed without trial for a reward, with their property confiscated by the state**, was known by what formal term in late Republican Rome?",
+          "id" : "DC3F6D5D-33FF-4F88-AF08-1C71BE0E7645",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "**The Council of Nicaea** occurred in what year?",
+          "content" : "What occurred in **325 AD**?",
+          "id" : "4408FEF1-3A31-43EF-BBFD-5C9E977E80BD",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "313 AD",
+          "content" : "When was the Edict of Milan?",
+          "id" : "5641DBC6-2AC8-4BD5-B6F5-A71906A0D3D5",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "To confiscate the property of the condemned (`bona proscriptorum`) in order to pay soldiers and fund the state's treasury.",
+          "content" : "What was the primary financial motivation behind the Roman proscription lists used during the late Republic's civil wars?",
+          "id" : "570C816D-AF5B-497A-875B-F2808C0BBB46",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What started in **32 BC**?",
+          "content" : "In what year did the war between **Mark Antony** and **Octavian** effectively begin?",
+          "id" : "3075EC97-F124-4A61-8E37-75FA7BD93EBB",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "civil war",
+          "content" : "By declaring war on Cleopatra VII instead of Mark Antony, Octavian aimed to avoid the unpopularity of starting another **what**?",
+          "id" : "F944369C-0D52-43B5-8D39-AFAF01FD3AD1",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "Cleopatra VII",
+          "content" : "Octavian shrewdly declared war not on Mark Antony directly, but on **whom**?",
+          "id" : "CFE552D9-960A-4835-A52F-4B6D461EE942",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "The 'peace of the gods', maintained through correct ritual observance for state well-being.",
+          "content" : "What was the 'pax deorum' in Roman religion?",
+          "id" : "77F5DB80-D159-48ED-83AF-D26C140CDD53",
+          "isQuoteMode" : false,
+          "type" : "Forward"
+        },
+        {
+          "answer" : "What happened in **14 AD**?",
+          "content" : "What year did **Tiberius become emperor**?",
+          "id" : "50450469-B8DA-48F5-ADFA-4988A13CCB4C",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "What happened in **49 BC**?",
+          "content" : "In what year did the **Roman Republic collapse**?",
+          "id" : "7D402F93-6A61-4AE8-B313-D615B3D82527",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        },
+        {
+          "answer" : "509 BC",
+          "content" : "In what year did Rome become a **republic**?",
+          "id" : "27A5D61D-A605-4DC7-9F7C-A49AE8554F09",
+          "isQuoteMode" : false,
+          "type" : "Forward And Reverse"
+        }
+      ],
+      "id" : "5A7FFB55-31A6-4483-8B1B-D8A69A2654F1",
+      "instructions" : "",
+      "name" : "Roman History",
+      "symbol" : "building.columns.fill"
+    }
+  },
+  "exportedAt" : "2025-12-05T22:23:07Z",
+  "type" : "stack",
+  "version" : "1.0"
+}
