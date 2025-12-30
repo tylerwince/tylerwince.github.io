@@ -522,6 +522,11 @@ img {
   letter-spacing: 0.05em;
 }
 
+.post-meta .reading-time::before {
+  content: '·';
+  margin-right: var(--space-3);
+}
+
 .post-content {
   font-size: 19px;
   line-height: 1.6;
