@@ -14,7 +14,13 @@ description: Essays on product management, technology, and building better softw
       {% if post.description %}
       <p class="post-description">{{ post.description }}</p>
       {% endif %}
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+      <div class="post-item-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+        {% assign words = post.content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 %}
+        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+        <span class="reading-time">{{ minutes }} min read</span>
+      </div>
     </a>
   </article>
   {% endfor %}
@@ -65,10 +71,18 @@ description: Essays on product management, technology, and building better softw
   margin: 0 0 12px 0;
 }
 
-.post-item time {
+.post-item-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-size: 12px;
   color: var(--color-text-tertiary);
   font-weight: 400;
   letter-spacing: -0.01em;
+}
+
+.post-item-meta .reading-time::before {
+  content: '·';
+  margin-right: var(--space-2);
 }
 </style>
