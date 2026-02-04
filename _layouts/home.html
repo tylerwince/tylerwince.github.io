@@ -16,7 +16,7 @@ layout: default
       <h2 class="eyebrow">Apps</h2>
     </div>
     <div class="apps-grid">
-      <a href="/apps/etch/" class="app-card">
+      <a href="/apps/etch/" class="app-card app-card-yellow">
         <div class="app-card-icon">
           <img src="/assets/etch_logo.png" alt="Etch">
         </div>
@@ -24,11 +24,9 @@ layout: default
           <h3>Etch</h3>
           <p>Spaced repetition, built like Apple would.</p>
         </div>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <span class="app-card-arrow">&gt;</span>
       </a>
-      <a href="/apps/little-quotes/" class="app-card">
+      <a href="/apps/little-quotes/" class="app-card app-card-pink">
         <div class="app-card-icon">
           <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
         </div>
@@ -36,11 +34,9 @@ layout: default
           <h3>Little Quotes</h3>
           <p>Capture and share kids' priceless words.</p>
         </div>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <span class="app-card-arrow">&gt;</span>
       </a>
-      <a href="/apps/waymark/" class="app-card">
+      <a href="/apps/waymark/" class="app-card app-card-blue">
         <div class="app-card-icon">
           <img src="/assets/waymark_icon.png" alt="Waymark">
         </div>
@@ -48,9 +44,7 @@ layout: default
           <h3>Waymark</h3>
           <p>Prayer and community, designed with care.</p>
         </div>
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
+        <span class="app-card-arrow">&gt;</span>
       </a>
     </div>
   </section>
@@ -62,16 +56,19 @@ layout: default
     <section class="home-section">
       <div class="section-header">
         <h2 class="eyebrow">Latest</h2>
-        <a href="{{ '/writing/' | relative_url }}" class="section-link">View all</a>
+        <a href="{{ '/writing/' | relative_url }}" class="section-link">View all &gt;</a>
       </div>
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 3 %}
       <div class="post-list">
         {% for post in latest_posts %}
         <article class="post-item">
           <a href="{{ post.url | relative_url }}">
-            <h4>{{ post.title }}</h4>
-            <p>{{ post.description }}</p>
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+            <span class="post-number">{{ forloop.index | prepend: '0' }}</span>
+            <div class="post-item-content">
+              <h4>{{ post.title }}</h4>
+              <p>{{ post.description }}</p>
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+            </div>
           </a>
         </article>
         {% endfor %}
@@ -80,14 +77,15 @@ layout: default
 
     <section class="home-section">
       <div class="section-header">
-        <h2 class="eyebrow">Reading</h2>
-        <a href="{{ '/reading/' | relative_url }}" class="section-link">View all</a>
+        <h2 class="eyebrow eyebrow-green">Reading</h2>
+        <a href="{{ '/reading/' | relative_url }}" class="section-link">View all &gt;</a>
       </div>
       {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
       {% if currently_reading.size > 0 %}
         <div class="reading-list">
           {% for book in currently_reading limit:2 %}
           <div class="reading-item">
+            <span class="reading-status">NOW</span>
             <h4>{{ book.title }}</h4>
             <p>{{ book.author }}</p>
           </div>
@@ -95,6 +93,7 @@ layout: default
         </div>
       {% else %}
         <div class="reading-item">
+          <span class="reading-status">IDLE</span>
           <h4>Nothing on deck right now</h4>
           <p>Check back soon</p>
         </div>
@@ -105,21 +104,38 @@ layout: default
 </div>
 
 <style>
-/* Home Page */
+/* Home Page - Neubrutalist Style */
 .home-page {
   padding: var(--space-8) 0;
 }
 
 .home-header {
   margin-bottom: var(--space-12);
+  padding: var(--space-10);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.home-header::before {
+  content: '*';
+  position: absolute;
+  top: -20px;
+  right: 30px;
+  font-size: 80px;
+  font-weight: 700;
+  color: var(--color-surface-alt);
+  line-height: 1;
 }
 
 .home-title {
-  font-size: clamp(40px, 5vw, 56px);
+  font-size: clamp(44px, 6vw, 72px);
   font-weight: 700;
-  margin-bottom: 16px;
-  line-height: 1.07143;
-  letter-spacing: -0.025em;
+  margin-bottom: 0;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
 }
 
 .home-content {
@@ -134,143 +150,179 @@ layout: default
 .section-header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: var(--space-4);
+  align-items: center;
+  margin-bottom: var(--space-6);
 }
 
 .section-link {
   font-size: 14px;
-  font-weight: 400;
-  color: var(--color-accent);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.section-link:hover {
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Apps Grid */
 .apps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-5);
 }
 
 .app-card {
   display: grid;
-  grid-template-columns: 48px 1fr auto;
+  grid-template-columns: 64px 1fr auto;
   gap: var(--space-4);
   align-items: center;
-  padding: var(--space-4);
+  padding: var(--space-5);
   background: var(--color-surface-elevated);
-  border: 0.5px solid var(--color-border-light);
-  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-border);
   color: var(--color-text-primary);
-  transition: all var(--transition-base);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+}
+
+.app-card-yellow {
+  border-left: 8px solid var(--color-surface);
+}
+
+.app-card-pink {
+  border-left: 8px solid var(--color-surface-alt);
+}
+
+.app-card-blue {
+  border-left: 8px solid var(--color-surface-blue);
 }
 
 .app-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-border);
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-xl);
 }
 
-@media (prefers-color-scheme: dark) {
-  .app-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-}
-
-.app-card svg {
+.app-card-arrow {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
   color: var(--color-text-tertiary);
-  transition: transform var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
-.app-card:hover svg {
-  transform: translateX(2px);
-  color: var(--color-accent);
+.app-card:hover .app-card-arrow {
+  transform: translateX(6px);
+  color: var(--color-surface-alt);
 }
 
 .app-card-icon {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
   flex-shrink: 0;
-  border-radius: 0;
   overflow: visible;
-  background: clear;
+  background: transparent;
 }
 
 .app-card-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0;
+  border: none;
+  box-shadow: none;
 }
 
 .app-card-content h3 {
-  font-size: 17px;
-  font-weight: 600;
-  margin: 0 0 2px 0;
-  letter-spacing: -0.015em;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .app-card-content p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-text-secondary);
   margin: 0;
   line-height: 1.4;
+  font-weight: 500;
 }
 
 /* Dual Section */
 .dual-section {
   display: grid;
   grid-template-columns: 1.5fr 1fr;
-  gap: var(--space-8);
+  gap: var(--space-10);
 }
 
 /* Post List */
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-4);
 }
 
 .post-item a {
-  display: block;
-  padding: var(--space-4);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  padding: var(--space-5);
   background: var(--color-surface-elevated);
-  border: 0.5px solid var(--color-border-light);
-  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-border);
   color: var(--color-text-primary);
-  transition: all var(--transition-base);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
 }
 
 .post-item a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-border);
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-xl);
+  background: var(--color-surface);
 }
 
-@media (prefers-color-scheme: dark) {
-  .post-item a:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
+.post-number {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-surface-alt);
+  line-height: 1;
+}
+
+.post-item-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .post-item h4 {
-  font-size: 19px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   margin: 0 0 6px 0;
-  letter-spacing: -0.015em;
-  line-height: 1.3;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .post-item p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-text-secondary);
-  line-height: 1.42857;
+  line-height: 1.4;
   margin: 0 0 8px 0;
 }
 
 .post-item time {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--color-text-tertiary);
-  font-weight: 400;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
 }
 
 /* Reading List */
@@ -281,34 +333,76 @@ layout: default
 }
 
 .reading-item {
-  padding: var(--space-4);
+  padding: var(--space-5);
   background: var(--color-surface-elevated);
-  border: 0.5px solid var(--color-border-light);
-  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.reading-status {
+  position: absolute;
+  top: -12px;
+  right: 16px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 4px 10px;
+  background: var(--color-surface-green);
+  border: 2px solid var(--color-border);
+  text-transform: uppercase;
 }
 
 .reading-item h4 {
-  font-size: 17px;
-  font-weight: 600;
-  margin: 0 0 4px 0;
-  letter-spacing: -0.015em;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .reading-item p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--color-text-secondary);
   margin: 0;
+  font-weight: 500;
+}
+
+.eyebrow-green {
+  background: var(--color-surface-green);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+  .home-header {
+    padding: var(--space-8);
+  }
+
+  .home-header::before {
+    font-size: 50px;
+    top: -15px;
+    right: 20px;
+  }
 
   .apps-grid {
     grid-template-columns: 1fr;
   }
 
+  .app-card {
+    grid-template-columns: 56px 1fr auto;
+  }
+
+  .app-card-icon {
+    width: 56px;
+    height: 56px;
+  }
+
   .dual-section {
     grid-template-columns: 1fr;
+  }
+
+  .post-number {
+    font-size: 24px;
   }
 }
 </style>
