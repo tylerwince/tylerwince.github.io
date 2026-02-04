@@ -4,19 +4,21 @@ layout: default
 
 <div class="home-page">
   <header class="home-header content-wrapper animate-in">
+    <span class="home-greeting">Welcome</span>
     <h1 class="home-title">{{ site.description }}</h1>
   </header>
 
   <div class="home-content content-wrapper animate-in animate-in-delay-1">
     {{ content }}
 
-  <!-- Apps Grid -->
+  <!-- Apps Section -->
   <section class="home-section">
     <div class="section-header">
-      <h2 class="eyebrow">Apps</h2>
+      <span class="eyebrow">Apps</span>
+      <div class="section-line"></div>
     </div>
     <div class="apps-grid">
-      <a href="/apps/etch/" class="app-card app-card-yellow">
+      <a href="/apps/etch/" class="app-card">
         <div class="app-card-icon">
           <img src="/assets/etch_logo.png" alt="Etch">
         </div>
@@ -24,9 +26,9 @@ layout: default
           <h3>Etch</h3>
           <p>Spaced repetition, built like Apple would.</p>
         </div>
-        <span class="app-card-arrow">&gt;</span>
+        <span class="app-card-arrow">→</span>
       </a>
-      <a href="/apps/little-quotes/" class="app-card app-card-pink">
+      <a href="/apps/little-quotes/" class="app-card">
         <div class="app-card-icon">
           <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
         </div>
@@ -34,9 +36,9 @@ layout: default
           <h3>Little Quotes</h3>
           <p>Capture and share kids' priceless words.</p>
         </div>
-        <span class="app-card-arrow">&gt;</span>
+        <span class="app-card-arrow">→</span>
       </a>
-      <a href="/apps/waymark/" class="app-card app-card-blue">
+      <a href="/apps/waymark/" class="app-card">
         <div class="app-card-icon">
           <img src="/assets/waymark_icon.png" alt="Waymark">
         </div>
@@ -44,7 +46,7 @@ layout: default
           <h3>Waymark</h3>
           <p>Prayer and community, designed with care.</p>
         </div>
-        <span class="app-card-arrow">&gt;</span>
+        <span class="app-card-arrow">→</span>
       </a>
     </div>
   </section>
@@ -55,19 +57,18 @@ layout: default
   <div class="dual-section">
     <section class="home-section">
       <div class="section-header">
-        <h2 class="eyebrow">Latest</h2>
-        <a href="{{ '/writing/' | relative_url }}" class="section-link">View all &gt;</a>
+        <span class="eyebrow">Latest Writing</span>
+        <a href="{{ '/writing/' | relative_url }}" class="section-link">View all →</a>
       </div>
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 3 %}
       <div class="post-list">
         {% for post in latest_posts %}
         <article class="post-item">
           <a href="{{ post.url | relative_url }}">
-            <span class="post-number">{{ forloop.index | prepend: '0' }}</span>
             <div class="post-item-content">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
               <h4>{{ post.title }}</h4>
               <p>{{ post.description }}</p>
-              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
             </div>
           </a>
         </article>
@@ -75,27 +76,31 @@ layout: default
       </div>
     </section>
 
-    <section class="home-section">
+    <section class="home-section reading-section">
       <div class="section-header">
-        <h2 class="eyebrow eyebrow-green">Reading</h2>
-        <a href="{{ '/reading/' | relative_url }}" class="section-link">View all &gt;</a>
+        <span class="eyebrow">Currently Reading</span>
+        <a href="{{ '/reading/' | relative_url }}" class="section-link">View all →</a>
       </div>
       {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
       {% if currently_reading.size > 0 %}
         <div class="reading-list">
           {% for book in currently_reading limit:2 %}
           <div class="reading-item">
-            <span class="reading-status">NOW</span>
-            <h4>{{ book.title }}</h4>
-            <p>{{ book.author }}</p>
+            <div class="reading-marker"></div>
+            <div class="reading-content">
+              <h4>{{ book.title }}</h4>
+              <p class="reading-author">{{ book.author }}</p>
+            </div>
           </div>
           {% endfor %}
         </div>
       {% else %}
-        <div class="reading-item">
-          <span class="reading-status">IDLE</span>
-          <h4>Nothing on deck right now</h4>
-          <p>Check back soon</p>
+        <div class="reading-item reading-empty">
+          <div class="reading-marker"></div>
+          <div class="reading-content">
+            <h4>Between books</h4>
+            <p class="reading-author">Check back soon</p>
+          </div>
         </div>
       {% endif %}
     </section>
@@ -104,38 +109,32 @@ layout: default
 </div>
 
 <style>
-/* Home Page - Neubrutalist Style */
+/* Home Page - Ink & Paper Style */
 .home-page {
-  padding: var(--space-8) 0;
+  padding: var(--space-4) 0 var(--space-8);
 }
 
 .home-header {
-  margin-bottom: var(--space-12);
-  padding: var(--space-10);
-  background: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
-  box-shadow: var(--shadow-lg);
+  margin-bottom: var(--space-16);
   position: relative;
 }
 
-.home-header::before {
-  content: '*';
-  position: absolute;
-  top: -20px;
-  right: 30px;
-  font-size: 80px;
-  font-weight: 700;
-  color: var(--color-surface-alt);
-  line-height: 1;
+.home-greeting {
+  font-family: var(--font-handwritten);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-2);
 }
 
 .home-title {
-  font-size: clamp(44px, 6vw, 72px);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 500;
   margin-bottom: 0;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  max-width: 700px;
 }
 
 .home-content {
@@ -150,27 +149,29 @@ layout: default
 .section-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   margin-bottom: var(--space-6);
+  gap: var(--space-4);
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-ink-ghost), transparent);
+  margin-left: var(--space-4);
 }
 
 .section-link {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-text-primary);
-  text-transform: uppercase;
-  padding: 8px 16px;
-  border: var(--border-width) solid var(--color-border);
-  background: var(--color-surface-elevated);
-  box-shadow: var(--shadow-sm);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-ink-faded);
   transition: all var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .section-link:hover {
-  background: var(--color-text-primary);
-  color: var(--color-bg);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  color: var(--color-accent);
 }
 
 /* Apps Grid */
@@ -182,118 +183,100 @@ layout: default
 
 .app-card {
   display: grid;
-  grid-template-columns: 64px 1fr auto;
+  grid-template-columns: 56px 1fr auto;
   gap: var(--space-4);
   align-items: center;
   padding: var(--space-5);
-  background: var(--color-surface-elevated);
-  border: var(--border-width) solid var(--color-border);
-  color: var(--color-text-primary);
-  transition: all var(--transition-fast);
-  box-shadow: var(--shadow-md);
-}
-
-.app-card-yellow {
-  border-left: 8px solid var(--color-surface);
-}
-
-.app-card-pink {
-  border-left: 8px solid var(--color-surface-alt);
-}
-
-.app-card-blue {
-  border-left: 8px solid var(--color-surface-blue);
+  background: var(--color-paper);
+  border-radius: var(--border-radius-lg);
+  color: var(--color-ink);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-paper);
+  border: 1px solid transparent;
 }
 
 .app-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lifted);
+  border-color: var(--color-ink-ghost);
 }
 
 .app-card-arrow {
-  font-family: var(--font-mono);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--color-text-tertiary);
+  font-size: 1.25rem;
+  color: var(--color-ink-ghost);
   transition: all var(--transition-fast);
 }
 
 .app-card:hover .app-card-arrow {
-  transform: translateX(6px);
-  color: var(--color-surface-alt);
+  transform: translateX(4px);
+  color: var(--color-accent);
 }
 
 .app-card-icon {
-  width: 64px;
-  height: 64px;
+  width: 56px;
+  height: 56px;
   flex-shrink: 0;
-  overflow: visible;
-  background: transparent;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
 .app-card-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: none;
+  border-radius: 12px;
   box-shadow: none;
 }
 
 .app-card-content h3 {
-  font-size: 20px;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
   margin: 0 0 4px 0;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 .app-card-content p {
-  font-size: 15px;
-  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  color: var(--color-ink-faded);
   margin: 0;
   line-height: 1.4;
-  font-weight: 500;
 }
 
 /* Dual Section */
 .dual-section {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: var(--space-10);
+  grid-template-columns: 1.6fr 1fr;
+  gap: var(--space-12);
 }
 
 /* Post List */
 .post-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+}
+
+.post-item {
+  border-bottom: 1px solid var(--color-ink-ghost);
+}
+
+.post-item:last-child {
+  border-bottom: none;
 }
 
 .post-item a {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-4);
-  align-items: start;
-  padding: var(--space-5);
-  background: var(--color-surface-elevated);
-  border: var(--border-width) solid var(--color-border);
-  color: var(--color-text-primary);
+  display: block;
+  padding: var(--space-5) 0;
+  color: var(--color-ink);
   transition: all var(--transition-fast);
-  box-shadow: var(--shadow-md);
 }
 
 .post-item a:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: var(--shadow-xl);
-  background: var(--color-surface);
+  padding-left: var(--space-4);
 }
 
-.post-number {
-  font-family: var(--font-mono);
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--color-surface-alt);
-  line-height: 1;
+.post-item a:hover h4 {
+  color: var(--color-accent);
 }
 
 .post-item-content {
@@ -301,87 +284,98 @@ layout: default
   flex-direction: column;
 }
 
+.post-item time {
+  font-size: 0.85rem;
+  color: var(--color-ink-faded);
+  margin-bottom: var(--space-1);
+}
+
 .post-item h4 {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  text-transform: uppercase;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-2) 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  transition: color var(--transition-fast);
 }
 
 .post-item p {
-  font-size: 15px;
-  color: var(--color-text-secondary);
-  line-height: 1.4;
-  margin: 0 0 8px 0;
-}
-
-.post-item time {
-  font-size: 13px;
-  color: var(--color-text-tertiary);
-  font-weight: 700;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: var(--color-ink-faded);
+  line-height: 1.5;
+  margin: 0;
 }
 
 /* Reading List */
+.reading-section {
+  padding-left: var(--space-8);
+  border-left: 1px solid var(--color-ink-ghost);
+}
+
 .reading-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .reading-item {
-  padding: var(--space-5);
-  background: var(--color-surface-elevated);
-  border: var(--border-width) solid var(--color-border);
-  box-shadow: var(--shadow-md);
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+.reading-marker {
+  width: 8px;
+  height: 8px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
   position: relative;
 }
 
-.reading-status {
+.reading-marker::after {
+  content: '';
   position: absolute;
-  top: -12px;
-  right: 16px;
-  font-size: 12px;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  padding: 4px 10px;
-  background: var(--color-surface-green);
-  border: 2px solid var(--color-border);
-  text-transform: uppercase;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--color-gold-light);
+  border-radius: 50%;
+  opacity: 0.5;
 }
 
-.reading-item h4 {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0 0 6px 0;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+.reading-content h4 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 var(--space-1) 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
-.reading-item p {
-  font-size: 15px;
-  color: var(--color-text-secondary);
+.reading-author {
+  font-size: 0.9rem;
+  color: var(--color-ink-faded);
   margin: 0;
-  font-weight: 500;
+  font-style: italic;
 }
 
-.eyebrow-green {
-  background: var(--color-surface-green);
+.reading-empty {
+  opacity: 0.6;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .home-header {
-    padding: var(--space-8);
+    margin-bottom: var(--space-12);
   }
 
-  .home-header::before {
-    font-size: 50px;
-    top: -15px;
-    right: 20px;
+  .home-greeting {
+    font-size: 1.25rem;
   }
 
   .apps-grid {
@@ -389,20 +383,29 @@ layout: default
   }
 
   .app-card {
-    grid-template-columns: 56px 1fr auto;
+    grid-template-columns: 48px 1fr auto;
+    padding: var(--space-4);
   }
 
   .app-card-icon {
-    width: 56px;
-    height: 56px;
+    width: 48px;
+    height: 48px;
   }
 
   .dual-section {
     grid-template-columns: 1fr;
+    gap: var(--space-8);
   }
 
-  .post-number {
-    font-size: 24px;
+  .reading-section {
+    padding-left: 0;
+    border-left: none;
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-ink-ghost);
+  }
+
+  .section-line {
+    display: none;
   }
 }
 </style>
