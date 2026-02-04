@@ -8,24 +8,25 @@ layout: default
     <div class="content-wrapper">
       <div class="app-hero-grid">
         <div class="app-hero-content">
+          <span class="app-label">App</span>
           <h1 class="app-title">{{ page.title }}</h1>
           <p class="app-tagline">{{ page.tagline }}</p>
 
           <div class="app-hero-actions">
             <a href="{{ page.app_store_link }}" class="app-download-button" target="_blank" rel="noopener">
-              <span class="download-text">Download</span>
-              <span class="download-arrow">&darr;</span>
+              <span class="download-text">Download on the App Store</span>
+              <span class="download-arrow">↓</span>
             </a>
           </div>
 
           <dl class="app-meta">
             <div class="app-meta-item">
-              <dt class="meta-label">Platform</dt>
+              <dt>Platform</dt>
               <dd>{{ page.platform }}</dd>
             </div>
             <div class="app-meta-item">
-              <dt class="meta-label">Built with</dt>
-              <dd>{{ page.tech_stack | join: " + " }}</dd>
+              <dt>Built with</dt>
+              <dd>{{ page.tech_stack | join: ", " }}</dd>
             </div>
           </dl>
         </div>
@@ -47,28 +48,30 @@ layout: default
 
 <style>
 .app-page {
-  padding: var(--space-8) 0;
+  padding: var(--space-6) 0;
 }
 
 /* Hero Section */
 .app-hero {
-  padding: var(--space-12) 0;
+  padding: var(--space-16) 0;
   background: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
-  margin: 0 var(--space-6) var(--space-16);
-  box-shadow: var(--shadow-xl);
+  margin-bottom: var(--space-12);
   position: relative;
 }
 
 .app-hero::before {
   content: '';
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  border: 2px dashed var(--color-border);
-  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    var(--color-ink-ghost) 20%,
+    var(--color-ink-ghost) 80%,
+    transparent
+  );
 }
 
 .app-hero-grid {
@@ -78,22 +81,32 @@ layout: default
   align-items: center;
 }
 
+.app-label {
+  font-family: var(--font-handwritten);
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
 .app-title {
-  font-size: clamp(48px, 7vw, 80px);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 500;
   margin-bottom: var(--space-3);
-  line-height: 0.9;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
 }
 
 .app-tagline {
-  font-size: 22px;
-  color: var(--color-text-primary);
-  line-height: 1.4;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--color-ink-light);
+  line-height: 1.5;
   letter-spacing: -0.01em;
   margin-bottom: var(--space-8);
-  font-weight: 500;
+  font-style: italic;
+  max-width: 480px;
 }
 
 .app-hero-actions {
@@ -104,69 +117,63 @@ layout: default
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  padding: 16px 32px;
-  background: var(--color-text-primary);
+  padding: var(--space-4) var(--space-6);
+  background: var(--color-ink);
   color: var(--color-bg);
-  border: var(--border-width) solid var(--color-border);
-  font-weight: 700;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius-lg);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-paper);
   transition: all var(--transition-fast);
 }
 
 .app-download-button:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: var(--shadow-xl);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lifted);
   color: var(--color-bg);
 }
 
 .app-download-button:active {
-  transform: translate(0, 0);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(0);
+  box-shadow: var(--shadow-paper);
 }
 
 .download-arrow {
-  font-size: 24px;
+  font-size: 1.1rem;
   transition: transform var(--transition-fast);
 }
 
 .app-download-button:hover .download-arrow {
-  transform: translateY(4px);
+  transform: translateY(2px);
 }
 
 .app-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--space-4);
+  display: flex;
+  gap: var(--space-8);
   margin: 0;
   padding-top: var(--space-6);
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: 1px solid var(--color-ink-ghost);
 }
 
 .app-meta-item {
   margin: 0;
-  padding: var(--space-4);
-  background: var(--color-surface-elevated);
-  border: 2px solid var(--color-border);
 }
 
-.meta-label {
-  font-size: 12px;
-  font-weight: 700;
+.app-meta dt {
+  font-size: 0.8rem;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-tertiary);
+  letter-spacing: 0.08em;
+  color: var(--color-ink-faded);
   margin-bottom: var(--space-1);
 }
 
 .app-meta dd {
   margin: 0;
-  font-size: 16px;
-  color: var(--color-text-primary);
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 0.95rem;
+  color: var(--color-ink);
+  font-weight: 500;
 }
 
 .app-hero-icon-wrapper {
@@ -176,50 +183,59 @@ layout: default
 }
 
 .app-hero-icon {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   overflow: hidden;
-  background: var(--color-surface-elevated);
-  border: var(--border-width) solid var(--color-border);
-  box-shadow: var(--shadow-lg);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lifted);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--color-paper);
 }
 
 .app-hero-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: none;
+  border-radius: 24px;
   box-shadow: none;
 }
 
 .app-hero-icon-etch {
   background: transparent;
-  border: none;
+  border-radius: 0;
   box-shadow: none;
-  width: 160px;
-  height: 160px;
+  width: 140px;
+  height: 140px;
 }
 
 .app-hero-icon-etch img {
-  border: none;
+  border-radius: 0;
   box-shadow: none;
 }
 
 /* Content Sections */
 .app-content h2 {
-  font-size: 32px;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
   margin: var(--space-16) 0 var(--space-6);
   letter-spacing: -0.02em;
-  text-transform: uppercase;
-  padding: var(--space-4);
-  background: var(--color-surface-blue);
-  border: var(--border-width) solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-  display: inline-block;
+  position: relative;
+  padding-left: var(--space-6);
+}
+
+.app-content h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--color-gold);
+  border-radius: 2px;
 }
 
 .app-content h2:first-child {
@@ -227,46 +243,44 @@ layout: default
 }
 
 .app-content h3 {
-  font-size: 24px;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 600;
   margin: var(--space-8) 0 var(--space-3);
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  border-left: 6px solid var(--color-surface-alt);
-  padding-left: var(--space-4);
+  letter-spacing: -0.01em;
+  color: var(--color-ink-light);
 }
 
 .app-content p {
-  font-size: 18px;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
-  color: var(--color-text-primary);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  letter-spacing: -0.005em;
+  color: var(--color-ink-light);
   margin-bottom: var(--space-4);
-  font-weight: 500;
 }
 
 .app-content ul {
   margin: var(--space-4) 0;
-  padding-left: 1.2em;
+  padding-left: 1.25em;
 }
 
 .app-content li {
-  font-size: 18px;
-  line-height: 1.6;
-  letter-spacing: -0.01em;
+  font-size: 1.05rem;
+  line-height: 1.65;
   margin-bottom: var(--space-2);
-  font-weight: 500;
 }
 
 .app-content a {
   color: var(--color-accent);
-  font-weight: 600;
-  border-bottom: 2px solid var(--color-accent);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent-wash);
+  text-underline-offset: 3px;
+  transition: all var(--transition-fast);
 }
 
 .app-content a:hover {
-  background: var(--color-accent);
-  color: var(--color-bg);
+  text-decoration-color: var(--color-accent);
 }
 
 /* Feature Grid */
@@ -278,72 +292,52 @@ layout: default
 }
 
 .feature-card {
-  background: var(--color-surface-elevated);
-  border: var(--border-width) solid var(--color-border);
+  background: var(--color-paper);
+  border-radius: var(--border-radius-lg);
   padding: var(--space-6);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-paper);
+  transition: all var(--transition-base);
+  border: 1px solid transparent;
+  position: relative;
 }
 
 .feature-card:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lifted);
+  border-color: var(--color-ink-ghost);
 }
 
-.feature-card:nth-child(1) {
-  border-top: 6px solid var(--color-surface);
-}
-
-.feature-card:nth-child(2) {
-  border-top: 6px solid var(--color-surface-alt);
-}
-
-.feature-card:nth-child(3) {
-  border-top: 6px solid var(--color-surface-blue);
-}
-
-.feature-card:nth-child(4) {
-  border-top: 6px solid var(--color-surface-green);
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-6);
+  width: 24px;
+  height: 3px;
+  background: var(--color-gold);
+  border-radius: 2px;
 }
 
 .feature-card h3 {
-  margin-top: 0;
+  margin-top: var(--space-4);
   margin-bottom: var(--space-2);
-  border-left: none;
   padding-left: 0;
 }
 
 .feature-card p {
   margin: 0;
-  font-size: 16px;
-  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  color: var(--color-ink-faded);
 }
 
 /* Callout Box */
 .callout {
   background: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
   padding: var(--space-6);
   margin: var(--space-6) 0;
-  box-shadow: var(--shadow-md);
+  border-left: 3px solid var(--color-gold);
   position: relative;
-}
-
-.callout::before {
-  content: '!';
-  position: absolute;
-  top: -16px;
-  left: 20px;
-  font-size: 28px;
-  font-weight: 700;
-  background: var(--color-surface-alt);
-  color: var(--color-text-primary);
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid var(--color-border);
 }
 
 .callout p {
@@ -355,7 +349,7 @@ layout: default
 }
 
 .callout strong {
-  color: var(--color-text-primary);
+  color: var(--color-ink);
 }
 
 /* Screenshot Strip */
@@ -370,26 +364,26 @@ layout: default
 }
 
 .screenshot-strip::-webkit-scrollbar {
-  height: 12px;
+  height: 6px;
 }
 
 .screenshot-strip::-webkit-scrollbar-track {
-  background: var(--color-bg);
-  border: 2px solid var(--color-border);
+  background: var(--color-surface);
+  border-radius: 3px;
 }
 
 .screenshot-strip::-webkit-scrollbar-thumb {
-  background: var(--color-surface);
-  border: 2px solid var(--color-border);
+  background: var(--color-ink-ghost);
+  border-radius: 3px;
 }
 
 .screenshot-strip::-webkit-scrollbar-thumb:hover {
-  background: var(--color-surface-alt);
+  background: var(--color-ink-faded);
 }
 
 .screenshot-card {
   flex: 0 0 auto;
-  width: 280px;
+  width: 260px;
   margin: 0;
   scroll-snap-align: start;
 }
@@ -397,8 +391,8 @@ layout: default
 .screenshot-card img {
   width: 100%;
   height: auto;
-  border: var(--border-width) solid var(--color-border);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-paper);
 }
 
 /* Stack Cards - Flashcard Stack Design */
@@ -413,12 +407,12 @@ layout: default
   position: relative;
   height: 200px;
   cursor: pointer;
-  transition: transform var(--transition-fast);
+  transition: transform var(--transition-base);
   text-decoration: none;
 }
 
 .stack-card:hover {
-  transform: translate(-4px, -4px);
+  transform: translateY(-4px);
 }
 
 .stack-card-stack {
@@ -436,8 +430,9 @@ layout: default
   left: 12%;
   right: 12%;
   bottom: 20px;
-  background: var(--color-surface-blue);
-  border: var(--border-width) solid var(--color-border);
+  background: var(--color-surface-warm);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-ink-ghost);
   z-index: 1;
 }
 
@@ -450,7 +445,8 @@ layout: default
   right: 6%;
   bottom: 12px;
   background: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-ink-ghost);
   z-index: 2;
 }
 
@@ -461,19 +457,21 @@ layout: default
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--color-surface-elevated);
-  border: var(--border-width) solid var(--color-border);
+  background: var(--color-paper);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-ink-ghost);
   padding: var(--space-3);
   display: flex;
   flex-direction: column;
-  box-shadow: var(--shadow-md);
-  transition: box-shadow var(--transition-fast);
+  box-shadow: var(--shadow-paper);
+  transition: all var(--transition-base);
   z-index: 3;
   overflow: hidden;
 }
 
 .stack-card:hover .stack-card-front {
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lifted);
+  border-color: var(--color-ink-faded);
 }
 
 .stack-card-header {
@@ -484,25 +482,24 @@ layout: default
 }
 
 .stack-card-count {
-  font-size: 14px;
-  font-family: var(--font-mono);
-  color: var(--color-text-tertiary) !important;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  color: var(--color-ink-faded) !important;
   margin: 0;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
 }
 
 .stack-card-download-icon {
-  color: var(--color-text-tertiary);
-  font-size: 18px;
+  color: var(--color-ink-ghost);
+  font-size: 1rem;
   transition: all var(--transition-fast);
   line-height: 1;
-  font-family: var(--font-mono);
 }
 
 .stack-card:hover .stack-card-download-icon {
-  color: var(--color-surface-alt);
-  transform: translateY(4px);
+  color: var(--color-accent);
+  transform: translateY(2px);
 }
 
 .stack-card-content {
@@ -515,13 +512,13 @@ layout: default
 }
 
 .stack-card-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-text-primary);
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink);
   margin: 0;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
 .stack-card-loading {
@@ -535,14 +532,8 @@ layout: default
 /* Responsive */
 @media (max-width: 768px) {
   .app-hero {
-    margin: 0 var(--space-4) var(--space-12);
-  }
-
-  .app-hero::before {
-    top: 8px;
-    left: 8px;
-    right: 8px;
-    bottom: 8px;
+    padding: var(--space-10) 0;
+    margin-bottom: var(--space-8);
   }
 
   .app-hero-grid {
@@ -555,18 +546,19 @@ layout: default
   }
 
   .app-hero-icon {
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+  }
+
+  .app-hero-icon-etch {
     width: 100px;
     height: 100px;
   }
 
-  .app-hero-icon-etch {
-    width: 120px;
-    height: 120px;
-  }
-
   .app-download-button {
-    padding: 14px 24px;
-    font-size: 16px;
+    padding: var(--space-3) var(--space-5);
+    font-size: 0.9rem;
   }
 
   .feature-grid {
@@ -574,8 +566,8 @@ layout: default
   }
 
   .app-meta {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
+    flex-direction: column;
+    gap: var(--space-4);
   }
 
   .stack-grid {
@@ -587,11 +579,11 @@ layout: default
   }
 
   .stack-card-title {
-    font-size: 15px;
+    font-size: 0.95rem;
   }
 
   .stack-card-count {
-    font-size: 13px;
+    font-size: 0.75rem;
   }
 }
 </style>
