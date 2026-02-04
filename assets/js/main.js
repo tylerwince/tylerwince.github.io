@@ -1,14 +1,13 @@
 /**
- * Tyler Wince - Custom Theme JavaScript
- * Micro-interactions and polish
+ * Tyler Wince - NEUBRUTALISM Theme JavaScript
+ * Bold interactions for a bold design.
  */
 
 (function() {
   'use strict';
 
-  // Header scroll effect
+  // Header scroll effect - adds shadow when scrolled
   const header = document.getElementById('site-header');
-  let lastScrollY = window.scrollY;
   let ticking = false;
 
   function updateHeader() {
@@ -21,7 +20,6 @@
   }
 
   window.addEventListener('scroll', function() {
-    lastScrollY = window.scrollY;
     if (!ticking) {
       window.requestAnimationFrame(updateHeader);
       ticking = true;
@@ -89,27 +87,31 @@
     }
   });
 
-  // Add copy button to code blocks
+  // Add copy button to code blocks with neubrutalist style
   document.querySelectorAll('pre code').forEach(block => {
     const pre = block.parentElement;
     const button = document.createElement('button');
     button.className = 'code-copy-button';
-    button.textContent = 'Copy';
+    button.textContent = 'COPY';
     button.setAttribute('aria-label', 'Copy code to clipboard');
 
     button.addEventListener('click', async () => {
       const code = block.textContent;
       try {
         await navigator.clipboard.writeText(code);
-        button.textContent = 'Copied!';
+        button.textContent = 'COPIED!';
+        button.style.background = 'var(--color-surface-green)';
         setTimeout(() => {
-          button.textContent = 'Copy';
+          button.textContent = 'COPY';
+          button.style.background = '';
         }, 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
-        button.textContent = 'Failed';
+        button.textContent = 'FAILED';
+        button.style.background = 'var(--color-surface-alt)';
         setTimeout(() => {
-          button.textContent = 'Copy';
+          button.textContent = 'COPY';
+          button.style.background = '';
         }, 2000);
       }
     });
@@ -117,5 +119,52 @@
     pre.style.position = 'relative';
     pre.appendChild(button);
   });
+
+  // Add playful tilt effect on card hover (subtle)
+  document.querySelectorAll('.app-card, .post-item a, .reading-item, .card').forEach(card => {
+    card.addEventListener('mouseenter', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const centerX = rect.width / 2;
+      const tiltX = (x - centerX) / centerX * 1;
+      this.style.transform = `translate(-4px, -4px) rotate(${tiltX}deg)`;
+    });
+
+    card.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const centerX = rect.width / 2;
+      const tiltX = (x - centerX) / centerX * 1;
+      this.style.transform = `translate(-4px, -4px) rotate(${tiltX}deg)`;
+    });
+
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+    });
+  });
+
+  // Keyboard navigation enhancement - visible focus states
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+      document.body.classList.add('keyboard-nav');
+    }
+  });
+
+  document.addEventListener('mousedown', function() {
+    document.body.classList.remove('keyboard-nav');
+  });
+
+  // Random color accent on page load for extra fun (optional subtle variation)
+  const accentColors = [
+    { surface: '#FFE566', alt: '#FF6B9D' },
+    { surface: '#7DF9FF', alt: '#FF6B9D' },
+    { surface: '#BFFF00', alt: '#FF6B9D' },
+    { surface: '#FF9F43', alt: '#7DF9FF' },
+    { surface: '#FF6B9D', alt: '#FFE566' }
+  ];
+
+  // Uncomment to enable random accent colors on each page load:
+  // const randomAccent = accentColors[Math.floor(Math.random() * accentColors.length)];
+  // document.documentElement.style.setProperty('--color-surface', randomAccent.surface);
 
 })();

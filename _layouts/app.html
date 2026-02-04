@@ -13,21 +13,19 @@ layout: default
 
           <div class="app-hero-actions">
             <a href="{{ page.app_store_link }}" class="app-download-button" target="_blank" rel="noopener">
-              <picture>
-                <source srcset="/assets/white.svg" media="(prefers-color-scheme: dark)">
-                <img src="/assets/black.svg" alt="Download on the App Store">
-              </picture>
+              <span class="download-text">Download</span>
+              <span class="download-arrow">&darr;</span>
             </a>
           </div>
 
           <dl class="app-meta">
             <div class="app-meta-item">
-              <dt class="eyebrow">Platform</dt>
+              <dt class="meta-label">Platform</dt>
               <dd>{{ page.platform }}</dd>
             </div>
             <div class="app-meta-item">
-              <dt class="eyebrow">Built with</dt>
-              <dd>{{ page.tech_stack | join: ", " }}</dd>
+              <dt class="meta-label">Built with</dt>
+              <dd>{{ page.tech_stack | join: " + " }}</dd>
             </div>
           </dl>
         </div>
@@ -56,8 +54,21 @@ layout: default
 .app-hero {
   padding: var(--space-12) 0;
   background: var(--color-surface);
-  border-radius: var(--border-radius-lg);
-  margin-bottom: var(--space-16);
+  border: var(--border-width) solid var(--color-border);
+  margin: 0 var(--space-6) var(--space-16);
+  box-shadow: var(--shadow-xl);
+  position: relative;
+}
+
+.app-hero::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 2px dashed var(--color-border);
+  pointer-events: none;
 }
 
 .app-hero-grid {
@@ -68,19 +79,21 @@ layout: default
 }
 
 .app-title {
-  font-size: clamp(40px, 5vw, 56px);
+  font-size: clamp(48px, 7vw, 80px);
   font-weight: 700;
-  margin-bottom: var(--space-2);
-  line-height: 1.07143;
-  letter-spacing: -0.025em;
+  margin-bottom: var(--space-3);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
 }
 
 .app-tagline {
-  font-size: 21px;
-  color: var(--color-text-secondary);
-  line-height: 1.381;
+  font-size: 22px;
+  color: var(--color-text-primary);
+  line-height: 1.4;
   letter-spacing: -0.01em;
   margin-bottom: var(--space-8);
+  font-weight: 500;
 }
 
 .app-hero-actions {
@@ -88,43 +101,71 @@ layout: default
 }
 
 .app-download-button {
-  display: inline-block;
-  transition: opacity var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 16px 32px;
+  background: var(--color-text-primary);
+  color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-fast);
 }
 
 .app-download-button:hover {
-  opacity: 0.8;
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-xl);
+  color: var(--color-bg);
 }
 
-.app-download-button img {
-  height: 48px;
-  width: auto;
-  display: block;
-  border-radius: 0;
+.app-download-button:active {
+  transform: translate(0, 0);
+  box-shadow: var(--shadow-sm);
+}
+
+.download-arrow {
+  font-size: 24px;
+  transition: transform var(--transition-fast);
+}
+
+.app-download-button:hover .download-arrow {
+  transform: translateY(4px);
 }
 
 .app-meta {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-6);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
   margin: 0;
   padding-top: var(--space-6);
-  border-top: 0.5px solid var(--color-border-light);
+  border-top: var(--border-width) solid var(--color-border);
 }
 
 .app-meta-item {
   margin: 0;
+  padding: var(--space-4);
+  background: var(--color-surface-elevated);
+  border: 2px solid var(--color-border);
 }
 
-.app-meta dt {
+.meta-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-tertiary);
   margin-bottom: var(--space-1);
 }
 
 .app-meta dd {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--color-text-primary);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
@@ -135,33 +176,50 @@ layout: default
 }
 
 .app-hero-icon {
-  width: 120px;
-  height: 120px;
-  border-radius: 28px;
+  width: 140px;
+  height: 140px;
   overflow: hidden;
-  background: clear;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  background: var(--color-surface-elevated);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-hero-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border: none;
+  box-shadow: none;
 }
 
 .app-hero-icon-etch {
   background: transparent;
+  border: none;
   box-shadow: none;
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
+}
+
+.app-hero-icon-etch img {
+  border: none;
+  box-shadow: none;
 }
 
 /* Content Sections */
 .app-content h2 {
-  font-size: 28px;
-  font-weight: 600;
+  font-size: 32px;
+  font-weight: 700;
   margin: var(--space-16) 0 var(--space-6);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  padding: var(--space-4);
+  background: var(--color-surface-blue);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
 }
 
 .app-content h2:first-child {
@@ -169,18 +227,22 @@ layout: default
 }
 
 .app-content h3 {
-  font-size: 21px;
-  font-weight: 600;
+  font-size: 24px;
+  font-weight: 700;
   margin: var(--space-8) 0 var(--space-3);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  border-left: 6px solid var(--color-surface-alt);
+  padding-left: var(--space-4);
 }
 
 .app-content p {
-  font-size: 17px;
-  line-height: 1.47059;
-  letter-spacing: -0.022em;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   color: var(--color-text-primary);
   margin-bottom: var(--space-4);
+  font-weight: 500;
 }
 
 .app-content ul {
@@ -189,49 +251,99 @@ layout: default
 }
 
 .app-content li {
-  font-size: 17px;
-  line-height: 1.47059;
-  letter-spacing: -0.022em;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   margin-bottom: var(--space-2);
+  font-weight: 500;
 }
 
 .app-content a {
   color: var(--color-accent);
+  font-weight: 600;
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.app-content a:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
 }
 
 /* Feature Grid */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-6);
+  gap: var(--space-5);
   margin: var(--space-8) 0;
 }
 
 .feature-card {
   background: var(--color-surface-elevated);
-  border: 0.5px solid var(--color-border-light);
-  border-radius: var(--border-radius);
+  border: var(--border-width) solid var(--color-border);
   padding: var(--space-6);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
+}
+
+.feature-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature-card:nth-child(1) {
+  border-top: 6px solid var(--color-surface);
+}
+
+.feature-card:nth-child(2) {
+  border-top: 6px solid var(--color-surface-alt);
+}
+
+.feature-card:nth-child(3) {
+  border-top: 6px solid var(--color-surface-blue);
+}
+
+.feature-card:nth-child(4) {
+  border-top: 6px solid var(--color-surface-green);
 }
 
 .feature-card h3 {
   margin-top: 0;
   margin-bottom: var(--space-2);
+  border-left: none;
+  padding-left: 0;
 }
 
 .feature-card p {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--color-text-secondary);
 }
 
 /* Callout Box */
 .callout {
-  background: var(--color-surface-elevated);
-  border: 0.5px solid var(--color-border-light);
-  border-radius: var(--border-radius);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
   padding: var(--space-6);
   margin: var(--space-6) 0;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.callout::before {
+  content: '!';
+  position: absolute;
+  top: -16px;
+  left: 20px;
+  font-size: 28px;
+  font-weight: 700;
+  background: var(--color-surface-alt);
+  color: var(--color-text-primary);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-border);
 }
 
 .callout p {
@@ -249,7 +361,7 @@ layout: default
 /* Screenshot Strip */
 .screenshot-strip {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-5);
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding: var(--space-4) 0;
@@ -258,21 +370,21 @@ layout: default
 }
 
 .screenshot-strip::-webkit-scrollbar {
-  height: 8px;
+  height: 12px;
 }
 
 .screenshot-strip::-webkit-scrollbar-track {
-  background: var(--color-surface);
-  border-radius: 4px;
+  background: var(--color-bg);
+  border: 2px solid var(--color-border);
 }
 
 .screenshot-strip::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
 }
 
 .screenshot-strip::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-tertiary);
+  background: var(--color-surface-alt);
 }
 
 .screenshot-card {
@@ -285,15 +397,8 @@ layout: default
 .screenshot-card img {
   width: 100%;
   height: auto;
-  border-radius: var(--border-radius);
-  border: 0.5px solid var(--color-border-light);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-@media (prefers-color-scheme: dark) {
-  .screenshot-card img {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--shadow-md);
 }
 
 /* Stack Cards - Flashcard Stack Design */
@@ -306,14 +411,14 @@ layout: default
 
 .stack-card {
   position: relative;
-  height: 180px;
+  height: 200px;
   cursor: pointer;
-  transition: transform var(--transition-base);
+  transition: transform var(--transition-fast);
   text-decoration: none;
 }
 
 .stack-card:hover {
-  transform: translateY(-2px);
+  transform: translate(-4px, -4px);
 }
 
 .stack-card-stack {
@@ -331,11 +436,9 @@ layout: default
   left: 12%;
   right: 12%;
   bottom: 20px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-sm);
+  background: var(--color-surface-blue);
+  border: var(--border-width) solid var(--color-border);
   z-index: 1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 /* Second card in stack (middle) */
@@ -346,11 +449,9 @@ layout: default
   left: 6%;
   right: 6%;
   bottom: 12px;
-  background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--border-radius-sm);
+  background: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
   z-index: 2;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 /* Front card */
@@ -361,19 +462,18 @@ layout: default
   right: 0;
   bottom: 0;
   background: var(--color-surface-elevated);
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--border-radius-sm);
+  border: var(--border-width) solid var(--color-border);
   padding: var(--space-3);
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow var(--transition-base);
+  box-shadow: var(--shadow-md);
+  transition: box-shadow var(--transition-fast);
   z-index: 3;
   overflow: hidden;
 }
 
 .stack-card:hover .stack-card-front {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-xl);
 }
 
 .stack-card-header {
@@ -384,23 +484,25 @@ layout: default
 }
 
 .stack-card-count {
-  font-size: 16px;
+  font-size: 14px;
+  font-family: var(--font-mono);
   color: var(--color-text-tertiary) !important;
   margin: 0;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1;
 }
 
 .stack-card-download-icon {
   color: var(--color-text-tertiary);
-  font-size: 16px;
-  transition: color var(--transition-fast), transform var(--transition-fast);
+  font-size: 18px;
+  transition: all var(--transition-fast);
   line-height: 1;
+  font-family: var(--font-mono);
 }
 
 .stack-card:hover .stack-card-download-icon {
-  color: var(--color-accent);
-  transform: translateY(2px);
+  color: var(--color-surface-alt);
+  transform: translateY(4px);
 }
 
 .stack-card-content {
@@ -414,11 +516,12 @@ layout: default
 
 .stack-card-title {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-primary);
   margin: 0;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
   line-height: 1.25;
+  text-transform: uppercase;
 }
 
 .stack-card-loading {
@@ -429,26 +532,19 @@ layout: default
   content: '...';
 }
 
-@media (prefers-color-scheme: dark) {
-  .stack-card-front {
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-  }
-
-  .stack-card:hover .stack-card-front {
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
-  }
-
-  .stack-card-stack::before {
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .stack-card-stack::after {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
-}
-
 /* Responsive */
 @media (max-width: 768px) {
+  .app-hero {
+    margin: 0 var(--space-4) var(--space-12);
+  }
+
+  .app-hero::before {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+  }
+
   .app-hero-grid {
     grid-template-columns: 1fr;
     gap: var(--space-8);
@@ -461,12 +557,16 @@ layout: default
   .app-hero-icon {
     width: 100px;
     height: 100px;
-    border-radius: 24px;
   }
 
   .app-hero-icon-etch {
     width: 120px;
     height: 120px;
+  }
+
+  .app-download-button {
+    padding: 14px 24px;
+    font-size: 16px;
   }
 
   .feature-grid {
@@ -475,7 +575,7 @@ layout: default
 
   .app-meta {
     grid-template-columns: 1fr;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
 
   .stack-grid {
@@ -483,7 +583,7 @@ layout: default
   }
 
   .stack-card {
-    height: 160px;
+    height: 180px;
   }
 
   .stack-card-title {
@@ -491,11 +591,7 @@ layout: default
   }
 
   .stack-card-count {
-    font-size: 14px;
-  }
-
-  .stack-card-download-icon {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 </style>
