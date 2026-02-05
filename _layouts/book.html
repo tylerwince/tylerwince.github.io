@@ -46,7 +46,6 @@ layout: default
     padding: var(--space-10) var(--space-6) var(--space-20);
     font-family: var(--font-sans);
     color: var(--color-ink);
-    background: var(--color-bg);
   }
 
   .book-hero {
@@ -56,28 +55,42 @@ layout: default
     position: relative;
   }
 
+  .book-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-neon-purple), var(--color-neon-pink));
+    box-shadow: var(--glow-purple);
+  }
+
   .book-label {
-    font-family: var(--font-handwritten);
-    font-size: 1.25rem;
-    color: var(--color-accent);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-neon-pink);
     display: block;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
   }
 
   .book-hero h1 {
     margin: 0;
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 2.75rem);
-    letter-spacing: -0.025em;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+    letter-spacing: 0.04em;
+    font-weight: 800;
     line-height: 1.15;
+    text-transform: uppercase;
   }
 
   .book-author {
     margin: var(--space-3) 0 0;
     color: var(--color-ink-faded);
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-style: italic;
   }
 
@@ -90,12 +103,14 @@ layout: default
   }
 
   .meta-item {
-    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
     color: var(--color-ink-faded);
   }
 
   .meta-rating {
-    color: var(--color-gold);
+    color: var(--color-neon-pink);
+    text-shadow: var(--glow-pink);
     letter-spacing: 0.05em;
   }
 
@@ -104,7 +119,12 @@ layout: default
     padding: var(--space-1) var(--space-3);
     border-radius: var(--border-radius);
     font-weight: 500;
-    color: var(--color-ink-light);
+    color: var(--color-accent);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .book-body {
@@ -116,24 +136,25 @@ layout: default
     padding: var(--space-6);
     background: var(--color-surface);
     border-radius: var(--border-radius-lg);
-    border-left: 3px solid var(--color-gold);
+    border-left: 3px solid var(--color-neon-purple);
+    box-shadow: inset 0 0 20px rgba(179, 71, 234, 0.05);
     position: relative;
   }
 
   .takeaway-label {
     display: block;
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-ink-faded);
+    letter-spacing: 0.12em;
+    color: var(--color-neon-purple);
     margin-bottom: var(--space-3);
   }
 
   .book-takeaway p {
     margin: 0;
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     color: var(--color-ink);
     font-style: italic;
@@ -148,12 +169,12 @@ layout: default
   .book-content blockquote {
     margin: var(--space-8) 0;
     padding: var(--space-5) var(--space-6);
-    background: var(--color-surface);
-    border-left: 3px solid var(--color-gold);
+    background: rgba(179, 71, 234, 0.06);
+    border-left: 3px solid var(--color-neon-purple);
     border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
-    font-family: var(--font-serif);
     font-style: italic;
     position: relative;
+    box-shadow: inset 0 0 20px rgba(179, 71, 234, 0.03);
   }
 
   .book-content blockquote::before {
@@ -161,12 +182,12 @@ layout: default
     position: absolute;
     top: -6px;
     left: var(--space-4);
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     font-size: 2.5rem;
-    font-weight: 600;
-    color: var(--color-gold-light);
+    font-weight: 800;
+    color: var(--color-neon-purple);
     line-height: 1;
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   .book-content blockquote p {
@@ -177,7 +198,7 @@ layout: default
   .book-content blockquote .page-number {
     display: block;
     font-size: 0.85rem;
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     color: var(--color-ink-faded);
     font-style: normal;
     font-weight: 500;
@@ -190,11 +211,12 @@ layout: default
   .book-content h6 {
     margin-top: var(--space-10);
     margin-bottom: var(--space-4);
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--color-ink);
-    letter-spacing: -0.01em;
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     position: relative;
     padding-left: var(--space-6);
   }
@@ -211,21 +233,23 @@ layout: default
     transform: translateY(-50%);
     width: 3px;
     height: 60%;
-    background: var(--color-gold);
+    background: linear-gradient(180deg, var(--color-accent), var(--color-neon-pink));
     border-radius: 2px;
+    box-shadow: var(--glow-cyan);
   }
 
   .book-content a {
     color: var(--color-accent);
     font-weight: 500;
     text-decoration: underline;
-    text-decoration-color: var(--color-accent-wash);
+    text-decoration-color: rgba(0, 240, 255, 0.3);
     text-underline-offset: 3px;
     transition: all var(--transition-fast);
   }
 
   .book-content a:hover {
     text-decoration-color: var(--color-accent);
+    text-shadow: var(--glow-cyan);
   }
 
   .book-content p {
@@ -248,7 +272,7 @@ layout: default
     }
 
     .book-hero h1 {
-      font-size: 1.75rem;
+      font-size: 1.5rem;
     }
 
     .book-body {
@@ -260,7 +284,7 @@ layout: default
     }
 
     .book-takeaway p {
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
   }
 </style>
