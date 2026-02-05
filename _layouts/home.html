@@ -4,7 +4,7 @@ layout: default
 
 <div class="home-page">
   <header class="home-header content-wrapper animate-in">
-    <span class="home-greeting">Welcome</span>
+    <span class="home-greeting">// WELCOME</span>
     <h1 class="home-title">{{ site.description }}</h1>
   </header>
 
@@ -109,7 +109,7 @@ layout: default
 </div>
 
 <style>
-/* Home Page - Ink & Paper Style */
+/* Home Page - Synthwave Style */
 .home-page {
   padding: var(--space-4) 0 var(--space-8);
 }
@@ -120,21 +120,28 @@ layout: default
 }
 
 .home-greeting {
-  font-family: var(--font-handwritten);
-  font-size: 1.5rem;
-  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-neon-pink);
   display: block;
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
+  letter-spacing: 0.1em;
+  text-shadow: var(--glow-pink);
 }
 
 .home-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
   margin-bottom: 0;
   line-height: 1.15;
-  letter-spacing: -0.025em;
+  letter-spacing: 0.04em;
   max-width: 700px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-neon-pink), var(--color-neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .home-content {
@@ -162,16 +169,19 @@ layout: default
 }
 
 .section-link {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 600;
   color: var(--color-ink-faded);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   transition: all var(--transition-fast);
   flex-shrink: 0;
 }
 
 .section-link:hover {
   color: var(--color-accent);
+  text-shadow: var(--glow-cyan);
 }
 
 /* Apps Grid */
@@ -187,29 +197,48 @@ layout: default
   gap: var(--space-4);
   align-items: center;
   padding: var(--space-5);
-  background: var(--color-paper);
+  background: var(--color-surface);
   border-radius: var(--border-radius-lg);
   color: var(--color-ink);
   transition: all var(--transition-base);
-  box-shadow: var(--shadow-paper);
-  border: 1px solid transparent;
+  border: 1px solid var(--color-ink-ghost);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-neon-pink));
+  opacity: 0;
+  transition: opacity var(--transition-fast);
 }
 
 .app-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-lifted);
-  border-color: var(--color-ink-ghost);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.app-card:hover::before {
+  opacity: 1;
 }
 
 .app-card-arrow {
   font-size: 1.25rem;
   color: var(--color-ink-ghost);
   transition: all var(--transition-fast);
+  font-family: var(--font-mono);
 }
 
 .app-card:hover .app-card-arrow {
   transform: translateX(4px);
   color: var(--color-accent);
+  text-shadow: var(--glow-cyan);
 }
 
 .app-card-icon {
@@ -226,14 +255,19 @@ layout: default
   object-fit: cover;
   border-radius: 12px;
   box-shadow: none;
+  border: none;
 }
 
 .app-card-content h3 {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
   margin: 0 0 4px 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  background: none;
+  -webkit-text-fill-color: unset;
 }
 
 .app-card-content p {
@@ -277,6 +311,7 @@ layout: default
 
 .post-item a:hover h4 {
   color: var(--color-accent);
+  text-shadow: var(--glow-cyan);
 }
 
 .post-item-content {
@@ -285,23 +320,28 @@ layout: default
 }
 
 .post-item time {
-  font-size: 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
   color: var(--color-ink-faded);
   margin-bottom: var(--space-1);
 }
 
 .post-item h4 {
-  font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 var(--space-2) 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   line-height: 1.3;
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
+  color: var(--color-ink);
+  background: none;
+  -webkit-text-fill-color: unset;
 }
 
 .post-item p {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--color-ink-faded);
   line-height: 1.5;
   margin: 0;
@@ -311,6 +351,18 @@ layout: default
 .reading-section {
   padding-left: var(--space-8);
   border-left: 1px solid var(--color-ink-ghost);
+  position: relative;
+}
+
+.reading-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(180deg, var(--color-neon-purple), transparent);
+  box-shadow: var(--glow-purple);
 }
 
 .reading-list {
@@ -328,11 +380,12 @@ layout: default
 .reading-marker {
   width: 8px;
   height: 8px;
-  background: var(--color-gold);
+  background: var(--color-neon-pink);
   border-radius: 50%;
   margin-top: 8px;
   flex-shrink: 0;
   position: relative;
+  box-shadow: var(--glow-pink);
 }
 
 .reading-marker::after {
@@ -341,31 +394,36 @@ layout: default
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
-  border: 1px solid var(--color-gold-light);
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-neon-pink);
   border-radius: 50%;
-  opacity: 0.5;
+  opacity: 0.3;
+  animation: neonPulse 2s ease-in-out infinite;
 }
 
 .reading-content h4 {
-  font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
   font-weight: 600;
   margin: 0 0 var(--space-1) 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   line-height: 1.3;
+  color: var(--color-ink);
+  background: none;
+  -webkit-text-fill-color: unset;
 }
 
 .reading-author {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--color-ink-faded);
   margin: 0;
   font-style: italic;
 }
 
 .reading-empty {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 /* Responsive */
@@ -375,7 +433,7 @@ layout: default
   }
 
   .home-greeting {
-    font-size: 1.25rem;
+    font-size: 0.85rem;
   }
 
   .apps-grid {
@@ -402,6 +460,10 @@ layout: default
     border-left: none;
     padding-top: var(--space-4);
     border-top: 1px solid var(--color-ink-ghost);
+  }
+
+  .reading-section::before {
+    display: none;
   }
 
   .section-line {

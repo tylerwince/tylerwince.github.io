@@ -1,12 +1,12 @@
 /**
- * Tyler Wince - INK & PAPER Theme JavaScript
- * Subtle, elegant interactions for a refined experience.
+ * Tyler Wince - SYNTHWAVE Theme JavaScript
+ * Neon interactions for a retro-futuristic experience.
  */
 
 (function() {
   'use strict';
 
-  // Header scroll effect - subtle fade in background
+  // Header scroll effect - neon border fade in
   const header = document.getElementById('site-header');
   let ticking = false;
 
@@ -32,7 +32,6 @@
 
   navLinks.forEach(link => {
     const linkPath = link.getAttribute('href');
-    // Remove trailing slash for comparison
     const normalizedCurrent = currentPath.replace(/\/$/, '') || '/';
     const normalizedLink = linkPath.replace(/\/$/, '') || '/';
 
@@ -100,12 +99,14 @@
       try {
         await navigator.clipboard.writeText(code);
         button.textContent = 'Copied';
-        button.style.background = 'var(--color-gold)';
-        button.style.color = 'var(--color-ink)';
+        button.style.background = 'var(--color-accent)';
+        button.style.color = 'var(--color-bg)';
+        button.style.boxShadow = 'var(--glow-cyan)';
         setTimeout(() => {
           button.textContent = 'Copy';
           button.style.background = '';
           button.style.color = '';
+          button.style.boxShadow = '';
         }, 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
@@ -120,7 +121,7 @@
     pre.appendChild(button);
   });
 
-  // Subtle hover lift effect for cards
+  // Neon hover glow effect for cards
   document.querySelectorAll('.app-card, .card, .feature-card').forEach(card => {
     card.addEventListener('mouseenter', function() {
       this.style.transform = 'translateY(-3px)';
@@ -148,9 +149,11 @@
     .keyboard-nav *:focus {
       outline: 2px solid var(--color-accent);
       outline-offset: 2px;
+      box-shadow: var(--glow-cyan);
     }
     .keyboard-nav *:focus:not(:focus-visible) {
       outline: none;
+      box-shadow: none;
     }
   `;
   document.head.appendChild(style);
