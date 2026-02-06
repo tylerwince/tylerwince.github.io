@@ -1,12 +1,12 @@
 /**
- * Tyler Wince - SYNTHWAVE Theme JavaScript
- * Neon interactions for a retro-futuristic experience.
+ * Tyler Wince - DESERT DUSK Theme JavaScript
+ * Warm, editorial interactions.
  */
 
 (function() {
   'use strict';
 
-  // Header scroll effect - neon border fade in
+  // Header scroll effect - warm background fade in
   const header = document.getElementById('site-header');
   let ticking = false;
 
@@ -58,7 +58,7 @@
     });
   });
 
-  // Add animation classes on scroll for elements with data-animate
+  // Scroll-triggered fade-in for elements with data-animate
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -100,13 +100,13 @@
         await navigator.clipboard.writeText(code);
         button.textContent = 'Copied';
         button.style.background = 'var(--color-accent)';
-        button.style.color = 'var(--color-bg)';
-        button.style.boxShadow = 'var(--glow-cyan)';
+        button.style.color = '#FFFFFF';
+        button.style.borderColor = 'var(--color-accent)';
         setTimeout(() => {
           button.textContent = 'Copy';
           button.style.background = '';
           button.style.color = '';
-          button.style.boxShadow = '';
+          button.style.borderColor = '';
         }, 2000);
       } catch (err) {
         console.error('Failed to copy:', err);
@@ -121,18 +121,7 @@
     pre.appendChild(button);
   });
 
-  // Neon hover glow effect for cards
-  document.querySelectorAll('.app-card, .card, .feature-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-3px)';
-    });
-
-    card.addEventListener('mouseleave', function() {
-      this.style.transform = '';
-    });
-  });
-
-  // Keyboard navigation enhancement - visible focus states
+  // Keyboard navigation enhancement
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Tab') {
       document.body.classList.add('keyboard-nav');
@@ -149,11 +138,9 @@
     .keyboard-nav *:focus {
       outline: 2px solid var(--color-accent);
       outline-offset: 2px;
-      box-shadow: var(--glow-cyan);
     }
     .keyboard-nav *:focus:not(:focus-visible) {
       outline: none;
-      box-shadow: none;
     }
   `;
   document.head.appendChild(style);
