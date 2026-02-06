@@ -52,39 +52,27 @@ layout: default
     margin-bottom: var(--space-12);
     padding-bottom: var(--space-8);
     border-bottom: 1px solid var(--color-ink-ghost);
-    position: relative;
-  }
-
-  .book-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-neon-purple), var(--color-neon-pink));
-    box-shadow: var(--glow-purple);
   }
 
   .book-label {
-    font-family: var(--font-display);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--color-neon-pink);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--color-teal);
     display: block;
     margin-bottom: var(--space-3);
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
   }
 
   .book-hero h1 {
     margin: 0;
     font-family: var(--font-display);
     font-size: clamp(1.75rem, 4.5vw, 2.5rem);
-    letter-spacing: 0.04em;
+    letter-spacing: -0.02em;
     font-weight: 800;
     line-height: 1.15;
-    text-transform: uppercase;
+    color: var(--color-ink);
   }
 
   .book-author {
@@ -104,26 +92,24 @@ layout: default
 
   .meta-item {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-ink-faded);
   }
 
   .meta-rating {
-    color: var(--color-neon-pink);
-    text-shadow: var(--glow-pink);
+    color: var(--color-gold);
     letter-spacing: 0.05em;
   }
 
   .meta-genre {
-    background: var(--color-surface);
+    background: var(--color-accent-wash);
     padding: var(--space-1) var(--space-3);
-    border-radius: var(--border-radius);
+    border-radius: 100px;
     font-weight: 500;
     color: var(--color-accent);
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    font-family: var(--font-display);
-    font-size: 0.65rem;
-    letter-spacing: 0.08em;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
@@ -134,21 +120,19 @@ layout: default
 
   .book-takeaway {
     padding: var(--space-6);
-    background: var(--color-surface);
+    background: var(--color-teal-wash);
     border-radius: var(--border-radius-lg);
-    border-left: 3px solid var(--color-neon-purple);
-    box-shadow: inset 0 0 20px rgba(179, 71, 234, 0.05);
-    position: relative;
+    border-left: 3px solid var(--color-teal);
   }
 
   .takeaway-label {
     display: block;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 0.65rem;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-neon-purple);
+    letter-spacing: 0.1em;
+    color: var(--color-teal);
     margin-bottom: var(--space-3);
   }
 
@@ -161,7 +145,7 @@ layout: default
   }
 
   .book-content {
-    line-height: 1.8;
+    line-height: 1.85;
     font-size: 1.05rem;
     color: var(--color-ink-light);
   }
@@ -169,25 +153,22 @@ layout: default
   .book-content blockquote {
     margin: var(--space-8) 0;
     padding: var(--space-5) var(--space-6);
-    background: rgba(179, 71, 234, 0.06);
-    border-left: 3px solid var(--color-neon-purple);
+    background: var(--color-teal-wash);
+    border-left: 3px solid var(--color-teal);
     border-radius: 0 var(--border-radius-lg) var(--border-radius-lg) 0;
     font-style: italic;
-    position: relative;
-    box-shadow: inset 0 0 20px rgba(179, 71, 234, 0.03);
   }
 
   .book-content blockquote::before {
-    content: '"';
-    position: absolute;
-    top: -6px;
-    left: var(--space-4);
+    content: '\201C';
+    display: block;
     font-family: var(--font-display);
     font-size: 2.5rem;
     font-weight: 800;
-    color: var(--color-neon-purple);
-    line-height: 1;
-    opacity: 0.5;
+    color: var(--color-teal);
+    line-height: 0.8;
+    margin-bottom: var(--space-2);
+    opacity: 0.35;
   }
 
   .book-content blockquote p {
@@ -197,7 +178,7 @@ layout: default
 
   .book-content blockquote .page-number {
     display: block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-family: var(--font-mono);
     color: var(--color-ink-faded);
     font-style: normal;
@@ -212,44 +193,23 @@ layout: default
     margin-top: var(--space-10);
     margin-bottom: var(--space-4);
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: var(--color-accent);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    position: relative;
-    padding-left: var(--space-6);
-  }
-
-  .book-content h2::before,
-  .book-content h3::before,
-  .book-content h4::before,
-  .book-content h5::before,
-  .book-content h6::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 60%;
-    background: linear-gradient(180deg, var(--color-accent), var(--color-neon-pink));
-    border-radius: 2px;
-    box-shadow: var(--glow-cyan);
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
   }
 
   .book-content a {
     color: var(--color-accent);
     font-weight: 500;
     text-decoration: underline;
-    text-decoration-color: rgba(0, 240, 255, 0.3);
+    text-decoration-color: rgba(196, 77, 24, 0.3);
     text-underline-offset: 3px;
-    transition: all var(--transition-fast);
+    transition: text-decoration-color var(--transition-fast);
   }
 
   .book-content a:hover {
     text-decoration-color: var(--color-accent);
-    text-shadow: var(--glow-cyan);
   }
 
   .book-content p {
