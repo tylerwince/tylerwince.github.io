@@ -1,0 +1,105 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Check if redesign commit
+        id: check
+        run: |
+          MSG=$(git log -1 --format=%s)
+          if [[ "$MSG" == Redesign:* ]]; then
+            echo "is_redesign=true" >> "$GITHUB_OUTPUT"
+            # Extract theme name from "Redesign: THEME NAME theme"
+            THEME=$(echo "$MSG" | sed 's/^Redesign: //' | sed 's/ theme$//')
+            echo "theme=${THEME}" >> "$GITHUB_OUTPUT"
+            echo "date=$(date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+            echo "commit=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_redesign=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Build archive snapshot
+        if: steps.check.outputs.is_redesign == 'true'
+        run: |
+          chmod +x scripts/build_snapshot.sh
+          # Find the most recent existing archive date to use as prev_date
+          PREV_DATE=""
+          if [ -f _data/archive.yml ]; then
+            PREV_DATE=$(grep 'date:' _data/archive.yml | tail -1 | sed 's/.*"\(.*\)"/\1/')
+          fi
+          bash scripts/build_snapshot.sh \
+            "${{ steps.check.outputs.commit }}" \
+            "${{ steps.check.outputs.date }}" \
+            "${{ steps.check.outputs.theme }}" \
+            "${PREV_DATE}" \
+            ""
+
+      - name: Update archive manifest
+        if: steps.check.outputs.is_redesign == 'true'
+        run: |
+          DATE="${{ steps.check.outputs.date }}"
+          THEME="${{ steps.check.outputs.theme }}"
+          COMMIT="${{ steps.check.outputs.commit }}"
+
+          # Build description from theme name
+          DESC="${THEME} — designed $(date +%B\ %d,\ %Y)"
+
+          # Append new entry to archive.yml
+          cat >> _data/archive.yml <<EOF
+
+          - date: "${DATE}"
+            theme: "${THEME}"
+            description: "${DESC}"
+            commit: "${COMMIT}"
+          EOF
+
+      - name: Build Jekyll site
+        run: JEKYLL_ENV=production bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Commit archive back to repo
+        if: steps.check.outputs.is_redesign == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add archive/ _data/archive.yml
+          git commit -m "Archive: ${{ steps.check.outputs.theme }} (${{ steps.check.outputs.date }}) [skip ci]" || echo "Nothing to commit"
+          git push
