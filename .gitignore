@@ -7,3 +7,4 @@ _drafts
 Gemfile.lock
 
 **/.DS_Store
+scripts/backfill_archive.sh
