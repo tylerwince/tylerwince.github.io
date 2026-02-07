@@ -109,8 +109,8 @@ find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
     /Browse past designs/d
   }; }' "${htmlfile}"
 
-  # Simpler approach: just hide it with CSS injected into head
-  sed -i '' 's|</head>|<style>.daily-design-badge{display:none!important;}</style></head>|' "${htmlfile}"
+  # Hide badge and offset sticky header to account for fixed banner
+  sed -i '' 's|</head>|<style>.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}</style></head>|' "${htmlfile}"
 done
 
 # Clean up worktree
