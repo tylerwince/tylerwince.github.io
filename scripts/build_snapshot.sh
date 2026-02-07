@@ -71,46 +71,31 @@ done
 # Build prev/next nav elements
 PREV_NAV=""
 if [ -n "${PREV_DATE}" ]; then
-  PREV_NAV='<a href="/archive/'"${PREV_DATE}"'/" style="color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;">← '"${PREV_DATE}"'</a>'
+  PREV_NAV='<a href="/archive/'"${PREV_DATE}"'/">← '"${PREV_DATE}"'</a>'
 else
   PREV_NAV='<span style="visibility:hidden;">← 0000-00-00</span>'
 fi
 
 NEXT_NAV=""
 if [ -n "${NEXT_DATE}" ]; then
-  NEXT_NAV='<a href="/archive/'"${NEXT_DATE}"'/" style="color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;">'"${NEXT_DATE}"' →</a>'
+  NEXT_NAV='<a href="/archive/'"${NEXT_DATE}"'/">'"${NEXT_DATE}"' →</a>'
 else
   NEXT_NAV='<span style="visibility:hidden;">0000-00-00 →</span>'
 fi
 
-# Inject time-travel banner into every HTML file
+# Build banner HTML and CSS
 echo "==> Injecting time-travel banner..."
-BANNER_HTML='<!-- Time Travel Banner --><div style="position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;">'"${PREV_NAV}"'<span>'"${THEME}"' · '"${DATE}"' · <a href="/archive/" style="color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;">Back to today'\''s site →</a></span>'"${NEXT_NAV}"'</div><div style="height:32px;"></div>'
+
+BANNER_CSS='<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;}.archive-banner a{color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;}.archive-banner a:hover{color:rgba(255,255,255,0.8);}.archive-banner-spacer{height:32px;}.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}@media(max-width:768px){.archive-banner{font-size:10px;padding:6px 10px;flex-wrap:wrap;justify-content:center;gap:4px;}.archive-banner-spacer{height:auto;}}@media(max-width:480px){.archive-banner{flex-direction:column;gap:2px;padding:6px 8px;}.archive-banner-spacer{height:auto;}}</style>'
+
+BANNER_HTML='<!-- Time Travel Banner --><div class="archive-banner">'"${PREV_NAV}"'<span>'"${THEME}"' · '"${DATE}"' · <a href="/archive/">Back to today'\''s site →</a></span>'"${NEXT_NAV}"'</div><div class="archive-banner-spacer"></div>'
 
 find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
+  # Inject CSS into head
+  sed -i '' "s|</head>|${BANNER_CSS}</head>|" "${htmlfile}"
   # Insert banner right after <body> tag
   sed -i '' "s|<body>|<body>${BANNER_HTML}|g" "${htmlfile}"
   sed -i '' 's|<body |<body data-archived="true" |g' "${htmlfile}"
-done
-
-# Remove the "TODAY'S LOOK" badge from archived pages
-echo "==> Removing TODAY'S LOOK badge..."
-find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
-  # Remove the daily-design-badge div block
-  sed -i '' '/<div class="daily-design-badge">/,/<\/div>/{ /<div class="daily-design-badge">/,/<\/div>/{
-    /daily-design-badge/d
-    /daily-design-label/d
-    /daily-design-tooltip/d
-    /TODAY'\''S LOOK/d
-    /restyled by AI/d
-    /bold.*weird/d
-    /tooltip-cta/d
-    /Come back tomorrow/d
-    /Browse past designs/d
-  }; }' "${htmlfile}"
-
-  # Hide badge and offset sticky header to account for fixed banner
-  sed -i '' 's|</head>|<style>.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}</style></head>|' "${htmlfile}"
 done
 
 # Clean up worktree
