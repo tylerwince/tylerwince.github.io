@@ -2,7 +2,7 @@
   <div>
     {% if content_size > 0 %}
       <a href="{{ include.book.url }}" rel="nofollow noopener" class="book-title-link">
-        {{ include.book.title }} <span class="note-icon">📝</span>
+        {{ include.book.title }} <span class="note-icon">&#9670;</span>
       </a>
     {% else %}
       <span class="book-title">{{ include.book.title }}</span>
@@ -17,7 +17,7 @@
         <span class="currently-reading">Started: {{ include.book.date | date: "%b %d" }}</span>
       {% elsif include.book.stars %}
         {% assign star_count = include.book.stars %}
-        <span class="stars">{% for i in (1..star_count) %}★{% endfor %}</span>
+        <span class="stars">{% for i in (1..star_count) %}&#9733;{% endfor %}</span>
       {% endif %}
     {% endif %}
   </span>

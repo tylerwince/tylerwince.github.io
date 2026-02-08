@@ -53,7 +53,7 @@ done
 echo "==> Fixing hardcoded paths in HTML..."
 find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
   # Fix href="/path/" links (but not /assets/ or /archive/ or external URLs)
-  sed -i '' \
+  sed -i \
     -e "s|href=\"/apps/|href=\"${BASEURL}/apps/|g" \
     -e "s|href=\"/writing/|href=\"${BASEURL}/writing/|g" \
     -e "s|href=\"/reading/|href=\"${BASEURL}/reading/|g" \
@@ -65,7 +65,7 @@ find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
     "${htmlfile}"
 
   # Fix the site title link (href="/" but not href="/a..." etc.)
-  sed -i '' "s|href=\"/\"|href=\"${BASEURL}/\"|g" "${htmlfile}"
+  sed -i "s|href=\"/\"|href=\"${BASEURL}/\"|g" "${htmlfile}"
 done
 
 # Build prev/next nav elements
@@ -92,10 +92,10 @@ BANNER_HTML='<!-- Time Travel Banner --><div class="archive-banner">'"${PREV_NAV
 
 find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
   # Inject CSS into head
-  sed -i '' "s|</head>|${BANNER_CSS}</head>|" "${htmlfile}"
+  sed -i "s|</head>|${BANNER_CSS}</head>|" "${htmlfile}"
   # Insert banner right after <body> tag
-  sed -i '' "s|<body>|<body>${BANNER_HTML}|g" "${htmlfile}"
-  sed -i '' 's|<body |<body data-archived="true" |g' "${htmlfile}"
+  sed -i "s|<body>|<body>${BANNER_HTML}|g" "${htmlfile}"
+  sed -i 's|<body |<body data-archived="true" |g' "${htmlfile}"
 done
 
 # Clean up worktree

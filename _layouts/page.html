@@ -25,15 +25,28 @@ layout: default
 
 .page-header {
   margin-bottom: var(--space-12);
+  position: relative;
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-ink-ghost);
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: var(--space-6);
+  width: 100px;
+  height: 1px;
+  background: var(--color-accent);
 }
 
 .page-title {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: var(--space-4);
   line-height: 1.1;
-  letter-spacing: 0.06em;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
