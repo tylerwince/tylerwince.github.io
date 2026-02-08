@@ -1,12 +1,12 @@
 /**
- * Tyler Wince - DESERT DUSK Theme JavaScript
- * Warm, editorial interactions.
+ * Tyler Wince - BLUEPRINT Theme JavaScript
+ * Technical. Precise. Architectural.
  */
 
 (function() {
   'use strict';
 
-  // Header scroll effect - warm background fade in
+  // Header scroll effect
   const header = document.getElementById('site-header');
   let ticking = false;
 
@@ -99,8 +99,8 @@
       try {
         await navigator.clipboard.writeText(code);
         button.textContent = 'Copied';
-        button.style.background = 'var(--color-accent)';
-        button.style.color = '#FFFFFF';
+        button.style.background = 'rgba(79, 195, 247, 0.15)';
+        button.style.color = 'var(--color-accent)';
         button.style.borderColor = 'var(--color-accent)';
         setTimeout(() => {
           button.textContent = 'Copy';

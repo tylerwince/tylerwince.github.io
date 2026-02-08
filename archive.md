@@ -50,7 +50,7 @@ description: Browse every past design of this site.
 .archive-grid {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .archive-card {
@@ -58,18 +58,35 @@ description: Browse every past design of this site.
   grid-template-columns: 80px 1fr auto;
   gap: var(--space-6);
   align-items: center;
-  padding: var(--space-6);
-  background: var(--color-surface, #fff);
-  border-radius: var(--border-radius-lg, 12px);
-  color: var(--color-ink, #1a1a1a);
+  padding: var(--space-5) var(--space-6);
+  background: transparent;
+  border: 1px solid var(--color-ink-ghost, rgba(104, 137, 168, 0.25));
+  color: var(--color-ink, #D4E4F7);
   transition: all var(--transition-base, 350ms ease);
-  box-shadow: var(--shadow-paper, 0 1px 3px rgba(0,0,0,0.06));
+  position: relative;
+}
+
+.archive-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-accent, #4FC3F7);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--transition-base, 350ms ease);
 }
 
 .archive-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lifted, 0 4px 16px rgba(0,0,0,0.08));
-  color: var(--color-ink, #1a1a1a);
+  border-color: var(--color-dimension, rgba(79, 195, 247, 0.4));
+  background: rgba(79, 195, 247, 0.03);
+  color: var(--color-ink, #D4E4F7);
+}
+
+.archive-card:hover::before {
+  transform: scaleY(1);
 }
 
 .archive-card-date {
@@ -80,46 +97,49 @@ description: Browse every past design of this site.
 }
 
 .archive-day {
-  font-family: var(--font-display, Georgia, serif);
+  font-family: var(--font-display, 'Archivo', sans-serif);
   font-size: 2rem;
-  font-weight: 800;
-  color: var(--color-accent, #333);
+  font-weight: 900;
+  color: var(--color-accent, #4FC3F7);
 }
 
 .archive-month {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--color-ink-faded, #888);
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: var(--color-ink-faded, #6889A8);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   margin-top: var(--space-1, 4px);
 }
 
 .archive-card-content h3 {
-  font-family: var(--font-display, Georgia, serif);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--font-display, 'Archivo', sans-serif);
+  font-size: 1rem;
+  font-weight: 800;
   margin: 0 0 var(--space-1, 4px) 0;
-  color: var(--color-ink, #1a1a1a);
+  color: var(--color-ink, #D4E4F7);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .archive-card-content p {
-  font-size: 0.9rem;
-  color: var(--color-ink-faded, #888);
+  font-size: 0.85rem;
+  color: var(--color-ink-faded, #6889A8);
   margin: 0;
   line-height: 1.4;
 }
 
 .archive-card-arrow {
-  font-size: 1.25rem;
-  color: var(--color-ink-ghost, #ddd);
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 1rem;
+  color: var(--color-ink-ghost, rgba(104, 137, 168, 0.25));
   transition: all var(--transition-fast, 200ms ease);
 }
 
 .archive-card:hover .archive-card-arrow {
   transform: translateX(4px);
-  color: var(--color-accent, #333);
+  color: var(--color-accent, #4FC3F7);
 }
 
 @media (max-width: 768px) {
@@ -134,11 +154,11 @@ description: Browse every past design of this site.
   }
 
   .archive-month {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
   }
 
   .archive-card-content h3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 }
 </style>
