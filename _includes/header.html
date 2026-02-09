@@ -1,10 +1,16 @@
 <header class="site-header" id="site-header">
   <div class="header-inner">
-    <h1 class="site-title">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    </h1>
+    <div class="sidebar-top">
+      <h1 class="site-title">
+        <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      </h1>
+      <div class="sidebar-classification">
+        <span class="classification-stamp">Case File</span>
+      </div>
+    </div>
 
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main navigation">
+      <div class="nav-label">Index</div>
       <ul>
         {% for nav_page_name in site.header_pages %}
           {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
@@ -19,5 +25,14 @@
         {% endfor %}
       </ul>
     </nav>
+
+    <div class="sidebar-stamp">
+      <span>Est. 2020</span>
+    </div>
   </div>
 </header>
+
+<button class="nav-drawer-toggle" id="nav-drawer-toggle" aria-label="Open navigation">
+  Dossier
+</button>
+<div class="nav-drawer-overlay" id="nav-drawer-overlay"></div>

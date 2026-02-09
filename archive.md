@@ -12,19 +12,19 @@ description: Browse every past design of this site.
     <p class="lead">This site is restyled by AI every day. Here's every look it's ever had.</p>
   </header>
 
-  <div class="archive-grid">
+  <div class="archive-list">
     {% assign sorted = site.data.archive | sort: "date" | reverse %}
     {% for entry in sorted %}
-    <a href="/archive/{{ entry.date }}/" class="archive-card">
-      <div class="archive-card-date">
+    <a href="/archive/{{ entry.date }}/" class="archive-entry">
+      <div class="archive-entry-number">
         <span class="archive-day">{{ entry.date | date: "%d" }}</span>
         <span class="archive-month">{{ entry.date | date: "%b %Y" }}</span>
       </div>
-      <div class="archive-card-content">
+      <div class="archive-entry-content">
         <h3>{{ entry.theme }}</h3>
         <p>{{ entry.description }}</p>
       </div>
-      <span class="archive-card-arrow">&rarr;</span>
+      <span class="archive-entry-arrow">&rarr;</span>
     </a>
     {% endfor %}
   </div>
@@ -47,49 +47,50 @@ description: Browse every past design of this site.
   max-width: 500px;
 }
 
-.archive-grid {
+.archive-list {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-.archive-card {
+.archive-entry {
   display: grid;
   grid-template-columns: 80px 1fr auto;
   gap: var(--space-6);
   align-items: center;
   padding: var(--space-5) var(--space-6);
-  background: transparent;
-  border: 1px solid var(--color-ink-ghost, rgba(104, 137, 168, 0.25));
-  color: var(--color-ink, #D4E4F7);
+  background: var(--color-bg-light, rgba(35, 30, 24, 0.9));
+  border: 1px solid var(--color-ink-ghost, rgba(138, 126, 104, 0.3));
+  color: var(--color-ink, #e8dcc4);
   transition: all var(--transition-base, 350ms ease);
   position: relative;
 }
 
-.archive-card::before {
+.archive-entry::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
-  width: 2px;
-  background: var(--color-accent, #4FC3F7);
+  width: 3px;
+  background: var(--color-accent, #c45c3c);
   transform: scaleY(0);
   transform-origin: top;
   transition: transform var(--transition-base, 350ms ease);
 }
 
-.archive-card:hover {
-  border-color: var(--color-dimension, rgba(79, 195, 247, 0.4));
-  background: rgba(79, 195, 247, 0.03);
-  color: var(--color-ink, #D4E4F7);
+.archive-entry:hover {
+  border-color: var(--color-accent, #c45c3c);
+  background: rgba(196, 92, 60, 0.04);
+  color: var(--color-ink, #e8dcc4);
+  transform: translateX(4px);
 }
 
-.archive-card:hover::before {
+.archive-entry:hover::before {
   transform: scaleY(1);
 }
 
-.archive-card-date {
+.archive-entry-number {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,53 +98,51 @@ description: Browse every past design of this site.
 }
 
 .archive-day {
-  font-family: var(--font-display, 'Archivo', sans-serif);
+  font-family: var(--font-display, 'Playfair Display', serif);
   font-size: 2rem;
-  font-weight: 900;
-  color: var(--color-accent, #4FC3F7);
+  font-weight: 800;
+  color: var(--color-accent, #c45c3c);
 }
 
 .archive-month {
-  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-family: var(--font-typewriter, 'Courier Prime', monospace);
   font-size: 0.65rem;
-  font-weight: 400;
-  color: var(--color-ink-faded, #6889A8);
+  color: var(--color-ink-faded, #8a7e68);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   margin-top: var(--space-1, 4px);
 }
 
-.archive-card-content h3 {
-  font-family: var(--font-display, 'Archivo', sans-serif);
+.archive-entry-content h3 {
+  font-family: var(--font-display, 'Playfair Display', serif);
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0 0 var(--space-1, 4px) 0;
-  color: var(--color-ink, #D4E4F7);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  color: var(--color-ink, #e8dcc4);
+  letter-spacing: 0;
 }
 
-.archive-card-content p {
+.archive-entry-content p {
   font-size: 0.85rem;
-  color: var(--color-ink-faded, #6889A8);
+  color: var(--color-ink-faded, #8a7e68);
   margin: 0;
   line-height: 1.4;
 }
 
-.archive-card-arrow {
-  font-family: var(--font-mono, 'Space Mono', monospace);
+.archive-entry-arrow {
+  font-family: var(--font-typewriter, 'Courier Prime', monospace);
   font-size: 1rem;
-  color: var(--color-ink-ghost, rgba(104, 137, 168, 0.25));
+  color: var(--color-ink-ghost, rgba(138, 126, 104, 0.3));
   transition: all var(--transition-fast, 200ms ease);
 }
 
-.archive-card:hover .archive-card-arrow {
+.archive-entry:hover .archive-entry-arrow {
   transform: translateX(4px);
-  color: var(--color-accent, #4FC3F7);
+  color: var(--color-accent, #c45c3c);
 }
 
 @media (max-width: 768px) {
-  .archive-card {
+  .archive-entry {
     grid-template-columns: 60px 1fr auto;
     gap: var(--space-4, 16px);
     padding: var(--space-4, 16px);
@@ -157,7 +156,7 @@ description: Browse every past design of this site.
     font-size: 0.6rem;
   }
 
-  .archive-card-content h3 {
+  .archive-entry-content h3 {
     font-size: 0.9rem;
   }
 }

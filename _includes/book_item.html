@@ -1,5 +1,5 @@
 <li class="book-item{% if include.book.stars == 5 %} five-star-book{% endif %}{% assign content_size = include.book.content | strip | size %}{% if content_size > 0 %} has-notes{% endif %}"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div>
+  <div class="book-item-main">
     {% if content_size > 0 %}
       <a href="{{ include.book.url }}" rel="nofollow noopener" class="book-title-link">
         {{ include.book.title }} <span class="note-icon">&#9670;</span>
