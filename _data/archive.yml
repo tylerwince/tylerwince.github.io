@@ -27,3 +27,8 @@
   theme: "NOIR DOSSIER"
   description: "Classified case files, sidebar filing cabinet, typewriter noir."
   commit: ""
+
+- date: "2026-02-09"
+  theme: "NOIR DOSSIER"
+  description: "NOIR DOSSIER — designed February 09, 2026"
+  commit: "bca0390"
