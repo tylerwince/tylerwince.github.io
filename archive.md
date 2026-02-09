@@ -13,8 +13,10 @@ description: Browse every past design of this site.
   </header>
 
   <div class="archive-list">
+    {% assign today = site.time | date: "%Y-%m-%d" %}
     {% assign sorted = site.data.archive | sort: "date" | reverse %}
     {% for entry in sorted %}
+    {% if entry.date == today %}{% continue %}{% endif %}
     <a href="/archive/{{ entry.date }}/" class="archive-entry">
       <div class="archive-entry-number">
         <span class="archive-day">{{ entry.date | date: "%d" }}</span>
