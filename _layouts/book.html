@@ -4,7 +4,10 @@ layout: default
 
 <article class="book-details">
   <div class="book-hero">
-    <span class="book-label">Book</span>
+    <div class="book-classification">
+      <span class="classification-label">File Type</span>
+      <span class="classification-type">Book Review</span>
+    </div>
     <h1>{{ page.title }}</h1>
     <p class="book-author">by {{ page.author }}</p>
     <div class="book-meta">
@@ -28,7 +31,7 @@ layout: default
   <div class="book-body">
     {% if page.takeaway %}
       <div class="book-takeaway">
-        <span class="takeaway-label">Why it mattered</span>
+        <span class="takeaway-label">Key Finding</span>
         <p>{{ page.takeaway }}</p>
       </div>
     {% endif %}
@@ -51,42 +54,43 @@ layout: default
   .book-hero {
     margin-bottom: var(--space-12);
     padding-bottom: var(--space-8);
-    border-bottom: 1px solid var(--color-ink-ghost);
+    border-bottom: 1px dashed var(--color-ink-ghost);
     position: relative;
   }
 
-  .book-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    width: 80px;
-    height: 1px;
-    background: var(--color-accent);
+  .book-classification {
+    display: flex;
+    gap: var(--space-3);
+    align-items: center;
+    margin-bottom: var(--space-4);
   }
 
-  .book-label {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 400;
+  .book-classification .classification-label {
+    font-family: var(--font-typewriter);
+    font-size: 0.6rem;
     color: var(--color-accent);
-    display: inline-block;
-    margin-bottom: var(--space-3);
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    border: 1px solid var(--color-accent);
-    padding: var(--space-1) var(--space-3);
+    letter-spacing: 0.15em;
+    background: rgba(196, 92, 60, 0.1);
+    padding: 2px 8px;
+  }
+
+  .book-classification .classification-type {
+    font-family: var(--font-typewriter);
+    font-size: 0.6rem;
+    color: var(--color-ink-faded);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   .book-hero h1 {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
-    letter-spacing: -0.02em;
-    font-weight: 900;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: -0.01em;
+    font-weight: 800;
     line-height: 1.15;
     color: var(--color-ink);
-    text-transform: uppercase;
   }
 
   .book-author {
@@ -105,7 +109,7 @@ layout: default
   }
 
   .meta-item {
-    font-family: var(--font-mono);
+    font-family: var(--font-typewriter);
     font-size: 0.8rem;
     color: var(--color-ink-faded);
   }
@@ -116,14 +120,14 @@ layout: default
   }
 
   .meta-genre {
-    background: rgba(79, 195, 247, 0.08);
+    background: rgba(196, 92, 60, 0.08);
     padding: var(--space-1) var(--space-3);
-    border: 1px solid rgba(79, 195, 247, 0.2);
+    border: 1px solid rgba(196, 92, 60, 0.2);
     font-weight: 400;
     color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
+    font-family: var(--font-typewriter);
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
   }
 
@@ -134,17 +138,16 @@ layout: default
 
   .book-takeaway {
     padding: var(--space-6);
-    background: rgba(79, 195, 247, 0.04);
-    border-left: 2px solid var(--color-accent);
+    background: rgba(196, 92, 60, 0.04);
+    border-left: 3px solid var(--color-accent);
   }
 
   .takeaway-label {
     display: block;
-    font-family: var(--font-mono);
+    font-family: var(--font-typewriter);
     font-size: 0.6rem;
-    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.12em;
     color: var(--color-accent);
     margin-bottom: var(--space-3);
   }
@@ -166,23 +169,23 @@ layout: default
   .book-content blockquote {
     margin: var(--space-8) 0;
     padding: var(--space-5) var(--space-6);
-    background: rgba(79, 195, 247, 0.04);
-    border-left: 2px solid var(--color-accent);
+    background: rgba(196, 92, 60, 0.04);
+    border-left: 3px solid var(--color-accent);
     font-style: italic;
   }
 
   .book-content blockquote::before {
-    content: 'QUOTE';
+    content: 'TESTIMONY';
     display: block;
-    font-family: var(--font-mono);
+    font-family: var(--font-typewriter);
     font-size: 0.55rem;
-    font-weight: 700;
+    font-weight: 400;
     font-style: normal;
     color: var(--color-accent);
     letter-spacing: 0.15em;
     text-transform: uppercase;
     margin-bottom: var(--space-2);
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
   .book-content blockquote p {
@@ -193,7 +196,7 @@ layout: default
   .book-content blockquote .page-number {
     display: block;
     font-size: 0.8rem;
-    font-family: var(--font-mono);
+    font-family: var(--font-typewriter);
     color: var(--color-ink-faded);
     font-style: normal;
     font-weight: 400;
@@ -208,17 +211,16 @@ layout: default
     margin-bottom: var(--space-4);
     font-family: var(--font-display);
     font-size: 1.15rem;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--color-ink);
     letter-spacing: -0.01em;
-    text-transform: uppercase;
   }
 
   .book-content a {
     color: var(--color-accent);
     font-weight: 500;
     text-decoration: underline;
-    text-decoration-color: rgba(79, 195, 247, 0.3);
+    text-decoration-color: rgba(196, 92, 60, 0.3);
     text-underline-offset: 3px;
     transition: text-decoration-color var(--transition-fast);
   }
@@ -247,7 +249,7 @@ layout: default
     }
 
     .book-hero h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
 
     .book-body {

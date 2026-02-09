@@ -1,30 +1,33 @@
 /**
- * Tyler Wince - BLUEPRINT Theme JavaScript
- * Technical. Precise. Architectural.
+ * Tyler Wince - NOIR DOSSIER Theme JavaScript
+ * Classified. Analog. After Hours.
  */
 
 (function() {
   'use strict';
 
-  // Header scroll effect
+  // Mobile drawer navigation
   const header = document.getElementById('site-header');
-  let ticking = false;
+  const drawerToggle = document.getElementById('nav-drawer-toggle');
+  const drawerOverlay = document.getElementById('nav-drawer-overlay');
 
-  function updateHeader() {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-    ticking = false;
+  if (drawerToggle && header) {
+    drawerToggle.addEventListener('click', function() {
+      const isOpen = header.classList.toggle('drawer-open');
+      if (drawerOverlay) {
+        drawerOverlay.classList.toggle('visible', isOpen);
+      }
+      drawerToggle.textContent = isOpen ? 'Close' : 'Dossier';
+    });
   }
 
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(updateHeader);
-      ticking = true;
-    }
-  });
+  if (drawerOverlay && header) {
+    drawerOverlay.addEventListener('click', function() {
+      header.classList.remove('drawer-open');
+      drawerOverlay.classList.remove('visible');
+      if (drawerToggle) drawerToggle.textContent = 'Dossier';
+    });
+  }
 
   // Highlight active nav link based on current page
   const currentPath = window.location.pathname;
@@ -99,8 +102,8 @@
       try {
         await navigator.clipboard.writeText(code);
         button.textContent = 'Copied';
-        button.style.background = 'rgba(79, 195, 247, 0.15)';
-        button.style.color = 'var(--color-accent)';
+        button.style.background = 'var(--color-accent)';
+        button.style.color = '#fff';
         button.style.borderColor = 'var(--color-accent)';
         setTimeout(() => {
           button.textContent = 'Copy';
@@ -130,6 +133,15 @@
 
   document.addEventListener('mousedown', function() {
     document.body.classList.remove('keyboard-nav');
+  });
+
+  // Close mobile drawer on escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && header && header.classList.contains('drawer-open')) {
+      header.classList.remove('drawer-open');
+      if (drawerOverlay) drawerOverlay.classList.remove('visible');
+      if (drawerToggle) drawerToggle.textContent = 'Dossier';
+    }
   });
 
   // Add focus styles for keyboard navigation

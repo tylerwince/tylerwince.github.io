@@ -18,8 +18,12 @@
   description: "Warm earth tones, editorial elegance."
   commit: "a179fe4c"
 
-
 - date: "2026-02-08"
   theme: "BLUEPRINT"
   description: "BLUEPRINT — designed February 08, 2026"
   commit: "6598866"
+
+- date: "2026-02-09"
+  theme: "NOIR DOSSIER"
+  description: "Classified case files, sidebar filing cabinet, typewriter noir."
+  commit: ""

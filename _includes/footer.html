@@ -1,8 +1,11 @@
 <footer class="site-footer">
   <div class="footer-inner">
-    <p class="footer-text">
-      &copy; {{ 'now' | date: "%Y" }} {{ site.title }} // Building with intention
-    </p>
+    <div class="footer-left">
+      <p class="footer-text">
+        &copy; {{ 'now' | date: "%Y" }} {{ site.title }}
+      </p>
+      <p class="footer-tagline">Building with intention.</p>
+    </div>
 
     <ul class="footer-links">
       {% if site.email %}
