@@ -30,8 +30,6 @@
   </div>
 
   <div class="site-container">
-    {% include header.html %}
-
     <div class="site-main-wrapper">
       <main class="site-main animate-in">
         {{ content }}
@@ -40,6 +38,8 @@
       {% include footer.html %}
     </div>
   </div>
+
+  {% include header.html %}
 
   <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>

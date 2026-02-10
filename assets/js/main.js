@@ -1,31 +1,43 @@
 /**
- * Tyler Wince - NOIR DOSSIER Theme JavaScript
- * Classified. Analog. After Hours.
+ * Tyler Wince - TROPICAL RESORT Theme JavaScript
+ * Lush. Warm. Paradise Found.
  */
 
 (function() {
   'use strict';
 
-  // Mobile drawer navigation
+  // Floating nav: hide on scroll down, show on scroll up
   const header = document.getElementById('site-header');
-  const drawerToggle = document.getElementById('nav-drawer-toggle');
-  const drawerOverlay = document.getElementById('nav-drawer-overlay');
+  let lastScrollY = window.scrollY;
+  let ticking = false;
 
-  if (drawerToggle && header) {
-    drawerToggle.addEventListener('click', function() {
-      const isOpen = header.classList.toggle('drawer-open');
-      if (drawerOverlay) {
-        drawerOverlay.classList.toggle('visible', isOpen);
+  function updateNav() {
+    const currentScrollY = window.scrollY;
+    const isMobile = window.innerWidth <= 768;
+
+    if (header) {
+      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        header.style.transform = isMobile ? 'translateY(120%)' : 'translateX(-50%) translateY(120%)';
+      } else {
+        header.style.transform = isMobile ? 'translateY(0)' : 'translateX(-50%) translateY(0)';
       }
-      drawerToggle.textContent = isOpen ? 'Close' : 'Dossier';
-    });
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
   }
 
-  if (drawerOverlay && header) {
-    drawerOverlay.addEventListener('click', function() {
-      header.classList.remove('drawer-open');
-      drawerOverlay.classList.remove('visible');
-      if (drawerToggle) drawerToggle.textContent = 'Dossier';
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateNav);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Set transition after initial load to prevent flash
+  if (header) {
+    requestAnimationFrame(() => {
+      header.style.transition = 'transform 400ms cubic-bezier(0.33, 1, 0.68, 1), box-shadow 350ms ease';
     });
   }
 
@@ -80,6 +92,19 @@
     observer.observe(el);
   });
 
+  // Bento tiles: stagger entrance animation
+  const bentoTiles = document.querySelectorAll('.bento-tile');
+  bentoTiles.forEach((tile, i) => {
+    tile.style.opacity = '0';
+    tile.style.transform = 'translateY(20px)';
+    tile.style.transition = `opacity 600ms ease ${i * 120}ms, transform 600ms cubic-bezier(0.33, 1, 0.68, 1) ${i * 120}ms`;
+
+    setTimeout(() => {
+      tile.style.opacity = '1';
+      tile.style.transform = 'translateY(0)';
+    }, 100);
+  });
+
   // External links open in new tab
   document.querySelectorAll('a[href^="http"]').forEach(link => {
     const url = new URL(link.href);
@@ -101,10 +126,10 @@
       const code = block.textContent;
       try {
         await navigator.clipboard.writeText(code);
-        button.textContent = 'Copied';
-        button.style.background = 'var(--color-accent)';
+        button.textContent = 'Copied!';
+        button.style.background = 'var(--color-green)';
         button.style.color = '#fff';
-        button.style.borderColor = 'var(--color-accent)';
+        button.style.borderColor = 'var(--color-green)';
         setTimeout(() => {
           button.textContent = 'Copy';
           button.style.background = '';
@@ -135,20 +160,11 @@
     document.body.classList.remove('keyboard-nav');
   });
 
-  // Close mobile drawer on escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && header && header.classList.contains('drawer-open')) {
-      header.classList.remove('drawer-open');
-      if (drawerOverlay) drawerOverlay.classList.remove('visible');
-      if (drawerToggle) drawerToggle.textContent = 'Dossier';
-    }
-  });
-
   // Add focus styles for keyboard navigation
   const style = document.createElement('style');
   style.textContent = `
     .keyboard-nav *:focus {
-      outline: 2px solid var(--color-accent);
+      outline: 2px solid var(--color-green);
       outline-offset: 2px;
     }
     .keyboard-nav *:focus:not(:focus-visible) {
@@ -156,5 +172,19 @@
     }
   `;
   document.head.appendChild(style);
+
+  // Mobile nav: update scroll behavior for edge-to-edge nav
+  function updateMobileNav() {
+    if (window.innerWidth <= 768 && header) {
+      // On mobile, use left/right positioning instead of centering
+      header.style.transform = lastScrollY > 200 && lastScrollY > (lastScrollY - 5) ? 'translateY(120%)' : 'translateY(0)';
+    }
+  }
+
+  window.addEventListener('resize', function() {
+    if (!ticking) {
+      requestAnimationFrame(updateMobileNav);
+    }
+  }, { passive: true });
 
 })();

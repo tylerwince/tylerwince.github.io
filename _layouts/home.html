@@ -3,533 +3,510 @@ layout: default
 ---
 
 <div class="home-page">
-  <!-- Case Briefing Header -->
-  <header class="home-header content-wrapper animate-in">
-    <div class="dossier-header">
-      <div class="dossier-stamp-area">
-        <span class="dossier-stamp">Classified</span>
-      </div>
-      <div class="dossier-title-area">
-        <span class="dossier-ref">Case No. 001 // Personal Dossier</span>
-        <h1 class="home-title">{{ site.description }}</h1>
+  <!-- Hero -->
+  <div class="home-hero animate-in">
+    <div class="hero-inner content-wrapper">
+      <div class="hero-badge">Welcome to paradise</div>
+      <h1 class="home-title">{{ site.description }}</h1>
+      <div class="hero-wave">
+        <svg viewBox="0 0 120 8" preserveAspectRatio="none"><path d="M0 4 Q15 0 30 4 Q45 8 60 4 Q75 0 90 4 Q105 8 120 4" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/></svg>
       </div>
     </div>
-    <div class="dossier-rule">
-      <span class="rule-label">Subject File</span>
-    </div>
-  </header>
+  </div>
 
   <div class="home-content content-wrapper animate-in delay-1">
     {{ content }}
 
-  <!-- Evidence Section: Apps -->
-  <section class="dossier-section">
-    <div class="dossier-tab">
-      <span class="tab-label">Evidence A</span>
-      <span class="tab-title">Apps</span>
-    </div>
-    <div class="evidence-files">
-      <a href="/apps/etch/" class="evidence-card">
-        <div class="evidence-number">A-01</div>
-        <div class="evidence-icon">
-          <img src="/assets/etch_logo.png" alt="Etch">
-        </div>
-        <div class="evidence-details">
-          <h3>Etch</h3>
-          <p>Spaced repetition, built like Apple would.</p>
-        </div>
-        <div class="evidence-tag">Active</div>
-      </a>
-      <a href="/apps/little-quotes/" class="evidence-card">
-        <div class="evidence-number">A-02</div>
-        <div class="evidence-icon">
-          <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
-        </div>
-        <div class="evidence-details">
-          <h3>Little Quotes</h3>
-          <p>Capture and share kids' priceless words.</p>
-        </div>
-        <div class="evidence-tag">Active</div>
-      </a>
-      <a href="/apps/waymark/" class="evidence-card">
-        <div class="evidence-number">A-03</div>
-        <div class="evidence-icon">
-          <img src="/assets/waymark_icon.png" alt="Waymark">
-        </div>
-        <div class="evidence-details">
-          <h3>Waymark</h3>
-          <p>Prayer and community, designed with care.</p>
-        </div>
-        <div class="evidence-tag">Active</div>
-      </a>
-    </div>
-  </section>
+    <!-- Bento Grid -->
+    <div class="bento-grid">
 
-  <div class="divider"></div>
+      <!-- Apps: spans 2 columns -->
+      <section class="bento-tile bento-apps">
+        <div class="bento-tile-header">
+          <h2 class="bento-heading">Apps</h2>
+          <span class="bento-label">What I build</span>
+        </div>
+        <div class="destination-cards">
+          <a href="/apps/etch/" class="destination-card">
+            <div class="destination-icon-float">
+              <img src="/assets/etch_logo.png" alt="Etch">
+            </div>
+            <div class="destination-info">
+              <h3>Etch</h3>
+              <p>Spaced repetition, built like Apple would.</p>
+            </div>
+            <span class="destination-arrow">&rarr;</span>
+          </a>
+          <a href="/apps/little-quotes/" class="destination-card">
+            <div class="destination-icon-float">
+              <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
+            </div>
+            <div class="destination-info">
+              <h3>Little Quotes</h3>
+              <p>Capture and share kids' priceless words.</p>
+            </div>
+            <span class="destination-arrow">&rarr;</span>
+          </a>
+          <a href="/apps/waymark/" class="destination-card">
+            <div class="destination-icon-float">
+              <img src="/assets/waymark_icon.png" alt="Waymark">
+            </div>
+            <div class="destination-info">
+              <h3>Waymark</h3>
+              <p>Prayer and community, designed with care.</p>
+            </div>
+            <span class="destination-arrow">&rarr;</span>
+          </a>
+        </div>
+      </section>
 
-  <!-- Case Reports & Surveillance Log -->
-  <div class="dossier-columns">
-    <!-- Case Reports: Writing -->
-    <section class="dossier-section dossier-section-primary">
-      <div class="dossier-tab">
-        <span class="tab-label">Evidence B</span>
-        <span class="tab-title">Case Reports</span>
-        <a href="{{ '/writing/' | relative_url }}" class="tab-link">Full archive &rarr;</a>
-      </div>
-      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 3 %}
-      <div class="case-reports">
-        {% for post in latest_posts %}
-        <article class="case-report">
-          <a href="{{ post.url | relative_url }}">
-            <div class="report-header">
-              <span class="report-number">Report {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+      <!-- Writing: spans 2 columns, 1 row -->
+      <section class="bento-tile bento-writing">
+        <div class="bento-tile-header">
+          <h2 class="bento-heading">Writing</h2>
+          <a href="{{ '/writing/' | relative_url }}" class="bento-more">View all &rarr;</a>
+        </div>
+        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 3 %}
+        <div class="postcard-carousel">
+          {% for post in latest_posts %}
+          <a href="{{ post.url | relative_url }}" class="postcard">
+            <div class="postcard-top">
               <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
             </div>
-            <div class="report-body">
-              <h4>{{ post.title }}</h4>
-              <p>{{ post.description }}</p>
-            </div>
+            <h3 class="postcard-title">{{ post.title }}</h3>
+            <p class="postcard-desc">{{ post.description }}</p>
+            <span class="postcard-read">Read &rarr;</span>
           </a>
-        </article>
-        {% endfor %}
-      </div>
-    </section>
-
-    <!-- Surveillance Log: Reading -->
-    <section class="dossier-section dossier-section-side">
-      <div class="dossier-tab">
-        <span class="tab-label">Evidence C</span>
-        <span class="tab-title">Under Surveillance</span>
-        <a href="{{ '/reading/' | relative_url }}" class="tab-link">Full list &rarr;</a>
-      </div>
-      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-      {% if currently_reading.size > 0 %}
-        <div class="surveillance-log">
-          {% for book in currently_reading limit:2 %}
-          <div class="surveillance-entry">
-            <div class="surveillance-status">
-              <span class="status-dot active"></span>
-              <span class="status-text">In progress</span>
-            </div>
-            <div class="surveillance-details">
-              <h4>{{ book.title }}</h4>
-              <p class="surveillance-author">{{ book.author }}</p>
-            </div>
-          </div>
           {% endfor %}
         </div>
-      {% else %}
-        <div class="surveillance-log">
-          <div class="surveillance-entry surveillance-empty">
-            <div class="surveillance-status">
-              <span class="status-dot"></span>
-              <span class="status-text">Inactive</span>
+      </section>
+
+      <!-- Reading: spans 1 column -->
+      <section class="bento-tile bento-reading">
+        <div class="bento-tile-header">
+          <h2 class="bento-heading">Reading</h2>
+          <a href="{{ '/reading/' | relative_url }}" class="bento-more">View all &rarr;</a>
+        </div>
+        {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+        {% if currently_reading.size > 0 %}
+          <div class="reading-stack">
+            {% for book in currently_reading limit:2 %}
+            <div class="reading-spine">
+              <div class="spine-status"></div>
+              <div class="spine-info">
+                <h4>{{ book.title }}</h4>
+                <p>{{ book.author }}</p>
+              </div>
+              <span class="spine-badge">Now reading</span>
             </div>
-            <div class="surveillance-details">
-              <h4>Between books</h4>
-              <p class="surveillance-author">Check back soon</p>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="reading-stack">
+            <div class="reading-spine reading-spine-empty">
+              <div class="spine-info">
+                <h4>Between books</h4>
+                <p>Check back soon</p>
+              </div>
             </div>
           </div>
-        </div>
-      {% endif %}
-    </section>
+        {% endif %}
+      </section>
+
+    </div>
   </div>
-</div>
 </div>
 
 <style>
-/* Home Page - Noir Dossier */
+/* Home Page - Tropical Resort */
 .home-page {
   padding: 0 0 var(--space-8);
 }
 
-.home-header {
-  margin-bottom: var(--space-8);
+/* Hero */
+.home-hero {
+  background: linear-gradient(180deg, var(--color-bg-accent) 0%, var(--color-bg) 100%);
+  padding-bottom: var(--space-4);
 }
 
-/* Dossier Header */
-.dossier-header {
-  display: flex;
-  gap: var(--space-8);
-  align-items: flex-start;
+.hero-inner {
+  text-align: center;
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-8);
 }
 
-.dossier-stamp-area {
-  flex-shrink: 0;
-  padding-top: var(--space-2);
-}
-
-.dossier-stamp {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  border: 3px solid var(--color-accent);
-  padding: var(--space-2) var(--space-4);
-  transform: rotate(-3deg);
+.hero-badge {
   display: inline-block;
-  opacity: 0.85;
-  animation: stampIn 0.6s var(--ease-out) 0.3s both;
-}
-
-.dossier-ref {
-  font-family: var(--font-typewriter);
-  font-size: 0.75rem;
-  color: var(--color-ink-faded);
-  display: block;
-  margin-bottom: var(--space-3);
-  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-green);
   text-transform: uppercase;
+  letter-spacing: 0.15em;
+  background: var(--color-green-wash);
+  padding: var(--space-1) var(--space-4);
+  border-radius: var(--border-radius-full);
+  margin-bottom: var(--space-6);
 }
 
 .home-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4.5vw, 3rem);
-  font-weight: 800;
-  margin-bottom: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  margin: 0 auto var(--space-6);
   line-height: 1.15;
-  letter-spacing: -0.01em;
-  max-width: 600px;
+  max-width: 700px;
   color: var(--color-ink);
 }
 
-/* Dossier rule */
-.dossier-rule {
-  margin-top: var(--space-8);
-  padding-top: var(--space-3);
-  border-top: 2px solid var(--color-ink-ghost);
-  position: relative;
+.hero-wave {
+  max-width: 120px;
+  margin: 0 auto;
+  color: var(--color-green);
 }
 
-.dossier-rule::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: 0;
-  width: 60px;
-  height: 2px;
-  background: var(--color-accent);
-}
-
-.rule-label {
-  font-family: var(--font-typewriter);
-  font-size: 0.65rem;
-  color: var(--color-ink-faded);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+.hero-wave svg {
+  width: 100%;
+  height: auto;
 }
 
 .home-content {
-  max-width: var(--max-width-content);
+  max-width: var(--max-width-wide);
 }
 
-/* Dossier Section / Tab */
-.dossier-section {
-  margin-bottom: var(--space-12);
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-6);
 }
 
-.dossier-tab {
+.bento-tile {
+  background: var(--color-surface);
+  border-radius: var(--border-radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-ink-ghost);
+  transition: box-shadow var(--transition-base);
+}
+
+.bento-tile:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.bento-tile-header {
   display: flex;
+  justify-content: space-between;
   align-items: baseline;
-  gap: var(--space-4);
   margin-bottom: var(--space-6);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px dashed var(--color-ink-ghost);
 }
 
-.tab-label {
-  font-family: var(--font-typewriter);
-  font-size: 0.65rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  background: rgba(196, 92, 60, 0.1);
-  padding: 2px 8px;
-  flex-shrink: 0;
-}
-
-.tab-title {
+.bento-heading {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 0;
   color: var(--color-ink);
-  letter-spacing: 0;
 }
 
-.tab-link {
-  font-family: var(--font-typewriter);
+.bento-label {
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--color-ink-faded);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-left: auto;
-  flex-shrink: 0;
+  letter-spacing: 0.05em;
+}
+
+.bento-more {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-accent);
   transition: color var(--transition-fast);
 }
 
-.tab-link:hover {
-  color: var(--color-accent);
+.bento-more:hover {
+  color: var(--color-accent-light);
 }
 
-/* Evidence Cards (Apps) */
-.evidence-files {
+/* Apps tile spans 2 columns */
+.bento-apps {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #f0faf2, #faf6ef);
+}
+
+/* Destination Cards (Apps) */
+.destination-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.destination-card {
+  position: relative;
+  background: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  padding: var(--space-8) var(--space-5) var(--space-5);
+  text-align: center;
+  color: var(--color-ink);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-ink-ghost);
+  transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-}
-
-.evidence-card {
-  display: grid;
-  grid-template-columns: 48px 56px 1fr auto;
-  gap: var(--space-4);
   align-items: center;
-  padding: var(--space-4) var(--space-5);
-  background: var(--color-bg-light);
-  border: 1px solid var(--color-ink-ghost);
+}
+
+.destination-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
   color: var(--color-ink);
-  transition: all var(--transition-base);
-  position: relative;
+  border-color: var(--color-green);
 }
 
-.evidence-card:hover {
-  border-color: var(--color-accent);
-  background: rgba(196, 92, 60, 0.04);
-  color: var(--color-ink);
-  transform: translateX(4px);
-}
-
-.evidence-number {
-  font-family: var(--font-typewriter);
-  font-size: 0.72rem;
-  color: var(--color-ink-faded);
-  letter-spacing: 0.05em;
-  text-align: center;
-}
-
-.evidence-icon {
-  width: 48px;
-  height: 48px;
-  flex-shrink: 0;
+.destination-icon-float {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
   overflow: hidden;
-  border-radius: 10px;
+  margin-top: -40px;
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-md);
+  flex-shrink: 0;
 }
 
-.evidence-icon img {
+.destination-icon-float img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 16px;
   box-shadow: none;
   border: none;
 }
 
-.evidence-details h3 {
+.destination-info h3 {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0 0 2px 0;
-  letter-spacing: 0;
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin: 0 0 var(--space-2);
   color: var(--color-ink);
 }
 
-.evidence-details p {
+.destination-info p {
   font-size: 0.85rem;
   color: var(--color-ink-faded);
-  margin: 0;
-  line-height: 1.4;
+  margin: 0 0 var(--space-4);
+  line-height: 1.5;
 }
 
-.evidence-tag {
-  font-family: var(--font-typewriter);
-  font-size: 0.6rem;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border: 1px solid var(--color-gold);
-  padding: 2px 8px;
-  opacity: 0.7;
-  white-space: nowrap;
-}
-
-/* Dossier Columns */
-.dossier-columns {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: var(--space-10);
-}
-
-/* Case Reports (Posts) */
-.case-reports {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.case-report {
-  border-bottom: 1px dashed var(--color-ink-ghost);
-}
-
-.case-report:last-child {
-  border-bottom: none;
-}
-
-.case-report a {
-  display: block;
-  padding: var(--space-5) 0;
-  color: var(--color-ink);
+.destination-arrow {
+  font-size: 0.85rem;
+  color: var(--color-green);
+  font-weight: 600;
+  opacity: 0;
+  transform: translateX(-4px);
   transition: all var(--transition-fast);
 }
 
-.case-report a:hover .report-body h4 {
-  color: var(--color-accent);
+.destination-card:hover .destination-arrow {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.case-report a:hover {
-  padding-left: var(--space-3);
+/* Writing tile */
+.bento-writing {
+  grid-column: 1 / 2;
 }
 
-.report-header {
+/* Postcard Carousel */
+.postcard-carousel {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-4);
+}
+
+.postcard {
+  display: block;
+  padding: var(--space-5);
+  background: var(--color-bg);
+  border-radius: var(--border-radius);
+  color: var(--color-ink);
+  transition: all var(--transition-fast);
+  position: relative;
+  border: 1px solid transparent;
+}
+
+.postcard:hover {
+  background: var(--color-bg-warm);
+  border-color: var(--color-accent-wash);
+  color: var(--color-ink);
+  transform: translateX(4px);
+}
+
+.postcard-top {
   margin-bottom: var(--space-2);
 }
 
-.report-number {
-  font-family: var(--font-typewriter);
-  font-size: 0.65rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  background: rgba(196, 92, 60, 0.1);
-  padding: 1px 6px;
-}
-
-.report-header time {
-  font-family: var(--font-typewriter);
-  font-size: 0.7rem;
+.postcard-top time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--color-ink-faded);
-  letter-spacing: 0.04em;
+  font-weight: 400;
 }
 
-.report-body h4 {
+.postcard-title {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0 0 var(--space-1) 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin: 0 0 var(--space-2);
   line-height: 1.3;
-  transition: color var(--transition-fast);
   color: var(--color-ink);
+  transition: color var(--transition-fast);
 }
 
-.report-body p {
-  font-size: 0.85rem;
+.postcard:hover .postcard-title {
+  color: var(--color-accent);
+}
+
+.postcard-desc {
+  font-size: 0.88rem;
   color: var(--color-ink-faded);
-  line-height: 1.5;
   margin: 0;
+  line-height: 1.5;
 }
 
-/* Surveillance Log (Reading) */
-.dossier-section-side {
-  padding-left: var(--space-8);
-  border-left: 1px dashed var(--color-ink-ghost);
-  position: relative;
+.postcard-read {
+  display: none;
 }
 
-.surveillance-log {
+/* Reading tile */
+.bento-reading {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  background: linear-gradient(180deg, #fef9f0, #faf6ef);
+}
+
+/* Reading Spines */
+.reading-stack {
   display: flex;
   flex-direction: column;
-  gap: var(--space-5);
+  gap: var(--space-4);
 }
 
-.surveillance-entry {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.surveillance-status {
+.reading-spine {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  border-left: 4px solid var(--color-green);
+  box-shadow: var(--shadow-sm);
 }
 
-.status-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--color-ink-ghost);
+.spine-status {
+  width: 8px;
+  height: 8px;
+  background: var(--color-green-light);
   border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.status-dot.active {
-  background: var(--color-gold);
-  box-shadow: 0 0 6px rgba(212, 168, 76, 0.4);
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
 }
 
-.status-text {
-  font-family: var(--font-typewriter);
-  font-size: 0.6rem;
-  color: var(--color-ink-faded);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.spine-info {
+  flex: 1;
+  min-width: 0;
 }
 
-.surveillance-details h4 {
+.spine-info h4 {
   font-family: var(--font-display);
   font-size: 0.95rem;
-  font-weight: 700;
-  margin: 0 0 var(--space-1) 0;
+  font-weight: 400;
+  margin: 0 0 2px;
   line-height: 1.3;
   color: var(--color-ink);
 }
 
-.surveillance-author {
+.spine-info p {
   font-size: 0.8rem;
   color: var(--color-ink-faded);
   margin: 0;
   font-style: italic;
 }
 
-.surveillance-empty {
-  opacity: 0.4;
+.spine-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: var(--color-green);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  background: var(--color-green-wash);
+  padding: 2px 8px;
+  border-radius: var(--border-radius-full);
+}
+
+.reading-spine-empty {
+  border-left-color: var(--color-sand);
+  opacity: 0.6;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .home-header {
-    margin-bottom: var(--space-8);
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
   }
 
-  .dossier-header {
-    flex-direction: column;
-    gap: var(--space-4);
+  .bento-apps {
+    grid-column: 1;
   }
 
-  .evidence-card {
-    grid-template-columns: 44px 1fr auto;
-    padding: var(--space-3);
+  .bento-writing {
+    grid-column: 1;
   }
 
-  .evidence-number {
-    display: none;
+  .bento-reading {
+    grid-column: 1;
+    grid-row: auto;
   }
 
-  .evidence-icon {
-    width: 44px;
-    height: 44px;
-  }
-
-  .dossier-columns {
+  .destination-cards {
     grid-template-columns: 1fr;
     gap: var(--space-8);
   }
 
-  .dossier-section-side {
-    padding-left: 0;
-    border-left: none;
-    padding-top: var(--space-4);
-    border-top: 1px dashed var(--color-ink-ghost);
+  .destination-card {
+    padding-top: var(--space-10);
+  }
+
+  .destination-icon-float {
+    margin-top: -48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-inner {
+    padding-top: var(--space-12);
+    padding-bottom: var(--space-6);
+  }
+
+  .bento-tile {
+    padding: var(--space-5);
+    border-radius: var(--border-radius-lg);
+  }
+
+  .bento-grid {
+    gap: var(--space-4);
+  }
+
+  .spine-badge {
+    display: none;
   }
 }
 </style>
