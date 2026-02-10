@@ -6,20 +6,24 @@ layout: default
   <!-- Hero Section -->
   <section class="app-hero">
     <div class="content-wrapper">
-      <div class="app-dossier-header">
-        <div class="app-hero-icon-wrapper">
-          <div class="app-hero-icon{% if page.title == 'Etch' %} app-hero-icon-etch{% endif %}">
+      <div class="app-hero-layout">
+        <div class="app-hero-icon-area">
+          <div class="app-icon-frame{% if page.title == 'Etch' %} app-icon-etch{% endif %}">
             <img src="{{ page.icon_path }}" alt="{{ page.title }} icon">
           </div>
         </div>
 
         <div class="app-hero-content">
-          <div class="app-classification">
-            <span class="classification-label">Subject</span>
-            <span class="classification-type">Application</span>
-          </div>
+          <div class="app-type-badge">App</div>
           <h1 class="app-title">{{ page.title }}</h1>
           <p class="app-tagline">{{ page.tagline }}</p>
+
+          <div class="app-hero-actions">
+            <a href="{{ page.app_store_link }}" class="app-download-button" target="_blank" rel="noopener">
+              <span class="download-text">Download on the App Store</span>
+              <span class="download-arrow">&darr;</span>
+            </a>
+          </div>
 
           <dl class="app-meta">
             <div class="app-meta-item">
@@ -31,13 +35,6 @@ layout: default
               <dd>{{ page.tech_stack | join: ", " }}</dd>
             </div>
           </dl>
-
-          <div class="app-hero-actions">
-            <a href="{{ page.app_store_link }}" class="app-download-button" target="_blank" rel="noopener">
-              <span class="download-text">Download on the App Store</span>
-              <span class="download-arrow">&darr;</span>
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -51,57 +48,78 @@ layout: default
 
 <style>
 .app-page {
-  padding: var(--space-4) 0;
+  padding: 0;
 }
 
 /* Hero Section */
 .app-hero {
-  padding: var(--space-12) 0;
-  background: transparent;
+  background: linear-gradient(180deg, var(--color-bg-accent) 0%, var(--color-bg) 100%);
+  padding: var(--space-16) 0 var(--space-12);
   margin-bottom: var(--space-10);
-  border-bottom: 1px dashed var(--color-ink-ghost);
-  position: relative;
 }
 
-.app-dossier-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--space-8);
-  align-items: start;
-}
-
-.app-classification {
+.app-hero-layout {
   display: flex;
-  gap: var(--space-3);
-  align-items: center;
+  align-items: flex-start;
+  gap: var(--space-10);
+}
+
+.app-hero-icon-area {
+  flex-shrink: 0;
+}
+
+.app-icon-frame {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
+}
+
+.app-icon-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--border-radius-xl);
+  box-shadow: none;
+  border: none;
+}
+
+.app-icon-etch {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  width: 140px;
+  height: 140px;
+}
+
+.app-icon-etch img {
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.app-type-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--color-green);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: var(--color-green-wash);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--border-radius-full);
   margin-bottom: var(--space-3);
-}
-
-.classification-label {
-  font-family: var(--font-typewriter);
-  font-size: 0.6rem;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  background: rgba(196, 92, 60, 0.1);
-  padding: 2px 8px;
-}
-
-.classification-type {
-  font-family: var(--font-typewriter);
-  font-size: 0.6rem;
-  color: var(--color-ink-faded);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
 }
 
 .app-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
   margin-bottom: var(--space-3);
   line-height: 1.1;
-  letter-spacing: -0.01em;
   color: var(--color-ink);
 }
 
@@ -122,28 +140,25 @@ layout: default
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-6);
-  background: transparent;
-  color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: 0.78rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: var(--border-radius-full);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
   transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
 
 .app-download-button:hover {
-  background: var(--color-accent);
-  color: #fff;
-}
-
-.app-download-button:active {
   background: var(--color-accent-light);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
 .download-arrow {
-  font-size: 1.1rem;
+  font-size: 1rem;
   transition: transform var(--transition-fast);
 }
 
@@ -156,8 +171,7 @@ layout: default
   gap: var(--space-8);
   margin: 0;
   padding-top: var(--space-5);
-  border-top: 1px dashed var(--color-ink-ghost);
-  margin-bottom: var(--space-6);
+  border-top: 1px solid var(--color-ink-ghost);
 }
 
 .app-meta-item {
@@ -165,72 +179,26 @@ layout: default
 }
 
 .app-meta dt {
-  font-family: var(--font-typewriter);
-  font-size: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--color-ink-faded);
   margin-bottom: var(--space-1);
 }
 
 .app-meta dd {
   margin: 0;
-  font-family: var(--font-typewriter);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--color-ink);
-}
-
-.app-hero-icon-wrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: var(--space-2);
-}
-
-.app-hero-icon {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-surface);
-  border: 1px solid var(--color-ink-ghost);
-  box-shadow: var(--shadow-paper);
-}
-
-.app-hero-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-  box-shadow: none;
-  border: none;
-}
-
-.app-hero-icon-etch {
-  background: transparent;
-  border-radius: 0;
-  border: none;
-  width: 120px;
-  height: 120px;
-  box-shadow: none;
-}
-
-.app-hero-icon-etch img {
-  border-radius: 0;
-  box-shadow: none;
-  border: none;
 }
 
 /* Content */
 .app-content h2 {
   font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 400;
   margin: var(--space-16) 0 var(--space-6);
-  letter-spacing: -0.01em;
   color: var(--color-ink);
 }
 
@@ -240,10 +208,9 @@ layout: default
 
 .app-content h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.15rem;
   margin: var(--space-8) 0 var(--space-3);
-  color: var(--color-accent);
+  color: var(--color-green);
 }
 
 .app-content p {
@@ -268,7 +235,7 @@ layout: default
   color: var(--color-accent);
   font-weight: 500;
   text-decoration: underline;
-  text-decoration-color: rgba(196, 92, 60, 0.3);
+  text-decoration-color: rgba(224, 96, 64, 0.3);
   text-underline-offset: 3px;
   transition: text-decoration-color var(--transition-fast);
 }
@@ -281,38 +248,22 @@ layout: default
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-4);
+  gap: var(--space-5);
   margin: var(--space-8) 0;
 }
 
 .feature-card {
-  background: var(--color-bg-light);
+  background: var(--color-surface);
   border: 1px solid var(--color-ink-ghost);
+  border-radius: var(--border-radius-lg);
   padding: var(--space-6);
   transition: all var(--transition-base);
-  position: relative;
-}
-
-.feature-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--transition-base);
 }
 
 .feature-card:hover {
-  border-color: var(--color-ink-faded);
-  background: rgba(196, 92, 60, 0.03);
-}
-
-.feature-card:hover::before {
-  transform: scaleX(1);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-green);
 }
 
 .feature-card h3 {
@@ -328,10 +279,10 @@ layout: default
 
 /* Callout */
 .callout {
-  background: rgba(196, 92, 60, 0.05);
+  background: linear-gradient(135deg, var(--color-green-wash), var(--color-accent-wash));
   padding: var(--space-6);
   margin: var(--space-6) 0;
-  border-left: 3px solid var(--color-accent);
+  border-radius: var(--border-radius);
 }
 
 .callout p {
@@ -358,19 +309,17 @@ layout: default
 }
 
 .screenshot-strip::-webkit-scrollbar {
-  height: 4px;
+  height: 6px;
 }
 
 .screenshot-strip::-webkit-scrollbar-track {
-  background: var(--color-bg-light);
+  background: var(--color-bg-warm);
+  border-radius: var(--border-radius-full);
 }
 
 .screenshot-strip::-webkit-scrollbar-thumb {
-  background: var(--color-ink-ghost);
-}
-
-.screenshot-strip::-webkit-scrollbar-thumb:hover {
-  background: var(--color-ink-faded);
+  background: var(--color-sand);
+  border-radius: var(--border-radius-full);
 }
 
 .screenshot-card {
@@ -383,7 +332,8 @@ layout: default
 .screenshot-card img {
   width: 100%;
   height: auto;
-  border: 1px solid var(--color-ink-ghost);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 /* Stack Cards */
@@ -420,7 +370,8 @@ layout: default
   left: 12%;
   right: 12%;
   bottom: 20px;
-  background: var(--color-bg-light);
+  background: var(--color-bg-warm);
+  border-radius: var(--border-radius);
   border: 1px solid var(--color-ink-ghost);
   z-index: 1;
 }
@@ -433,6 +384,7 @@ layout: default
   right: 6%;
   bottom: 12px;
   background: var(--color-surface);
+  border-radius: var(--border-radius);
   border: 1px solid var(--color-ink-ghost);
   z-index: 2;
 }
@@ -443,7 +395,8 @@ layout: default
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--color-bg-light);
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
   border: 1px solid var(--color-ink-ghost);
   padding: var(--space-3);
   display: flex;
@@ -454,8 +407,8 @@ layout: default
 }
 
 .stack-card:hover .stack-card-front {
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-paper);
+  border-color: var(--color-green);
+  box-shadow: var(--shadow-md);
 }
 
 .stack-card-header {
@@ -467,7 +420,7 @@ layout: default
 
 .stack-card-count {
   font-size: 0.75rem;
-  font-family: var(--font-typewriter);
+  font-family: var(--font-mono);
   color: var(--color-ink-faded) !important;
   margin: 0;
   font-weight: 400;
@@ -498,10 +451,9 @@ layout: default
 .stack-card-title {
   font-family: var(--font-display);
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--color-ink);
   margin: 0;
-  letter-spacing: 0;
   line-height: 1.3;
 }
 
@@ -516,33 +468,28 @@ layout: default
 /* Responsive */
 @media (max-width: 768px) {
   .app-hero {
-    padding: var(--space-8) 0;
-    margin-bottom: var(--space-6);
+    padding: var(--space-10) 0 var(--space-8);
   }
 
-  .app-dossier-header {
-    grid-template-columns: 1fr;
+  .app-hero-layout {
+    flex-direction: column;
     gap: var(--space-6);
   }
 
-  .app-hero-icon-wrapper {
-    justify-content: flex-start;
+  .app-icon-frame {
+    width: 88px;
+    height: 88px;
+    border-radius: var(--border-radius-lg);
   }
 
-  .app-hero-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 16px;
-  }
-
-  .app-hero-icon-etch {
-    width: 96px;
-    height: 96px;
+  .app-icon-etch {
+    width: 100px;
+    height: 100px;
   }
 
   .app-download-button {
+    font-size: 0.8rem;
     padding: var(--space-3) var(--space-5);
-    font-size: 0.72rem;
   }
 
   .feature-grid {

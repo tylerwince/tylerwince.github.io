@@ -1,11 +1,6 @@
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-left">
-      <p class="footer-text">
-        &copy; {{ 'now' | date: "%Y" }} {{ site.title }}
-      </p>
-      <p class="footer-tagline">Building with intention.</p>
-    </div>
+    <p class="footer-tagline">Building with intention.</p>
 
     <ul class="footer-links">
       {% if site.email %}
@@ -22,5 +17,9 @@
       {% endif %}
       <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
     </ul>
+
+    <p class="footer-text">
+      &copy; {{ 'now' | date: "%Y" }} {{ site.title }}
+    </p>
   </div>
 </footer>

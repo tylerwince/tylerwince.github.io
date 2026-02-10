@@ -10,6 +10,7 @@ description: Browse every past design of this site.
     <span class="eyebrow">Time Travel</span>
     <h1>Design Archive</h1>
     <p class="lead">This site is restyled by AI every day. Here's every look it's ever had.</p>
+    <div class="archive-accent"></div>
   </header>
 
   <div class="archive-list">
@@ -18,7 +19,7 @@ description: Browse every past design of this site.
     {% for entry in sorted %}
     {% if entry.date == today %}{% continue %}{% endif %}
     <a href="/archive/{{ entry.date }}/" class="archive-entry">
-      <div class="archive-entry-number">
+      <div class="archive-entry-date">
         <span class="archive-day">{{ entry.date | date: "%d" }}</span>
         <span class="archive-month">{{ entry.date | date: "%b %Y" }}</span>
       </div>
@@ -49,6 +50,14 @@ description: Browse every past design of this site.
   max-width: 500px;
 }
 
+.archive-accent {
+  margin-top: var(--space-6);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-green), var(--color-accent));
+  border-radius: var(--border-radius-full);
+}
+
 .archive-list {
   display: flex;
   flex-direction: column;
@@ -61,38 +70,22 @@ description: Browse every past design of this site.
   gap: var(--space-6);
   align-items: center;
   padding: var(--space-5) var(--space-6);
-  background: var(--color-bg-light, rgba(35, 30, 24, 0.9));
-  border: 1px solid var(--color-ink-ghost, rgba(138, 126, 104, 0.3));
-  color: var(--color-ink, #e8dcc4);
+  background: var(--color-surface, #ffffff);
+  border-radius: var(--border-radius-lg, 20px);
+  border: 1px solid var(--color-ink-ghost, rgba(26, 46, 26, 0.1));
+  color: var(--color-ink, #1a2e1a);
   transition: all var(--transition-base, 350ms ease);
-  position: relative;
-}
-
-.archive-entry::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--color-accent, #c45c3c);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform var(--transition-base, 350ms ease);
+  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.06));
 }
 
 .archive-entry:hover {
-  border-color: var(--color-accent, #c45c3c);
-  background: rgba(196, 92, 60, 0.04);
-  color: var(--color-ink, #e8dcc4);
-  transform: translateX(4px);
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08));
+  color: var(--color-ink, #1a2e1a);
+  transform: translateY(-2px);
+  border-color: var(--color-green, #2d8a4e);
 }
 
-.archive-entry:hover::before {
-  transform: scaleY(1);
-}
-
-.archive-entry-number {
+.archive-entry-date {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,47 +93,45 @@ description: Browse every past design of this site.
 }
 
 .archive-day {
-  font-family: var(--font-display, 'Playfair Display', serif);
+  font-family: var(--font-display, 'DM Serif Display', serif);
   font-size: 2rem;
-  font-weight: 800;
-  color: var(--color-accent, #c45c3c);
+  font-weight: 400;
+  color: var(--color-accent, #e06040);
 }
 
 .archive-month {
-  font-family: var(--font-typewriter, 'Courier Prime', monospace);
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.65rem;
-  color: var(--color-ink-faded, #8a7e68);
+  color: var(--color-ink-faded, #7a9a7a);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-top: var(--space-1, 4px);
 }
 
 .archive-entry-content h3 {
-  font-family: var(--font-display, 'Playfair Display', serif);
-  font-size: 1rem;
-  font-weight: 700;
+  font-family: var(--font-display, 'DM Serif Display', serif);
+  font-size: 1.05rem;
+  font-weight: 400;
   margin: 0 0 var(--space-1, 4px) 0;
-  color: var(--color-ink, #e8dcc4);
-  letter-spacing: 0;
+  color: var(--color-ink, #1a2e1a);
 }
 
 .archive-entry-content p {
   font-size: 0.85rem;
-  color: var(--color-ink-faded, #8a7e68);
+  color: var(--color-ink-faded, #7a9a7a);
   margin: 0;
   line-height: 1.4;
 }
 
 .archive-entry-arrow {
-  font-family: var(--font-typewriter, 'Courier Prime', monospace);
   font-size: 1rem;
-  color: var(--color-ink-ghost, rgba(138, 126, 104, 0.3));
+  color: var(--color-ink-ghost, rgba(26, 46, 26, 0.1));
   transition: all var(--transition-fast, 200ms ease);
 }
 
 .archive-entry:hover .archive-entry-arrow {
   transform: translateX(4px);
-  color: var(--color-accent, #c45c3c);
+  color: var(--color-accent, #e06040);
 }
 
 @media (max-width: 768px) {
@@ -148,6 +139,7 @@ description: Browse every past design of this site.
     grid-template-columns: 60px 1fr auto;
     gap: var(--space-4, 16px);
     padding: var(--space-4, 16px);
+    border-radius: var(--border-radius, 12px);
   }
 
   .archive-day {

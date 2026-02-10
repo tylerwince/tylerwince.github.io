@@ -11,7 +11,7 @@ layout: default
     {% if page.description %}
       <p class="page-description">{{ page.description }}</p>
     {% endif %}
-    <div class="page-header-rule"></div>
+    <div class="page-header-accent"></div>
   </header>
 
   <div class="page-content content-wrapper animate-in animate-in-delay-1">
@@ -21,7 +21,7 @@ layout: default
 
 <style>
 .page {
-  padding: var(--space-4) 0;
+  padding: 0;
 }
 
 .page-header {
@@ -31,35 +31,24 @@ layout: default
 
 .page-title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
-  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 400;
   margin-bottom: var(--space-4);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 .page-description {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--color-ink-faded);
   line-height: 1.5;
-  letter-spacing: 0.01em;
   max-width: 720px;
 }
 
-.page-header-rule {
+.page-header-accent {
   margin-top: var(--space-6);
-  height: 1px;
-  background: var(--color-ink-ghost);
-  position: relative;
-}
-
-.page-header-rule::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 80px;
-  height: 1px;
-  background: var(--color-accent);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-green), var(--color-accent));
+  border-radius: var(--border-radius-full);
 }
 </style>
