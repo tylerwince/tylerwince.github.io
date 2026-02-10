@@ -27,3 +27,8 @@
   theme: "NOIR DOSSIER"
   description: "NOIR DOSSIER — designed February 09, 2026"
   commit: "bca0390"
+
+- date: "2026-02-10"
+  theme: "TROPICAL RESORT"
+  description: "TROPICAL RESORT — designed February 10, 2026"
+  commit: "391b64b"
