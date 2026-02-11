@@ -1,6 +1,9 @@
 <footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-tagline">Building with intention.</p>
+  <div class="footer-terminal">
+    <div class="footer-heading">
+      <p class="footer-kicker">Terminal</p>
+      <p class="footer-tagline">Building with intention.</p>
+    </div>
 
     <ul class="footer-links">
       {% if site.email %}
@@ -18,8 +21,6 @@
       <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
     </ul>
 
-    <p class="footer-text">
-      &copy; {{ 'now' | date: "%Y" }} {{ site.title }}
-    </p>
+    <p class="footer-text">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
   </div>
 </footer>

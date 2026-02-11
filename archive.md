@@ -5,153 +5,158 @@ permalink: /archive/
 description: Browse every past design of this site.
 ---
 
-<div class="archive-page content-wrapper">
+<div class="archive-atlas content-wrapper">
   <header class="archive-header">
     <span class="eyebrow">Time Travel</span>
     <h1>Design Archive</h1>
     <p class="lead">This site is restyled by AI every day. Here's every look it's ever had.</p>
-    <div class="archive-accent"></div>
   </header>
 
-  <div class="archive-list">
+  <div class="archive-grid">
     {% assign today = site.time | date: "%Y-%m-%d" %}
     {% assign sorted = site.data.archive | sort: "date" | reverse %}
     {% for entry in sorted %}
     {% if entry.date == today %}{% continue %}{% endif %}
     <a href="/archive/{{ entry.date }}/" class="archive-entry">
-      <div class="archive-entry-date">
+      <div class="archive-stamp">
         <span class="archive-day">{{ entry.date | date: "%d" }}</span>
         <span class="archive-month">{{ entry.date | date: "%b %Y" }}</span>
       </div>
+
+      <span class="archive-node" aria-hidden="true"></span>
+
       <div class="archive-entry-content">
         <h3>{{ entry.theme }}</h3>
         <p>{{ entry.description }}</p>
       </div>
-      <span class="archive-entry-arrow">&rarr;</span>
+
+      <span class="archive-entry-arrow">Open</span>
     </a>
     {% endfor %}
   </div>
 </div>
 
 <style>
-.archive-page {
+.archive-atlas {
   max-width: var(--max-width-content);
+  padding-top: clamp(1rem, 3vw, 2rem);
+  padding-bottom: clamp(1rem, 3vw, 2rem);
 }
 
 .archive-header {
-  margin-bottom: var(--space-12);
+  border: 2px solid var(--color-border);
+  border-radius: 1.2rem;
+  background: var(--color-panel);
+  padding: clamp(1rem, 2.4vw, 1.5rem);
+  margin-bottom: 0.8rem;
 }
 
 .archive-header h1 {
-  margin-bottom: var(--space-3);
+  margin: 0.2rem 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  line-height: 0.9;
+  text-transform: uppercase;
 }
 
 .archive-header .lead {
-  max-width: 500px;
+  margin: 0;
+  max-width: 58ch;
+  color: var(--color-ink-soft);
 }
 
-.archive-accent {
-  margin-top: var(--space-6);
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--color-green), var(--color-accent));
-  border-radius: var(--border-radius-full);
-}
-
-.archive-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+.archive-grid {
+  border: 2px solid var(--color-border);
+  border-radius: 1.2rem;
+  background: var(--color-surface);
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.55rem;
 }
 
 .archive-entry {
   display: grid;
-  grid-template-columns: 80px 1fr auto;
-  gap: var(--space-6);
+  grid-template-columns: auto auto 1fr auto;
+  gap: 0.7rem;
   align-items: center;
-  padding: var(--space-5) var(--space-6);
-  background: var(--color-surface, #ffffff);
-  border-radius: var(--border-radius-lg, 20px);
-  border: 1px solid var(--color-ink-ghost, rgba(26, 46, 26, 0.1));
-  color: var(--color-ink, #1a2e1a);
-  transition: all var(--transition-base, 350ms ease);
-  box-shadow: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.06));
+  border: 1px solid var(--color-border-light);
+  border-radius: 0.9rem;
+  background: var(--color-surface-glow);
+  color: var(--color-ink);
+  padding: 0.7rem;
+  text-decoration: none;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .archive-entry:hover {
-  box-shadow: var(--shadow-md, 0 4px 12px rgba(0,0,0,0.08));
-  color: var(--color-ink, #1a2e1a);
-  transform: translateY(-2px);
-  border-color: var(--color-green, #2d8a4e);
+  border-color: var(--line-red);
+  transform: translateX(5px);
+  color: var(--color-ink);
 }
 
-.archive-entry-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1;
+.archive-stamp {
+  display: grid;
+  justify-items: center;
+  min-width: 4rem;
 }
 
 .archive-day {
-  font-family: var(--font-display, 'DM Serif Display', serif);
-  font-size: 2rem;
-  font-weight: 400;
-  color: var(--color-accent, #e06040);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  line-height: 0.8;
 }
 
 .archive-month {
-  font-family: var(--font-mono, 'JetBrains Mono', monospace);
-  font-size: 0.65rem;
-  color: var(--color-ink-faded, #7a9a7a);
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: var(--space-1, 4px);
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+.archive-node {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  background: var(--line-blue);
 }
 
 .archive-entry-content h3 {
-  font-family: var(--font-display, 'DM Serif Display', serif);
-  font-size: 1.05rem;
-  font-weight: 400;
-  margin: 0 0 var(--space-1, 4px) 0;
-  color: var(--color-ink, #1a2e1a);
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .archive-entry-content p {
-  font-size: 0.85rem;
-  color: var(--color-ink-faded, #7a9a7a);
-  margin: 0;
-  line-height: 1.4;
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: var(--color-ink-soft);
 }
 
 .archive-entry-arrow {
-  font-size: 1rem;
-  color: var(--color-ink-ghost, rgba(26, 46, 26, 0.1));
-  transition: all var(--transition-fast, 200ms ease);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
 }
 
-.archive-entry:hover .archive-entry-arrow {
-  transform: translateX(4px);
-  color: var(--color-accent, #e06040);
-}
-
-@media (max-width: 768px) {
+@media (max-width: 780px) {
   .archive-entry {
-    grid-template-columns: 60px 1fr auto;
-    gap: var(--space-4, 16px);
-    padding: var(--space-4, 16px);
-    border-radius: var(--border-radius, 12px);
+    grid-template-columns: auto 1fr;
+    gap: 0.55rem;
   }
 
-  .archive-day {
-    font-size: 1.5rem;
+  .archive-node,
+  .archive-entry-arrow {
+    display: none;
   }
 
-  .archive-month {
-    font-size: 0.6rem;
-  }
-
-  .archive-entry-content h3 {
-    font-size: 0.9rem;
+  .archive-stamp {
+    justify-items: start;
+    min-width: 0;
   }
 }
 </style>

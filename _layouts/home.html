@@ -2,510 +2,477 @@
 layout: default
 ---
 
-<div class="home-page">
-  <!-- Hero -->
-  <div class="home-hero animate-in">
-    <div class="hero-inner content-wrapper">
-      <div class="hero-badge">Welcome to paradise</div>
+<div class="home-map">
+  <section class="dispatch-hero animate-in">
+    <div class="dispatch-ticket">
+      <p class="dispatch-label">City Transit Atlas</p>
       <h1 class="home-title">{{ site.description }}</h1>
-      <div class="hero-wave">
-        <svg viewBox="0 0 120 8" preserveAspectRatio="none"><path d="M0 4 Q15 0 30 4 Q45 8 60 4 Q75 0 90 4 Q105 8 120 4" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.3"/></svg>
+      <p class="dispatch-copy">Routes for what I am building, writing, and reading right now.</p>
+      {{ content }}
+    </div>
+
+    <div class="dispatch-board" data-reveal>
+      <div class="board-row">
+        <span>Line</span>
+        <strong>Apps</strong>
+        <em>Open</em>
+      </div>
+      <div class="board-row">
+        <span>Line</span>
+        <strong>Writing</strong>
+        <em>Updated</em>
+      </div>
+      <div class="board-row">
+        <span>Line</span>
+        <strong>Reading</strong>
+        <em>In Progress</em>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="home-content content-wrapper animate-in delay-1">
-    {{ content }}
+  <section class="home-network animate-in delay-1">
+    <section class="route-panel route-writing" data-reveal>
+      <header class="route-panel-header">
+        <h2 class="route-panel-title">Writing Line</h2>
+        <a href="{{ '/writing/' | relative_url }}" class="route-link">All essays</a>
+      </header>
 
-    <!-- Bento Grid -->
-    <div class="bento-grid">
-
-      <!-- Apps: spans 2 columns -->
-      <section class="bento-tile bento-apps">
-        <div class="bento-tile-header">
-          <h2 class="bento-heading">Apps</h2>
-          <span class="bento-label">What I build</span>
-        </div>
-        <div class="destination-cards">
-          <a href="/apps/etch/" class="destination-card">
-            <div class="destination-icon-float">
-              <img src="/assets/etch_logo.png" alt="Etch">
-            </div>
-            <div class="destination-info">
-              <h3>Etch</h3>
-              <p>Spaced repetition, built like Apple would.</p>
-            </div>
-            <span class="destination-arrow">&rarr;</span>
+      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
+      <ol class="writing-timeline">
+        {% for post in latest_posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+            <h3>{{ post.title }}</h3>
+            <p>{{ post.description }}</p>
           </a>
-          <a href="/apps/little-quotes/" class="destination-card">
-            <div class="destination-icon-float">
-              <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
-            </div>
-            <div class="destination-info">
-              <h3>Little Quotes</h3>
-              <p>Capture and share kids' priceless words.</p>
-            </div>
-            <span class="destination-arrow">&rarr;</span>
-          </a>
-          <a href="/apps/waymark/" class="destination-card">
-            <div class="destination-icon-float">
-              <img src="/assets/waymark_icon.png" alt="Waymark">
-            </div>
-            <div class="destination-info">
-              <h3>Waymark</h3>
-              <p>Prayer and community, designed with care.</p>
-            </div>
-            <span class="destination-arrow">&rarr;</span>
-          </a>
-        </div>
-      </section>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
 
-      <!-- Writing: spans 2 columns, 1 row -->
-      <section class="bento-tile bento-writing">
-        <div class="bento-tile-header">
-          <h2 class="bento-heading">Writing</h2>
-          <a href="{{ '/writing/' | relative_url }}" class="bento-more">View all &rarr;</a>
-        </div>
-        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 3 %}
-        <div class="postcard-carousel">
-          {% for post in latest_posts %}
-          <a href="{{ post.url | relative_url }}" class="postcard">
-            <div class="postcard-top">
-              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
-            </div>
-            <h3 class="postcard-title">{{ post.title }}</h3>
-            <p class="postcard-desc">{{ post.description }}</p>
-            <span class="postcard-read">Read &rarr;</span>
-          </a>
-          {% endfor %}
-        </div>
-      </section>
+    <section class="route-panel route-apps" data-reveal>
+      <header class="route-panel-header">
+        <h2 class="route-panel-title">Apps Line</h2>
+        <span class="route-link route-link-static">Three active stations</span>
+      </header>
 
-      <!-- Reading: spans 1 column -->
-      <section class="bento-tile bento-reading">
-        <div class="bento-tile-header">
-          <h2 class="bento-heading">Reading</h2>
-          <a href="{{ '/reading/' | relative_url }}" class="bento-more">View all &rarr;</a>
-        </div>
-        {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      <div class="apps-line">
+        <a href="/apps/etch/" class="app-station">
+          <span class="station-pin" aria-hidden="true"></span>
+          <span class="station-icon"><img src="/assets/etch_logo.png" alt="Etch"></span>
+          <span class="station-copy">
+            <strong>Etch</strong>
+            <small>Spaced repetition, built like Apple would.</small>
+          </span>
+          <span class="station-jump">Go</span>
+        </a>
+
+        <a href="/apps/little-quotes/" class="app-station">
+          <span class="station-pin" aria-hidden="true"></span>
+          <span class="station-icon"><img src="/assets/littleQuotes_icon.png" alt="Little Quotes"></span>
+          <span class="station-copy">
+            <strong>Little Quotes</strong>
+            <small>Capture and share kids' priceless words.</small>
+          </span>
+          <span class="station-jump">Go</span>
+        </a>
+
+        <a href="/apps/waymark/" class="app-station">
+          <span class="station-pin" aria-hidden="true"></span>
+          <span class="station-icon"><img src="/assets/waymark_icon.png" alt="Waymark"></span>
+          <span class="station-copy">
+            <strong>Waymark</strong>
+            <small>Prayer and community, designed with care.</small>
+          </span>
+          <span class="station-jump">Go</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="route-panel route-reading" data-reveal>
+      <header class="route-panel-header">
+        <h2 class="route-panel-title">Reading Platform</h2>
+        <a href="{{ '/reading/' | relative_url }}" class="route-link">Full list</a>
+      </header>
+
+      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      <div class="platform-board">
         {% if currently_reading.size > 0 %}
-          <div class="reading-stack">
-            {% for book in currently_reading limit:2 %}
-            <div class="reading-spine">
-              <div class="spine-status"></div>
-              <div class="spine-info">
-                <h4>{{ book.title }}</h4>
-                <p>{{ book.author }}</p>
-              </div>
-              <span class="spine-badge">Now reading</span>
-            </div>
-            {% endfor %}
-          </div>
+          {% for book in currently_reading limit:3 %}
+          <article class="reading-ticket">
+            <p class="reading-ticket-status">Now boarding</p>
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+          </article>
+          {% endfor %}
         {% else %}
-          <div class="reading-stack">
-            <div class="reading-spine reading-spine-empty">
-              <div class="spine-info">
-                <h4>Between books</h4>
-                <p>Check back soon</p>
-              </div>
-            </div>
-          </div>
+          <article class="reading-ticket reading-ticket-empty">
+            <p class="reading-ticket-status">Idle platform</p>
+            <h3>Between books</h3>
+            <p>Check back soon.</p>
+          </article>
         {% endif %}
-      </section>
-
-    </div>
-  </div>
+      </div>
+    </section>
+  </section>
 </div>
 
 <style>
-/* Home Page - Tropical Resort */
-.home-page {
-  padding: 0 0 var(--space-8);
+.home-map {
+  padding: clamp(1rem, 3vw, 2rem);
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
 }
 
-/* Hero */
-.home-hero {
-  background: linear-gradient(180deg, var(--color-bg-accent) 0%, var(--color-bg) 100%);
-  padding-bottom: var(--space-4);
+.dispatch-hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  align-items: stretch;
 }
 
-.hero-inner {
-  text-align: center;
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-8);
+.dispatch-ticket {
+  background: var(--color-panel);
+  border: 2px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-badge {
-  display: inline-block;
+.dispatch-ticket::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: clamp(0.6rem, 1vw, 1rem);
+  background: linear-gradient(var(--line-red), var(--line-blue));
+}
+
+.dispatch-label {
+  margin: 0 0 0.75rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--color-green);
+  font-size: 0.73rem;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  background: var(--color-green-wash);
-  padding: var(--space-1) var(--space-4);
-  border-radius: var(--border-radius-full);
-  margin-bottom: var(--space-6);
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
 }
 
 .home-title {
+  margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 400;
-  margin: 0 auto var(--space-6);
-  line-height: 1.15;
-  max-width: 700px;
-  color: var(--color-ink);
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.hero-wave {
-  max-width: 120px;
-  margin: 0 auto;
-  color: var(--color-green);
+.dispatch-copy {
+  margin: 1rem 0 0;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  max-width: 35ch;
+  color: var(--color-ink-soft);
 }
 
-.hero-wave svg {
-  width: 100%;
-  height: auto;
-}
-
-.home-content {
-  max-width: var(--max-width-wide);
-}
-
-/* Bento Grid */
-.bento-grid {
+.dispatch-board {
+  background: #10141a;
+  border-radius: 1.25rem;
+  border: 2px solid #232a33;
+  padding: 1rem;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--space-6);
+  gap: 0.6rem;
+  color: #d9f6e8;
+  align-content: center;
 }
 
-.bento-tile {
-  background: var(--color-surface);
-  border-radius: var(--border-radius-xl);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-ink-ghost);
-  transition: box-shadow var(--transition-base);
+.board-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.8rem;
+  align-items: baseline;
+  border-bottom: 1px dotted rgba(217, 246, 232, 0.3);
+  padding-bottom: 0.5rem;
 }
 
-.bento-tile:hover {
-  box-shadow: var(--shadow-md);
+.board-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
 
-.bento-tile-header {
+.board-row span,
+.board-row em {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  font-style: normal;
+}
+
+.board-row strong {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.home-network {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.route-panel {
+  border-radius: 1.25rem;
+  border: 2px solid var(--color-border);
+  background: var(--color-panel);
+  padding: clamp(1rem, 2.6vw, 1.75rem);
+  position: relative;
+}
+
+.route-panel::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  bottom: 1rem;
+  width: 4px;
+  border-radius: 999px;
+  background: var(--line-red);
+}
+
+.route-panel.route-apps::before {
+  background: var(--line-blue);
+}
+
+.route-panel.route-reading::before {
+  background: var(--line-green);
+}
+
+.route-panel-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: var(--space-6);
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.2rem;
 }
 
-.bento-heading {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
+.route-panel-title {
   margin: 0;
-  color: var(--color-ink);
-}
-
-.bento-label {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--color-ink-faded);
-  letter-spacing: 0.05em;
-}
-
-.bento-more {
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--color-accent);
-  transition: color var(--transition-fast);
-}
-
-.bento-more:hover {
-  color: var(--color-accent-light);
-}
-
-/* Apps tile spans 2 columns */
-.bento-apps {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, #f0faf2, #faf6ef);
-}
-
-/* Destination Cards (Apps) */
-.destination-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-
-.destination-card {
-  position: relative;
-  background: var(--color-surface);
-  border-radius: var(--border-radius-lg);
-  padding: var(--space-8) var(--space-5) var(--space-5);
-  text-align: center;
-  color: var(--color-ink);
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-ink-ghost);
-  transition: all var(--transition-base);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.destination-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  color: var(--color-ink);
-  border-color: var(--color-green);
-}
-
-.destination-icon-float {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-top: -40px;
-  margin-bottom: var(--space-4);
-  box-shadow: var(--shadow-md);
-  flex-shrink: 0;
-}
-
-.destination-icon-float img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-  box-shadow: none;
-  border: none;
-}
-
-.destination-info h3 {
   font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 400;
-  margin: 0 0 var(--space-2);
-  color: var(--color-ink);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
-.destination-info p {
-  font-size: 0.85rem;
-  color: var(--color-ink-faded);
-  margin: 0 0 var(--space-4);
-  line-height: 1.5;
-}
-
-.destination-arrow {
-  font-size: 0.85rem;
-  color: var(--color-green);
-  font-weight: 600;
-  opacity: 0;
-  transform: translateX(-4px);
-  transition: all var(--transition-fast);
-}
-
-.destination-card:hover .destination-arrow {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Writing tile */
-.bento-writing {
-  grid-column: 1 / 2;
-}
-
-/* Postcard Carousel */
-.postcard-carousel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.postcard {
-  display: block;
-  padding: var(--space-5);
-  background: var(--color-bg);
-  border-radius: var(--border-radius);
-  color: var(--color-ink);
-  transition: all var(--transition-fast);
-  position: relative;
-  border: 1px solid transparent;
-}
-
-.postcard:hover {
-  background: var(--color-bg-warm);
-  border-color: var(--color-accent-wash);
-  color: var(--color-ink);
-  transform: translateX(4px);
-}
-
-.postcard-top {
-  margin-bottom: var(--space-2);
-}
-
-.postcard-top time {
+.route-link {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  color: var(--color-ink-faded);
-  font-weight: 400;
-}
-
-.postcard-title {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 400;
-  margin: 0 0 var(--space-2);
-  line-height: 1.3;
-  color: var(--color-ink);
-  transition: color var(--transition-fast);
-}
-
-.postcard:hover .postcard-title {
-  color: var(--color-accent);
-}
-
-.postcard-desc {
-  font-size: 0.88rem;
-  color: var(--color-ink-faded);
-  margin: 0;
-  line-height: 1.5;
-}
-
-.postcard-read {
-  display: none;
-}
-
-/* Reading tile */
-.bento-reading {
-  grid-column: 2 / 3;
-  grid-row: 2 / 3;
-  background: linear-gradient(180deg, #fef9f0, #faf6ef);
-}
-
-/* Reading Spines */
-.reading-stack {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-
-.reading-spine {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  padding: var(--space-4);
-  background: var(--color-surface);
-  border-radius: var(--border-radius);
-  border-left: 4px solid var(--color-green);
-  box-shadow: var(--shadow-sm);
-}
-
-.spine-status {
-  width: 8px;
-  height: 8px;
-  background: var(--color-green-light);
-  border-radius: 50%;
-  flex-shrink: 0;
-  box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-.spine-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.spine-info h4 {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 400;
-  margin: 0 0 2px;
-  line-height: 1.3;
-  color: var(--color-ink);
-}
-
-.spine-info p {
-  font-size: 0.8rem;
-  color: var(--color-ink-faded);
-  margin: 0;
-  font-style: italic;
-}
-
-.spine-badge {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  font-weight: 500;
-  color: var(--color-green);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-  background: var(--color-green-wash);
-  padding: 2px 8px;
-  border-radius: var(--border-radius-full);
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
 }
 
-.reading-spine-empty {
-  border-left-color: var(--color-sand);
-  opacity: 0.6;
+.route-link-static {
+  cursor: default;
+  text-decoration: none;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .bento-grid {
+.route-writing {
+  grid-row: 1 / span 2;
+}
+
+.writing-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.writing-timeline li a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--color-border-light);
+  border-radius: 0.9rem;
+  padding: 0.95rem;
+  background: var(--color-surface);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.writing-timeline li a:hover {
+  transform: translateX(6px);
+  border-color: var(--line-red);
+  background: var(--color-surface-glow);
+}
+
+.writing-timeline time {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.writing-timeline h3 {
+  margin: 0.35rem 0;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.writing-timeline p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--color-ink-soft);
+}
+
+.apps-line {
+  display: grid;
+  gap: 0.7rem;
+  padding-left: 1.2rem;
+}
+
+.app-station {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border-light);
+  background: var(--color-surface);
+  color: inherit;
+  text-decoration: none;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.app-station:hover {
+  transform: translateX(6px);
+  border-color: var(--line-blue);
+}
+
+.station-pin {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: var(--line-blue);
+}
+
+.station-icon {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 0.7rem;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.station-icon img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.station-copy {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.station-copy strong {
+  font-size: 0.95rem;
+}
+
+.station-copy small {
+  font-size: 0.78rem;
+  color: var(--color-ink-soft);
+}
+
+.station-jump {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+.platform-board {
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.reading-ticket {
+  border-radius: 0.85rem;
+  border: 1px dashed var(--line-green);
+  background: linear-gradient(120deg, rgba(124, 189, 104, 0.16), rgba(124, 189, 104, 0.04));
+  padding: 0.8rem 0.9rem;
+}
+
+.reading-ticket-status {
+  margin: 0;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  color: var(--color-muted);
+}
+
+.reading-ticket h3 {
+  margin: 0.3rem 0;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.reading-ticket p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--color-ink-soft);
+}
+
+.reading-ticket-empty {
+  border-style: solid;
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+@media (max-width: 960px) {
+  .dispatch-hero {
     grid-template-columns: 1fr;
   }
 
-  .bento-apps {
-    grid-column: 1;
+  .home-network {
+    grid-template-columns: 1fr;
   }
 
-  .bento-writing {
-    grid-column: 1;
-  }
-
-  .bento-reading {
-    grid-column: 1;
+  .route-writing {
     grid-row: auto;
   }
-
-  .destination-cards {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-
-  .destination-card {
-    padding-top: var(--space-10);
-  }
-
-  .destination-icon-float {
-    margin-top: -48px;
-  }
 }
 
-@media (max-width: 768px) {
-  .hero-inner {
-    padding-top: var(--space-12);
-    padding-bottom: var(--space-6);
+@media (max-width: 640px) {
+  .home-map {
+    padding: 0.75rem;
   }
 
-  .bento-tile {
-    padding: var(--space-5);
-    border-radius: var(--border-radius-lg);
+  .route-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
   }
 
-  .bento-grid {
-    gap: var(--space-4);
+  .app-station {
+    grid-template-columns: auto 1fr;
+    border-radius: 1rem;
   }
 
-  .spine-badge {
+  .station-jump,
+  .station-pin {
     display: none;
   }
 }
