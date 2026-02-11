@@ -1,14 +1,19 @@
 <li class="book-item{% if include.book.stars == 5 %} five-star-book{% endif %}{% assign content_size = include.book.content | strip | size %}{% if content_size > 0 %} has-notes{% endif %}"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div class="book-item-main">
-    {% if content_size > 0 %}
-      <a href="{{ include.book.url }}" rel="nofollow noopener" class="book-title-link">
-        {{ include.book.title }} <span class="note-icon">&#9670;</span>
-      </a>
-    {% else %}
-      <span class="book-title">{{ include.book.title }}</span>
-    {% endif %}
-    <span class="book-author">by {{ include.book.author }}</span>
+  <div class="book-ticket-track">
+    <span class="book-ticket-notch" aria-hidden="true"></span>
+    <div class="book-item-main">
+      <span class="book-route-label">Shelf</span>
+      {% if content_size > 0 %}
+        <a href="{{ include.book.url }}" rel="nofollow noopener" class="book-title-link">
+          {{ include.book.title }} <span class="note-icon">&#9670;</span>
+        </a>
+      {% else %}
+        <span class="book-title">{{ include.book.title }}</span>
+      {% endif %}
+      <span class="book-author">by {{ include.book.author }}</span>
+    </div>
   </div>
+
   <span class="book-rating">
     {% if include.unrated %}
       <span class="unrated-text">Unrated</span>
