@@ -2,478 +2,392 @@
 layout: default
 ---
 
-<div class="home-map">
-  <section class="dispatch-hero animate-in">
-    <div class="dispatch-ticket">
-      <p class="dispatch-label">City Transit Atlas</p>
-      <h1 class="home-title">{{ site.description }}</h1>
-      <p class="dispatch-copy">Routes for what I am building, writing, and reading right now.</p>
+<div class="front-page">
+  <section class="above-fold animate-in" data-reveal>
+    <div class="fold-rule"></div>
+    <div class="above-fold-inner">
+      <h1 class="headline">{{ site.description }}</h1>
+      <p class="subhead">What I am building, writing, and reading right now.</p>
       {{ content }}
     </div>
-
-    <div class="dispatch-board" data-reveal>
-      <div class="board-row">
-        <span>Line</span>
-        <strong>Apps</strong>
-        <em>Open</em>
-      </div>
-      <div class="board-row">
-        <span>Line</span>
-        <strong>Writing</strong>
-        <em>Updated</em>
-      </div>
-      <div class="board-row">
-        <span>Line</span>
-        <strong>Reading</strong>
-        <em>In Progress</em>
-      </div>
-    </div>
+    <div class="fold-rule"></div>
   </section>
 
-  <section class="home-network animate-in delay-1">
-    <section class="route-panel route-writing" data-reveal>
-      <header class="route-panel-header">
-        <h2 class="route-panel-title">Writing Line</h2>
-        <a href="{{ '/writing/' | relative_url }}" class="route-link">All essays</a>
-      </header>
+  <div class="below-fold">
+    <section class="column column-lead" data-reveal>
+      <div class="section-head">
+        <h2>Latest Writing</h2>
+        <a href="{{ '/writing/' | relative_url }}" class="section-more">All essays &rarr;</a>
+      </div>
 
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
-      <ol class="writing-timeline">
-        {% for post in latest_posts %}
-        <li>
-          <a href="{{ post.url | relative_url }}">
-            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
-            <h3>{{ post.title }}</h3>
-            <p>{{ post.description }}</p>
-          </a>
-        </li>
-        {% endfor %}
-      </ol>
+      {% for post in latest_posts %}
+      <article class="story{% if forloop.first %} story-lead{% endif %}">
+        <span class="dateline">{{ post.date | date: "%B %d, %Y" }}</span>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+        <p>{{ post.description }}</p>
+      </article>
+      {% unless forloop.last %}<div class="story-rule"></div>{% endunless %}
+      {% endfor %}
     </section>
 
-    <section class="route-panel route-apps" data-reveal>
-      <header class="route-panel-header">
-        <h2 class="route-panel-title">Apps Line</h2>
-        <span class="route-link route-link-static">Three active stations</span>
-      </header>
-
-      <div class="apps-line">
-        <a href="/apps/etch/" class="app-station">
-          <span class="station-pin" aria-hidden="true"></span>
-          <span class="station-icon"><img src="/assets/etch_logo.png" alt="Etch"></span>
-          <span class="station-copy">
-            <strong>Etch</strong>
-            <small>Spaced repetition, built like Apple would.</small>
-          </span>
-          <span class="station-jump">Go</span>
-        </a>
-
-        <a href="/apps/little-quotes/" class="app-station">
-          <span class="station-pin" aria-hidden="true"></span>
-          <span class="station-icon"><img src="/assets/littleQuotes_icon.png" alt="Little Quotes"></span>
-          <span class="station-copy">
-            <strong>Little Quotes</strong>
-            <small>Capture and share kids' priceless words.</small>
-          </span>
-          <span class="station-jump">Go</span>
-        </a>
-
-        <a href="/apps/waymark/" class="app-station">
-          <span class="station-pin" aria-hidden="true"></span>
-          <span class="station-icon"><img src="/assets/waymark_icon.png" alt="Waymark"></span>
-          <span class="station-copy">
-            <strong>Waymark</strong>
-            <small>Prayer and community, designed with care.</small>
-          </span>
-          <span class="station-jump">Go</span>
-        </a>
+    <section class="column column-middle" data-reveal>
+      <div class="section-head">
+        <h2>Apps</h2>
       </div>
+
+      <article class="app-story">
+        <a href="/apps/etch/" class="app-story-link">
+          <div class="app-story-icon">
+            <img src="/assets/etch_logo.png" alt="Etch">
+          </div>
+          <div class="app-story-text">
+            <h3>Etch</h3>
+            <p>Spaced repetition, built like Apple would.</p>
+          </div>
+        </a>
+      </article>
+
+      <div class="story-rule"></div>
+
+      <article class="app-story">
+        <a href="/apps/little-quotes/" class="app-story-link">
+          <div class="app-story-icon">
+            <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
+          </div>
+          <div class="app-story-text">
+            <h3>Little Quotes</h3>
+            <p>Capture and share kids' priceless words.</p>
+          </div>
+        </a>
+      </article>
+
+      <div class="story-rule"></div>
+
+      <article class="app-story">
+        <a href="/apps/waymark/" class="app-story-link">
+          <div class="app-story-icon">
+            <img src="/assets/waymark_icon.png" alt="Waymark">
+          </div>
+          <div class="app-story-text">
+            <h3>Waymark</h3>
+            <p>Prayer and community, designed with care.</p>
+          </div>
+        </a>
+      </article>
     </section>
 
-    <section class="route-panel route-reading" data-reveal>
-      <header class="route-panel-header">
-        <h2 class="route-panel-title">Reading Platform</h2>
-        <a href="{{ '/reading/' | relative_url }}" class="route-link">Full list</a>
-      </header>
+    <section class="column column-sidebar" data-reveal>
+      <div class="section-head">
+        <h2>Now Reading</h2>
+        <a href="{{ '/reading/' | relative_url }}" class="section-more">Full list &rarr;</a>
+      </div>
 
       {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-      <div class="platform-board">
-        {% if currently_reading.size > 0 %}
-          {% for book in currently_reading limit:3 %}
-          <article class="reading-ticket">
-            <p class="reading-ticket-status">Now boarding</p>
-            <h3>{{ book.title }}</h3>
-            <p>{{ book.author }}</p>
-          </article>
-          {% endfor %}
-        {% else %}
-          <article class="reading-ticket reading-ticket-empty">
-            <p class="reading-ticket-status">Idle platform</p>
-            <h3>Between books</h3>
-            <p>Check back soon.</p>
-          </article>
-        {% endif %}
-      </div>
+      {% if currently_reading.size > 0 %}
+        {% for book in currently_reading limit:3 %}
+        <article class="reading-brief">
+          <h3>{{ book.title }}</h3>
+          <p class="reading-author">{{ book.author }}</p>
+        </article>
+        {% unless forloop.last %}<div class="story-rule"></div>{% endunless %}
+        {% endfor %}
+      {% else %}
+        <article class="reading-brief reading-brief-empty">
+          <p class="reading-status">Between books right now.</p>
+          <p>Check back soon.</p>
+        </article>
+      {% endif %}
     </section>
-  </section>
+  </div>
 </div>
 
 <style>
-.home-map {
-  padding: clamp(1rem, 3vw, 2rem);
-  display: grid;
-  gap: clamp(1rem, 2vw, 1.5rem);
+.front-page {
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
 }
 
-.dispatch-hero {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: clamp(0.75rem, 2vw, 1.25rem);
-  align-items: stretch;
+.above-fold {
+  padding: clamp(1.5rem, 4vw, 3rem) 0;
 }
 
-.dispatch-ticket {
-  background: var(--color-panel);
-  border: 2px solid var(--color-border);
-  border-radius: 1.25rem;
-  padding: clamp(1.25rem, 3vw, 2.25rem);
-  position: relative;
-  overflow: hidden;
+.fold-rule {
+  height: 0;
+  border-top: 1px solid var(--color-ink);
 }
 
-.dispatch-ticket::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: clamp(0.6rem, 1vw, 1rem);
-  background: linear-gradient(var(--line-red), var(--line-blue));
+.above-fold-inner {
+  padding: clamp(1.5rem, 3vw, 2.5rem) 0;
+  text-align: center;
+  max-width: 48rem;
+  margin: 0 auto;
 }
 
-.dispatch-label {
-  margin: 0 0 0.75rem;
-  font-family: var(--font-mono);
-  font-size: 0.73rem;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--color-muted);
-}
-
-.home-title {
+.headline {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 6vw, 5rem);
-  line-height: 0.9;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.92;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
 }
 
-.dispatch-copy {
+.subhead {
   margin: 1rem 0 0;
-  font-size: clamp(1rem, 1.6vw, 1.2rem);
-  max-width: 35ch;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-style: italic;
   color: var(--color-ink-soft);
 }
 
-.dispatch-board {
-  background: #10141a;
-  border-radius: 1.25rem;
-  border: 2px solid #232a33;
-  padding: 1rem;
+/* ---- Below the Fold: 3-column newspaper grid ---- */
+.below-fold {
   display: grid;
-  gap: 0.6rem;
-  color: #d9f6e8;
-  align-content: center;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 0.8fr);
+  border-top: 3px double var(--color-ink);
+  min-height: 0;
 }
 
-.board-row {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.8rem;
-  align-items: baseline;
-  border-bottom: 1px dotted rgba(217, 246, 232, 0.3);
-  padding-bottom: 0.5rem;
+.column {
+  padding: 1.2rem 1.2rem 1.5rem;
 }
 
-.board-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+.column-lead {
+  border-right: 1px solid var(--color-rule-light);
 }
 
-.board-row span,
-.board-row em {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  opacity: 0.7;
-  font-style: normal;
+.column-middle {
+  border-right: 1px solid var(--color-rule-light);
 }
 
-.board-row strong {
-  font-family: var(--font-display);
-  font-size: 1.55rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-}
-
-.home-network {
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: clamp(0.75rem, 2vw, 1.25rem);
-}
-
-.route-panel {
-  border-radius: 1.25rem;
-  border: 2px solid var(--color-border);
-  background: var(--color-panel);
-  padding: clamp(1rem, 2.6vw, 1.75rem);
-  position: relative;
-}
-
-.route-panel::before {
-  content: '';
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  bottom: 1rem;
-  width: 4px;
-  border-radius: 999px;
-  background: var(--line-red);
-}
-
-.route-panel.route-apps::before {
-  background: var(--line-blue);
-}
-
-.route-panel.route-reading::before {
-  background: var(--line-green);
-}
-
-.route-panel-header {
+.section-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-bottom: 1rem;
-  padding-left: 1.2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-ink);
 }
 
-.route-panel-title {
+.section-head h2 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  line-height: 1;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
-.route-link {
+.section-more {
+  flex-shrink: 0;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.section-more:hover {
+  color: var(--color-red);
+}
+
+/* ---- Writing stories ---- */
+.story {
+  padding: 0.6rem 0;
+}
+
+.story-lead h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.story-lead p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.story-lead p::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.2em;
+  float: left;
+  line-height: 0.78;
+  margin: 0.04em 0.1em 0 0;
+  color: var(--color-red);
+  font-weight: 900;
+}
+
+.dateline {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-muted);
+  margin-bottom: 0.2rem;
 }
 
-.route-link-static {
-  cursor: default;
+.story h3 {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.story h3 a {
+  color: var(--color-ink);
   text-decoration: none;
 }
 
-.route-writing {
-  grid-row: 1 / span 2;
+.story h3 a:hover {
+  color: var(--color-red);
 }
 
-.writing-timeline {
-  list-style: none;
+.story p {
   margin: 0;
-  padding: 0 0 0 1.2rem;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.writing-timeline li a {
-  display: block;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid var(--color-border-light);
-  border-radius: 0.9rem;
-  padding: 0.95rem;
-  background: var(--color-surface);
-  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
-}
-
-.writing-timeline li a:hover {
-  transform: translateX(6px);
-  border-color: var(--line-red);
-  background: var(--color-surface-glow);
-}
-
-.writing-timeline time {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.writing-timeline h3 {
-  margin: 0.35rem 0;
-  font-family: var(--font-sans);
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.writing-timeline p {
-  margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
   color: var(--color-ink-soft);
 }
 
-.apps-line {
-  display: grid;
-  gap: 0.7rem;
-  padding-left: 1.2rem;
+.story-rule {
+  height: 0;
+  border-top: 1px solid var(--color-rule-light);
 }
 
-.app-station {
+/* ---- App stories ---- */
+.app-story {
+  padding: 0.8rem 0;
+}
+
+.app-story-link {
   display: grid;
-  grid-template-columns: auto auto 1fr auto;
-  gap: 0.7rem;
-  align-items: center;
-  padding: 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--color-border-light);
-  background: var(--color-surface);
+  grid-template-columns: 3.2rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
   color: inherit;
   text-decoration: none;
-  transition: transform var(--transition-fast), border-color var(--transition-fast);
+  transition: color var(--transition-fast);
 }
 
-.app-station:hover {
-  transform: translateX(6px);
-  border-color: var(--line-blue);
+.app-story-link:hover {
+  color: var(--color-red);
 }
 
-.station-pin {
-  width: 0.65rem;
-  height: 0.65rem;
-  border-radius: 999px;
-  background: var(--line-blue);
+.app-story-link:hover h3 {
+  color: var(--color-red);
 }
 
-.station-icon {
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 0.7rem;
+.app-story-icon {
+  width: 3.2rem;
+  height: 3.2rem;
   overflow: hidden;
-  box-shadow: none;
+  flex-shrink: 0;
 }
 
-.station-icon img {
+.app-story-icon img {
   width: 100%;
   height: 100%;
-  border-radius: 0;
   object-fit: cover;
 }
 
-.station-copy {
-  display: grid;
-  gap: 0.15rem;
+.app-story-text h3 {
+  margin: 0 0 0.15rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: color var(--transition-fast);
 }
 
-.station-copy strong {
-  font-size: 0.95rem;
-}
-
-.station-copy small {
-  font-size: 0.78rem;
-  color: var(--color-ink-soft);
-}
-
-.station-jump {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-muted);
-}
-
-.platform-board {
-  padding-left: 1.2rem;
-  display: grid;
-  gap: 0.65rem;
-}
-
-.reading-ticket {
-  border-radius: 0.85rem;
-  border: 1px dashed var(--line-green);
-  background: linear-gradient(120deg, rgba(124, 189, 104, 0.16), rgba(124, 189, 104, 0.04));
-  padding: 0.8rem 0.9rem;
-}
-
-.reading-ticket-status {
+.app-story-text p {
   margin: 0;
-  font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.68rem;
-  color: var(--color-muted);
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  line-height: 1.5;
 }
 
-.reading-ticket h3 {
-  margin: 0.3rem 0;
+/* ---- Reading sidebar ---- */
+.reading-brief {
+  padding: 0.6rem 0;
+}
+
+.reading-brief h3 {
+  margin: 0 0 0.15rem;
+  font-family: var(--font-display);
   font-size: 1rem;
-  font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.25;
 }
 
-.reading-ticket p {
+.reading-author {
   margin: 0;
-  font-size: 0.86rem;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--color-muted);
+}
+
+.reading-status {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+}
+
+.reading-brief-empty p {
+  font-size: 0.88rem;
   color: var(--color-ink-soft);
 }
 
-.reading-ticket-empty {
-  border-style: solid;
-  border-color: var(--color-border);
-  background: var(--color-surface);
-}
-
+/* ---- Responsive ---- */
 @media (max-width: 960px) {
-  .dispatch-hero {
-    grid-template-columns: 1fr;
+  .below-fold {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   }
 
-  .home-network {
-    grid-template-columns: 1fr;
+  .column-sidebar {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--color-rule-light);
   }
 
-  .route-writing {
-    grid-row: auto;
+  .column-middle {
+    border-right: none;
   }
 }
 
 @media (max-width: 640px) {
-  .home-map {
-    padding: 0.75rem;
+  .front-page {
+    padding: 0 1rem;
   }
 
-  .route-panel-header {
+  .below-fold {
+    grid-template-columns: 1fr;
+  }
+
+  .column-lead {
+    border-right: none;
+    border-bottom: 1px solid var(--color-rule-light);
+  }
+
+  .column-middle {
+    border-bottom: 1px solid var(--color-rule-light);
+  }
+
+  .section-head {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.35rem;
+    gap: 0.25rem;
   }
 
-  .app-station {
-    grid-template-columns: auto 1fr;
-    border-radius: 1rem;
-  }
-
-  .station-jump,
-  .station-pin {
-    display: none;
+  .story-lead p::first-letter {
+    font-size: 2.6em;
   }
 }
 </style>

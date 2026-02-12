@@ -1,27 +1,27 @@
 <header class="site-header" id="site-header">
-  <div class="route-brand">
-    <h1 class="site-title">
-      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-    </h1>
-    <p class="route-caption">Metro map for apps, writing, and reading.</p>
+  <div class="masthead">
+    <div class="masthead-content">
+      <span class="masthead-date">Daily Digital Edition</span>
+      <h1 class="site-title">
+        <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      </h1>
+      <span class="masthead-edition">est. 2024 &middot; Apps, Writing &amp; Reading</span>
+    </div>
   </div>
 
-  <button class="route-toggle" id="route-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
-    <span class="route-toggle-label">Routes</span>
-    <span class="route-toggle-bars" aria-hidden="true"></span>
+  <button class="section-toggle" id="route-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+    <span class="section-toggle-label">Sections</span>
+    <span class="section-toggle-icon" aria-hidden="true">&#9776;</span>
   </button>
 
-  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-    <p class="nav-label">Route map</p>
+  <nav class="site-nav section-nav" id="site-nav" aria-label="Main navigation">
     <ul>
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
-        <li class="route-stop-item">
+        <li>
           <a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>
-            <span class="route-stop-dot" aria-hidden="true"></span>
-            <span class="route-stop-name">{{ nav_page.title }}</span>
-            <span class="route-stop-index">{{ forloop.index | prepend: '0' }}</span>
+            {{ nav_page.title }}
           </a>
         </li>
         {% endif %}
