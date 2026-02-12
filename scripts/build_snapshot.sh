@@ -98,6 +98,15 @@ find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
   sed -i 's|<body |<body data-archived="true" |g' "${htmlfile}"
 done
 
+# Patch the previous day's archive to add a "next" link pointing to this snapshot
+if [ -n "${PREV_DATE}" ] && [ -d "${REPO_ROOT}/archive/${PREV_DATE}" ]; then
+  echo "==> Patching previous archive (${PREV_DATE}) with next-day link..."
+  NEXT_LINK='<a href="/archive/'"${DATE}"'/">'"${DATE}"' →</a>'
+  find "${REPO_ROOT}/archive/${PREV_DATE}" -name "*.html" -type f | while read -r htmlfile; do
+    sed -i "s|<span style=\"visibility:hidden;\">0000-00-00 →</span>|${NEXT_LINK}|g" "${htmlfile}"
+  done
+fi
+
 # Clean up worktree
 echo "==> Cleaning up worktree..."
 cd "${REPO_ROOT}"

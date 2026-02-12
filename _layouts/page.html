@@ -2,152 +2,76 @@
 layout: default
 ---
 
-<section class="page-route">
-  <header class="page-header content-wrapper animate-in">
-    <div class="page-intro">
+<section class="article-page">
+  <header class="article-header content-wrapper animate-in">
+    <div class="article-header-inner">
       {% if page.eyebrow %}
-        <p class="eyebrow mb-3">{{ page.eyebrow }}</p>
+        <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
       {% endif %}
-      <h1 class="page-title">{{ page.title }}</h1>
+      <h1 class="article-title">{{ page.title }}</h1>
       {% if page.description %}
-        <p class="page-description">{{ page.description }}</p>
+        <p class="article-description">{{ page.description }}</p>
       {% endif %}
-    </div>
-
-    <div class="page-signal-card" aria-hidden="true">
-      <span>Current Stop</span>
-      <strong>{{ page.title }}</strong>
     </div>
   </header>
 
-  <div class="page-track-grid">
-    <aside class="page-track-markers" aria-hidden="true">
-      <span></span>
-      <span></span>
-      <span></span>
-    </aside>
-
-    <div class="page-content content-wrapper animate-in animate-in-delay-1">
+  <div class="article-body">
+    <div class="article-content content-wrapper animate-in animate-in-delay-1">
       {{ content }}
     </div>
   </div>
 </section>
 
 <style>
-.page-route {
-  padding: clamp(0.85rem, 2.6vw, 1.6rem);
-  display: grid;
-  gap: 0.8rem;
+.article-page {
+  padding: 0;
 }
 
-.page-header {
-  margin: 0;
-  padding: clamp(1rem, 2.6vw, 1.5rem);
-  border: 2px solid var(--color-border);
-  border-radius: 1.2rem;
-  background: var(--color-panel);
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(180px, 0.7fr);
-  gap: 0.8rem;
-  align-items: end;
+.article-header {
+  padding-top: clamp(1.5rem, 3vw, 2.5rem);
+  padding-bottom: 1.2rem;
+  margin: 0 clamp(1rem, 3vw, 2.5rem);
+  border-bottom: 2px solid var(--color-ink);
+  max-width: none;
 }
 
-.page-title {
+.article-header-inner {
+  max-width: var(--max-width-content);
+}
+
+.article-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 6vw, 4.2rem);
-  line-height: 0.9;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1;
 }
 
-.page-description {
-  margin: 0.7rem 0 0;
+.article-description {
+  margin: 0.6rem 0 0;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  font-style: italic;
   color: var(--color-ink-soft);
-  font-size: clamp(0.96rem, 1.5vw, 1.1rem);
   max-width: 55ch;
 }
 
-.page-signal-card {
-  border: 1px dashed var(--color-border-light);
-  border-radius: 1rem;
-  background: var(--color-surface);
-  padding: 0.8rem;
-  display: grid;
-  gap: 0.35rem;
+.article-body {
+  margin: 0 clamp(1rem, 3vw, 2.5rem);
 }
 
-.page-signal-card span {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.13em;
-  color: var(--color-muted);
+.article-content {
+  max-width: var(--max-width-content);
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.page-signal-card strong {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.page-track-grid {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  border: 2px solid var(--color-border);
-  border-radius: 1.2rem;
-  overflow: hidden;
-  background: var(--color-surface);
-}
-
-.page-track-markers {
-  width: 2rem;
-  background: var(--color-panel-muted);
-  border-right: 1px solid var(--color-border-light);
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  justify-items: center;
-  align-items: center;
-}
-
-.page-track-markers span {
-  width: 0.68rem;
-  height: 0.68rem;
-  border-radius: 999px;
-  background: var(--line-blue);
-}
-
-.page-track-markers span:nth-child(2) {
-  background: var(--line-red);
-}
-
-.page-track-markers span:nth-child(3) {
-  background: var(--line-green);
-}
-
-.page-content {
-  margin: 0;
-  padding-left: clamp(1.1rem, 2.5vw, 1.7rem);
-}
-
-@media (max-width: 900px) {
-  .page-header {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 700px) {
-  .page-route {
-    padding: 0.75rem;
+@media (max-width: 640px) {
+  .article-header {
+    margin: 0 1rem;
   }
 
-  .page-track-markers {
-    display: none;
-  }
-
-  .page-track-grid {
-    grid-template-columns: 1fr;
+  .article-body {
+    margin: 0 1rem;
   }
 }
 </style>

@@ -2,208 +2,211 @@
 layout: default
 ---
 
-<article class="book-docket">
-  <header class="book-hero" data-reveal>
-    <div class="book-hero-copy">
-      <p class="book-type-badge">Book Review</p>
+<article class="review-article">
+  <header class="review-header" data-reveal>
+    <div class="review-header-main">
+      <span class="review-label">Book Review</span>
       <h1>{{ page.title }}</h1>
-      <p class="book-author">by {{ page.author }}</p>
+      <p class="review-byline">by {{ page.author }}</p>
     </div>
 
-    <div class="book-meta">
+    <div class="review-meta-col">
       {% assign year = page.date | date: "%Y" | to_integer %}
       {% if year >= 2020 %}
-        <span class="meta-item">{{ page.date | date: "%B %d, %Y" }}</span>
+        <span class="review-meta-item">{{ page.date | date: "%B %d, %Y" }}</span>
       {% endif %}
 
       {% if page.stars %}
-        <span class="meta-item meta-rating">
+        <span class="review-meta-item review-stars">
           {% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}
         </span>
       {% endif %}
 
       {% if page.genre %}
-        <span class="meta-item meta-genre">{{ page.genre }}</span>
+        <span class="review-meta-item review-genre">{{ page.genre }}</span>
       {% endif %}
     </div>
   </header>
 
-  <section class="book-track" data-reveal>
+  <div class="review-body" data-reveal>
     {% if page.takeaway %}
-      <aside class="book-takeaway">
-        <span class="takeaway-label">Key Takeaway</span>
+      <aside class="review-pullquote">
+        <span class="pullquote-label">Key Takeaway</span>
         <p>{{ page.takeaway }}</p>
       </aside>
     {% endif %}
 
-    <div class="book-content">
+    <div class="review-content">
       {{ content }}
     </div>
-  </section>
+  </div>
 </article>
 
 <style>
-.book-docket {
-  padding: clamp(1rem, 3vw, 2rem);
-  display: grid;
-  gap: 1rem;
+.review-article {
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2.5rem);
 }
 
-.book-hero {
-  border-radius: 1.25rem;
-  border: 2px solid var(--color-border);
-  background: var(--color-panel);
-  padding: clamp(1rem, 2.5vw, 1.8rem);
+.review-header {
   display: grid;
-  grid-template-columns: minmax(0, 1.5fr) minmax(200px, 1fr);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 2fr) minmax(180px, 0.7fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: end;
+  padding-bottom: 1.2rem;
+  border-bottom: 2px solid var(--color-ink);
+  margin-bottom: 1.5rem;
 }
 
-.book-type-badge {
-  margin: 0 0 0.55rem;
+.review-label {
+  display: block;
   font-family: var(--font-mono);
+  font-size: 0.68rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
+  letter-spacing: 0.16em;
   color: var(--color-muted);
+  margin-bottom: 0.5rem;
 }
 
-.book-hero h1 {
+.review-header h1 {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5.8vw, 4rem);
-  line-height: 0.9;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1;
 }
 
-.book-author {
-  margin: 0.7rem 0 0;
-  font-size: 1.05rem;
+.review-byline {
+  margin: 0.5rem 0 0;
+  font-size: 1.1rem;
+  font-style: italic;
   color: var(--color-ink-soft);
 }
 
-.book-meta {
+.review-meta-col {
   display: grid;
-  gap: 0.55rem;
+  gap: 0.4rem;
+  align-self: end;
 }
 
-.meta-item {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
+.review-meta-item {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  border: 1px solid var(--color-border-light);
-  border-radius: 999px;
-  padding: 0.35rem 0.65rem;
   color: var(--color-muted);
-  background: var(--color-surface);
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--color-rule-light);
 }
 
-.meta-rating {
-  color: #a26515;
-  letter-spacing: 0.08em;
+.review-meta-item:last-child {
+  border-bottom: none;
 }
 
-.meta-genre {
-  color: var(--line-red);
+.review-stars {
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
 }
 
-.book-track {
-  border-radius: 1.25rem;
-  border: 2px solid var(--color-border);
-  background: var(--color-surface);
+.review-genre {
+  color: var(--color-red);
+}
+
+/* ---- Review body ---- */
+.review-body {
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 2fr);
+  grid-template-columns: minmax(200px, 0.7fr) minmax(0, 2fr);
   gap: 0;
-  overflow: hidden;
 }
 
-.book-takeaway {
-  border-right: 2px dashed var(--color-border-light);
-  background: var(--color-panel-muted);
-  padding: 1.1rem;
+.review-pullquote {
+  padding: 1.2rem 1.2rem 1.2rem 0;
+  border-right: 1px solid var(--color-rule-light);
 }
 
-.takeaway-label {
-  display: inline-block;
-  margin-bottom: 0.55rem;
+.pullquote-label {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--color-muted);
+  margin-bottom: 0.5rem;
 }
 
-.book-takeaway p {
+.review-pullquote p {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.7;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.55;
   color: var(--color-ink);
 }
 
-.book-content {
-  padding: clamp(1.1rem, 2.8vw, 2rem);
+.review-content {
+  padding: 1.2rem 0 1.2rem 1.5rem;
   font-size: 1.03rem;
-  line-height: 1.85;
+  line-height: 1.8;
   color: var(--color-ink-soft);
 }
 
-.book-content p,
-.book-content ul,
-.book-content ol {
-  margin-bottom: 1.4em;
+.review-content p,
+.review-content ul,
+.review-content ol {
+  margin-bottom: 1.2em;
 }
 
-.book-content h2,
-.book-content h3,
-.book-content h4,
-.book-content h5,
-.book-content h6 {
-  margin-top: 2.2rem;
-  margin-bottom: 0.7rem;
+.review-content h2,
+.review-content h3,
+.review-content h4,
+.review-content h5,
+.review-content h6 {
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
   font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
-.book-content a {
+.review-content h2 {
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--color-rule-light);
+}
+
+.review-content a {
   text-decoration: underline;
-  text-decoration-color: rgba(181, 73, 80, 0.35);
-  text-underline-offset: 3px;
+  text-decoration-color: var(--color-rule-light);
+  text-underline-offset: 2px;
 }
 
-.book-content a:hover {
-  text-decoration-color: var(--line-red);
+.review-content a:hover {
+  text-decoration-color: var(--color-red);
+  color: var(--color-red);
 }
 
-.book-content blockquote {
-  margin: 1.6rem 0;
-  border-radius: 1rem;
-  border: 1px dashed var(--line-green);
-  background: rgba(124, 189, 104, 0.11);
-  padding: 1rem 1.15rem;
+.review-content blockquote {
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--color-red);
+  background: var(--color-accent-wash);
+  padding: 0.8rem 1rem;
   font-style: italic;
 }
 
-.book-content blockquote::before {
+.review-content blockquote::before {
   content: '\201C';
   display: block;
   font-family: var(--font-display);
-  font-size: 2rem;
-  line-height: 1;
-  color: var(--line-green);
+  font-size: 2.5rem;
+  line-height: 0.8;
+  color: var(--color-red);
+  margin-bottom: 0.2rem;
 }
 
-.book-content blockquote .page-number {
+.review-content blockquote .page-number {
   display: block;
-  margin-top: 0.55rem;
+  margin-top: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-muted);
@@ -216,34 +219,40 @@ layout: default
 }
 
 .header-link:hover {
-  color: var(--line-red);
+  color: var(--color-red);
 }
 
-@media (max-width: 960px) {
-  .book-hero {
+@media (max-width: 900px) {
+  .review-header {
     grid-template-columns: 1fr;
   }
 
-  .book-track {
+  .review-body {
     grid-template-columns: 1fr;
   }
 
-  .book-takeaway {
+  .review-pullquote {
     border-right: none;
-    border-bottom: 2px dashed var(--color-border-light);
+    border-bottom: 1px solid var(--color-rule-light);
+    padding: 0 0 1rem 0;
+    margin-bottom: 1rem;
+  }
+
+  .review-content {
+    padding-left: 0;
   }
 }
 
-@media (max-width: 700px) {
-  .book-docket {
-    padding: 0.75rem;
+@media (max-width: 640px) {
+  .review-article {
+    padding: 1rem;
   }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.book-content h2, .book-content h3, .book-content h4, .book-content h5, .book-content h6').forEach(function(header) {
+  document.querySelectorAll('.review-content h2, .review-content h3, .review-content h4, .review-content h5, .review-content h6').forEach(function(header) {
     var id = header.id;
     if (!id) {
       return;
