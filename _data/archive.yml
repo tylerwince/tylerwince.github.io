@@ -37,3 +37,8 @@
   theme: "CITY TRANSIT ATLAS"
   description: "CITY TRANSIT ATLAS — designed February 11, 2026"
   commit: "80b8056"
+
+- date: "2026-02-12"
+  theme: "BROADSHEET GAZETTE"
+  description: "BROADSHEET GAZETTE — designed February 12, 2026"
+  commit: "c3ade006"
