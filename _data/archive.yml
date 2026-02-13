@@ -42,3 +42,8 @@
   theme: "BROADSHEET GAZETTE"
   description: "BROADSHEET GAZETTE — designed February 12, 2026"
   commit: "c3ade006"
+
+- date: "2026-02-13"
+  theme: "control-room visual overhaul across layouts, styles, and scripts"
+  description: "control-room visual overhaul across layouts, styles, and scripts — designed February 13, 2026"
+  commit: "18675d8e"
