@@ -1,5 +1,5 @@
 /**
- * Tyler Wince - BROADSHEET GAZETTE theme interactions
+ * Tyler Wince - CONTROL ROOM theme interactions
  */
 
 (function() {
@@ -7,22 +7,24 @@
 
   var body = document.body;
   var routeToggle = document.getElementById('route-toggle');
-  var siteNav = document.getElementById('site-nav');
+  var siteHeader = document.getElementById('site-header');
   body.classList.add('js-ready');
 
+  // Nav toggle (mobile: slides up from bottom)
   function setNavOpen(open) {
-    if (!routeToggle || !siteNav) return;
+    if (!routeToggle || !siteHeader) return;
     body.classList.toggle('nav-open', open);
     routeToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
 
-  if (routeToggle && siteNav) {
+  if (routeToggle && siteHeader) {
     routeToggle.addEventListener('click', function() {
       var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
       setNavOpen(!expanded);
     });
 
-    siteNav.querySelectorAll('a').forEach(function(link) {
+    // Close nav when clicking a link (mobile)
+    siteHeader.querySelectorAll('.site-nav a').forEach(function(link) {
       link.addEventListener('click', function() {
         if (window.matchMedia('(max-width: 900px)').matches) {
           setNavOpen(false);
@@ -34,12 +36,21 @@
       if (event.key === 'Escape') setNavOpen(false);
     });
 
+    // Close nav on click outside (mobile)
+    document.addEventListener('click', function(event) {
+      if (window.matchMedia('(max-width: 900px)').matches && body.classList.contains('nav-open')) {
+        if (!siteHeader.contains(event.target) && !routeToggle.contains(event.target)) {
+          setNavOpen(false);
+        }
+      }
+    });
+
     window.addEventListener('resize', function() {
       if (window.innerWidth > 900) setNavOpen(false);
     });
   }
 
-  // Highlight active nav links based on current path
+  // Highlight active nav links
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.site-nav a').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
@@ -62,8 +73,8 @@
           }
         });
       }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
       });
 
       revealTargets.forEach(function(target) {
@@ -131,5 +142,15 @@
 
   document.addEventListener('mousedown', function() {
     body.classList.remove('keyboard-nav');
+  });
+
+  // Panel hover glow effect
+  document.querySelectorAll('.panel').forEach(function(panel) {
+    panel.addEventListener('mouseenter', function() {
+      panel.style.boxShadow = '0 0 20px rgba(34, 211, 238, 0.05)';
+    });
+    panel.addEventListener('mouseleave', function() {
+      panel.style.boxShadow = '';
+    });
   });
 })();

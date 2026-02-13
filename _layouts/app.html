@@ -2,199 +2,176 @@
 layout: default
 ---
 
-<article class="feature-article">
-  <header class="feature-header" data-reveal>
-    <div class="feature-header-main">
-      <span class="feature-label">App Review</span>
-      <div class="feature-icon{% if page.title == 'Etch' %} feature-icon-etch{% endif %}">
-        <img src="{{ page.icon_path }}" alt="{{ page.title }} icon">
+<article class="app-detail">
+  <header class="app-detail-header" data-reveal>
+    <div class="app-detail-top">
+      <div class="app-detail-identity">
+        <span class="app-detail-label">
+          <span class="panel-indicator panel-indicator-green"></span>
+          App Monitor
+        </span>
+        <div class="app-detail-icon{% if page.title == 'Etch' %} app-detail-icon-etch{% endif %}">
+          <img src="{{ page.icon_path }}" alt="{{ page.title }} icon">
+        </div>
+        <h1 class="app-detail-title">{{ page.title }}</h1>
+        <p class="app-detail-tagline">{{ page.tagline }}</p>
+        <a href="{{ page.app_store_link }}" class="button" target="_blank" rel="noopener">
+          Download on the App Store &rarr;
+        </a>
       </div>
-      <h1 class="feature-title">{{ page.title }}</h1>
-      <p class="feature-tagline">{{ page.tagline }}</p>
-      <a href="{{ page.app_store_link }}" class="feature-download" target="_blank" rel="noopener">
-        Download on the App Store &rarr;
-      </a>
-    </div>
 
-    <aside class="feature-facts">
-      <h2 class="facts-title">At a Glance</h2>
-      <dl class="facts-list">
-        <div class="facts-item">
-          <dt>Platform</dt>
-          <dd>{{ page.platform }}</dd>
+      <aside class="app-detail-specs panel">
+        <div class="panel-header">
+          <h2 class="panel-title">
+            <span class="panel-indicator panel-indicator-cyan"></span>
+            Specifications
+          </h2>
         </div>
-        <div class="facts-item">
-          <dt>Built with</dt>
-          <dd>{{ page.tech_stack | join: ", " }}</dd>
+        <div class="panel-body">
+          <dl class="spec-list">
+            <div class="spec-item">
+              <dt>Platform</dt>
+              <dd>{{ page.platform }}</dd>
+            </div>
+            <div class="spec-item">
+              <dt>Built with</dt>
+              <dd>{{ page.tech_stack | join: ", " }}</dd>
+            </div>
+          </dl>
         </div>
-      </dl>
-    </aside>
+      </aside>
+    </div>
   </header>
 
-  <div class="feature-body" data-reveal>
-    <div class="feature-content content-wrapper-narrow">
+  <div class="app-detail-body" data-reveal>
+    <div class="app-detail-content content-wrapper-narrow">
       {{ content }}
     </div>
   </div>
 </article>
 
 <style>
-.feature-article {
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2.5rem);
+.app-detail {
+  padding: clamp(1.5rem, 3vw, 2rem);
 }
 
-.feature-header {
+.app-detail-top {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(220px, 0.8fr);
+  grid-template-columns: 1fr 280px;
   gap: clamp(1.5rem, 3vw, 2.5rem);
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid var(--color-ink);
-  margin-bottom: 1.5rem;
+  align-items: start;
 }
 
-.feature-header-main {
-  display: grid;
-  gap: 0;
-  align-content: start;
-}
-
-.feature-label {
-  display: block;
+.app-detail-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: var(--color-muted);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-.feature-icon {
-  width: clamp(72px, 10vw, 100px);
-  height: clamp(72px, 10vw, 100px);
+.app-detail-icon {
+  width: clamp(64px, 10vw, 88px);
+  height: clamp(64px, 10vw, 88px);
   overflow: hidden;
-  margin-bottom: 0.8rem;
+  border-radius: var(--border-radius-lg);
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-panel-border);
 }
 
-.feature-icon img {
+.app-detail-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.feature-icon-etch {
-  width: clamp(80px, 11vw, 120px);
-  height: clamp(80px, 11vw, 120px);
+.app-detail-icon-etch {
+  width: clamp(72px, 11vw, 100px);
+  height: clamp(72px, 11vw, 100px);
 }
 
-.feature-title {
+.app-detail-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5.5vw, 4rem);
-  font-weight: 900;
-  line-height: 0.95;
-}
-
-.feature-tagline {
-  margin: 0.6rem 0 0;
-  font-size: clamp(1rem, 1.4vw, 1.1rem);
-  font-style: italic;
-  color: var(--color-ink-soft);
-  max-width: 34ch;
-}
-
-.feature-download {
-  display: inline-block;
-  margin-top: 1rem;
-  background: var(--color-ink);
-  color: var(--color-paper);
-  padding: 0.6rem 1.1rem;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  text-decoration: none;
-  transition: background var(--transition-fast);
-}
-
-.feature-download:hover {
-  background: var(--color-red);
-  color: #fff;
-}
-
-.feature-facts {
-  border-left: 1px solid var(--color-rule-light);
-  padding-left: clamp(1rem, 2vw, 1.5rem);
-  align-self: start;
-}
-
-.facts-title {
-  margin: 0 0 0.8rem;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  line-height: 1;
 }
 
-.facts-list {
+.app-detail-tagline {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  color: var(--color-ink-soft);
+  max-width: 36ch;
+}
+
+.spec-list {
   margin: 0;
 }
 
-.facts-item {
+.spec-item {
   padding: 0.55rem 0;
-  border-top: 1px solid var(--color-rule-light);
+  border-bottom: 1px solid var(--color-panel-border);
 }
 
-.facts-item dt {
+.spec-item:last-child {
+  border-bottom: none;
+}
+
+.spec-item dt {
   font-family: var(--font-mono);
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--color-muted);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.15rem;
 }
 
-.facts-item dd {
+.spec-item dd {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--color-ink);
 }
 
-/* ---- Feature body / content ---- */
-.feature-body {
-  border-top: 1px solid var(--color-rule-light);
+/* ---- Body content ---- */
+.app-detail-body {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-panel-border);
 }
 
-.feature-content {
+.app-detail-content {
   padding-left: 0;
   padding-right: 0;
 }
 
-.feature-content h2 {
+.app-detail-content h2 {
   margin-top: 2.5rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--color-rule-light);
+  border-top: 1px solid var(--color-panel-border);
   font-family: var(--font-display);
-  font-size: clamp(1.4rem, 3vw, 2rem);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  color: var(--color-ink);
 }
 
-.feature-content h2:first-child {
+.app-detail-content h2:first-child {
   margin-top: 0;
   padding-top: 0;
   border-top: none;
 }
 
-.feature-content h3 {
+.app-detail-content h3 {
   margin-top: 1.3rem;
-  font-family: var(--font-sans);
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-ink);
 }
 
-.feature-content p,
-.feature-content li {
+.app-detail-content p,
+.app-detail-content li {
   font-size: 1rem;
   line-height: 1.75;
   color: var(--color-ink-soft);
@@ -209,20 +186,23 @@ layout: default
 
 .feature-card {
   padding: 0.8rem 0;
-  border-top: 1px solid var(--color-rule-light);
+  border-top: 1px solid var(--color-panel-border);
 }
 
 .feature-card h3 {
   margin: 0 0 0.2rem;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--color-ink);
 }
 
 .feature-card h3::before {
-  content: '\25A0';
-  color: var(--color-red);
-  margin-right: 0.4rem;
-  font-size: 0.6rem;
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  margin-right: 0.5rem;
   vertical-align: middle;
 }
 
@@ -233,10 +213,11 @@ layout: default
 
 /* Callout */
 .callout {
-  border-left: 3px solid var(--color-red);
-  background: var(--color-accent-wash);
+  border-left: 3px solid var(--color-cyan);
+  background: var(--color-cyan-dim);
   padding: 0.8rem 1rem;
   margin: 1.2rem 0;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .callout p:last-child {
@@ -260,16 +241,16 @@ layout: default
 }
 
 .screenshot-card img {
-  border: 1px solid var(--color-rule-light);
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--border-radius);
 }
 
 /* Stack grid */
 .stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 0;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: clamp(0.8rem, 1.5vw, 1rem);
   margin: 1.2rem 0;
-  border-top: 1px solid var(--color-rule-light);
 }
 
 .stack-card {
@@ -278,20 +259,21 @@ layout: default
 }
 
 .stack-card-stack {
-  padding: 0.75rem;
-  border-bottom: 1px solid var(--color-rule-light);
-  border-right: 1px solid var(--color-rule-light);
+  padding: 0.8rem;
+  background: var(--color-panel);
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--border-radius);
   height: 100%;
-  transition: background var(--transition-fast);
+  transition: border-color var(--transition-fast);
 }
 
 .stack-card:hover .stack-card-stack {
-  background: var(--color-accent-wash);
+  border-color: var(--color-cyan);
 }
 
 .stack-card-front {
   position: relative;
-  min-height: 90px;
+  min-height: 80px;
 }
 
 .stack-card-header {
@@ -303,7 +285,7 @@ layout: default
 .stack-card-count {
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-muted) !important;
@@ -314,14 +296,14 @@ layout: default
 }
 
 .stack-card-content {
-  margin-top: 0.7rem;
+  margin-top: 0.6rem;
 }
 
 .stack-card-title {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 700;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
   line-height: 1.3;
 }
 
@@ -330,20 +312,13 @@ layout: default
 }
 
 @media (max-width: 900px) {
-  .feature-header {
+  .app-detail-top {
     grid-template-columns: 1fr;
-  }
-
-  .feature-facts {
-    border-left: none;
-    padding-left: 0;
-    border-top: 1px solid var(--color-rule-light);
-    padding-top: 1rem;
   }
 }
 
 @media (max-width: 640px) {
-  .feature-article {
+  .app-detail {
     padding: 1rem;
   }
 }

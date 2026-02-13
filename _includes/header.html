@@ -1,20 +1,16 @@
 <header class="site-header" id="site-header">
-  <div class="masthead">
-    <div class="masthead-content">
-      <span class="masthead-date">Daily Digital Edition</span>
-      <h1 class="site-title">
-        <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
-      </h1>
-      <span class="masthead-edition">est. 2024 &middot; Apps, Writing &amp; Reading</span>
+  <div class="sidebar-identity">
+    <div class="sidebar-status">
+      <span class="status-dot"></span>
+      <span class="status-label">Online</span>
     </div>
+    <h1 class="site-title">
+      <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </h1>
+    <span class="sidebar-subtitle">Apps &middot; Writing &middot; Reading</span>
   </div>
 
-  <button class="section-toggle" id="route-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
-    <span class="section-toggle-label">Sections</span>
-    <span class="section-toggle-icon" aria-hidden="true">&#9776;</span>
-  </button>
-
-  <nav class="site-nav section-nav" id="site-nav" aria-label="Main navigation">
+  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
     <ul>
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
@@ -28,4 +24,23 @@
       {% endfor %}
     </ul>
   </nav>
+
+  <div class="sidebar-footer">
+    <ul class="sidebar-links">
+      {% if site.email %}
+      <li><a href="mailto:{{ site.email }}">Email</a></li>
+      {% endif %}
+      {% if site.twitter_username %}
+      <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
+      {% endif %}
+      {% if site.github_username %}
+      <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
+      {% endif %}
+      {% if site.linkedin_username %}
+      <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a></li>
+      {% endif %}
+      <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+    </ul>
+    <p class="sidebar-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
+  </div>
 </header>

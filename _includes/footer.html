@@ -1,26 +1,19 @@
 <footer class="site-footer">
-  <div class="colophon">
-    <div class="colophon-rule"></div>
-    <div class="colophon-content">
-      <p class="colophon-tagline">Building with intention.</p>
-
-      <ul class="colophon-links">
-        {% if site.email %}
-        <li><a href="mailto:{{ site.email }}">Email</a></li>
-        {% endif %}
-        {% if site.twitter_username %}
-        <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
-        {% endif %}
-        {% if site.github_username %}
-        <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
-        {% endif %}
-        {% if site.linkedin_username %}
-        <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a></li>
-        {% endif %}
-        <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
-      </ul>
-
-      <p class="colophon-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
-    </div>
-  </div>
+  <p class="colophon-tagline">Building with intention.</p>
+  <ul class="colophon-links">
+    {% if site.email %}
+    <li><a href="mailto:{{ site.email }}">Email</a></li>
+    {% endif %}
+    {% if site.twitter_username %}
+    <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
+    {% endif %}
+    {% if site.github_username %}
+    <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
+    {% endif %}
+    {% if site.linkedin_username %}
+    <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a></li>
+    {% endif %}
+    <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
+  </ul>
+  <p class="colophon-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
 </footer>

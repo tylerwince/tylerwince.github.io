@@ -5,7 +5,7 @@ permalink: /archive/
 description: Browse every past design of this site.
 ---
 
-<div class="archive-page content-wrapper">
+<div class="archive-page">
   <header class="archive-header">
     <span class="eyebrow">Time Travel</span>
     <h1>Design Archive</h1>
@@ -23,8 +23,6 @@ description: Browse every past design of this site.
         <span class="archive-month">{{ entry.date | date: "%b %Y" }}</span>
       </span>
 
-      <span class="archive-divider" aria-hidden="true"></span>
-
       <span class="archive-info">
         <strong>{{ entry.theme }}</strong>
         <em>{{ entry.description }}</em>
@@ -39,29 +37,27 @@ description: Browse every past design of this site.
 <style>
 .archive-page {
   max-width: var(--max-width-content);
-  padding-top: clamp(1.5rem, 3vw, 2.5rem);
-  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.2rem, 3vw, 2rem);
 }
 
 .archive-header {
-  padding-bottom: 1.2rem;
-  border-bottom: 2px solid var(--color-ink);
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-panel-border);
   margin-bottom: 0;
 }
 
 .archive-header h1 {
   margin: 0.15rem 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5.5vw, 3.8rem);
-  font-weight: 900;
-  line-height: 1;
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
 }
 
 .archive-header .lead {
   margin: 0;
   max-width: 50ch;
   color: var(--color-ink-soft);
-  font-style: italic;
 }
 
 .archive-list {
@@ -71,18 +67,20 @@ description: Browse every past design of this site.
 
 .archive-entry {
   display: grid;
-  grid-template-columns: 4.5rem auto 1fr auto;
-  gap: 0.8rem;
+  grid-template-columns: 4.5rem 1fr auto;
+  gap: 1rem;
   align-items: center;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--color-rule-light);
+  padding: 0.8rem 0.5rem;
+  border-bottom: 1px solid var(--color-panel-border);
   color: var(--color-ink);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  border-radius: var(--border-radius);
+  transition: all var(--transition-fast);
 }
 
 .archive-entry:hover {
-  color: var(--color-red);
+  background: var(--color-cyan-glow);
+  border-bottom-color: transparent;
 }
 
 .archive-date {
@@ -93,25 +91,19 @@ description: Browse every past design of this site.
 
 .archive-day {
   font-family: var(--font-display);
-  font-size: 1.7rem;
-  font-weight: 900;
+  font-size: 1.6rem;
+  font-weight: 700;
   line-height: 0.85;
+  color: var(--color-cyan);
 }
 
 .archive-month {
   font-family: var(--font-mono);
-  font-size: 0.58rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-muted);
-  margin-top: 0.1rem;
-}
-
-.archive-divider {
-  width: 1px;
-  height: 100%;
-  min-height: 2rem;
-  background: var(--color-rule-light);
+  margin-top: 0.15rem;
 }
 
 .archive-info {
@@ -122,12 +114,18 @@ description: Browse every past design of this site.
 
 .archive-info strong {
   font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.archive-entry:hover .archive-info strong {
+  color: var(--color-cyan);
 }
 
 .archive-info em {
-  font-size: 0.82rem;
+  font-style: normal;
+  font-size: 0.8rem;
   color: var(--color-ink-soft);
 }
 
@@ -135,22 +133,23 @@ description: Browse every past design of this site.
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--color-muted);
-  transition: color var(--transition-fast), transform var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .archive-entry:hover .archive-go {
-  color: var(--color-red);
+  color: var(--color-cyan);
   transform: translateX(3px);
 }
 
 @media (max-width: 640px) {
+  .archive-page {
+    padding: 1.2rem 1rem;
+  }
+
   .archive-entry {
     grid-template-columns: 3.5rem 1fr auto;
     gap: 0.6rem;
-  }
-
-  .archive-divider {
-    display: none;
+    padding: 0.7rem 0.3rem;
   }
 }
 </style>
