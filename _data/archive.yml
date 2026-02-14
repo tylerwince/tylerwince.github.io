@@ -47,3 +47,8 @@
   theme: "control-room visual overhaul across layouts, styles, and scripts"
   description: "control-room visual overhaul across layouts, styles, and scripts — designed February 13, 2026"
   commit: "18675d8e"
+
+- date: "2026-02-14"
+  theme: "LOVE LETTERS Valentine's Day"
+  description: "LOVE LETTERS Valentine's Day — designed February 14, 2026"
+  commit: "eec4c9b30"
