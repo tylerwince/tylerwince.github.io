@@ -1,6 +1,6 @@
 <footer class="site-footer">
-  <p class="colophon-tagline">Building with intention.</p>
-  <ul class="colophon-links">
+  <p class="footer-tagline">Building with intention.</p>
+  <ul class="footer-links">
     {% if site.email %}
     <li><a href="mailto:{{ site.email }}">Email</a></li>
     {% endif %}
@@ -15,5 +15,5 @@
     {% endif %}
     <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
   </ul>
-  <p class="colophon-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
+  <p class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
 </footer>

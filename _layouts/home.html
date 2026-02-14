@@ -2,121 +2,119 @@
 layout: default
 ---
 
-<div class="dashboard">
-  <section class="dashboard-hero animate-in" data-reveal>
-    <div class="hero-readout">
-      <span class="hero-label">System Status</span>
-      <h1 class="hero-title">{{ site.description }}</h1>
-      <p class="hero-subtitle">What I am building, writing, and reading right now.</p>
+<div class="valentine-home">
+  <!-- Hero: a love letter -->
+  <section class="love-letter-hero animate-in" data-reveal>
+    <div class="letter-paper">
+      <div class="letter-seal" aria-hidden="true">&hearts;</div>
+      <p class="letter-date">February 14, 2026</p>
+      <h1 class="letter-greeting">{{ site.description }}</h1>
+      <p class="letter-body">What I am building, writing, and reading right now.</p>
       {{ content }}
-    </div>
-    <div class="hero-stats">
-      <div class="stat-block">
-        <span class="stat-value">3</span>
-        <span class="stat-label">Active Apps</span>
-      </div>
-      <div class="stat-block">
-        <span class="stat-value">{{ site.posts | where: "published", true | size }}</span>
-        <span class="stat-label">Essays</span>
-      </div>
-      <div class="stat-block">
-        <span class="stat-value">{{ site.books | size }}</span>
-        <span class="stat-label">Books</span>
+      <div class="letter-stats">
+        <span class="letter-stat">
+          <strong>3</strong> apps
+        </span>
+        <span class="letter-stat-divider" aria-hidden="true">&hearts;</span>
+        <span class="letter-stat">
+          <strong>{{ site.posts | where: "published", true | size }}</strong> essays
+        </span>
+        <span class="letter-stat-divider" aria-hidden="true">&hearts;</span>
+        <span class="letter-stat">
+          <strong>{{ site.books | size }}</strong> books
+        </span>
       </div>
     </div>
   </section>
 
-  <div class="dashboard-grid">
-    <section class="panel panel-apps" data-reveal>
-      <div class="panel-header">
-        <h2 class="panel-title">
-          <span class="panel-indicator panel-indicator-green"></span>
-          Apps
-        </h2>
-      </div>
-      <div class="panel-body">
-        <a href="/apps/etch/" class="app-module">
-          <div class="app-module-icon">
-            <img src="/assets/etch_logo.png" alt="Etch">
-          </div>
-          <div class="app-module-info">
-            <h3>Etch</h3>
-            <p>Spaced repetition, built like Apple would.</p>
-          </div>
-          <span class="app-module-status status-active">Active</span>
-        </a>
+  <!-- Scattered valentine cards layout -->
+  <div class="valentine-collage">
+    <!-- Apps: envelope cards -->
+    <section class="valentine-card card-apps" data-reveal>
+      <div class="card-flap" aria-hidden="true"></div>
+      <div class="card-inner">
+        <h2 class="card-heading">Apps</h2>
+        <div class="envelope-contents">
+          <a href="/apps/etch/" class="app-valentine">
+            <div class="app-valentine-seal">
+              <img src="/assets/etch_logo.png" alt="Etch">
+            </div>
+            <div class="app-valentine-note">
+              <h3>Etch</h3>
+              <p>Spaced repetition, built like Apple would.</p>
+            </div>
+          </a>
 
-        <a href="/apps/little-quotes/" class="app-module">
-          <div class="app-module-icon">
-            <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
-          </div>
-          <div class="app-module-info">
-            <h3>Little Quotes</h3>
-            <p>Capture and share kids' priceless words.</p>
-          </div>
-          <span class="app-module-status status-active">Active</span>
-        </a>
+          <a href="/apps/little-quotes/" class="app-valentine">
+            <div class="app-valentine-seal">
+              <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
+            </div>
+            <div class="app-valentine-note">
+              <h3>Little Quotes</h3>
+              <p>Capture and share kids' priceless words.</p>
+            </div>
+          </a>
 
-        <a href="/apps/waymark/" class="app-module">
-          <div class="app-module-icon">
-            <img src="/assets/waymark_icon.png" alt="Waymark">
-          </div>
-          <div class="app-module-info">
-            <h3>Waymark</h3>
-            <p>Prayer and community, designed with care.</p>
-          </div>
-          <span class="app-module-status status-active">Active</span>
-        </a>
+          <a href="/apps/waymark/" class="app-valentine">
+            <div class="app-valentine-seal">
+              <img src="/assets/waymark_icon.png" alt="Waymark">
+            </div>
+            <div class="app-valentine-note">
+              <h3>Waymark</h3>
+              <p>Prayer and community, designed with care.</p>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
 
-    <section class="panel panel-writing" data-reveal>
-      <div class="panel-header">
-        <h2 class="panel-title">
-          <span class="panel-indicator panel-indicator-cyan"></span>
-          Latest Writing
-        </h2>
-        <a href="{{ '/writing/' | relative_url }}" class="panel-action">All essays &rarr;</a>
-      </div>
-      <div class="panel-body">
-        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
-        {% for post in latest_posts %}
-        <a href="{{ post.url | relative_url }}" class="log-entry{% if forloop.first %} log-entry-latest{% endif %}">
-          <span class="log-timestamp">{{ post.date | date: "%Y-%m-%d" }}</span>
-          <span class="log-message">
-            <strong>{{ post.title }}</strong>
-            <em>{{ post.description }}</em>
-          </span>
-        </a>
-        {% endfor %}
+    <!-- Writing: postmarked letters -->
+    <section class="valentine-card card-writing" data-reveal>
+      <div class="card-ribbon" aria-hidden="true"></div>
+      <div class="card-inner">
+        <div class="card-heading-row">
+          <h2 class="card-heading">Latest Writing</h2>
+          <a href="{{ '/writing/' | relative_url }}" class="card-link">All essays &rarr;</a>
+        </div>
+        <div class="letter-stack">
+          {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
+          {% for post in latest_posts %}
+          <a href="{{ post.url | relative_url }}" class="letter-item{% if forloop.first %} letter-item-first{% endif %}">
+            <span class="letter-postmark">
+              <span class="postmark-date">{{ post.date | date: "%b %d" }}</span>
+              <span class="postmark-year">{{ post.date | date: "%Y" }}</span>
+            </span>
+            <span class="letter-item-body">
+              <strong>{{ post.title }}</strong>
+              <em>{{ post.description }}</em>
+            </span>
+          </a>
+          {% endfor %}
+        </div>
       </div>
     </section>
 
-    <section class="panel panel-reading" data-reveal>
-      <div class="panel-header">
-        <h2 class="panel-title">
-          <span class="panel-indicator panel-indicator-amber"></span>
-          Now Reading
-        </h2>
-        <a href="{{ '/reading/' | relative_url }}" class="panel-action">Full list &rarr;</a>
-      </div>
-      <div class="panel-body">
+    <!-- Reading: bookmark strips -->
+    <section class="valentine-card card-reading" data-reveal>
+      <div class="card-inner">
+        <div class="card-heading-row">
+          <h2 class="card-heading">Now Reading</h2>
+          <a href="{{ '/reading/' | relative_url }}" class="card-link">Full list &rarr;</a>
+        </div>
         {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
         {% if currently_reading.size > 0 %}
-          {% for book in currently_reading limit:3 %}
-          <div class="reading-readout">
-            <div class="reading-readout-info">
-              <h3>{{ book.title }}</h3>
-              <span class="reading-readout-author">{{ book.author }}</span>
+          <div class="bookmark-shelf">
+            {% for book in currently_reading limit:3 %}
+            <div class="bookmark-strip">
+              <div class="bookmark-heart" aria-hidden="true">&hearts;</div>
+              <h3 class="bookmark-title">{{ book.title }}</h3>
+              <span class="bookmark-author">{{ book.author }}</span>
+              <span class="bookmark-status">In Progress</span>
             </div>
-            <span class="reading-readout-status">
-              <span class="status-dot"></span>
-              In Progress
-            </span>
+            {% endfor %}
           </div>
-          {% endfor %}
         {% else %}
-          <div class="reading-readout reading-readout-empty">
+          <div class="bookmark-empty">
             <p>Between books right now. Check back soon.</p>
           </div>
         {% endif %}
@@ -126,326 +124,499 @@ layout: default
 </div>
 
 <style>
-.dashboard {
-  padding: clamp(1rem, 2.5vw, 2rem);
-  display: grid;
-  gap: clamp(1rem, 2vw, 1.5rem);
+.valentine-home {
+  padding: 1.5rem 0 2rem;
 }
 
-/* ---- Hero Readout ---- */
-.dashboard-hero {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2rem;
-  align-items: end;
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  background: var(--color-panel);
-  border: 1px solid var(--color-panel-border);
+/* ---- Love Letter Hero ---- */
+.love-letter-hero {
+  margin-bottom: 2.5rem;
+}
+
+.letter-paper {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
   border-radius: var(--border-radius-lg);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  box-shadow: var(--shadow-letter);
+  position: relative;
+  text-align: center;
+  overflow: hidden;
 }
 
-.hero-label {
+.letter-paper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-pink-light) 0%, var(--color-rose) 50%, var(--color-pink-light) 100%);
+}
+
+.letter-paper::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--color-pink-light) 0%, var(--color-rose) 50%, var(--color-pink-light) 100%);
+}
+
+.letter-seal {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-green);
-  margin-bottom: 0.8rem;
-}
-
-.hero-label::before {
-  content: '';
-  width: 6px;
-  height: 6px;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: var(--color-green);
-  box-shadow: 0 0 8px var(--color-green);
-  animation: pulse-dot 2s ease-in-out infinite;
+  background: var(--color-seal);
+  color: #fce4ec;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(139, 34, 48, 0.3);
 }
 
-.hero-title {
-  margin: 0;
+.letter-date {
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  margin: 0 0 0.5rem;
+}
+
+.letter-greeting {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 4.5vw, 3rem);
   font-weight: 700;
-  line-height: 1.1;
+  font-style: italic;
+  line-height: 1.15;
   color: var(--color-ink);
+  margin: 0;
 }
 
-.hero-subtitle {
+.letter-body {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--color-ink-soft);
   margin: 0.5rem 0 0;
-  font-size: 0.95rem;
+}
+
+.letter-stats {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.letter-stat {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
   color: var(--color-ink-soft);
 }
 
-.hero-stats {
+.letter-stat strong {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-rose);
+}
+
+.letter-stat-divider {
+  color: var(--color-pink-light);
+  font-size: 0.7rem;
+}
+
+/* ---- Valentine Collage ---- */
+.valentine-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1.5rem;
+}
+
+.card-apps {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  transform: rotate(-0.8deg);
+}
+
+.card-writing {
+  grid-column: 2;
+  grid-row: 1;
+  transform: rotate(0.5deg);
+}
+
+.card-reading {
+  grid-column: 2;
+  grid-row: 2;
+  transform: rotate(-0.3deg);
+}
+
+.valentine-card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-letter);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.valentine-card:hover {
+  box-shadow: var(--shadow-lg);
+  z-index: 2;
+}
+
+.card-inner {
+  padding: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+/* Card decorations */
+.card-flap {
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-blush) 0%, var(--color-pink-light) 50%, var(--color-blush) 100%);
+  border-bottom: 1px dashed var(--color-border);
+  position: relative;
+}
+
+.card-flap::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 22px;
+  height: 22px;
+  background: var(--color-blush);
+  border-right: 1px dashed var(--color-border);
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.card-ribbon {
+  height: 6px;
+  background: linear-gradient(90deg, transparent, var(--color-rose), transparent);
+}
+
+.card-heading {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-rose);
+  margin: 0 0 1rem;
+}
+
+.card-heading-row {
   display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.card-heading-row .card-heading {
+  margin-bottom: 0;
+}
+
+.card-link {
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.card-link:hover {
+  color: var(--color-rose);
+}
+
+/* ---- App Valentines (envelope style) ---- */
+.envelope-contents {
+  display: grid;
   gap: 0;
 }
 
-.stat-block {
-  padding: 0.8rem 1.2rem;
-  border-left: 1px solid var(--color-panel-border);
+.app-valentine {
   display: grid;
-  gap: 0.1rem;
-  text-align: center;
-}
-
-.stat-value {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--color-cyan);
-  line-height: 1;
-}
-
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-muted);
-}
-
-/* ---- Dashboard Grid ---- */
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr 0.8fr;
-  gap: clamp(1rem, 2vw, 1.5rem);
-  align-items: start;
-}
-
-/* ---- App Modules ---- */
-.app-module {
-  display: grid;
-  grid-template-columns: 40px 1fr auto;
-  gap: 0.8rem;
+  grid-template-columns: 52px 1fr;
+  gap: 1rem;
   align-items: center;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--color-panel-border);
+  padding: 0.9rem 0;
+  border-bottom: 1px dashed var(--color-border-light);
   color: inherit;
   text-decoration: none;
   transition: background var(--transition-fast);
 }
 
-.app-module:last-child {
+.app-valentine:last-child {
   border-bottom: none;
 }
 
-.app-module:hover {
-  background: rgba(34, 211, 238, 0.03);
+.app-valentine:hover {
+  background: var(--color-rose-glow);
 }
 
-.app-module-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--border-radius);
+.app-valentine-seal {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
   overflow: hidden;
+  border: 2px solid var(--color-pink-light);
+  box-shadow: 0 2px 6px rgba(139, 34, 48, 0.15);
   flex-shrink: 0;
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.app-module-icon img {
+.app-valentine:hover .app-valentine-seal {
+  border-color: var(--color-rose);
+  transform: scale(1.05);
+}
+
+.app-valentine-seal img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.app-module-info h3 {
+.app-valentine-note h3 {
   margin: 0;
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
   font-weight: 600;
+  font-style: italic;
   color: var(--color-ink);
   line-height: 1.2;
 }
 
-.app-module-info p {
-  margin: 0.1rem 0 0;
-  font-size: 0.78rem;
+.app-valentine:hover .app-valentine-note h3 {
+  color: var(--color-rose);
+}
+
+.app-valentine-note p {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-hand);
+  font-size: 1rem;
   color: var(--color-muted);
 }
 
-.app-module-status {
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.2rem 0.5rem;
-  border-radius: var(--border-radius-full);
-  white-space: nowrap;
-}
-
-.status-active {
-  color: var(--color-green);
-  background: var(--color-green-dim);
-}
-
-/* ---- Log Entries (Writing) ---- */
-.log-entry {
+/* ---- Letter Stack (Writing) ---- */
+.letter-stack {
   display: grid;
-  grid-template-columns: 6.5rem 1fr;
-  gap: 0.8rem;
-  padding: 0.7rem 0;
-  border-bottom: 1px solid var(--color-panel-border);
+  gap: 0;
+}
+
+.letter-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px dashed var(--color-border-light);
   color: inherit;
   text-decoration: none;
   transition: background var(--transition-fast);
 }
 
-.log-entry:last-child {
+.letter-item:last-child {
   border-bottom: none;
 }
 
-.log-entry:hover {
-  background: rgba(34, 211, 238, 0.03);
+.letter-item:hover {
+  background: var(--color-rose-glow);
 }
 
-.log-entry-latest {
-  border-left: 2px solid var(--color-cyan);
+.letter-item-first {
+  border-left: 3px solid var(--color-rose);
   padding-left: 0.8rem;
-  margin-left: -0.8rem;
 }
 
-.log-timestamp {
+.letter-postmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  padding: 0.3rem 0.5rem;
+  border: 2px solid var(--color-pink-light);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1;
+}
+
+.postmark-date {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--color-muted);
-  padding-top: 0.15rem;
-  white-space: nowrap;
+  font-size: 0.65rem;
+  color: var(--color-rose);
+  font-weight: 700;
 }
 
-.log-message {
+.postmark-year {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--color-muted);
+}
+
+.letter-item-body {
   display: grid;
   gap: 0.15rem;
+  align-content: center;
 }
 
-.log-message strong {
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
+.letter-item-body strong {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
   font-weight: 600;
+  font-style: italic;
   color: var(--color-ink);
   line-height: 1.3;
 }
 
-.log-entry:hover .log-message strong {
-  color: var(--color-cyan);
+.letter-item:hover .letter-item-body strong {
+  color: var(--color-rose);
 }
 
-.log-message em {
+.letter-item-body em {
   font-style: normal;
-  font-size: 0.82rem;
+  font-family: var(--font-hand);
+  font-size: 0.95rem;
   color: var(--color-ink-soft);
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
-/* ---- Reading Readout ---- */
-.reading-readout {
+/* ---- Bookmark Shelf (Reading) ---- */
+.bookmark-shelf {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   gap: 0.8rem;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid var(--color-panel-border);
 }
 
-.reading-readout:last-child {
-  border-bottom: none;
+.bookmark-strip {
+  flex: 1;
+  background: linear-gradient(180deg, var(--color-blush) 0%, var(--color-paper) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  padding: 1rem 0.8rem;
+  text-align: center;
+  position: relative;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  box-shadow: var(--shadow-sm);
 }
 
-.reading-readout-info h3 {
+.bookmark-strip::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 20px solid var(--color-paper);
+  border-right: 20px solid var(--color-paper);
+  border-bottom: 8px solid transparent;
+}
+
+.bookmark-heart {
+  color: var(--color-rose);
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.bookmark-title {
   margin: 0;
-  font-family: var(--font-sans);
+  font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 600;
+  font-style: italic;
   color: var(--color-ink);
   line-height: 1.25;
 }
 
-.reading-readout-author {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
+.bookmark-author {
+  font-family: var(--font-hand);
+  font-size: 0.9rem;
   color: var(--color-muted);
 }
 
-.reading-readout-status {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: var(--font-mono);
-  font-size: 0.58rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-green);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.reading-readout-status .status-dot {
-  width: 5px;
-  height: 5px;
-}
-
-.reading-readout-empty p {
-  margin: 0;
+.bookmark-status {
+  font-family: var(--font-hand);
   font-size: 0.85rem;
+  color: var(--color-green);
+  margin-top: 0.2rem;
+}
+
+.bookmark-empty p {
+  margin: 0;
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
   color: var(--color-muted);
+  text-align: center;
+  padding: 1rem 0;
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 960px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr 1fr;
+@media (max-width: 768px) {
+  .valentine-collage {
+    grid-template-columns: 1fr;
   }
 
-  .panel-reading {
-    grid-column: 1 / -1;
+  .card-apps {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .card-writing {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .card-reading {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .card-apps,
+  .card-writing,
+  .card-reading {
+    transform: none;
+  }
+
+  .bookmark-shelf {
+    flex-direction: row;
   }
 }
 
-@media (max-width: 640px) {
-  .dashboard {
-    padding: 1rem;
+@media (max-width: 480px) {
+  .valentine-home {
+    padding: 1rem 0;
   }
 
-  .dashboard-hero {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-    padding: 1.2rem;
+  .letter-paper {
+    padding: 1.5rem;
   }
 
-  .hero-stats {
-    border-top: 1px solid var(--color-panel-border);
-    padding-top: 0.8rem;
+  .letter-postmark {
+    min-width: 44px;
+    padding: 0.2rem 0.3rem;
   }
 
-  .stat-block {
-    border-left: none;
-    padding: 0.5rem;
-    flex: 1;
+  .bookmark-shelf {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  .stat-block:not(:first-child) {
-    border-left: 1px solid var(--color-panel-border);
+  .bookmark-strip {
+    min-height: auto;
+    padding: 0.8rem;
+    flex-direction: row;
+    gap: 0.6rem;
   }
 
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .panel-reading {
-    grid-column: auto;
-  }
-
-  .log-entry {
-    grid-template-columns: 1fr;
-    gap: 0.2rem;
-  }
-
-  .log-entry-latest {
-    margin-left: 0;
+  .bookmark-strip::after {
+    display: none;
   }
 }
 </style>

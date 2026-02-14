@@ -1,5 +1,5 @@
 /**
- * Tyler Wince - CONTROL ROOM theme interactions
+ * Tyler Wince - LOVE LETTERS theme interactions
  */
 
 (function() {
@@ -124,7 +124,7 @@
     button.addEventListener('click', async function() {
       try {
         await navigator.clipboard.writeText(block.textContent || '');
-        button.textContent = 'Copied';
+        button.textContent = 'Copied!';
         setTimeout(function() { button.textContent = 'Copy'; }, 1600);
       } catch (error) {
         button.textContent = 'Error';
@@ -144,13 +144,30 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Panel hover glow effect
-  document.querySelectorAll('.panel').forEach(function(panel) {
-    panel.addEventListener('mouseenter', function() {
-      panel.style.boxShadow = '0 0 20px rgba(34, 211, 238, 0.05)';
+  // Floating hearts animation on valentine cards
+  document.querySelectorAll('.valentine-card').forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      card.style.transform = card.style.transform.replace(/rotate\([^)]+\)/, '') + ' scale(1.01)';
     });
-    panel.addEventListener('mouseleave', function() {
-      panel.style.boxShadow = '';
+    card.addEventListener('mouseleave', function() {
+      // Restore original rotation
+      if (card.classList.contains('card-apps')) {
+        card.style.transform = 'rotate(-0.8deg)';
+      } else if (card.classList.contains('card-writing')) {
+        card.style.transform = 'rotate(0.5deg)';
+      } else if (card.classList.contains('card-reading')) {
+        card.style.transform = 'rotate(-0.3deg)';
+      }
+    });
+  });
+
+  // Gentle letter paper hover lift
+  document.querySelectorAll('.letter-paper, .app-love-letter, .book-love-letter, .page-letter').forEach(function(paper) {
+    paper.addEventListener('mouseenter', function() {
+      paper.style.boxShadow = '3px 5px 20px rgba(100, 40, 40, 0.15), 0 2px 6px rgba(0,0,0,0.06)';
+    });
+    paper.addEventListener('mouseleave', function() {
+      paper.style.boxShadow = '';
     });
   });
 })();
