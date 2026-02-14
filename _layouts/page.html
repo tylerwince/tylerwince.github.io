@@ -4,7 +4,7 @@ layout: default
 
 <section class="page-view">
   <header class="page-view-header animate-in" data-reveal>
-    <div class="page-view-header-inner">
+    <div class="page-letter">
       {% if page.eyebrow %}
         <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
       {% endif %}
@@ -24,16 +24,32 @@ layout: default
 
 <style>
 .page-view {
-  padding: 0;
+  padding: 1.5rem 0 2rem;
 }
 
 .page-view-header {
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.2rem, 3vw, 2rem);
-  border-bottom: 1px solid var(--color-panel-border);
+  margin-bottom: 2rem;
 }
 
-.page-view-header-inner {
-  max-width: var(--max-width-content);
+.page-letter {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-letter);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-pink-light), var(--color-rose), var(--color-pink-light));
 }
 
 .page-view-title {
@@ -41,32 +57,30 @@ layout: default
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4.5vw, 3rem);
   font-weight: 700;
-  line-height: 1.05;
+  font-style: italic;
+  line-height: 1.1;
 }
 
 .page-view-description {
-  margin: 0.6rem 0 0;
-  font-size: 1rem;
+  margin: 0.6rem auto 0;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
   color: var(--color-ink-soft);
   max-width: 55ch;
 }
 
 .page-view-body {
-  padding: 0 clamp(1.2rem, 3vw, 2rem);
+  padding: 0;
 }
 
 .page-view-content {
   max-width: var(--max-width-content);
-  padding: var(--space-10) 0;
+  padding: 0;
 }
 
 @media (max-width: 640px) {
-  .page-view-header {
-    padding: 1.2rem 1rem;
-  }
-
-  .page-view-body {
-    padding: 0 1rem;
+  .page-letter {
+    padding: 1.2rem;
   }
 }
 </style>

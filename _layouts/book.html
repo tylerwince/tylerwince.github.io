@@ -4,12 +4,9 @@ layout: default
 
 <article class="book-detail">
   <header class="book-detail-header" data-reveal>
-    <div class="book-detail-top">
-      <div class="book-detail-identity">
-        <span class="book-detail-label">
-          <span class="panel-indicator panel-indicator-amber"></span>
-          Book Review
-        </span>
+    <div class="book-love-letter">
+      <div class="book-letter-heading">
+        <span class="book-detail-label">&hearts; Book Review</span>
         <h1>{{ page.title }}</h1>
         <p class="book-detail-author">by {{ page.author }}</p>
       </div>
@@ -17,14 +14,14 @@ layout: default
       <div class="book-detail-meta">
         {% assign year = page.date | date: "%Y" | to_integer %}
         {% if year >= 2020 %}
-          <div class="meta-row">
+          <div class="meta-badge">
             <span class="meta-label">Date</span>
             <span class="meta-value">{{ page.date | date: "%B %d, %Y" }}</span>
           </div>
         {% endif %}
 
         {% if page.stars %}
-          <div class="meta-row">
+          <div class="meta-badge">
             <span class="meta-label">Rating</span>
             <span class="meta-value meta-stars">
               {% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}
@@ -33,7 +30,7 @@ layout: default
         {% endif %}
 
         {% if page.genre %}
-          <div class="meta-row">
+          <div class="meta-badge">
             <span class="meta-label">Genre</span>
             <span class="meta-value meta-genre">{{ page.genre }}</span>
           </div>
@@ -44,16 +41,9 @@ layout: default
 
   <div class="book-detail-body" data-reveal>
     {% if page.takeaway %}
-      <aside class="book-detail-takeaway panel">
-        <div class="panel-header">
-          <h2 class="panel-title">
-            <span class="panel-indicator panel-indicator-cyan"></span>
-            Key Takeaway
-          </h2>
-        </div>
-        <div class="panel-body">
-          <p>{{ page.takeaway }}</p>
-        </div>
+      <aside class="book-detail-takeaway">
+        <div class="takeaway-heading">&hearts; Key Takeaway</div>
+        <p>{{ page.takeaway }}</p>
       </aside>
     {% endif %}
 
@@ -65,29 +55,40 @@ layout: default
 
 <style>
 .book-detail {
-  padding: clamp(1.5rem, 3vw, 2rem);
+  padding: 1.5rem 0 2rem;
 }
 
-.book-detail-top {
-  display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  align-items: end;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-panel-border);
-  margin-bottom: 2rem;
+.book-love-letter {
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-letter);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.book-love-letter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-pink-light), var(--color-rose), var(--color-pink-light));
+}
+
+.book-letter-heading {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .book-detail-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-muted);
-  margin-bottom: 0.6rem;
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--color-rose);
+  margin-bottom: 0.4rem;
 }
 
 .book-detail-header h1 {
@@ -95,83 +96,92 @@ layout: default
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 5vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.05;
+  font-style: italic;
+  line-height: 1.1;
 }
 
 .book-detail-author {
   margin: 0.4rem 0 0;
-  font-size: 1.05rem;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
   color: var(--color-ink-soft);
 }
 
 .book-detail-meta {
-  display: grid;
-  gap: 0;
-  align-self: end;
-}
-
-.meta-row {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid var(--color-panel-border);
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.meta-row:last-child {
-  border-bottom: none;
+.meta-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--color-blush);
+  border: 1px dashed var(--color-border-light);
+  border-radius: var(--border-radius-full);
 }
 
 .meta-label {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-family: var(--font-hand);
+  font-size: 0.85rem;
   color: var(--color-muted);
 }
 
 .meta-value {
-  font-size: 0.85rem;
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  font-style: italic;
   color: var(--color-ink);
 }
 
 .meta-stars {
-  color: var(--color-amber);
-  font-size: 0.9rem;
+  color: var(--color-gold);
+  font-style: normal;
+  font-size: 0.95rem;
   letter-spacing: 0.04em;
 }
 
 .meta-genre {
-  color: var(--color-cyan);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  color: var(--color-rose);
+  font-size: 0.85rem;
 }
 
 /* ---- Body ---- */
 .book-detail-body {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: clamp(1.5rem, 3vw, 2rem);
-  align-items: start;
+  margin-top: 2rem;
+  max-width: var(--max-width-text);
 }
 
 .book-detail-takeaway {
-  position: sticky;
-  top: 1.5rem;
+  background: var(--color-blush);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
-.book-detail-takeaway .panel-body p {
+.takeaway-heading {
+  font-family: var(--font-hand);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-rose);
+  margin-bottom: 0.4rem;
+}
+
+.book-detail-takeaway p {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: 0.98rem;
+  line-height: 1.65;
   color: var(--color-ink);
 }
 
 .book-detail-content {
   font-size: 1.02rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--color-ink-soft);
   max-width: var(--max-width-text);
 }
@@ -190,26 +200,27 @@ layout: default
   margin-top: 2rem;
   margin-bottom: 0.6rem;
   font-family: var(--font-display);
+  font-style: italic;
   color: var(--color-ink);
 }
 
 .book-detail-content h2 {
   padding-top: 1rem;
-  border-top: 1px solid var(--color-panel-border);
+  border-top: 1px dashed var(--color-border);
 }
 
 .book-detail-content a {
-  color: var(--color-cyan);
+  color: var(--color-rose);
 }
 
 .book-detail-content a:hover {
-  color: #67e8f9;
+  color: var(--color-wine);
 }
 
 .book-detail-content blockquote {
   margin: 1.5rem 0;
-  border-left: 3px solid var(--color-cyan);
-  background: var(--color-cyan-dim);
+  border-left: 3px solid var(--color-rose);
+  background: var(--color-blush);
   padding: 1rem 1.2rem;
   border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
@@ -218,19 +229,17 @@ layout: default
   content: '\201C';
   display: block;
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   line-height: 0.8;
-  color: var(--color-cyan);
+  color: var(--color-rose);
   margin-bottom: 0.3rem;
 }
 
 .book-detail-content blockquote .page-number {
   display: block;
   margin-top: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: var(--font-hand);
+  font-size: 0.9rem;
   color: var(--color-muted);
   font-style: normal;
 }
@@ -241,26 +250,13 @@ layout: default
 }
 
 .header-link:hover {
-  color: var(--color-cyan);
-}
-
-@media (max-width: 900px) {
-  .book-detail-top {
-    grid-template-columns: 1fr;
-  }
-
-  .book-detail-body {
-    grid-template-columns: 1fr;
-  }
-
-  .book-detail-takeaway {
-    position: static;
-  }
+  color: var(--color-rose);
 }
 
 @media (max-width: 640px) {
-  .book-detail {
-    padding: 1rem;
+  .book-detail-meta {
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>

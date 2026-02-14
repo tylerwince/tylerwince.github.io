@@ -7,7 +7,7 @@ description: Browse every past design of this site.
 
 <div class="archive-page">
   <header class="archive-header">
-    <span class="eyebrow">Time Travel</span>
+    <span class="eyebrow">&hearts; Time Travel</span>
     <h1>Design Archive</h1>
     <p class="lead">This site is restyled by AI every day. Here's every look it's ever had.</p>
   </header>
@@ -37,13 +37,14 @@ description: Browse every past design of this site.
 <style>
 .archive-page {
   max-width: var(--max-width-content);
-  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.2rem, 3vw, 2rem);
+  padding: 0;
 }
 
 .archive-header {
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-panel-border);
+  border-bottom: 1px dashed var(--color-border);
   margin-bottom: 0;
+  text-align: center;
 }
 
 .archive-header h1 {
@@ -51,12 +52,15 @@ description: Browse every past design of this site.
   font-family: var(--font-display);
   font-size: clamp(1.8rem, 4.5vw, 3rem);
   font-weight: 700;
-  line-height: 1.05;
+  font-style: italic;
+  line-height: 1.1;
 }
 
 .archive-header .lead {
-  margin: 0;
+  margin: 0.4rem auto 0;
   max-width: 50ch;
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
   color: var(--color-ink-soft);
 }
 
@@ -71,7 +75,7 @@ description: Browse every past design of this site.
   gap: 1rem;
   align-items: center;
   padding: 0.8rem 0.5rem;
-  border-bottom: 1px solid var(--color-panel-border);
+  border-bottom: 1px dashed var(--color-border-light);
   color: var(--color-ink);
   text-decoration: none;
   border-radius: var(--border-radius);
@@ -79,7 +83,7 @@ description: Browse every past design of this site.
 }
 
 .archive-entry:hover {
-  background: var(--color-cyan-glow);
+  background: var(--color-rose-glow);
   border-bottom-color: transparent;
 }
 
@@ -93,15 +97,14 @@ description: Browse every past design of this site.
   font-family: var(--font-display);
   font-size: 1.6rem;
   font-weight: 700;
+  font-style: italic;
   line-height: 0.85;
-  color: var(--color-cyan);
+  color: var(--color-rose);
 }
 
 .archive-month {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: var(--font-hand);
+  font-size: 0.85rem;
   color: var(--color-muted);
   margin-top: 0.15rem;
 }
@@ -116,36 +119,34 @@ description: Browse every past design of this site.
   font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 600;
+  font-style: italic;
   color: var(--color-ink);
 }
 
 .archive-entry:hover .archive-info strong {
-  color: var(--color-cyan);
+  color: var(--color-rose);
 }
 
 .archive-info em {
   font-style: normal;
-  font-size: 0.8rem;
+  font-family: var(--font-hand);
+  font-size: 0.95rem;
   color: var(--color-ink-soft);
 }
 
 .archive-go {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
   color: var(--color-muted);
   transition: all var(--transition-fast);
 }
 
 .archive-entry:hover .archive-go {
-  color: var(--color-cyan);
+  color: var(--color-rose);
   transform: translateX(3px);
 }
 
 @media (max-width: 640px) {
-  .archive-page {
-    padding: 1.2rem 1rem;
-  }
-
   .archive-entry {
     grid-template-columns: 3.5rem 1fr auto;
     gap: 0.6rem;
