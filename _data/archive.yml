@@ -52,3 +52,8 @@
   theme: "LOVE LETTERS Valentine's Day"
   description: "LOVE LETTERS Valentine's Day — designed February 14, 2026"
   commit: "eec4c9b30"
+
+- date: "2026-02-15"
+  theme: "PIXEL DESKTOP Windows 95"
+  description: "PIXEL DESKTOP Windows 95 — designed February 15, 2026"
+  commit: "5b44103f6"
