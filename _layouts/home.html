@@ -2,621 +2,509 @@
 layout: default
 ---
 
-<div class="valentine-home">
-  <!-- Hero: a love letter -->
-  <section class="love-letter-hero animate-in" data-reveal>
-    <div class="letter-paper">
-      <div class="letter-seal" aria-hidden="true">&hearts;</div>
-      <p class="letter-date">February 14, 2026</p>
-      <h1 class="letter-greeting">{{ site.description }}</h1>
-      <p class="letter-body">What I am building, writing, and reading right now.</p>
-      {{ content }}
-      <div class="letter-stats">
-        <span class="letter-stat">
-          <strong>3</strong> apps
-        </span>
-        <span class="letter-stat-divider" aria-hidden="true">&hearts;</span>
-        <span class="letter-stat">
-          <strong>{{ site.posts | where: "published", true | size }}</strong> essays
-        </span>
-        <span class="letter-stat-divider" aria-hidden="true">&hearts;</span>
-        <span class="letter-stat">
-          <strong>{{ site.books | size }}</strong> books
-        </span>
+<div class="desktop-home">
+  <!-- Welcome Dialog -->
+  <div class="win-dialog welcome-dialog animate-in" data-reveal>
+    <div class="win-titlebar">
+      <span class="win-titlebar-text">Welcome</span>
+      <div class="win-titlebar-btns">
+        <span class="win-btn" aria-hidden="true">&times;</span>
       </div>
     </div>
-  </section>
-
-  <!-- Scattered valentine cards layout -->
-  <div class="valentine-collage">
-    <!-- Apps: envelope cards -->
-    <section class="valentine-card card-apps" data-reveal>
-      <div class="card-flap" aria-hidden="true"></div>
-      <div class="card-inner">
-        <h2 class="card-heading">Apps</h2>
-        <div class="envelope-contents">
-          <a href="/apps/etch/" class="app-valentine">
-            <div class="app-valentine-seal">
-              <img src="/assets/etch_logo.png" alt="Etch">
-            </div>
-            <div class="app-valentine-note">
-              <h3>Etch</h3>
-              <p>Spaced repetition, built like Apple would.</p>
-            </div>
-          </a>
-
-          <a href="/apps/little-quotes/" class="app-valentine">
-            <div class="app-valentine-seal">
-              <img src="/assets/littleQuotes_icon.png" alt="Little Quotes">
-            </div>
-            <div class="app-valentine-note">
-              <h3>Little Quotes</h3>
-              <p>Capture and share kids' priceless words.</p>
-            </div>
-          </a>
-
-          <a href="/apps/waymark/" class="app-valentine">
-            <div class="app-valentine-seal">
-              <img src="/assets/waymark_icon.png" alt="Waymark">
-            </div>
-            <div class="app-valentine-note">
-              <h3>Waymark</h3>
-              <p>Prayer and community, designed with care.</p>
-            </div>
-          </a>
+    <div class="dialog-body">
+      <div class="dialog-icon" aria-hidden="true">
+        <span class="dialog-icon-monitor">
+          <span class="dialog-icon-screen"></span>
+        </span>
+      </div>
+      <div class="dialog-text">
+        <p class="dialog-heading">{{ site.description }}</p>
+        <p class="dialog-sub">What I am building, writing, and reading right now.</p>
+        {{ content }}
+        <div class="dialog-stats">
+          <span class="stat-chip">3 apps</span>
+          <span class="stat-chip">{{ site.posts | where: "published", true | size }} essays</span>
+          <span class="stat-chip">{{ site.books | size }} books</span>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- Writing: postmarked letters -->
-    <section class="valentine-card card-writing" data-reveal>
-      <div class="card-ribbon" aria-hidden="true"></div>
-      <div class="card-inner">
-        <div class="card-heading-row">
-          <h2 class="card-heading">Latest Writing</h2>
-          <a href="{{ '/writing/' | relative_url }}" class="card-link">All essays &rarr;</a>
-        </div>
-        <div class="letter-stack">
-          {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
-          {% for post in latest_posts %}
-          <a href="{{ post.url | relative_url }}" class="letter-item{% if forloop.first %} letter-item-first{% endif %}">
-            <span class="letter-postmark">
-              <span class="postmark-date">{{ post.date | date: "%b %d" }}</span>
-              <span class="postmark-year">{{ post.date | date: "%Y" }}</span>
-            </span>
-            <span class="letter-item-body">
-              <strong>{{ post.title }}</strong>
-              <em>{{ post.description }}</em>
-            </span>
-          </a>
-          {% endfor %}
+  <!-- Desktop Windows -->
+  <div class="desktop-windows">
+
+    <!-- Apps Window -->
+    <div class="win-window window-apps win-focused" data-reveal>
+      <div class="win-titlebar">
+        <span class="win-titlebar-text">C:\My Applications</span>
+        <div class="win-titlebar-btns">
+          <span class="win-btn" aria-hidden="true">_</span>
+          <span class="win-btn" aria-hidden="true">&square;</span>
+          <span class="win-btn" aria-hidden="true">&times;</span>
         </div>
       </div>
-    </section>
+      <div class="win-toolbar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Help</span>
+      </div>
+      <div class="win-content">
+        <a href="/apps/etch/" class="file-item">
+          <span class="file-icon-img"><img src="/assets/etch_logo.png" alt="Etch"></span>
+          <span class="file-details">
+            <strong class="file-name">Etch</strong>
+            <span class="file-desc">Spaced repetition, built like Apple would.</span>
+          </span>
+        </a>
 
-    <!-- Reading: bookmark strips -->
-    <section class="valentine-card card-reading" data-reveal>
-      <div class="card-inner">
-        <div class="card-heading-row">
-          <h2 class="card-heading">Now Reading</h2>
-          <a href="{{ '/reading/' | relative_url }}" class="card-link">Full list &rarr;</a>
+        <a href="/apps/little-quotes/" class="file-item">
+          <span class="file-icon-img"><img src="/assets/littleQuotes_icon.png" alt="Little Quotes"></span>
+          <span class="file-details">
+            <strong class="file-name">Little Quotes</strong>
+            <span class="file-desc">Capture and share kids' priceless words.</span>
+          </span>
+        </a>
+
+        <a href="/apps/waymark/" class="file-item">
+          <span class="file-icon-img"><img src="/assets/waymark_icon.png" alt="Waymark"></span>
+          <span class="file-details">
+            <strong class="file-name">Waymark</strong>
+            <span class="file-desc">Prayer and community, designed with care.</span>
+          </span>
+        </a>
+      </div>
+      <div class="win-statusbar">
+        <span class="win-statusbar-section">3 object(s)</span>
+      </div>
+    </div>
+
+    <!-- Writing Window -->
+    <div class="win-window window-writing" data-reveal>
+      <div class="win-titlebar">
+        <span class="win-titlebar-text">C:\My Documents\Writing</span>
+        <div class="win-titlebar-btns">
+          <span class="win-btn" aria-hidden="true">_</span>
+          <span class="win-btn" aria-hidden="true">&square;</span>
+          <span class="win-btn" aria-hidden="true">&times;</span>
         </div>
+      </div>
+      <div class="win-toolbar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Help</span>
+      </div>
+      <div class="win-content file-list-view">
+        <div class="file-list-header">
+          <span class="flh-name">Name</span>
+          <span class="flh-date">Date</span>
+          <span class="flh-desc">Description</span>
+        </div>
+        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
+        {% for post in latest_posts %}
+        <a href="{{ post.url | relative_url }}" class="file-item file-item-doc">
+          <span class="file-icon-text" aria-hidden="true">&#128196;</span>
+          <span class="file-details-row">
+            <strong class="file-name">{{ post.title }}</strong>
+            <span class="file-date">{{ post.date | date: "%m/%d/%Y" }}</span>
+            <span class="file-desc">{{ post.description }}</span>
+          </span>
+        </a>
+        {% endfor %}
+      </div>
+      <div class="win-statusbar">
+        <span class="win-statusbar-section">{{ site.posts | where: "published", true | size }} object(s)</span>
+        <span class="win-statusbar-section"><a href="{{ '/writing/' | relative_url }}" style="color:inherit;font-size:11px;">View all &rarr;</a></span>
+      </div>
+    </div>
+
+    <!-- Reading Window -->
+    <div class="win-window window-reading" data-reveal>
+      <div class="win-titlebar">
+        <span class="win-titlebar-text">C:\Library\Currently Reading</span>
+        <div class="win-titlebar-btns">
+          <span class="win-btn" aria-hidden="true">_</span>
+          <span class="win-btn" aria-hidden="true">&square;</span>
+          <span class="win-btn" aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <div class="win-content">
         {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
         {% if currently_reading.size > 0 %}
-          <div class="bookmark-shelf">
+          <div class="reading-list">
             {% for book in currently_reading limit:3 %}
-            <div class="bookmark-strip">
-              <div class="bookmark-heart" aria-hidden="true">&hearts;</div>
-              <h3 class="bookmark-title">{{ book.title }}</h3>
-              <span class="bookmark-author">{{ book.author }}</span>
-              <span class="bookmark-status">In Progress</span>
+            <div class="reading-entry">
+              <span class="file-icon-text" aria-hidden="true">&#128214;</span>
+              <div class="reading-info">
+                <strong>{{ book.title }}</strong>
+                <span class="reading-author">{{ book.author }}</span>
+              </div>
+              <span class="reading-status">In Progress</span>
             </div>
             {% endfor %}
           </div>
         {% else %}
-          <div class="bookmark-empty">
-            <p>Between books right now. Check back soon.</p>
-          </div>
+          <p class="reading-empty">Between books right now. Check back soon.</p>
         {% endif %}
       </div>
-    </section>
+      <div class="win-statusbar">
+        <span class="win-statusbar-section">{% if currently_reading.size > 0 %}{{ currently_reading.size }} book(s){% else %}0 object(s){% endif %}</span>
+        <span class="win-statusbar-section"><a href="{{ '/reading/' | relative_url }}" style="color:inherit;font-size:11px;">Full list &rarr;</a></span>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <style>
-.valentine-home {
-  padding: 1.5rem 0 2rem;
+.desktop-home {
+  padding: 0;
 }
 
-/* ---- Love Letter Hero ---- */
-.love-letter-hero {
-  margin-bottom: 2.5rem;
+/* ---- Welcome Dialog ---- */
+.welcome-dialog {
+  margin-bottom: 16px;
 }
 
-.letter-paper {
-  background: var(--color-paper);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  padding: clamp(2rem, 5vw, 3.5rem);
-  box-shadow: var(--shadow-letter);
+.dialog-body {
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  background: var(--color-window);
+}
+
+.dialog-icon {
+  flex-shrink: 0;
+}
+
+.dialog-icon-monitor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 40px;
+  background: var(--color-window);
+  box-shadow: var(--bevel-raised);
   position: relative;
-  text-align: center;
-  overflow: hidden;
 }
 
-.letter-paper::before {
+.dialog-icon-monitor::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--color-pink-light) 0%, var(--color-rose) 50%, var(--color-pink-light) 100%);
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 24px;
+  height: 4px;
+  background: var(--color-window);
+  box-shadow: var(--bevel-raised);
 }
 
-.letter-paper::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--color-pink-light) 0%, var(--color-rose) 50%, var(--color-pink-light) 100%);
+.dialog-icon-screen {
+  display: block;
+  width: 36px;
+  height: 28px;
+  background: var(--color-desktop);
+  box-shadow: var(--bevel-sunken);
 }
 
-.letter-seal {
+.dialog-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.dialog-heading {
+  font-family: var(--font-system);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.dialog-sub {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  margin: 0 0 8px;
+}
+
+.dialog-stats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.stat-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--color-seal);
-  color: #fce4ec;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 8px rgba(139, 34, 48, 0.3);
-}
-
-.letter-date {
-  font-family: var(--font-hand);
-  font-size: 1.1rem;
-  color: var(--color-muted);
-  margin: 0 0 0.5rem;
-}
-
-.letter-greeting {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4.5vw, 3rem);
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1.15;
+  padding: 2px 8px;
+  background: var(--color-window-bg);
+  box-shadow: var(--bevel-sunken);
+  font-family: var(--font-body);
+  font-size: 11px;
   color: var(--color-ink);
-  margin: 0;
 }
 
-.letter-body {
-  font-family: var(--font-hand);
-  font-size: 1.3rem;
-  color: var(--color-ink-soft);
-  margin: 0.5rem 0 0;
-}
-
-.letter-stats {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-}
-
-.letter-stat {
-  font-family: var(--font-hand);
-  font-size: 1.15rem;
-  color: var(--color-ink-soft);
-}
-
-.letter-stat strong {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--color-rose);
-}
-
-.letter-stat-divider {
-  color: var(--color-pink-light);
-  font-size: 0.7rem;
-}
-
-/* ---- Valentine Collage ---- */
-.valentine-collage {
+/* ---- Desktop Windows Grid ---- */
+.desktop-windows {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: 1.5rem;
-}
-
-.card-apps {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  transform: rotate(-0.8deg);
-}
-
-.card-writing {
-  grid-column: 2;
-  grid-row: 1;
-  transform: rotate(0.5deg);
-}
-
-.card-reading {
-  grid-column: 2;
-  grid-row: 2;
-  transform: rotate(-0.3deg);
-}
-
-.valentine-card {
-  background: var(--color-paper);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-letter);
-  position: relative;
-  overflow: hidden;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.valentine-card:hover {
-  box-shadow: var(--shadow-lg);
-  z-index: 2;
-}
-
-.card-inner {
-  padding: clamp(1.2rem, 2.5vw, 1.8rem);
-}
-
-/* Card decorations */
-.card-flap {
-  height: 40px;
-  background: linear-gradient(135deg, var(--color-blush) 0%, var(--color-pink-light) 50%, var(--color-blush) 100%);
-  border-bottom: 1px dashed var(--color-border);
-  position: relative;
-}
-
-.card-flap::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-  width: 22px;
-  height: 22px;
-  background: var(--color-blush);
-  border-right: 1px dashed var(--color-border);
-  border-bottom: 1px dashed var(--color-border);
-}
-
-.card-ribbon {
-  height: 6px;
-  background: linear-gradient(90deg, transparent, var(--color-rose), transparent);
-}
-
-.card-heading {
-  font-family: var(--font-hand);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-rose);
-  margin: 0 0 1rem;
-}
-
-.card-heading-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 1rem;
-}
-
-.card-heading-row .card-heading {
-  margin-bottom: 0;
-}
-
-.card-link {
-  font-family: var(--font-hand);
-  font-size: 1rem;
-  color: var(--color-muted);
-  text-decoration: none;
-  transition: color var(--transition-fast);
-}
-
-.card-link:hover {
-  color: var(--color-rose);
-}
-
-/* ---- App Valentines (envelope style) ---- */
-.envelope-contents {
-  display: grid;
   gap: 0;
 }
 
-.app-valentine {
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 1rem;
+.window-apps {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  margin-right: -12px;
+  z-index: 3;
+  position: relative;
+}
+
+.window-writing {
+  grid-column: 2;
+  grid-row: 1;
+  margin-left: 0;
+  margin-top: 16px;
+  z-index: 2;
+  position: relative;
+}
+
+.window-reading {
+  grid-column: 2;
+  grid-row: 2;
+  margin-top: 12px;
+  z-index: 1;
+  position: relative;
+}
+
+/* ---- File Items ---- */
+.file-item {
+  display: flex;
   align-items: center;
-  padding: 0.9rem 0;
-  border-bottom: 1px dashed var(--color-border-light);
-  color: inherit;
+  gap: 8px;
+  padding: 4px 6px;
+  color: var(--color-ink);
   text-decoration: none;
-  transition: background var(--transition-fast);
+  cursor: pointer;
 }
 
-.app-valentine:last-child {
-  border-bottom: none;
+.file-item:hover {
+  background: var(--color-titlebar);
+  color: #fff;
 }
 
-.app-valentine:hover {
-  background: var(--color-rose-glow);
+.file-item:hover .file-name,
+.file-item:hover .file-desc,
+.file-item:hover .file-date {
+  color: #fff;
 }
 
-.app-valentine-seal {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid var(--color-pink-light);
-  box-shadow: 0 2px 6px rgba(139, 34, 48, 0.15);
+.file-icon-img {
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
-  transition: border-color var(--transition-fast), transform var(--transition-fast);
+  overflow: hidden;
 }
 
-.app-valentine:hover .app-valentine-seal {
-  border-color: var(--color-rose);
-  transform: scale(1.05);
-}
-
-.app-valentine-seal img {
+.file-icon-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.app-valentine-note h3 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--color-ink);
-  line-height: 1.2;
-}
-
-.app-valentine:hover .app-valentine-note h3 {
-  color: var(--color-rose);
-}
-
-.app-valentine-note p {
-  margin: 0.15rem 0 0;
-  font-family: var(--font-hand);
-  font-size: 1rem;
-  color: var(--color-muted);
-}
-
-/* ---- Letter Stack (Writing) ---- */
-.letter-stack {
-  display: grid;
-  gap: 0;
-}
-
-.letter-item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-  padding: 0.8rem 0;
-  border-bottom: 1px dashed var(--color-border-light);
-  color: inherit;
-  text-decoration: none;
-  transition: background var(--transition-fast);
-}
-
-.letter-item:last-child {
-  border-bottom: none;
-}
-
-.letter-item:hover {
-  background: var(--color-rose-glow);
-}
-
-.letter-item-first {
-  border-left: 3px solid var(--color-rose);
-  padding-left: 0.8rem;
-}
-
-.letter-postmark {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 52px;
-  padding: 0.3rem 0.5rem;
-  border: 2px solid var(--color-pink-light);
-  border-radius: 50%;
+.file-icon-text {
+  font-size: 16px;
+  flex-shrink: 0;
+  width: 20px;
   text-align: center;
   line-height: 1;
 }
 
-.postmark-date {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  color: var(--color-rose);
-  font-weight: 700;
-}
-
-.postmark-year {
-  font-family: var(--font-mono);
-  font-size: 0.55rem;
-  color: var(--color-muted);
-}
-
-.letter-item-body {
-  display: grid;
-  gap: 0.15rem;
-  align-content: center;
-}
-
-.letter-item-body strong {
-  font-family: var(--font-display);
-  font-size: 0.92rem;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--color-ink);
-  line-height: 1.3;
-}
-
-.letter-item:hover .letter-item-body strong {
-  color: var(--color-rose);
-}
-
-.letter-item-body em {
-  font-style: normal;
-  font-family: var(--font-hand);
-  font-size: 0.95rem;
-  color: var(--color-ink-soft);
-  line-height: 1.3;
-}
-
-/* ---- Bookmark Shelf (Reading) ---- */
-.bookmark-shelf {
-  display: flex;
-  gap: 0.8rem;
-}
-
-.bookmark-strip {
-  flex: 1;
-  background: linear-gradient(180deg, var(--color-blush) 0%, var(--color-paper) 100%);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  padding: 1rem 0.8rem;
-  text-align: center;
-  position: relative;
-  min-height: 140px;
+.file-details {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  box-shadow: var(--shadow-sm);
+  min-width: 0;
 }
 
-.bookmark-strip::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 20px solid var(--color-paper);
-  border-right: 20px solid var(--color-paper);
-  border-bottom: 8px solid transparent;
-}
-
-.bookmark-heart {
-  color: var(--color-rose);
-  font-size: 1.2rem;
-  margin-bottom: 0.2rem;
-}
-
-.bookmark-title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 600;
-  font-style: italic;
+.file-name {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
   color: var(--color-ink);
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
-.bookmark-author {
-  font-family: var(--font-hand);
-  font-size: 0.9rem;
+.file-desc {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-date {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* ---- File List View (columns) ---- */
+.file-list-view {
+  padding: 0 !important;
+}
+
+.file-list-header {
+  display: grid;
+  grid-template-columns: 20px 1fr 80px 1.5fr;
+  gap: 4px;
+  padding: 2px 6px;
+  background: var(--color-button-face);
+  box-shadow: var(--bevel-button);
+  font-family: var(--font-system);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--color-ink);
+}
+
+.file-list-header .flh-name {
+  grid-column: 2;
+}
+
+.file-item-doc {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 0;
+  padding: 2px 6px;
+  border-bottom: none;
+}
+
+.file-details-row {
+  display: grid;
+  grid-template-columns: 1fr 80px 1.5fr;
+  gap: 4px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+/* ---- Reading List ---- */
+.reading-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.reading-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px;
+}
+
+.reading-entry:hover {
+  background: var(--color-titlebar);
+  color: #fff;
+}
+
+.reading-entry:hover strong,
+.reading-entry:hover .reading-author,
+.reading-entry:hover .reading-status {
+  color: #fff;
+}
+
+.reading-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.reading-info strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.3;
+}
+
+.reading-author {
+  font-family: var(--font-body);
+  font-size: 11px;
   color: var(--color-muted);
 }
 
-.bookmark-status {
-  font-family: var(--font-hand);
-  font-size: 0.85rem;
+.reading-status {
+  font-family: var(--font-body);
+  font-size: 11px;
   color: var(--color-green);
-  margin-top: 0.2rem;
+  flex-shrink: 0;
 }
 
-.bookmark-empty p {
-  margin: 0;
-  font-family: var(--font-hand);
-  font-size: 1.1rem;
+.reading-empty {
+  font-family: var(--font-body);
+  font-size: 12px;
   color: var(--color-muted);
   text-align: center;
-  padding: 1rem 0;
+  padding: 12px;
+  margin: 0;
 }
 
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
-  .valentine-collage {
+  .desktop-windows {
     grid-template-columns: 1fr;
   }
 
-  .card-apps {
+  .window-apps {
     grid-column: 1;
     grid-row: auto;
+    margin-right: 0;
   }
 
-  .card-writing {
+  .window-writing {
     grid-column: 1;
     grid-row: auto;
+    margin-left: 0;
+    margin-top: 12px;
   }
 
-  .card-reading {
+  .window-reading {
     grid-column: 1;
     grid-row: auto;
+    margin-top: 12px;
   }
 
-  .card-apps,
-  .card-writing,
-  .card-reading {
-    transform: none;
+  .file-list-header {
+    display: none;
   }
 
-  .bookmark-shelf {
-    flex-direction: row;
+  .file-item-doc {
+    grid-template-columns: 20px 1fr;
+  }
+
+  .file-details-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .file-date {
+    display: none;
+  }
+
+  .dialog-icon {
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .valentine-home {
-    padding: 1rem 0;
-  }
-
-  .letter-paper {
-    padding: 1.5rem;
-  }
-
-  .letter-postmark {
-    min-width: 44px;
-    padding: 0.2rem 0.3rem;
-  }
-
-  .bookmark-shelf {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .bookmark-strip {
-    min-height: auto;
-    padding: 0.8rem;
-    flex-direction: row;
-    gap: 0.6rem;
-  }
-
-  .bookmark-strip::after {
-    display: none;
+  .desktop-home {
+    padding: 0;
   }
 }
 </style>

@@ -3,84 +3,75 @@ layout: default
 ---
 
 <section class="page-view">
-  <header class="page-view-header animate-in" data-reveal>
-    <div class="page-letter">
-      {% if page.eyebrow %}
-        <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
-      {% endif %}
-      <h1 class="page-view-title">{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="page-view-description">{{ page.description }}</p>
-      {% endif %}
+  <div class="win-window win-maximized" data-reveal>
+    <div class="win-titlebar">
+      <span class="win-titlebar-text">{{ page.title }}</span>
+      <div class="win-titlebar-btns">
+        <span class="win-btn" aria-hidden="true">_</span>
+        <span class="win-btn" aria-hidden="true">&square;</span>
+        <span class="win-btn" aria-hidden="true">&times;</span>
+      </div>
     </div>
-  </header>
+    <div class="win-toolbar">
+      <span>File</span>
+      <span>Edit</span>
+      <span>View</span>
+      <span>Help</span>
+    </div>
 
-  <div class="page-view-body">
-    <div class="page-view-content animate-in animate-in-delay-1">
-      {{ content }}
+    <div class="page-window-body">
+      {% if page.eyebrow or page.description %}
+      <div class="page-header-bar">
+        {% if page.eyebrow %}
+          <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
+        {% endif %}
+        {% if page.description %}
+          <p class="page-view-description">{{ page.description }}</p>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      <div class="win-content page-content-area animate-in animate-in-delay-1">
+        {{ content }}
+      </div>
+    </div>
+
+    <div class="win-statusbar">
+      <span class="win-statusbar-section">{{ page.title }}</span>
     </div>
   </div>
 </section>
 
 <style>
 .page-view {
-  padding: 1.5rem 0 2rem;
+  padding: 0;
 }
 
-.page-view-header {
-  margin-bottom: 2rem;
+.page-window-body {
+  margin: 3px;
 }
 
-.page-letter {
-  background: var(--color-paper);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-letter);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.page-letter::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-pink-light), var(--color-rose), var(--color-pink-light));
-}
-
-.page-view-title {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4.5vw, 3rem);
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1.1;
+.page-header-bar {
+  background: var(--color-window);
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--bv-mid-dark);
 }
 
 .page-view-description {
-  margin: 0.6rem auto 0;
-  font-family: var(--font-hand);
-  font-size: 1.2rem;
+  margin: 4px 0 0;
+  font-family: var(--font-body);
+  font-size: 12px;
   color: var(--color-ink-soft);
-  max-width: 55ch;
 }
 
-.page-view-body {
-  padding: 0;
-}
-
-.page-view-content {
-  max-width: var(--max-width-content);
-  padding: 0;
+.page-content-area {
+  max-width: none;
+  padding: 12px;
 }
 
 @media (max-width: 640px) {
-  .page-letter {
-    padding: 1.2rem;
+  .page-header-bar {
+    padding: 8px;
   }
 }
 </style>
