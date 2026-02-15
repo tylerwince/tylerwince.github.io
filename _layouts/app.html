@@ -3,207 +3,165 @@ layout: default
 ---
 
 <article class="app-detail">
-  <header class="app-detail-header" data-reveal>
-    <div class="app-love-letter">
-      <div class="app-letter-top">
-        <div class="app-seal-area">
-          <div class="app-detail-icon{% if page.title == 'Etch' %} app-detail-icon-etch{% endif %}">
-            <img src="{{ page.icon_path }}" alt="{{ page.title }} icon">
-          </div>
-        </div>
-        <div class="app-letter-content">
-          <span class="app-detail-label">&hearts; App Showcase</span>
-          <h1 class="app-detail-title">{{ page.title }}</h1>
-          <p class="app-detail-tagline">{{ page.tagline }}</p>
-          <a href="{{ page.app_store_link }}" class="button" target="_blank" rel="noopener">
-            Download on the App Store &rarr;
-          </a>
-        </div>
+  <div class="win-window win-maximized" data-reveal>
+    <div class="win-titlebar">
+      <span class="win-titlebar-text">{{ page.title }} - Application</span>
+      <div class="win-titlebar-btns">
+        <span class="win-btn" aria-hidden="true">_</span>
+        <span class="win-btn" aria-hidden="true">&square;</span>
+        <span class="win-btn" aria-hidden="true">&times;</span>
       </div>
+    </div>
+    <div class="win-toolbar">
+      <span>File</span>
+      <span>Edit</span>
+      <span>View</span>
+      <span>Help</span>
+    </div>
 
-      <aside class="app-detail-specs">
-        <h2 class="specs-heading">Details</h2>
-        <dl class="spec-list">
-          <div class="spec-item">
+    <div class="app-window-body">
+      <aside class="app-sidebar">
+        <div class="app-sidebar-icon{% if page.title == 'Etch' %} app-sidebar-icon-etch{% endif %}">
+          <img src="{{ page.icon_path }}" alt="{{ page.title }} icon">
+        </div>
+
+        <div class="app-sidebar-meta">
+          <dl class="app-props">
             <dt>Platform</dt>
             <dd>{{ page.platform }}</dd>
-          </div>
-          <div class="spec-item">
             <dt>Built with</dt>
             <dd>{{ page.tech_stack | join: ", " }}</dd>
-          </div>
-        </dl>
-      </aside>
-    </div>
-  </header>
+          </dl>
+        </div>
 
-  <div class="app-detail-body" data-reveal>
-    <div class="app-detail-content content-wrapper-narrow">
-      {{ content }}
+        <p class="app-sidebar-tagline">{{ page.tagline }}</p>
+
+        <a href="{{ page.app_store_link }}" class="win-button win-button-primary" target="_blank" rel="noopener">
+          Download &rarr;
+        </a>
+      </aside>
+
+      <div class="app-main-content">
+        <div class="win-content app-content-area">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+
+    <div class="win-statusbar">
+      <span class="win-statusbar-section">Application Showcase</span>
+      <span class="win-statusbar-section">{{ page.platform }}</span>
     </div>
   </div>
 </article>
 
 <style>
 .app-detail {
-  padding: 1.5rem 0 2rem;
+  padding: 0;
 }
 
-.app-love-letter {
-  background: var(--color-paper);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-letter);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
-  position: relative;
-  overflow: hidden;
-}
-
-.app-love-letter::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-pink-light), var(--color-rose), var(--color-pink-light));
-}
-
-.app-letter-top {
+.app-window-body {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(1.5rem, 3vw, 2.5rem);
-  align-items: start;
+  grid-template-columns: 200px 1fr;
+  margin: 3px;
+  gap: 0;
 }
 
-.app-seal-area {
-  padding-top: 0.5rem;
+.app-sidebar {
+  background: var(--color-window);
+  padding: 12px;
+  border-right: 1px solid var(--bv-mid-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.app-detail-icon {
-  width: clamp(72px, 12vw, 100px);
-  height: clamp(72px, 12vw, 100px);
+.app-sidebar-icon {
+  width: 64px;
+  height: 64px;
   overflow: hidden;
-  border-radius: 50%;
-  border: 3px solid var(--color-pink-light);
-  box-shadow: 0 3px 12px rgba(139, 34, 48, 0.2);
 }
 
-.app-detail-icon img {
+.app-sidebar-icon-etch {
+  width: 72px;
+  height: 72px;
+}
+
+.app-sidebar-icon img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.app-detail-icon-etch {
-  width: clamp(80px, 13vw, 110px);
-  height: clamp(80px, 13vw, 110px);
+.app-sidebar-meta {
+  width: 100%;
 }
 
-.app-detail-label {
-  display: inline-block;
-  font-family: var(--font-hand);
-  font-size: 1rem;
-  color: var(--color-rose);
-  margin-bottom: 0.4rem;
-}
-
-.app-detail-title {
+.app-props {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  font-style: italic;
-  line-height: 1;
+  font-family: var(--font-body);
+  font-size: 11px;
 }
 
-.app-detail-tagline {
-  margin: 0.5rem 0 1.2rem;
-  font-family: var(--font-hand);
-  font-size: 1.2rem;
-  color: var(--color-ink-soft);
-  max-width: 36ch;
-}
-
-.app-detail-specs {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px dashed var(--color-border);
-}
-
-.specs-heading {
-  font-family: var(--font-hand);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-rose);
-  margin: 0 0 0.6rem;
-}
-
-.spec-list {
-  margin: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
-
-.spec-item {
-  padding: 0.6rem 0.8rem;
-  background: var(--color-blush);
-  border-radius: var(--border-radius);
-  border: 1px dashed var(--color-border-light);
-}
-
-.spec-item dt {
-  font-family: var(--font-hand);
-  font-size: 0.9rem;
+.app-props dt {
   color: var(--color-muted);
-  margin-bottom: 0.1rem;
+  margin-top: 4px;
 }
 
-.spec-item dd {
+.app-props dt:first-child {
+  margin-top: 0;
+}
+
+.app-props dd {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.9rem;
-  font-style: italic;
   color: var(--color-ink);
 }
 
-/* ---- Body content ---- */
-.app-detail-body {
+.app-sidebar-tagline {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.app-main-content {
+  min-width: 0;
+}
+
+.app-content-area {
+  min-height: 200px;
+}
+
+.app-content-area h2 {
   margin-top: 2rem;
-}
-
-.app-detail-content {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.app-detail-content h2 {
-  margin-top: 2.5rem;
-  padding-top: 1rem;
-  border-top: 1px dashed var(--color-border);
-  font-family: var(--font-display);
-  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-  font-style: italic;
+  padding-top: 0.8rem;
+  border-top: 2px solid var(--color-border);
+  font-family: var(--font-system);
+  font-size: 14px;
+  font-style: normal;
   color: var(--color-ink);
 }
 
-.app-detail-content h2:first-child {
+.app-content-area h2:first-child {
   margin-top: 0;
   padding-top: 0;
   border-top: none;
 }
 
-.app-detail-content h3 {
-  margin-top: 1.3rem;
-  font-weight: 600;
+.app-content-area h3 {
+  margin-top: 1rem;
+  font-weight: 700;
+  font-size: 13px;
   color: var(--color-ink);
 }
 
-.app-detail-content p,
-.app-detail-content li {
-  font-size: 1rem;
-  line-height: 1.75;
+.app-content-area p,
+.app-content-area li {
+  font-size: 13px;
+  line-height: 1.6;
   color: var(--color-ink-soft);
 }
 
@@ -211,41 +169,40 @@ layout: default
 .feature-grid {
   display: grid;
   gap: 0;
-  margin: 1.2rem 0;
+  margin: 8px 0;
 }
 
 .feature-card {
-  padding: 0.8rem 0;
-  border-top: 1px dashed var(--color-border);
+  padding: 6px 0;
+  border-top: 1px solid var(--color-border-light);
 }
 
 .feature-card h3 {
-  margin: 0 0 0.2rem;
-  font-size: 0.95rem;
+  margin: 0 0 2px;
+  font-size: 12px;
   color: var(--color-ink);
 }
 
 .feature-card h3::before {
-  content: '\2665';
+  content: '>';
   display: inline-block;
-  color: var(--color-pink);
-  margin-right: 0.4rem;
-  font-size: 0.7rem;
-  vertical-align: middle;
+  color: var(--color-titlebar);
+  margin-right: 4px;
+  font-family: var(--font-mono);
 }
 
 .feature-card p {
   margin: 0;
-  font-size: 0.88rem;
+  font-size: 11px;
 }
 
 /* Callout */
 .callout {
-  border-left: 3px solid var(--color-rose);
-  background: var(--color-blush);
-  padding: 0.8rem 1rem;
-  margin: 1.2rem 0;
-  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  background: #ffffcc;
+  border: 1px solid #c0c000;
+  padding: 8px;
+  margin: 8px 0;
+  box-shadow: var(--shadow-sm);
 }
 
 .callout p:last-child {
@@ -256,11 +213,11 @@ layout: default
 .screenshot-strip {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: minmax(170px, 240px);
-  gap: 0.8rem;
+  grid-auto-columns: minmax(140px, 200px);
+  gap: 6px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 0.5rem 0 0.8rem;
+  padding: 4px 0 8px;
 }
 
 .screenshot-card {
@@ -270,16 +227,15 @@ layout: default
 
 .screenshot-card img {
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
   box-shadow: var(--shadow-sm);
 }
 
 /* Stack grid */
 .stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: clamp(0.8rem, 1.5vw, 1rem);
-  margin: 1.2rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 6px;
+  margin: 8px 0;
 }
 
 .stack-card {
@@ -288,23 +244,25 @@ layout: default
 }
 
 .stack-card-stack {
-  padding: 0.8rem;
-  background: var(--color-paper);
+  padding: 8px;
+  background: var(--color-window-bg);
   border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
+  box-shadow: var(--bevel-sunken);
   height: 100%;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: var(--shadow-sm);
 }
 
 .stack-card:hover .stack-card-stack {
-  border-color: var(--color-rose);
-  box-shadow: var(--shadow-md);
+  background: var(--color-titlebar);
+  color: #fff;
+}
+
+.stack-card:hover .stack-card-title,
+.stack-card:hover .stack-card-count {
+  color: #fff !important;
 }
 
 .stack-card-front {
-  position: relative;
-  min-height: 80px;
+  min-height: 60px;
 }
 
 .stack-card-header {
@@ -315,8 +273,8 @@ layout: default
 
 .stack-card-count {
   margin: 0;
-  font-family: var(--font-hand);
-  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 10px;
   color: var(--color-muted) !important;
 }
 
@@ -325,15 +283,15 @@ layout: default
 }
 
 .stack-card-content {
-  margin-top: 0.6rem;
+  margin-top: 4px;
 }
 
 .stack-card-title {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  font-weight: 600;
-  font-style: italic;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  font-style: normal;
   line-height: 1.3;
 }
 
@@ -342,23 +300,38 @@ layout: default
 }
 
 @media (max-width: 640px) {
-  .app-letter-top {
+  .app-window-body {
     grid-template-columns: 1fr;
-    text-align: center;
   }
 
-  .app-seal-area {
-    display: flex;
+  .app-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    border-right: none;
+    border-bottom: 1px solid var(--bv-mid-dark);
+    padding: 8px;
+    gap: 8px;
   }
 
-  .app-detail-tagline {
-    margin-left: auto;
-    margin-right: auto;
+  .app-sidebar-icon {
+    width: 48px;
+    height: 48px;
   }
 
-  .spec-list {
-    grid-template-columns: 1fr;
+  .app-sidebar-icon-etch {
+    width: 56px;
+    height: 56px;
+  }
+
+  .app-sidebar-meta {
+    width: auto;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .app-sidebar-tagline {
+    width: 100%;
   }
 }
 </style>

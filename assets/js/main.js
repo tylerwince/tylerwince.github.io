@@ -1,5 +1,5 @@
 /**
- * Tyler Wince - LOVE LETTERS theme interactions
+ * Tyler Wince — PIXEL DESKTOP theme interactions
  */
 
 (function() {
@@ -10,7 +10,7 @@
   var siteHeader = document.getElementById('site-header');
   body.classList.add('js-ready');
 
-  // Nav toggle (mobile: slides up from bottom)
+  // Nav toggle (mobile: slides up from bottom as Start menu)
   function setNavOpen(open) {
     if (!routeToggle || !siteHeader) return;
     body.classList.toggle('nav-open', open);
@@ -23,7 +23,6 @@
       setNavOpen(!expanded);
     });
 
-    // Close nav when clicking a link (mobile)
     siteHeader.querySelectorAll('.site-nav a').forEach(function(link) {
       link.addEventListener('click', function() {
         if (window.matchMedia('(max-width: 900px)').matches) {
@@ -36,7 +35,6 @@
       if (event.key === 'Escape') setNavOpen(false);
     });
 
-    // Close nav on click outside (mobile)
     document.addEventListener('click', function(event) {
       if (window.matchMedia('(max-width: 900px)').matches && body.classList.contains('nav-open')) {
         if (!siteHeader.contains(event.target) && !routeToggle.contains(event.target)) {
@@ -144,30 +142,34 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Floating hearts animation on valentine cards
-  document.querySelectorAll('.valentine-card').forEach(function(card) {
-    card.addEventListener('mouseenter', function() {
-      card.style.transform = card.style.transform.replace(/rotate\([^)]+\)/, '') + ' scale(1.01)';
-    });
-    card.addEventListener('mouseleave', function() {
-      // Restore original rotation
-      if (card.classList.contains('card-apps')) {
-        card.style.transform = 'rotate(-0.8deg)';
-      } else if (card.classList.contains('card-writing')) {
-        card.style.transform = 'rotate(0.5deg)';
-      } else if (card.classList.contains('card-reading')) {
-        card.style.transform = 'rotate(-0.3deg)';
-      }
+  // Window focus management — clicking a window brings it to front
+  var zCounter = 10;
+  document.querySelectorAll('.win-window').forEach(function(win) {
+    win.addEventListener('mousedown', function() {
+      // Remove focus from all windows
+      document.querySelectorAll('.win-window').forEach(function(w) {
+        w.classList.remove('win-focused');
+      });
+      // Focus this window and bring to front
+      win.classList.add('win-focused');
+      zCounter++;
+      win.style.zIndex = zCounter;
     });
   });
 
-  // Gentle letter paper hover lift
-  document.querySelectorAll('.letter-paper, .app-love-letter, .book-love-letter, .page-letter').forEach(function(paper) {
-    paper.addEventListener('mouseenter', function() {
-      paper.style.boxShadow = '3px 5px 20px rgba(100, 40, 40, 0.15), 0 2px 6px rgba(0,0,0,0.06)';
-    });
-    paper.addEventListener('mouseleave', function() {
-      paper.style.boxShadow = '';
-    });
-  });
+  // Taskbar clock
+  var clockEl = document.getElementById('taskbar-clock');
+  if (clockEl) {
+    function updateClock() {
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12 || 12;
+      var timeStr = hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + ampm;
+      clockEl.textContent = timeStr;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+  }
 })();
