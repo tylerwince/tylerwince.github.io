@@ -3,132 +3,134 @@ layout: default
 ---
 
 <article class="book-detail">
-  <div class="win-window win-maximized" data-reveal>
-    <div class="win-titlebar">
-      <span class="win-titlebar-text">{{ page.title }} - Book Review</span>
-      <div class="win-titlebar-btns">
-        <span class="win-btn" aria-hidden="true">_</span>
-        <span class="win-btn" aria-hidden="true">&square;</span>
-        <span class="win-btn" aria-hidden="true">&times;</span>
-      </div>
-    </div>
-    <div class="win-toolbar">
-      <span>File</span>
-      <span>Edit</span>
-      <span>View</span>
-      <span>Help</span>
-    </div>
+  <div class="book-header" data-reveal>
+    <div class="book-header-stripe" aria-hidden="true"></div>
+    <h1 class="book-detail-title">{{ page.title }}</h1>
+    <p class="book-detail-author">by {{ page.author }}</p>
 
-    <div class="book-window-content">
-      <div class="book-header-area">
-        <h1 class="book-detail-title">{{ page.title }}</h1>
-        <p class="book-detail-author">by {{ page.author }}</p>
-
-        <div class="book-detail-meta">
-          {% assign year = page.date | date: "%Y" | to_integer %}
-          {% if year >= 2020 %}
-            <span class="meta-chip">
-              <span class="meta-label">Date:</span>
-              {{ page.date | date: "%B %d, %Y" }}
-            </span>
-          {% endif %}
-
-          {% if page.stars %}
-            <span class="meta-chip">
-              <span class="meta-label">Rating:</span>
-              <span class="meta-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
-            </span>
-          {% endif %}
-
-          {% if page.genre %}
-            <span class="meta-chip">
-              <span class="meta-label">Genre:</span>
-              {{ page.genre }}
-            </span>
-          {% endif %}
-        </div>
-      </div>
-
-      {% if page.takeaway %}
-        <div class="book-takeaway" data-reveal>
-          <div class="takeaway-icon" aria-hidden="true">i</div>
-          <div class="takeaway-text">
-            <strong>Key Takeaway</strong>
-            <p>{{ page.takeaway }}</p>
-          </div>
-        </div>
+    <div class="book-detail-meta">
+      {% assign year = page.date | date: "%Y" | to_integer %}
+      {% if year >= 2020 %}
+        <span class="meta-chip">
+          <span class="meta-label">Date</span>
+          {{ page.date | date: "%B %d, %Y" }}
+        </span>
       {% endif %}
 
-      <div class="win-content book-body-content" data-reveal>
-        {{ content }}
-      </div>
-    </div>
+      {% if page.stars %}
+        <span class="meta-chip">
+          <span class="meta-label">Rating</span>
+          <span class="meta-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
+        </span>
+      {% endif %}
 
-    <div class="win-statusbar">
-      <span class="win-statusbar-section">Book Review</span>
       {% if page.genre %}
-        <span class="win-statusbar-section">{{ page.genre }}</span>
+        <span class="meta-chip">
+          <span class="meta-label">Genre</span>
+          {{ page.genre }}
+        </span>
       {% endif %}
     </div>
+  </div>
+
+  {% if page.takeaway %}
+    <div class="book-takeaway" data-reveal>
+      <span class="takeaway-bar" aria-hidden="true"></span>
+      <div class="takeaway-text">
+        <strong>Key Takeaway</strong>
+        <p>{{ page.takeaway }}</p>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="book-body-content" data-reveal>
+    {{ content }}
   </div>
 </article>
 
 <style>
 .book-detail {
-  padding: 0;
+  max-width: var(--max-width-content);
 }
 
-.book-window-content {
-  margin: 3px;
+.book-header {
+  padding: 40px 0 32px;
+  margin-bottom: 32px;
+  border-bottom: 3px solid var(--color-ink);
+  position: relative;
 }
 
-.book-header-area {
-  background: var(--color-window);
-  padding: 16px;
-  border-bottom: 1px solid var(--bv-mid-dark);
+.book-header::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--color-red);
+}
+
+.book-header-stripe {
+  position: absolute;
+  top: 8px;
+  left: -64px;
+  right: -64px;
+  height: 36px;
+  background: var(--color-red);
+  transform: rotate(-1.5deg);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.85;
 }
 
 .book-detail-title {
-  margin: 0;
-  font-family: var(--font-system);
-  font-size: clamp(16px, 3vw, 22px);
-  font-weight: 700;
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--color-ink);
+  margin: 0 0 8px;
+  position: relative;
+  z-index: 1;
 }
 
 .book-detail-author {
-  margin: 4px 0 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--color-ink-soft);
+  margin: 0 0 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.book-detail-meta {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.meta-chip {
   font-family: var(--font-body);
   font-size: 13px;
   color: var(--color-ink-soft);
 }
 
-.book-detail-meta {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-.meta-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 2px 8px;
-  background: var(--color-window-bg);
-  box-shadow: var(--bevel-sunken);
-  font-family: var(--font-body);
-  font-size: 11px;
-  color: var(--color-ink);
-}
-
-.meta-label {
+.meta-chip .meta-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-muted);
+  display: block;
+  margin-bottom: 2px;
 }
 
 .meta-stars {
-  color: var(--color-gold);
+  color: var(--color-amber);
   letter-spacing: 0.04em;
 }
 
@@ -136,26 +138,17 @@ layout: default
 .book-takeaway {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 10px 12px;
-  background: #ffffcc;
-  border: 1px solid #c0c000;
-  margin: 0;
-  box-shadow: var(--shadow-sm);
+  gap: 16px;
+  padding: 20px 24px;
+  background: var(--color-white);
+  border-left: 4px solid var(--color-amber);
+  margin-bottom: 32px;
 }
 
-.takeaway-icon {
-  width: 24px;
-  height: 24px;
-  background: var(--color-titlebar);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-system);
-  font-size: 14px;
-  font-weight: 700;
-  flex-shrink: 0;
+.takeaway-bar {
+  width: 4px;
+  height: 100%;
+  display: none;
 }
 
 .takeaway-text {
@@ -163,24 +156,27 @@ layout: default
 }
 
 .takeaway-text strong {
-  font-family: var(--font-system);
-  font-size: 11px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-ink);
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 6px;
 }
 
 .takeaway-text p {
   margin: 0;
-  font-size: 12px;
-  line-height: 1.5;
-  color: var(--color-ink);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-ink-soft);
 }
 
 /* Body */
 .book-body-content {
-  font-size: 13px;
-  line-height: 1.7;
+  max-width: var(--max-width-text);
+  font-size: 15px;
+  line-height: 1.8;
   color: var(--color-ink-soft);
 }
 
@@ -195,32 +191,34 @@ layout: default
 .book-body-content h4,
 .book-body-content h5,
 .book-body-content h6 {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
-  font-family: var(--font-system);
-  font-style: normal;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--color-ink);
 }
 
 .book-body-content h2 {
-  padding-top: 0.8rem;
+  font-size: 28px;
+  padding-top: 1.5rem;
   border-top: 2px solid var(--color-border);
 }
 
 .book-body-content a {
-  color: var(--color-titlebar);
+  color: var(--color-navy);
+  text-decoration: underline;
 }
 
 .book-body-content a:hover {
-  color: #0000ff;
+  color: var(--color-red);
 }
 
 .book-body-content blockquote {
-  margin: 1rem 0;
-  background: #ffffcc;
-  border: 1px solid #c0c000;
-  padding: 8px 12px;
-  box-shadow: var(--shadow-sm);
+  margin: 1.5rem 0;
+  background: var(--color-white);
+  border-left: 4px solid var(--color-red);
+  padding: 16px 20px;
 }
 
 .book-body-content blockquote::before {
@@ -229,10 +227,13 @@ layout: default
 
 .book-body-content blockquote .page-number {
   display: block;
-  margin-top: 4px;
+  margin-top: 8px;
+  font-family: var(--font-mono);
   font-size: 11px;
   color: var(--color-muted);
   font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .header-link {
@@ -241,13 +242,23 @@ layout: default
 }
 
 .header-link:hover {
-  color: var(--color-titlebar);
-  text-decoration: underline;
+  color: var(--color-red);
 }
 
 @media (max-width: 640px) {
+  .book-header {
+    padding: 24px 0;
+  }
+
   .book-detail-meta {
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .book-header-stripe {
+    height: 24px;
+    left: -16px;
+    right: -16px;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 /**
- * Tyler Wince — PIXEL DESKTOP theme interactions
+ * Tyler Wince — CONSTRUCTIVIST POSTER theme interactions
  */
 
 (function() {
@@ -10,7 +10,7 @@
   var siteHeader = document.getElementById('site-header');
   body.classList.add('js-ready');
 
-  // Nav toggle (mobile: slides up from bottom as Start menu)
+  // Nav toggle (mobile: slide-out sidebar)
   function setNavOpen(open) {
     if (!routeToggle || !siteHeader) return;
     body.classList.toggle('nav-open', open);
@@ -35,6 +35,7 @@
       if (event.key === 'Escape') setNavOpen(false);
     });
 
+    // Close sidebar when clicking outside
     document.addEventListener('click', function(event) {
       if (window.matchMedia('(max-width: 900px)').matches && body.classList.contains('nav-open')) {
         if (!siteHeader.contains(event.target) && !routeToggle.contains(event.target)) {
@@ -57,7 +58,7 @@
     }
   });
 
-  // Progressive reveal for sections
+  // Progressive reveal for sections (slide in from left)
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
     body.classList.add('reveal-ready');
@@ -142,34 +143,22 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Window focus management — clicking a window brings it to front
-  var zCounter = 10;
-  document.querySelectorAll('.win-window').forEach(function(win) {
-    win.addEventListener('mousedown', function() {
-      // Remove focus from all windows
-      document.querySelectorAll('.win-window').forEach(function(w) {
-        w.classList.remove('win-focused');
-      });
-      // Focus this window and bring to front
-      win.classList.add('win-focused');
-      zCounter++;
-      win.style.zIndex = zCounter;
+  // Diagonal stripe parallax on scroll
+  var stripes = document.querySelectorAll('.hero-stripe, .app-hero-stripe, .book-header-stripe, .page-header-stripe');
+  if (stripes.length > 0) {
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var scrollY = window.scrollY;
+          stripes.forEach(function(stripe) {
+            var speed = 0.15;
+            stripe.style.transform = 'rotate(-2deg) translateY(' + (scrollY * speed) + 'px)';
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
-  });
-
-  // Taskbar clock
-  var clockEl = document.getElementById('taskbar-clock');
-  if (clockEl) {
-    function updateClock() {
-      var now = new Date();
-      var hours = now.getHours();
-      var minutes = now.getMinutes();
-      var ampm = hours >= 12 ? 'PM' : 'AM';
-      hours = hours % 12 || 12;
-      var timeStr = hours + ':' + (minutes < 10 ? '0' : '') + minutes + ' ' + ampm;
-      clockEl.textContent = timeStr;
-    }
-    updateClock();
-    setInterval(updateClock, 30000);
   }
 })();
