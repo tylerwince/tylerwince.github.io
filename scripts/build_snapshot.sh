@@ -39,9 +39,10 @@ rm -rf "${ARCHIVE_DIR}"
 mkdir -p "${ARCHIVE_DIR}"
 
 # Copy only HTML, CSS, and JS (skip images — they load from main site /assets/)
+# IMPORTANT: exclude archive/ to prevent recursive nesting of old snapshots
 echo "==> Copying HTML, CSS, JS to ${ARCHIVE_DIR}..."
 cd "${WORKTREE_DIR}/_site"
-find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.xml" -o -name "*.json" \) | while read -r file; do
+find . -path './archive' -prune -o -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" \) -print | while read -r file; do
   target_dir="${ARCHIVE_DIR}/$(dirname "${file}")"
   mkdir -p "${target_dir}"
   cp "${file}" "${target_dir}/"
@@ -51,22 +52,17 @@ done
 # Convert href="/something/" to href="/archive/DATE/something/"
 # but leave href="/assets/" and href="/archive/" alone (images load from main site)
 echo "==> Fixing hardcoded paths in HTML..."
-find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
-  # Fix href="/path/" links (but not /assets/ or /archive/ or external URLs)
-  sed -i \
-    -e "s|href=\"/apps/|href=\"${BASEURL}/apps/|g" \
-    -e "s|href=\"/writing/|href=\"${BASEURL}/writing/|g" \
-    -e "s|href=\"/reading/|href=\"${BASEURL}/reading/|g" \
-    -e "s|href=\"/now/|href=\"${BASEURL}/now/|g" \
-    -e "s|href=\"/books/|href=\"${BASEURL}/books/|g" \
-    -e "s|href=\"/etch/|href=\"${BASEURL}/etch/|g" \
-    -e "s|href=\"/waymark/|href=\"${BASEURL}/waymark/|g" \
-    -e "s|href=\"/20|href=\"${BASEURL}/20|g" \
-    "${htmlfile}"
-
-  # Fix the site title link (href="/" but not href="/a..." etc.)
-  sed -i "s|href=\"/\"|href=\"${BASEURL}/\"|g" "${htmlfile}"
-done
+find "${ARCHIVE_DIR}" -name "*.html" -type f -exec perl -pi -e "
+  s|href=\"/apps/|href=\"${BASEURL}/apps/|g;
+  s|href=\"/writing/|href=\"${BASEURL}/writing/|g;
+  s|href=\"/reading/|href=\"${BASEURL}/reading/|g;
+  s|href=\"/now/|href=\"${BASEURL}/now/|g;
+  s|href=\"/books/|href=\"${BASEURL}/books/|g;
+  s|href=\"/etch/|href=\"${BASEURL}/etch/|g;
+  s|href=\"/waymark/|href=\"${BASEURL}/waymark/|g;
+  s|href=\"/20|href=\"${BASEURL}/20|g;
+  s|href=\"/\"|href=\"${BASEURL}/\"|g;
+" {} +
 
 # Build prev/next nav elements
 PREV_NAV=""
@@ -90,21 +86,19 @@ BANNER_CSS='<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;
 
 BANNER_HTML='<!-- Time Travel Banner --><div class="archive-banner">'"${PREV_NAV}"'<span>'"${THEME}"' · '"${DATE}"' · <a href="/archive/">Back to today'\''s site →</a></span>'"${NEXT_NAV}"'</div><div class="archive-banner-spacer"></div>'
 
-find "${ARCHIVE_DIR}" -name "*.html" -type f | while read -r htmlfile; do
-  # Inject CSS into head
-  sed -i "s|</head>|${BANNER_CSS}</head>|" "${htmlfile}"
-  # Insert banner right after <body> tag
-  sed -i "s|<body>|<body>${BANNER_HTML}|g" "${htmlfile}"
-  sed -i 's|<body |<body data-archived="true" |g' "${htmlfile}"
-done
+find "${ARCHIVE_DIR}" -name "*.html" -type f -exec perl -pi -e "
+  s|</head>|${BANNER_CSS}</head>|;
+  s|<body>|<body>${BANNER_HTML}|;
+  s|<body |<body data-archived=\"true\" |;
+" {} +
 
 # Patch the previous day's archive to add a "next" link pointing to this snapshot
 if [ -n "${PREV_DATE}" ] && [ -d "${REPO_ROOT}/archive/${PREV_DATE}" ]; then
   echo "==> Patching previous archive (${PREV_DATE}) with next-day link..."
   NEXT_LINK='<a href="/archive/'"${DATE}"'/">'"${DATE}"' →</a>'
-  find "${REPO_ROOT}/archive/${PREV_DATE}" -name "*.html" -type f | while read -r htmlfile; do
-    sed -i "s|<span style=\"visibility:hidden;\">0000-00-00 →</span>|${NEXT_LINK}|g" "${htmlfile}"
-  done
+  find "${REPO_ROOT}/archive/${PREV_DATE}" -name "*.html" -type f -exec perl -pi -e "
+    s|<span style=\"visibility:hidden;\">0000-00-00 →</span>|${NEXT_LINK}|;
+  " {} +
 fi
 
 # Clean up worktree
