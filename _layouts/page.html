@@ -4,7 +4,7 @@ layout: default
 
 <section class="page-view">
   <div class="page-header" data-reveal>
-    <div class="page-header-stripe" aria-hidden="true"></div>
+    <span class="page-depth-label">{{ page.title | size | plus: 100 }}m depth</span>
     <h1 class="page-title">{{ page.title }}</h1>
     {% if page.eyebrow %}
       <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
@@ -22,48 +22,36 @@ layout: default
 <style>
 .page-view {
   max-width: var(--max-width-content);
+  margin: 0 auto;
 }
 
 .page-header {
-  padding: 40px 0 32px;
+  padding: 48px 0 32px;
   margin-bottom: 32px;
-  border-bottom: 3px solid var(--color-ink);
+  border-bottom: 1px solid var(--color-border);
   position: relative;
 }
 
-.page-header::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: var(--color-red);
-}
-
-.page-header-stripe {
-  position: absolute;
-  top: 8px;
-  left: -64px;
-  right: -64px;
-  height: 32px;
-  background: var(--color-red);
-  transform: rotate(-1.5deg);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.85;
+.page-depth-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 100px;
+  margin-bottom: 16px;
 }
 
 .page-title {
   font-family: var(--font-display);
-  font-size: clamp(36px, 6vw, 56px);
-  line-height: 0.95;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.1;
+  font-weight: 700;
   color: var(--color-ink);
   margin: 0 0 12px;
-  position: relative;
-  z-index: 1;
 }
 
 .page-description {
@@ -72,8 +60,6 @@ layout: default
   font-weight: 300;
   color: var(--color-ink-soft);
   margin: 0;
-  position: relative;
-  z-index: 1;
 }
 
 .page-content {
@@ -83,12 +69,6 @@ layout: default
 @media (max-width: 640px) {
   .page-header {
     padding: 24px 0;
-  }
-
-  .page-header-stripe {
-    height: 24px;
-    left: -16px;
-    right: -16px;
   }
 }
 </style>

@@ -4,7 +4,7 @@ layout: default
 
 <article class="book-detail">
   <div class="book-header" data-reveal>
-    <div class="book-header-stripe" aria-hidden="true"></div>
+    <span class="book-specimen-label">Research Log</span>
     <h1 class="book-detail-title">{{ page.title }}</h1>
     <p class="book-detail-author">by {{ page.author }}</p>
 
@@ -35,7 +35,9 @@ layout: default
 
   {% if page.takeaway %}
     <div class="book-takeaway" data-reveal>
-      <span class="takeaway-bar" aria-hidden="true"></span>
+      <div class="takeaway-indicator" aria-hidden="true">
+        <span class="takeaway-dot"></span>
+      </div>
       <div class="takeaway-text">
         <strong>Key Takeaway</strong>
         <p>{{ page.takeaway }}</p>
@@ -51,48 +53,36 @@ layout: default
 <style>
 .book-detail {
   max-width: var(--max-width-content);
+  margin: 0 auto;
 }
 
 .book-header {
-  padding: 40px 0 32px;
+  padding: 48px 0 32px;
   margin-bottom: 32px;
-  border-bottom: 3px solid var(--color-ink);
+  border-bottom: 1px solid var(--color-border);
   position: relative;
 }
 
-.book-header::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: var(--color-red);
-}
-
-.book-header-stripe {
-  position: absolute;
-  top: 8px;
-  left: -64px;
-  right: -64px;
-  height: 36px;
-  background: var(--color-red);
-  transform: rotate(-1.5deg);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.85;
+.book-specimen-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-magenta);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 3px 10px;
+  border: 1px solid rgba(240, 171, 252, 0.2);
+  border-radius: 100px;
+  margin-bottom: 16px;
 }
 
 .book-detail-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 56px);
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: clamp(28px, 5vw, 48px);
+  line-height: 1.1;
+  font-weight: 700;
   color: var(--color-ink);
   margin: 0 0 8px;
-  position: relative;
-  z-index: 1;
 }
 
 .book-detail-author {
@@ -100,17 +90,13 @@ layout: default
   font-size: 16px;
   font-weight: 300;
   color: var(--color-ink-soft);
-  margin: 0 0 16px;
-  position: relative;
-  z-index: 1;
+  margin: 0 0 20px;
 }
 
 .book-detail-meta {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
 }
 
 .meta-chip {
@@ -120,9 +106,9 @@ layout: default
 }
 
 .meta-chip .meta-label {
-  font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
   display: block;
@@ -132,6 +118,7 @@ layout: default
 .meta-stars {
   color: var(--color-amber);
   letter-spacing: 0.04em;
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.4);
 }
 
 /* Takeaway */
@@ -140,15 +127,25 @@ layout: default
   align-items: flex-start;
   gap: 16px;
   padding: 20px 24px;
-  background: var(--color-white);
-  border-left: 4px solid var(--color-amber);
+  background: var(--color-surface-dark);
+  border: 1px solid rgba(251, 191, 36, 0.15);
+  border-radius: var(--border-radius);
   margin-bottom: 32px;
 }
 
-.takeaway-bar {
-  width: 4px;
-  height: 100%;
-  display: none;
+.takeaway-indicator {
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.takeaway-dot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-amber);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  animation: glowPulse 2.5s ease-in-out infinite;
 }
 
 .takeaway-text {
@@ -158,8 +155,7 @@ layout: default
 .takeaway-text strong {
   font-family: var(--font-display);
   font-size: 14px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-weight: 600;
   color: var(--color-ink);
   display: block;
   margin-bottom: 6px;
@@ -194,30 +190,32 @@ layout: default
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   font-family: var(--font-display);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  font-weight: 600;
   color: var(--color-ink);
 }
 
 .book-body-content h2 {
-  font-size: 28px;
+  font-size: 24px;
   padding-top: 1.5rem;
-  border-top: 2px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
 }
 
 .book-body-content a {
-  color: var(--color-navy);
+  color: var(--color-cyan);
   text-decoration: underline;
+  text-decoration-color: rgba(0, 229, 255, 0.3);
+  text-underline-offset: 2px;
 }
 
 .book-body-content a:hover {
-  color: var(--color-red);
+  color: var(--color-accent-light);
 }
 
 .book-body-content blockquote {
   margin: 1.5rem 0;
-  background: var(--color-white);
-  border-left: 4px solid var(--color-red);
+  background: var(--color-surface-dark);
+  border-left: 3px solid var(--color-magenta);
+  border-radius: var(--border-radius);
   padding: 16px 20px;
 }
 
@@ -242,7 +240,7 @@ layout: default
 }
 
 .header-link:hover {
-  color: var(--color-red);
+  color: var(--color-cyan);
 }
 
 @media (max-width: 640px) {
@@ -253,12 +251,6 @@ layout: default
   .book-detail-meta {
     flex-direction: column;
     gap: 12px;
-  }
-
-  .book-header-stripe {
-    height: 24px;
-    left: -16px;
-    right: -16px;
   }
 }
 </style>

@@ -34,6 +34,7 @@ description: Browse every past design of this site.
 <style>
 .archive-page {
   max-width: var(--max-width-content);
+  margin: 0 auto;
 }
 
 .archive-header {
@@ -49,17 +50,17 @@ description: Browse every past design of this site.
 }
 
 .archive-list {
-  border-top: 2px solid var(--color-ink);
+  border-top: 1px solid var(--color-border);
 }
 
 .archive-list-header {
   display: grid;
   grid-template-columns: 80px 180px 1fr;
   gap: 16px;
-  padding: 8px 0;
-  font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.1em;
+  padding: 10px 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-muted);
   border-bottom: 1px solid var(--color-border);
@@ -69,19 +70,20 @@ description: Browse every past design of this site.
   display: grid;
   grid-template-columns: 80px 180px 1fr;
   gap: 16px;
-  padding: 12px 0;
+  padding: 14px 12px;
   color: var(--color-ink);
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.4;
   border-bottom: 1px solid var(--color-border-light);
-  transition: padding-left var(--transition-fast), border-bottom-color var(--transition-fast);
+  border-radius: var(--border-radius);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .archive-entry:hover {
-  padding-left: 8px;
-  border-bottom-color: var(--color-red);
+  background: rgba(0, 229, 255, 0.04);
+  border-bottom-color: var(--color-border);
 }
 
 .archive-date {
@@ -101,7 +103,7 @@ description: Browse every past design of this site.
 }
 
 .archive-entry:hover .archive-theme {
-  color: var(--color-red);
+  color: var(--color-cyan);
 }
 
 .archive-desc {
@@ -121,8 +123,7 @@ description: Browse every past design of this site.
   .archive-entry {
     grid-template-columns: 1fr;
     gap: 2px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--color-border-light);
+    padding: 12px 8px;
   }
 
   .archive-desc {

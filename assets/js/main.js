@@ -1,55 +1,14 @@
 /**
- * Tyler Wince — CONSTRUCTIVIST POSTER theme interactions
+ * Tyler Wince — DEEP SEA BIOLUMINESCENCE theme interactions
  */
 
 (function() {
   'use strict';
 
   var body = document.body;
-  var routeToggle = document.getElementById('route-toggle');
-  var siteHeader = document.getElementById('site-header');
   body.classList.add('js-ready');
 
-  // Nav toggle (mobile: slide-out sidebar)
-  function setNavOpen(open) {
-    if (!routeToggle || !siteHeader) return;
-    body.classList.toggle('nav-open', open);
-    routeToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  }
-
-  if (routeToggle && siteHeader) {
-    routeToggle.addEventListener('click', function() {
-      var expanded = routeToggle.getAttribute('aria-expanded') === 'true';
-      setNavOpen(!expanded);
-    });
-
-    siteHeader.querySelectorAll('.site-nav a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        if (window.matchMedia('(max-width: 900px)').matches) {
-          setNavOpen(false);
-        }
-      });
-    });
-
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') setNavOpen(false);
-    });
-
-    // Close sidebar when clicking outside
-    document.addEventListener('click', function(event) {
-      if (window.matchMedia('(max-width: 900px)').matches && body.classList.contains('nav-open')) {
-        if (!siteHeader.contains(event.target) && !routeToggle.contains(event.target)) {
-          setNavOpen(false);
-        }
-      }
-    });
-
-    window.addEventListener('resize', function() {
-      if (window.innerWidth > 900) setNavOpen(false);
-    });
-  }
-
-  // Highlight active nav links
+  // Bottom tab bar: highlight active nav on mobile
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.site-nav a').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
@@ -58,7 +17,7 @@
     }
   });
 
-  // Progressive reveal for sections (slide in from left)
+  // Progressive reveal for sections (rise from depth)
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
     body.classList.add('reveal-ready');
@@ -143,22 +102,84 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Diagonal stripe parallax on scroll
-  var stripes = document.querySelectorAll('.hero-stripe, .app-hero-stripe, .book-header-stripe, .page-header-stripe');
-  if (stripes.length > 0) {
+  // Depth counter animation on hero
+  var depthLabel = document.querySelector('.hero-depth-label');
+  if (depthLabel) {
+    var maxDepth = 3800;
     var ticking = false;
     window.addEventListener('scroll', function() {
       if (!ticking) {
         window.requestAnimationFrame(function() {
-          var scrollY = window.scrollY;
-          stripes.forEach(function(stripe) {
-            var speed = 0.15;
-            stripe.style.transform = 'rotate(-2deg) translateY(' + (scrollY * speed) + 'px)';
-          });
+          var scrollPercent = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
+          var depth = Math.round(scrollPercent * maxDepth);
+          depthLabel.textContent = 'Depth: ' + depth + 'm';
           ticking = false;
         });
         ticking = true;
       }
     });
   }
+
+  // Floating particle canvas for hero
+  var heroZone = document.querySelector('.hero-zone');
+  if (heroZone && window.innerWidth > 768) {
+    var canvas = document.createElement('canvas');
+    canvas.className = 'particle-canvas';
+    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+    heroZone.style.position = 'relative';
+    heroZone.insertBefore(canvas, heroZone.firstChild);
+
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var particleCount = 30;
+
+    function resizeCanvas() {
+      canvas.width = heroZone.offsetWidth;
+      canvas.height = heroZone.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    for (var i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.2 - 0.1,
+        opacity: Math.random() * 0.4 + 0.1,
+        hue: [185, 290, 45][Math.floor(Math.random() * 3)]
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(function(p) {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + p.hue + ', 80%, 70%, ' + p.opacity + ')';
+        ctx.fill();
+
+        // Glow
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = 'hsla(' + p.hue + ', 80%, 70%, ' + (p.opacity * 0.15) + ')';
+        ctx.fill();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+  }
+
+  // Book depth dots: stagger glow animation
+  document.querySelectorAll('.book-depth-dot').forEach(function(dot, index) {
+    dot.style.animationDelay = (index * 0.15) + 's';
+  });
 })();

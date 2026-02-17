@@ -8,6 +8,11 @@
 
   <nav class="site-nav" id="site-nav" aria-label="Main navigation">
     <ul>
+      <li class="nav-home-link">
+        <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>
+          Home
+        </a>
+      </li>
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
@@ -20,8 +25,4 @@
       {% endfor %}
     </ul>
   </nav>
-
-  <div class="sidebar-footer">
-    &copy; {{ 'now' | date: "%Y" }}
-  </div>
 </header>
