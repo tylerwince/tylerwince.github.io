@@ -1,5 +1,5 @@
 /**
- * Tyler Wince — DEEP SEA BIOLUMINESCENCE theme interactions
+ * Tyler Wince — AUCTION HOUSE CATALOGUE theme interactions
  */
 
 (function() {
@@ -8,7 +8,7 @@
   var body = document.body;
   body.classList.add('js-ready');
 
-  // Bottom tab bar: highlight active nav on mobile
+  // Active nav highlighting
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
   document.querySelectorAll('.site-nav a').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
@@ -17,7 +17,7 @@
     }
   });
 
-  // Progressive reveal for sections (rise from depth)
+  // Progressive reveal for sections
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
     body.classList.add('reveal-ready');
@@ -31,8 +31,8 @@
           }
         });
       }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.06,
+        rootMargin: '0px 0px -30px 0px'
       });
 
       revealTargets.forEach(function(target) {
@@ -68,7 +68,7 @@
     } catch (error) {}
   });
 
-  // Add copy button to code blocks
+  // Code copy button
   document.querySelectorAll('pre code').forEach(function(block) {
     var pre = block.parentElement;
     if (!pre || pre.querySelector('.code-copy-button')) return;
@@ -82,7 +82,7 @@
     button.addEventListener('click', async function() {
       try {
         await navigator.clipboard.writeText(block.textContent || '');
-        button.textContent = 'Copied!';
+        button.textContent = 'Copied';
         setTimeout(function() { button.textContent = 'Copy'; }, 1600);
       } catch (error) {
         button.textContent = 'Error';
@@ -93,7 +93,7 @@
     pre.appendChild(button);
   });
 
-  // Keyboard-focus intent styling
+  // Keyboard focus intent
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Tab') body.classList.add('keyboard-nav');
   });
@@ -102,84 +102,51 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Depth counter animation on hero
-  var depthLabel = document.querySelector('.hero-depth-label');
-  if (depthLabel) {
-    var maxDepth = 3800;
-    var ticking = false;
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          var scrollPercent = Math.min(window.scrollY / (document.body.scrollHeight - window.innerHeight), 1);
-          var depth = Math.round(scrollPercent * maxDepth);
-          depthLabel.textContent = 'Depth: ' + depth + 'm';
-          ticking = false;
-        });
-        ticking = true;
-      }
+  // Mobile sidebar toggle
+  var mobileNavBtn   = document.getElementById('mobile-nav-btn');
+  var auctionSidebar = document.getElementById('auction-sidebar');
+  var sidebarBackdrop = document.getElementById('sidebar-backdrop');
+  var sidebarClose   = document.getElementById('sidebar-close');
+
+  function openSidebar() {
+    if (!auctionSidebar) return;
+    auctionSidebar.classList.add('is-open');
+    if (sidebarBackdrop) {
+      sidebarBackdrop.classList.add('is-active');
+    }
+    if (mobileNavBtn) mobileNavBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSidebar() {
+    if (!auctionSidebar) return;
+    auctionSidebar.classList.remove('is-open');
+    if (sidebarBackdrop) {
+      sidebarBackdrop.classList.remove('is-active');
+    }
+    if (mobileNavBtn) mobileNavBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  if (mobileNavBtn) mobileNavBtn.addEventListener('click', openSidebar);
+  if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+  if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
+
+  // Close sidebar when a nav link is clicked (mobile navigation)
+  if (auctionSidebar) {
+    auctionSidebar.querySelectorAll('.site-nav a').forEach(function(link) {
+      link.addEventListener('click', closeSidebar);
     });
   }
 
-  // Floating particle canvas for hero
-  var heroZone = document.querySelector('.hero-zone');
-  if (heroZone && window.innerWidth > 768) {
-    var canvas = document.createElement('canvas');
-    canvas.className = 'particle-canvas';
-    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;';
-    heroZone.style.position = 'relative';
-    heroZone.insertBefore(canvas, heroZone.firstChild);
-
-    var ctx = canvas.getContext('2d');
-    var particles = [];
-    var particleCount = 30;
-
-    function resizeCanvas() {
-      canvas.width = heroZone.offsetWidth;
-      canvas.height = heroZone.offsetHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    for (var i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.2 - 0.1,
-        opacity: Math.random() * 0.4 + 0.1,
-        hue: [185, 290, 45][Math.floor(Math.random() * 3)]
-      });
-    }
-
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function(p) {
-        p.x += p.speedX;
-        p.y += p.speedY;
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'hsla(' + p.hue + ', 80%, 70%, ' + p.opacity + ')';
-        ctx.fill();
-
-        // Glow
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
-        ctx.fillStyle = 'hsla(' + p.hue + ', 80%, 70%, ' + (p.opacity * 0.15) + ')';
-        ctx.fill();
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-  }
-
-  // Book depth dots: stagger glow animation
-  document.querySelectorAll('.book-depth-dot').forEach(function(dot, index) {
-    dot.style.animationDelay = (index * 0.15) + 's';
+  // Close sidebar on Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') closeSidebar();
   });
+
+  // Stagger book item animations
+  document.querySelectorAll('.book-depth-dot').forEach(function(dot, index) {
+    dot.style.animationDelay = (index * 0.1) + 's';
+  });
+
 })();

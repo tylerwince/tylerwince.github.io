@@ -1,28 +1,56 @@
-<header class="site-header" id="site-header">
-  <div class="header-identity">
-    <a href="{{ '/' | relative_url }}" class="site-title">
-      {{ site.title }}
-    </a>
-    <span class="site-title-sub">Software &amp; Design</span>
-  </div>
+<!-- Mobile topbar (visible < 1024px) -->
+<div class="mobile-topbar">
+  <a href="{{ '/' | relative_url }}" class="mobile-brand-link">{{ site.title }}</a>
+  <button class="mobile-nav-btn" id="mobile-nav-btn" type="button"
+          aria-label="Open navigation" aria-controls="auction-sidebar" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</div>
 
-  <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-    <ul>
-      <li class="nav-home-link">
-        <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>
-          Home
-        </a>
-      </li>
-      {% for nav_page_name in site.header_pages %}
-        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-        {% if nav_page %}
-        <li>
-          <a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>
-            {{ nav_page.title }}
+<!-- Sidebar -->
+<aside class="auction-sidebar" id="auction-sidebar">
+  <div class="sidebar-inner">
+
+    <div class="sidebar-brand">
+      <a href="{{ '/' | relative_url }}" class="brand-monogram" aria-label="Home">TW</a>
+      <div class="brand-text">
+        <span class="brand-name">{{ site.title }}</span>
+        <span class="brand-tagline">Software &amp; Design</span>
+      </div>
+    </div>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <span class="nav-section-label">Contents</span>
+      <ul>
+        <li class="nav-home-link">
+          <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>
+            Home
           </a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </nav>
-</header>
+        {% for nav_page_name in site.header_pages %}
+          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+          {% if nav_page %}
+          <li>
+            <a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>
+              {{ nav_page.title }}
+            </a>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <div class="sidebar-provenance">
+      <p>Building with intention.</p>
+      <span class="sidebar-est">Est. 2024</span>
+    </div>
+
+  </div>
+
+  <button class="sidebar-close" id="sidebar-close" type="button" aria-label="Close navigation">&#x2715;</button>
+</aside>
+
+<!-- Backdrop -->
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>

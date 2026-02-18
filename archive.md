@@ -7,8 +7,8 @@ description: Browse every past design of this site.
 
 <div class="archive-page">
   <div class="archive-header" data-reveal>
-    <span class="eyebrow">Time Travel</span>
-    <p class="archive-lead">This site is restyled by AI every day. Here's every look it's ever had.</p>
+    <span class="eyebrow">Design History</span>
+    <p class="archive-lead">This site is redesigned by AI every day. Here is every look it has ever had.</p>
   </div>
 
   <div class="archive-list">
@@ -38,13 +38,13 @@ description: Browse every past design of this site.
 }
 
 .archive-header {
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 
 .archive-lead {
   font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 15px;
+  font-style: italic;
   color: var(--color-ink-soft);
   margin: 8px 0 0;
 }
@@ -55,12 +55,12 @@ description: Browse every past design of this site.
 
 .archive-list-header {
   display: grid;
-  grid-template-columns: 80px 180px 1fr;
+  grid-template-columns: 72px 180px 1fr;
   gap: 16px;
-  padding: 10px 0;
+  padding: 10px 8px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.08em;
+  font-size: 9px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-muted);
   border-bottom: 1px solid var(--color-border);
@@ -68,54 +68,57 @@ description: Browse every past design of this site.
 
 .archive-entry {
   display: grid;
-  grid-template-columns: 80px 180px 1fr;
+  grid-template-columns: 72px 180px 1fr;
   gap: 16px;
-  padding: 14px 12px;
+  padding: 13px 8px;
   color: var(--color-ink);
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.4;
   border-bottom: 1px solid var(--color-border-light);
-  border-radius: var(--border-radius);
-  transition: background var(--transition-fast), border-color var(--transition-fast);
+  transition: background var(--transition-fast), padding var(--transition-fast);
 }
 
 .archive-entry:hover {
-  background: rgba(0, 229, 255, 0.04);
-  border-bottom-color: var(--color-border);
+  background: var(--color-gold-pale);
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
 .archive-date {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--color-muted);
   white-space: nowrap;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .archive-theme {
+  font-family: var(--font-display);
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: var(--color-ink);
 }
 
 .archive-entry:hover .archive-theme {
-  color: var(--color-cyan);
+  color: var(--color-gold);
 }
 
 .archive-desc {
   font-size: 13px;
-  font-weight: 300;
+  font-style: italic;
   color: var(--color-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 600px) {
   .archive-list-header {
     display: none;
   }

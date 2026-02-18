@@ -3,7 +3,7 @@
     <span class="book-depth-dot" aria-hidden="true"></span>
     {% if content_size > 0 %}
       <a href="{{ include.book.url }}" rel="nofollow noopener" class="book-title-link">
-        {{ include.book.title }} <span class="note-icon">*</span>
+        {{ include.book.title }}<span class="note-icon"> *</span>
       </a>
     {% else %}
       <span class="book-title">{{ include.book.title }}</span>
@@ -16,7 +16,7 @@
       <span class="unrated-text">Unrated</span>
     {% else %}
       {% if include.book.currently_reading %}
-        <span class="currently-reading">Started: {{ include.book.date | date: "%b %d" }}</span>
+        <span class="currently-reading">Reading</span>
       {% elsif include.book.stars %}
         {% assign star_count = include.book.stars %}
         <span class="stars">{% for i in (1..star_count) %}&#9733;{% endfor %}</span>
