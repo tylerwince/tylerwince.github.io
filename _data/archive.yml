@@ -67,3 +67,8 @@
   theme: "AUCTION HOUSE CATALOGUE"
   description: "AUCTION HOUSE CATALOGUE — designed February 18, 2026"
   commit: "9cb31eb"
+
+- date: "2026-02-19"
+  theme: "FIELD EXPEDITION"
+  description: "FIELD EXPEDITION — designed February 19, 2026"
+  commit: "ad77658"
