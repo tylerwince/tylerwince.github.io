@@ -2,388 +2,343 @@
 layout: default
 ---
 
-<div class="catalogue-home">
+<div class="expedition-home">
 
-  <!-- Catalogue Masthead -->
-  <div class="catalogue-masthead" data-reveal>
-    <div class="masthead-left">
-      <span class="catalogue-tag">Catalogue Raisonné &mdash; {{ site.time | date: "%Y" }}</span>
-      <h1 class="catalogue-headline">{{ site.description }}</h1>
-      <p class="catalogue-subtitle">Building, writing, and reading — a personal catalogue.</p>
+  <!-- Field Notes: Hero -->
+  <div class="expedition-hero" data-reveal>
+    <div class="hero-badge">
+      <span class="hero-coord">{{ site.time | date: "%Y" }} Field Report</span>
     </div>
-    <div class="masthead-right">
-      <div class="masthead-detail">
-        <span class="mdetail-label">Date</span>
-        <span class="mdetail-value">{{ site.time | date: "%B %Y" }}</span>
+    <h1 class="hero-headline">{{ site.description }}</h1>
+    <p class="hero-subtext">Building, writing, and reading — dispatches from the field.</p>
+  </div>
+
+  <!-- Bento Grid -->
+  <div class="bento-grid">
+
+    <!-- Applications: Left column -->
+    <div class="bento-cell bento-apps" data-reveal>
+      <div class="field-section-header">
+        <span class="section-coord">01</span>
+        <span class="section-line"></span>
+        <span class="section-name">Applications</span>
       </div>
-      <div class="masthead-detail">
-        <span class="mdetail-label">Lots</span>
-        <span class="mdetail-value">3 items</span>
-      </div>
-      <div class="masthead-detail">
-        <span class="mdetail-label">House</span>
-        <span class="mdetail-value">{{ site.title }}</span>
+
+      <div class="trail-markers">
+        <a href="/apps/etch/" class="trail-marker">
+          <div class="marker-circle">
+            <img src="/assets/etch_logo.png" alt="Etch" class="marker-icon">
+          </div>
+          <div class="marker-point"></div>
+          <span class="marker-label">Etch</span>
+          <span class="marker-tech">iOS &middot; SwiftUI</span>
+          <span class="marker-desc">Spaced repetition, built like Apple would.</span>
+        </a>
+
+        <a href="/apps/little-quotes/" class="trail-marker">
+          <div class="marker-circle">
+            <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="marker-icon">
+          </div>
+          <div class="marker-point"></div>
+          <span class="marker-label">Little Quotes</span>
+          <span class="marker-tech">iOS &middot; SwiftUI</span>
+          <span class="marker-desc">Capture and share kids' priceless words.</span>
+        </a>
+
+        <a href="/apps/waymark/" class="trail-marker">
+          <div class="marker-circle">
+            <img src="/assets/waymark_icon.png" alt="Waymark" class="marker-icon">
+          </div>
+          <div class="marker-point"></div>
+          <span class="marker-label">Waymark</span>
+          <span class="marker-tech">iOS &middot; SwiftUI</span>
+          <span class="marker-desc">Prayer and community, designed with care.</span>
+        </a>
       </div>
     </div>
-  </div>
 
-  <!-- Section I: Applications -->
-  <div class="catalogue-rule" data-reveal>
-    <span class="rule-tag">Section I</span>
-    <div class="rule-line"></div>
-    <span class="rule-heading">Applications</span>
-  </div>
+    <!-- Currently Reading: Right column -->
+    <div class="bento-cell bento-reading" data-reveal>
+      <div class="field-section-header">
+        <span class="section-coord">02</span>
+        <span class="section-line"></span>
+        <span class="section-name">Currently Reading</span>
+        <a href="{{ '/reading/' | relative_url }}" class="section-link">All &rarr;</a>
+      </div>
 
-  <div class="lots-grid" data-reveal>
-    <a href="/apps/etch/" class="auction-lot">
-      <div class="lot-number">LOT 001</div>
-      <div class="lot-image-frame">
-        <img src="/assets/etch_logo.png" alt="Etch" class="lot-image">
-      </div>
-      <div class="lot-divider"></div>
-      <div class="lot-details">
-        <h3 class="lot-title">Etch</h3>
-        <p class="lot-medium">iOS &middot; SwiftUI</p>
-        <p class="lot-description">Spaced repetition, built like Apple would.</p>
-        <span class="lot-cta">View lot &rarr;</span>
-      </div>
-    </a>
-
-    <a href="/apps/little-quotes/" class="auction-lot">
-      <div class="lot-number">LOT 002</div>
-      <div class="lot-image-frame">
-        <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="lot-image">
-      </div>
-      <div class="lot-divider"></div>
-      <div class="lot-details">
-        <h3 class="lot-title">Little Quotes</h3>
-        <p class="lot-medium">iOS &middot; SwiftUI</p>
-        <p class="lot-description">Capture and share kids' priceless words.</p>
-        <span class="lot-cta">View lot &rarr;</span>
-      </div>
-    </a>
-
-    <a href="/apps/waymark/" class="auction-lot">
-      <div class="lot-number">LOT 003</div>
-      <div class="lot-image-frame">
-        <img src="/assets/waymark_icon.png" alt="Waymark" class="lot-image">
-      </div>
-      <div class="lot-divider"></div>
-      <div class="lot-details">
-        <h3 class="lot-title">Waymark</h3>
-        <p class="lot-medium">iOS &middot; SwiftUI</p>
-        <p class="lot-description">Prayer and community, designed with care.</p>
-        <span class="lot-cta">View lot &rarr;</span>
-      </div>
-    </a>
-  </div>
-
-  <!-- Section II: Essays -->
-  <div class="catalogue-rule" data-reveal>
-    <span class="rule-tag">Section II</span>
-    <div class="rule-line"></div>
-    <span class="rule-heading">Essays</span>
-    <a href="{{ '/writing/' | relative_url }}" class="rule-link">All essays &rarr;</a>
-  </div>
-
-  <div class="essays-list" data-reveal>
-    {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
-    {% for post in latest_posts %}
-    <a href="{{ post.url | relative_url }}" class="essay-entry">
-      <span class="essay-index">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
-      <div class="essay-body">
-        <div class="essay-top">
-          <span class="essay-date">{{ post.date | date: "%b %d, %Y" }}</span>
-          <h3 class="essay-title">{{ post.title }}</h3>
+      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      {% if currently_reading.size > 0 %}
+      <div class="specimen-list">
+        {% for book in currently_reading limit:3 %}
+        <div class="specimen-entry">
+          <span class="specimen-marker"></span>
+          <div class="specimen-info">
+            <span class="specimen-title">{{ book.title }}</span>
+            <span class="specimen-author">{{ book.author }}</span>
+          </div>
+          <span class="specimen-status">
+            <span class="status-dot"></span>
+            Reading
+          </span>
         </div>
-        <p class="essay-abstract">{{ post.description }}</p>
+        {% endfor %}
       </div>
-      <span class="essay-arrow">&rarr;</span>
-    </a>
-    {% endfor %}
-  </div>
-
-  <!-- Section III: Library -->
-  <div class="catalogue-rule" data-reveal>
-    <span class="rule-tag">Section III</span>
-    <div class="rule-line"></div>
-    <span class="rule-heading">Currently Reading</span>
-    <a href="{{ '/reading/' | relative_url }}" class="rule-link">Full catalogue &rarr;</a>
-  </div>
-
-  {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-  {% assign roman_numerals = "I,II,III,IV,V" | split: "," %}
-  {% if currently_reading.size > 0 %}
-  <div class="library-list" data-reveal>
-    {% for book in currently_reading limit:3 %}
-    <div class="library-entry">
-      <span class="library-ref">REF.&nbsp;{{ roman_numerals[forloop.index0] }}</span>
-      <div class="library-details">
-        <span class="library-title">{{ book.title }}</span>
-        <span class="library-author">{{ book.author }}</span>
-      </div>
-      <span class="library-status">
-        <span class="status-dot"></span>
-        Reading
-      </span>
+      {% else %}
+      <p class="specimen-empty">Between volumes at the moment.</p>
+      {% endif %}
     </div>
-    {% endfor %}
+
+    <!-- Writing: Full width bottom -->
+    <div class="bento-cell bento-writing" data-reveal>
+      <div class="field-section-header">
+        <span class="section-coord">03</span>
+        <span class="section-line"></span>
+        <span class="section-name">Field Notes</span>
+        <a href="{{ '/writing/' | relative_url }}" class="section-link">All entries &rarr;</a>
+      </div>
+
+      <div class="log-entries">
+        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
+        {% for post in latest_posts %}
+        <a href="{{ post.url | relative_url }}" class="log-entry">
+          <span class="log-coord">{{ post.date | date: "%b %d, %Y" }}</span>
+          <div class="log-body">
+            <h3 class="log-title">{{ post.title }}</h3>
+            <p class="log-desc">{{ post.description }}</p>
+          </div>
+          <span class="log-arrow">&rarr;</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+
   </div>
-  {% else %}
-  <p class="library-empty">Between volumes at the moment.</p>
-  {% endif %}
 
 </div>
 
 <style>
-/* ---- Catalogue Home ---- */
-.catalogue-home {
+/* ---- Expedition Home ---- */
+.expedition-home {
   max-width: var(--max-width-content);
   margin: 0 auto;
-  padding-bottom: 0;
 }
 
-/* ---- Masthead ---- */
-.catalogue-masthead {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 32px;
+/* ---- Hero ---- */
+.expedition-hero {
   padding-bottom: 32px;
-  border-bottom: 2px solid var(--color-ink);
   margin-bottom: 0;
+  border-bottom: 2px solid var(--color-ink);
 }
 
-.masthead-left {
-  flex: 1;
-  min-width: 0;
-}
-
-.catalogue-tag {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--color-muted);
+.hero-badge {
   margin-bottom: 14px;
 }
 
-.catalogue-headline {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4.5vw, 50px);
-  font-weight: 600;
-  font-style: italic;
-  line-height: 1.05;
-  color: var(--color-ink);
-  margin: 0 0 6px;
-}
-
-.catalogue-subtitle {
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--color-ink-soft);
-  margin: 0;
-}
-
-.masthead-right {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex-shrink: 0;
-  align-items: flex-end;
-}
-
-.masthead-detail {
-  text-align: right;
-}
-
-.mdetail-label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-muted);
-  margin-bottom: 1px;
-}
-
-.mdetail-value {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--color-ink);
-}
-
-/* ---- Section Divider ---- */
-.catalogue-rule {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin: 44px 0 22px;
-}
-
-.rule-tag {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-muted);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.rule-line {
-  flex: 1;
-  height: 1px;
-  background: var(--color-border);
-}
-
-.rule-heading {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 600;
-  font-style: italic;
-  color: var(--color-ink);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.rule-link {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--color-gold);
-  white-space: nowrap;
-  flex-shrink: 0;
-  transition: color var(--transition-fast);
-}
-
-.rule-link:hover {
-  color: var(--color-gold-light);
-}
-
-/* ---- Lots Grid (Apps) ---- */
-.lots-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  border: 1px solid var(--color-border);
-  background: var(--color-border);
-}
-
-.auction-lot {
-  display: flex;
-  flex-direction: column;
-  background: var(--color-cream);
-  text-decoration: none;
-  color: var(--color-ink);
-  transition: background var(--transition-fast);
-  position: relative;
-}
-
-.auction-lot:hover {
-  background: var(--color-white);
-  color: var(--color-ink);
-}
-
-.lot-number {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-muted);
-  padding: 14px 18px 0;
-}
-
-.lot-image-frame {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  aspect-ratio: 1;
-}
-
-.lot-image {
-  width: 68px;
-  height: 68px;
-  object-fit: cover;
-  border-radius: 14px;
-  transition: transform var(--transition-fast);
-  box-shadow: 0 4px 16px rgba(26, 23, 20, 0.12);
-}
-
-.auction-lot:hover .lot-image {
-  transform: scale(1.06);
-}
-
-.lot-divider {
-  height: 1px;
-  background: var(--color-border);
-  margin: 0;
-}
-
-.lot-details {
-  padding: 14px 18px 18px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.lot-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-ink);
-  margin: 0 0 2px;
-  line-height: 1.1;
-}
-
-.lot-medium {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  margin: 0 0 8px;
-}
-
-.lot-description {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--color-ink-soft);
-  margin: 0;
-  line-height: 1.5;
-  flex: 1;
-}
-
-.lot-cta {
+.hero-coord {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-gold);
-  margin-top: 14px;
+  letter-spacing: 0.16em;
+  color: var(--color-rust);
+  background: var(--color-rust-pale);
+  padding: 4px 10px;
+  border-radius: var(--border-radius);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+}
+
+.hero-subtext {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+/* ---- Bento Grid ---- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+  margin-top: 0;
+}
+
+.bento-cell {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bento-apps {
+  grid-column: 1;
+  grid-row: 1;
+  padding-right: 28px;
+  border-right: 1px solid var(--color-border);
+}
+
+.bento-reading {
+  grid-column: 2;
+  grid-row: 1;
+  padding-left: 28px;
+}
+
+.bento-writing {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+/* ---- Section Header ---- */
+.field-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.section-coord {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-rust);
+  flex-shrink: 0;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.section-name {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-ink);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.section-link {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-rust);
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: color var(--transition-fast);
 }
 
-.auction-lot:hover .lot-cta {
-  color: var(--color-gold-light);
+.section-link:hover {
+  color: var(--color-rust-light);
 }
 
-/* ---- Essays ---- */
-.essays-list {
-  border-top: 1px solid var(--color-border);
+/* ---- Trail Markers (App Components) ---- */
+.trail-markers {
+  display: flex;
+  gap: 24px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
-.essay-entry {
+.trail-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: var(--color-ink);
+  width: 140px;
+  transition: transform var(--transition-fast);
+}
+
+.trail-marker:hover {
+  transform: translateY(-4px);
+  color: var(--color-ink);
+}
+
+.marker-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+}
+
+.trail-marker:hover .marker-circle {
+  border-color: var(--color-rust);
+  box-shadow: 0 4px 20px rgba(200, 75, 49, 0.15);
+}
+
+.marker-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.marker-point {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--color-border);
+  margin-top: -1px;
+  transition: border-top-color var(--transition-fast);
+}
+
+.trail-marker:hover .marker-point {
+  border-top-color: var(--color-rust);
+}
+
+.marker-label {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-top: 8px;
+  line-height: 1.2;
+}
+
+.marker-tech {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
+.marker-desc {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* ---- Log Entries (Posts) ---- */
+.log-entries {
+  border-top: 1px solid var(--color-border-light);
+}
+
+.log-entry {
   display: grid;
-  grid-template-columns: 36px 1fr 20px;
-  gap: 0 20px;
-  padding: 20px 10px;
+  grid-template-columns: 100px 1fr 20px;
+  gap: 0 16px;
+  padding: 16px 8px;
   border-bottom: 1px solid var(--color-border-light);
   text-decoration: none;
   color: var(--color-ink);
@@ -391,139 +346,119 @@ layout: default
   transition: background var(--transition-fast), padding var(--transition-fast);
 }
 
-.essay-entry:hover {
-  background: var(--color-gold-pale);
-  padding-left: 16px;
-  padding-right: 16px;
+.log-entry:hover {
+  background: var(--color-rust-pale);
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: var(--border-radius);
 }
 
-.essay-index {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--color-ghost);
-  padding-top: 5px;
-  line-height: 1;
-}
-
-.essay-body {
-  min-width: 0;
-}
-
-.essay-top {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  flex-wrap: wrap;
-  margin-bottom: 4px;
-}
-
-.essay-date {
+.log-coord {
   font-family: var(--font-mono);
   font-size: 10px;
   color: var(--color-muted);
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.05em;
+  padding-top: 4px;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
-.essay-title {
+.log-body {
+  min-width: 0;
+}
+
+.log-title {
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--color-ink);
-  margin: 0;
-  line-height: 1.15;
+  margin: 0 0 3px;
+  line-height: 1.2;
 }
 
-.essay-abstract {
+.log-desc {
   font-family: var(--font-body);
   font-size: 13px;
   color: var(--color-muted);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-.essay-arrow {
+.log-arrow {
   font-size: 16px;
   color: var(--color-ghost);
-  padding-top: 4px;
+  padding-top: 3px;
   transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-.essay-entry:hover .essay-arrow {
+.log-entry:hover .log-arrow {
   transform: translateX(4px);
-  color: var(--color-gold);
+  color: var(--color-rust);
 }
 
-/* ---- Library ---- */
-.library-list {
-  border-top: 1px solid var(--color-border);
+/* ---- Specimen List (Reading) ---- */
+.specimen-list {
+  display: flex;
+  flex-direction: column;
 }
 
-.library-entry {
+.specimen-entry {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 16px 10px;
+  gap: 12px;
+  padding: 12px 0;
   border-bottom: 1px solid var(--color-border-light);
-  transition: background var(--transition-fast);
 }
 
-.library-entry:last-child {
+.specimen-entry:last-child {
   border-bottom: none;
 }
 
-.library-entry:hover {
-  background: var(--color-gold-pale);
-}
-
-.library-ref {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-muted);
-  width: 52px;
+.specimen-marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-forest);
   flex-shrink: 0;
 }
 
-.library-details {
+.specimen-info {
   flex: 1;
   min-width: 0;
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
 }
 
-.library-title {
+.specimen-title {
+  display: block;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 500;
   color: var(--color-ink);
+  line-height: 1.3;
 }
 
-.library-author {
+.specimen-author {
+  display: block;
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 12px;
   font-style: italic;
   color: var(--color-muted);
+  margin-top: 1px;
 }
 
-.library-status {
+.specimen-status {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-family: var(--font-mono);
   font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--color-green);
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
-.library-empty {
+.specimen-empty {
   font-family: var(--font-display);
   font-size: 14px;
   font-style: italic;
@@ -532,68 +467,85 @@ layout: default
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 680px) {
-  .catalogue-masthead {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .masthead-right {
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  .masthead-detail {
-    text-align: left;
-  }
-
-  .lots-grid {
+@media (max-width: 768px) {
+  .bento-grid {
     grid-template-columns: 1fr;
-    gap: 0;
   }
 
-  .lot-image-frame {
-    aspect-ratio: auto;
-    padding: 16px 18px;
-    justify-content: flex-start;
-    flex-direction: row;
+  .bento-apps {
+    grid-column: 1;
+    grid-row: 1;
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .bento-reading {
+    grid-column: 1;
+    grid-row: 2;
+    padding-left: 0;
+  }
+
+  .bento-writing {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .trail-markers {
     gap: 16px;
+    justify-content: center;
   }
 
-  .lot-image {
-    width: 52px;
-    height: 52px;
+  .trail-marker {
+    width: 120px;
   }
 
-  .essay-entry {
-    grid-template-columns: 28px 1fr 16px;
-    gap: 0 12px;
-    padding: 16px 8px;
+  .marker-circle {
+    width: 72px;
+    height: 72px;
   }
 
-  .essay-entry:hover {
-    padding-left: 12px;
-    padding-right: 12px;
+  .marker-icon {
+    width: 44px;
+    height: 44px;
   }
 
-  .essay-abstract {
+  .log-entry {
+    grid-template-columns: 80px 1fr 16px;
+    gap: 0 10px;
+    padding: 12px 6px;
+  }
+
+  .log-desc {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .catalogue-masthead {
+  .expedition-hero {
     padding-bottom: 24px;
   }
 
-  .masthead-right {
-    display: none;
+  .trail-markers {
+    gap: 12px;
   }
 
-  .catalogue-rule {
-    margin: 32px 0 16px;
+  .trail-marker {
+    width: 100px;
+  }
+
+  .marker-circle {
+    width: 64px;
+    height: 64px;
+  }
+
+  .marker-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .marker-desc {
+    display: none;
   }
 }
 </style>

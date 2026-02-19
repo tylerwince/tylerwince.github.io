@@ -7,7 +7,7 @@ description: Browse every past design of this site.
 
 <div class="archive-page">
   <div class="archive-header" data-reveal>
-    <span class="eyebrow">Design History</span>
+    <span class="eyebrow">Expedition Log</span>
     <p class="archive-lead">This site is redesigned by AI every day. Here is every look it has ever had.</p>
   </div>
 
@@ -77,11 +77,12 @@ description: Browse every past design of this site.
   font-size: 14px;
   line-height: 1.4;
   border-bottom: 1px solid var(--color-border-light);
+  border-radius: var(--border-radius);
   transition: background var(--transition-fast), padding var(--transition-fast);
 }
 
 .archive-entry:hover {
-  background: var(--color-gold-pale);
+  background: var(--color-rust-pale);
   padding-left: 14px;
   padding-right: 14px;
 }
@@ -106,7 +107,7 @@ description: Browse every past design of this site.
 }
 
 .archive-entry:hover .archive-theme {
-  color: var(--color-gold);
+  color: var(--color-rust);
 }
 
 .archive-desc {

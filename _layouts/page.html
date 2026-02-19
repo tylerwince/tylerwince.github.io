@@ -2,60 +2,60 @@
 layout: default
 ---
 
-<section class="catalogue-page">
+<section class="notebook-page">
 
-  <div class="catalogue-page-header" data-reveal>
-    <span class="catalogue-page-tag">Catalogue</span>
-    <h1 class="catalogue-page-title">{{ page.title }}</h1>
+  <div class="notebook-header" data-reveal>
+    <span class="notebook-tag">Field Notes</span>
+    <h1 class="notebook-title">{{ page.title }}</h1>
     {% if page.eyebrow %}
       <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
     {% endif %}
     {% if page.description %}
-      <p class="catalogue-page-desc">{{ page.description }}</p>
+      <p class="notebook-desc">{{ page.description }}</p>
     {% endif %}
   </div>
 
-  <div class="catalogue-page-content animate-in animate-in-delay-1">
+  <div class="notebook-content animate-in animate-in-delay-1">
     {{ content }}
   </div>
 
 </section>
 
 <style>
-.catalogue-page {
+.notebook-page {
   max-width: var(--max-width-content);
   margin: 0 auto;
 }
 
-.catalogue-page-header {
+.notebook-header {
   padding-bottom: 28px;
   margin-bottom: 28px;
   border-bottom: 1px solid var(--color-border);
 }
 
-.catalogue-page-tag {
+.notebook-tag {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--color-muted);
-  border: 1px solid var(--color-border);
+  background: var(--color-paper-warm);
   padding: 4px 10px;
+  border-radius: var(--border-radius);
   margin-bottom: 18px;
 }
 
-.catalogue-page-title {
+.notebook-title {
   font-family: var(--font-display);
   font-size: clamp(30px, 5vw, 46px);
   line-height: 1.05;
-  font-weight: 600;
-  font-style: italic;
+  font-weight: 700;
   color: var(--color-ink);
   margin: 0 0 10px;
 }
 
-.catalogue-page-desc {
+.notebook-desc {
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--color-ink-soft);
@@ -63,12 +63,12 @@ layout: default
   line-height: 1.5;
 }
 
-.catalogue-page-content {
+.notebook-content {
   max-width: var(--max-width-text);
 }
 
 @media (max-width: 600px) {
-  .catalogue-page-header {
+  .notebook-header {
     padding-bottom: 20px;
   }
 }

@@ -2,79 +2,80 @@
 layout: default
 ---
 
-<article class="lot-detail">
+<article class="exhibit-detail">
 
-  <!-- Lot header -->
-  <div class="lot-detail-header" data-reveal>
-    <div class="lot-detail-top">
-      <span class="lot-detail-tag">Catalogue Entry</span>
-      <span class="lot-detail-condition">Condition: Excellent</span>
+  <!-- Exhibit header -->
+  <div class="exhibit-header" data-reveal>
+    <div class="exhibit-top">
+      <span class="exhibit-tag">Field Specimen</span>
+      <span class="exhibit-condition">Status: Active</span>
     </div>
 
-    <div class="lot-detail-hero">
-      <div class="lot-detail-image-col">
-        <div class="lot-detail-frame{% if page.title == 'Etch' %} lot-detail-frame-etch{% endif %}">
+    <div class="exhibit-hero">
+      <div class="exhibit-icon-col">
+        <div class="exhibit-icon-frame{% if page.title == 'Etch' %} exhibit-icon-frame-lg{% endif %}">
           <img src="{{ page.icon_path }}" alt="{{ page.title }} icon">
         </div>
-        <div class="lot-detail-provenance">
-          <div class="provenance-row">
-            <span class="prov-label">Medium</span>
+        <div class="exhibit-provenance">
+          <div class="prov-row">
+            <span class="prov-label">Platform</span>
             <span class="prov-val">{{ page.platform }}</span>
           </div>
-          <div class="provenance-row">
-            <span class="prov-label">Materials</span>
+          <div class="prov-row">
+            <span class="prov-label">Stack</span>
             <span class="prov-val">{{ page.tech_stack | join: ", " }}</span>
           </div>
         </div>
       </div>
 
-      <div class="lot-detail-info">
-        <h1 class="lot-detail-title">{{ page.title }}</h1>
-        <p class="lot-detail-tagline">{{ page.tagline }}</p>
+      <div class="exhibit-info">
+        <h1 class="exhibit-title">{{ page.title }}</h1>
+        <p class="exhibit-tagline">{{ page.tagline }}</p>
         <a href="{{ page.app_store_link }}" class="button" target="_blank" rel="noopener">
-          Acquire &rarr;
+          Download &rarr;
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Lot body -->
-  <div class="lot-detail-body" data-reveal>
+  <!-- Exhibit body -->
+  <div class="exhibit-body" data-reveal>
     {{ content }}
   </div>
 
 </article>
 
 <style>
-.lot-detail {
+.exhibit-detail {
   max-width: var(--max-width-content);
   margin: 0 auto;
 }
 
-.lot-detail-header {
+.exhibit-header {
   padding-bottom: 36px;
   margin-bottom: 36px;
   border-bottom: 1px solid var(--color-border);
 }
 
-.lot-detail-top {
+.exhibit-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 28px;
 }
 
-.lot-detail-tag {
+.exhibit-tag {
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--color-muted);
-  border: 1px solid var(--color-border);
+  background: var(--color-paper-warm);
   padding: 4px 10px;
+  border-radius: var(--border-radius);
 }
 
-.lot-detail-condition {
+.exhibit-condition {
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
@@ -82,54 +83,56 @@ layout: default
   color: var(--color-green);
 }
 
-.lot-detail-hero {
+.exhibit-hero {
   display: flex;
-  gap: 40px;
+  gap: 36px;
   align-items: flex-start;
 }
 
-.lot-detail-image-col {
+.exhibit-icon-col {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
 }
 
-.lot-detail-frame {
+.exhibit-icon-frame {
   width: 100px;
   height: 100px;
-  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-parchment);
-  padding: 8px;
 }
 
-.lot-detail-frame img {
-  width: 72px;
-  height: 72px;
+.exhibit-icon-frame img {
+  width: 64px;
+  height: 64px;
   object-fit: cover;
   border-radius: 14px;
 }
 
-.lot-detail-frame-etch {
-  width: 110px;
-  height: 110px;
+.exhibit-icon-frame-lg {
+  width: 120px;
+  height: 120px;
 }
 
-.lot-detail-frame-etch img {
-  width: 80px;
-  height: 80px;
+.exhibit-icon-frame-lg img {
+  width: 76px;
+  height: 76px;
 }
 
-.lot-detail-provenance {
+.exhibit-provenance {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  text-align: center;
 }
 
-.provenance-row {
+.prov-row {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -149,22 +152,21 @@ layout: default
   color: var(--color-ink-soft);
 }
 
-.lot-detail-info {
+.exhibit-info {
   flex: 1;
   min-width: 0;
 }
 
-.lot-detail-title {
+.exhibit-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 52px);
-  font-weight: 600;
-  font-style: italic;
+  font-size: clamp(32px, 5vw, 50px);
+  font-weight: 700;
   line-height: 1.05;
   color: var(--color-ink);
   margin: 0 0 8px;
 }
 
-.lot-detail-tagline {
+.exhibit-tagline {
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--color-ink-soft);
@@ -172,12 +174,12 @@ layout: default
   line-height: 1.5;
 }
 
-/* Lot body content */
-.lot-detail-body {
+/* Exhibit body content */
+.exhibit-body {
   max-width: var(--max-width-text);
 }
 
-.lot-detail-body h2 {
+.exhibit-body h2 {
   font-family: var(--font-display);
   font-size: 26px;
   font-weight: 600;
@@ -186,189 +188,59 @@ layout: default
   border-top: 1px solid var(--color-border);
 }
 
-.lot-detail-body h2:first-child {
+.exhibit-body h2:first-child {
   margin-top: 0;
   padding-top: 0;
   border-top: none;
 }
 
-.lot-detail-body h3 {
+.exhibit-body h3 {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 600;
   margin-top: 1.5rem;
 }
 
-.lot-detail-body p,
-.lot-detail-body li {
+.exhibit-body p,
+.exhibit-body li {
   font-size: 15px;
   line-height: 1.75;
   color: var(--color-ink-soft);
 }
 
-/* Feature grid */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1px;
-  margin: 20px 0;
-  background: var(--color-border);
-  border: 1px solid var(--color-border);
-}
-
-.feature-card {
-  padding: 16px;
-  background: var(--color-cream);
-}
-
-.feature-card h3 {
-  margin: 0 0 6px;
-  font-size: 15px;
-}
-
-.feature-card h3::before {
-  content: '';
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  background: var(--color-gold);
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.feature-card p {
-  margin: 0;
-  font-size: 13px;
-}
-
-/* Callout */
-.callout {
-  background: var(--color-parchment);
-  border-left: 3px solid var(--color-gold);
-  padding: 16px 20px;
-  margin: 20px 0;
-}
-
-.callout p:last-child {
-  margin-bottom: 0;
-}
-
-/* Screenshot strip */
-.screenshot-strip {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: minmax(150px, 200px);
-  gap: 12px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 8px 0 16px;
-}
-
-.screenshot-card {
-  margin: 0;
-  scroll-snap-align: start;
-}
-
-.screenshot-card img {
-  border: 1px solid var(--color-border);
-}
-
-/* Stack grid */
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 1px;
-  background: var(--color-border);
-  border: 1px solid var(--color-border);
-  margin: 16px 0;
-}
-
-.stack-card {
-  text-decoration: none;
-  color: inherit;
-}
-
-.stack-card-stack {
-  padding: 14px;
-  background: var(--color-cream);
-  height: 100%;
-  transition: background var(--transition-fast);
-}
-
-.stack-card:hover .stack-card-stack {
-  background: var(--color-white);
-}
-
-.stack-card-front {
-  min-height: 44px;
-}
-
-.stack-card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.stack-card-count {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stack-card-download-icon {
-  color: var(--color-muted);
-  font-size: 12px;
-}
-
-.stack-card-content {
-  margin-top: 8px;
-}
-
-.stack-card-title {
-  margin: 0;
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.3;
-  color: var(--color-ink);
-}
-
-.stack-card-loading {
-  opacity: 0.6;
-}
-
 @media (max-width: 600px) {
-  .lot-detail-hero {
+  .exhibit-hero {
     flex-direction: column;
     gap: 20px;
   }
 
-  .lot-detail-image-col {
+  .exhibit-icon-col {
     flex-direction: row;
     align-items: flex-start;
     gap: 16px;
   }
 
-  .lot-detail-frame,
-  .lot-detail-frame-etch {
+  .exhibit-icon-frame,
+  .exhibit-icon-frame-lg {
     width: 72px;
     height: 72px;
   }
 
-  .lot-detail-frame img {
+  .exhibit-icon-frame img {
+    width: 46px;
+    height: 46px;
+  }
+
+  .exhibit-icon-frame-lg img {
     width: 50px;
     height: 50px;
   }
 
-  .lot-detail-frame-etch img {
-    width: 54px;
-    height: 54px;
+  .exhibit-provenance {
+    text-align: left;
   }
 
-  .lot-detail-top {
+  .exhibit-top {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;

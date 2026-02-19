@@ -1,5 +1,5 @@
 /**
- * Tyler Wince — AUCTION HOUSE CATALOGUE theme interactions
+ * Tyler Wince — FIELD EXPEDITION theme interactions
  */
 
 (function() {
@@ -8,9 +8,9 @@
   var body = document.body;
   body.classList.add('js-ready');
 
-  // Active nav highlighting
+  // Active nav highlighting (bottom bar)
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.site-nav a').forEach(function(link) {
+  document.querySelectorAll('.expedition-nav .nav-waypoint a').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
     if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
       link.classList.add('active');
@@ -102,51 +102,22 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Mobile sidebar toggle
-  var mobileNavBtn   = document.getElementById('mobile-nav-btn');
-  var auctionSidebar = document.getElementById('auction-sidebar');
-  var sidebarBackdrop = document.getElementById('sidebar-backdrop');
-  var sidebarClose   = document.getElementById('sidebar-close');
+  // Hide bottom nav on scroll down, show on scroll up (smooth hide/show)
+  var lastScrollY = window.scrollY;
+  var nav = document.getElementById('expedition-nav');
+  var scrollThreshold = 10;
 
-  function openSidebar() {
-    if (!auctionSidebar) return;
-    auctionSidebar.classList.add('is-open');
-    if (sidebarBackdrop) {
-      sidebarBackdrop.classList.add('is-active');
+  window.addEventListener('scroll', function() {
+    var currentScrollY = window.scrollY;
+    if (!nav) return;
+
+    if (currentScrollY > lastScrollY + scrollThreshold && currentScrollY > 100) {
+      nav.classList.add('nav-hidden');
+    } else if (currentScrollY < lastScrollY - scrollThreshold) {
+      nav.classList.remove('nav-hidden');
     }
-    if (mobileNavBtn) mobileNavBtn.setAttribute('aria-expanded', 'true');
-    document.body.style.overflow = 'hidden';
-  }
 
-  function closeSidebar() {
-    if (!auctionSidebar) return;
-    auctionSidebar.classList.remove('is-open');
-    if (sidebarBackdrop) {
-      sidebarBackdrop.classList.remove('is-active');
-    }
-    if (mobileNavBtn) mobileNavBtn.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-
-  if (mobileNavBtn) mobileNavBtn.addEventListener('click', openSidebar);
-  if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
-  if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebar);
-
-  // Close sidebar when a nav link is clicked (mobile navigation)
-  if (auctionSidebar) {
-    auctionSidebar.querySelectorAll('.site-nav a').forEach(function(link) {
-      link.addEventListener('click', closeSidebar);
-    });
-  }
-
-  // Close sidebar on Escape key
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') closeSidebar();
-  });
-
-  // Stagger book item animations
-  document.querySelectorAll('.book-depth-dot').forEach(function(dot, index) {
-    dot.style.animationDelay = (index * 0.1) + 's';
-  });
+    lastScrollY = currentScrollY;
+  }, { passive: true });
 
 })();

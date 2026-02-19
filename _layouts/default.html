@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 
   {% if site.google_analytics %}
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -24,8 +23,6 @@
 </head>
 <body>
   <div class="site-shell">
-
-    {% include header.html %}
 
     <div class="main-content-area">
       <div class="main-inner">
@@ -41,6 +38,8 @@
 
       {% include footer.html %}
     </div>
+
+    {% include header.html %}
 
   </div>
 

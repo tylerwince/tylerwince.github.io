@@ -2,86 +2,86 @@
 layout: default
 ---
 
-<article class="volume-detail">
+<article class="specimen-detail">
 
-  <div class="volume-header" data-reveal>
-    <span class="volume-tag">Library Volume</span>
-    <h1 class="volume-title">{{ page.title }}</h1>
-    <p class="volume-author">by {{ page.author }}</p>
+  <div class="specimen-header" data-reveal>
+    <span class="specimen-tag">Field Study</span>
+    <h1 class="specimen-detail-title">{{ page.title }}</h1>
+    <p class="specimen-author-line">by {{ page.author }}</p>
 
-    <div class="volume-meta">
+    <div class="specimen-meta-row">
       {% assign year = page.date | date: "%Y" | to_integer %}
       {% if year >= 2020 %}
-        <div class="vmeta-item">
-          <span class="vmeta-label">Date</span>
-          <span class="vmeta-value">{{ page.date | date: "%B %d, %Y" }}</span>
+        <div class="smeta-item">
+          <span class="smeta-label">Date</span>
+          <span class="smeta-value">{{ page.date | date: "%B %d, %Y" }}</span>
         </div>
       {% endif %}
 
       {% if page.stars %}
-        <div class="vmeta-item">
-          <span class="vmeta-label">Rating</span>
-          <span class="vmeta-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
+        <div class="smeta-item">
+          <span class="smeta-label">Rating</span>
+          <span class="smeta-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
         </div>
       {% endif %}
 
       {% if page.genre %}
-        <div class="vmeta-item">
-          <span class="vmeta-label">Genre</span>
-          <span class="vmeta-value">{{ page.genre }}</span>
+        <div class="smeta-item">
+          <span class="smeta-label">Genre</span>
+          <span class="smeta-value">{{ page.genre }}</span>
         </div>
       {% endif %}
     </div>
   </div>
 
   {% if page.takeaway %}
-    <div class="volume-takeaway" data-reveal>
-      <span class="takeaway-label">Principal Notes</span>
+    <div class="specimen-takeaway" data-reveal>
+      <span class="takeaway-label">Key Observation</span>
       <p class="takeaway-body">{{ page.takeaway }}</p>
     </div>
   {% endif %}
 
-  <div class="volume-body" data-reveal>
+  <div class="specimen-body" data-reveal>
     {{ content }}
   </div>
 
 </article>
 
 <style>
-.volume-detail {
+.specimen-detail {
   max-width: var(--max-width-content);
   margin: 0 auto;
 }
 
-.volume-header {
+.specimen-header {
   padding: 0 0 28px;
   margin-bottom: 28px;
   border-bottom: 1px solid var(--color-border);
 }
 
-.volume-tag {
+.specimen-tag {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   color: var(--color-muted);
-  border: 1px solid var(--color-border);
+  background: var(--color-paper-warm);
   padding: 4px 10px;
+  border-radius: var(--border-radius);
   margin-bottom: 18px;
 }
 
-.volume-title {
+.specimen-detail-title {
   font-family: var(--font-display);
   font-size: clamp(28px, 5vw, 46px);
   line-height: 1.05;
-  font-weight: 600;
-  font-style: italic;
+  font-weight: 700;
   color: var(--color-ink);
   margin: 0 0 6px;
 }
 
-.volume-author {
+.specimen-author-line {
   font-family: var(--font-body);
   font-size: 15px;
   font-style: italic;
@@ -89,19 +89,19 @@ layout: default
   margin: 0 0 20px;
 }
 
-.volume-meta {
+.specimen-meta-row {
   display: flex;
   gap: 28px;
   flex-wrap: wrap;
 }
 
-.vmeta-item {
+.smeta-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.vmeta-label {
+.smeta-label {
   font-family: var(--font-mono);
   font-size: 9px;
   text-transform: uppercase;
@@ -109,26 +109,27 @@ layout: default
   color: var(--color-muted);
 }
 
-.vmeta-value {
+.smeta-value {
   font-family: var(--font-body);
   font-size: 13px;
   color: var(--color-ink-soft);
 }
 
-.vmeta-stars {
+.smeta-stars {
   font-size: 14px;
-  color: var(--color-gold);
+  color: var(--color-rust);
   letter-spacing: 0.04em;
 }
 
 /* Takeaway */
-.volume-takeaway {
+.specimen-takeaway {
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 18px 20px;
-  background: var(--color-parchment);
-  border-left: 3px solid var(--color-gold);
+  background: var(--color-paper-warm);
+  border-left: 3px solid var(--color-rust);
+  border-radius: var(--border-radius);
   margin-bottom: 28px;
 }
 
@@ -137,7 +138,7 @@ layout: default
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--color-gold);
+  color: var(--color-rust);
 }
 
 .takeaway-body {
@@ -150,24 +151,24 @@ layout: default
 }
 
 /* Body */
-.volume-body {
+.specimen-body {
   max-width: var(--max-width-text);
   font-size: 15px;
   line-height: 1.82;
   color: var(--color-ink-soft);
 }
 
-.volume-body p,
-.volume-body ul,
-.volume-body ol {
+.specimen-body p,
+.specimen-body ul,
+.specimen-body ol {
   margin-bottom: 1em;
 }
 
-.volume-body h2,
-.volume-body h3,
-.volume-body h4,
-.volume-body h5,
-.volume-body h6 {
+.specimen-body h2,
+.specimen-body h3,
+.specimen-body h4,
+.specimen-body h5,
+.specimen-body h6 {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   font-family: var(--font-display);
@@ -175,35 +176,36 @@ layout: default
   color: var(--color-ink);
 }
 
-.volume-body h2 {
+.specimen-body h2 {
   font-size: 24px;
   padding-top: 1.5rem;
   border-top: 1px solid var(--color-border);
 }
 
-.volume-body a {
-  color: var(--color-gold);
+.specimen-body a {
+  color: var(--color-rust);
   text-decoration: underline;
-  text-decoration-color: var(--color-gold-pale);
+  text-decoration-color: var(--color-rust-pale);
   text-underline-offset: 2px;
 }
 
-.volume-body a:hover {
-  color: var(--color-gold-light);
+.specimen-body a:hover {
+  color: var(--color-rust-light);
 }
 
-.volume-body blockquote {
+.specimen-body blockquote {
   margin: 1.5rem 0;
-  background: var(--color-parchment);
-  border-left: 3px solid var(--color-gold);
+  background: var(--color-paper-warm);
+  border-left: 3px solid var(--color-rust);
   padding: 16px 20px;
+  border-radius: var(--border-radius);
 }
 
-.volume-body blockquote::before {
+.specimen-body blockquote::before {
   content: none;
 }
 
-.volume-body blockquote .page-number {
+.specimen-body blockquote .page-number {
   display: block;
   margin-top: 8px;
   font-family: var(--font-mono);
@@ -220,11 +222,11 @@ layout: default
 }
 
 .header-link:hover {
-  color: var(--color-gold);
+  color: var(--color-rust);
 }
 
 @media (max-width: 600px) {
-  .volume-meta {
+  .specimen-meta-row {
     flex-direction: column;
     gap: 12px;
   }
@@ -233,7 +235,7 @@ layout: default
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.volume-body h2, .volume-body h3, .volume-body h4, .volume-body h5, .volume-body h6').forEach(function(header) {
+  document.querySelectorAll('.specimen-body h2, .specimen-body h3, .specimen-body h4, .specimen-body h5, .specimen-body h6').forEach(function(header) {
     var id = header.id;
     if (!id) {
       return;
