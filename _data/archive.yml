@@ -77,3 +77,8 @@
   theme: "FIELD EXPEDITION"
   description: "FIELD EXPEDITION — designed February 19, 2026"
   commit: "ad77658"
+
+- date: "2026-02-20"
+  theme: "COMIC BOOK PANELS"
+  description: "COMIC BOOK PANELS — designed February 20, 2026"
+  commit: "b50dea5"
