@@ -1,27 +1,27 @@
-<nav class="expedition-nav" id="expedition-nav" aria-label="Main navigation">
-  <div class="nav-inner">
-    <a href="{{ '/' | relative_url }}" class="nav-brand" aria-label="Home">
-      <span class="nav-brand-mark">TW</span>
-    </a>
+<nav class="comic-nav" id="comic-nav" aria-label="Main navigation">
+  <a href="{{ '/' | relative_url }}" class="nav-brand" aria-label="Home">
+    <span class="nav-brand-mark">TW</span>
+  </a>
 
-    <ul class="nav-links">
-      <li class="nav-waypoint">
-        <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>
-          <span class="waypoint-dot"></span>
-          <span class="waypoint-label">Home</span>
+  <ul class="nav-links">
+    <li class="nav-chapter">
+      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>
+        <span class="chapter-num">01</span>
+        <span class="chapter-label">Home</span>
+      </a>
+    </li>
+    {% assign ch = 2 %}
+    {% for nav_page_name in site.header_pages %}
+      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+      {% if nav_page %}
+      <li class="nav-chapter">
+        <a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>
+          <span class="chapter-num">0{{ ch }}</span>
+          <span class="chapter-label">{{ nav_page.title }}</span>
         </a>
       </li>
-      {% for nav_page_name in site.header_pages %}
-        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-        {% if nav_page %}
-        <li class="nav-waypoint">
-          <a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>
-            <span class="waypoint-dot"></span>
-            <span class="waypoint-label">{{ nav_page.title }}</span>
-          </a>
-        </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
+      {% assign ch = ch | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </ul>
 </nav>

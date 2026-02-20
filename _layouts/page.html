@@ -2,60 +2,73 @@
 layout: default
 ---
 
-<section class="notebook-page">
+<section class="comic-generic-page">
 
-  <div class="notebook-header" data-reveal>
-    <span class="notebook-tag">Field Notes</span>
-    <h1 class="notebook-title">{{ page.title }}</h1>
-    {% if page.eyebrow %}
-      <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
-    {% endif %}
-    {% if page.description %}
-      <p class="notebook-desc">{{ page.description }}</p>
-    {% endif %}
+  <div class="page-panel" data-reveal>
+    <div class="page-panel-bar">
+      <span class="page-panel-label">{{ page.title }}</span>
+    </div>
+
+    <div class="page-panel-header">
+      {% if page.eyebrow %}
+        <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
+      {% endif %}
+      <h1 class="page-panel-title">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="page-panel-desc">{{ page.description }}</p>
+      {% endif %}
+    </div>
   </div>
 
-  <div class="notebook-content animate-in animate-in-delay-1">
+  <div class="page-panel-content animate-in animate-in-delay-1">
     {{ content }}
   </div>
 
 </section>
 
 <style>
-.notebook-page {
+.comic-generic-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-gutter);
   max-width: var(--max-width-content);
   margin: 0 auto;
 }
 
-.notebook-header {
-  padding-bottom: 28px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid var(--color-border);
+.page-panel {
+  background: var(--color-paper);
+  border: 4px solid var(--color-ink);
 }
 
-.notebook-tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--color-muted);
-  background: var(--color-paper-warm);
-  padding: 4px 10px;
-  border-radius: var(--border-radius);
-  margin-bottom: 18px;
+.page-panel-bar {
+  padding: 10px 16px;
+  background: var(--color-ink);
+  border-bottom: 3px solid var(--color-ink);
 }
 
-.notebook-title {
+.page-panel-label {
   font-family: var(--font-display);
-  font-size: clamp(30px, 5vw, 46px);
-  line-height: 1.05;
-  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-paper);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.page-panel-header {
+  padding: 28px 24px;
+}
+
+.page-panel-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 50px);
+  line-height: 1;
   color: var(--color-ink);
   margin: 0 0 10px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--color-red);
 }
 
-.notebook-desc {
+.page-panel-desc {
   font-family: var(--font-body);
   font-size: 15px;
   color: var(--color-ink-soft);
@@ -63,13 +76,20 @@ layout: default
   line-height: 1.5;
 }
 
-.notebook-content {
+.page-panel-content {
+  background: var(--color-paper);
+  border: 4px solid var(--color-ink);
+  padding: 28px 24px;
   max-width: var(--max-width-text);
 }
 
 @media (max-width: 600px) {
-  .notebook-header {
-    padding-bottom: 20px;
+  .page-panel-header {
+    padding: 20px 16px;
+  }
+
+  .page-panel-content {
+    padding: 20px 16px;
   }
 }
 </style>

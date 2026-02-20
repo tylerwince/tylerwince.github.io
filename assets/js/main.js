@@ -1,5 +1,5 @@
 /**
- * Tyler Wince — FIELD EXPEDITION theme interactions
+ * Tyler Wince — COMIC BOOK PANELS theme interactions
  */
 
 (function() {
@@ -8,16 +8,16 @@
   var body = document.body;
   body.classList.add('js-ready');
 
-  // Active nav highlighting (bottom bar)
+  // Active nav highlighting (vertical spine)
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.expedition-nav .nav-waypoint a').forEach(function(link) {
+  document.querySelectorAll('.comic-nav .nav-chapter a').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
     if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
       link.classList.add('active');
     }
   });
 
-  // Progressive reveal for sections
+  // Progressive reveal for panels — comic pop effect
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
     body.classList.add('reveal-ready');
@@ -82,7 +82,7 @@
     button.addEventListener('click', async function() {
       try {
         await navigator.clipboard.writeText(block.textContent || '');
-        button.textContent = 'Copied';
+        button.textContent = 'Copied!';
         setTimeout(function() { button.textContent = 'Copy'; }, 1600);
       } catch (error) {
         button.textContent = 'Error';
@@ -102,22 +102,15 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Hide bottom nav on scroll down, show on scroll up (smooth hide/show)
-  var lastScrollY = window.scrollY;
-  var nav = document.getElementById('expedition-nav');
-  var scrollThreshold = 10;
-
-  window.addEventListener('scroll', function() {
-    var currentScrollY = window.scrollY;
-    if (!nav) return;
-
-    if (currentScrollY > lastScrollY + scrollThreshold && currentScrollY > 100) {
-      nav.classList.add('nav-hidden');
-    } else if (currentScrollY < lastScrollY - scrollThreshold) {
-      nav.classList.remove('nav-hidden');
-    }
-
-    lastScrollY = currentScrollY;
-  }, { passive: true });
+  // Comic panel hover: add slight tilt on interactive panels
+  document.querySelectorAll('.app-panel, .strip-post, .archive-entry').forEach(function(el) {
+    el.addEventListener('mouseenter', function() {
+      var angle = (Math.random() - 0.5) * 1.2;
+      el.style.transform = 'rotate(' + angle + 'deg) scale(1.01)';
+    });
+    el.addEventListener('mouseleave', function() {
+      el.style.transform = '';
+    });
+  });
 
 })();

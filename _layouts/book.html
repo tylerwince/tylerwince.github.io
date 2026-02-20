@@ -2,86 +2,99 @@
 layout: default
 ---
 
-<article class="specimen-detail">
+<article class="comic-book-page">
 
-  <div class="specimen-header" data-reveal>
-    <span class="specimen-tag">Field Study</span>
-    <h1 class="specimen-detail-title">{{ page.title }}</h1>
-    <p class="specimen-author-line">by {{ page.author }}</p>
+  <div class="book-intro-panel" data-reveal>
+    <div class="book-intro-bar">
+      <span class="book-bar-label">Book Review</span>
+    </div>
 
-    <div class="specimen-meta-row">
-      {% assign year = page.date | date: "%Y" | to_integer %}
-      {% if year >= 2020 %}
-        <div class="smeta-item">
-          <span class="smeta-label">Date</span>
-          <span class="smeta-value">{{ page.date | date: "%B %d, %Y" }}</span>
-        </div>
-      {% endif %}
+    <div class="book-intro-content">
+      <h1 class="book-detail-title">{{ page.title }}</h1>
+      <p class="book-author-line">by {{ page.author }}</p>
 
-      {% if page.stars %}
-        <div class="smeta-item">
-          <span class="smeta-label">Rating</span>
-          <span class="smeta-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
-        </div>
-      {% endif %}
+      <div class="book-meta-strip">
+        {% assign year = page.date | date: "%Y" | to_integer %}
+        {% if year >= 2020 %}
+          <div class="bmeta-item">
+            <span class="bmeta-label">Date</span>
+            <span class="bmeta-value">{{ page.date | date: "%B %d, %Y" }}</span>
+          </div>
+        {% endif %}
 
-      {% if page.genre %}
-        <div class="smeta-item">
-          <span class="smeta-label">Genre</span>
-          <span class="smeta-value">{{ page.genre }}</span>
-        </div>
-      {% endif %}
+        {% if page.stars %}
+          <div class="bmeta-item">
+            <span class="bmeta-label">Rating</span>
+            <span class="bmeta-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
+          </div>
+        {% endif %}
+
+        {% if page.genre %}
+          <div class="bmeta-item">
+            <span class="bmeta-label">Genre</span>
+            <span class="bmeta-value">{{ page.genre }}</span>
+          </div>
+        {% endif %}
+      </div>
     </div>
   </div>
 
   {% if page.takeaway %}
-    <div class="specimen-takeaway" data-reveal>
-      <span class="takeaway-label">Key Observation</span>
-      <p class="takeaway-body">{{ page.takeaway }}</p>
+    <div class="takeaway-panel" data-reveal>
+      <div class="takeaway-bar">Key Takeaway</div>
+      <p class="takeaway-text">{{ page.takeaway }}</p>
     </div>
   {% endif %}
 
-  <div class="specimen-body" data-reveal>
+  <div class="book-story-panel" data-reveal>
     {{ content }}
   </div>
 
 </article>
 
 <style>
-.specimen-detail {
+.comic-book-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--panel-gutter);
   max-width: var(--max-width-content);
   margin: 0 auto;
 }
 
-.specimen-header {
-  padding: 0 0 28px;
-  margin-bottom: 28px;
-  border-bottom: 1px solid var(--color-border);
+.book-intro-panel {
+  background: var(--color-paper);
+  border: 4px solid var(--color-ink);
 }
 
-.specimen-tag {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--color-muted);
-  background: var(--color-paper-warm);
-  padding: 4px 10px;
-  border-radius: var(--border-radius);
-  margin-bottom: 18px;
+.book-intro-bar {
+  padding: 10px 16px;
+  background: var(--color-ink);
+  border-bottom: 3px solid var(--color-ink);
 }
 
-.specimen-detail-title {
+.book-bar-label {
   font-family: var(--font-display);
-  font-size: clamp(28px, 5vw, 46px);
-  line-height: 1.05;
-  font-weight: 700;
+  font-size: 14px;
+  color: var(--color-paper);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.book-intro-content {
+  padding: 28px 24px;
+}
+
+.book-detail-title {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5vw, 50px);
+  line-height: 1;
   color: var(--color-ink);
   margin: 0 0 6px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 var(--color-yellow);
 }
 
-.specimen-author-line {
+.book-author-line {
   font-family: var(--font-body);
   font-size: 15px;
   font-style: italic;
@@ -89,123 +102,125 @@ layout: default
   margin: 0 0 20px;
 }
 
-.specimen-meta-row {
+.book-meta-strip {
   display: flex;
-  gap: 28px;
+  gap: 24px;
   flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 2px solid var(--color-ink);
 }
 
-.smeta-item {
+.bmeta-item {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
-.smeta-label {
-  font-family: var(--font-mono);
-  font-size: 9px;
+.bmeta-label {
+  font-family: var(--font-display);
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--color-muted);
 }
 
-.smeta-value {
+.bmeta-value {
   font-family: var(--font-body);
   font-size: 13px;
   color: var(--color-ink-soft);
 }
 
-.smeta-stars {
-  font-size: 14px;
-  color: var(--color-rust);
+.bmeta-stars {
+  font-size: 16px;
+  color: var(--color-yellow);
   letter-spacing: 0.04em;
 }
 
-/* Takeaway */
-.specimen-takeaway {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 18px 20px;
-  background: var(--color-paper-warm);
-  border-left: 3px solid var(--color-rust);
-  border-radius: var(--border-radius);
-  margin-bottom: 28px;
+/* Takeaway panel */
+.takeaway-panel {
+  background: var(--color-caption);
+  border: 4px solid var(--color-ink);
+  border-left: 8px solid var(--color-red);
 }
 
-.takeaway-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
+.takeaway-bar {
+  font-family: var(--font-display);
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-rust);
+  letter-spacing: 0.1em;
+  color: var(--color-red);
+  padding: 10px 16px;
+  border-bottom: 2px solid var(--color-ink);
 }
 
-.takeaway-body {
+.takeaway-text {
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.6;
   color: var(--color-ink-soft);
   margin: 0;
+  padding: 16px 20px;
   font-style: italic;
 }
 
-/* Body */
-.specimen-body {
+/* Book body */
+.book-story-panel {
+  background: var(--color-paper);
+  border: 4px solid var(--color-ink);
+  padding: 28px 28px;
   max-width: var(--max-width-text);
   font-size: 15px;
   line-height: 1.82;
   color: var(--color-ink-soft);
 }
 
-.specimen-body p,
-.specimen-body ul,
-.specimen-body ol {
+.book-story-panel p,
+.book-story-panel ul,
+.book-story-panel ol {
   margin-bottom: 1em;
 }
 
-.specimen-body h2,
-.specimen-body h3,
-.specimen-body h4,
-.specimen-body h5,
-.specimen-body h6 {
+.book-story-panel h2,
+.book-story-panel h3,
+.book-story-panel h4,
+.book-story-panel h5,
+.book-story-panel h6 {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
   font-family: var(--font-display);
-  font-weight: 600;
   color: var(--color-ink);
+  text-transform: uppercase;
 }
 
-.specimen-body h2 {
-  font-size: 24px;
+.book-story-panel h2 {
+  font-size: 26px;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-ink);
 }
 
-.specimen-body a {
-  color: var(--color-rust);
+.book-story-panel a {
+  color: var(--color-red);
   text-decoration: underline;
-  text-decoration-color: var(--color-rust-pale);
   text-underline-offset: 2px;
 }
 
-.specimen-body a:hover {
-  color: var(--color-rust-light);
+.book-story-panel a:hover {
+  color: var(--color-blue);
 }
 
-.specimen-body blockquote {
+.book-story-panel blockquote {
   margin: 1.5rem 0;
-  background: var(--color-paper-warm);
-  border-left: 3px solid var(--color-rust);
+  background: var(--color-caption);
+  border: 3px solid var(--color-ink);
+  border-left: 6px solid var(--color-red);
   padding: 16px 20px;
-  border-radius: var(--border-radius);
 }
 
-.specimen-body blockquote::before {
+.book-story-panel blockquote::before {
   content: none;
 }
 
-.specimen-body blockquote .page-number {
+.book-story-panel blockquote .page-number {
   display: block;
   margin-top: 8px;
   font-family: var(--font-mono);
@@ -222,20 +237,28 @@ layout: default
 }
 
 .header-link:hover {
-  color: var(--color-rust);
+  color: var(--color-red);
 }
 
 @media (max-width: 600px) {
-  .specimen-meta-row {
+  .book-intro-content {
+    padding: 20px 16px;
+  }
+
+  .book-meta-strip {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .book-story-panel {
+    padding: 20px 16px;
   }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.specimen-body h2, .specimen-body h3, .specimen-body h4, .specimen-body h5, .specimen-body h6').forEach(function(header) {
+  document.querySelectorAll('.book-story-panel h2, .book-story-panel h3, .book-story-panel h4, .book-story-panel h5, .book-story-panel h6').forEach(function(header) {
     var id = header.id;
     if (!id) {
       return;
