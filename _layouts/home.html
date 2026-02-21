@@ -2,612 +2,689 @@
 layout: default
 ---
 
-<div class="comic-page">
-
-  <!-- SPLASH PANEL: Hero -->
-  <div class="splash-panel" data-reveal>
-    <div class="splash-content">
-      <div class="splash-title-block">
-        <span class="issue-badge">Issue #{{ site.time | date: "%j" }}</span>
-        <h1 class="splash-title">{{ site.description }}</h1>
-      </div>
-      <div class="splash-caption">
-        <p>Building, writing, and reading — the continuing adventures.</p>
-      </div>
+<!-- ======== HERO: Split with vinyl record ======== -->
+<section class="hero-section" data-reveal>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="hero-label">Side A</span>
+      <h1 class="hero-title">{{ site.description }}</h1>
+      <p class="hero-sub">Building, writing, and reading &mdash; on repeat.</p>
     </div>
-    <div class="splash-burst">
-      <span class="burst-text">NEW!</span>
+    <div class="hero-record-wrap">
+      <div class="vinyl-record" aria-hidden="true">
+        <div class="vinyl-label">
+          <span class="label-name">TW</span>
+        </div>
+      </div>
+      <div class="vinyl-shadow" aria-hidden="true"></div>
     </div>
   </div>
+</section>
 
-  <!-- THREE-PANEL STRIP: Applications -->
-  <div class="panel-strip" data-reveal>
-    <div class="strip-header">
-      <span class="strip-chapter">Chapter 1</span>
-      <span class="strip-title">Applications</span>
-    </div>
-    <div class="app-panels">
-
-      <a href="/apps/etch/" class="app-panel">
-        <div class="app-portrait">
-          <img src="/assets/etch_logo.png" alt="Etch" class="app-icon">
-        </div>
-        <div class="app-bubble">
-          <strong class="app-name">Etch</strong>
-          <span class="app-tech">iOS &middot; SwiftUI</span>
-          <p class="app-desc">Spaced repetition, built like Apple would.</p>
-        </div>
-      </a>
-
-      <a href="/apps/little-quotes/" class="app-panel">
-        <div class="app-portrait">
-          <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="app-icon">
-        </div>
-        <div class="app-bubble">
-          <strong class="app-name">Little Quotes</strong>
-          <span class="app-tech">iOS &middot; SwiftUI</span>
-          <p class="app-desc">Capture and share kids' priceless words.</p>
-        </div>
-      </a>
-
-      <a href="/apps/waymark/" class="app-panel">
-        <div class="app-portrait">
-          <img src="/assets/waymark_icon.png" alt="Waymark" class="app-icon">
-        </div>
-        <div class="app-bubble">
-          <strong class="app-name">Waymark</strong>
-          <span class="app-tech">iOS &middot; SwiftUI</span>
-          <p class="app-desc">Prayer and community, designed with care.</p>
-        </div>
-      </a>
-
-    </div>
+<!-- ======== CRATE: Apps as record sleeves ======== -->
+<section class="crate-section" data-reveal>
+  <div class="section-header">
+    <span class="section-badge">Now Stocked</span>
+    <h2 class="section-title">Applications</h2>
   </div>
 
-  <!-- TWO-COLUMN: Writing (wide) + Reading (narrow sidebar) -->
-  <div class="dual-panels" data-reveal>
+  <div class="crate-sleeves">
 
-    <div class="writing-panel">
-      <div class="strip-header">
-        <span class="strip-chapter">Chapter 2</span>
-        <span class="strip-title">Writing</span>
-        <a href="{{ '/writing/' | relative_url }}" class="strip-link">All &rarr;</a>
+    <a href="/apps/etch/" class="sleeve sleeve-tilt-left">
+      <div class="sleeve-vinyl-peek" aria-hidden="true"></div>
+      <div class="sleeve-face">
+        <div class="sleeve-art">
+          <img src="/assets/etch_logo.png" alt="Etch" class="sleeve-icon">
+        </div>
+        <div class="sleeve-info">
+          <strong class="sleeve-name">Etch</strong>
+          <span class="sleeve-meta">iOS &middot; SwiftUI</span>
+          <p class="sleeve-desc">Spaced repetition, built like Apple would.</p>
+        </div>
       </div>
+    </a>
 
-      <div class="comic-strip-posts">
-        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 4 %}
-        {% for post in latest_posts %}
-        <a href="{{ post.url | relative_url }}" class="strip-post">
-          <span class="strip-post-num">#{{ forloop.index }}</span>
-          <div class="strip-post-body">
-            <h3 class="strip-post-title">{{ post.title }}</h3>
-            <p class="strip-post-desc">{{ post.description }}</p>
-          </div>
-          <span class="strip-post-date">{{ post.date | date: "%b %d" }}</span>
+    <a href="/apps/little-quotes/" class="sleeve sleeve-featured">
+      <div class="sleeve-vinyl-peek" aria-hidden="true"></div>
+      <div class="sleeve-face">
+        <div class="sleeve-art">
+          <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="sleeve-icon">
+        </div>
+        <div class="sleeve-info">
+          <strong class="sleeve-name">Little Quotes</strong>
+          <span class="sleeve-meta">iOS &middot; SwiftUI</span>
+          <p class="sleeve-desc">Capture and share kids' priceless words.</p>
+        </div>
+      </div>
+    </a>
+
+    <a href="/apps/waymark/" class="sleeve sleeve-tilt-right">
+      <div class="sleeve-vinyl-peek" aria-hidden="true"></div>
+      <div class="sleeve-face">
+        <div class="sleeve-art">
+          <img src="/assets/waymark_icon.png" alt="Waymark" class="sleeve-icon">
+        </div>
+        <div class="sleeve-info">
+          <strong class="sleeve-name">Waymark</strong>
+          <span class="sleeve-meta">iOS &middot; SwiftUI</span>
+          <p class="sleeve-desc">Prayer and community, designed with care.</p>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ======== TRACKLIST: Writing ======== -->
+<section class="tracklist-section" data-reveal>
+  <div class="tracklist-wrap">
+    <div class="section-header">
+      <span class="section-badge">Side B</span>
+      <h2 class="section-title">Writing</h2>
+      <a href="{{ '/writing/' | relative_url }}" class="link-arrow">All tracks</a>
+    </div>
+
+    <ol class="tracks">
+      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
+      {% for post in latest_posts %}
+      <li class="track">
+        <span class="track-num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+        <a href="{{ post.url | relative_url }}" class="track-body">
+          <span class="track-title">{{ post.title }}</span>
+          <span class="track-desc">{{ post.description }}</span>
         </a>
-        {% endfor %}
-      </div>
-    </div>
-
-    <div class="reading-panel">
-      <div class="strip-header strip-header-vert">
-        <span class="strip-chapter">Chapter 3</span>
-        <span class="strip-title">Reading</span>
-        <a href="{{ '/reading/' | relative_url }}" class="strip-link">All &rarr;</a>
-      </div>
-
-      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-      {% if currently_reading.size > 0 %}
-      <div class="reading-entries">
-        {% for book in currently_reading limit:3 %}
-        <div class="reading-entry">
-          <span class="reading-status">
-            <span class="status-dot"></span>
-            Now
-          </span>
-          <div class="reading-info">
-            <span class="reading-book-title">{{ book.title }}</span>
-            <span class="reading-author">{{ book.author }}</span>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      {% else %}
-      <p class="reading-empty">Between volumes at the moment.</p>
-      {% endif %}
-    </div>
-
+        <span class="track-time">{{ post.date | date: "%b %d" }}</span>
+      </li>
+      {% endfor %}
+    </ol>
   </div>
+</section>
 
-</div>
+<!-- ======== NOW SPINNING: Reading ======== -->
+<section class="spinning-section" data-reveal>
+  <div class="spinning-inner">
+    <div class="spinning-header">
+      <div class="eq-bars" aria-hidden="true">
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+        <span class="eq-bar"></span>
+      </div>
+      <span class="spinning-label">Now Spinning</span>
+      <a href="{{ '/reading/' | relative_url }}" class="link-arrow">Full collection</a>
+    </div>
+
+    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+    {% if currently_reading.size > 0 %}
+    <div class="spinning-books">
+      {% for book in currently_reading limit:3 %}
+      <div class="spinning-book">
+        <span class="spinning-book-title">{{ book.title }}</span>
+        <span class="spinning-book-author">{{ book.author }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="spinning-empty">Between records at the moment.</p>
+    {% endif %}
+  </div>
+</section>
 
 <style>
-/* ---- Comic Page Home ---- */
-.comic-page {
+/* ---- Hero Section ---- */
+.hero-section {
+  padding: 0 var(--space-8);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-inner {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-12);
+  min-height: 420px;
+  padding: var(--space-16) 0;
+}
+
+.hero-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-label);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.1;
+  color: var(--color-text);
+  margin: 0 0 var(--space-5);
+}
+
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* Vinyl Record */
+.hero-record-wrap {
   display: flex;
-  flex-direction: column;
-  gap: var(--panel-gutter);
-}
-
-/* ---- Splash Panel (Hero) ---- */
-.splash-panel {
-  background: var(--color-paper);
-  border: 4px solid var(--color-ink);
-  padding: 48px 40px 40px;
+  align-items: center;
+  justify-content: center;
   position: relative;
-  overflow: hidden;
 }
 
-/* Diagonal speed lines background */
-.splash-panel::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+.vinyl-record {
+  width: clamp(220px, 28vw, 340px);
+  aspect-ratio: 1;
+  border-radius: 50%;
   background:
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 20px,
-      var(--color-speed-lines) 20px,
-      var(--color-speed-lines) 21px
-    );
-  pointer-events: none;
+    /* Spindle hole */
+    radial-gradient(circle, var(--color-cardboard) 4px, transparent 4.5px),
+    /* Inner label ring */
+    radial-gradient(circle, transparent 30px, rgba(255,255,255,0.06) 30.5px, transparent 31px),
+    /* Label circle */
+    radial-gradient(circle, var(--color-label) 48px, transparent 48.5px),
+    /* Groove texture */
+    repeating-radial-gradient(circle,
+      transparent 50px,
+      rgba(255,255,255,0.035) 51px,
+      transparent 52px,
+      transparent 55px
+    ),
+    /* Highlight sweep */
+    linear-gradient(135deg, transparent 35%, rgba(255,255,255,0.06) 48%, transparent 52%),
+    /* Base */
+    var(--color-vinyl);
+  box-shadow:
+    inset 0 0 40px rgba(0,0,0,0.3),
+    0 4px 32px rgba(0,0,0,0.25);
+  animation: vinyl-spin 6s linear infinite;
+  position: relative;
+  z-index: 2;
 }
 
-.splash-content {
-  position: relative;
+.vinyl-record:hover {
+  animation-duration: 1.5s;
+}
+
+.vinyl-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--color-surface);
+  letter-spacing: 0.05em;
+}
+
+.vinyl-shadow {
+  position: absolute;
+  width: clamp(220px, 28vw, 340px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,0,0,0.12) 0%, transparent 70%);
+  transform: translateY(16px) scaleY(0.15);
   z-index: 1;
 }
 
-.splash-title-block {
-  margin-bottom: 16px;
+/* ---- Crate Section: App Sleeves ---- */
+.crate-section {
+  padding: var(--space-16) var(--space-8);
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
 }
 
-.issue-badge {
-  display: inline-block;
-  background: var(--color-red);
-  color: var(--color-white);
-  font-family: var(--font-display);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 4px 14px;
-  border: 2px solid var(--color-ink);
-  margin-bottom: 16px;
-}
-
-.splash-title {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 6vw, 64px);
-  line-height: 0.95;
-  color: var(--color-ink);
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  /* Comic text shadow effect */
-  text-shadow: 3px 3px 0 var(--color-blue);
-}
-
-.splash-caption {
-  display: inline-block;
-  background: var(--color-caption);
-  border: 2px solid var(--color-ink);
-  padding: 8px 16px;
-  margin-top: 12px;
-}
-
-.splash-caption p {
-  font-family: var(--font-body);
-  font-size: 14px;
-  color: var(--color-ink-soft);
-  margin: 0;
-  font-style: italic;
-}
-
-/* Burst effect */
-.splash-burst {
-  position: absolute;
-  top: 20px;
-  right: 24px;
-  width: 70px;
-  height: 70px;
-  background: var(--color-yellow);
-  border: 3px solid var(--color-ink);
-  border-radius: 50%;
+.section-header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  transform: rotate(-12deg);
-  box-shadow: 3px 3px 0 var(--color-ink);
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+  flex-wrap: wrap;
 }
 
-.burst-text {
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--color-ink);
-  text-transform: uppercase;
-}
-
-/* ---- App Panels Strip ---- */
-.panel-strip {
-  background: var(--color-paper);
-  border: 4px solid var(--color-ink);
-}
-
-.strip-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  border-bottom: 3px solid var(--color-ink);
-  background: var(--color-ink);
-}
-
-.strip-chapter {
-  font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--color-red);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.strip-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--color-paper);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  flex: 1;
-}
-
-.strip-link {
-  font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--color-yellow);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: color 150ms ease;
-}
-
-.strip-link:hover {
-  color: var(--color-paper);
-}
-
-.app-panels {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.app-panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 28px 20px 24px;
-  text-decoration: none;
-  color: var(--color-ink);
-  border-right: 3px solid var(--color-ink);
-  background: var(--color-paper);
-  transition: background 150ms ease;
-  position: relative;
-}
-
-.app-panel:last-child {
-  border-right: none;
-}
-
-.app-panel:hover {
-  background: var(--color-caption);
-}
-
-.app-portrait {
-  width: 80px;
-  height: 80px;
-  border: 3px solid var(--color-ink);
-  border-radius: 50%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--color-white);
-  margin-bottom: 8px;
-  box-shadow: 3px 3px 0 var(--color-ink);
-}
-
-.app-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  object-fit: cover;
-}
-
-/* Speech bubble for app description */
-.app-bubble {
-  background: var(--color-white);
-  border: 2px solid var(--color-ink);
-  padding: 12px 14px;
-  text-align: center;
-  position: relative;
-  margin-top: 12px;
-  width: 100%;
-}
-
-.app-bubble::before {
-  content: '';
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  margin-left: -10px;
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid var(--color-ink);
-}
-
-.app-bubble::after {
-  content: '';
-  position: absolute;
-  top: -7px;
-  left: 50%;
-  margin-left: -8px;
-  width: 0;
-  height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 8px solid var(--color-white);
-}
-
-.app-name {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--color-ink);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.app-tech {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: var(--color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 2px;
-}
-
-.app-desc {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--color-ink-soft);
-  margin: 6px 0 0;
-  line-height: 1.4;
-}
-
-/* ---- Dual Panels: Writing + Reading ---- */
-.dual-panels {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--panel-gutter);
-}
-
-.writing-panel {
-  background: var(--color-paper);
-  border: 4px solid var(--color-ink);
-}
-
-.reading-panel {
-  background: var(--color-paper);
-  border: 4px solid var(--color-ink);
-  display: flex;
-  flex-direction: column;
-}
-
-.strip-header-vert {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-}
-
-/* ---- Post Strips ---- */
-.comic-strip-posts {
-  display: flex;
-  flex-direction: column;
-}
-
-.strip-post {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 16px;
-  text-decoration: none;
-  color: var(--color-ink);
-  border-bottom: 2px solid var(--color-ink);
-  transition: background 150ms ease;
-}
-
-.strip-post:last-child {
-  border-bottom: none;
-}
-
-.strip-post:hover {
-  background: var(--color-caption);
-}
-
-.strip-post-num {
-  font-family: var(--font-display);
-  font-size: 28px;
-  color: var(--color-red);
-  line-height: 1;
-  flex-shrink: 0;
-  min-width: 36px;
-}
-
-.strip-post-body {
-  flex: 1;
-  min-width: 0;
-}
-
-.strip-post-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--color-ink);
-  margin: 0 0 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.1;
-}
-
-.strip-post-desc {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--color-muted);
-  margin: 0;
-  line-height: 1.4;
-}
-
-.strip-post-date {
+.section-badge {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--color-muted);
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  flex-shrink: 0;
-  padding-top: 4px;
+  letter-spacing: 0.14em;
+  color: var(--color-label);
+  background: var(--color-accent-wash);
+  padding: 3px 10px;
+  border-radius: var(--border-radius-full);
 }
 
-/* ---- Reading Sidebar ---- */
-.reading-entries {
+.section-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--color-text);
+  margin: 0;
   flex: 1;
-  display: flex;
-  flex-direction: column;
 }
 
-.reading-entry {
+.crate-sleeves {
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 14px 14px;
-  border-bottom: 2px solid var(--color-ink);
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  padding: var(--space-8) 0;
+  perspective: 800px;
 }
 
-.reading-entry:last-child {
+.sleeve {
+  flex: 0 0 280px;
+  text-decoration: none;
+  color: var(--color-text);
+  position: relative;
+  transition: transform 400ms var(--ease-out), z-index 0ms;
+  z-index: 1;
+}
+
+.sleeve-face {
+  background:
+    linear-gradient(145deg, var(--color-surface) 0%, var(--color-cardboard) 100%);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sleeve);
+  transition: box-shadow 400ms var(--ease-out);
+}
+
+.sleeve-tilt-left {
+  transform: rotate(-3deg);
+  margin-right: -24px;
+}
+
+.sleeve-featured {
+  z-index: 3;
+  flex: 0 0 300px;
+}
+
+.sleeve-tilt-right {
+  transform: rotate(3deg);
+  margin-left: -24px;
+}
+
+/* Vinyl peeking out on hover */
+.sleeve-vinyl-peek {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 50px;
+  background: var(--color-vinyl);
+  border-radius: 50px 50px 0 0;
+  opacity: 0;
+  transition: opacity 300ms ease, top 400ms var(--ease-out);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
+  z-index: -1;
+}
+
+.sleeve:hover {
+  transform: rotate(0deg) translateY(-12px);
+  z-index: 10;
+}
+
+.sleeve:hover .sleeve-face {
+  box-shadow: var(--shadow-lg);
+}
+
+.sleeve:hover .sleeve-vinyl-peek {
+  opacity: 1;
+  top: -28px;
+}
+
+.sleeve-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-8) var(--space-5);
+  background: var(--color-warm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sleeve-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: var(--shadow-md);
+}
+
+.sleeve-info {
+  padding: var(--space-5) var(--space-5) var(--space-6);
+}
+
+.sleeve-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.sleeve-meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-2);
+}
+
+.sleeve-desc {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---- Tracklist Section: Writing ---- */
+.tracklist-section {
+  background: var(--color-vinyl);
+  padding: var(--space-16) var(--space-8);
+}
+
+.tracklist-wrap {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+.tracklist-section .section-badge {
+  background: rgba(217, 91, 43, 0.15);
+  color: var(--color-label);
+}
+
+.tracklist-section .section-title {
+  color: var(--color-cardboard);
+}
+
+.tracklist-section .link-arrow {
+  color: var(--color-gold);
+}
+
+.tracklist-section .link-arrow:hover {
+  color: var(--color-cardboard);
+}
+
+.tracks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: none;
+}
+
+.track {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-5);
+  padding: 16px 0;
+  border-bottom: 1px solid #333;
+  margin: 0;
+  transition: background 200ms ease;
+}
+
+.track:last-child {
   border-bottom: none;
 }
 
-.reading-status {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-family: var(--font-display);
+.track:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.track-num {
+  font-family: var(--font-mono);
   font-size: 12px;
-  color: var(--color-green);
+  font-weight: 500;
+  color: #666;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: right;
+}
+
+.track-body {
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.track-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--color-cardboard);
+  transition: color var(--transition-fast);
+}
+
+.track:hover .track-title {
+  color: var(--color-label);
+}
+
+.track-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: #888;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.track-time {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #666;
   text-transform: uppercase;
+  letter-spacing: 0.06em;
   flex-shrink: 0;
   white-space: nowrap;
-  padding-top: 2px;
 }
 
-.reading-info {
-  min-width: 0;
+/* ---- Now Spinning Section: Reading ---- */
+.spinning-section {
+  padding: var(--space-12) var(--space-8);
+  background: var(--color-warm);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.reading-book-title {
+.spinning-inner {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+.spinning-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.eq-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 18px;
+}
+
+.eq-bar {
   display: block;
+  width: 3px;
+  background: var(--color-label);
+  border-radius: 1px;
+}
+
+.eq-bar:nth-child(1) {
+  --eq-max: 14px;
+  animation: eq-bar 0.8s ease-in-out infinite;
+}
+
+.eq-bar:nth-child(2) {
+  --eq-max: 18px;
+  animation: eq-bar 0.6s ease-in-out infinite 0.15s;
+}
+
+.eq-bar:nth-child(3) {
+  --eq-max: 10px;
+  animation: eq-bar 0.9s ease-in-out infinite 0.3s;
+}
+
+.spinning-label {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--color-text);
+  flex: 1;
+}
+
+.spinning-books {
+  display: flex;
+  gap: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.spinning-book {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: var(--space-4);
+  border-left: 3px solid var(--color-label);
+}
+
+.spinning-book-title {
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  color: var(--color-ink);
-  line-height: 1.3;
+  color: var(--color-text);
 }
 
-.reading-author {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-style: italic;
-  color: var(--color-muted);
-  margin-top: 1px;
-}
-
-.reading-empty {
-  font-family: var(--font-body);
+.spinning-book-author {
+  font-family: var(--font-display);
   font-size: 14px;
   font-style: italic;
-  color: var(--color-muted);
-  padding: 20px 14px;
+  color: var(--color-text-muted);
+}
+
+.spinning-empty {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--color-text-muted);
   margin: 0;
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 768px) {
-  .splash-panel {
-    padding: 32px 20px 28px;
-  }
-
-  .splash-burst {
-    width: 56px;
-    height: 56px;
-    top: 12px;
-    right: 12px;
-  }
-
-  .burst-text {
-    font-size: 14px;
-  }
-
-  .app-panels {
-    grid-template-columns: 1fr;
-  }
-
-  .app-panel {
-    border-right: none;
-    border-bottom: 3px solid var(--color-ink);
-    flex-direction: row;
-    gap: 16px;
-    padding: 16px;
+@media (max-width: 900px) {
+  .crate-sleeves {
+    flex-direction: column;
     align-items: center;
+    gap: var(--space-6);
   }
 
-  .app-panel:last-child {
-    border-bottom: none;
+  .sleeve,
+  .sleeve-featured {
+    flex: none;
+    width: 100%;
+    max-width: 320px;
   }
 
-  .app-portrait {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 0;
-    flex-shrink: 0;
+  .sleeve-tilt-left,
+  .sleeve-tilt-right {
+    transform: none;
+    margin: 0;
   }
 
-  .app-icon {
-    width: 38px;
-    height: 38px;
+  .sleeve:hover {
+    transform: translateY(-8px);
   }
+}
 
-  .app-bubble {
-    margin-top: 0;
-    text-align: left;
-  }
-
-  .app-bubble::before,
-  .app-bubble::after {
-    display: none;
-  }
-
-  .dual-panels {
+@media (max-width: 768px) {
+  .hero-inner {
     grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-8);
+    padding: var(--space-10) 0;
+    min-height: auto;
   }
 
-  .strip-post-desc {
+  .hero-record-wrap {
+    order: -1;
+  }
+
+  .vinyl-record {
+    width: 180px;
+  }
+
+  .vinyl-shadow {
+    width: 180px;
+  }
+
+  .hero-section {
+    padding: 0 var(--space-5);
+  }
+
+  .crate-section,
+  .tracklist-section,
+  .spinning-section {
+    padding-left: var(--space-5);
+    padding-right: var(--space-5);
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .track {
+    gap: var(--space-3);
+  }
+
+  .track-desc {
     display: none;
+  }
+
+  .spinning-books {
+    flex-direction: column;
+    gap: var(--space-5);
   }
 }
 
 @media (max-width: 480px) {
-  .splash-title {
-    text-shadow: 2px 2px 0 var(--color-blue);
+  .vinyl-record {
+    width: 140px;
+  }
+
+  .vinyl-shadow {
+    width: 140px;
+  }
+
+  .hero-title {
+    font-size: 28px;
   }
 }
 </style>

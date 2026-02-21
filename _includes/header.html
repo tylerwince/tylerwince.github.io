@@ -1,27 +1,25 @@
-<nav class="comic-nav" id="comic-nav" aria-label="Main navigation">
-  <a href="{{ '/' | relative_url }}" class="nav-brand" aria-label="Home">
-    <span class="nav-brand-mark">TW</span>
-  </a>
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="{{ '/' | relative_url }}" class="header-brand" aria-label="Home">
+      <span class="brand-name">Tyler Wince</span>
+      <span class="brand-accent">33&#8531; rpm</span>
+    </a>
 
-  <ul class="nav-links">
-    <li class="nav-chapter">
-      <a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>
-        <span class="chapter-num">01</span>
-        <span class="chapter-label">Home</span>
-      </a>
-    </li>
-    {% assign ch = 2 %}
-    {% for nav_page_name in site.header_pages %}
-      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-      {% if nav_page %}
-      <li class="nav-chapter">
-        <a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>
-          <span class="chapter-num">0{{ ch }}</span>
-          <span class="chapter-label">{{ nav_page.title }}</span>
-        </a>
-      </li>
-      {% assign ch = ch | plus: 1 %}
-      {% endif %}
-    {% endfor %}
-  </ul>
-</nav>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="toggle-bar"></span>
+      <span class="toggle-bar"></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
+      <ul class="nav-links">
+        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+        {% for nav_page_name in site.header_pages %}
+          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+          {% if nav_page %}
+          <li><a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>{{ nav_page.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

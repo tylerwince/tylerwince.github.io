@@ -1,5 +1,5 @@
 /**
- * Tyler Wince — COMIC BOOK PANELS theme interactions
+ * Tyler Wince — RECORD CRATE theme interactions
  */
 
 (function() {
@@ -8,19 +8,88 @@
   var body = document.body;
   body.classList.add('js-ready');
 
-  // Active nav highlighting (vertical spine)
+  // ---- Header scroll effect ----
+  var header = document.getElementById('site-header');
+  if (header) {
+    var scrollThreshold = 20;
+    var ticking = false;
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          if (window.scrollY > scrollThreshold) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  // ---- Mobile nav toggle ----
+  var navToggle = document.getElementById('nav-toggle');
+  var navOverlay = document.getElementById('nav-overlay');
+
+  if (navToggle && navOverlay) {
+    navToggle.addEventListener('click', function() {
+      var isOpen = navOverlay.classList.contains('is-open');
+
+      if (isOpen) {
+        navOverlay.classList.remove('is-open');
+        navToggle.classList.remove('is-active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        body.style.overflow = '';
+      } else {
+        navOverlay.classList.add('is-open');
+        navToggle.classList.add('is-active');
+        navToggle.setAttribute('aria-expanded', 'true');
+        body.style.overflow = 'hidden';
+      }
+    });
+
+    // Close overlay when clicking a link
+    navOverlay.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navOverlay.classList.remove('is-open');
+        navToggle.classList.remove('is-active');
+        navToggle.setAttribute('aria-expanded', 'false');
+        body.style.overflow = '';
+      });
+    });
+  }
+
+  // ---- Active nav highlighting ----
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.comic-nav .nav-chapter a').forEach(function(link) {
+
+  // Desktop nav
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
     if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
       link.classList.add('active');
     }
   });
 
-  // Progressive reveal for panels — comic pop effect
+  // Overlay nav
+  document.querySelectorAll('.overlay-links a').forEach(function(link) {
+    var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+    if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
+      link.classList.add('active');
+    }
+  });
+
+  // ---- Scroll reveal ----
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
-    body.classList.add('reveal-ready');
+    // Add the reveal-target class for CSS transitions
+    revealTargets.forEach(function(target) {
+      target.classList.add('reveal-target');
+    });
 
     if ('IntersectionObserver' in window) {
       var observer = new IntersectionObserver(function(entries, obs) {
@@ -31,8 +100,8 @@
           }
         });
       }, {
-        threshold: 0.06,
-        rootMargin: '0px 0px -30px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px'
       });
 
       revealTargets.forEach(function(target) {
@@ -45,7 +114,7 @@
     }
   }
 
-  // Smooth scroll for hash links
+  // ---- Smooth scroll for hash links ----
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(event) {
       var hash = anchor.getAttribute('href');
@@ -57,7 +126,7 @@
     });
   });
 
-  // External links open in new tab
+  // ---- External links open in new tab ----
   document.querySelectorAll('a[href^="http"]').forEach(function(link) {
     try {
       var url = new URL(link.href);
@@ -68,7 +137,7 @@
     } catch (error) {}
   });
 
-  // Code copy button
+  // ---- Code copy button ----
   document.querySelectorAll('pre code').forEach(function(block) {
     var pre = block.parentElement;
     if (!pre || pre.querySelector('.code-copy-button')) return;
@@ -93,7 +162,7 @@
     pre.appendChild(button);
   });
 
-  // Keyboard focus intent
+  // ---- Keyboard focus intent ----
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Tab') body.classList.add('keyboard-nav');
   });
@@ -102,14 +171,15 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // Comic panel hover: add slight tilt on interactive panels
-  document.querySelectorAll('.app-panel, .strip-post, .archive-entry').forEach(function(el) {
-    el.addEventListener('mouseenter', function() {
-      var angle = (Math.random() - 0.5) * 1.2;
-      el.style.transform = 'rotate(' + angle + 'deg) scale(1.01)';
+  // ---- Sleeve hover depth (subtle parallax on sleeves) ----
+  document.querySelectorAll('.sleeve').forEach(function(sleeve) {
+    sleeve.addEventListener('mouseenter', function() {
+      sleeve.style.zIndex = '10';
     });
-    el.addEventListener('mouseleave', function() {
-      el.style.transform = '';
+    sleeve.addEventListener('mouseleave', function() {
+      if (!sleeve.classList.contains('sleeve-featured')) {
+        sleeve.style.zIndex = '';
+      }
     });
   });
 

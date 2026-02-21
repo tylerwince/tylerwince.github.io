@@ -5,22 +5,20 @@ permalink: /archive/
 description: Browse every past design of this site.
 ---
 
-<div class="archive-comic-page">
-  <div class="archive-splash" data-reveal>
-    <div class="archive-splash-bar">
-      <span class="archive-bar-label">Archive</span>
-    </div>
-    <div class="archive-splash-content">
-      <span class="eyebrow">Design History</span>
+<div class="archive-page">
+  <section class="archive-hero" data-reveal>
+    <div class="archive-hero-inner">
+      <span class="eyebrow">Discography</span>
+      <h1 class="archive-title">Past Designs</h1>
       <p class="archive-lead">This site is redesigned by AI every day. Here is every look it has ever had.</p>
     </div>
-  </div>
+  </section>
 
-  <div class="archive-panels">
-    <div class="archive-panels-header">
-      <span class="aph-date">Date</span>
-      <span class="aph-theme">Theme</span>
-      <span class="aph-desc">Description</span>
+  <section class="archive-list">
+    <div class="archive-list-header">
+      <span class="alh-date">Date</span>
+      <span class="alh-theme">Theme</span>
+      <span class="alh-desc">Description</span>
     </div>
 
     {% assign today = site.time | date: "%Y-%m-%d" %}
@@ -33,80 +31,72 @@ description: Browse every past design of this site.
       <span class="archive-desc">{{ entry.description }}</span>
     </a>
     {% endfor %}
-  </div>
+  </section>
 </div>
 
 <style>
-.archive-comic-page {
-  display: flex;
-  flex-direction: column;
-  gap: var(--panel-gutter);
+.archive-page {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+}
+
+.archive-hero {
+  padding: var(--space-16) var(--space-8) var(--space-10);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.archive-hero-inner {
   max-width: var(--max-width-content);
   margin: 0 auto;
 }
 
-.archive-splash {
-  background: var(--color-paper);
-  border: 4px solid var(--color-ink);
-}
-
-.archive-splash-bar {
-  padding: 10px 16px;
-  background: var(--color-ink);
-  border-bottom: 3px solid var(--color-ink);
-}
-
-.archive-bar-label {
+.archive-title {
   font-family: var(--font-display);
-  font-size: 14px;
-  color: var(--color-paper);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-.archive-splash-content {
-  padding: 24px;
+  font-size: clamp(32px, 5vw, 48px);
+  color: var(--color-text);
+  margin: 0 0 var(--space-3);
 }
 
 .archive-lead {
-  font-family: var(--font-body);
-  font-size: 15px;
-  font-style: italic;
-  color: var(--color-ink-soft);
-  margin: 8px 0 0;
-}
-
-.archive-panels {
-  background: var(--color-paper);
-  border: 4px solid var(--color-ink);
-  overflow: hidden;
-}
-
-.archive-panels-header {
-  display: grid;
-  grid-template-columns: 72px 180px 1fr;
-  gap: 16px;
-  padding: 10px 14px;
   font-family: var(--font-display);
-  font-size: 12px;
-  letter-spacing: 0.1em;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.archive-list {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+  padding: 0 var(--space-8);
+}
+
+.archive-list-header {
+  display: grid;
+  grid-template-columns: 80px 200px 1fr;
+  gap: 16px;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-paper);
-  background: var(--color-ink);
-  border-bottom: 3px solid var(--color-ink);
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .archive-entry {
   display: grid;
-  grid-template-columns: 72px 180px 1fr;
+  grid-template-columns: 80px 200px 1fr;
   gap: 16px;
-  padding: 12px 14px;
-  color: var(--color-ink);
+  padding: 14px 16px;
+  color: var(--color-text);
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 14px;
   line-height: 1.4;
-  border-bottom: 2px solid var(--color-ink);
+  border-bottom: 1px solid var(--color-border-light);
   transition: background var(--transition-fast);
 }
 
@@ -115,13 +105,13 @@ description: Browse every past design of this site.
 }
 
 .archive-entry:hover {
-  background: var(--color-caption);
+  background: var(--color-warm);
 }
 
 .archive-date {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--color-muted);
+  color: var(--color-text-muted);
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -133,33 +123,39 @@ description: Browse every past design of this site.
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--color-ink);
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  color: var(--color-text);
 }
 
 .archive-entry:hover .archive-theme {
-  color: var(--color-red);
+  color: var(--color-label);
 }
 
 .archive-desc {
   font-size: 13px;
   font-style: italic;
-  color: var(--color-muted);
+  color: var(--color-text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-@media (max-width: 600px) {
-  .archive-panels-header {
+@media (max-width: 700px) {
+  .archive-hero {
+    padding: var(--space-10) var(--space-5);
+  }
+
+  .archive-list {
+    padding: 0 var(--space-5);
+  }
+
+  .archive-list-header {
     display: none;
   }
 
   .archive-entry {
     grid-template-columns: 1fr;
     gap: 2px;
-    padding: 12px 14px;
+    padding: 12px 0;
   }
 
   .archive-desc {
