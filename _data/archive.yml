@@ -82,3 +82,8 @@
   theme: "COMIC BOOK PANELS"
   description: "COMIC BOOK PANELS — designed February 20, 2026"
   commit: "b50dea5"
+
+- date: "2026-02-21"
+  theme: "RECORD CRATE"
+  description: "RECORD CRATE — designed February 21, 2026"
+  commit: "190b4d2"
