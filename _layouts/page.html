@@ -2,78 +2,114 @@
 layout: default
 ---
 
-<section class="generic-page">
+<section class="page-stage-shell">
+  <aside class="page-index-card" data-reveal>
+    {% if page.eyebrow %}
+      <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
+    {% else %}
+      <span class="eyebrow mb-3">Section</span>
+    {% endif %}
+    <h1 class="page-stage-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="page-stage-desc">{{ page.description }}</p>
+    {% endif %}
+  </aside>
 
-  <div class="page-hero" data-reveal>
-    <div class="page-hero-inner">
-      {% if page.eyebrow %}
-        <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
-      {% endif %}
-      <h1 class="page-hero-title">{{ page.title }}</h1>
-      {% if page.description %}
-        <p class="page-hero-desc">{{ page.description }}</p>
-      {% endif %}
-    </div>
-  </div>
-
-  <div class="page-content animate-in animate-in-delay-1">
-    <div class="page-content-inner">
+  <article class="page-manuscript" data-reveal>
+    <div class="page-manuscript-inner">
       {{ content }}
     </div>
-  </div>
-
+  </article>
 </section>
 
 <style>
-.generic-page {
-  max-width: var(--max-width-wide);
+.page-stage-shell {
+  width: min(var(--max-width-content), 100%);
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 22px);
+  align-items: start;
 }
 
-.page-hero {
-  padding: var(--space-16) var(--space-8) var(--space-10);
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+.page-index-card,
+.page-manuscript {
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--border-radius-xl);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.9), rgba(240, 232, 216, 0.86));
+  box-shadow: var(--shadow-sm);
 }
 
-.page-hero-inner {
-  max-width: var(--max-width-content);
-  margin: 0 auto;
+.page-index-card {
+  position: sticky;
+  top: 18px;
+  padding: clamp(16px, 2.2vw, 24px);
 }
 
-.page-hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 48px);
-  line-height: 1.1;
-  color: var(--color-text);
-  margin: 0 0 var(--space-3);
-}
-
-.page-hero-desc {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-style: italic;
-  color: var(--color-text-secondary);
+.page-stage-title {
   margin: 0;
-  line-height: 1.5;
+  font-size: clamp(56px, 8vw, 92px);
+  line-height: 0.86;
+  letter-spacing: 0.03em;
 }
 
-.page-content {
-  padding: var(--space-12) var(--space-8);
+.page-stage-desc {
+  margin: 8px 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(0.98rem, 1.3vw, 1.08rem);
+  line-height: 1.68;
 }
 
-.page-content-inner {
-  max-width: var(--max-width-content);
+.page-manuscript {
+  padding: clamp(16px, 3vw, 32px);
+}
+
+.page-manuscript-inner {
+  max-width: var(--max-width-text);
   margin: 0 auto;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
 }
 
-@media (max-width: 700px) {
-  .page-hero {
-    padding: var(--space-10) var(--space-5);
+.page-manuscript-inner h2,
+.page-manuscript-inner h3,
+.page-manuscript-inner h4,
+.page-manuscript-inner h5,
+.page-manuscript-inner h6 {
+  margin-top: 2rem;
+  margin-bottom: 0.55rem;
+}
+
+.page-manuscript-inner h2 {
+  font-size: clamp(40px, 6vw, 62px);
+}
+
+.page-manuscript-inner h3 {
+  font-size: clamp(30px, 5vw, 44px);
+}
+
+.page-manuscript-inner a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.page-manuscript-inner a:hover {
+  color: var(--color-indigo);
+}
+
+@media (max-width: 980px) {
+  .page-stage-shell {
+    grid-template-columns: 1fr;
   }
 
-  .page-content {
-    padding: var(--space-8) var(--space-5);
+  .page-index-card {
+    position: static;
+  }
+
+  .page-stage-title {
+    font-size: clamp(50px, 18vw, 92px);
   }
 }
 </style>

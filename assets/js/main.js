@@ -1,5 +1,5 @@
 /**
- * Tyler Wince — RECORD CRATE theme interactions
+ * Tyler Wince — STORYBOARD STUDIO interactions
  */
 
 (function() {
@@ -8,75 +8,89 @@
   var body = document.body;
   body.classList.add('js-ready');
 
-  // ---- Header scroll effect ----
-  var header = document.getElementById('site-header');
-  if (header) {
-    var scrollThreshold = 20;
-    var ticking = false;
+  // ---- Header rail scroll shadow ----
+  var rail = document.getElementById('site-header');
+  if (rail) {
+    var railTicking = false;
 
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          if (window.scrollY > scrollThreshold) {
-            header.classList.add('is-scrolled');
-          } else {
-            header.classList.remove('is-scrolled');
-          }
-          ticking = false;
-        });
-        ticking = true;
+    function updateRail() {
+      if (window.scrollY > 18) {
+        rail.classList.add('is-scrolled');
+      } else {
+        rail.classList.remove('is-scrolled');
+      }
+      railTicking = false;
+    }
+
+    function onRailScroll() {
+      if (!railTicking) {
+        window.requestAnimationFrame(updateRail);
+        railTicking = true;
       }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    window.addEventListener('scroll', onRailScroll, { passive: true });
+    updateRail();
   }
 
-  // ---- Mobile nav toggle ----
+  // ---- Scene map overlay ----
   var navToggle = document.getElementById('nav-toggle');
   var navOverlay = document.getElementById('nav-overlay');
+  var navClose = document.getElementById('nav-close');
+
+  function closeNavOverlay() {
+    if (!navOverlay) return;
+    navOverlay.classList.remove('is-open');
+    navOverlay.setAttribute('aria-hidden', 'true');
+    if (navToggle) {
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+    body.classList.remove('nav-open');
+  }
+
+  function openNavOverlay() {
+    if (!navOverlay) return;
+    navOverlay.classList.add('is-open');
+    navOverlay.setAttribute('aria-hidden', 'false');
+    if (navToggle) {
+      navToggle.setAttribute('aria-expanded', 'true');
+    }
+    body.classList.add('nav-open');
+  }
 
   if (navToggle && navOverlay) {
     navToggle.addEventListener('click', function() {
-      var isOpen = navOverlay.classList.contains('is-open');
-
-      if (isOpen) {
-        navOverlay.classList.remove('is-open');
-        navToggle.classList.remove('is-active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        body.style.overflow = '';
+      if (navOverlay.classList.contains('is-open')) {
+        closeNavOverlay();
       } else {
-        navOverlay.classList.add('is-open');
-        navToggle.classList.add('is-active');
-        navToggle.setAttribute('aria-expanded', 'true');
-        body.style.overflow = 'hidden';
+        openNavOverlay();
       }
     });
 
-    // Close overlay when clicking a link
+    navOverlay.addEventListener('click', function(event) {
+      if (event.target && event.target.hasAttribute('data-nav-close')) {
+        closeNavOverlay();
+      }
+    });
+
     navOverlay.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        navOverlay.classList.remove('is-open');
-        navToggle.classList.remove('is-active');
-        navToggle.setAttribute('aria-expanded', 'false');
-        body.style.overflow = '';
-      });
+      link.addEventListener('click', closeNavOverlay);
     });
   }
 
-  // ---- Active nav highlighting ----
-  var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  if (navClose) {
+    navClose.addEventListener('click', closeNavOverlay);
+  }
 
-  // Desktop nav
-  document.querySelectorAll('.nav-links a').forEach(function(link) {
-    var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
-    if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
-      link.classList.add('active');
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeNavOverlay();
     }
   });
 
-  // Overlay nav
-  document.querySelectorAll('.overlay-links a').forEach(function(link) {
+  // ---- Active nav highlighting ----
+  var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  document.querySelectorAll('.story-nav-link, .route-sheet-link, .mobile-dock-link').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
     if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
       link.classList.add('active');
@@ -86,7 +100,6 @@
   // ---- Scroll reveal ----
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
-    // Add the reveal-target class for CSS transitions
     revealTargets.forEach(function(target) {
       target.classList.add('reveal-target');
     });
@@ -100,8 +113,8 @@
           }
         });
       }, {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -45px 0px'
       });
 
       revealTargets.forEach(function(target) {
@@ -114,7 +127,7 @@
     }
   }
 
-  // ---- Smooth scroll for hash links ----
+  // ---- Smooth hash scrolling ----
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(event) {
       var hash = anchor.getAttribute('href');
@@ -152,35 +165,46 @@
       try {
         await navigator.clipboard.writeText(block.textContent || '');
         button.textContent = 'Copied!';
-        setTimeout(function() { button.textContent = 'Copy'; }, 1600);
+        setTimeout(function() {
+          button.textContent = 'Copy';
+        }, 1500);
       } catch (error) {
         button.textContent = 'Error';
-        setTimeout(function() { button.textContent = 'Copy'; }, 1600);
+        setTimeout(function() {
+          button.textContent = 'Copy';
+        }, 1500);
       }
     });
 
     pre.appendChild(button);
   });
 
-  // ---- Keyboard focus intent ----
+  // ---- Focus intent ----
   document.addEventListener('keydown', function(event) {
-    if (event.key === 'Tab') body.classList.add('keyboard-nav');
+    if (event.key === 'Tab') {
+      body.classList.add('keyboard-nav');
+    }
   });
 
   document.addEventListener('mousedown', function() {
     body.classList.remove('keyboard-nav');
   });
 
-  // ---- Sleeve hover depth (subtle parallax on sleeves) ----
-  document.querySelectorAll('.sleeve').forEach(function(sleeve) {
-    sleeve.addEventListener('mouseenter', function() {
-      sleeve.style.zIndex = '10';
-    });
-    sleeve.addEventListener('mouseleave', function() {
-      if (!sleeve.classList.contains('sleeve-featured')) {
-        sleeve.style.zIndex = '';
-      }
-    });
-  });
+  // ---- Panel tilt interaction ----
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.scene-panel').forEach(function(panel) {
+      panel.addEventListener('mousemove', function(event) {
+        var rect = panel.getBoundingClientRect();
+        var px = (event.clientX - rect.left) / rect.width;
+        var py = (event.clientY - rect.top) / rect.height;
+        var rotateY = (px - 0.5) * 1.6;
+        var rotateX = (0.5 - py) * 1.6;
+        panel.style.transform = 'perspective(900px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg)';
+      });
 
+      panel.addEventListener('mouseleave', function() {
+        panel.style.transform = '';
+      });
+    });
+  }
 })();

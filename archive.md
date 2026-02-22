@@ -5,27 +5,19 @@ permalink: /archive/
 description: Browse every past design of this site.
 ---
 
-<div class="archive-page">
-  <section class="archive-hero" data-reveal>
-    <div class="archive-hero-inner">
-      <span class="eyebrow">Discography</span>
-      <h1 class="archive-title">Past Designs</h1>
-      <p class="archive-lead">This site is redesigned by AI every day. Here is every look it has ever had.</p>
-    </div>
+<div class="archive-stage">
+  <section class="archive-slate" data-reveal>
+    <span class="archive-kicker">Design Archive</span>
+    <h1 class="archive-heading">Past Designs</h1>
+    <p class="archive-lead">This site is redesigned by AI every day. Here is every look it has ever had.</p>
   </section>
 
-  <section class="archive-list">
-    <div class="archive-list-header">
-      <span class="alh-date">Date</span>
-      <span class="alh-theme">Theme</span>
-      <span class="alh-desc">Description</span>
-    </div>
-
+  <section class="archive-roll" data-reveal>
     {% assign today = site.time | date: "%Y-%m-%d" %}
     {% assign sorted = site.data.archive | sort: "date" | reverse %}
     {% for entry in sorted %}
     {% if entry.date == today %}{% continue %}{% endif %}
-    <a href="/archive/{{ entry.date }}/" class="archive-entry">
+    <a href="/archive/{{ entry.date }}/" class="archive-strip">
       <span class="archive-date">{{ entry.date | date: "%b %d" }}</span>
       <strong class="archive-theme">{{ entry.theme }}</strong>
       <span class="archive-desc">{{ entry.description }}</span>
@@ -35,131 +27,124 @@ description: Browse every past design of this site.
 </div>
 
 <style>
-.archive-page {
-  max-width: var(--max-width-wide);
+.archive-stage {
+  width: min(var(--max-width-content), 100%);
   margin: 0 auto;
+  display: grid;
+  gap: clamp(14px, 2vw, 22px);
 }
 
-.archive-hero {
-  padding: var(--space-16) var(--space-8) var(--space-10);
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
+.archive-slate,
+.archive-roll {
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--border-radius-xl);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(241, 234, 221, 0.86));
+  box-shadow: var(--shadow-sm);
 }
 
-.archive-hero-inner {
-  max-width: var(--max-width-content);
-  margin: 0 auto;
+.archive-slate {
+  padding: clamp(18px, 3vw, 30px);
+  background:
+    linear-gradient(125deg, rgba(46, 124, 143, 0.16), rgba(243, 91, 47, 0.1)),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(241, 234, 221, 0.86));
 }
 
-.archive-title {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 48px);
-  color: var(--color-text);
-  margin: 0 0 var(--space-3);
+.archive-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.archive-kicker::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.archive-heading {
+  margin: 0;
+  font-size: clamp(56px, 9vw, 110px);
+  line-height: 0.85;
 }
 
 .archive-lead {
-  font-family: var(--font-display);
-  font-size: 17px;
-  font-style: italic;
-  color: var(--color-text-secondary);
-  margin: 0;
+  margin: 8px 0 0;
+  max-width: 58ch;
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.4vw, 1.12rem);
 }
 
-.archive-list {
-  max-width: var(--max-width-content);
-  margin: 0 auto;
-  padding: 0 var(--space-8);
-}
-
-.archive-list-header {
+.archive-roll {
+  padding: clamp(12px, 2vw, 18px);
   display: grid;
-  grid-template-columns: 80px 200px 1fr;
-  gap: 16px;
-  padding: 12px 16px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  border-bottom: 1px solid var(--color-border);
+  gap: 8px;
 }
 
-.archive-entry {
+.archive-strip {
   display: grid;
-  grid-template-columns: 80px 200px 1fr;
-  gap: 16px;
-  padding: 14px 16px;
-  color: var(--color-text);
+  grid-template-columns: 76px minmax(0, 280px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  color: inherit;
   text-decoration: none;
-  font-family: var(--font-body);
-  font-size: 14px;
-  line-height: 1.4;
-  border-bottom: 1px solid var(--color-border-light);
-  transition: background var(--transition-fast);
+  padding: 11px 12px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.62);
+  transition: transform var(--transition-base), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.archive-entry:last-child {
-  border-bottom: none;
-}
-
-.archive-entry:hover {
-  background: var(--color-warm);
+.archive-strip:hover {
+  transform: translateX(3px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-sm);
 }
 
 .archive-date {
   font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--color-text-muted);
-  white-space: nowrap;
+  font-size: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
 }
 
 .archive-theme {
+  display: block;
+  min-width: 0;
   font-family: var(--font-display);
-  font-size: 17px;
-  white-space: nowrap;
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  color: var(--color-text);
   overflow: hidden;
   text-overflow: ellipsis;
-  color: var(--color-text);
-}
-
-.archive-entry:hover .archive-theme {
-  color: var(--color-label);
+  white-space: nowrap;
 }
 
 .archive-desc {
-  font-size: 13px;
-  font-style: italic;
-  color: var(--color-text-muted);
-  white-space: nowrap;
+  font-size: 0.93rem;
+  color: var(--color-text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-@media (max-width: 700px) {
-  .archive-hero {
-    padding: var(--space-10) var(--space-5);
-  }
-
-  .archive-list {
-    padding: 0 var(--space-5);
-  }
-
-  .archive-list-header {
-    display: none;
-  }
-
-  .archive-entry {
+@media (max-width: 860px) {
+  .archive-strip {
     grid-template-columns: 1fr;
-    gap: 2px;
-    padding: 12px 0;
+    gap: 4px;
   }
 
-  .archive-desc {
-    display: none;
+  .archive-desc,
+  .archive-theme {
+    white-space: normal;
   }
 }
 </style>

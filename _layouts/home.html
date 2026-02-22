@@ -2,689 +2,507 @@
 layout: default
 ---
 
-<!-- ======== HERO: Split with vinyl record ======== -->
-<section class="hero-section" data-reveal>
-  <div class="hero-inner">
-    <div class="hero-text">
-      <span class="hero-label">Side A</span>
-      <h1 class="hero-title">{{ site.description }}</h1>
-      <p class="hero-sub">Building, writing, and reading &mdash; on repeat.</p>
+<div class="storyboard-home">
+  <section class="scene-panel scene-app-reel" data-reveal>
+    <header class="scene-head">
+      <span class="scene-kicker">Scene Reel</span>
+      <h2 class="scene-title">Applications</h2>
+    </header>
+
+    <div class="app-filmstrip">
+      <a href="/apps/etch/" class="film-cell film-cell-etch">
+        <span class="film-index">Scene 01</span>
+        <div class="film-cell-body">
+          <div class="film-icon-wrap">
+            <img src="/assets/etch_logo.png" alt="Etch" class="film-icon">
+          </div>
+          <div class="film-copy">
+            <strong class="film-name">Etch</strong>
+            <span class="film-meta">iOS · SwiftUI</span>
+            <p class="film-description">Spaced repetition, built like Apple would.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="/apps/little-quotes/" class="film-cell film-cell-lq">
+        <span class="film-index">Scene 02</span>
+        <div class="film-cell-body">
+          <div class="film-icon-wrap">
+            <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="film-icon">
+          </div>
+          <div class="film-copy">
+            <strong class="film-name">Little Quotes</strong>
+            <span class="film-meta">iOS · SwiftUI</span>
+            <p class="film-description">Capture and share kids' priceless words.</p>
+          </div>
+        </div>
+      </a>
+
+      <a href="/apps/waymark/" class="film-cell film-cell-waymark">
+        <span class="film-index">Scene 03</span>
+        <div class="film-cell-body">
+          <div class="film-icon-wrap">
+            <img src="/assets/waymark_icon.png" alt="Waymark" class="film-icon">
+          </div>
+          <div class="film-copy">
+            <strong class="film-name">Waymark</strong>
+            <span class="film-meta">iOS · SwiftUI</span>
+            <p class="film-description">Prayer and community, designed with care.</p>
+          </div>
+        </div>
+      </a>
     </div>
-    <div class="hero-record-wrap">
-      <div class="vinyl-record" aria-hidden="true">
-        <div class="vinyl-label">
-          <span class="label-name">TW</span>
-        </div>
-      </div>
-      <div class="vinyl-shadow" aria-hidden="true"></div>
+  </section>
+
+  <section class="scene-panel scene-manifesto" data-reveal>
+    <div class="manifesto-copy">
+      <span class="scene-kicker">Opening Slate</span>
+      <h1 class="manifesto-title">{{ site.description }}</h1>
+      <p class="manifesto-subtitle">Building, writing, and reading &mdash; on repeat.</p>
     </div>
-  </div>
-</section>
+    <div class="manifesto-board" aria-hidden="true">
+      <span>Take 01</span>
+      <span>Take 02</span>
+      <span>Take 03</span>
+    </div>
+  </section>
 
-<!-- ======== CRATE: Apps as record sleeves ======== -->
-<section class="crate-section" data-reveal>
-  <div class="section-header">
-    <span class="section-badge">Now Stocked</span>
-    <h2 class="section-title">Applications</h2>
-  </div>
-
-  <div class="crate-sleeves">
-
-    <a href="/apps/etch/" class="sleeve sleeve-tilt-left">
-      <div class="sleeve-vinyl-peek" aria-hidden="true"></div>
-      <div class="sleeve-face">
-        <div class="sleeve-art">
-          <img src="/assets/etch_logo.png" alt="Etch" class="sleeve-icon">
-        </div>
-        <div class="sleeve-info">
-          <strong class="sleeve-name">Etch</strong>
-          <span class="sleeve-meta">iOS &middot; SwiftUI</span>
-          <p class="sleeve-desc">Spaced repetition, built like Apple would.</p>
-        </div>
-      </div>
-    </a>
-
-    <a href="/apps/little-quotes/" class="sleeve sleeve-featured">
-      <div class="sleeve-vinyl-peek" aria-hidden="true"></div>
-      <div class="sleeve-face">
-        <div class="sleeve-art">
-          <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="sleeve-icon">
-        </div>
-        <div class="sleeve-info">
-          <strong class="sleeve-name">Little Quotes</strong>
-          <span class="sleeve-meta">iOS &middot; SwiftUI</span>
-          <p class="sleeve-desc">Capture and share kids' priceless words.</p>
-        </div>
-      </div>
-    </a>
-
-    <a href="/apps/waymark/" class="sleeve sleeve-tilt-right">
-      <div class="sleeve-vinyl-peek" aria-hidden="true"></div>
-      <div class="sleeve-face">
-        <div class="sleeve-art">
-          <img src="/assets/waymark_icon.png" alt="Waymark" class="sleeve-icon">
-        </div>
-        <div class="sleeve-info">
-          <strong class="sleeve-name">Waymark</strong>
-          <span class="sleeve-meta">iOS &middot; SwiftUI</span>
-          <p class="sleeve-desc">Prayer and community, designed with care.</p>
-        </div>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<!-- ======== TRACKLIST: Writing ======== -->
-<section class="tracklist-section" data-reveal>
-  <div class="tracklist-wrap">
-    <div class="section-header">
-      <span class="section-badge">Side B</span>
-      <h2 class="section-title">Writing</h2>
+  <section class="scene-panel scene-writing-log" data-reveal>
+    <header class="scene-head">
+      <span class="scene-kicker">Shot Log</span>
+      <h2 class="scene-title">Writing</h2>
       <a href="{{ '/writing/' | relative_url }}" class="link-arrow">All tracks</a>
-    </div>
+    </header>
 
-    <ol class="tracks">
+    <ol class="shot-log">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
-      <li class="track">
-        <span class="track-num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
-        <a href="{{ post.url | relative_url }}" class="track-body">
-          <span class="track-title">{{ post.title }}</span>
-          <span class="track-desc">{{ post.description }}</span>
+      <li class="shot-log-row">
+        <span class="shot-number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <a href="{{ post.url | relative_url }}" class="shot-main">
+          <span class="shot-title">{{ post.title }}</span>
+          <span class="shot-desc">{{ post.description }}</span>
         </a>
-        <span class="track-time">{{ post.date | date: "%b %d" }}</span>
+        <time class="shot-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
       </li>
       {% endfor %}
     </ol>
-  </div>
-</section>
+  </section>
 
-<!-- ======== NOW SPINNING: Reading ======== -->
-<section class="spinning-section" data-reveal>
-  <div class="spinning-inner">
-    <div class="spinning-header">
-      <div class="eq-bars" aria-hidden="true">
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-        <span class="eq-bar"></span>
-      </div>
-      <span class="spinning-label">Now Spinning</span>
+  <section class="scene-panel scene-reading-signal" data-reveal>
+    <header class="scene-head">
+      <span class="scene-kicker">Live Signal</span>
+      <h2 class="scene-title">Now Spinning</h2>
       <a href="{{ '/reading/' | relative_url }}" class="link-arrow">Full collection</a>
-    </div>
+    </header>
 
     {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
     {% if currently_reading.size > 0 %}
-    <div class="spinning-books">
+    <div class="signal-list">
       {% for book in currently_reading limit:3 %}
-      <div class="spinning-book">
-        <span class="spinning-book-title">{{ book.title }}</span>
-        <span class="spinning-book-author">{{ book.author }}</span>
-      </div>
+      <article class="signal-book">
+        <span class="signal-book-title">{{ book.title }}</span>
+        <span class="signal-book-author">{{ book.author }}</span>
+      </article>
       {% endfor %}
     </div>
     {% else %}
-    <p class="spinning-empty">Between records at the moment.</p>
+    <p class="signal-empty">Between records at the moment.</p>
     {% endif %}
-  </div>
-</section>
+  </section>
+</div>
 
 <style>
-/* ---- Hero Section ---- */
-.hero-section {
-  padding: 0 var(--space-8);
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.hero-inner {
-  max-width: var(--max-width-wide);
-  margin: 0 auto;
+.storyboard-home {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: var(--space-12);
-  min-height: 420px;
-  padding: var(--space-16) 0;
+  gap: clamp(14px, 2vw, 22px);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-areas:
+    "apps manifesto"
+    "apps reading"
+    "writing reading";
 }
 
-.hero-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-label);
-  display: block;
-  margin-bottom: var(--space-4);
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1.1;
-  color: var(--color-text);
-  margin: 0 0 var(--space-5);
-}
-
-.hero-sub {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-style: italic;
-  color: var(--color-text-muted);
-  margin: 0;
-}
-
-/* Vinyl Record */
-.hero-record-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.scene-panel {
   position: relative;
+  border: 1px solid var(--color-panel-border);
+  border-radius: var(--border-radius-xl);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.85), rgba(241, 235, 222, 0.86));
+  padding: clamp(18px, 3vw, 30px);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 
-.vinyl-record {
-  width: clamp(220px, 28vw, 340px);
-  aspect-ratio: 1;
-  border-radius: 50%;
+.scene-panel::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px dashed rgba(18, 17, 15, 0.14);
+  border-radius: calc(var(--border-radius-xl) - 6px);
+  pointer-events: none;
+}
+
+.scene-app-reel {
+  grid-area: apps;
+}
+
+.scene-manifesto {
+  grid-area: manifesto;
+  min-height: 290px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 14px;
   background:
-    /* Spindle hole */
-    radial-gradient(circle, var(--color-cardboard) 4px, transparent 4.5px),
-    /* Inner label ring */
-    radial-gradient(circle, transparent 30px, rgba(255,255,255,0.06) 30.5px, transparent 31px),
-    /* Label circle */
-    radial-gradient(circle, var(--color-label) 48px, transparent 48.5px),
-    /* Groove texture */
-    repeating-radial-gradient(circle,
-      transparent 50px,
-      rgba(255,255,255,0.035) 51px,
-      transparent 52px,
-      transparent 55px
-    ),
-    /* Highlight sweep */
-    linear-gradient(135deg, transparent 35%, rgba(255,255,255,0.06) 48%, transparent 52%),
-    /* Base */
-    var(--color-vinyl);
-  box-shadow:
-    inset 0 0 40px rgba(0,0,0,0.3),
-    0 4px 32px rgba(0,0,0,0.25);
-  animation: vinyl-spin 6s linear infinite;
-  position: relative;
-  z-index: 2;
+    linear-gradient(130deg, rgba(46, 124, 143, 0.17), rgba(243, 91, 47, 0.11)),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(241, 235, 222, 0.86));
 }
 
-.vinyl-record:hover {
-  animation-duration: 1.5s;
+.scene-writing-log {
+  grid-area: writing;
 }
 
-.vinyl-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.scene-reading-signal {
+  grid-area: reading;
 }
 
-.label-name {
-  font-family: var(--font-display);
-  font-size: 20px;
-  color: var(--color-surface);
-  letter-spacing: 0.05em;
-}
-
-.vinyl-shadow {
-  position: absolute;
-  width: clamp(220px, 28vw, 340px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,0,0,0.12) 0%, transparent 70%);
-  transform: translateY(16px) scaleY(0.15);
-  z-index: 1;
-}
-
-/* ---- Crate Section: App Sleeves ---- */
-.crate-section {
-  padding: var(--space-16) var(--space-8);
-  max-width: var(--max-width-wide);
-  margin: 0 auto;
-}
-
-.section-header {
+.scene-head {
   display: flex;
   align-items: baseline;
-  gap: var(--space-4);
-  margin-bottom: var(--space-10);
+  gap: 12px;
   flex-wrap: wrap;
-}
-
-.section-badge {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--color-label);
-  background: var(--color-accent-wash);
-  padding: 3px 10px;
-  border-radius: var(--border-radius-full);
-}
-
-.section-title {
-  font-family: var(--font-display);
-  font-size: 32px;
-  color: var(--color-text);
-  margin: 0;
-  flex: 1;
-}
-
-.crate-sleeves {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 0;
-  padding: var(--space-8) 0;
-  perspective: 800px;
-}
-
-.sleeve {
-  flex: 0 0 280px;
-  text-decoration: none;
-  color: var(--color-text);
+  margin-bottom: 16px;
   position: relative;
-  transition: transform 400ms var(--ease-out), z-index 0ms;
   z-index: 1;
 }
 
-.sleeve-face {
-  background:
-    linear-gradient(145deg, var(--color-surface) 0%, var(--color-cardboard) 100%);
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-sleeve);
-  transition: box-shadow 400ms var(--ease-out);
+.scene-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
-.sleeve-tilt-left {
-  transform: rotate(-3deg);
-  margin-right: -24px;
+.scene-kicker::before {
+  content: '';
+  width: 14px;
+  height: 1px;
+  background: var(--color-accent);
 }
 
-.sleeve-featured {
-  z-index: 3;
-  flex: 0 0 300px;
+.scene-title {
+  margin: 0;
+  font-size: clamp(40px, 6vw, 62px);
+  line-height: 0.92;
 }
 
-.sleeve-tilt-right {
-  transform: rotate(3deg);
-  margin-left: -24px;
+.manifesto-title {
+  margin: 0 0 8px;
+  font-size: clamp(58px, 9vw, 110px);
+  line-height: 0.85;
 }
 
-/* Vinyl peeking out on hover */
-.sleeve-vinyl-peek {
-  position: absolute;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 50px;
-  background: var(--color-vinyl);
-  border-radius: 50px 50px 0 0;
-  opacity: 0;
-  transition: opacity 300ms ease, top 400ms var(--ease-out);
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.15);
-  z-index: -1;
+.manifesto-subtitle {
+  margin: 0;
+  max-width: 28ch;
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.4vw, 1.14rem);
+  color: var(--color-text-secondary);
 }
 
-.sleeve:hover {
-  transform: rotate(0deg) translateY(-12px);
-  z-index: 10;
+.manifesto-board {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
 }
 
-.sleeve:hover .sleeve-face {
-  box-shadow: var(--shadow-lg);
-}
-
-.sleeve:hover .sleeve-vinyl-peek {
-  opacity: 1;
-  top: -28px;
-}
-
-.sleeve-art {
-  display: flex;
+.manifesto-board span {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-8) var(--space-8) var(--space-5);
-  background: var(--color-warm);
-  border-bottom: 1px solid var(--color-border);
+  min-width: 92px;
+  padding: 8px 10px;
+  border-radius: var(--border-radius-full);
+  border: 1px solid rgba(18, 17, 15, 0.2);
+  background: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
-.sleeve-icon {
-  width: 80px;
-  height: 80px;
-  border-radius: 18px;
-  object-fit: cover;
+.app-filmstrip {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+}
+
+.film-cell {
+  position: relative;
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.78);
+  overflow: hidden;
+  transition: transform var(--transition-base), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.film-cell::before,
+.film-cell::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 8px;
+  background-image: radial-gradient(circle, rgba(18, 17, 15, 0.55) 2px, transparent 2px);
+  background-size: 22px 8px;
+  background-repeat: repeat-x;
+}
+
+.film-cell::before {
+  top: 6px;
+}
+
+.film-cell::after {
+  bottom: 6px;
+}
+
+.film-cell:hover {
+  transform: translateY(-3px) rotate(-0.3deg);
+  border-color: var(--color-accent);
   box-shadow: var(--shadow-md);
 }
 
-.sleeve-info {
-  padding: var(--space-5) var(--space-5) var(--space-6);
+.film-cell-body {
+  padding: 20px 16px 18px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
 }
 
-.sleeve-name {
+.film-index {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-12px, 10px);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.film-icon-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+}
+
+.film-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.film-copy {
+  min-width: 0;
+}
+
+.film-name {
   display: block;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: clamp(30px, 5vw, 40px);
+  line-height: 0.9;
   color: var(--color-text);
-  margin-bottom: 2px;
 }
 
-.sleeve-meta {
+.film-meta {
   display: block;
+  margin-top: 2px;
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--color-text-muted);
+  letter-spacing: 0.09em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: var(--space-2);
+  color: var(--color-text-muted);
 }
 
-.sleeve-desc {
-  font-family: var(--font-body);
-  font-size: 14px;
+.film-description {
+  margin: 8px 0 0;
+  font-size: 0.95rem;
   color: var(--color-text-secondary);
-  margin: 0;
-  line-height: 1.5;
 }
 
-/* ---- Tracklist Section: Writing ---- */
-.tracklist-section {
-  background: var(--color-vinyl);
-  padding: var(--space-16) var(--space-8);
+.film-cell-etch {
+  transform: rotate(-0.4deg);
 }
 
-.tracklist-wrap {
-  max-width: var(--max-width-content);
-  margin: 0 auto;
+.film-cell-lq {
+  transform: rotate(0.6deg);
 }
 
-.tracklist-section .section-badge {
-  background: rgba(217, 91, 43, 0.15);
-  color: var(--color-label);
+.film-cell-waymark {
+  transform: rotate(-0.2deg);
 }
 
-.tracklist-section .section-title {
-  color: var(--color-cardboard);
-}
-
-.tracklist-section .link-arrow {
-  color: var(--color-gold);
-}
-
-.tracklist-section .link-arrow:hover {
-  color: var(--color-cardboard);
-}
-
-.tracks {
+.shot-log {
   list-style: none;
   margin: 0;
   padding: 0;
-  counter-reset: none;
+  display: grid;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
 }
 
-.track {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-5);
-  padding: 16px 0;
-  border-bottom: 1px solid #333;
+.shot-log-row {
   margin: 0;
-  transition: background 200ms ease;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid var(--color-border-light);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.56);
 }
 
-.track:last-child {
-  border-bottom: none;
-}
-
-.track:hover {
-  background: rgba(255,255,255,0.02);
-}
-
-.track-num {
+.shot-number {
+  margin-top: 4px;
   font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 500;
-  color: #666;
-  flex-shrink: 0;
-  width: 28px;
-  text-align: right;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
 }
 
-.track-body {
-  flex: 1;
+.shot-main {
   min-width: 0;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  color: inherit;
 }
 
-.track-title {
-  font-family: var(--font-display);
-  font-size: 18px;
-  color: var(--color-cardboard);
-  transition: color var(--transition-fast);
-}
-
-.track:hover .track-title {
-  color: var(--color-label);
-}
-
-.track-desc {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: #888;
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.track-time {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-/* ---- Now Spinning Section: Reading ---- */
-.spinning-section {
-  padding: var(--space-12) var(--space-8);
-  background: var(--color-warm);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.spinning-inner {
-  max-width: var(--max-width-content);
-  margin: 0 auto;
-}
-
-.spinning-header {
-  display: flex;
-  align-items: center;
-  gap: var(--space-4);
-  margin-bottom: var(--space-6);
-}
-
-.eq-bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 2px;
-  height: 18px;
-}
-
-.eq-bar {
+.shot-title {
   display: block;
-  width: 3px;
-  background: var(--color-label);
-  border-radius: 1px;
-}
-
-.eq-bar:nth-child(1) {
-  --eq-max: 14px;
-  animation: eq-bar 0.8s ease-in-out infinite;
-}
-
-.eq-bar:nth-child(2) {
-  --eq-max: 18px;
-  animation: eq-bar 0.6s ease-in-out infinite 0.15s;
-}
-
-.eq-bar:nth-child(3) {
-  --eq-max: 10px;
-  animation: eq-bar 0.9s ease-in-out infinite 0.3s;
-}
-
-.spinning-label {
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--color-text);
-  flex: 1;
-}
-
-.spinning-books {
-  display: flex;
-  gap: var(--space-8);
-  flex-wrap: wrap;
-}
-
-.spinning-book {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding-left: var(--space-4);
-  border-left: 3px solid var(--color-label);
-}
-
-.spinning-book-title {
   font-family: var(--font-body);
-  font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.02rem;
   color: var(--color-text);
 }
 
-.spinning-book-author {
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-style: italic;
+.shot-desc {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+}
+
+.shot-date {
+  margin-top: 3px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-text-muted);
 }
 
-.spinning-empty {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-style: italic;
-  color: var(--color-text-muted);
+.signal-list {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 10px;
+}
+
+.signal-book {
+  display: grid;
+  gap: 3px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border-light);
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.signal-book-title {
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.signal-book-author {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.signal-empty {
   margin: 0;
+  position: relative;
+  z-index: 1;
+  font-style: italic;
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 900px) {
-  .crate-sleeves {
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-6);
-  }
-
-  .sleeve,
-  .sleeve-featured {
-    flex: none;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .sleeve-tilt-left,
-  .sleeve-tilt-right {
-    transform: none;
-    margin: 0;
-  }
-
-  .sleeve:hover {
-    transform: translateY(-8px);
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-inner {
+@media (max-width: 1100px) {
+  .storyboard-home {
     grid-template-columns: 1fr;
-    text-align: center;
-    gap: var(--space-8);
-    padding: var(--space-10) 0;
+    grid-template-areas:
+      "manifesto"
+      "apps"
+      "writing"
+      "reading";
+  }
+
+  .scene-manifesto {
+    grid-template-columns: 1fr;
     min-height: auto;
   }
 
-  .hero-record-wrap {
-    order: -1;
+  .manifesto-board {
+    justify-items: start;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .vinyl-record {
-    width: 180px;
-  }
-
-  .vinyl-shadow {
-    width: 180px;
-  }
-
-  .hero-section {
-    padding: 0 var(--space-5);
-  }
-
-  .crate-section,
-  .tracklist-section,
-  .spinning-section {
-    padding-left: var(--space-5);
-    padding-right: var(--space-5);
-  }
-
-  .section-header {
-    flex-direction: column;
-    gap: var(--space-2);
-  }
-
-  .track {
-    gap: var(--space-3);
-  }
-
-  .track-desc {
-    display: none;
-  }
-
-  .spinning-books {
-    flex-direction: column;
-    gap: var(--space-5);
+  .manifesto-board span {
+    min-width: 0;
+    width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .vinyl-record {
-    width: 140px;
+@media (max-width: 760px) {
+  .scene-panel {
+    border-radius: 18px;
+    padding: 16px;
   }
 
-  .vinyl-shadow {
-    width: 140px;
+  .scene-title {
+    font-size: clamp(34px, 12vw, 54px);
   }
 
-  .hero-title {
-    font-size: 28px;
+  .manifesto-title {
+    font-size: clamp(52px, 22vw, 92px);
+  }
+
+  .film-cell-body {
+    grid-template-columns: 1fr;
+    padding-top: 22px;
+  }
+
+  .film-icon-wrap {
+    width: 52px;
+    height: 52px;
+  }
+
+  .shot-log-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .shot-date {
+    grid-column: 2;
   }
 }
 </style>

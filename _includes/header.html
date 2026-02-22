@@ -1,25 +1,63 @@
-<header class="site-header" id="site-header">
-  <div class="header-inner">
-    <a href="{{ '/' | relative_url }}" class="header-brand" aria-label="Home">
-      <span class="brand-name">Tyler Wince</span>
-      <span class="brand-accent">33&#8531; rpm</span>
+<header class="story-rail" id="site-header">
+  <div class="rail-head">
+    <a href="{{ '/' | relative_url }}" class="rail-brand" aria-label="Home">
+      <span class="rail-brand-title">Tyler Wince</span>
+      <span class="rail-brand-subtitle">Storyboard Studio</span>
     </a>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-      <span class="toggle-bar"></span>
-      <span class="toggle-bar"></span>
+    <button class="scene-map-toggle" id="nav-toggle" aria-label="Open scene map" aria-controls="nav-overlay" aria-expanded="false">
+      <span>Open scene map</span>
+      <span class="scene-map-toggle-dot" aria-hidden="true"></span>
     </button>
+  </div>
 
-    <nav class="site-nav" id="site-nav" aria-label="Main navigation">
-      <ul class="nav-links">
-        <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
-        {% for nav_page_name in site.header_pages %}
-          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-          {% if nav_page %}
-          <li><a href="{{ nav_page.url | relative_url }}" {% if page.url == nav_page.url %}class="active"{% endif %}>{{ nav_page.title }}</a></li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </nav>
+  <nav class="story-nav" id="site-nav" aria-label="Main navigation">
+    <ul class="story-nav-list">
+      <li>
+        <a href="{{ '/' | relative_url }}" class="story-nav-link {% if page.url == '/' %}active{% endif %}">
+          <span class="story-nav-index">01</span>
+          <span class="story-nav-label">Home</span>
+        </a>
+      </li>
+      {% for nav_page_name in site.header_pages %}
+        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+        {% if nav_page %}
+        {% assign nav_order = forloop.index | plus: 1 %}
+        <li>
+          <a href="{{ nav_page.url | relative_url }}" class="story-nav-link {% if page.url == nav_page.url %}active{% endif %}">
+            <span class="story-nav-index">{{ nav_order | prepend: '0' | slice: -2, 2 }}</span>
+            <span class="story-nav-label">{{ nav_page.title }}</span>
+          </a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <div class="rail-foot">
+    <p class="rail-foot-note">Daily redesign. New cut every morning.</p>
   </div>
 </header>
+
+<nav class="mobile-dock" aria-label="Mobile navigation">
+  <ul class="mobile-dock-links">
+    <li>
+      <a href="{{ '/' | relative_url }}" class="mobile-dock-link {% if page.url == '/' %}active{% endif %}">
+        <span class="mobile-dock-index">01</span>
+        <span class="mobile-dock-label">Home</span>
+      </a>
+    </li>
+    {% for nav_page_name in site.header_pages %}
+      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+      {% if nav_page %}
+      {% assign nav_order = forloop.index | plus: 1 %}
+      <li>
+        <a href="{{ nav_page.url | relative_url }}" class="mobile-dock-link {% if page.url == nav_page.url %}active{% endif %}">
+          <span class="mobile-dock-index">{{ nav_order | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="mobile-dock-label">{{ nav_page.title }}</span>
+        </a>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
