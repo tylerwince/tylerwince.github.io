@@ -87,3 +87,8 @@
   theme: "RECORD CRATE"
   description: "RECORD CRATE — designed February 21, 2026"
   commit: "190b4d2"
+
+- date: "2026-02-23"
+  theme: "PAPERCRAFT"
+  description: "PAPERCRAFT — designed February 23, 2026"
+  commit: "f7911d3"
