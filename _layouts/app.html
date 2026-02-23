@@ -2,29 +2,29 @@
 layout: default
 ---
 
-<article class="app-packet">
-  <section class="packet-hero" data-reveal>
-    <div class="packet-hero-main">
-      <div class="packet-icon-frame">
-        <img src="{{ page.icon_path }}" alt="{{ page.title }} icon" class="packet-icon-image">
+<article class="app-paper-wrap">
+  <section class="paper-sheet app-hero" data-reveal>
+    <div class="app-hero-main">
+      <div class="app-hero-icon">
+        <img src="{{ page.icon_path }}" alt="{{ page.title }} icon" class="app-hero-icon-img">
       </div>
 
-      <div class="packet-title-group">
-        <span class="packet-eyebrow">Application Profile</span>
-        <h1 class="packet-title">{{ page.title }}</h1>
-        <p class="packet-tagline">{{ page.tagline }}</p>
+      <div class="app-hero-info">
+        <span class="eyebrow mb-3">Application</span>
+        <h1 class="app-hero-title">{{ page.title }}</h1>
+        <p class="app-hero-tagline">{{ page.tagline }}</p>
       </div>
     </div>
 
-    <div class="packet-hero-side">
-      <div class="packet-meta-chip">
-        <span class="packet-meta-label">Platform</span>
-        <span class="packet-meta-value">{{ page.platform }}</span>
+    <div class="app-hero-meta">
+      <div class="meta-label-card">
+        <span class="meta-label-key">Platform</span>
+        <span class="meta-label-val">{{ page.platform }}</span>
       </div>
 
-      <div class="packet-meta-chip">
-        <span class="packet-meta-label">Stack</span>
-        <span class="packet-meta-value">{{ page.tech_stack | join: ", " }}</span>
+      <div class="meta-label-card">
+        <span class="meta-label-key">Stack</span>
+        <span class="meta-label-val">{{ page.tech_stack | join: ", " }}</span>
       </div>
 
       <a href="{{ page.app_store_link }}" class="button" target="_blank" rel="noopener">
@@ -33,186 +33,141 @@ layout: default
     </div>
   </section>
 
-  <section class="packet-content" data-reveal>
-    <div class="packet-content-notes">
+  <section class="paper-sheet app-body" data-reveal>
+    <div class="app-body-inner">
       {{ content }}
     </div>
   </section>
 </article>
 
 <style>
-.app-packet {
+.app-paper-wrap {
   width: min(var(--max-width-content), 100%);
   margin: 0 auto;
   display: grid;
-  gap: clamp(14px, 2vw, 22px);
+  gap: 20px;
 }
 
-.packet-hero,
-.packet-content {
-  border: 1px solid var(--color-panel-border);
-  border-radius: var(--border-radius-xl);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(240, 233, 219, 0.88));
-  box-shadow: var(--shadow-sm);
-}
-
-.packet-hero {
-  padding: clamp(16px, 3vw, 28px);
+.app-hero {
+  padding: clamp(20px, 3vw, 32px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
-  gap: 16px;
-  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 300px);
+  gap: 20px;
+  align-items: start;
+  transform: rotate(-0.2deg);
 }
 
-.packet-hero-main {
+.app-hero-main {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   gap: 16px;
   align-items: center;
 }
 
-.packet-icon-frame {
-  width: clamp(84px, 10vw, 120px);
-  height: clamp(84px, 10vw, 120px);
-  border-radius: 28px;
-  border: 1px solid var(--color-border-light);
-  background: rgba(255, 255, 255, 0.76);
-  padding: 10px;
-  box-shadow: var(--shadow-sm);
+.app-hero-icon {
+  width: clamp(72px, 10vw, 110px);
+  height: clamp(72px, 10vw, 110px);
+  border-radius: 22px;
+  border: 1px solid var(--color-border);
+  padding: 8px;
+  background: var(--color-paper-warm);
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.08);
 }
 
-.packet-icon-image {
+.app-hero-icon-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 22px;
+  border-radius: 16px;
 }
 
-.packet-title-group {
-  min-width: 0;
-}
+.app-hero-info { min-width: 0; }
 
-.packet-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.packet-eyebrow::before {
-  content: '';
-  width: 16px;
-  height: 1px;
-  background: var(--color-accent);
-}
-
-.packet-title {
+.app-hero-title {
   margin: 0;
-  font-size: clamp(56px, 9vw, 106px);
-  line-height: 0.86;
-  letter-spacing: 0.03em;
+  font-size: clamp(40px, 7vw, 80px);
+  line-height: 1;
 }
 
-.packet-tagline {
-  margin: 10px 0 0;
-  max-width: 34ch;
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 1.4vw, 1.15rem);
+.app-hero-tagline {
+  margin: 8px 0 0;
+  font-family: var(--font-hand);
+  font-size: clamp(18px, 2vw, 24px);
   color: var(--color-text-secondary);
+  max-width: 30ch;
 }
 
-.packet-hero-side {
+.app-hero-meta {
   display: grid;
   gap: 10px;
   align-content: start;
 }
 
-.packet-meta-chip {
-  border: 1px solid var(--color-border-light);
-  border-radius: 14px;
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.64);
+.meta-label-card {
+  padding: 10px 14px;
+  background: var(--color-paper-warm);
+  border: 1px dashed var(--color-border);
 }
 
-.packet-meta-label {
+.meta-label-key {
   display: block;
-  margin-bottom: 4px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+  font-family: var(--font-hand);
+  font-size: 15px;
   color: var(--color-text-muted);
+  margin-bottom: 2px;
 }
 
-.packet-meta-value {
+.meta-label-val {
   display: block;
-  font-size: 0.94rem;
+  font-size: 0.95rem;
   color: var(--color-text-secondary);
 }
 
-.packet-content {
-  padding: clamp(16px, 3vw, 30px);
+.app-body {
+  padding: clamp(20px, 3vw, 32px);
 }
 
-.packet-content-notes {
+.app-body-inner {
   max-width: var(--max-width-text);
   margin: 0 auto;
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   color: var(--color-text-secondary);
 }
 
-.packet-content-notes h2,
-.packet-content-notes h3,
-.packet-content-notes h4,
-.packet-content-notes h5,
-.packet-content-notes h6 {
+.app-body-inner h2,
+.app-body-inner h3,
+.app-body-inner h4,
+.app-body-inner h5,
+.app-body-inner h6 {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
 
-.packet-content-notes h2 {
-  font-size: clamp(38px, 6vw, 58px);
-}
+.app-body-inner h2 { font-size: clamp(28px, 5vw, 48px); }
+.app-body-inner h3 { font-size: clamp(22px, 3.5vw, 36px); }
 
-.packet-content-notes h3 {
-  font-size: clamp(28px, 4vw, 42px);
-}
-
-.packet-content-notes p,
-.packet-content-notes li {
-  font-size: 1.02rem;
-  line-height: 1.7;
-}
-
-.packet-content-notes a {
-  color: var(--color-accent);
+.app-body-inner a {
+  color: var(--color-blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.app-body-inner a:hover { color: var(--color-pin); }
 
-.packet-content-notes a:hover {
-  color: var(--color-indigo);
-}
-
-@media (max-width: 980px) {
-  .packet-hero {
+@media (max-width: 900px) {
+  .app-hero {
     grid-template-columns: 1fr;
-  }
-
-  .packet-title {
-    font-size: clamp(52px, 16vw, 96px);
+    transform: none;
   }
 }
 
-@media (max-width: 700px) {
-  .packet-hero-main {
+@media (max-width: 600px) {
+  .app-hero-main {
     grid-template-columns: 1fr;
+  }
+
+  .app-hero-title {
+    font-size: clamp(36px, 14vw, 64px);
   }
 }
 </style>

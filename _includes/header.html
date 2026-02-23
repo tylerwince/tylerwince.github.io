@@ -1,63 +1,45 @@
-<header class="story-rail" id="site-header">
-  <div class="rail-head">
-    <a href="{{ '/' | relative_url }}" class="rail-brand" aria-label="Home">
-      <span class="rail-brand-title">Tyler Wince</span>
-      <span class="rail-brand-subtitle">Storyboard Studio</span>
+<header class="paper-header" id="site-header">
+  <div class="header-shelf">
+    <a href="{{ '/' | relative_url }}" class="brand-stamp" aria-label="Home">
+      <span class="brand-name">Tyler Wince</span>
     </a>
 
-    <button class="scene-map-toggle" id="nav-toggle" aria-label="Open scene map" aria-controls="nav-overlay" aria-expanded="false">
-      <span>Open scene map</span>
-      <span class="scene-map-toggle-dot" aria-hidden="true"></span>
-    </button>
-  </div>
-
-  <nav class="story-nav" id="site-nav" aria-label="Main navigation">
-    <ul class="story-nav-list">
-      <li>
-        <a href="{{ '/' | relative_url }}" class="story-nav-link {% if page.url == '/' %}active{% endif %}">
-          <span class="story-nav-index">01</span>
-          <span class="story-nav-label">Home</span>
-        </a>
-      </li>
+    <nav class="tab-strip" aria-label="Main navigation">
+      <a href="{{ '/' | relative_url }}" class="paper-tab {% if page.url == '/' %}active{% endif %}">Home</a>
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
-        {% assign nav_order = forloop.index | plus: 1 %}
-        <li>
-          <a href="{{ nav_page.url | relative_url }}" class="story-nav-link {% if page.url == nav_page.url %}active{% endif %}">
-            <span class="story-nav-index">{{ nav_order | prepend: '0' | slice: -2, 2 }}</span>
-            <span class="story-nav-label">{{ nav_page.title }}</span>
-          </a>
-        </li>
+        <a href="{{ nav_page.url | relative_url }}" class="paper-tab {% if page.url == nav_page.url %}active{% endif %}">{{ nav_page.title }}</a>
         {% endif %}
       {% endfor %}
-    </ul>
-  </nav>
+    </nav>
 
-  <div class="rail-foot">
-    <p class="rail-foot-note">Daily redesign. New cut every morning.</p>
+    <button class="fold-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-overlay" aria-expanded="false">
+      <span class="fold-line"></span>
+      <span class="fold-line"></span>
+      <span class="fold-line"></span>
+    </button>
   </div>
 </header>
 
-<nav class="mobile-dock" aria-label="Mobile navigation">
-  <ul class="mobile-dock-links">
-    <li>
-      <a href="{{ '/' | relative_url }}" class="mobile-dock-link {% if page.url == '/' %}active{% endif %}">
-        <span class="mobile-dock-index">01</span>
-        <span class="mobile-dock-label">Home</span>
-      </a>
-    </li>
-    {% for nav_page_name in site.header_pages %}
-      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-      {% if nav_page %}
-      {% assign nav_order = forloop.index | plus: 1 %}
-      <li>
-        <a href="{{ nav_page.url | relative_url }}" class="mobile-dock-link {% if page.url == nav_page.url %}active{% endif %}">
-          <span class="mobile-dock-index">{{ nav_order | prepend: '0' | slice: -2, 2 }}</span>
-          <span class="mobile-dock-label">{{ nav_page.title }}</span>
-        </a>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-</nav>
+<div class="notepad-overlay" id="nav-overlay" aria-hidden="true">
+  <div class="notepad-backdrop" data-nav-close></div>
+  <div class="notepad-panel" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="notepad-binding" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="notepad-page">
+      <button class="notepad-close" id="nav-close" aria-label="Close menu">&times;</button>
+      <h2 class="notepad-title">Navigate</h2>
+      <nav class="notepad-nav">
+        <a href="{{ '/' | relative_url }}" class="notepad-link {% if page.url == '/' %}active{% endif %}">Home</a>
+        {% for nav_page_name in site.header_pages %}
+          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+          {% if nav_page %}
+          <a href="{{ nav_page.url | relative_url }}" class="notepad-link {% if page.url == nav_page.url %}active{% endif %}">{{ nav_page.title }}</a>
+          {% endif %}
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</div>

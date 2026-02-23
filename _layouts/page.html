@@ -2,114 +2,99 @@
 layout: default
 ---
 
-<section class="page-stage-shell">
-  <aside class="page-index-card" data-reveal>
+<div class="page-paper-wrap">
+  <header class="paper-sheet page-heading" data-reveal>
     {% if page.eyebrow %}
       <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
     {% else %}
       <span class="eyebrow mb-3">Section</span>
     {% endif %}
-    <h1 class="page-stage-title">{{ page.title }}</h1>
+    <h1 class="page-title">{{ page.title }}</h1>
     {% if page.description %}
-      <p class="page-stage-desc">{{ page.description }}</p>
+      <p class="page-desc">{{ page.description }}</p>
     {% endif %}
-  </aside>
+  </header>
 
-  <article class="page-manuscript" data-reveal>
-    <div class="page-manuscript-inner">
+  <article class="paper-sheet page-body" data-reveal>
+    <div class="page-body-inner">
       {{ content }}
     </div>
   </article>
-</section>
+</div>
 
 <style>
-.page-stage-shell {
+.page-paper-wrap {
   width: min(var(--max-width-content), 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
-  gap: clamp(14px, 2vw, 22px);
-  align-items: start;
+  gap: 20px;
 }
 
-.page-index-card,
-.page-manuscript {
-  border: 1px solid var(--color-panel-border);
-  border-radius: var(--border-radius-xl);
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.9), rgba(240, 232, 216, 0.86));
-  box-shadow: var(--shadow-sm);
+.page-heading {
+  padding: clamp(24px, 4vw, 40px);
+  transform: rotate(-0.2deg);
+  position: relative;
 }
 
-.page-index-card {
-  position: sticky;
-  top: 18px;
-  padding: clamp(16px, 2.2vw, 24px);
+.page-heading::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 32px;
+  width: 60px;
+  height: 18px;
+  background: var(--color-tape);
+  border: 1px solid rgba(200, 190, 130, 0.3);
+  transform: rotate(-1deg);
 }
 
-.page-stage-title {
+.page-title {
   margin: 0;
-  font-size: clamp(56px, 8vw, 92px);
-  line-height: 0.86;
-  letter-spacing: 0.03em;
+  font-size: clamp(38px, 7vw, 76px);
+  line-height: 1.05;
 }
 
-.page-stage-desc {
-  margin: 8px 0 0;
-  font-family: var(--font-serif);
-  font-size: clamp(0.98rem, 1.3vw, 1.08rem);
-  line-height: 1.68;
+.page-desc {
+  margin: 10px 0 0;
+  font-family: var(--font-hand);
+  font-size: clamp(18px, 2.5vw, 24px);
+  color: var(--color-text-secondary);
+  max-width: 55ch;
+  line-height: 1.5;
 }
 
-.page-manuscript {
-  padding: clamp(16px, 3vw, 32px);
+.page-body {
+  padding: clamp(20px, 3vw, 36px);
 }
 
-.page-manuscript-inner {
+.page-body-inner {
   max-width: var(--max-width-text);
   margin: 0 auto;
   font-family: var(--font-serif);
-  font-size: 1.1rem;
+  font-size: 1.08rem;
   color: var(--color-text-secondary);
 }
 
-.page-manuscript-inner h2,
-.page-manuscript-inner h3,
-.page-manuscript-inner h4,
-.page-manuscript-inner h5,
-.page-manuscript-inner h6 {
+.page-body-inner h2,
+.page-body-inner h3,
+.page-body-inner h4,
+.page-body-inner h5,
+.page-body-inner h6 {
   margin-top: 2rem;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.5rem;
 }
 
-.page-manuscript-inner h2 {
-  font-size: clamp(40px, 6vw, 62px);
-}
+.page-body-inner h2 { font-size: clamp(28px, 4vw, 48px); }
+.page-body-inner h3 { font-size: clamp(22px, 3vw, 36px); }
 
-.page-manuscript-inner h3 {
-  font-size: clamp(30px, 5vw, 44px);
-}
-
-.page-manuscript-inner a {
-  color: var(--color-accent);
+.page-body-inner a {
+  color: var(--color-blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.page-body-inner a:hover { color: var(--color-pin); }
 
-.page-manuscript-inner a:hover {
-  color: var(--color-indigo);
-}
-
-@media (max-width: 980px) {
-  .page-stage-shell {
-    grid-template-columns: 1fr;
-  }
-
-  .page-index-card {
-    position: static;
-  }
-
-  .page-stage-title {
-    font-size: clamp(50px, 18vw, 92px);
-  }
+@media (max-width: 900px) {
+  .page-heading { transform: none; }
 }
 </style>

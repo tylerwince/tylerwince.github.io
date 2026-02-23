@@ -1,13 +1,11 @@
-<footer class="site-footer">
-  <div class="credits-board">
-    <div class="credits-lead">
-      <p class="credits-kicker">End Credits</p>
-      <p class="credits-title">Cut to Black</p>
-      <p class="credits-note">Building products, writing notes, and collecting books that are worth rereading.</p>
+<footer class="desk-footer">
+  <div class="footer-inner">
+    <div class="footer-note">
+      <p class="footer-tagline">Building products, writing notes, and collecting books worth rereading.</p>
     </div>
 
-    <div class="credits-links">
-      <ul class="credits-links-list">
+    <div class="footer-links">
+      <ul class="social-pins">
         {% if site.email %}
         <li><a href="mailto:{{ site.email }}">Email</a></li>
         {% endif %}
@@ -24,9 +22,9 @@
       </ul>
     </div>
 
-    <div class="credits-meta">
-      <span class="credits-year">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</span>
-      <a class="credits-archive" href="{{ '/archive/' | relative_url }}">Design Archive</a>
+    <div class="footer-meta">
+      <span class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</span>
+      <a class="footer-archive" href="{{ '/archive/' | relative_url }}">Design Archive</a>
     </div>
   </div>
 </footer>

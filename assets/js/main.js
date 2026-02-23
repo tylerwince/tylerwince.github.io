@@ -1,5 +1,6 @@
 /**
- * Tyler Wince — STORYBOARD STUDIO interactions
+ * Tyler Wince — PAPERCRAFT interactions
+ * Paper settle, notepad menu, pushpin hover, copy button.
  */
 
 (function() {
@@ -8,96 +9,65 @@
   var body = document.body;
   body.classList.add('js-ready');
 
-  // ---- Header rail scroll shadow ----
-  var rail = document.getElementById('site-header');
-  if (rail) {
-    var railTicking = false;
-
-    function updateRail() {
-      if (window.scrollY > 18) {
-        rail.classList.add('is-scrolled');
-      } else {
-        rail.classList.remove('is-scrolled');
-      }
-      railTicking = false;
-    }
-
-    function onRailScroll() {
-      if (!railTicking) {
-        window.requestAnimationFrame(updateRail);
-        railTicking = true;
-      }
-    }
-
-    window.addEventListener('scroll', onRailScroll, { passive: true });
-    updateRail();
-  }
-
-  // ---- Scene map overlay ----
+  // ---- Notepad overlay menu ----
   var navToggle = document.getElementById('nav-toggle');
   var navOverlay = document.getElementById('nav-overlay');
   var navClose = document.getElementById('nav-close');
 
-  function closeNavOverlay() {
+  function closeNotepad() {
     if (!navOverlay) return;
     navOverlay.classList.remove('is-open');
     navOverlay.setAttribute('aria-hidden', 'true');
-    if (navToggle) {
-      navToggle.setAttribute('aria-expanded', 'false');
-    }
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     body.classList.remove('nav-open');
   }
 
-  function openNavOverlay() {
+  function openNotepad() {
     if (!navOverlay) return;
     navOverlay.classList.add('is-open');
     navOverlay.setAttribute('aria-hidden', 'false');
-    if (navToggle) {
-      navToggle.setAttribute('aria-expanded', 'true');
-    }
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
     body.classList.add('nav-open');
   }
 
   if (navToggle && navOverlay) {
     navToggle.addEventListener('click', function() {
       if (navOverlay.classList.contains('is-open')) {
-        closeNavOverlay();
+        closeNotepad();
       } else {
-        openNavOverlay();
+        openNotepad();
       }
     });
 
     navOverlay.addEventListener('click', function(event) {
       if (event.target && event.target.hasAttribute('data-nav-close')) {
-        closeNavOverlay();
+        closeNotepad();
       }
     });
 
     navOverlay.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', closeNavOverlay);
+      link.addEventListener('click', closeNotepad);
     });
   }
 
   if (navClose) {
-    navClose.addEventListener('click', closeNavOverlay);
+    navClose.addEventListener('click', closeNotepad);
   }
 
   document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-      closeNavOverlay();
-    }
+    if (event.key === 'Escape') closeNotepad();
   });
 
   // ---- Active nav highlighting ----
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.story-nav-link, .route-sheet-link, .mobile-dock-link').forEach(function(link) {
+  document.querySelectorAll('.paper-tab, .notepad-link').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
     if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
       link.classList.add('active');
     }
   });
 
-  // ---- Scroll reveal ----
+  // ---- Scroll reveal (paper settle) ----
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
     revealTargets.forEach(function(target) {
@@ -113,8 +83,8 @@
           }
         });
       }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -45px 0px'
+        threshold: 0.08,
+        rootMargin: '0px 0px -30px 0px'
       });
 
       revealTargets.forEach(function(target) {
@@ -125,6 +95,15 @@
         target.classList.add('is-visible');
       });
     }
+  }
+
+  // ---- Pinned note tilt on hover ----
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.pinned-note').forEach(function(note) {
+      note.addEventListener('mouseenter', function() {
+        note.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+      });
+    });
   }
 
   // ---- Smooth hash scrolling ----
@@ -139,7 +118,7 @@
     });
   });
 
-  // ---- External links open in new tab ----
+  // ---- External links in new tab ----
   document.querySelectorAll('a[href^="http"]').forEach(function(link) {
     try {
       var url = new URL(link.href);
@@ -165,14 +144,10 @@
       try {
         await navigator.clipboard.writeText(block.textContent || '');
         button.textContent = 'Copied!';
-        setTimeout(function() {
-          button.textContent = 'Copy';
-        }, 1500);
+        setTimeout(function() { button.textContent = 'Copy'; }, 1500);
       } catch (error) {
         button.textContent = 'Error';
-        setTimeout(function() {
-          button.textContent = 'Copy';
-        }, 1500);
+        setTimeout(function() { button.textContent = 'Copy'; }, 1500);
       }
     });
 
@@ -181,29 +156,20 @@
 
   // ---- Focus intent ----
   document.addEventListener('keydown', function(event) {
-    if (event.key === 'Tab') {
-      body.classList.add('keyboard-nav');
-    }
+    if (event.key === 'Tab') body.classList.add('keyboard-nav');
   });
-
   document.addEventListener('mousedown', function() {
     body.classList.remove('keyboard-nav');
   });
 
-  // ---- Panel tilt interaction ----
+  // ---- Paper sheet subtle float on hover (desktop) ----
   if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.scene-panel').forEach(function(panel) {
-      panel.addEventListener('mousemove', function(event) {
-        var rect = panel.getBoundingClientRect();
-        var px = (event.clientX - rect.left) / rect.width;
-        var py = (event.clientY - rect.top) / rect.height;
-        var rotateY = (px - 0.5) * 1.6;
-        var rotateX = (0.5 - py) * 1.6;
-        panel.style.transform = 'perspective(900px) rotateX(' + rotateX.toFixed(2) + 'deg) rotateY(' + rotateY.toFixed(2) + 'deg)';
+    document.querySelectorAll('.paper-sheet').forEach(function(sheet) {
+      sheet.addEventListener('mouseenter', function() {
+        sheet.style.boxShadow = 'var(--shadow-paper-hover)';
       });
-
-      panel.addEventListener('mouseleave', function() {
-        panel.style.transform = '';
+      sheet.addEventListener('mouseleave', function() {
+        sheet.style.boxShadow = '';
       });
     });
   }

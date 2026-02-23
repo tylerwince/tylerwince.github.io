@@ -2,251 +2,204 @@
 layout: default
 ---
 
-<article class="book-dossier">
-  <section class="dossier-hero" data-reveal>
-    <div class="dossier-main">
-      <span class="dossier-eyebrow">Book Review</span>
-      <h1 class="dossier-title">{{ page.title }}</h1>
-      <p class="dossier-author">by {{ page.author }}</p>
+<article class="book-paper-wrap">
+  <section class="paper-sheet book-hero" data-reveal>
+    <div class="book-hero-main">
+      <span class="eyebrow mb-3">Book Review</span>
+      <h1 class="book-hero-title">{{ page.title }}</h1>
+      <p class="book-hero-author">by {{ page.author }}</p>
 
-      <div class="dossier-meta-grid">
+      <div class="book-meta-labels">
         {% assign year = page.date | date: "%Y" | to_integer %}
         {% if year >= 2020 %}
-        <div class="dossier-meta-item">
-          <span class="dossier-meta-label">Date</span>
-          <span class="dossier-meta-value">{{ page.date | date: "%B %d, %Y" }}</span>
+        <div class="meta-label-card">
+          <span class="meta-label-key">Date</span>
+          <span class="meta-label-val">{{ page.date | date: "%B %d, %Y" }}</span>
         </div>
         {% endif %}
 
         {% if page.stars %}
-        <div class="dossier-meta-item">
-          <span class="dossier-meta-label">Rating</span>
-          <span class="dossier-meta-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
+        <div class="meta-label-card">
+          <span class="meta-label-key">Rating</span>
+          <span class="book-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
         </div>
         {% endif %}
 
         {% if page.genre %}
-        <div class="dossier-meta-item">
-          <span class="dossier-meta-label">Genre</span>
-          <span class="dossier-meta-value">{{ page.genre }}</span>
+        <div class="meta-label-card">
+          <span class="meta-label-key">Genre</span>
+          <span class="meta-label-val">{{ page.genre }}</span>
         </div>
         {% endif %}
       </div>
     </div>
 
     {% if page.takeaway %}
-    <aside class="dossier-takeaway">
-      <span class="dossier-takeaway-label">Key Takeaway</span>
-      <p class="dossier-takeaway-text">{{ page.takeaway }}</p>
+    <aside class="book-takeaway-sticky">
+      <span class="takeaway-label">Key Takeaway</span>
+      <p class="takeaway-text">{{ page.takeaway }}</p>
     </aside>
     {% endif %}
   </section>
 
-  <section class="dossier-body" data-reveal>
-    <div class="dossier-body-inner">
+  <section class="paper-sheet book-body" data-reveal>
+    <div class="book-body-inner">
       {{ content }}
     </div>
   </section>
 </article>
 
 <style>
-.book-dossier {
+.book-paper-wrap {
   width: min(var(--max-width-content), 100%);
   margin: 0 auto;
   display: grid;
-  gap: clamp(14px, 2vw, 22px);
+  gap: 20px;
 }
 
-.dossier-hero,
-.dossier-body {
-  border: 1px solid var(--color-panel-border);
-  border-radius: var(--border-radius-xl);
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.92), rgba(241, 234, 221, 0.87));
-  box-shadow: var(--shadow-sm);
-}
-
-.dossier-hero {
-  padding: clamp(16px, 3vw, 28px);
+.book-hero {
+  padding: clamp(20px, 3vw, 32px);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
-  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  gap: 20px;
   align-items: start;
+  transform: rotate(-0.15deg);
 }
 
-.dossier-main {
-  min-width: 0;
-}
+.book-hero-main { min-width: 0; }
 
-.dossier-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.dossier-eyebrow::before {
-  content: '';
-  width: 16px;
-  height: 1px;
-  background: var(--color-accent);
-}
-
-.dossier-title {
+.book-hero-title {
   margin: 0;
-  font-size: clamp(52px, 9vw, 104px);
-  line-height: 0.86;
+  font-size: clamp(38px, 7vw, 80px);
+  line-height: 1.05;
 }
 
-.dossier-author {
-  margin: 10px 0 0;
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 1.4vw, 1.14rem);
-}
-
-.dossier-meta-grid {
-  margin-top: 14px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(148px, 1fr));
-  gap: 10px;
-}
-
-.dossier-meta-item {
-  border: 1px solid var(--color-border-light);
-  border-radius: 12px;
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.62);
-}
-
-.dossier-meta-label {
-  display: block;
-  margin-bottom: 4px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.dossier-meta-value {
-  font-size: 0.95rem;
+.book-hero-author {
+  margin: 8px 0 0;
+  font-family: var(--font-hand);
+  font-size: clamp(20px, 2.5vw, 26px);
   color: var(--color-text-secondary);
 }
 
-.dossier-meta-stars {
-  font-size: 1rem;
-  letter-spacing: 0.08em;
+.book-meta-labels {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.book-stars {
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
   color: var(--color-gold);
 }
 
-.dossier-takeaway {
-  border: 1px solid rgba(243, 91, 47, 0.3);
-  border-radius: 14px;
-  padding: 14px;
-  background: linear-gradient(130deg, rgba(243, 91, 47, 0.15), rgba(255, 255, 255, 0.66));
+.book-takeaway-sticky {
+  padding: 18px;
+  background: var(--color-yellow-pale);
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
+  transform: rotate(1deg);
+  position: relative;
 }
 
-.dossier-takeaway-label {
+.book-takeaway-sticky::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 16px;
+  background: var(--color-tape);
+  border: 1px solid rgba(200, 190, 130, 0.3);
+}
+
+.takeaway-label {
   display: block;
+  font-family: var(--font-hand);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-pin);
   margin-bottom: 8px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-accent);
 }
 
-.dossier-takeaway-text {
+.takeaway-text {
   margin: 0;
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.7;
+  font-family: var(--font-hand);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--color-text);
 }
 
-.dossier-body {
-  padding: clamp(16px, 3vw, 30px);
+.book-body {
+  padding: clamp(20px, 3vw, 32px);
 }
 
-.dossier-body-inner {
+.book-body-inner {
   max-width: var(--max-width-text);
   margin: 0 auto;
   font-family: var(--font-serif);
   font-size: 1.08rem;
+  color: var(--color-text-secondary);
 }
 
-.dossier-body-inner h2,
-.dossier-body-inner h3,
-.dossier-body-inner h4,
-.dossier-body-inner h5,
-.dossier-body-inner h6 {
+.book-body-inner h2,
+.book-body-inner h3,
+.book-body-inner h4,
+.book-body-inner h5,
+.book-body-inner h6 {
   margin-top: 2rem;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.5rem;
 }
 
-.dossier-body-inner h2 {
-  font-size: clamp(38px, 6vw, 58px);
-}
+.book-body-inner h2 { font-size: clamp(28px, 5vw, 48px); }
+.book-body-inner h3 { font-size: clamp(22px, 3.5vw, 36px); }
 
-.dossier-body-inner h3 {
-  font-size: clamp(30px, 5vw, 44px);
-}
-
-.dossier-body-inner a {
-  color: var(--color-accent);
+.book-body-inner a {
+  color: var(--color-blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.book-body-inner a:hover { color: var(--color-pin); }
 
-.dossier-body-inner a:hover {
-  color: var(--color-indigo);
+.book-body-inner blockquote {
+  border-left: 3px solid var(--color-gold);
+  background: linear-gradient(100deg, rgba(212, 168, 67, 0.12), rgba(255, 255, 255, 0.4));
 }
 
-.dossier-body-inner blockquote {
-  border-left: 5px solid var(--color-gold);
-  background: linear-gradient(100deg, rgba(239, 177, 29, 0.22), rgba(255, 255, 255, 0.54));
-}
-
-.dossier-body-inner blockquote .page-number {
+.book-body-inner blockquote .page-number {
   display: block;
   margin-top: 10px;
   font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  letter-spacing: 0.06em;
   color: var(--color-text-muted);
 }
 
-.header-link {
-  color: inherit;
-  text-decoration: none;
-}
+.header-link { color: inherit; text-decoration: none; }
+.header-link:hover { color: var(--color-pin); }
 
-.header-link:hover {
-  color: var(--color-accent);
-}
-
-@media (max-width: 980px) {
-  .dossier-hero {
+@media (max-width: 900px) {
+  .book-hero {
     grid-template-columns: 1fr;
+    transform: none;
   }
 
-  .dossier-title {
-    font-size: clamp(50px, 16vw, 92px);
+  .book-takeaway-sticky {
+    transform: none;
+  }
+
+  .book-hero-title {
+    font-size: clamp(34px, 14vw, 64px);
   }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.dossier-body-inner h2, .dossier-body-inner h3, .dossier-body-inner h4, .dossier-body-inner h5, .dossier-body-inner h6').forEach(function(header) {
+  document.querySelectorAll('.book-body-inner h2, .book-body-inner h3, .book-body-inner h4, .book-body-inner h5, .book-body-inner h6').forEach(function(header) {
     var id = header.id;
-    if (!id) {
-      return;
-    }
+    if (!id) return;
 
     var link = document.createElement('a');
     link.className = 'header-link';

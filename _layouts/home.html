@@ -2,507 +2,395 @@
 layout: default
 ---
 
-<div class="storyboard-home">
-  <section class="scene-panel scene-app-reel" data-reveal>
-    <header class="scene-head">
-      <span class="scene-kicker">Scene Reel</span>
-      <h2 class="scene-title">Applications</h2>
-    </header>
+<div class="paper-desk-home">
+  <section class="paper-sheet paper-hero" data-reveal style="--final-rotate: -0.3deg">
+    <div class="hero-tape" aria-hidden="true"></div>
+    <h1 class="hero-headline">{{ site.description }}</h1>
+    <p class="hero-sub">Building, writing, and reading &mdash; on repeat.</p>
+  </section>
 
-    <div class="app-filmstrip">
-      <a href="/apps/etch/" class="film-cell film-cell-etch">
-        <span class="film-index">Scene 01</span>
-        <div class="film-cell-body">
-          <div class="film-icon-wrap">
-            <img src="/assets/etch_logo.png" alt="Etch" class="film-icon">
-          </div>
-          <div class="film-copy">
-            <strong class="film-name">Etch</strong>
-            <span class="film-meta">iOS · SwiftUI</span>
-            <p class="film-description">Spaced repetition, built like Apple would.</p>
-          </div>
+  <section class="paper-sheet paper-apps" data-reveal style="--final-rotate: 0.4deg">
+    <h2 class="section-label">Applications</h2>
+
+    <div class="pinned-notes">
+      <a href="/apps/etch/" class="pinned-note note-1">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="app-icon-frame">
+          <img src="/assets/etch_logo.png" alt="Etch" class="app-icon-img">
         </div>
+        <strong class="note-name">Etch</strong>
+        <span class="note-platform">iOS · SwiftUI</span>
+        <p class="note-desc">Spaced repetition, built like Apple would.</p>
       </a>
 
-      <a href="/apps/little-quotes/" class="film-cell film-cell-lq">
-        <span class="film-index">Scene 02</span>
-        <div class="film-cell-body">
-          <div class="film-icon-wrap">
-            <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="film-icon">
-          </div>
-          <div class="film-copy">
-            <strong class="film-name">Little Quotes</strong>
-            <span class="film-meta">iOS · SwiftUI</span>
-            <p class="film-description">Capture and share kids' priceless words.</p>
-          </div>
+      <a href="/apps/little-quotes/" class="pinned-note note-2">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="app-icon-frame">
+          <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="app-icon-img">
         </div>
+        <strong class="note-name">Little Quotes</strong>
+        <span class="note-platform">iOS · SwiftUI</span>
+        <p class="note-desc">Capture and share kids' priceless words.</p>
       </a>
 
-      <a href="/apps/waymark/" class="film-cell film-cell-waymark">
-        <span class="film-index">Scene 03</span>
-        <div class="film-cell-body">
-          <div class="film-icon-wrap">
-            <img src="/assets/waymark_icon.png" alt="Waymark" class="film-icon">
-          </div>
-          <div class="film-copy">
-            <strong class="film-name">Waymark</strong>
-            <span class="film-meta">iOS · SwiftUI</span>
-            <p class="film-description">Prayer and community, designed with care.</p>
-          </div>
+      <a href="/apps/waymark/" class="pinned-note note-3">
+        <span class="pin" aria-hidden="true"></span>
+        <div class="app-icon-frame">
+          <img src="/assets/waymark_icon.png" alt="Waymark" class="app-icon-img">
         </div>
+        <strong class="note-name">Waymark</strong>
+        <span class="note-platform">iOS · SwiftUI</span>
+        <p class="note-desc">Prayer and community, designed with care.</p>
       </a>
     </div>
   </section>
 
-  <section class="scene-panel scene-manifesto" data-reveal>
-    <div class="manifesto-copy">
-      <span class="scene-kicker">Opening Slate</span>
-      <h1 class="manifesto-title">{{ site.description }}</h1>
-      <p class="manifesto-subtitle">Building, writing, and reading &mdash; on repeat.</p>
+  <section class="paper-sheet paper-writing" data-reveal style="--final-rotate: -0.5deg">
+    <div class="writing-head">
+      <h2 class="section-label">Writing</h2>
+      <a href="{{ '/writing/' | relative_url }}" class="link-arrow">All posts</a>
     </div>
-    <div class="manifesto-board" aria-hidden="true">
-      <span>Take 01</span>
-      <span>Take 02</span>
-      <span>Take 03</span>
-    </div>
-  </section>
 
-  <section class="scene-panel scene-writing-log" data-reveal>
-    <header class="scene-head">
-      <span class="scene-kicker">Shot Log</span>
-      <h2 class="scene-title">Writing</h2>
-      <a href="{{ '/writing/' | relative_url }}" class="link-arrow">All tracks</a>
-    </header>
-
-    <ol class="shot-log">
+    <div class="paper-strips">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
-      <li class="shot-log-row">
-        <span class="shot-number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-        <a href="{{ post.url | relative_url }}" class="shot-main">
-          <span class="shot-title">{{ post.title }}</span>
-          <span class="shot-desc">{{ post.description }}</span>
-        </a>
-        <time class="shot-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
-      </li>
+      <a href="{{ post.url | relative_url }}" class="paper-strip">
+        <div class="strip-main">
+          <span class="strip-title">{{ post.title }}</span>
+          <span class="strip-desc">{{ post.description }}</span>
+        </div>
+        <time class="strip-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
+      </a>
       {% endfor %}
-    </ol>
+    </div>
   </section>
 
-  <section class="scene-panel scene-reading-signal" data-reveal>
-    <header class="scene-head">
-      <span class="scene-kicker">Live Signal</span>
-      <h2 class="scene-title">Now Spinning</h2>
-      <a href="{{ '/reading/' | relative_url }}" class="link-arrow">Full collection</a>
-    </header>
+  <section class="paper-sheet paper-reading" data-reveal style="--final-rotate: 0.3deg">
+    <div class="reading-head">
+      <h2 class="section-label">Currently Reading</h2>
+      <a href="{{ '/reading/' | relative_url }}" class="link-arrow">All books</a>
+    </div>
 
     {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
     {% if currently_reading.size > 0 %}
-    <div class="signal-list">
+    <div class="sticky-notes">
       {% for book in currently_reading limit:3 %}
-      <article class="signal-book">
-        <span class="signal-book-title">{{ book.title }}</span>
-        <span class="signal-book-author">{{ book.author }}</span>
-      </article>
+      <div class="sticky-note">
+        <span class="sticky-title">{{ book.title }}</span>
+        <span class="sticky-author">{{ book.author }}</span>
+      </div>
       {% endfor %}
     </div>
     {% else %}
-    <p class="signal-empty">Between records at the moment.</p>
+    <p class="empty-desk-note">Between books at the moment.</p>
     {% endif %}
   </section>
 </div>
 
 <style>
-.storyboard-home {
+.paper-desk-home {
   display: grid;
-  gap: clamp(14px, 2vw, 22px);
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-columns: 1.3fr 1fr;
   grid-template-areas:
-    "apps manifesto"
-    "apps reading"
-    "writing reading";
+    "hero hero"
+    "apps writing"
+    "apps reading";
+  gap: 24px;
 }
 
-.scene-panel {
+/* ---- Hero paper ---- */
+.paper-hero {
+  grid-area: hero;
+  transform: rotate(-0.3deg);
+  padding: clamp(32px, 5vw, 56px);
   position: relative;
-  border: 1px solid var(--color-panel-border);
-  border-radius: var(--border-radius-xl);
-  background: linear-gradient(150deg, rgba(255, 255, 255, 0.85), rgba(241, 235, 222, 0.86));
-  padding: clamp(18px, 3vw, 30px);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
+  z-index: 3;
+  margin-bottom: -12px;
 }
 
-.scene-panel::before {
-  content: '';
+.hero-tape {
   position: absolute;
-  inset: 8px;
-  border: 1px dashed rgba(18, 17, 15, 0.14);
-  border-radius: calc(var(--border-radius-xl) - 6px);
-  pointer-events: none;
+  top: -6px;
+  right: 80px;
+  width: 70px;
+  height: 20px;
+  background: var(--color-tape);
+  border: 1px solid rgba(200, 190, 130, 0.3);
+  transform: rotate(4deg);
 }
 
-.scene-app-reel {
-  grid-area: apps;
+.hero-headline {
+  margin: 0 0 12px;
+  font-size: clamp(42px, 7vw, 88px);
+  line-height: 1;
+  max-width: 16ch;
 }
 
-.scene-manifesto {
-  grid-area: manifesto;
-  min-height: 290px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 14px;
-  background:
-    linear-gradient(130deg, rgba(46, 124, 143, 0.17), rgba(243, 91, 47, 0.11)),
-    linear-gradient(160deg, rgba(255, 255, 255, 0.85), rgba(241, 235, 222, 0.86));
-}
-
-.scene-writing-log {
-  grid-area: writing;
-}
-
-.scene-reading-signal {
-  grid-area: reading;
-}
-
-.scene-head {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-  position: relative;
-  z-index: 1;
-}
-
-.scene-kicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.scene-kicker::before {
-  content: '';
-  width: 14px;
-  height: 1px;
-  background: var(--color-accent);
-}
-
-.scene-title {
+.hero-sub {
   margin: 0;
-  font-size: clamp(40px, 6vw, 62px);
-  line-height: 0.92;
-}
-
-.manifesto-title {
-  margin: 0 0 8px;
-  font-size: clamp(58px, 9vw, 110px);
-  line-height: 0.85;
-}
-
-.manifesto-subtitle {
-  margin: 0;
-  max-width: 28ch;
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 1.4vw, 1.14rem);
+  font-family: var(--font-hand);
+  font-size: clamp(22px, 3vw, 30px);
   color: var(--color-text-secondary);
 }
 
-.manifesto-board {
+/* ---- Apps (pinned notes) ---- */
+.paper-apps {
+  grid-area: apps;
+  transform: rotate(0.4deg);
+}
+
+.section-label {
+  font-family: var(--font-hand);
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 700;
+  margin: 0 0 16px;
+  color: var(--color-text);
+}
+
+.pinned-notes {
   display: grid;
-  gap: 8px;
-  justify-items: end;
+  gap: 18px;
 }
 
-.manifesto-board span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 92px;
-  padding: 8px 10px;
-  border-radius: var(--border-radius-full);
-  border: 1px solid rgba(18, 17, 15, 0.2);
-  background: rgba(255, 255, 255, 0.55);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.app-filmstrip {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 12px;
-}
-
-.film-cell {
+.pinned-note {
   position: relative;
   display: block;
+  padding: 28px 20px 20px;
+  background: var(--color-paper);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-paper);
   color: inherit;
   text-decoration: none;
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.78);
-  overflow: hidden;
-  transition: transform var(--transition-base), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
 }
 
-.film-cell::before,
-.film-cell::after {
+.pinned-note::after {
   content: '';
-  position: absolute;
-  left: 8px;
-  right: 8px;
-  height: 8px;
-  background-image: radial-gradient(circle, rgba(18, 17, 15, 0.55) 2px, transparent 2px);
-  background-size: 22px 8px;
-  background-repeat: repeat-x;
-}
-
-.film-cell::before {
-  top: 6px;
-}
-
-.film-cell::after {
-  bottom: 6px;
-}
-
-.film-cell:hover {
-  transform: translateY(-3px) rotate(-0.3deg);
-  border-color: var(--color-accent);
-  box-shadow: var(--shadow-md);
-}
-
-.film-cell-body {
-  padding: 20px 16px 18px;
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 12px;
-  align-items: center;
-}
-
-.film-index {
   position: absolute;
   top: 0;
   right: 0;
-  transform: translate(-12px, 10px);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(225deg, var(--color-desk) 50%, var(--color-paper-warm) 50%);
+  pointer-events: none;
 }
 
-.film-icon-wrap {
-  width: 58px;
-  height: 58px;
-  border-radius: 16px;
+.note-1 { transform: rotate(-1.5deg); }
+.note-2 { transform: rotate(1deg); margin-left: 16px; }
+.note-3 { transform: rotate(-0.6deg); margin-left: -8px; }
+
+.pinned-note:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.02) !important;
+  box-shadow: var(--shadow-paper-hover);
+  z-index: 5;
+}
+
+.pin {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, var(--color-pin-light), var(--color-pin));
+  box-shadow: var(--shadow-pin);
+  z-index: 6;
+}
+
+.app-icon-frame {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid var(--color-border-light);
+  border: 1px solid var(--color-border);
+  margin-bottom: 10px;
 }
 
-.film-icon {
+.app-icon-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.film-copy {
-  min-width: 0;
-}
-
-.film-name {
+.note-name {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(30px, 5vw, 40px);
-  line-height: 0.9;
+  font-size: clamp(26px, 4vw, 36px);
+  line-height: 1.05;
   color: var(--color-text);
 }
 
-.film-meta {
+.note-platform {
   display: block;
   margin-top: 2px;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.04em;
   color: var(--color-text-muted);
 }
 
-.film-description {
+.note-desc {
   margin: 8px 0 0;
   font-size: 0.95rem;
   color: var(--color-text-secondary);
 }
 
-.film-cell-etch {
-  transform: rotate(-0.4deg);
+/* ---- Writing (paper strips) ---- */
+.paper-writing {
+  grid-area: writing;
+  transform: rotate(-0.5deg);
 }
 
-.film-cell-lq {
-  transform: rotate(0.6deg);
+.writing-head,
+.reading-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
 }
 
-.film-cell-waymark {
-  transform: rotate(-0.2deg);
-}
-
-.shot-log {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.paper-strips {
   display: grid;
-  gap: 8px;
-  position: relative;
-  z-index: 1;
+  gap: 0;
 }
 
-.shot-log-row {
-  margin: 0;
+.paper-strip {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 10px;
-  padding: 11px 12px;
-  border: 1px solid var(--color-border-light);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.56);
-}
-
-.shot-number {
-  margin-top: 4px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-}
-
-.shot-main {
-  min-width: 0;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--color-border);
   color: inherit;
+  text-decoration: none;
+  transition: background var(--transition-fast), padding-left var(--transition-base);
 }
 
-.shot-title {
+.paper-strip:first-child {
+  border-top: 1px dashed var(--color-border);
+}
+
+.paper-strip:hover {
+  background: var(--color-paper-warm);
+  padding-left: 8px;
+}
+
+.strip-main { min-width: 0; }
+
+.strip-title {
   display: block;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1.02rem;
+  font-weight: 600;
+  font-size: 1rem;
   color: var(--color-text);
 }
 
-.shot-desc {
+.strip-desc {
   display: block;
-  margin-top: 4px;
-  font-size: 0.92rem;
-  color: var(--color-text-secondary);
-}
-
-.shot-date {
   margin-top: 3px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.signal-list {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  gap: 10px;
-}
-
-.signal-book {
-  display: grid;
-  gap: 3px;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1px solid var(--color-border-light);
-  background: rgba(255, 255, 255, 0.58);
-}
-
-.signal-book-title {
-  font-family: var(--font-body);
-  font-weight: 700;
-  color: var(--color-text);
-}
-
-.signal-book-author {
   font-size: 0.9rem;
   color: var(--color-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.signal-empty {
+.strip-date {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ---- Reading (sticky notes) ---- */
+.paper-reading {
+  grid-area: reading;
+  transform: rotate(0.3deg);
+}
+
+.sticky-notes {
+  display: grid;
+  gap: 10px;
+}
+
+.sticky-note {
+  padding: 14px 16px;
+  background: var(--color-yellow-pale);
+  box-shadow: 2px 3px 8px rgba(0,0,0,0.1);
+  transform: rotate(var(--sticky-rotate, 0deg));
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.sticky-note:nth-child(1) { --sticky-rotate: -1.2deg; }
+.sticky-note:nth-child(2) { --sticky-rotate: 0.8deg; }
+.sticky-note:nth-child(3) { --sticky-rotate: -0.4deg; }
+
+.sticky-note:hover {
+  transform: rotate(0deg) translateY(-2px);
+  box-shadow: 3px 5px 12px rgba(0,0,0,0.14);
+}
+
+.sticky-title {
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.sticky-author {
+  display: block;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--color-text-secondary);
+}
+
+.empty-desk-note {
   margin: 0;
-  position: relative;
-  z-index: 1;
+  font-family: var(--font-hand);
+  font-size: 18px;
   font-style: italic;
+  color: var(--color-text-muted);
 }
 
-@media (max-width: 1100px) {
-  .storyboard-home {
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .paper-desk-home {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "manifesto"
+      "hero"
       "apps"
       "writing"
       "reading";
   }
 
-  .scene-manifesto {
-    grid-template-columns: 1fr;
-    min-height: auto;
+  .paper-hero {
+    margin-bottom: 0;
+    transform: none;
   }
 
-  .manifesto-board {
-    justify-items: start;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .paper-apps,
+  .paper-writing,
+  .paper-reading {
+    transform: none;
   }
 
-  .manifesto-board span {
-    min-width: 0;
-    width: 100%;
+  .note-1, .note-2, .note-3 {
+    transform: none;
+    margin-left: 0;
+  }
+
+  .sticky-note {
+    --sticky-rotate: 0deg !important;
   }
 }
 
-@media (max-width: 760px) {
-  .scene-panel {
-    border-radius: 18px;
-    padding: 16px;
-  }
-
-  .scene-title {
-    font-size: clamp(34px, 12vw, 54px);
-  }
-
-  .manifesto-title {
-    font-size: clamp(52px, 22vw, 92px);
-  }
-
-  .film-cell-body {
-    grid-template-columns: 1fr;
-    padding-top: 22px;
-  }
-
-  .film-icon-wrap {
-    width: 52px;
-    height: 52px;
-  }
-
-  .shot-log-row {
-    grid-template-columns: auto minmax(0, 1fr);
-  }
-
-  .shot-date {
-    grid-column: 2;
+@media (max-width: 600px) {
+  .hero-headline {
+    font-size: clamp(36px, 14vw, 64px);
   }
 }
 </style>
