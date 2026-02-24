@@ -92,3 +92,8 @@
   theme: "PAPERCRAFT"
   description: "PAPERCRAFT — designed February 23, 2026"
   commit: "f7911d3"
+
+- date: "2026-02-24"
+  theme: "VHS RENTAL"
+  description: "VHS RENTAL — designed February 24, 2026"
+  commit: "632f294"
