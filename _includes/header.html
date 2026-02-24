@@ -1,45 +1,64 @@
-<header class="paper-header" id="site-header">
-  <div class="header-shelf">
-    <a href="{{ '/' | relative_url }}" class="brand-stamp" aria-label="Home">
-      <span class="brand-name">Tyler Wince</span>
-    </a>
+<!-- Desktop Sidebar -->
+<aside class="store-sidebar" id="site-sidebar">
+  <div class="sidebar-brand">
+    <a href="{{ '/' | relative_url }}" class="sidebar-logo">Tyler<br>Wince</a>
+    <span class="sidebar-tagline">Video Store</span>
+  </div>
 
-    <nav class="tab-strip" aria-label="Main navigation">
-      <a href="{{ '/' | relative_url }}" class="paper-tab {% if page.url == '/' %}active{% endif %}">Home</a>
+  <nav class="sidebar-nav" aria-label="Main navigation">
+    <a href="{{ '/' | relative_url }}" class="sidebar-link {% if page.url == '/' %}active{% endif %}">
+      <span class="sidebar-link-icon">&#9654;</span> Home
+    </a>
+    {% for nav_page_name in site.header_pages %}
+      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+      {% if nav_page %}
+      <a href="{{ nav_page.url | relative_url }}" class="sidebar-link {% if page.url == nav_page.url %}active{% endif %}">
+        <span class="sidebar-link-icon">&#9654;</span> {{ nav_page.title }}
+      </a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  <div class="sidebar-status">
+    <span class="open-sign"><span class="open-dot"></span> Open 24/7</span>
+  </div>
+</aside>
+
+<!-- Bottom Nav (mobile) -->
+<nav class="bottom-nav" id="bottom-nav" aria-label="Quick navigation">
+  <div class="bottom-nav-inner">
+    <a href="{{ '/' | relative_url }}" class="bottom-nav-link {% if page.url == '/' %}active{% endif %}">
+      <span class="bottom-nav-icon">&#9211;</span>
+      <span>Home</span>
+    </a>
+    {% for nav_page_name in site.header_pages %}
+      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+      {% if nav_page %}
+      <a href="{{ nav_page.url | relative_url }}" class="bottom-nav-link {% if page.url == nav_page.url %}active{% endif %}">
+        <span class="bottom-nav-icon">&#9654;</span>
+        <span>{{ nav_page.title }}</span>
+      </a>
+      {% endif %}
+    {% endfor %}
+  </div>
+</nav>
+
+<!-- Mobile Overlay Menu -->
+<div class="vhs-overlay" id="nav-overlay" aria-hidden="true">
+  <div class="vhs-backdrop" data-nav-close></div>
+  <div class="vhs-panel" role="dialog" aria-modal="true" aria-label="Navigation">
+    <div class="vhs-panel-header">
+      <h2 class="vhs-panel-title">Menu</h2>
+      <button class="vhs-panel-close" id="nav-close" aria-label="Close menu">&times;</button>
+    </div>
+    <nav class="vhs-panel-nav">
+      <a href="{{ '/' | relative_url }}" class="vhs-panel-link {% if page.url == '/' %}active{% endif %}">Home</a>
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
-        <a href="{{ nav_page.url | relative_url }}" class="paper-tab {% if page.url == nav_page.url %}active{% endif %}">{{ nav_page.title }}</a>
+        <a href="{{ nav_page.url | relative_url }}" class="vhs-panel-link {% if page.url == nav_page.url %}active{% endif %}">{{ nav_page.title }}</a>
         {% endif %}
       {% endfor %}
     </nav>
-
-    <button class="fold-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-overlay" aria-expanded="false">
-      <span class="fold-line"></span>
-      <span class="fold-line"></span>
-      <span class="fold-line"></span>
-    </button>
-  </div>
-</header>
-
-<div class="notepad-overlay" id="nav-overlay" aria-hidden="true">
-  <div class="notepad-backdrop" data-nav-close></div>
-  <div class="notepad-panel" role="dialog" aria-modal="true" aria-label="Navigation">
-    <div class="notepad-binding" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
-    <div class="notepad-page">
-      <button class="notepad-close" id="nav-close" aria-label="Close menu">&times;</button>
-      <h2 class="notepad-title">Navigate</h2>
-      <nav class="notepad-nav">
-        <a href="{{ '/' | relative_url }}" class="notepad-link {% if page.url == '/' %}active{% endif %}">Home</a>
-        {% for nav_page_name in site.header_pages %}
-          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-          {% if nav_page %}
-          <a href="{{ nav_page.url | relative_url }}" class="notepad-link {% if page.url == nav_page.url %}active{% endif %}">{{ nav_page.title }}</a>
-          {% endif %}
-        {% endfor %}
-      </nav>
-    </div>
   </div>
 </div>

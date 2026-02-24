@@ -2,202 +2,202 @@
 layout: default
 ---
 
-<article class="book-paper-wrap">
-  <section class="paper-sheet book-hero" data-reveal>
-    <div class="book-hero-main">
-      <span class="eyebrow mb-3">Book Review</span>
-      <h1 class="book-hero-title">{{ page.title }}</h1>
-      <p class="book-hero-author">by {{ page.author }}</p>
+<article class="vhs-book-wrap">
+  <section class="vhs-review-hero" data-reveal>
+    <div class="review-top-strip"></div>
+    <div class="review-layout">
+      <div class="review-main">
+        <span class="eyebrow mb-3">Book Review</span>
+        <h1 class="review-title">{{ page.title }}</h1>
+        <p class="review-author">by {{ page.author }}</p>
 
-      <div class="book-meta-labels">
-        {% assign year = page.date | date: "%Y" | to_integer %}
-        {% if year >= 2020 %}
-        <div class="meta-label-card">
-          <span class="meta-label-key">Date</span>
-          <span class="meta-label-val">{{ page.date | date: "%B %d, %Y" }}</span>
-        </div>
-        {% endif %}
+        <div class="review-meta-chips">
+          {% assign year = page.date | date: "%Y" | to_integer %}
+          {% if year >= 2020 %}
+          <div class="case-meta-chip">
+            <span class="chip-key">Date</span>
+            <span class="chip-val">{{ page.date | date: "%B %d, %Y" }}</span>
+          </div>
+          {% endif %}
 
-        {% if page.stars %}
-        <div class="meta-label-card">
-          <span class="meta-label-key">Rating</span>
-          <span class="book-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
-        </div>
-        {% endif %}
+          {% if page.stars %}
+          <div class="case-meta-chip">
+            <span class="chip-key">Rating</span>
+            <span class="review-stars">{% for i in (1..page.stars) %}&#9733;{% endfor %}{% for i in (page.stars..4) %}&#9734;{% endfor %}</span>
+          </div>
+          {% endif %}
 
-        {% if page.genre %}
-        <div class="meta-label-card">
-          <span class="meta-label-key">Genre</span>
-          <span class="meta-label-val">{{ page.genre }}</span>
+          {% if page.genre %}
+          <div class="case-meta-chip">
+            <span class="chip-key">Genre</span>
+            <span class="chip-val">{{ page.genre }}</span>
+          </div>
+          {% endif %}
         </div>
-        {% endif %}
       </div>
-    </div>
 
-    {% if page.takeaway %}
-    <aside class="book-takeaway-sticky">
-      <span class="takeaway-label">Key Takeaway</span>
-      <p class="takeaway-text">{{ page.takeaway }}</p>
-    </aside>
-    {% endif %}
+      {% if page.takeaway %}
+      <aside class="review-takeaway">
+        <div class="takeaway-glow"></div>
+        <span class="takeaway-label">Key Takeaway</span>
+        <p class="takeaway-text">{{ page.takeaway }}</p>
+      </aside>
+      {% endif %}
+    </div>
   </section>
 
-  <section class="paper-sheet book-body" data-reveal>
-    <div class="book-body-inner">
+  <section class="vhs-review-body" data-reveal>
+    <div class="review-body-inner">
       {{ content }}
     </div>
   </section>
 </article>
 
 <style>
-.book-paper-wrap {
+.vhs-book-wrap {
   width: min(var(--max-width-content), 100%);
   margin: 0 auto;
-  display: grid;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.book-hero {
-  padding: clamp(20px, 3vw, 32px);
+.vhs-review-hero {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.review-top-strip {
+  height: 3px;
+  background: linear-gradient(to right, var(--color-neon-yellow), var(--color-neon-pink), var(--color-neon-purple));
+}
+
+.review-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+  gap: 24px;
+  padding: clamp(24px, 4vw, 40px);
   align-items: start;
-  transform: rotate(-0.15deg);
 }
 
-.book-hero-main { min-width: 0; }
+.review-main { min-width: 0; }
 
-.book-hero-title {
+.review-title {
   margin: 0;
   font-size: clamp(38px, 7vw, 80px);
   line-height: 1.05;
+  text-shadow: 0 0 40px rgba(255, 208, 0, 0.1);
 }
-
-.book-hero-author {
+.review-author {
   margin: 8px 0 0;
-  font-family: var(--font-hand);
-  font-size: clamp(20px, 2.5vw, 26px);
+  font-size: clamp(18px, 2.5vw, 24px);
   color: var(--color-text-secondary);
 }
 
-.book-meta-labels {
-  margin-top: 16px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+.review-meta-chips {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
-.book-stars {
+.review-stars {
   font-size: 1.1rem;
   letter-spacing: 0.06em;
-  color: var(--color-gold);
+  color: var(--color-neon-yellow);
+  text-shadow: 0 0 8px rgba(255, 208, 0, 0.4);
 }
 
-.book-takeaway-sticky {
-  padding: 18px;
-  background: var(--color-yellow-pale);
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.1);
-  transform: rotate(1deg);
+.review-takeaway {
+  padding: 20px;
+  background: var(--color-surface-lit);
+  border: 1px solid var(--color-border-light);
+  border-radius: 6px;
   position: relative;
+  overflow: hidden;
 }
-
-.book-takeaway-sticky::before {
-  content: '';
+.takeaway-glow {
   position: absolute;
-  top: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 16px;
-  background: var(--color-tape);
-  border: 1px solid rgba(200, 190, 130, 0.3);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-neon-yellow), var(--color-neon-pink));
 }
-
 .takeaway-label {
   display: block;
-  font-family: var(--font-hand);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--color-pin);
-  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-neon-yellow);
+  text-shadow: 0 0 8px rgba(255, 208, 0, 0.3);
+  margin-bottom: 10px;
 }
-
 .takeaway-text {
   margin: 0;
-  font-family: var(--font-hand);
-  font-size: 18px;
-  line-height: 1.55;
+  font-size: 1rem;
+  line-height: 1.6;
   color: var(--color-text);
 }
 
-.book-body {
-  padding: clamp(20px, 3vw, 32px);
+.vhs-review-body {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: clamp(24px, 4vw, 40px);
 }
-
-.book-body-inner {
+.review-body-inner {
   max-width: var(--max-width-text);
   margin: 0 auto;
-  font-family: var(--font-serif);
   font-size: 1.08rem;
   color: var(--color-text-secondary);
 }
-
-.book-body-inner h2,
-.book-body-inner h3,
-.book-body-inner h4,
-.book-body-inner h5,
-.book-body-inner h6 {
+.review-body-inner h2,
+.review-body-inner h3,
+.review-body-inner h4,
+.review-body-inner h5,
+.review-body-inner h6 {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
-
-.book-body-inner h2 { font-size: clamp(28px, 5vw, 48px); }
-.book-body-inner h3 { font-size: clamp(22px, 3.5vw, 36px); }
-
-.book-body-inner a {
-  color: var(--color-blue);
+.review-body-inner h2 { font-size: clamp(28px, 5vw, 48px); }
+.review-body-inner h3 { font-size: clamp(22px, 3.5vw, 36px); }
+.review-body-inner a {
+  color: var(--color-neon-blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.book-body-inner a:hover { color: var(--color-pin); }
+.review-body-inner a:hover { color: var(--color-neon-pink); }
 
-.book-body-inner blockquote {
-  border-left: 3px solid var(--color-gold);
-  background: linear-gradient(100deg, rgba(212, 168, 67, 0.12), rgba(255, 255, 255, 0.4));
+.review-body-inner blockquote {
+  border-left: 3px solid var(--color-neon-yellow);
+  background: rgba(255, 208, 0, 0.06);
 }
-
-.book-body-inner blockquote .page-number {
+.review-body-inner blockquote .page-number {
   display: block;
   margin-top: 10px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.06em;
+  font-size: 14px;
   color: var(--color-text-muted);
 }
 
 .header-link { color: inherit; text-decoration: none; }
-.header-link:hover { color: var(--color-pin); }
+.header-link:hover { color: var(--color-neon-blue); }
 
 @media (max-width: 900px) {
-  .book-hero {
+  .review-layout {
     grid-template-columns: 1fr;
-    transform: none;
   }
-
-  .book-takeaway-sticky {
-    transform: none;
-  }
-
-  .book-hero-title {
-    font-size: clamp(34px, 14vw, 64px);
-  }
+  .review-title { font-size: clamp(34px, 14vw, 64px); }
 }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.book-body-inner h2, .book-body-inner h3, .book-body-inner h4, .book-body-inner h5, .book-body-inner h6').forEach(function(header) {
+  document.querySelectorAll('.review-body-inner h2, .review-body-inner h3, .review-body-inner h4, .review-body-inner h5, .review-body-inner h6').forEach(function(header) {
     var id = header.id;
     if (!id) return;
 

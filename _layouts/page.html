@@ -2,20 +2,23 @@
 layout: default
 ---
 
-<div class="page-paper-wrap">
-  <header class="paper-sheet page-heading" data-reveal>
-    {% if page.eyebrow %}
-      <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
-    {% else %}
-      <span class="eyebrow mb-3">Section</span>
-    {% endif %}
-    <h1 class="page-title">{{ page.title }}</h1>
-    {% if page.description %}
-      <p class="page-desc">{{ page.description }}</p>
-    {% endif %}
+<div class="vhs-page-wrap">
+  <header class="vhs-page-heading" data-reveal>
+    <div class="page-heading-strip"></div>
+    <div class="page-heading-inner">
+      {% if page.eyebrow %}
+        <span class="eyebrow mb-3">{{ page.eyebrow }}</span>
+      {% else %}
+        <span class="eyebrow mb-3">Section</span>
+      {% endif %}
+      <h1 class="page-title">{{ page.title }}</h1>
+      {% if page.description %}
+        <p class="page-desc">{{ page.description }}</p>
+      {% endif %}
+    </div>
   </header>
 
-  <article class="paper-sheet page-body" data-reveal>
+  <article class="vhs-page-body" data-reveal>
     <div class="page-body-inner">
       {{ content }}
     </div>
@@ -23,58 +26,56 @@ layout: default
 </div>
 
 <style>
-.page-paper-wrap {
+.vhs-page-wrap {
   width: min(var(--max-width-content), 100%);
   margin: 0 auto;
-  display: grid;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.page-heading {
+.vhs-page-heading {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.page-heading-strip {
+  height: 3px;
+  background: linear-gradient(to right, var(--color-neon-blue), var(--color-neon-pink));
+}
+
+.page-heading-inner {
   padding: clamp(24px, 4vw, 40px);
-  transform: rotate(-0.2deg);
-  position: relative;
-}
-
-.page-heading::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  left: 32px;
-  width: 60px;
-  height: 18px;
-  background: var(--color-tape);
-  border: 1px solid rgba(200, 190, 130, 0.3);
-  transform: rotate(-1deg);
 }
 
 .page-title {
   margin: 0;
   font-size: clamp(38px, 7vw, 76px);
   line-height: 1.05;
+  text-shadow: 0 0 40px rgba(0, 212, 255, 0.1);
 }
-
 .page-desc {
   margin: 10px 0 0;
-  font-family: var(--font-hand);
   font-size: clamp(18px, 2.5vw, 24px);
   color: var(--color-text-secondary);
   max-width: 55ch;
   line-height: 1.5;
 }
 
-.page-body {
-  padding: clamp(20px, 3vw, 36px);
+.vhs-page-body {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: clamp(24px, 4vw, 40px);
 }
-
 .page-body-inner {
   max-width: var(--max-width-text);
   margin: 0 auto;
-  font-family: var(--font-serif);
   font-size: 1.08rem;
   color: var(--color-text-secondary);
 }
-
 .page-body-inner h2,
 .page-body-inner h3,
 .page-body-inner h4,
@@ -83,18 +84,12 @@ layout: default
   margin-top: 2rem;
   margin-bottom: 0.5rem;
 }
-
 .page-body-inner h2 { font-size: clamp(28px, 4vw, 48px); }
 .page-body-inner h3 { font-size: clamp(22px, 3vw, 36px); }
-
 .page-body-inner a {
-  color: var(--color-blue);
+  color: var(--color-neon-blue);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-.page-body-inner a:hover { color: var(--color-pin); }
-
-@media (max-width: 900px) {
-  .page-heading { transform: none; }
-}
+.page-body-inner a:hover { color: var(--color-neon-pink); }
 </style>

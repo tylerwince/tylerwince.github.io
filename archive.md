@@ -5,51 +5,53 @@ permalink: /archive/
 description: Browse every past design of this site.
 ---
 
-<div class="archive-paper-wrap">
-  <section class="paper-sheet archive-heading" data-reveal>
-    <span class="eyebrow mb-3">Design Archive</span>
-    <h1 class="archive-title">Past Designs</h1>
-    <p class="archive-lead">This site is redesigned by AI every day. Here is every look it has ever had.</p>
+<div class="vhs-archive-wrap">
+  <section class="vhs-archive-heading" data-reveal>
+    <div class="archive-heading-strip"></div>
+    <div class="archive-heading-inner">
+      <span class="eyebrow mb-3">Design Archive</span>
+      <h1 class="archive-title">Past Designs</h1>
+      <p class="archive-lead">This site is redesigned by AI every day. Here is every look it has ever had.</p>
+    </div>
   </section>
 
-  <section class="paper-sheet archive-list" data-reveal>
+  <section class="vhs-archive-list" data-reveal>
     {% assign today = site.time | date: "%Y-%m-%d" %}
     {% assign sorted = site.data.archive | sort: "date" | reverse %}
     {% for entry in sorted %}
     {% if entry.date == today %}{% continue %}{% endif %}
-    <a href="/archive/{{ entry.date }}/" class="archive-slip">
-      <span class="archive-slip-date">{{ entry.date | date: "%b %d" }}</span>
-      <strong class="archive-slip-theme">{{ entry.theme }}</strong>
-      <span class="archive-slip-desc">{{ entry.description }}</span>
+    <a href="/archive/{{ entry.date }}/" class="archive-entry">
+      <time class="archive-entry-date">{{ entry.date | date: "%b %d" }}</time>
+      <strong class="archive-entry-theme">{{ entry.theme }}</strong>
+      <span class="archive-entry-desc">{{ entry.description }}</span>
     </a>
     {% endfor %}
   </section>
 </div>
 
 <style>
-.archive-paper-wrap {
+.vhs-archive-wrap {
   width: min(var(--max-width-content), 100%);
   margin: 0 auto;
-  display: grid;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.archive-heading {
+.vhs-archive-heading {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.archive-heading-strip {
+  height: 3px;
+  background: linear-gradient(to right, var(--color-neon-purple), var(--color-neon-blue), var(--color-neon-pink));
+}
+
+.archive-heading-inner {
   padding: clamp(24px, 4vw, 40px);
-  transform: rotate(-0.2deg);
-  position: relative;
-}
-
-.archive-heading::before {
-  content: '';
-  position: absolute;
-  top: -6px;
-  right: 48px;
-  width: 55px;
-  height: 18px;
-  background: var(--color-tape);
-  border: 1px solid rgba(200, 190, 130, 0.3);
-  transform: rotate(2deg);
 }
 
 .archive-title {
@@ -57,22 +59,23 @@ description: Browse every past design of this site.
   font-size: clamp(38px, 7vw, 76px);
   line-height: 1.05;
 }
-
 .archive-lead {
   margin: 8px 0 0;
-  font-family: var(--font-hand);
   font-size: clamp(18px, 2.5vw, 24px);
   color: var(--color-text-secondary);
   max-width: 50ch;
 }
 
-.archive-list {
+.vhs-archive-list {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
   padding: clamp(16px, 2vw, 24px);
-  display: grid;
-  gap: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-.archive-slip {
+.archive-entry {
   display: grid;
   grid-template-columns: 72px minmax(0, 240px) minmax(0, 1fr);
   gap: 12px;
@@ -80,38 +83,33 @@ description: Browse every past design of this site.
   padding: 12px 10px;
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px dashed var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   transition: background var(--transition-fast), padding-left var(--transition-base);
 }
-
-.archive-slip:first-child {
-  border-top: 1px dashed var(--color-border);
+.archive-entry:first-child {
+  border-top: 1px solid var(--color-border);
 }
-
-.archive-slip:hover {
-  background: var(--color-paper-warm);
+.archive-entry:hover {
+  background: rgba(0, 212, 255, 0.04);
   padding-left: 14px;
 }
-
-.archive-slip-date {
+.archive-entry-date {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  color: var(--color-text-muted);
+  font-size: 14px;
+  color: var(--color-neon-pink);
+  text-shadow: 0 0 4px rgba(255, 42, 109, 0.3);
 }
-
-.archive-slip-theme {
+.archive-entry-theme {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-size: clamp(18px, 2.5vw, 26px);
   line-height: 1.1;
   color: var(--color-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.archive-slip-desc {
+.archive-entry-desc {
   font-size: 0.9rem;
   color: var(--color-text-secondary);
   overflow: hidden;
@@ -120,18 +118,13 @@ description: Browse every past design of this site.
 }
 
 @media (max-width: 700px) {
-  .archive-slip {
+  .archive-entry {
     grid-template-columns: 1fr;
     gap: 4px;
   }
-
-  .archive-slip-theme,
-  .archive-slip-desc {
+  .archive-entry-theme,
+  .archive-entry-desc {
     white-space: normal;
-  }
-
-  .archive-heading {
-    transform: none;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 /**
- * Tyler Wince — PAPERCRAFT interactions
- * Paper settle, notepad menu, pushpin hover, copy button.
+ * Tyler Wince — VHS RENTAL interactions
+ * Neon glow, CRT warmup, overlay menu, bottom nav.
  */
 
 (function() {
@@ -9,12 +9,12 @@
   var body = document.body;
   body.classList.add('js-ready');
 
-  // ---- Notepad overlay menu ----
+  // ---- Overlay menu ----
   var navToggle = document.getElementById('nav-toggle');
   var navOverlay = document.getElementById('nav-overlay');
   var navClose = document.getElementById('nav-close');
 
-  function closeNotepad() {
+  function closeOverlay() {
     if (!navOverlay) return;
     navOverlay.classList.remove('is-open');
     navOverlay.setAttribute('aria-hidden', 'true');
@@ -22,7 +22,7 @@
     body.classList.remove('nav-open');
   }
 
-  function openNotepad() {
+  function openOverlay() {
     if (!navOverlay) return;
     navOverlay.classList.add('is-open');
     navOverlay.setAttribute('aria-hidden', 'false');
@@ -33,41 +33,48 @@
   if (navToggle && navOverlay) {
     navToggle.addEventListener('click', function() {
       if (navOverlay.classList.contains('is-open')) {
-        closeNotepad();
+        closeOverlay();
       } else {
-        openNotepad();
+        openOverlay();
       }
     });
 
     navOverlay.addEventListener('click', function(event) {
       if (event.target && event.target.hasAttribute('data-nav-close')) {
-        closeNotepad();
+        closeOverlay();
       }
     });
 
     navOverlay.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', closeNotepad);
+      link.addEventListener('click', closeOverlay);
     });
   }
 
   if (navClose) {
-    navClose.addEventListener('click', closeNotepad);
+    navClose.addEventListener('click', closeOverlay);
   }
 
   document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') closeNotepad();
+    if (event.key === 'Escape') closeOverlay();
   });
 
   // ---- Active nav highlighting ----
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.paper-tab, .notepad-link').forEach(function(link) {
-    var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
-    if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
-      link.classList.add('active');
-    }
-  });
 
-  // ---- Scroll reveal (paper settle) ----
+  function highlightNav(selector) {
+    document.querySelectorAll(selector).forEach(function(link) {
+      var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
+      if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  highlightNav('.sidebar-link');
+  highlightNav('.bottom-nav-link');
+  highlightNav('.vhs-panel-link');
+
+  // ---- Scroll reveal (CRT warmup) ----
   var revealTargets = document.querySelectorAll('[data-reveal]');
   if (revealTargets.length > 0) {
     revealTargets.forEach(function(target) {
@@ -97,11 +104,11 @@
     }
   }
 
-  // ---- Pinned note tilt on hover ----
+  // ---- Sidebar glow on hover (desktop) ----
   if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.pinned-note').forEach(function(note) {
-      note.addEventListener('mouseenter', function() {
-        note.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+    document.querySelectorAll('.sidebar-link').forEach(function(link) {
+      link.addEventListener('mouseenter', function() {
+        link.style.transition = 'all 0.15s ease';
       });
     });
   }
@@ -162,14 +169,11 @@
     body.classList.remove('keyboard-nav');
   });
 
-  // ---- Paper sheet subtle float on hover (desktop) ----
+  // ---- Neon hover glow on VHS tapes ----
   if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.paper-sheet').forEach(function(sheet) {
-      sheet.addEventListener('mouseenter', function() {
-        sheet.style.boxShadow = 'var(--shadow-paper-hover)';
-      });
-      sheet.addEventListener('mouseleave', function() {
-        sheet.style.boxShadow = '';
+    document.querySelectorAll('.vhs-tape').forEach(function(tape) {
+      tape.addEventListener('mouseenter', function() {
+        tape.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease';
       });
     });
   }
