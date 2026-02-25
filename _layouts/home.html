@@ -2,443 +2,74 @@
 layout: default
 ---
 
-<div class="vhs-home">
-  <section class="marquee-hero" data-reveal>
-    <div class="marquee-screen">
-      <span class="marquee-label">Now Showing</span>
-      <h1 class="marquee-title">{{ site.description }}</h1>
-      <p class="marquee-sub">Building, writing, and reading &mdash; on repeat.</p>
-    </div>
-    <div class="marquee-static" aria-hidden="true"></div>
-  </section>
+<div class="cli-home">
+  <div class="cli-command">whoami && uptime</div>
+  <div class="cli-output">
+    <p>tylerwince</p>
+    <p>> {{ site.description }}</p>
+    <p>> STATUS: Building, writing, and reading on repeat.</p>
+  </div>
 
-  <section class="tape-shelf" data-reveal>
-    <div class="shelf-header">
-      <h2 class="shelf-label">Featured Titles</h2>
-      <span class="shelf-badge">Applications</span>
-    </div>
-
-    <div class="tape-row">
-      <a href="/apps/etch/" class="vhs-tape">
-        <div class="tape-window">
-          <div class="tape-reel"></div>
-          <div class="tape-reel"></div>
-        </div>
-        <div class="tape-label">
-          <img src="/assets/etch_logo.png" alt="Etch" class="tape-icon">
-          <strong class="tape-name">Etch</strong>
-          <span class="tape-platform">iOS &middot; SwiftUI</span>
-          <p class="tape-desc">Spaced repetition, built like Apple would.</p>
-        </div>
-        <div class="tape-spine">Etch</div>
-      </a>
-
-      <a href="/apps/little-quotes/" class="vhs-tape">
-        <div class="tape-window">
-          <div class="tape-reel"></div>
-          <div class="tape-reel"></div>
-        </div>
-        <div class="tape-label">
-          <img src="/assets/littleQuotes_icon.png" alt="Little Quotes" class="tape-icon">
-          <strong class="tape-name">Little Quotes</strong>
-          <span class="tape-platform">iOS &middot; SwiftUI</span>
-          <p class="tape-desc">Capture and share kids' priceless words.</p>
-        </div>
-        <div class="tape-spine">Little Quotes</div>
-      </a>
-
-      <a href="/apps/waymark/" class="vhs-tape">
-        <div class="tape-window">
-          <div class="tape-reel"></div>
-          <div class="tape-reel"></div>
-        </div>
-        <div class="tape-label">
-          <img src="/assets/waymark_icon.png" alt="Waymark" class="tape-icon">
-          <strong class="tape-name">Waymark</strong>
-          <span class="tape-platform">iOS &middot; SwiftUI</span>
-          <p class="tape-desc">Prayer and community, designed with care.</p>
-        </div>
-        <div class="tape-spine">Waymark</div>
-      </a>
-    </div>
-  </section>
-
-  <div class="catalog-split">
-    <section class="rental-catalog" data-reveal>
-      <div class="catalog-header">
-        <h2 class="shelf-label">New Releases</h2>
-        <a href="{{ '/writing/' | relative_url }}" class="link-arrow">All Posts</a>
+  <div class="cli-command">ls -l /apps</div>
+  <div class="cli-output">
+    <div class="table-list">
+      <div class="table-row">
+        <span style="color: var(--color-text-muted);">drwxr-xr-x</span>
+        <span><a href="/apps/etch/">./etch</a> - Spaced repetition, built like Apple would.</span>
+        <span style="color: var(--color-border-dim);">[iOS]</span>
       </div>
-
-      <div class="catalog-entries">
-        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
-        {% for post in latest_posts %}
-        <a href="{{ post.url | relative_url }}" class="catalog-entry">
-          <time class="catalog-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d" }}</time>
-          <div class="catalog-info">
-            <span class="catalog-title">{{ post.title }}</span>
-            <span class="catalog-desc">{{ post.description }}</span>
-          </div>
-          <span class="catalog-arrow">&#9654;</span>
-        </a>
-        {% endfor %}
+      <div class="table-row">
+        <span style="color: var(--color-text-muted);">drwxr-xr-x</span>
+        <span><a href="/apps/little-quotes/">./little-quotes</a> - Capture kids' priceless words.</span>
+        <span style="color: var(--color-border-dim);">[iOS]</span>
       </div>
-    </section>
-
-    <section class="staff-picks" data-reveal>
-      <div class="picks-header">
-        <h2 class="shelf-label">Staff Picks</h2>
-        <a href="{{ '/reading/' | relative_url }}" class="link-arrow">All Books</a>
+      <div class="table-row">
+        <span style="color: var(--color-text-muted);">drwxr-xr-x</span>
+        <span><a href="/apps/waymark/">./waymark</a> - Prayer and community.</span>
+        <span style="color: var(--color-border-dim);">[iOS]</span>
       </div>
+    </div>
+  </div>
 
+  <div class="cli-command">head -n 5 /var/log/writing.log</div>
+  <div class="cli-output">
+    <div class="table-list">
+      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
+      {% for post in latest_posts %}
+      <div class="table-row">
+        <span style="color: var(--color-text-muted);">[{{ post.date | date: "%Y-%m-%d" }}]</span>
+        <span><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
+        <span style="color: var(--color-border-dim);">INFO</span>
+      </div>
+      {% endfor %}
+      <div class="table-row" style="margin-top: 10px;">
+        <span style="color: var(--color-text-muted);"></span>
+        <span><a href="{{ '/writing/' | relative_url }}">cat /var/log/writing.log (view all)</a></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cli-command">cat ~/.reading_list | grep "currently_reading"</div>
+  <div class="cli-output">
+    <div class="table-list">
       {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
       {% if currently_reading.size > 0 %}
-      <div class="picks-stack">
         {% for book in currently_reading limit:3 %}
-        <div class="pick-tape">
-          <div class="pick-spine"></div>
-          <div class="pick-info">
-            <span class="pick-title">{{ book.title }}</span>
-            <span class="pick-author">{{ book.author }}</span>
-          </div>
+        <div class="table-row">
+          <span style="color: var(--color-accent);" class="blink">* READING</span>
+          <span>"{{ book.title }}"</span>
+          <span style="color: var(--color-text-muted);">by {{ book.author }}</span>
         </div>
         {% endfor %}
-      </div>
       {% else %}
-      <p class="no-picks">Between rentals at the moment.</p>
+        <p style="color: var(--color-text-muted);">No processes found.</p>
       {% endif %}
-    </section>
+      <div class="table-row" style="margin-top: 10px;">
+        <span style="color: var(--color-text-muted);"></span>
+        <span><a href="{{ '/reading/' | relative_url }}">less ~/.reading_list (view all)</a></span>
+        <span></span>
+      </div>
+    </div>
   </div>
 </div>
-
-<style>
-.vhs-home {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-/* ---- Marquee Hero ---- */
-.marquee-hero {
-  position: relative;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  overflow: hidden;
-}
-.marquee-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(to right, var(--color-neon-blue), var(--color-neon-pink), var(--color-neon-yellow));
-}
-.marquee-screen {
-  padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 48px);
-  position: relative;
-  z-index: 1;
-}
-.marquee-label {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--color-neon-pink);
-  margin-bottom: 16px;
-  text-shadow: var(--text-glow-pink);
-}
-.marquee-title {
-  margin: 0 0 16px;
-  font-size: clamp(40px, 7vw, 88px);
-  line-height: 1;
-  text-shadow: 0 0 60px rgba(0, 212, 255, 0.15);
-}
-.marquee-sub {
-  margin: 0;
-  font-size: clamp(18px, 2.5vw, 24px);
-  color: var(--color-text-secondary);
-}
-.marquee-static {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(0, 212, 255, 0.08), transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(255, 42, 109, 0.06), transparent 50%);
-  pointer-events: none;
-}
-
-/* ---- VHS Tape Shelf ---- */
-.tape-shelf {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: clamp(20px, 3vw, 32px);
-  overflow: hidden;
-}
-.shelf-header, .catalog-header, .picks-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-.shelf-label {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 3vw, 32px);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--color-text);
-  margin: 0;
-}
-.shelf-badge {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-neon-blue);
-  border: 1px solid var(--color-neon-blue);
-  padding: 4px 10px;
-  border-radius: 3px;
-}
-
-.tape-row {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 8px;
-}
-
-/* ---- Individual VHS Tape ---- */
-.vhs-tape {
-  flex: 0 0 200px;
-  display: flex;
-  flex-direction: column;
-  background: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 6px;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  scroll-snap-align: start;
-  position: relative;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-.vhs-tape:hover {
-  transform: translateY(-8px) rotate(-1deg);
-  box-shadow: var(--glow-blue);
-  color: inherit;
-}
-.tape-window {
-  background: #111;
-  padding: 18px 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #333;
-  position: relative;
-}
-.tape-window::before {
-  content: '';
-  position: absolute;
-  inset: 10px 32px;
-  border: 1px solid #444;
-  border-radius: 4px;
-}
-.tape-reel {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 2px solid #555;
-  background: radial-gradient(circle at center, #222 30%, #444 32%, #444 48%, #222 50%);
-  position: relative;
-  z-index: 1;
-}
-.tape-label {
-  padding: 14px;
-  background: linear-gradient(180deg, var(--color-vhs-cream), #e0d8c4);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.tape-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  margin-bottom: 8px;
-  border: 1px solid rgba(0,0,0,0.1);
-}
-.tape-name {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 16px;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  line-height: 1.1;
-}
-.tape-platform {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: #666;
-  margin-top: 3px;
-}
-.tape-desc {
-  margin: 8px 0 0;
-  font-size: 0.82rem;
-  line-height: 1.4;
-  color: #555;
-}
-.tape-spine {
-  padding: 6px 14px;
-  background: #111;
-  font-family: var(--font-display);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-neon-blue);
-  text-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
-  border-top: 1px solid #333;
-}
-
-/* ---- Catalog Split ---- */
-.catalog-split {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr;
-  gap: 24px;
-}
-
-/* ---- Rental Catalog (Writing) ---- */
-.rental-catalog {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: clamp(20px, 3vw, 32px);
-}
-.catalog-entries {
-  display: flex;
-  flex-direction: column;
-}
-.catalog-entry {
-  display: grid;
-  grid-template-columns: 64px minmax(0, 1fr) 20px;
-  gap: 12px;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--color-border);
-  color: inherit;
-  text-decoration: none;
-  transition: background var(--transition-fast), padding-left var(--transition-fast);
-}
-.catalog-entry:first-child {
-  border-top: 1px solid var(--color-border);
-}
-.catalog-entry:hover {
-  background: rgba(0, 212, 255, 0.04);
-  padding-left: 8px;
-}
-.catalog-entry:hover .catalog-arrow {
-  color: var(--color-neon-blue);
-  text-shadow: var(--text-glow-blue);
-}
-.catalog-date {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  color: var(--color-neon-pink);
-  text-shadow: 0 0 6px rgba(255, 42, 109, 0.3);
-}
-.catalog-info { min-width: 0; }
-.catalog-title {
-  display: block;
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--color-text);
-}
-.catalog-desc {
-  display: block;
-  margin-top: 3px;
-  font-size: 0.9rem;
-  color: var(--color-text-secondary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.catalog-arrow {
-  font-size: 10px;
-  color: var(--color-text-muted);
-  transition: color var(--transition-fast), text-shadow var(--transition-fast);
-}
-
-/* ---- Staff Picks (Reading) ---- */
-.staff-picks {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: clamp(20px, 3vw, 32px);
-}
-.picks-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.pick-tape {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-  overflow: hidden;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-}
-.pick-tape:hover {
-  border-color: var(--color-neon-yellow);
-  box-shadow: var(--glow-yellow);
-}
-.pick-spine {
-  width: 8px;
-  flex-shrink: 0;
-  background: linear-gradient(180deg, var(--color-neon-yellow), var(--color-neon-pink));
-}
-.pick-tape:nth-child(1) .pick-spine { background: linear-gradient(180deg, var(--color-neon-blue), var(--color-neon-purple)); }
-.pick-tape:nth-child(2) .pick-spine { background: linear-gradient(180deg, var(--color-neon-pink), var(--color-neon-yellow)); }
-.pick-tape:nth-child(3) .pick-spine { background: linear-gradient(180deg, var(--color-neon-green), var(--color-neon-blue)); }
-.pick-info {
-  padding: 12px 14px;
-  flex: 1;
-  min-width: 0;
-}
-.pick-title {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 15px;
-  text-transform: uppercase;
-  color: var(--color-text);
-  line-height: 1.2;
-}
-.pick-author {
-  display: block;
-  margin-top: 4px;
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--color-text-muted);
-}
-.no-picks {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 16px;
-  color: var(--color-text-muted);
-}
-
-/* ---- Responsive ---- */
-@media (max-width: 900px) {
-  .catalog-split { grid-template-columns: 1fr; }
-  .vhs-tape { flex: 0 0 180px; }
-}
-@media (max-width: 600px) {
-  .marquee-title { font-size: clamp(32px, 12vw, 56px); }
-  .vhs-tape { flex: 0 0 170px; }
-}
-</style>

@@ -1,30 +1,15 @@
-<footer class="store-footer">
-  <div class="footer-inner">
-    <div class="footer-note">
-      <p class="footer-tagline">Building products, writing notes, and collecting books worth rereading.</p>
-    </div>
-
-    <div class="footer-links">
-      <ul class="social-pins">
-        {% if site.email %}
-        <li><a href="mailto:{{ site.email }}">Email</a></li>
-        {% endif %}
-        {% if site.twitter_username %}
-        <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
-        {% endif %}
-        {% if site.github_username %}
-        <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
-        {% endif %}
-        {% if site.linkedin_username %}
-        <li><a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a></li>
-        {% endif %}
-        <li><a href="{{ '/feed.xml' | relative_url }}">RSS</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-meta">
-      <span class="footer-copy">&copy; {{ 'now' | date: "%Y" }} {{ site.title }}</span>
-      <a class="footer-archive" href="{{ '/archive/' | relative_url }}">Design Archive</a>
-    </div>
+<footer class="cli-footer">
+  <div class="cli-command">exit</div>
+  <div class="cli-output" style="color: var(--color-text-muted);">
+    <p>Connection closed. Logging out...</p>
+    <p style="margin-top: 1em;">
+      > LINKS: 
+      {% if site.email %}<a href="mailto:{{ site.email }}">Email</a> | {% endif %}
+      {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a> | {% endif %}
+      {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a> | {% endif %}
+      {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a> | {% endif %}
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </p>
+    <p>> SYSTEM: &copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
   </div>
 </footer>

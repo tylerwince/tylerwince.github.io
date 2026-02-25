@@ -2,32 +2,33 @@
 layout: default
 ---
 
-<article class="post">
-  <header class="post-header content-wrapper-narrow animate-in">
-    <h1 class="post-title">{{ page.title }}</h1>
+<div class="cli-post">
+  <div class="cli-command">cat /var/log/writing/{{ page.date | date: "%Y-%m-%d" }}_{{ page.title | downcase | replace: ' ', '_' | slice: 0, 15 }}.txt</div>
+  <div class="cli-output">
+    <h1>{{ page.title }}</h1>
     {% if page.description %}
-    <p class="post-description">{{ page.description }}</p>
+    <p style="color: var(--color-text-muted);">// {{ page.description }}</p>
     {% endif %}
-    <div class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">
-        {{ page.date | date: "%B %-d, %Y" }}
-      </time>
+    
+    <div style="color: var(--color-text-muted); font-size: 0.9em; margin-bottom: 2em;">
+      > DATE: {{ page.date | date: "%Y-%m-%d %H:%M:%S" }}<br>
       {% assign words = content | number_of_words %}
       {% assign minutes = words | divided_by: 200 %}
       {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-      <span class="reading-time">{{ minutes }} min read</span>
+      > EST_READ_TIME: {{ minutes }}m<br>
+      > STATUS: OK
     </div>
-  </header>
 
-  <div class="post-content content-wrapper-narrow animate-in animate-in-delay-1">
-    {{ content }}
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <hr>
+    
+    <div class="post-footer" style="color: var(--color-text-muted);">
+      > EOF<br>
+      > <a href="{{ '/writing/' | relative_url }}">cd ../</a><br>
+      > <a href="{{ '/apps/' | relative_url }}">cd /apps</a>
+    </div>
   </div>
-
-  <footer class="post-footer content-wrapper-narrow">
-    <div class="divider"></div>
-    <p class="post-footer-text">
-      <a href="{{ '/writing/' | relative_url }}">More writing</a> · <a href="{{ '/apps/' | relative_url }}">Apps I
-        build</a>
-    </p>
-  </footer>
-</article>
+</div>

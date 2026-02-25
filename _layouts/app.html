@@ -2,168 +2,26 @@
 layout: default
 ---
 
-<article class="vhs-app-wrap">
-  <section class="vhs-case-hero" data-reveal>
-    <div class="case-top-strip"></div>
-    <div class="case-main">
-      <div class="case-icon-col">
-        <div class="case-icon-frame">
-          <img src="{{ page.icon_path }}" alt="{{ page.title }} icon" class="case-icon-img">
-        </div>
-      </div>
-
-      <div class="case-info-col">
-        <span class="eyebrow mb-3">Application</span>
-        <h1 class="case-title">{{ page.title }}</h1>
-        <p class="case-tagline">{{ page.tagline }}</p>
-
-        <div class="case-meta-row">
-          <div class="case-meta-chip">
-            <span class="chip-key">Platform</span>
-            <span class="chip-val">{{ page.platform }}</span>
-          </div>
-          <div class="case-meta-chip">
-            <span class="chip-key">Stack</span>
-            <span class="chip-val">{{ page.tech_stack | join: ", " }}</span>
-          </div>
-        </div>
-
-        <a href="{{ page.app_store_link }}" class="button" target="_blank" rel="noopener">
-          Download &#9654;
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="vhs-case-body" data-reveal>
-    <div class="case-body-inner">
+<div class="cli-app">
+  <div class="cli-command">./install {{ page.title | downcase | replace: ' ', '_' }}.sh</div>
+  <div class="cli-output">
+    <h1>{{ page.title }}</h1>
+    <p style="color: var(--color-accent-2);">> {{ page.tagline }}</p>
+    <p style="color: var(--color-text-muted);">
+      > PLATFORM: {{ page.platform }}<br>
+      > STACK: {{ page.tech_stack | join: ", " }}
+    </p>
+    <p style="margin: 1.5em 0;">
+      <a href="{{ page.app_store_link }}" class="button" target="_blank" rel="noopener">[ EXECUTE DOWNLOAD ]</a>
+    </p>
+    
+    <hr>
+    
+    <div class="app-content">
       {{ content }}
     </div>
-  </section>
-</article>
-
-<style>
-.vhs-app-wrap {
-  width: min(var(--max-width-content), 100%);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.vhs-case-hero {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-}
-
-.case-top-strip {
-  height: 3px;
-  background: linear-gradient(to right, var(--color-neon-blue), var(--color-neon-pink), var(--color-neon-yellow));
-}
-
-.case-main {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 24px;
-  padding: clamp(24px, 4vw, 40px);
-  align-items: start;
-}
-
-.case-icon-frame {
-  width: clamp(80px, 12vw, 120px);
-  height: clamp(80px, 12vw, 120px);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 2px solid var(--color-border-light);
-  box-shadow: var(--glow-blue);
-}
-.case-icon-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.case-info-col { min-width: 0; }
-
-.case-title {
-  margin: 0;
-  font-size: clamp(40px, 7vw, 80px);
-  line-height: 1;
-  text-shadow: 0 0 40px rgba(0, 212, 255, 0.12);
-}
-.case-tagline {
-  margin: 8px 0 0;
-  font-size: clamp(18px, 2vw, 24px);
-  color: var(--color-text-secondary);
-  max-width: 30ch;
-}
-
-.case-meta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 20px 0;
-}
-.case-meta-chip {
-  padding: 8px 14px;
-  background: var(--color-surface-lit);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
-}
-.chip-key {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-neon-blue);
-  margin-bottom: 2px;
-}
-.chip-val {
-  display: block;
-  font-size: 0.95rem;
-  color: var(--color-text-secondary);
-}
-
-.vhs-case-body {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  padding: clamp(24px, 4vw, 40px);
-}
-.case-body-inner {
-  max-width: var(--max-width-text);
-  margin: 0 auto;
-  font-size: 1.08rem;
-  color: var(--color-text-secondary);
-}
-.case-body-inner h2,
-.case-body-inner h3,
-.case-body-inner h4,
-.case-body-inner h5,
-.case-body-inner h6 {
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-}
-.case-body-inner h2 { font-size: clamp(28px, 5vw, 48px); }
-.case-body-inner h3 { font-size: clamp(22px, 3.5vw, 36px); }
-.case-body-inner a {
-  color: var(--color-neon-blue);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.case-body-inner a:hover { color: var(--color-neon-pink); }
-
-@media (max-width: 600px) {
-  .case-main {
-    grid-template-columns: 1fr;
-  }
-  .case-title { font-size: clamp(36px, 14vw, 64px); }
-}
-</style>
+  </div>
+</div>
 
 <script>
 // Load and display Etch stack information
@@ -185,14 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
       var countEl = card.querySelector('.stack-card-count');
 
       if (titleEl) titleEl.textContent = stackName;
-      if (countEl) countEl.textContent = cardCount + ' card' + (cardCount !== 1 ? 's' : '');
+      if (countEl) countEl.textContent = cardCount + ' cards';
 
-      card.classList.remove('stack-card-loading');
     } catch (error) {
       console.error('Failed to load stack:', etchUrl, error);
-      var titleEl = card.querySelector('.stack-card-title');
-      if (titleEl) titleEl.textContent = 'Error loading stack';
-      card.classList.remove('stack-card-loading');
     }
   });
 });
