@@ -97,3 +97,8 @@
   theme: "VHS RENTAL"
   description: "VHS RENTAL — designed February 24, 2026"
   commit: "632f294"
+
+- date: "2026-02-25"
+  theme: "HACKER CLI TERMINAL"
+  description: "HACKER CLI TERMINAL — designed February 25, 2026"
+  commit: "ab6f7f2"
