@@ -2,24 +2,27 @@
 layout: default
 ---
 
-<div class="cli-app">
-  <div class="cli-command">./install {{ page.title | downcase | replace: ' ', '_' }}.sh</div>
-  <div class="cli-output">
-    <h1>{{ page.title }}</h1>
-    <p style="color: var(--color-accent-2);">> {{ page.tagline }}</p>
-    <p style="color: var(--color-text-muted);">
-      > PLATFORM: {{ page.platform }}<br>
-      > STACK: {{ page.tech_stack | join: ", " }}
-    </p>
-    <p style="margin: 1.5em 0;">
-      <a href="{{ page.app_store_link }}" class="button" target="_blank" rel="noopener">[ EXECUTE DOWNLOAD ]</a>
+<div class="notebook-app">
+  <div class="app-header" style="margin-bottom: calc(var(--line-height) * 1.5);">
+    <h1 style="font-size: 3.5rem; margin-top: 0;">{{ page.title }}</h1>
+    <p style="font-family: var(--font-handwriting); font-size: 1.8rem; color: var(--color-ink-red); transform: rotate(-2deg); margin-top: -10px;">
+      {{ page.tagline }}
     </p>
     
-    <hr>
-    
-    <div class="app-content">
-      {{ content }}
+    <div style="font-family: var(--font-handwriting); color: var(--color-ink-faded); font-size: 1.4rem;">
+      Platform: {{ page.platform }}<br>
+      Stack: {{ page.tech_stack | join: ", " }}
     </div>
+    
+    <div style="margin: 20px 0;">
+      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" style="display: inline-block; border: 2px solid var(--color-ink); padding: 5px 15px; font-family: var(--font-handwriting); font-size: 1.6rem; transform: rotate(1deg); background: #fffdf5; box-shadow: 3px 3px 0 var(--color-ink); text-decoration: none;">
+        Download the app
+      </a>
+    </div>
+  </div>
+  
+  <div class="app-content" style="max-width: 750px;">
+    {{ content }}
   </div>
 </div>
 

@@ -1,24 +1,15 @@
-<div class="table-row book-item" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  {% assign content_size = include.book.content | strip | size %}
-  <span style="color: var(--color-text-muted);">
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="library-card" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <span class="library-card-title">{{ include.book.title }}</span>
+  <span class="library-card-author">by {{ include.book.author }}</span>
+  <span class="library-card-rating">
     {% if include.unrated %}
-      [--]
+      (unrated)
     {% else %}
       {% if include.book.currently_reading %}
-        <span class="reading blink">[>>]</span>
+        reading...
       {% elsif include.book.stars %}
-        <span class="stars">[{% for i in (1..include.book.stars) %}*{% endfor %}]</span>
-      {% else %}
-        [--]
+        {% for i in (1..include.book.stars) %}*{% endfor %}
       {% endif %}
     {% endif %}
   </span>
-  <span>
-    {% if content_size > 0 %}
-      <a href="{{ include.book.url }}" rel="nofollow noopener">{{ include.book.title }}</a>
-    {% else %}
-      {{ include.book.title }}
-    {% endif %}
-  </span>
-  <span style="color: var(--color-border-dim);">{{ include.book.author }}</span>
-</div>
+</a>

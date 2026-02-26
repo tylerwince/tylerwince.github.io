@@ -2,33 +2,32 @@
 layout: default
 ---
 
-<div class="cli-post">
-  <div class="cli-command">cat /var/log/writing/{{ page.date | date: "%Y-%m-%d" }}_{{ page.title | downcase | replace: ' ', '_' | slice: 0, 15 }}.txt</div>
-  <div class="cli-output">
-    <h1>{{ page.title }}</h1>
+<div class="notebook-post">
+  <div class="post-header" style="margin-bottom: calc(var(--line-height) * 2);">
+    <h1 style="font-size: 3rem; margin-top: 0;">{{ page.title }}</h1>
+    
     {% if page.description %}
-    <p style="color: var(--color-text-muted);">// {{ page.description }}</p>
+    <p style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-faded); transform: rotate(1deg);">
+      {{ page.description }}
+    </p>
     {% endif %}
     
-    <div style="color: var(--color-text-muted); font-size: 0.9em; margin-bottom: 2em;">
-      > DATE: {{ page.date | date: "%Y-%m-%d %H:%M:%S" }}<br>
+    <div style="font-family: var(--font-handwriting); color: var(--color-ink-red); font-size: 1.4rem; transform: rotate(-1deg); margin-top: 20px;">
+      Date: {{ page.date | date: "%B %d, %Y" }}<br>
       {% assign words = content | number_of_words %}
       {% assign minutes = words | divided_by: 200 %}
       {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-      > EST_READ_TIME: {{ minutes }}m<br>
-      > STATUS: OK
+      Read time: ~{{ minutes }} mins
     </div>
+  </div>
 
-    <div class="post-content">
-      {{ content }}
-    </div>
+  <div class="post-content" style="max-width: 700px;">
+    {{ content }}
+  </div>
 
-    <hr>
-    
-    <div class="post-footer" style="color: var(--color-text-muted);">
-      > EOF<br>
-      > <a href="{{ '/writing/' | relative_url }}">cd ../</a><br>
-      > <a href="{{ '/apps/' | relative_url }}">cd /apps</a>
-    </div>
+  <hr>
+  
+  <div class="post-footer" style="font-family: var(--font-handwriting); font-size: 1.6rem; text-align: center; margin-top: 40px;">
+    <a href="{{ '/writing/' | relative_url }}">Back to notes</a>
   </div>
 </div>

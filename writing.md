@@ -5,84 +5,27 @@ permalink: /writing/
 description: Essays on product management, technology, and building better software.
 ---
 
-<div class="posts-list">
+<div class="journal-list">
   {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
   {% for post in sorted_posts %}
-  <article class="post-item">
-    <a href="{{ post.url | relative_url }}">
-      <h3>{{ post.title }}</h3>
+  <div class="journal-entry" style="align-items: center; border-bottom: 1px dashed var(--color-paper-line); padding-bottom: 15px; margin-bottom: 20px;">
+    <div class="journal-date" style="font-size: 1.4rem; transform: rotate(-1deg); min-width: 140px;">
+      {{ post.date | date: "%B %-d, %Y" }}
+    </div>
+    <div style="flex: 1;">
+      <a href="{{ post.url | relative_url }}" class="journal-title" style="font-size: 1.8rem; display: block;">{{ post.title }}</a>
       {% if post.description %}
-      <p class="post-description">{{ post.description }}</p>
+      <p style="font-family: var(--font-handwriting); font-size: 1.4rem; color: var(--color-ink-faded); margin: 5px 0 0 0; line-height: 1.2;">
+        {{ post.description }}
+      </p>
       {% endif %}
-      <div class="post-item-meta">
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
-        {% assign words = post.content | number_of_words %}
-        {% assign minutes = words | divided_by: 200 %}
-        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-        <span class="reading-time">{{ minutes }} min read</span>
-      </div>
-    </a>
-  </article>
+    </div>
+    <div style="font-family: var(--font-handwriting); color: var(--color-ink-faded); font-size: 1.2rem; min-width: 80px; text-align: right;">
+      {% assign words = post.content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 %}
+      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+      ~{{ minutes }} min
+    </div>
+  </div>
   {% endfor %}
 </div>
-
-<style>
-.posts-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
-}
-
-.post-item a {
-  display: block;
-  padding: var(--space-5);
-  background: var(--color-surface-elevated);
-  border: 0.5px solid var(--color-border-light);
-  border-radius: var(--border-radius);
-  color: var(--color-text-primary);
-  transition: all var(--transition-base);
-}
-
-.post-item a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: var(--color-border);
-}
-
-@media (prefers-color-scheme: dark) {
-  .post-item a:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-}
-
-.post-item h3 {
-  font-size: 21px;
-  font-weight: 600;
-  margin: 0 0 8px 0;
-  letter-spacing: -0.015em;
-  line-height: 1.381;
-}
-
-.post-description {
-  font-size: 15px;
-  color: var(--color-text-secondary);
-  line-height: 1.47059;
-  letter-spacing: -0.022em;
-  margin: 0 0 12px 0;
-}
-
-.post-item-meta {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: 12px;
-  color: var(--color-text-tertiary);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
-.post-item-meta .reading-time::before {
-  content: '·';
-  margin-right: var(--space-2);
-}
-</style>

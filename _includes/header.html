@@ -1,15 +1,9 @@
-<nav class="cli-prompt-bar">
-  <div class="cli-prompt-inner">
-    <span class="prompt-user">guest@tw:~$</span>
-    <div class="nav-links">
-      <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">./home</a>
-      {% for nav_page_name in site.header_pages %}
-        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-        {% if nav_page %}
-        <a href="{{ nav_page.url | relative_url }}" class="{% if page.url == nav_page.url %}active{% endif %}">cd /{{ nav_page.title | downcase }}</a>
-        {% endif %}
-      {% endfor %}
-      <span class="blink" style="color: var(--color-text);">_</span>
-    </div>
-  </div>
+<nav class="notebook-tabs">
+  <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+  {% for nav_page_name in site.header_pages %}
+    {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+    {% if nav_page %}
+    <a href="{{ nav_page.url | relative_url }}" class="{% if page.url == nav_page.url %}active{% endif %}">{{ nav_page.title }}</a>
+    {% endif %}
+  {% endfor %}
 </nav>

@@ -2,18 +2,17 @@
 layout: default
 ---
 
-<div class="cli-page">
-  <div class="cli-command">cat {{ page.title | downcase | replace: ' ', '_' }}.txt</div>
-  <div class="cli-output">
-    <h1>{{ page.title }}</h1>
+<div class="notebook-page-layout">
+  <div class="page-header" style="margin-bottom: calc(var(--line-height) * 2);">
+    <h1 style="font-size: 3.5rem; margin-top: 0;">{{ page.title }}</h1>
     {% if page.description %}
-      <p style="color: var(--color-text-muted);">// {{ page.description }}</p>
+      <p style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-faded); transform: rotate(1deg);">
+        {{ page.description }}
+      </p>
     {% endif %}
-    
-    <hr>
+  </div>
 
-    <div class="page-content">
-      {{ content }}
-    </div>
+  <div class="page-content" style="max-width: 700px;">
+    {{ content }}
   </div>
 </div>

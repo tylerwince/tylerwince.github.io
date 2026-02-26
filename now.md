@@ -25,53 +25,22 @@ Lately I’m deep in **memorization techniques for long passages of text and scr
 
 {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" | sort: "date" | reverse %}
 {% if currently_reading.size > 0 %}
-<ul class="now-reading">
+<div class="library-grid">
   {% for book in currently_reading limit:3 %}
-    <li>
-      <span class="title">{{ book.title }}</span>
-      {% if book.author %}<span class="author"> — {{ book.author }}</span>{% endif %}
-    </li>
+    <div class="library-card" style="margin-top: 10px;">
+      <span class="library-card-title">{{ book.title }}</span>
+      {% if book.author %}<span class="library-card-author">by {{ book.author }}</span>{% endif %}
+    </div>
   {% endfor %}
-</ul>
-<p class="subtle"><a href="/reading/">See reading list →</a></p>
+</div>
+<p style="font-family: var(--font-handwriting); font-size: 1.4rem; color: var(--color-ink-red); transform: rotate(1deg);"><a href="/reading/">See reading list →</a></p>
 {% else %}
-<p class="subtle">Nothing on deck right now.</p>
+<p style="font-family: var(--font-handwriting); font-size: 1.4rem; color: var(--color-ink-faded);">Nothing on deck right now.</p>
 {% endif %}
 
-<style>
-.now-reading {
-  list-style: none;
-  padding: 0;
-  margin: var(--space-3) 0 0 0;
-}
+<hr>
 
-.now-reading li {
-  padding: 10px 0;
-  border-bottom: 0.5px solid var(--color-border-light);
-}
-
-.now-reading li:last-child {
-  border-bottom: none;
-}
-
-.now-reading .title {
-  font-weight: 600;
-  color: var(--color-text-primary);
-}
-
-.now-reading .author {
-  color: var(--color-text-secondary);
-}
-
-.subtle {
-  margin-top: var(--space-3);
-  color: var(--color-text-secondary);
-  font-size: 14px;
-}
-</style>
-
-## Last updated
-
-February 3, 2026
-
-<p class="subtle">This is my <strong>/now</strong> page (inspired by <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">nownownow.com</a>) — a lightweight snapshot of what I’m doing these days.</p>
+<div style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-faded); transform: rotate(-1deg); text-align: center;">
+  Last updated: February 3, 2026<br>
+  This is my <strong>/now</strong> page (inspired by <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer">nownownow.com</a>) — a lightweight snapshot of what I’m doing these days.
+</div>

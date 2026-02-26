@@ -1,15 +1,10 @@
-<footer class="cli-footer">
-  <div class="cli-command">exit</div>
-  <div class="cli-output" style="color: var(--color-text-muted);">
-    <p>Connection closed. Logging out...</p>
-    <p style="margin-top: 1em;">
-      > LINKS: 
-      {% if site.email %}<a href="mailto:{{ site.email }}">Email</a> | {% endif %}
-      {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a> | {% endif %}
-      {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a> | {% endif %}
-      {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a> | {% endif %}
-      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-    </p>
-    <p>> SYSTEM: &copy; {{ 'now' | date: "%Y" }} {{ site.title }}</p>
-  </div>
+<footer class="notebook-footer">
+  <p>
+    {% if site.email %}<a href="mailto:{{ site.email }}">Email</a> / {% endif %}
+    {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a> / {% endif %}
+    {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a> / {% endif %}
+    {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a> / {% endif %}
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </p>
+  <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }} - scribbled with &lt;3</p>
 </footer>

@@ -2,74 +2,63 @@
 layout: default
 ---
 
-<div class="cli-home">
-  <div class="cli-command">whoami && uptime</div>
-  <div class="cli-output">
-    <p>tylerwince</p>
-    <p>> {{ site.description }}</p>
-    <p>> STATUS: Building, writing, and reading on repeat.</p>
+<div class="notebook-home">
+  <h1 class="handwritten-text" style="font-size: 4rem; margin-top: 0; line-height: 1;">Hi, I'm Tyler.</h1>
+  <p style="font-family: var(--font-handwriting); font-size: 1.8rem; color: var(--color-ink-faded); transform: rotate(1deg); margin-top: -10px;">
+    {{ site.description }}<br>
+    STATUS: Building, writing, and reading on repeat.
+  </p>
+  
+  <hr>
+
+  <h2 class="handwritten-text" style="font-size: 2.5rem;">Apps I've Built (Polaroids)</h2>
+  <div class="polaroid-grid">
+    <a href="/apps/etch/" class="polaroid">
+      <div class="polaroid-title">Etch</div>
+      <div class="polaroid-desc">Spaced repetition</div>
+    </a>
+    <a href="/apps/little-quotes/" class="polaroid">
+      <div class="polaroid-title">Little Quotes</div>
+      <div class="polaroid-desc">Kids' words</div>
+    </a>
+    <a href="/apps/waymark/" class="polaroid">
+      <div class="polaroid-title">Waymark</div>
+      <div class="polaroid-desc">Prayer app</div>
+    </a>
   </div>
 
-  <div class="cli-command">ls -l /apps</div>
-  <div class="cli-output">
-    <div class="table-list">
-      <div class="table-row">
-        <span style="color: var(--color-text-muted);">drwxr-xr-x</span>
-        <span><a href="/apps/etch/">./etch</a> - Spaced repetition, built like Apple would.</span>
-        <span style="color: var(--color-border-dim);">[iOS]</span>
-      </div>
-      <div class="table-row">
-        <span style="color: var(--color-text-muted);">drwxr-xr-x</span>
-        <span><a href="/apps/little-quotes/">./little-quotes</a> - Capture kids' priceless words.</span>
-        <span style="color: var(--color-border-dim);">[iOS]</span>
-      </div>
-      <div class="table-row">
-        <span style="color: var(--color-text-muted);">drwxr-xr-x</span>
-        <span><a href="/apps/waymark/">./waymark</a> - Prayer and community.</span>
-        <span style="color: var(--color-border-dim);">[iOS]</span>
-      </div>
+  <hr>
+
+  <h2 class="handwritten-text" style="font-size: 2.5rem;">Recent Notes</h2>
+  <div class="journal-list">
+    {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
+    {% for post in latest_posts %}
+    <div class="journal-entry">
+      <span class="journal-date">{{ post.date | date: "%b %d, '%y" }}</span>
+      <span class="journal-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
+    </div>
+    {% endfor %}
+    <div class="journal-entry" style="margin-top: 20px;">
+      <span class="journal-date"></span>
+      <span class="journal-title"><a href="{{ '/writing/' | relative_url }}" style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-red);">Read more notes...</a></span>
     </div>
   </div>
 
-  <div class="cli-command">head -n 5 /var/log/writing.log</div>
-  <div class="cli-output">
-    <div class="table-list">
-      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
-      {% for post in latest_posts %}
-      <div class="table-row">
-        <span style="color: var(--color-text-muted);">[{{ post.date | date: "%Y-%m-%d" }}]</span>
-        <span><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
-        <span style="color: var(--color-border-dim);">INFO</span>
-      </div>
+  <hr>
+
+  <h2 class="handwritten-text" style="font-size: 2.5rem;">Currently Reading</h2>
+  <div class="library-grid">
+    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+    {% if currently_reading.size > 0 %}
+      {% for book in currently_reading limit:3 %}
+      <a href="{{ '/reading/' | relative_url }}" class="library-card">
+        <span class="library-card-title">{{ book.title }}</span>
+        <span class="library-card-author">by {{ book.author }}</span>
+        <span class="library-card-rating">Reading...</span>
+      </a>
       {% endfor %}
-      <div class="table-row" style="margin-top: 10px;">
-        <span style="color: var(--color-text-muted);"></span>
-        <span><a href="{{ '/writing/' | relative_url }}">cat /var/log/writing.log (view all)</a></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="cli-command">cat ~/.reading_list | grep "currently_reading"</div>
-  <div class="cli-output">
-    <div class="table-list">
-      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-      {% if currently_reading.size > 0 %}
-        {% for book in currently_reading limit:3 %}
-        <div class="table-row">
-          <span style="color: var(--color-accent);" class="blink">* READING</span>
-          <span>"{{ book.title }}"</span>
-          <span style="color: var(--color-text-muted);">by {{ book.author }}</span>
-        </div>
-        {% endfor %}
-      {% else %}
-        <p style="color: var(--color-text-muted);">No processes found.</p>
-      {% endif %}
-      <div class="table-row" style="margin-top: 10px;">
-        <span style="color: var(--color-text-muted);"></span>
-        <span><a href="{{ '/reading/' | relative_url }}">less ~/.reading_list (view all)</a></span>
-        <span></span>
-      </div>
-    </div>
+    {% else %}
+      <p style="font-family: var(--font-handwriting); color: var(--color-ink-faded); font-size: 1.5rem; transform: rotate(-1deg);">Nothing on the desk right now.</p>
+    {% endif %}
   </div>
 </div>
