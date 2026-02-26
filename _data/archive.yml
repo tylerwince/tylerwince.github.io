@@ -102,3 +102,8 @@
   theme: "HACKER CLI TERMINAL"
   description: "HACKER CLI TERMINAL — designed February 25, 2026"
   commit: "ab6f7f2"
+
+- date: "2026-02-26"
+  theme: "THE SPIRAL NOTEBOOK"
+  description: "THE SPIRAL NOTEBOOK — designed February 26, 2026"
+  commit: "5dd85ce5"
