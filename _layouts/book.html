@@ -2,29 +2,37 @@
 layout: default
 ---
 
-<div class="notebook-book">
-  <div class="book-header" style="margin-bottom: calc(var(--line-height) * 1.5);">
-    <h1 style="font-size: 3rem; margin-top: 0; line-height: 1.1;">{{ page.title }}</h1>
-    <p style="font-family: var(--font-handwriting); font-size: 1.8rem; color: var(--color-ink-faded); transform: rotate(1deg); margin-top: -5px;">
-      by {{ page.author }}
-    </p>
-    
-    <div style="font-family: var(--font-handwriting); color: var(--color-ink-red); font-size: 1.4rem; transform: rotate(-1deg); margin-top: 15px;">
-      {% assign year = page.date | date: "%Y" | to_integer %}
-      {% if year >= 2020 %}Finished: {{ page.date | date: "%b %d, %Y" }}<br>{% endif %}
-      {% if page.stars %}Rating: {% for i in (1..page.stars) %}*{% endfor %}<br>{% endif %}
-      {% if page.genre %}Genre: {{ page.genre }}{% endif %}
-    </div>
-
-    {% if page.takeaway %}
-    <div style="border: 2px solid var(--color-ink-red); padding: 15px; margin: calc(var(--line-height) * 1) 0; transform: rotate(1deg); background: rgba(204, 0, 0, 0.02);">
-      <strong style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-red);">Key Takeaway:</strong> 
-      <span style="font-style: italic;">{{ page.takeaway }}</span>
-    </div>
+<div class="receipt-book">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h1 style="font-size: 1.5em; margin-bottom: 5px;">{{ page.title | upcase }}</h1>
+    <div>AUTHOR: {{ page.author | upcase }}</div>
+  </div>
+  
+  <div style="border: 1px dashed var(--color-ink); padding: 10px; margin-bottom: 20px;">
+    {% assign year = page.date | date: "%Y" | to_integer %}
+    {% if year >= 2020 %}
+      <div class="receipt-item"><span>ACQUIRED:</span><span>{{ page.date | date: "%Y-%m-%d" }}</span></div>
+    {% endif %}
+    {% if page.stars %}
+      <div class="receipt-item"><span>RATING:</span><span>{% for i in (1..page.stars) %}*{% endfor %}</span></div>
+    {% endif %}
+    {% if page.genre %}
+      <div class="receipt-item"><span>GENRE:</span><span>{{ page.genre | upcase }}</span></div>
     {% endif %}
   </div>
 
-  <div class="book-content" style="max-width: 700px;">
+  {% if page.takeaway %}
+  <div style="margin: 20px 0;">
+    <div style="text-align: center; margin-bottom: 5px;">--- KEY TAKEAWAY ---</div>
+    <div style="border-left: 4px solid var(--color-ink); padding-left: 10px; font-style: italic;">
+      {{ page.takeaway }}
+    </div>
+  </div>
+  {% endif %}
+
+  <hr>
+
+  <div class="book-content receipt-body-text">
     {{ content }}
   </div>
 </div>

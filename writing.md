@@ -5,27 +5,25 @@ permalink: /writing/
 description: Essays on product management, technology, and building better software.
 ---
 
-<div class="journal-list">
+<div class="receipt-list">
   {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
   {% for post in sorted_posts %}
-  <div class="journal-entry" style="align-items: center; border-bottom: 1px dashed var(--color-paper-line); padding-bottom: 15px; margin-bottom: 20px;">
-    <div class="journal-date" style="font-size: 1.4rem; transform: rotate(-1deg); min-width: 140px;">
-      {{ post.date | date: "%B %-d, %Y" }}
+  <a href="{{ post.url | relative_url }}" class="receipt-item-link" style="border-bottom: 1px dashed var(--color-ink-faded); padding-bottom: 15px; margin-bottom: 5px;">
+    <div class="receipt-item">
+      <span class="receipt-item-left">{{ post.title | upcase }}</span>
+      <span class="receipt-item-right">{{ post.date | date: "%Y-%m-%d" }}</span>
     </div>
-    <div style="flex: 1;">
-      <a href="{{ post.url | relative_url }}" class="journal-title" style="font-size: 1.8rem; display: block;">{{ post.title }}</a>
-      {% if post.description %}
-      <p style="font-family: var(--font-handwriting); font-size: 1.4rem; color: var(--color-ink-faded); margin: 5px 0 0 0; line-height: 1.2;">
-        {{ post.description }}
-      </p>
-      {% endif %}
+    {% if post.description %}
+    <div style="font-size: 0.85em; color: var(--color-ink-faded); margin-top: 5px; text-transform: none; line-height: 1.3;">
+      {{ post.description }}
     </div>
-    <div style="font-family: var(--font-handwriting); color: var(--color-ink-faded); font-size: 1.2rem; min-width: 80px; text-align: right;">
+    {% endif %}
+    <div style="font-size: 0.8em; text-align: right; margin-top: 5px;">
       {% assign words = post.content | number_of_words %}
       {% assign minutes = words | divided_by: 200 %}
       {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-      ~{{ minutes }} min
+      ~{{ minutes }} MIN
     </div>
-  </div>
+  </a>
   {% endfor %}
 </div>

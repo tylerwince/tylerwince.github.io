@@ -2,63 +2,75 @@
 layout: default
 ---
 
-<div class="notebook-home">
-  <h1 class="handwritten-text" style="font-size: 4rem; margin-top: 0; line-height: 1;">Hi, I'm Tyler.</h1>
-  <p style="font-family: var(--font-handwriting); font-size: 1.8rem; color: var(--color-ink-faded); transform: rotate(1deg); margin-top: -10px;">
-    {{ site.description }}<br>
-    STATUS: Building, writing, and reading on repeat.
-  </p>
-  
-  <hr>
+<div class="receipt-home">
+  <div style="text-align: center; margin-bottom: 20px;">
+    *** {{ site.description | upcase }} ***<br>
+    STATUS: [ ON-LINE ]<br>
+    OP: TYLER
+  </div>
 
-  <h2 class="handwritten-text" style="font-size: 2.5rem;">Apps I've Built (Polaroids)</h2>
-  <div class="polaroid-grid">
-    <a href="/apps/etch/" class="polaroid">
-      <div class="polaroid-title">Etch</div>
-      <div class="polaroid-desc">Spaced repetition</div>
+  <hr>
+  <h2>--- APPS PURCHASED ---</h2>
+
+  <div class="receipt-list">
+    <a href="/apps/etch/" class="receipt-item-link">
+      <div class="receipt-item">
+        <span class="receipt-item-left">ETCH v1.0</span>
+        <span class="receipt-item-right">$0.00</span>
+      </div>
+      <span class="receipt-item-sub">Spaced repetition system</span>
     </a>
-    <a href="/apps/little-quotes/" class="polaroid">
-      <div class="polaroid-title">Little Quotes</div>
-      <div class="polaroid-desc">Kids' words</div>
+    <a href="/apps/little-quotes/" class="receipt-item-link">
+      <div class="receipt-item">
+        <span class="receipt-item-left">LITTLE QUOTES</span>
+        <span class="receipt-item-right">$0.00</span>
+      </div>
+      <span class="receipt-item-sub">Kids' words tracker</span>
     </a>
-    <a href="/apps/waymark/" class="polaroid">
-      <div class="polaroid-title">Waymark</div>
-      <div class="polaroid-desc">Prayer app</div>
+    <a href="/apps/waymark/" class="receipt-item-link">
+      <div class="receipt-item">
+        <span class="receipt-item-left">WAYMARK</span>
+        <span class="receipt-item-right">$0.00</span>
+      </div>
+      <span class="receipt-item-sub">Prayer journaling</span>
     </a>
   </div>
 
   <hr>
-
-  <h2 class="handwritten-text" style="font-size: 2.5rem;">Recent Notes</h2>
-  <div class="journal-list">
+  <h2>--- TXN: WRITING ---</h2>
+  
+  <div class="receipt-list">
     {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
     {% for post in latest_posts %}
-    <div class="journal-entry">
-      <span class="journal-date">{{ post.date | date: "%b %d, '%y" }}</span>
-      <span class="journal-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
-    </div>
+    <a href="{{ post.url | relative_url }}" class="receipt-item-link">
+      <div class="receipt-item">
+        <span class="receipt-item-left">{{ post.title | truncate: 25 | upcase }}</span>
+        <span class="receipt-item-right">{{ post.date | date: "%m/%d" }}</span>
+      </div>
+    </a>
     {% endfor %}
-    <div class="journal-entry" style="margin-top: 20px;">
-      <span class="journal-date"></span>
-      <span class="journal-title"><a href="{{ '/writing/' | relative_url }}" style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-red);">Read more notes...</a></span>
+    <div style="text-align: center; margin-top: 15px;">
+      <a href="{{ '/writing/' | relative_url }}">> VIEW ALL LOGS</a>
     </div>
   </div>
 
   <hr>
+  <h2>--- INVENTORY: READING ---</h2>
 
-  <h2 class="handwritten-text" style="font-size: 2.5rem;">Currently Reading</h2>
-  <div class="library-grid">
+  <div class="receipt-list">
     {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
     {% if currently_reading.size > 0 %}
       {% for book in currently_reading limit:3 %}
-      <a href="{{ '/reading/' | relative_url }}" class="library-card">
-        <span class="library-card-title">{{ book.title }}</span>
-        <span class="library-card-author">by {{ book.author }}</span>
-        <span class="library-card-rating">Reading...</span>
+      <a href="{{ '/reading/' | relative_url }}" class="receipt-item-link">
+        <div class="receipt-item">
+          <span class="receipt-item-left">{{ book.title | truncate: 20 | upcase }}</span>
+          <span class="receipt-item-right">[RDG]</span>
+        </div>
+        <span class="receipt-item-sub">BY: {{ book.author | truncate: 20 | upcase }}</span>
       </a>
       {% endfor %}
     {% else %}
-      <p style="font-family: var(--font-handwriting); color: var(--color-ink-faded); font-size: 1.5rem; transform: rotate(-1deg);">Nothing on the desk right now.</p>
+      <div style="text-align: center; padding: 10px 0;">[ INVENTORY EMPTY ]</div>
     {% endif %}
   </div>
 </div>

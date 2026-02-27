@@ -2,17 +2,18 @@
 layout: default
 ---
 
-<div class="notebook-page-layout">
-  <div class="page-header" style="margin-bottom: calc(var(--line-height) * 2);">
-    <h1 style="font-size: 3.5rem; margin-top: 0;">{{ page.title }}</h1>
+<div class="receipt-page">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 1.5em;">{{ page.title | upcase }}</h1>
     {% if page.description %}
-      <p style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-faded); transform: rotate(1deg);">
-        {{ page.description }}
-      </p>
+      <div style="border: 1px dashed var(--color-ink); padding: 10px; margin: 15px 0;">
+        {{ page.description | upcase }}
+      </div>
     {% endif %}
   </div>
+  <hr>
 
-  <div class="page-content" style="max-width: 700px;">
+  <div class="page-content receipt-body-text">
     {{ content }}
   </div>
 </div>

@@ -1,10 +1,19 @@
-<footer class="notebook-footer">
-  <p>
-    {% if site.email %}<a href="mailto:{{ site.email }}">Email</a> / {% endif %}
-    {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a> / {% endif %}
-    {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a> / {% endif %}
-    {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener">LinkedIn</a> / {% endif %}
+<footer class="receipt-footer" style="text-align: center; margin-top: 40px; padding-bottom: 40px;">
+  <hr>
+  <div class="receipt-item"><span>SUBTOTAL:</span><span>1 PAGE</span></div>
+  <div class="receipt-item"><span>TAX:</span><span>0.00</span></div>
+  <div class="receipt-item"><span>TOTAL:</span><span>$0.00</span></div>
+  <hr>
+  <div style="margin: 20px 0;">
+    {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}">TWITTER</a> / {% endif %}
+    {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GITHUB</a> / {% endif %}
+    {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}">LINKEDIN</a> / {% endif %}
     <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-  </p>
-  <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }} - scribbled with &lt;3</p>
+  </div>
+  <div>THANK YOU FOR VISITING</div>
+  <div style="margin-top: 10px;">{{ 'now' | date: "%Y-%m-%d %H:%M:%S" }}</div>
+  
+  <div class="barcode" style="font-family: 'Libre Barcode 39', monospace; font-size: 48px; margin-top: 20px; font-weight: normal; text-transform: none; letter-spacing: 2px;">
+    *TYLER WINCE*
+  </div>
 </footer>

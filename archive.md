@@ -5,23 +5,27 @@ permalink: /archive/
 description: Browse every past design of this site.
 ---
 
-<div class="notebook-archive">
-  <div class="archive-header" style="margin-bottom: calc(var(--line-height) * 1.5);">
-    <h1 style="font-size: 3.5rem; margin-top: 0;">Past Designs</h1>
-    <p style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-faded); transform: rotate(1deg);">
-      This site is redesigned by AI every day. Archive logs below.
-    </p>
+<div class="receipt-archive">
+  <div style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 1.5em;">ARCHIVE LOGS</h1>
+    <div>--- PAST DEPLOYMENTS ---</div>
   </div>
     
-  <div class="journal-list" style="margin-top: 2em;">
+  <div class="receipt-list">
     {% assign today = site.time | date: "%Y-%m-%d" %}
     {% assign sorted = site.data.archive | sort: "date" | reverse %}
     {% for entry in sorted %}
     {% if entry.date == today %}{% continue %}{% endif %}
-    <div class="journal-entry" style="align-items: center; border-bottom: 1px dashed var(--color-paper-line); padding-bottom: 10px;">
-      <span class="journal-date" style="font-size: 1.2rem; transform: none; min-width: 120px;">{{ entry.date | date: "%b %d, %Y" }}</span>
-      <span class="journal-title" style="flex: 1;"><a href="/archive/{{ entry.date }}/" style="font-size: 1.4rem;">{{ entry.theme }}</a></span>
-      <span style="font-family: var(--font-handwriting); color: var(--color-ink-faded); font-size: 1.2rem;">{{ entry.description | truncate: 60 }}</span>
+    
+    <div style="margin-bottom: 15px;">
+      <a href="/archive/{{ entry.date }}/" class="receipt-item-link" style="display: block; border: 1px dashed var(--color-ink); padding: 10px;">
+        <div class="receipt-item">
+          <span style="font-weight: bold;">{{ entry.date | date: "%Y-%m-%d" }}</span>
+          <span>[VIEW]</span>
+        </div>
+        <div style="margin-top: 5px; font-weight: bold;">{{ entry.theme | upcase }}</div>
+        <div style="margin-top: 5px; font-size: 0.8em; text-transform: none;">{{ entry.description | truncate: 80 }}</div>
+      </a>
     </div>
     {% endfor %}
   </div>

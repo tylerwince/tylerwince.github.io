@@ -1,5 +1,5 @@
 /**
- * Tyler Wince — CLI Interactions
+ * Tyler Wince — Receipt Interactions
  */
 
 (function() {
@@ -7,10 +7,12 @@
 
   // ---- Active nav highlighting ----
   var currentPath = window.location.pathname.replace(/\/$/, '') || '/';
-  document.querySelectorAll('.nav-links a').forEach(function(link) {
+  document.querySelectorAll('.receipt-nav a').forEach(function(link) {
     var href = (link.getAttribute('href') || '').replace(/\/$/, '') || '/';
     if (currentPath === href || (href !== '/' && currentPath.indexOf(href) === 0)) {
-      link.classList.add('active');
+      link.innerHTML = link.innerHTML.replace('[0', '[*');
+      link.style.fontWeight = 'bold';
+      link.style.textDecoration = 'underline';
     }
   });
 
@@ -21,6 +23,9 @@
       if (url.hostname !== window.location.hostname) {
         link.setAttribute('target', '_blank');
         link.setAttribute('rel', 'noopener noreferrer');
+        if (!link.textContent.includes('➚')) {
+          link.innerHTML += ' ➚';
+        }
       }
     } catch (error) {}
   });
@@ -34,6 +39,7 @@
     button.className = 'code-copy-button';
     button.type = 'button';
     button.textContent = '[ COPY ]';
+    button.style.cssText = 'display: block; margin-top: 10px; background: var(--color-ink); color: var(--color-paper); border: none; padding: 5px 10px; cursor: pointer; font-family: inherit; font-size: 12px;';
 
     button.addEventListener('click', async function() {
       try {

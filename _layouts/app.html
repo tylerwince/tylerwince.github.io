@@ -2,52 +2,45 @@
 layout: default
 ---
 
-<div class="notebook-app">
-  <div class="app-header" style="margin-bottom: calc(var(--line-height) * 1.5);">
-    <h1 style="font-size: 3.5rem; margin-top: 0;">{{ page.title }}</h1>
-    <p style="font-family: var(--font-handwriting); font-size: 1.8rem; color: var(--color-ink-red); transform: rotate(-2deg); margin-top: -10px;">
-      {{ page.tagline }}
-    </p>
-    
-    <div style="font-family: var(--font-handwriting); color: var(--color-ink-faded); font-size: 1.4rem;">
-      Platform: {{ page.platform }}<br>
-      Stack: {{ page.tech_stack | join: ", " }}
-    </div>
-    
-    <div style="margin: 20px 0;">
-      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" style="display: inline-block; border: 2px solid var(--color-ink); padding: 5px 15px; font-family: var(--font-handwriting); font-size: 1.6rem; transform: rotate(1deg); background: #fffdf5; box-shadow: 3px 3px 0 var(--color-ink); text-decoration: none;">
-        Download the app
-      </a>
-    </div>
+<div class="receipt-app">
+  <div style="text-align: center; margin-bottom: 20px;">
+    <h1 style="font-size: 2em; margin-bottom: 5px;">{{ page.title | upcase }}</h1>
+    <div>** {{ page.tagline | upcase }} **</div>
   </div>
   
-  <div class="app-content" style="max-width: 750px;">
+  <div style="border: 1px dashed var(--color-ink); padding: 10px; margin-bottom: 20px;">
+    <div class="receipt-item"><span>PLATFORM:</span><span>{{ page.platform | upcase }}</span></div>
+    <div class="receipt-item"><span>STACK:</span><span>{{ page.tech_stack | join: ", " | upcase }}</span></div>
+  </div>
+  
+  <div style="text-align: center; margin: 30px 0;">
+    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" style="display: inline-block; border: 2px solid var(--color-ink); padding: 10px 20px; font-weight: bold; background: var(--color-ink); color: var(--color-paper); font-size: 1.2em;">
+      [ DOWNLOAD INSTALLER ]
+    </a>
+  </div>
+  
+  <hr>
+  
+  <div class="app-content receipt-body-text">
     {{ content }}
   </div>
 </div>
 
 <script>
-// Load and display Etch stack information
 document.addEventListener('DOMContentLoaded', function() {
   var stackCards = document.querySelectorAll('.stack-card');
-
   stackCards.forEach(async function(card) {
     var etchUrl = card.getAttribute('href');
     if (!etchUrl || !etchUrl.endsWith('.etch')) return;
-
     try {
       var response = await fetch(etchUrl);
       var data = await response.json();
-
       var stackName = data.data?.stack?.name || 'Unknown Stack';
       var cardCount = data.data?.stack?.flashcards?.length || 0;
-
       var titleEl = card.querySelector('.stack-card-title');
       var countEl = card.querySelector('.stack-card-count');
-
-      if (titleEl) titleEl.textContent = stackName;
-      if (countEl) countEl.textContent = cardCount + ' cards';
-
+      if (titleEl) titleEl.textContent = stackName.toUpperCase();
+      if (countEl) countEl.textContent = cardCount + ' CRDS';
     } catch (error) {
       console.error('Failed to load stack:', etchUrl, error);
     }

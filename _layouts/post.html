@@ -2,32 +2,44 @@
 layout: default
 ---
 
-<div class="notebook-post">
-  <div class="post-header" style="margin-bottom: calc(var(--line-height) * 2);">
-    <h1 style="font-size: 3rem; margin-top: 0;">{{ page.title }}</h1>
+<div class="receipt-post">
+  <div class="post-header" style="text-align: center; margin-bottom: 30px;">
+    <h1 style="font-size: 1.5em; margin-bottom: 5px;">{{ page.title | upcase }}</h1>
     
     {% if page.description %}
-    <p style="font-family: var(--font-handwriting); font-size: 1.6rem; color: var(--color-ink-faded); transform: rotate(1deg);">
-      {{ page.description }}
-    </p>
+    <div style="border: 1px dashed var(--color-ink); padding: 10px; margin: 15px 0;">
+      {{ page.description | upcase }}
+    </div>
     {% endif %}
     
-    <div style="font-family: var(--font-handwriting); color: var(--color-ink-red); font-size: 1.4rem; transform: rotate(-1deg); margin-top: 20px;">
-      Date: {{ page.date | date: "%B %d, %Y" }}<br>
-      {% assign words = content | number_of_words %}
-      {% assign minutes = words | divided_by: 200 %}
-      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-      Read time: ~{{ minutes }} mins
+    <div style="text-align: left; margin-top: 20px; border-bottom: 1px dashed var(--color-ink); padding-bottom: 10px;">
+      <div class="receipt-item">
+        <span>DATE:</span>
+        <span>{{ page.date | date: "%Y-%m-%d" }}</span>
+      </div>
+      <div class="receipt-item">
+        <span>TIME:</span>
+        <span>
+        {% assign words = content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 %}
+        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+        ~{{ minutes }} MIN
+        </span>
+      </div>
+      <div class="receipt-item">
+        <span>CASHIER:</span>
+        <span>TYLER</span>
+      </div>
     </div>
   </div>
 
-  <div class="post-content" style="max-width: 700px;">
+  <div class="post-content receipt-body-text">
     {{ content }}
   </div>
 
   <hr>
   
-  <div class="post-footer" style="font-family: var(--font-handwriting); font-size: 1.6rem; text-align: center; margin-top: 40px;">
-    <a href="{{ '/writing/' | relative_url }}">Back to notes</a>
+  <div style="text-align: center; margin-top: 20px;">
+    <a href="{{ '/writing/' | relative_url }}"><< RETURN TO LOGS</a>
   </div>
 </div>

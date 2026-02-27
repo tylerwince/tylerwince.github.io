@@ -1,15 +1,17 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="library-card" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <span class="library-card-title">{{ include.book.title }}</span>
-  <span class="library-card-author">by {{ include.book.author }}</span>
-  <span class="library-card-rating">
-    {% if include.unrated %}
-      (unrated)
-    {% else %}
-      {% if include.book.currently_reading %}
-        reading...
-      {% elsif include.book.stars %}
-        {% for i in (1..include.book.stars) %}*{% endfor %}
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="receipt-item-link" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <div class="receipt-item">
+    <span class="receipt-item-left">{{ include.book.title | truncate: 25 | upcase }}</span>
+    <span class="receipt-item-right">
+      {% if include.unrated %}
+        [UNRATED]
+      {% else %}
+        {% if include.book.currently_reading %}
+          [RDG]
+        {% elsif include.book.stars %}
+          {% for i in (1..include.book.stars) %}*{% endfor %}
+        {% endif %}
       {% endif %}
-    {% endif %}
-  </span>
+    </span>
+  </div>
+  <span class="receipt-item-sub">BY: {{ include.book.author | truncate: 20 | upcase }}</span>
 </a>
