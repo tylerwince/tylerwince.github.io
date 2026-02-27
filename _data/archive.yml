@@ -107,3 +107,8 @@
   theme: "THE SPIRAL NOTEBOOK"
   description: "THE SPIRAL NOTEBOOK — designed February 26, 2026"
   commit: "5dd85ce5"
+
+- date: "2026-02-27"
+  theme: "THERMAL RECEIPT"
+  description: "THERMAL RECEIPT — designed February 27, 2026"
+  commit: "27405277"

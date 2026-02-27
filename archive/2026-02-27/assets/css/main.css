@@ -1,0 +1,222 @@
+/* ============================================
+   Tyler Wince — THERMAL RECEIPT Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap');
+
+:root {
+  --color-bg: #1a1a1a;
+  --color-paper: #f9f9f9;
+  --color-ink: #111111;
+  --color-ink-faded: #666666;
+  --font-mono: 'Space Mono', 'Courier New', Courier, monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.pos-machine {
+  display: flex;
+  justify-content: center;
+  padding: 40px 10px;
+  min-height: 100vh;
+}
+
+.receipt-container {
+  width: 100%;
+  max-width: 420px;
+  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-cut-top, .receipt-cut-bottom {
+  height: 10px;
+  background-size: 20px 20px;
+  background-color: transparent;
+  position: relative;
+}
+
+.receipt-cut-top {
+  background-image: radial-gradient(circle at 10px 0, transparent 10px, var(--color-paper) 11px);
+  background-position: center bottom;
+}
+.receipt-cut-bottom {
+  background-image: radial-gradient(circle at 10px 10px, transparent 10px, var(--color-paper) 11px);
+  background-position: center top;
+}
+
+.receipt-paper {
+  background-color: var(--color-paper);
+  padding: 0 20px;
+  flex: 1;
+}
+
+a {
+  color: var(--color-ink);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--color-ink);
+}
+a:hover {
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.ai-banner-receipt {
+  border: 1px dashed var(--color-ink);
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+/* Heading reset */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  margin: 1.5em 0 0.5em;
+  font-size: 1em;
+  text-align: center;
+}
+
+/* Dotted dividers */
+hr {
+  border: none;
+  border-top: 2px dashed var(--color-ink-faded);
+  margin: 20px 0;
+}
+
+/* Receipt items */
+.receipt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.receipt-item-link {
+  display: block;
+  border: none;
+  padding: 5px 0;
+}
+
+.receipt-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.receipt-item-left {
+  flex: 1;
+  padding-right: 10px;
+  font-weight: bold;
+}
+.receipt-item-right {
+  text-align: right;
+  white-space: nowrap;
+}
+.receipt-item-sub {
+  font-size: 0.85em;
+  color: var(--color-ink-faded);
+  margin-left: 15px;
+  display: block;
+  margin-top: 2px;
+}
+
+/* Base typography for content */
+p, ul, ol, blockquote { margin: 0 0 15px 0; }
+ul { list-style-type: none; padding-left: 15px; }
+ul li::before { content: '>'; margin-right: 8px; }
+
+/* Code blocks */
+code, pre {
+  font-family: var(--font-mono);
+}
+code {
+  background: rgba(0,0,0,0.05);
+  padding: 2px 4px;
+}
+pre {
+  background: transparent;
+  border: 1px dashed var(--color-ink);
+  padding: 10px;
+  overflow-x: auto;
+  text-transform: none; /* Keep code raw */
+  font-size: 0.9em;
+}
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 3px double var(--color-ink);
+  padding-left: 15px;
+  font-style: italic;
+  color: var(--color-ink-faded);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  filter: grayscale(100%) contrast(1.2);
+  display: block;
+  margin: 15px auto;
+  border: 2px solid var(--color-ink);
+  padding: 2px;
+}
+
+/* App/Book specifics */
+.receipt-body-text {
+  text-transform: none; /* Make body text readable! */
+}
+.receipt-body-text h1, .receipt-body-text h2, .receipt-body-text h3 {
+  text-transform: uppercase;
+  border-bottom: 1px dashed var(--color-ink);
+  display: inline-block;
+}
+.receipt-body-text a {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  border: none;
+}
+
+/* Component fallbacks for HTML that didn't get converted */
+.polaroid-grid, .library-grid, .journal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.polaroid, .library-card, .journal-entry {
+  display: flex;
+  flex-direction: column;
+  border: 1px dashed var(--color-ink-faded);
+  padding: 10px;
+}
+.feature-grid, .stack-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.feature-card, .stack-card {
+  border: 1px solid var(--color-ink);
+  padding: 10px;
+}
+.screenshot-strip { 
+  display: flex; 
+  flex-direction: column;
+  gap: 10px;
+}
