@@ -2,18 +2,19 @@
 layout: default
 ---
 
-<div class="receipt-page">
-  <div style="text-align: center; margin-bottom: 30px;">
-    <h1 style="font-size: 1.5em;">{{ page.title | upcase }}</h1>
+<div class="oracle-page">
+  <div class="oracle-header">
+    <h1>{{ page.title | upcase }}</h1>
     {% if page.description %}
-      <div style="border: 1px dashed var(--color-ink); padding: 10px; margin: 15px 0;">
-        {{ page.description | upcase }}
+      <div style="font-style: italic; color: var(--parchment-dim); margin-top: 15px;">
+        {{ page.description }}
       </div>
     {% endif %}
   </div>
+  
   <hr>
 
-  <div class="page-content receipt-body-text">
+  <div class="oracle-content">
     {{ content }}
   </div>
 </div>

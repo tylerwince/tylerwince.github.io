@@ -1,222 +1,554 @@
-/* ============================================
-   Tyler Wince — THERMAL RECEIPT Theme
-   ============================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --color-bg: #1a1a1a;
-  --color-paper: #f9f9f9;
-  --color-ink: #111111;
-  --color-ink-faded: #666666;
-  --font-mono: 'Space Mono', 'Courier New', Courier, monospace;
+  --void: #0a0a0c;
+  --void-deep: #050506;
+  --gold: #d4af37;
+  --gold-dim: #8c7322;
+  --parchment: #eaddcf;
+  --parchment-dim: #b0a395;
+  --crimson: #70161e;
+  
+  --font-serif: 'EB Garamond', serif;
+  --font-display: 'Cinzel', serif;
 }
 
-*, *::before, *::after { box-sizing: border-box; }
-
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  background-color: var(--color-bg);
-  color: var(--color-ink);
-  font-family: var(--font-mono);
-  font-size: 14px;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-
-::selection {
-  background: var(--color-ink);
-  color: var(--color-paper);
-}
-
-.pos-machine {
-  display: flex;
-  justify-content: center;
-  padding: 40px 10px;
-  min-height: 100vh;
-}
-
-.receipt-container {
-  width: 100%;
-  max-width: 420px;
-  filter: drop-shadow(0 15px 30px rgba(0,0,0,0.8));
-  display: flex;
-  flex-direction: column;
-}
-
-.receipt-cut-top, .receipt-cut-bottom {
-  height: 10px;
-  background-size: 20px 20px;
-  background-color: transparent;
-  position: relative;
-}
-
-.receipt-cut-top {
-  background-image: radial-gradient(circle at 10px 0, transparent 10px, var(--color-paper) 11px);
-  background-position: center bottom;
-}
-.receipt-cut-bottom {
-  background-image: radial-gradient(circle at 10px 10px, transparent 10px, var(--color-paper) 11px);
-  background-position: center top;
-}
-
-.receipt-paper {
-  background-color: var(--color-paper);
-  padding: 0 20px;
-  flex: 1;
-}
-
-a {
-  color: var(--color-ink);
-  text-decoration: none;
-  border-bottom: 1px dotted var(--color-ink);
-}
-a:hover {
-  background: var(--color-ink);
-  color: var(--color-paper);
-}
-
-.ai-banner-receipt {
-  border: 1px dashed var(--color-ink);
-  padding: 10px;
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 12px;
-}
-
-/* Heading reset */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  margin: 1.5em 0 0.5em;
-  font-size: 1em;
-  text-align: center;
-}
-
-/* Dotted dividers */
-hr {
-  border: none;
-  border-top: 2px dashed var(--color-ink-faded);
-  margin: 20px 0;
-}
-
-/* Receipt items */
-.receipt-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.receipt-item-link {
-  display: block;
-  border: none;
-  padding: 5px 0;
-}
-
-.receipt-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-}
-
-.receipt-item-left {
-  flex: 1;
-  padding-right: 10px;
-  font-weight: bold;
-}
-.receipt-item-right {
-  text-align: right;
-  white-space: nowrap;
-}
-.receipt-item-sub {
-  font-size: 0.85em;
-  color: var(--color-ink-faded);
-  margin-left: 15px;
-  display: block;
-  margin-top: 2px;
-}
-
-/* Base typography for content */
-p, ul, ol, blockquote { margin: 0 0 15px 0; }
-ul { list-style-type: none; padding-left: 15px; }
-ul li::before { content: '>'; margin-right: 8px; }
-
-/* Code blocks */
-code, pre {
-  font-family: var(--font-mono);
-}
-code {
-  background: rgba(0,0,0,0.05);
-  padding: 2px 4px;
-}
-pre {
-  background: transparent;
-  border: 1px dashed var(--color-ink);
-  padding: 10px;
-  overflow-x: auto;
-  text-transform: none; /* Keep code raw */
-  font-size: 0.9em;
-}
-pre code {
-  background: transparent;
   padding: 0;
 }
 
-blockquote {
-  border-left: 3px double var(--color-ink);
-  padding-left: 15px;
-  font-style: italic;
-  color: var(--color-ink-faded);
+body {
+  background-color: var(--void);
+  background-image: radial-gradient(circle at 50% 50%, var(--void) 0%, var(--void-deep) 100%);
+  color: var(--parchment);
+  font-family: var(--font-serif);
+  line-height: 1.6;
+  font-size: 18px;
+  overflow-x: hidden;
+  cursor: crosshair;
 }
 
-/* Images */
-img {
-  max-width: 100%;
-  filter: grayscale(100%) contrast(1.2);
-  display: block;
-  margin: 15px auto;
-  border: 2px solid var(--color-ink);
-  padding: 2px;
+/* AI Banner */
+.ai-banner-oracle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--gold);
+  color: var(--void);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  padding: 5px 0;
+  z-index: 9999;
+  border-bottom: 2px solid var(--void);
 }
 
-/* App/Book specifics */
-.receipt-body-text {
-  text-transform: none; /* Make body text readable! */
-}
-.receipt-body-text h1, .receipt-body-text h2, .receipt-body-text h3 {
-  text-transform: uppercase;
-  border-bottom: 1px dashed var(--color-ink);
-  display: inline-block;
-}
-.receipt-body-text a {
+.ai-banner-oracle a {
+  color: var(--void);
   text-decoration: underline;
-  text-decoration-style: dotted;
-  border: none;
+  font-weight: bold;
 }
 
-/* Component fallbacks for HTML that didn't get converted */
-.polaroid-grid, .library-grid, .journal-list {
+/* Layout Skeleton */
+.realm-container {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 30px; /* For banner */
+}
+
+/* The Pillar (Nav) */
+.pillar {
+  width: 300px;
+  border-right: 1px solid var(--gold-dim);
+  padding: 40px 20px;
+  position: fixed;
+  top: 30px;
+  left: 0;
+  height: calc(100vh - 30px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--void-deep);
+}
+
+.pillar-crest {
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.pillar-crest::before {
+  content: '✧';
+  position: absolute;
+  top: -10px;
+  color: var(--gold);
+  background: var(--void-deep);
+  padding: 0 5px;
+}
+.pillar-crest::after {
+  content: '✧';
+  position: absolute;
+  bottom: -10px;
+  color: var(--gold);
+  background: var(--void-deep);
+  padding: 0 5px;
+}
+
+.pillar-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold);
+  line-height: 1.2;
+}
+
+.pillar-subtitle {
+  font-size: 0.8rem;
+  color: var(--parchment-dim);
+  font-style: italic;
+  margin-top: 5px;
+}
+
+.nav-arcana {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.nav-arcana a {
+  text-decoration: none;
+  color: var(--parchment);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  padding: 10px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-arcana a:hover {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+}
+
+.nav-arcana a::before, .nav-arcana a::after {
+  content: '☾';
+  opacity: 0;
+  color: var(--gold);
+  transition: opacity 0.3s;
+  position: absolute;
+}
+.nav-arcana a::before { left: 10px; }
+.nav-arcana a::after { content: '☽'; right: 10px; }
+.nav-arcana a:hover::before, .nav-arcana a:hover::after {
+  opacity: 1;
+}
+
+/* Scroll Realm (Main Content) */
+.scroll-realm {
+  margin-left: 300px;
+  flex-grow: 1;
+  padding: 60px 80px;
+  max-width: 1000px;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--gold);
+  font-weight: normal;
+  margin-bottom: 20px;
+}
+
+h1 { font-size: 2.5rem; text-align: center; }
+h2 { font-size: 1.8rem; border-bottom: 1px solid var(--gold-dim); padding-bottom: 10px; }
+h3 { font-size: 1.4rem; }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--gold-dim);
+  margin: 40px 0;
+  position: relative;
+}
+hr::after {
+  content: '✦';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  background: var(--void);
+  padding: 0 10px;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-decoration-color: var(--gold-dim);
+}
+a:hover {
+  color: var(--parchment);
+}
+
+/* Homepage Divination Spread */
+.spread-section {
+  margin-bottom: 60px;
+}
+
+.spread-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.spread-header span {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Major Arcana Cards (Apps) */
+.major-arcana-deck {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.arcana-card {
+  width: 240px;
+  height: 380px;
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  padding: 15px;
+  background: linear-gradient(135deg, var(--void) 0%, #1a1a20 100%);
+  text-decoration: none;
+  color: var(--parchment);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(212, 175, 55, 0.1);
+}
+.arcana-card:hover {
+  transform: translateY(-20px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.9), inset 0 0 30px rgba(212, 175, 55, 0.2);
+  color: var(--parchment);
+}
+
+.arcana-card-inner {
+  border: 1px solid var(--gold-dim);
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.arcana-numeral {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.arcana-icon {
+  font-size: 3rem;
+  margin: 20px 0;
+  color: var(--gold);
+}
+
+.arcana-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.arcana-desc {
+  font-size: 0.9rem;
+  color: var(--parchment-dim);
+  font-style: italic;
+  flex-grow: 1;
+}
+
+/* Minor Arcana (Writing) */
+.minor-arcana-list {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.polaroid, .library-card, .journal-entry {
+
+.minor-arcana-item {
+  display: flex;
+  align-items: baseline;
+  padding: 15px 20px;
+  border: 1px solid var(--gold-dim);
+  background: rgba(212, 175, 55, 0.03);
+  text-decoration: none;
+  color: var(--parchment);
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.minor-arcana-item::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 3px; height: 100%;
+  background: var(--gold);
+  transform: scaleY(0);
+  transition: transform 0.3s;
+  transform-origin: bottom;
+}
+
+.minor-arcana-item:hover {
+  background: rgba(212, 175, 55, 0.08);
+  padding-left: 25px;
+}
+.minor-arcana-item:hover::before {
+  transform: scaleY(1);
+}
+
+.minor-icon {
+  color: var(--gold);
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.minor-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  flex-grow: 1;
+}
+
+.minor-date {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold-dim);
+}
+
+/* Books List (Wands & Swords) */
+.tome-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.tome-item {
+  border: 1px solid var(--gold-dim);
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  border: 1px dashed var(--color-ink-faded);
-  padding: 10px;
+  text-decoration: none;
+  color: var(--parchment);
+  transition: all 0.3s;
+  background: linear-gradient(to bottom right, transparent, rgba(212, 175, 55, 0.05));
 }
-.feature-grid, .stack-grid {
+.tome-item:hover {
+  border-color: var(--gold);
+}
+
+.tome-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 5px;
+}
+
+.tome-meta {
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
 }
-.feature-card, .stack-card {
-  border: 1px solid var(--color-ink);
-  padding: 10px;
+
+.tome-rating {
+  color: var(--gold);
+  letter-spacing: 2px;
 }
-.screenshot-strip { 
-  display: flex; 
-  flex-direction: column;
-  gap: 10px;
+
+/* Single Pages */
+.oracle-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+.oracle-header::before, .oracle-header::after {
+  content: '✧';
+  color: var(--gold-dim);
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.oracle-header::before { left: 10%; }
+.oracle-header::after { right: 10%; }
+
+.oracle-meta {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--gold-dim);
+  margin-top: 15px;
+}
+
+.oracle-content {
+  font-size: 1.15rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.oracle-content p {
+  margin-bottom: 1.5em;
+}
+.oracle-content h2, .oracle-content h3 {
+  margin-top: 2em;
+}
+.oracle-content blockquote {
+  border-left: 2px solid var(--gold);
+  padding-left: 20px;
+  font-style: italic;
+  color: var(--parchment-dim);
+  margin: 2em 0;
+}
+.oracle-content img {
+  max-width: 100%;
+  border: 1px solid var(--gold-dim);
+  padding: 5px;
+  background: var(--void-deep);
+  border-radius: 5px;
+}
+.oracle-content pre, .oracle-content code {
+  background: var(--void-deep);
+  border: 1px solid var(--gold-dim);
+  color: var(--parchment);
+  font-family: monospace;
+}
+.oracle-content pre {
+  padding: 15px;
+  overflow-x: auto;
+  margin: 2em 0;
+}
+
+.download-sigil {
+  display: inline-block;
+  padding: 15px 40px;
+  border: 2px solid var(--gold);
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.download-sigil::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: rgba(212, 175, 55, 0.2);
+  transition: left 0.5s;
+}
+.download-sigil:hover {
+  background: var(--gold);
+  color: var(--void);
+}
+.download-sigil:hover::before {
+  left: 100%;
+}
+
+.takeaway-box {
+  border: 1px solid var(--gold);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+}
+.takeaway-box::before {
+  content: 'THE ORACLE SAYS';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--void);
+  padding: 0 15px;
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+}
+
+.footer-sigil {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--gold-dim);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+}
+.footer-links {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.footer-links a {
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
+.barcode { display: none; } /* hide the old receipt barcode */
+
+@media (max-width: 900px) {
+  .realm-container {
+    flex-direction: column;
+    padding-top: 40px;
+  }
+  .pillar {
+    width: 100%;
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--gold-dim);
+    padding: 30px 20px;
+    top: 0;
+  }
+  .scroll-realm {
+    margin-left: 0;
+    padding: 40px 20px;
+  }
+  .nav-arcana {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .oracle-header::before, .oracle-header::after {
+    display: none;
+  }
 }

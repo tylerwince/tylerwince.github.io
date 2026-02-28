@@ -2,44 +2,36 @@
 layout: default
 ---
 
-<div class="receipt-post">
-  <div class="post-header" style="text-align: center; margin-bottom: 30px;">
-    <h1 style="font-size: 1.5em; margin-bottom: 5px;">{{ page.title | upcase }}</h1>
+<div class="oracle-page">
+  <div class="oracle-header">
+    <h1>{{ page.title | upcase }}</h1>
     
     {% if page.description %}
-    <div style="border: 1px dashed var(--color-ink); padding: 10px; margin: 15px 0;">
-      {{ page.description | upcase }}
+    <div style="font-style: italic; color: var(--parchment-dim); margin-top: 15px;">
+      {{ page.description }}
     </div>
     {% endif %}
     
-    <div style="text-align: left; margin-top: 20px; border-bottom: 1px dashed var(--color-ink); padding-bottom: 10px;">
-      <div class="receipt-item">
-        <span>DATE:</span>
-        <span>{{ page.date | date: "%Y-%m-%d" }}</span>
-      </div>
-      <div class="receipt-item">
-        <span>TIME:</span>
-        <span>
-        {% assign words = content | number_of_words %}
-        {% assign minutes = words | divided_by: 200 %}
-        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-        ~{{ minutes }} MIN
-        </span>
-      </div>
-      <div class="receipt-item">
-        <span>CASHIER:</span>
-        <span>TYLER</span>
-      </div>
+    <div class="oracle-meta">
+      <span>REVEALED: {{ page.date | date: "%B %d, %Y" }}</span>
+      <span>
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 %}
+      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+      LENGTH: ~{{ minutes }} MIN
+      </span>
     </div>
   </div>
 
-  <div class="post-content receipt-body-text">
+  <hr>
+
+  <div class="oracle-content">
     {{ content }}
   </div>
 
   <hr>
   
-  <div style="text-align: center; margin-top: 20px;">
-    <a href="{{ '/writing/' | relative_url }}"><< RETURN TO LOGS</a>
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="{{ '/writing/' | relative_url }}" style="font-family: var(--font-display); letter-spacing: 2px;"><< BACK TO LOGS</a>
   </div>
 </div>

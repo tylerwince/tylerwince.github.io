@@ -2,26 +2,25 @@
 layout: default
 ---
 
-<div class="receipt-app">
-  <div style="text-align: center; margin-bottom: 20px;">
-    <h1 style="font-size: 2em; margin-bottom: 5px;">{{ page.title | upcase }}</h1>
-    <div>** {{ page.tagline | upcase }} **</div>
+<div class="oracle-page">
+  <div class="oracle-header">
+    <h1>{{ page.title | upcase }}</h1>
+    <div style="font-style: italic; color: var(--parchment); font-size: 1.2rem;">{{ page.tagline }}</div>
+    <div class="oracle-meta">
+      <span>DOMAIN: {{ page.platform | upcase }}</span>
+      <span>SPELLS: {{ page.tech_stack | join: ", " | upcase }}</span>
+    </div>
   </div>
   
-  <div style="border: 1px dashed var(--color-ink); padding: 10px; margin-bottom: 20px;">
-    <div class="receipt-item"><span>PLATFORM:</span><span>{{ page.platform | upcase }}</span></div>
-    <div class="receipt-item"><span>STACK:</span><span>{{ page.tech_stack | join: ", " | upcase }}</span></div>
-  </div>
-  
-  <div style="text-align: center; margin: 30px 0;">
-    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" style="display: inline-block; border: 2px solid var(--color-ink); padding: 10px 20px; font-weight: bold; background: var(--color-ink); color: var(--color-paper); font-size: 1.2em;">
-      [ DOWNLOAD INSTALLER ]
+  <div style="text-align: center; margin: 40px 0;">
+    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="download-sigil">
+      SUMMON APPLICATION
     </a>
   </div>
   
   <hr>
   
-  <div class="app-content receipt-body-text">
+  <div class="oracle-content">
     {{ content }}
   </div>
 </div>
@@ -35,14 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       var response = await fetch(etchUrl);
       var data = await response.json();
-      var stackName = data.data?.stack?.name || 'Unknown Stack';
+      var stackName = data.data?.stack?.name || 'Unknown Scroll';
       var cardCount = data.data?.stack?.flashcards?.length || 0;
       var titleEl = card.querySelector('.stack-card-title');
       var countEl = card.querySelector('.stack-card-count');
       if (titleEl) titleEl.textContent = stackName.toUpperCase();
-      if (countEl) countEl.textContent = cardCount + ' CRDS';
+      if (countEl) countEl.textContent = cardCount + ' RUNES';
     } catch (error) {
-      console.error('Failed to load stack:', etchUrl, error);
+      console.error('Failed to summon scroll:', etchUrl, error);
     }
   });
 });

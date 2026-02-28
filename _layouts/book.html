@@ -2,37 +2,40 @@
 layout: default
 ---
 
-<div class="receipt-book">
-  <div style="text-align: center; margin-bottom: 20px;">
-    <h1 style="font-size: 1.5em; margin-bottom: 5px;">{{ page.title | upcase }}</h1>
-    <div>AUTHOR: {{ page.author | upcase }}</div>
-  </div>
-  
-  <div style="border: 1px dashed var(--color-ink); padding: 10px; margin-bottom: 20px;">
-    {% assign year = page.date | date: "%Y" | to_integer %}
-    {% if year >= 2020 %}
-      <div class="receipt-item"><span>ACQUIRED:</span><span>{{ page.date | date: "%Y-%m-%d" }}</span></div>
-    {% endif %}
-    {% if page.stars %}
-      <div class="receipt-item"><span>RATING:</span><span>{% for i in (1..page.stars) %}*{% endfor %}</span></div>
-    {% endif %}
-    {% if page.genre %}
-      <div class="receipt-item"><span>GENRE:</span><span>{{ page.genre | upcase }}</span></div>
-    {% endif %}
+<div class="oracle-page">
+  <div class="oracle-header">
+    <h1>{{ page.title | upcase }}</h1>
+    <div style="font-family: var(--font-display); color: var(--gold-dim); font-size: 1.2rem; letter-spacing: 2px;">
+      SCRIBE: {{ page.author | upcase }}
+    </div>
+    
+    <div class="oracle-meta">
+      {% assign year = page.date | date: "%Y" | to_integer %}
+      {% if year >= 2020 %}
+        <span>LOGGED: {{ page.date | date: "%B %d, %Y" }}</span>
+      {% endif %}
+      
+      {% if page.genre %}
+        <span>LORE: {{ page.genre | upcase }}</span>
+      {% endif %}
+      
+      {% if page.stars %}
+        <span style="color: var(--gold);">
+          POWER: {% for i in (1..page.stars) %}★{% endfor %}
+        </span>
+      {% endif %}
+    </div>
   </div>
 
   {% if page.takeaway %}
-  <div style="margin: 20px 0;">
-    <div style="text-align: center; margin-bottom: 5px;">--- KEY TAKEAWAY ---</div>
-    <div style="border-left: 4px solid var(--color-ink); padding-left: 10px; font-style: italic;">
-      {{ page.takeaway }}
-    </div>
+  <div class="takeaway-box">
+    {{ page.takeaway }}
   </div>
   {% endif %}
 
   <hr>
 
-  <div class="book-content receipt-body-text">
+  <div class="oracle-content">
     {{ content }}
   </div>
 </div>

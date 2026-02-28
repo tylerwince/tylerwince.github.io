@@ -2,75 +2,89 @@
 layout: default
 ---
 
-<div class="receipt-home">
-  <div style="text-align: center; margin-bottom: 20px;">
-    *** {{ site.description | upcase }} ***<br>
-    STATUS: [ ON-LINE ]<br>
-    OP: TYLER
-  </div>
-
-  <hr>
-  <h2>--- APPS PURCHASED ---</h2>
-
-  <div class="receipt-list">
-    <a href="/apps/etch/" class="receipt-item-link">
-      <div class="receipt-item">
-        <span class="receipt-item-left">ETCH v1.0</span>
-        <span class="receipt-item-right">$0.00</span>
-      </div>
-      <span class="receipt-item-sub">Spaced repetition system</span>
-    </a>
-    <a href="/apps/little-quotes/" class="receipt-item-link">
-      <div class="receipt-item">
-        <span class="receipt-item-left">LITTLE QUOTES</span>
-        <span class="receipt-item-right">$0.00</span>
-      </div>
-      <span class="receipt-item-sub">Kids' words tracker</span>
-    </a>
-    <a href="/apps/waymark/" class="receipt-item-link">
-      <div class="receipt-item">
-        <span class="receipt-item-left">WAYMARK</span>
-        <span class="receipt-item-right">$0.00</span>
-      </div>
-      <span class="receipt-item-sub">Prayer journaling</span>
-    </a>
-  </div>
-
-  <hr>
-  <h2>--- TXN: WRITING ---</h2>
+<div class="home-spread">
   
-  <div class="receipt-list">
-    {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
-    {% for post in latest_posts %}
-    <a href="{{ post.url | relative_url }}" class="receipt-item-link">
-      <div class="receipt-item">
-        <span class="receipt-item-left">{{ post.title | truncate: 25 | upcase }}</span>
-        <span class="receipt-item-right">{{ post.date | date: "%m/%d" }}</span>
-      </div>
-    </a>
-    {% endfor %}
-    <div style="text-align: center; margin-top: 15px;">
-      <a href="{{ '/writing/' | relative_url }}">> VIEW ALL LOGS</a>
+  <div class="spread-section">
+    <div class="spread-header">
+      <span>THE MAJOR ARCANA</span>
+      <p style="color: var(--parchment-dim); font-style: italic;">Artifacts forged in code.</p>
+    </div>
+    
+    <div class="major-arcana-deck">
+      <a href="/apps/etch/" class="arcana-card">
+        <div class="arcana-card-inner">
+          <div class="arcana-numeral">0</div>
+          <div class="arcana-icon">✧</div>
+          <div class="arcana-title">ETCH</div>
+          <div class="arcana-desc">The Fool's journey of spaced repetition. Remember what matters.</div>
+        </div>
+      </a>
+      <a href="/apps/little-quotes/" class="arcana-card">
+        <div class="arcana-card-inner">
+          <div class="arcana-numeral">I</div>
+          <div class="arcana-icon">✦</div>
+          <div class="arcana-title">LITTLE QUOTES</div>
+          <div class="arcana-desc">The Magician's record of youthful wisdom and words.</div>
+        </div>
+      </a>
+      <a href="/apps/waymark/" class="arcana-card">
+        <div class="arcana-card-inner">
+          <div class="arcana-numeral">II</div>
+          <div class="arcana-icon">☾</div>
+          <div class="arcana-title">WAYMARK</div>
+          <div class="arcana-desc">The High Priestess of prayer and inner journaling.</div>
+        </div>
+      </a>
     </div>
   </div>
 
   <hr>
-  <h2>--- INVENTORY: READING ---</h2>
 
-  <div class="receipt-list">
-    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-    {% if currently_reading.size > 0 %}
-      {% for book in currently_reading limit:3 %}
-      <a href="{{ '/reading/' | relative_url }}" class="receipt-item-link">
-        <div class="receipt-item">
-          <span class="receipt-item-left">{{ book.title | truncate: 20 | upcase }}</span>
-          <span class="receipt-item-right">[RDG]</span>
-        </div>
-        <span class="receipt-item-sub">BY: {{ book.author | truncate: 20 | upcase }}</span>
+  <div class="spread-section">
+    <div class="spread-header">
+      <span>THE MINOR ARCANA</span>
+      <p style="color: var(--parchment-dim); font-style: italic;">Inscriptions, logs, and musings from the journey.</p>
+    </div>
+    
+    <div class="minor-arcana-list">
+      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
+      {% for post in latest_posts %}
+      <a href="{{ post.url | relative_url }}" class="minor-arcana-item">
+        <span class="minor-icon">☼</span>
+        <span class="minor-title">{{ post.title | upcase }}</span>
+        <span class="minor-date">{{ post.date | date: "%B %d, %Y" }}</span>
       </a>
       {% endfor %}
-    {% else %}
-      <div style="text-align: center; padding: 10px 0;">[ INVENTORY EMPTY ]</div>
-    {% endif %}
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="{{ '/writing/' | relative_url }}" style="font-family: var(--font-display); letter-spacing: 2px;">READ ALL LOGS >></a>
+    </div>
   </div>
+
+  <hr>
+
+  <div class="spread-section">
+    <div class="spread-header">
+      <span>THE LIBRARY OF TOMES</span>
+      <p style="color: var(--parchment-dim); font-style: italic;">Currently translating from the ancients.</p>
+    </div>
+
+    <div class="tome-list">
+      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      {% if currently_reading.size > 0 %}
+        {% for book in currently_reading limit:3 %}
+        <a href="{{ '/reading/' | relative_url }}" class="tome-item">
+          <span class="tome-title">{{ book.title | truncate: 40 | upcase }}</span>
+          <div class="tome-meta">
+            <span>BY {{ book.author | truncate: 20 | upcase }}</span>
+            <span class="tome-rating">[ READING ]</span>
+          </div>
+        </a>
+        {% endfor %}
+      {% else %}
+        <div style="text-align: center; color: var(--gold-dim); padding: 20px;">[ NO ACTIVE INCANTATIONS ]</div>
+      {% endif %}
+    </div>
+  </div>
+
 </div>

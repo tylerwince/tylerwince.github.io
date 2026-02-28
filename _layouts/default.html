@@ -22,25 +22,19 @@
   {% feed_meta %}
 </head>
 <body>
-  <div class="pos-machine">
-    <div class="receipt-container">
-      <div class="receipt-cut-top"></div>
-      <div class="receipt-paper">
-        <div class="ai-banner-receipt">
-          SYS.MSG: AI GENERATED DESIGN.<br>
-          > <a href="{{ '/archive/' | relative_url }}">VIEW_LOGS</a>
-        </div>
+  <div class="ai-banner-oracle">
+    ✦ THE ARCANA SPREAD: DIVINED BY AI ✦ 
+    <a href="{{ '/archive/' | relative_url }}">[ READ THE STARS ]</a>
+  </div>
 
-        {% include header.html %}
+  <div class="realm-container">
+    {% include header.html %}
 
-        <main id="receipt-main">
-          {{ content }}
-        </main>
-
-        {% include footer.html %}
-      </div>
-      <div class="receipt-cut-bottom"></div>
-    </div>
+    <main class="scroll-realm">
+      {{ content }}
+      
+      {% include footer.html %}
+    </main>
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

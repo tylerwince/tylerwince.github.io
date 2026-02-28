@@ -1,17 +1,17 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="receipt-item-link" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div class="receipt-item">
-    <span class="receipt-item-left">{{ include.book.title | truncate: 25 | upcase }}</span>
-    <span class="receipt-item-right">
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="tome-item" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <span class="tome-title">{{ include.book.title | truncate: 40 | upcase }}</span>
+  <div class="tome-meta">
+    <span>BY {{ include.book.author | truncate: 20 | upcase }}</span>
+    <span class="tome-rating">
       {% if include.unrated %}
-        [UNRATED]
+        [ UNRATED ]
       {% else %}
         {% if include.book.currently_reading %}
-          [RDG]
+          [ READING ]
         {% elsif include.book.stars %}
-          {% for i in (1..include.book.stars) %}*{% endfor %}
+          {% for i in (1..include.book.stars) %}★{% endfor %}
         {% endif %}
       {% endif %}
     </span>
   </div>
-  <span class="receipt-item-sub">BY: {{ include.book.author | truncate: 20 | upcase }}</span>
 </a>
