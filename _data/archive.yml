@@ -112,3 +112,8 @@
   theme: "THERMAL RECEIPT"
   description: "THERMAL RECEIPT — designed February 27, 2026"
   commit: "27405277"
+
+- date: "2026-02-28"
+  theme: "THE ARCANA SPREAD"
+  description: "THE ARCANA SPREAD — designed February 28, 2026"
+  commit: "6a29a143"
