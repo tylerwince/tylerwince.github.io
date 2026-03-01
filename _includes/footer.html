@@ -1,12 +1,18 @@
-<footer class="footer-sigil">
-  <div class="footer-links">
-    {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}">TWITTER</a>{% endif %}
-    {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GITHUB</a>{% endif %}
-    {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}">LINKEDIN</a>{% endif %}
-    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
-  </div>
-  <div>
-    ✧ CONSTANT CONJURATION ✧<br>
-    <span style="color: var(--parchment-dim); font-size: 0.8rem;">THE WHEEL TURNS ON: {{ 'now' | date: "%Y-%m-%d" }}</span>
+<footer class="swiss-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <strong>CONNECTIONS</strong>
+      <div class="footer-links">
+        {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}">TWITTER</a>{% endif %}
+        {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GITHUB</a>{% endif %}
+        {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}">LINKEDIN</a>{% endif %}
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+      </div>
+    </div>
+    <div class="footer-col" style="text-align: right;">
+      <strong>STATUS</strong>
+      <div>GENERATED: {{ 'now' | date: "%Y-%m-%d" }}</div>
+      <div>GRID: ACTIVE</div>
+    </div>
   </div>
 </footer>

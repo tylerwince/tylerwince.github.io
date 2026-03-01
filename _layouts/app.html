@@ -2,25 +2,23 @@
 layout: default
 ---
 
-<div class="oracle-page">
-  <div class="oracle-header">
+<div class="page-container">
+  <div class="page-header">
     <h1>{{ page.title | upcase }}</h1>
-    <div style="font-style: italic; color: var(--parchment); font-size: 1.2rem;">{{ page.tagline }}</div>
-    <div class="oracle-meta">
-      <span>DOMAIN: {{ page.platform | upcase }}</span>
-      <span>SPELLS: {{ page.tech_stack | join: ", " | upcase }}</span>
+    <div style="font-size: 1.5rem; font-weight: 600; margin-top: 20px;">{{ page.tagline }}</div>
+    <div class="page-meta">
+      <span class="meta-tag">PLATFORM: {{ page.platform | upcase }}</span>
+      <span class="meta-tag">STACK: {{ page.tech_stack | join: ", " | upcase }}</span>
     </div>
   </div>
   
-  <div style="text-align: center; margin: 40px 0;">
-    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="download-sigil">
-      SUMMON APPLICATION
+  <div>
+    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="app-download-btn">
+      INSTALL / DOWNLOAD &darr;
     </a>
   </div>
   
-  <hr>
-  
-  <div class="oracle-content">
+  <div class="page-content">
     {{ content }}
   </div>
 </div>
@@ -34,15 +32,15 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       var response = await fetch(etchUrl);
       var data = await response.json();
-      var stackName = data.data?.stack?.name || 'Unknown Scroll';
+      var stackName = data.data?.stack?.name || 'Unknown Stack';
       var cardCount = data.data?.stack?.flashcards?.length || 0;
       var titleEl = card.querySelector('.stack-card-title');
       var countEl = card.querySelector('.stack-card-count');
       if (titleEl) titleEl.textContent = stackName.toUpperCase();
-      if (countEl) countEl.textContent = cardCount + ' RUNES';
+      if (countEl) countEl.textContent = 'ITEMS: ' + cardCount;
     } catch (error) {
-      console.error('Failed to summon scroll:', etchUrl, error);
+      console.error('Failed to load stack:', etchUrl, error);
     }
   });
 });
-</script>
+</script

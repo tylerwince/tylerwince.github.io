@@ -1,25 +1,24 @@
-<nav class="pillar">
-  <div class="pillar-crest">
-    <div>
-      <div class="pillar-title">TYLER<br>WINCE</div>
-      <div class="pillar-subtitle">SYSTEMS &<br>SPELLS</div>
-    </div>
+<header class="swiss-header">
+  <div class="header-logo-block">
+    <div class="logo-title">TYLER<br>WINCE</div>
+    <div class="logo-subtitle">SYSTEMS &<br>ENGINEERING</div>
   </div>
   
-  <div class="nav-arcana">
-    <a href="{{ '/' | relative_url }}">I. HOME</a>
+  <nav class="swiss-nav">
+    <a href="{{ '/' | relative_url }}" class="nav-item">
+      <span class="nav-num">01</span>
+      <span class="nav-text">HOME</span>
+    </a>
     {% assign idx = 2 %}
     {% for nav_page_name in site.header_pages %}
       {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
       {% if nav_page %}
-      {% assign roman = "" %}
-      {% if idx == 2 %}{% assign roman = "II" %}{% endif %}
-      {% if idx == 3 %}{% assign roman = "III" %}{% endif %}
-      {% if idx == 4 %}{% assign roman = "IV" %}{% endif %}
-      {% if idx == 5 %}{% assign roman = "V" %}{% endif %}
-      <a href="{{ nav_page.url | relative_url }}">{{ roman }}. {{ nav_page.title | upcase }}</a>
+      <a href="{{ nav_page.url | relative_url }}" class="nav-item">
+        <span class="nav-num">0{{ idx }}</span>
+        <span class="nav-text">{{ nav_page.title | upcase }}</span>
+      </a>
       {% assign idx = idx | plus: 1 %}
       {% endif %}
     {% endfor %}
-  </div>
-</nav>
+  </nav>
+</header

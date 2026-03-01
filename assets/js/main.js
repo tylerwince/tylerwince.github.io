@@ -1,35 +1,41 @@
-// The Arcana Spread JS
+// THE SWISS ARCHIVE JS
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log("✧ The stars align. The spread is dealt. ✧");
+  console.log("SYSTEM BOOT: MÜLLER-BROCKMANN GRID ACTIVE.");
+  console.log("DESIGN IS MATHEMATICS. FORM IS FUNCTION.");
 
-  // Add subtle float animations to minor arcana items
-  const minorItems = document.querySelectorAll('.minor-arcana-item');
-  minorItems.forEach((item, index) => {
-    item.style.animationDelay = `${index * 0.1}s`;
-    item.animate([
-      { opacity: 0, transform: 'translateX(-20px)' },
-      { opacity: 1, transform: 'translateX(0)' }
-    ], {
-      duration: 600,
-      delay: index * 100,
-      fill: 'forwards',
-      easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+  // Hover effect for writing rows
+  const writingRows = document.querySelectorAll('.writing-row');
+  writingRows.forEach((row) => {
+    row.addEventListener('mouseenter', () => {
+      const action = row.querySelector('.w-action');
+      if (action) {
+        action.innerHTML = 'READ_NOW &rarr;';
+      }
     });
-  });
-  
-  // Card deal animation for Major Arcana
-  const cards = document.querySelectorAll('.arcana-card');
-  cards.forEach((card, index) => {
-    card.animate([
-      { opacity: 0, transform: 'translateY(50px) rotate(-5deg)' },
-      { opacity: 1, transform: 'translateY(0) rotate(0)' }
-    ], {
-      duration: 800,
-      delay: 200 + (index * 200),
-      fill: 'forwards',
-      easing: 'ease-out'
+    row.addEventListener('mouseleave', () => {
+      const action = row.querySelector('.w-action');
+      if (action) {
+        action.innerHTML = 'READ &rarr;';
+      }
     });
   });
 
+  // Stagger in the apps
+  const apps = document.querySelectorAll('.app-block');
+  apps.forEach((app, i) => {
+    app.style.opacity = '0';
+    app.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+      app.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      app.style.opacity = '1';
+      app.style.transform = 'translateY(0)';
+      
+      // Reset transition for hover effect
+      setTimeout(() => {
+        app.style.transition = 'transform 0.3s';
+      }, 500);
+    }, i * 150);
+  });
 });

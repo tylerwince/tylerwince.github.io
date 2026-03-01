@@ -4,37 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-
-  {% if site.google_analytics %}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '{{ site.google_analytics }}');
-  </script>
-  {% endif %}
-
   {% feed_meta %}
 </head>
 <body>
-  <div class="ai-banner-oracle">
-    ✦ THE ARCANA SPREAD: DIVINED BY AI ✦ 
-    <a href="{{ '/archive/' | relative_url }}">[ READ THE STARS ]</a>
+  <div class="ai-banner-grid">
+    <div class="banner-text">SYSTEM: AUTOMATED REDESIGN PROTOCOL</div>
+    <a href="{{ '/archive/' | relative_url }}" class="banner-link">VIEW ARCHIVE &rarr;</a>
   </div>
 
-  <div class="realm-container">
+  <div class="swiss-grid-container">
     {% include header.html %}
 
-    <main class="scroll-realm">
+    <main class="swiss-content">
       {{ content }}
-      
-      {% include footer.html %}
     </main>
+    
+    {% include footer.html %}
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

@@ -2,40 +2,35 @@
 layout: default
 ---
 
-<div class="oracle-page">
-  <div class="oracle-header">
+<div class="page-container">
+  <div class="page-header">
     <h1>{{ page.title | upcase }}</h1>
-    <div style="font-family: var(--font-display); color: var(--gold-dim); font-size: 1.2rem; letter-spacing: 2px;">
-      SCRIBE: {{ page.author | upcase }}
-    </div>
     
-    <div class="oracle-meta">
+    <div class="page-meta">
+      <span class="meta-tag">AUTHOR: {{ page.author | upcase }}</span>
       {% assign year = page.date | date: "%Y" | to_integer %}
       {% if year >= 2020 %}
-        <span>LOGGED: {{ page.date | date: "%B %d, %Y" }}</span>
+        <span class="meta-tag">DATE: {{ page.date | date: "%Y.%m.%d" }}</span>
       {% endif %}
-      
       {% if page.genre %}
-        <span>LORE: {{ page.genre | upcase }}</span>
+        <span class="meta-tag">GENRE: {{ page.genre | upcase }}</span>
       {% endif %}
-      
       {% if page.stars %}
-        <span style="color: var(--gold);">
-          POWER: {% for i in (1..page.stars) %}★{% endfor %}
+        <span class="meta-tag" style="background: var(--yellow); color: var(--black);">
+          RATING: {% for i in (1..page.stars) %}★{% endfor %}
         </span>
       {% endif %}
     </div>
   </div>
 
   {% if page.takeaway %}
-  <div class="takeaway-box">
+  <div class="takeaway-block">
+    <div class="takeaway-label">KEY TAKEAWAY</div>
     {{ page.takeaway }}
   </div>
   {% endif %}
 
-  <hr>
-
-  <div class="oracle-content">
+  <div class="page-content">
     {{ content }}
   </div>
 </div>

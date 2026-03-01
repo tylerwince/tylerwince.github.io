@@ -2,89 +2,87 @@
 layout: default
 ---
 
-<div class="home-spread">
+<div class="home-grid">
   
-  <div class="spread-section">
-    <div class="spread-header">
-      <span>THE MAJOR ARCANA</span>
-      <p style="color: var(--parchment-dim); font-style: italic;">Artifacts forged in code.</p>
+  <section class="grid-section section-apps">
+    <div class="section-heading">
+      <h2>APPLICATIONS</h2>
+      <div class="heading-meta">SOFTWARE ARTIFACTS</div>
     </div>
     
-    <div class="major-arcana-deck">
-      <a href="/apps/etch/" class="arcana-card">
-        <div class="arcana-card-inner">
-          <div class="arcana-numeral">0</div>
-          <div class="arcana-icon">✧</div>
-          <div class="arcana-title">ETCH</div>
-          <div class="arcana-desc">The Fool's journey of spaced repetition. Remember what matters.</div>
+    <div class="apps-container">
+      <a href="/apps/etch/" class="app-block bg-red">
+        <div class="app-bg-num">01</div>
+        <div class="app-info">
+          <h3>ETCH</h3>
+          <p>Spaced repetition. Remember what matters.</p>
         </div>
       </a>
-      <a href="/apps/little-quotes/" class="arcana-card">
-        <div class="arcana-card-inner">
-          <div class="arcana-numeral">I</div>
-          <div class="arcana-icon">✦</div>
-          <div class="arcana-title">LITTLE QUOTES</div>
-          <div class="arcana-desc">The Magician's record of youthful wisdom and words.</div>
+      <a href="/apps/little-quotes/" class="app-block bg-yellow">
+        <div class="app-bg-num">02</div>
+        <div class="app-info">
+          <h3>LITTLE QUOTES</h3>
+          <p>Youthful wisdom and words.</p>
         </div>
       </a>
-      <a href="/apps/waymark/" class="arcana-card">
-        <div class="arcana-card-inner">
-          <div class="arcana-numeral">II</div>
-          <div class="arcana-icon">☾</div>
-          <div class="arcana-title">WAYMARK</div>
-          <div class="arcana-desc">The High Priestess of prayer and inner journaling.</div>
+      <a href="/apps/waymark/" class="app-block bg-blue">
+        <div class="app-bg-num">03</div>
+        <div class="app-info">
+          <h3>WAYMARK</h3>
+          <p>Prayer and inner journaling.</p>
         </div>
       </a>
     </div>
-  </div>
+  </section>
 
-  <hr>
-
-  <div class="spread-section">
-    <div class="spread-header">
-      <span>THE MINOR ARCANA</span>
-      <p style="color: var(--parchment-dim); font-style: italic;">Inscriptions, logs, and musings from the journey.</p>
+  <section class="grid-section section-writing">
+    <div class="section-heading">
+      <h2>WRITING</h2>
+      <div class="heading-meta">LOGS AND OBSERVATIONS</div>
     </div>
     
-    <div class="minor-arcana-list">
+    <div class="writing-table">
+      <div class="writing-header">
+        <div class="w-col">DATE</div>
+        <div class="w-col">TITLE</div>
+        <div class="w-col">ACTION</div>
+      </div>
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="minor-arcana-item">
-        <span class="minor-icon">☼</span>
-        <span class="minor-title">{{ post.title | upcase }}</span>
-        <span class="minor-date">{{ post.date | date: "%B %d, %Y" }}</span>
+      <a href="{{ post.url | relative_url }}" class="writing-row">
+        <div class="w-col w-date">{{ post.date | date: "%Y.%m.%d" }}</div>
+        <div class="w-col w-title">{{ post.title | upcase }}</div>
+        <div class="w-col w-action">READ &rarr;</div>
       </a>
       {% endfor %}
     </div>
-    <div style="text-align: center; margin-top: 30px;">
-      <a href="{{ '/writing/' | relative_url }}" style="font-family: var(--font-display); letter-spacing: 2px;">READ ALL LOGS >></a>
-    </div>
-  </div>
+    
+    <a href="{{ '/writing/' | relative_url }}" class="btn-primary">VIEW ALL WRITING</a>
+  </section>
 
-  <hr>
-
-  <div class="spread-section">
-    <div class="spread-header">
-      <span>THE LIBRARY OF TOMES</span>
-      <p style="color: var(--parchment-dim); font-style: italic;">Currently translating from the ancients.</p>
+  <section class="grid-section section-reading">
+    <div class="section-heading">
+      <h2>READING</h2>
+      <div class="heading-meta">CURRENT RESEARCH</div>
     </div>
 
-    <div class="tome-list">
+    <div class="reading-index">
       {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
       {% if currently_reading.size > 0 %}
         {% for book in currently_reading limit:3 %}
-        <a href="{{ '/reading/' | relative_url }}" class="tome-item">
-          <span class="tome-title">{{ book.title | truncate: 40 | upcase }}</span>
-          <div class="tome-meta">
-            <span>BY {{ book.author | truncate: 20 | upcase }}</span>
-            <span class="tome-rating">[ READING ]</span>
-          </div>
+        <a href="{{ '/reading/' | relative_url }}" class="index-card">
+          <div class="card-status">STATUS: ACTIVE</div>
+          <div class="card-title">{{ book.title | truncate: 50 | upcase }}</div>
+          <div class="card-author">{{ book.author | upcase }}</div>
         </a>
         {% endfor %}
       {% else %}
-        <div style="text-align: center; color: var(--gold-dim); padding: 20px;">[ NO ACTIVE INCANTATIONS ]</div>
+        <div class="index-card empty">
+          <div class="card-status">STATUS: IDLE</div>
+          <div class="card-title">NO ACTIVE RESEARCH</div>
+        </div>
       {% endif %}
     </div>
-  </div>
+  </section>
 
 </div>
