@@ -117,3 +117,8 @@
   theme: "THE ARCANA SPREAD"
   description: "THE ARCANA SPREAD — designed February 28, 2026"
   commit: "6a29a143"
+
+- date: "2026-03-01"
+  theme: "THE SWISS ARCHIVE"
+  description: "THE SWISS ARCHIVE — designed March 01, 2026"
+  commit: "fcffc50f"
