@@ -2,23 +2,25 @@
 layout: default
 ---
 
-<div class="page-container">
-  <div class="page-header">
+<div class="flyer-page">
+  <div class="flyer-header">
+    <div style="color: var(--c-red); font-family: var(--font-display); font-size: 1.5rem; transform: rotate(-2deg); display: inline-block; margin-bottom: 10px;">DOORBUSTER DEAL!</div>
     <h1>{{ page.title | upcase }}</h1>
-    <div style="font-size: 1.5rem; font-weight: 600; margin-top: 20px;">{{ page.tagline }}</div>
-    <div class="page-meta">
-      <span class="meta-tag">PLATFORM: {{ page.platform | upcase }}</span>
-      <span class="meta-tag">STACK: {{ page.tech_stack | join: ", " | upcase }}</span>
+    <div style="font-size: 1.5rem; font-weight: bold; background: var(--c-yellow); display: inline-block; padding: 5px 15px; border: 2px solid var(--c-black);">{{ page.tagline }}</div>
+    
+    <div class="flyer-meta" style="margin-top: 20px;">
+      <span class="meta-pill">PLATFORM: {{ page.platform | upcase }}</span>
+      <span class="meta-pill">COMPONENTS: {{ page.tech_stack | join: " + " | upcase }}</span>
     </div>
   </div>
   
   <div>
-    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="app-download-btn">
-      INSTALL / DOWNLOAD &darr;
+    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="app-buy-btn">
+      ADD TO CART (FREE DOWNLOAD!) &darr;
     </a>
   </div>
   
-  <div class="page-content">
+  <div class="flyer-content">
     {{ content }}
   </div>
 </div>

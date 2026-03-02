@@ -1,21 +1,21 @@
-<header class="swiss-header">
-  <div class="header-logo-block">
-    <div class="logo-title">TYLER<br>WINCE</div>
-    <div class="logo-subtitle">SYSTEMS &<br>ENGINEERING</div>
+<header class="store-masthead">
+  <div class="masthead-main">
+    <div class="store-name">TYLER WINCE'S<br>SUPER SAVINGS!</div>
+    <div class="store-slogan">WE WILL NOT BE UNDERSOLD ON SYSTEMS & ENGINEERING!</div>
   </div>
   
-  <nav class="swiss-nav">
-    <a href="{{ '/' | relative_url }}" class="nav-item">
-      <span class="nav-num">01</span>
-      <span class="nav-text">HOME</span>
+  <nav class="aisle-nav">
+    <a href="{{ '/' | relative_url }}" class="aisle-link">
+      <span class="aisle-num">AISLE 1</span>
+      <span class="aisle-name">FRONT DOOR</span>
     </a>
     {% assign idx = 2 %}
     {% for nav_page_name in site.header_pages %}
       {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
       {% if nav_page %}
-      <a href="{{ nav_page.url | relative_url }}" class="nav-item">
-        <span class="nav-num">0{{ idx }}</span>
-        <span class="nav-text">{{ nav_page.title | upcase }}</span>
+      <a href="{{ nav_page.url | relative_url }}" class="aisle-link">
+        <span class="aisle-num">AISLE {{ idx }}</span>
+        <span class="aisle-name">{{ nav_page.title | upcase }}</span>
       </a>
       {% assign idx = idx | plus: 1 %}
       {% endif %}

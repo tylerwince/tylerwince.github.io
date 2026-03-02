@@ -2,87 +2,96 @@
 layout: default
 ---
 
-<div class="home-grid">
+<div class="promo-grid">
   
-  <section class="grid-section section-apps">
-    <div class="section-heading">
-      <h2>APPLICATIONS</h2>
-      <div class="heading-meta">SOFTWARE ARTIFACTS</div>
+  <section class="promo-section promo-apps">
+    <div class="burst-badge">WOW!</div>
+    <div class="promo-header">
+      <h2>SOFTWARE ARTIFACTS</h2>
+      <div class="promo-sub">PRICED TO MOVE!</div>
     </div>
     
-    <div class="apps-container">
-      <a href="/apps/etch/" class="app-block bg-red">
-        <div class="app-bg-num">01</div>
-        <div class="app-info">
+    <div class="coupon-container">
+      <a href="/apps/etch/" class="app-coupon">
+        <div class="app-coupon-info">
           <h3>ETCH</h3>
           <p>Spaced repetition. Remember what matters.</p>
         </div>
+        <div class="app-coupon-price">FREE!</div>
       </a>
-      <a href="/apps/little-quotes/" class="app-block bg-yellow">
-        <div class="app-bg-num">02</div>
-        <div class="app-info">
+      <a href="/apps/little-quotes/" class="app-coupon" style="transform: rotate(1deg);">
+        <div class="app-coupon-info">
           <h3>LITTLE QUOTES</h3>
           <p>Youthful wisdom and words.</p>
         </div>
+        <div class="app-coupon-price">BUY<br>NOW</div>
       </a>
-      <a href="/apps/waymark/" class="app-block bg-blue">
-        <div class="app-bg-num">03</div>
-        <div class="app-info">
+      <a href="/apps/waymark/" class="app-coupon" style="transform: rotate(-1deg);">
+        <div class="app-coupon-info">
           <h3>WAYMARK</h3>
           <p>Prayer and inner journaling.</p>
         </div>
+        <div class="app-coupon-price">HOT!</div>
       </a>
     </div>
   </section>
 
-  <section class="grid-section section-writing">
-    <div class="section-heading">
-      <h2>WRITING</h2>
-      <div class="heading-meta">LOGS AND OBSERVATIONS</div>
+  <section class="promo-section promo-reading">
+    <div class="burst-badge" style="background: var(--c-blue); color: var(--c-white); transform: rotate(10deg);">BOGO!</div>
+    <div class="promo-header">
+      <h2>CURRENT RESEARCH</h2>
+      <div class="promo-sub">BUY 1 GET 1 REVIEWS</div>
+    </div>
+
+    <div class="bogo-grid">
+      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      {% if currently_reading.size > 0 %}
+        {% for book in currently_reading limit:3 %}
+        <a href="{{ '/reading/' | relative_url }}" class="bogo-coupon">
+          <div class="bogo-left">
+            <div class="bogo-status">AISLE 4 SPECIAL</div>
+            <div class="bogo-title">{{ book.title | truncate: 50 | upcase }}</div>
+            <div class="bogo-author">BY: {{ book.author | upcase }}</div>
+          </div>
+          <div class="bogo-right">
+            <div>READ</div>
+            <div style="font-size: 2rem;">&rarr;</div>
+          </div>
+        </a>
+        {% endfor %}
+      {% else %}
+        <div class="bogo-coupon">
+          <div class="bogo-left">
+            <div class="bogo-status">OUT OF STOCK</div>
+            <div class="bogo-title">NO ACTIVE RESEARCH</div>
+          </div>
+          <div class="bogo-right">
+            <div>N/A</div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <section class="promo-section section-writing">
+    <div class="burst-badge" style="background: var(--c-black); color: var(--c-yellow); left: auto; right: -20px;">FRESH!</div>
+    <div class="promo-header">
+      <h2>WEEKLY LOGS & OBSERVATIONS</h2>
+      <div class="promo-sub">STRAIGHT FROM THE FARM!</div>
     </div>
     
-    <div class="writing-table">
-      <div class="writing-header">
-        <div class="w-col">DATE</div>
-        <div class="w-col">TITLE</div>
-        <div class="w-col">ACTION</div>
-      </div>
-      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
+    <div class="specials-list">
+      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
       {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="writing-row">
-        <div class="w-col w-date">{{ post.date | date: "%Y.%m.%d" }}</div>
-        <div class="w-col w-title">{{ post.title | upcase }}</div>
-        <div class="w-col w-action">READ &rarr;</div>
+      <a href="{{ post.url | relative_url }}" class="special-item">
+        <div class="special-date">VALID: {{ post.date | date: "%m/%d/%Y" }}</div>
+        <div class="special-title">{{ post.title | upcase }}</div>
+        <div class="special-action">CLIP THIS DEAL &rarr;</div>
       </a>
       {% endfor %}
     </div>
     
-    <a href="{{ '/writing/' | relative_url }}" class="btn-primary">VIEW ALL WRITING</a>
-  </section>
-
-  <section class="grid-section section-reading">
-    <div class="section-heading">
-      <h2>READING</h2>
-      <div class="heading-meta">CURRENT RESEARCH</div>
-    </div>
-
-    <div class="reading-index">
-      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-      {% if currently_reading.size > 0 %}
-        {% for book in currently_reading limit:3 %}
-        <a href="{{ '/reading/' | relative_url }}" class="index-card">
-          <div class="card-status">STATUS: ACTIVE</div>
-          <div class="card-title">{{ book.title | truncate: 50 | upcase }}</div>
-          <div class="card-author">{{ book.author | upcase }}</div>
-        </a>
-        {% endfor %}
-      {% else %}
-        <div class="index-card empty">
-          <div class="card-status">STATUS: IDLE</div>
-          <div class="card-title">NO ACTIVE RESEARCH</div>
-        </div>
-      {% endif %}
-    </div>
+    <a href="{{ '/writing/' | relative_url }}" class="view-all-btn">VIEW ALL WEEKLY SPECIALS! &rarr;</a>
   </section>
 
 </div>

@@ -6,18 +6,21 @@
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap" rel="stylesheet">
   {% feed_meta %}
 </head>
 <body>
-  <div class="ai-banner-grid">
-    <div class="banner-text">SYSTEM: AUTOMATED REDESIGN PROTOCOL</div>
-    <a href="{{ '/archive/' | relative_url }}" class="banner-link">VIEW ARCHIVE &rarr;</a>
+  <div class="ai-marquee-container">
+    <div class="ai-marquee">
+      ★★★ ATTENTION SHOPPERS! WEBSITE IS REDESIGNED BY AI DAILY!! ★★★
+      <a href="{{ '/archive/' | relative_url }}" class="marquee-link">VIEW PAST DEALS &rarr;</a>
+    </div>
   </div>
 
-  <div class="swiss-grid-container">
+  <div class="circular-wrapper">
     {% include header.html %}
 
-    <main class="swiss-content">
+    <main class="circular-content">
       {{ content }}
     </main>
     
