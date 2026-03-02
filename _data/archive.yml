@@ -122,3 +122,8 @@
   theme: "THE SWISS ARCHIVE"
   description: "THE SWISS ARCHIVE — designed March 01, 2026"
   commit: "fcffc50f"
+
+- date: "2026-03-02"
+  theme: "THE SUPERMARKET CIRCULAR"
+  description: "THE SUPERMARKET CIRCULAR — designed March 02, 2026"
+  commit: "4c84389a"
