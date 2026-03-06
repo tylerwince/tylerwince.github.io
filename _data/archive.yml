@@ -127,3 +127,8 @@
   theme: "THE SUPERMARKET CIRCULAR"
   description: "THE SUPERMARKET CIRCULAR — designed March 02, 2026"
   commit: "4c84389a"
+
+- date: "2026-03-06"
+  theme: "THE AVANT-GARDE EDITORIAL"
+  description: "THE AVANT-GARDE EDITORIAL — designed March 06, 2026"
+  commit: "54a6201f"
