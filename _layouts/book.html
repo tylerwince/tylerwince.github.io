@@ -2,36 +2,41 @@
 layout: default
 ---
 
-<div class="flyer-page">
-  <div class="flyer-header">
-    <div style="color: var(--c-blue); font-family: var(--font-display); font-size: 1.5rem; display: inline-block; margin-bottom: 10px; border: 2px dashed var(--c-blue); padding: 2px 10px;">BOOK REVIEW SPECIAL</div>
-    <h1>{{ page.title | upcase }}</h1>
-    
-    <div class="flyer-meta">
-      <span class="meta-pill">AUTHOR: {{ page.author | upcase }}</span>
-      {% assign year = page.date | date: "%Y" | to_integer %}
-      {% if year >= 2020 %}
-        <span class="meta-pill">PUBLISHED: {{ page.date | date: "%m/%d/%Y" }}</span>
-      {% endif %}
-      {% if page.genre %}
-        <span class="meta-pill">AISLE: {{ page.genre | upcase }}</span>
-      {% endif %}
-      {% if page.stars %}
-        <span class="meta-pill" style="background: var(--c-red); color: var(--c-white);">
-          RATING: {% for i in (1..page.stars) %}★{% endfor %}
-        </span>
-      {% endif %}
+<article class="ed-article ed-book-review">
+  <header class="ed-article-header">
+    <div class="ed-article-kicker">CRITIQUE // {{ page.genre | upcase | default: "UNCATEGORIZED" }}</div>
+    <h1 class="ed-article-title">{{ page.title | upcase }}</h1>
+    <div class="ed-article-lede">BY {{ page.author | upcase }}</div>
+  </header>
+  
+  <div class="ed-article-meta">
+    <div class="ed-meta-item">
+      <strong>RATING</strong>
+      <span>
+        {% if page.stars %}
+          {% for i in (1..page.stars) %}★{% endfor %}
+        {% else %}
+          UNRATED
+        {% endif %}
+      </span>
     </div>
+    {% assign year = page.date | date: "%Y" | to_integer %}
+    {% if year >= 2020 %}
+    <div class="ed-meta-item">
+      <strong>LOGGED</strong>
+      <span>{{ page.date | date: "%B %d, %Y" | upcase }}</span>
+    </div>
+    {% endif %}
   </div>
 
   {% if page.takeaway %}
-  <div class="takeaway-box">
-    <div class="takeaway-label">NUTRITION FACTS (TAKEAWAY)</div>
+  <blockquote class="ed-takeaway">
+    <span class="ed-pull-quote-mark">&ldquo;</span>
     {{ page.takeaway }}
-  </div>
+  </blockquote>
   {% endif %}
 
-  <div class="flyer-content">
+  <div class="ed-article-body ed-serif-body">
     {{ content }}
   </div>
-</div>
+</article>

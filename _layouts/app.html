@@ -2,28 +2,28 @@
 layout: default
 ---
 
-<div class="flyer-page">
-  <div class="flyer-header">
-    <div style="color: var(--c-red); font-family: var(--font-display); font-size: 1.5rem; transform: rotate(-2deg); display: inline-block; margin-bottom: 10px;">DOORBUSTER DEAL!</div>
-    <h1>{{ page.title | upcase }}</h1>
-    <div style="font-size: 1.5rem; font-weight: bold; background: var(--c-yellow); display: inline-block; padding: 5px 15px; border: 2px solid var(--c-black);">{{ page.tagline }}</div>
-    
-    <div class="flyer-meta" style="margin-top: 20px;">
-      <span class="meta-pill">PLATFORM: {{ page.platform | upcase }}</span>
-      <span class="meta-pill">COMPONENTS: {{ page.tech_stack | join: " + " | upcase }}</span>
+<article class="ed-article">
+  <header class="ed-article-header">
+    <div class="ed-article-kicker">PRODUCT SHOWCASE // {{ page.platform | upcase }}</div>
+    <h1 class="ed-article-title">{{ page.title | upcase }}</h1>
+    <div class="ed-article-lede">{{ page.tagline }}</div>
+  </header>
+  
+  <div class="ed-article-meta">
+    <div class="ed-meta-item">
+      <strong>COMPONENTS</strong>
+      <span>{{ page.tech_stack | join: ", " | upcase }}</span>
+    </div>
+    <div class="ed-meta-item">
+      <strong>AVAILABILITY</strong>
+      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener">DOWNLOAD NOW &rarr;</a>
     </div>
   </div>
   
-  <div>
-    <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="app-buy-btn">
-      ADD TO CART (FREE DOWNLOAD!) &darr;
-    </a>
-  </div>
-  
-  <div class="flyer-content">
+  <div class="ed-article-body">
     {{ content }}
   </div>
-</div>
+</article>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -39,10 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
       var titleEl = card.querySelector('.stack-card-title');
       var countEl = card.querySelector('.stack-card-count');
       if (titleEl) titleEl.textContent = stackName.toUpperCase();
-      if (countEl) countEl.textContent = 'ITEMS: ' + cardCount;
+      if (countEl) countEl.textContent = cardCount + ' ITEMS';
     } catch (error) {
       console.error('Failed to load stack:', etchUrl, error);
     }
   });
 });
-</script
+</script>

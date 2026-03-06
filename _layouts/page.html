@@ -2,17 +2,15 @@
 layout: default
 ---
 
-<div class="flyer-page">
-  <div class="flyer-header">
-    <h1>{{ page.title | upcase }}</h1>
+<article class="ed-article">
+  <header class="ed-article-header">
+    <h1 class="ed-article-title">{{ page.title | upcase }}</h1>
     {% if page.description %}
-      <div style="font-size: 1.5rem; font-weight: bold; margin-top: 20px; border-bottom: 4px dashed var(--c-black); padding-bottom: 10px; display: inline-block;">
-        {{ page.description }}
-      </div>
+      <div class="ed-article-lede">{{ page.description }}</div>
     {% endif %}
-  </div>
+  </header>
 
-  <div class="flyer-content">
+  <div class="ed-article-body">
     {{ content }}
   </div>
-</div>
+</article>

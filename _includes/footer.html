@@ -1,26 +1,25 @@
-<footer class="store-footer">
-  <div class="footer-inner">
-    <div class="footer-fineprint">
-      <h4>TERMS & CONDITIONS</h4>
-      <p>PRICES VALID THROUGH {{ 'now' | date: "%B %d, %Y" }}. We reserve the right to limit quantities. Not responsible for typographical errors in code. All systems engineered to specifications.</p>
-      <div class="barcode">*TYLERWINCE*</div>
+<footer class="ed-footer">
+  <div class="ed-footer-line"></div>
+  <div class="ed-footer-grid">
+    <div class="ed-footer-col">
+      <div class="ed-col-title">LOCATION</div>
+      <p>INTERNET, GLOBAL</p>
     </div>
-    
-    <div class="footer-fineprint">
-      <h4>CUSTOMER SERVICE</h4>
-      <div class="footer-links">
-        {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}">X / TWITTER SUPPORT</a>{% endif %}
-        {% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">GITHUB WAREHOUSE</a>{% endif %}
-        {% if site.linkedin_username %}<a href="https://linkedin.com/in/{{ site.linkedin_username }}">PROFESSIONAL NETWORK</a>{% endif %}
-        <a href="{{ '/feed.xml' | relative_url }}">SUBSCRIBE TO WEEKLY AD (RSS)</a>
-      </div>
+    <div class="ed-footer-col">
+      <div class="ed-col-title">SOCIAL</div>
+      <ul class="ed-social-list">
+        {% if site.github_username %}
+        <li><a href="https://github.com/{{ site.github_username }}">GITHUB</a></li>
+        {% endif %}
+        {% if site.twitter_username %}
+        <li><a href="https://twitter.com/{{ site.twitter_username }}">TWITTER</a></li>
+        {% endif %}
+        <li><a href="https://www.linkedin.com/in/tylerwince">LINKEDIN</a></li>
+      </ul>
     </div>
-    
-    <div class="footer-fineprint" style="text-align: right;">
-      <h4>STORE HOURS</h4>
-      <p>OPEN 24/7 ONLINE</p>
-      <p>STATUS: OPERATIONAL</p>
-      <p>GENERATED: {{ 'now' | date: "%Y-%m-%d" }}</p>
+    <div class="ed-footer-col">
+      <div class="ed-col-title">COLOPHON</div>
+      <p>&copy; {{ site.time | date: "%Y" }} TYLER WINCE.<br>ALL RIGHTS RESERVED.</p>
     </div>
   </div>
 </footer>

@@ -5,26 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap" rel="stylesheet">
   {% feed_meta %}
 </head>
-<body>
-  <div class="ai-marquee-container">
-    <div class="ai-marquee">
-      ★★★ ATTENTION SHOPPERS! WEBSITE IS REDESIGNED BY AI DAILY!! ★★★
-      <a href="{{ '/archive/' | relative_url }}" class="marquee-link">VIEW PAST DEALS &rarr;</a>
-    </div>
-  </div>
+<body class="editorial-body">
+  
+  <div class="editorial-split">
+    <aside class="editorial-left">
+      <div class="ai-ticker-container">
+        <div class="ai-ticker-text">
+          <span>AI REDESIGN PROTOCOL ACTIVE &mdash; <a href="{{ '/archive/' | relative_url }}">VIEW ARCHIVE</a> &mdash; AI REDESIGN PROTOCOL ACTIVE &mdash; <a href="{{ '/archive/' | relative_url }}">VIEW ARCHIVE</a> &mdash; AI REDESIGN PROTOCOL ACTIVE &mdash; <a href="{{ '/archive/' | relative_url }}">VIEW ARCHIVE</a> &mdash;</span>
+        </div>
+      </div>
+      
+      <div class="editorial-masthead">
+        {% include header.html %}
+      </div>
+    </aside>
 
-  <div class="circular-wrapper">
-    {% include header.html %}
-
-    <main class="circular-content">
-      {{ content }}
+    <main class="editorial-right">
+      <div class="content-wrapper">
+        {{ content }}
+      </div>
+      {% include footer.html %}
     </main>
-    
-    {% include footer.html %}
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

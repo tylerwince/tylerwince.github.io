@@ -2,96 +2,87 @@
 layout: default
 ---
 
-<div class="promo-grid">
+<div class="ed-home">
   
-  <section class="promo-section promo-apps">
-    <div class="burst-badge">WOW!</div>
-    <div class="promo-header">
-      <h2>SOFTWARE ARTIFACTS</h2>
-      <div class="promo-sub">PRICED TO MOVE!</div>
+  <section class="ed-section ed-hero">
+    <h2 class="ed-huge-text">THE MAP<br>IS NOT<br>THE TERRITORY.</h2>
+    <div class="ed-hero-meta">EST. {{ site.time | date: "%Y" }} / ISSUE NO. 1</div>
+  </section>
+
+  <section class="ed-section ed-apps">
+    <div class="ed-section-header">
+      <span class="ed-sect-num">01.</span>
+      <h3 class="ed-sect-title">ARTIFACTS</h3>
     </div>
     
-    <div class="coupon-container">
-      <a href="/apps/etch/" class="app-coupon">
-        <div class="app-coupon-info">
-          <h3>ETCH</h3>
-          <p>Spaced repetition. Remember what matters.</p>
+    <div class="ed-app-list">
+      <a href="/apps/etch/" class="ed-app-block">
+        <div class="ed-app-num">I</div>
+        <div class="ed-app-details">
+          <h4 class="ed-app-name">ETCH</h4>
+          <p class="ed-app-desc">Spaced repetition. Remember what matters.</p>
         </div>
-        <div class="app-coupon-price">FREE!</div>
       </a>
-      <a href="/apps/little-quotes/" class="app-coupon" style="transform: rotate(1deg);">
-        <div class="app-coupon-info">
-          <h3>LITTLE QUOTES</h3>
-          <p>Youthful wisdom and words.</p>
+      <a href="/apps/little-quotes/" class="ed-app-block ed-app-alt">
+        <div class="ed-app-num">II</div>
+        <div class="ed-app-details">
+          <h4 class="ed-app-name">LITTLE QUOTES</h4>
+          <p class="ed-app-desc">Youthful wisdom and words.</p>
         </div>
-        <div class="app-coupon-price">BUY<br>NOW</div>
       </a>
-      <a href="/apps/waymark/" class="app-coupon" style="transform: rotate(-1deg);">
-        <div class="app-coupon-info">
-          <h3>WAYMARK</h3>
-          <p>Prayer and inner journaling.</p>
+      <a href="/apps/waymark/" class="ed-app-block">
+        <div class="ed-app-num">III</div>
+        <div class="ed-app-details">
+          <h4 class="ed-app-name">WAYMARK</h4>
+          <p class="ed-app-desc">Prayer and inner journaling.</p>
         </div>
-        <div class="app-coupon-price">HOT!</div>
       </a>
     </div>
   </section>
 
-  <section class="promo-section promo-reading">
-    <div class="burst-badge" style="background: var(--c-blue); color: var(--c-white); transform: rotate(10deg);">BOGO!</div>
-    <div class="promo-header">
-      <h2>CURRENT RESEARCH</h2>
-      <div class="promo-sub">BUY 1 GET 1 REVIEWS</div>
-    </div>
-
-    <div class="bogo-grid">
-      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-      {% if currently_reading.size > 0 %}
-        {% for book in currently_reading limit:3 %}
-        <a href="{{ '/reading/' | relative_url }}" class="bogo-coupon">
-          <div class="bogo-left">
-            <div class="bogo-status">AISLE 4 SPECIAL</div>
-            <div class="bogo-title">{{ book.title | truncate: 50 | upcase }}</div>
-            <div class="bogo-author">BY: {{ book.author | upcase }}</div>
-          </div>
-          <div class="bogo-right">
-            <div>READ</div>
-            <div style="font-size: 2rem;">&rarr;</div>
-          </div>
-        </a>
-        {% endfor %}
-      {% else %}
-        <div class="bogo-coupon">
-          <div class="bogo-left">
-            <div class="bogo-status">OUT OF STOCK</div>
-            <div class="bogo-title">NO ACTIVE RESEARCH</div>
-          </div>
-          <div class="bogo-right">
-            <div>N/A</div>
-          </div>
-        </div>
-      {% endif %}
-    </div>
-  </section>
-
-  <section class="promo-section section-writing">
-    <div class="burst-badge" style="background: var(--c-black); color: var(--c-yellow); left: auto; right: -20px;">FRESH!</div>
-    <div class="promo-header">
-      <h2>WEEKLY LOGS & OBSERVATIONS</h2>
-      <div class="promo-sub">STRAIGHT FROM THE FARM!</div>
+  <section class="ed-section ed-writing">
+    <div class="ed-section-header">
+      <span class="ed-sect-num">02.</span>
+      <h3 class="ed-sect-title">DISCOURSE</h3>
     </div>
     
-    <div class="specials-list">
+    <div class="ed-post-index">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
       {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="special-item">
-        <div class="special-date">VALID: {{ post.date | date: "%m/%d/%Y" }}</div>
-        <div class="special-title">{{ post.title | upcase }}</div>
-        <div class="special-action">CLIP THIS DEAL &rarr;</div>
+      <a href="{{ post.url | relative_url }}" class="ed-post-row">
+        <div class="ed-post-date">{{ post.date | date: "%Y.%m.%d" }}</div>
+        <div class="ed-post-title">{{ post.title | upcase }}</div>
       </a>
       {% endfor %}
     </div>
-    
-    <a href="{{ '/writing/' | relative_url }}" class="view-all-btn">VIEW ALL WEEKLY SPECIALS! &rarr;</a>
+    <div class="ed-view-all">
+      <a href="{{ '/writing/' | relative_url }}">VIEW FULL ARCHIVE &rarr;</a>
+    </div>
+  </section>
+
+  <section class="ed-section ed-reading">
+    <div class="ed-section-header">
+      <span class="ed-sect-num">03.</span>
+      <h3 class="ed-sect-title">LITERATURE</h3>
+    </div>
+
+    <div class="ed-reading-grid">
+      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      {% if currently_reading.size > 0 %}
+        {% for book in currently_reading limit:3 %}
+        <a href="{{ '/reading/' | relative_url }}" class="ed-book-spread">
+          <div class="ed-bs-author">{{ book.author | upcase }}</div>
+          <div class="ed-bs-title">{{ book.title | upcase }}</div>
+          <div class="ed-bs-status">ACTIVE RESEARCH</div>
+        </a>
+        {% endfor %}
+      {% else %}
+        <div class="ed-book-spread">
+          <div class="ed-bs-author">--</div>
+          <div class="ed-bs-title">NO ACTIVE RESEARCH</div>
+        </div>
+      {% endif %}
+    </div>
   </section>
 
 </div>

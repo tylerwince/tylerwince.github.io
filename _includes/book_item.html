@@ -1,21 +1,15 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="bogo-coupon" style="margin-bottom: 15px;" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div class="bogo-left">
-    <div class="bogo-status">
-      {% if include.unrated %}
-        AISLE {{ include.book.genre | upcase | default: 'UNKNOWN' }} - UNRATED
-      {% else %}
-        {% if include.book.currently_reading %}
-          AISLE {{ include.book.genre | upcase | default: 'UNKNOWN' }} - IN PROGRESS
-        {% elsif include.book.stars %}
-          RATING: {% for i in (1..include.book.stars) %}★{% endfor %}
-        {% endif %}
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="ed-book-line" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <div class="ed-bl-title">{{ include.book.title | upcase }}</div>
+  <div class="ed-bl-author">{{ include.book.author | upcase }}</div>
+  <div class="ed-bl-rating">
+    {% if include.unrated %}
+      [NR]
+    {% else %}
+      {% if include.book.currently_reading %}
+        [IN PROG]
+      {% elsif include.book.stars %}
+        {% for i in (1..include.book.stars) %}★{% endfor %}
       {% endif %}
-    </div>
-    <div class="bogo-title">{{ include.book.title | upcase }}</div>
-    <div class="bogo-author">BY: {{ include.book.author | upcase }}</div>
-  </div>
-  <div class="bogo-right">
-    <div>READ</div>
-    <div style="font-size: 2rem;">&rarr;</div>
+    {% endif %}
   </div>
 </a>
