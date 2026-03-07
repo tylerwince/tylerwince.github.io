@@ -2,84 +2,80 @@
 layout: default
 ---
 
-<div class="ed-home">
-  
-  <section class="ed-section ed-hero">
-    <h2 class="ed-huge-text">THE MAP<br>IS NOT<br>THE TERRITORY.</h2>
-    <div class="ed-hero-meta">EST. {{ site.time | date: "%Y" }} / ISSUE NO. 1</div>
+<div class="home">
+
+  <section class="hero">
+    <h2 class="hero-title">The map is not<br>the territory.</h2>
+    <div class="hero-meta">Software engineering & systems</div>
   </section>
 
-  <section class="ed-section ed-apps">
-    <div class="ed-section-header">
-      <span class="ed-sect-num">01.</span>
-      <h3 class="ed-sect-title">ARTIFACTS</h3>
+  <section class="home-section">
+    <div class="section-header">
+      <span class="section-label">01</span>
+      <h3 class="section-title">Apps</h3>
     </div>
-    
-    <div class="ed-app-list">
-      <a href="/apps/etch/" class="ed-app-block">
-        <div class="ed-app-num">I</div>
-        <div class="ed-app-details">
-          <h4 class="ed-app-name">ETCH</h4>
-          <p class="ed-app-desc">Spaced repetition. Remember what matters.</p>
+    <div class="app-list">
+      <a href="/apps/etch/" class="app-card">
+        <div class="app-icon">1</div>
+        <div class="app-info">
+          <h4 class="app-name">Etch</h4>
+          <p class="app-desc">Spaced repetition. Remember what matters.</p>
         </div>
       </a>
-      <a href="/apps/little-quotes/" class="ed-app-block ed-app-alt">
-        <div class="ed-app-num">II</div>
-        <div class="ed-app-details">
-          <h4 class="ed-app-name">LITTLE QUOTES</h4>
-          <p class="ed-app-desc">Youthful wisdom and words.</p>
+      <a href="/apps/little-quotes/" class="app-card">
+        <div class="app-icon">2</div>
+        <div class="app-info">
+          <h4 class="app-name">Little Quotes</h4>
+          <p class="app-desc">Youthful wisdom and words.</p>
         </div>
       </a>
-      <a href="/apps/waymark/" class="ed-app-block">
-        <div class="ed-app-num">III</div>
-        <div class="ed-app-details">
-          <h4 class="ed-app-name">WAYMARK</h4>
-          <p class="ed-app-desc">Prayer and inner journaling.</p>
+      <a href="/apps/waymark/" class="app-card">
+        <div class="app-icon">3</div>
+        <div class="app-info">
+          <h4 class="app-name">Waymark</h4>
+          <p class="app-desc">Prayer and inner journaling.</p>
         </div>
       </a>
     </div>
   </section>
 
-  <section class="ed-section ed-writing">
-    <div class="ed-section-header">
-      <span class="ed-sect-num">02.</span>
-      <h3 class="ed-sect-title">DISCOURSE</h3>
+  <section class="home-section">
+    <div class="section-header">
+      <span class="section-label">02</span>
+      <h3 class="section-title">Writing</h3>
     </div>
-    
-    <div class="ed-post-index">
+    <div class="post-list">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
       {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="ed-post-row">
-        <div class="ed-post-date">{{ post.date | date: "%Y.%m.%d" }}</div>
-        <div class="ed-post-title">{{ post.title | upcase }}</div>
+      <a href="{{ post.url | relative_url }}" class="post-row">
+        <span class="post-title">{{ post.title }}</span>
+        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
       </a>
       {% endfor %}
     </div>
-    <div class="ed-view-all">
-      <a href="{{ '/writing/' | relative_url }}">VIEW FULL ARCHIVE &rarr;</a>
+    <div class="view-all">
+      <a href="{{ '/writing/' | relative_url }}">All writing &rarr;</a>
     </div>
   </section>
 
-  <section class="ed-section ed-reading">
-    <div class="ed-section-header">
-      <span class="ed-sect-num">03.</span>
-      <h3 class="ed-sect-title">LITERATURE</h3>
+  <section class="home-section">
+    <div class="section-header">
+      <span class="section-label">03</span>
+      <h3 class="section-title">Reading</h3>
     </div>
-
-    <div class="ed-reading-grid">
+    <div class="book-grid">
       {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
       {% if currently_reading.size > 0 %}
         {% for book in currently_reading limit:3 %}
-        <a href="{{ '/reading/' | relative_url }}" class="ed-book-spread">
-          <div class="ed-bs-author">{{ book.author | upcase }}</div>
-          <div class="ed-bs-title">{{ book.title | upcase }}</div>
-          <div class="ed-bs-status">ACTIVE RESEARCH</div>
+        <a href="{{ '/reading/' | relative_url }}" class="book-card">
+          <div class="book-card-author">{{ book.author }}</div>
+          <div class="book-card-title">{{ book.title }}</div>
+          <div class="book-card-status">Currently reading</div>
         </a>
         {% endfor %}
       {% else %}
-        <div class="ed-book-spread">
-          <div class="ed-bs-author">--</div>
-          <div class="ed-bs-title">NO ACTIVE RESEARCH</div>
+        <div class="book-card">
+          <div class="book-card-title">Nothing on deck right now</div>
         </div>
       {% endif %}
     </div>

@@ -57,6 +57,7 @@ header_pages:
   - writing.md
   - reading.md
   - now.md
+  - archive.md
 
 plugins:
   - jekyll-feed

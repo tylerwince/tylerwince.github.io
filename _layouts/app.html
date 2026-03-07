@@ -2,25 +2,25 @@
 layout: default
 ---
 
-<article class="ed-article">
-  <header class="ed-article-header">
-    <div class="ed-article-kicker">PRODUCT SHOWCASE // {{ page.platform | upcase }}</div>
-    <h1 class="ed-article-title">{{ page.title | upcase }}</h1>
-    <div class="ed-article-lede">{{ page.tagline }}</div>
+<article class="article">
+  <header class="article-header">
+    <div class="article-kicker">{{ page.platform }}</div>
+    <h1 class="article-title">{{ page.title }}</h1>
+    <div class="article-description">{{ page.tagline }}</div>
   </header>
-  
-  <div class="ed-article-meta">
-    <div class="ed-meta-item">
-      <strong>COMPONENTS</strong>
-      <span>{{ page.tech_stack | join: ", " | upcase }}</span>
+
+  <div class="article-meta">
+    <div class="meta-item">
+      <strong>Built with</strong>
+      <span>{{ page.tech_stack | join: ", " }}</span>
     </div>
-    <div class="ed-meta-item">
-      <strong>AVAILABILITY</strong>
-      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener">DOWNLOAD NOW &rarr;</a>
+    <div class="meta-item">
+      <strong>Download</strong>
+      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener">App Store &rarr;</a>
     </div>
   </div>
-  
-  <div class="ed-article-body">
+
+  <div class="article-body">
     {{ content }}
   </div>
 </article>
@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
       var cardCount = data.data?.stack?.flashcards?.length || 0;
       var titleEl = card.querySelector('.stack-card-title');
       var countEl = card.querySelector('.stack-card-count');
-      if (titleEl) titleEl.textContent = stackName.toUpperCase();
-      if (countEl) countEl.textContent = cardCount + ' ITEMS';
+      if (titleEl) titleEl.textContent = stackName;
+      if (countEl) countEl.textContent = cardCount + ' cards';
     } catch (error) {
       console.error('Failed to load stack:', etchUrl, error);
     }

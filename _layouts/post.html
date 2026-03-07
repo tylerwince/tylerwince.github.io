@@ -2,32 +2,31 @@
 layout: default
 ---
 
-<div class="flyer-page">
-  <div class="flyer-header">
-    <h1>{{ page.title | upcase }}</h1>
-    
+<article class="article">
+  <header class="article-header">
+    <h1 class="article-title">{{ page.title }}</h1>
     {% if page.description %}
-    <div style="font-size: 1.5rem; font-weight: bold; font-style: italic; background: var(--c-yellow); display: inline-block; padding: 5px 15px; border: 2px solid var(--c-black); margin-top: 15px;">
-      {{ page.description }}
-    </div>
+    <div class="article-description">{{ page.description }}</div>
     {% endif %}
-    
-    <div class="flyer-meta" style="margin-top: 20px;">
-      <span class="meta-pill">EFFECTIVE DATE: {{ page.date | date: "%B %d, %Y" | upcase }}</span>
-      <span class="meta-pill">
-      {% assign words = content | number_of_words %}
-      {% assign minutes = words | divided_by: 200 %}
-      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-      EST. READING TIME: {{ minutes }} MIN
+  </header>
+
+  <div class="article-meta">
+    <div class="meta-item">
+      <strong>Date</strong>
+      <span>{{ page.date | date: "%B %d, %Y" }}</span>
+    </div>
+    <div class="meta-item">
+      <strong>Reading time</strong>
+      <span>
+        {% assign words = content | number_of_words %}
+        {% assign minutes = words | divided_by: 200 %}
+        {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+        ~{{ minutes }} min
       </span>
     </div>
   </div>
 
-  <div class="flyer-content">
+  <div class="article-body">
     {{ content }}
   </div>
-
-  <div style="text-align: center; margin-top: 50px; border-top: 8px solid var(--c-black); padding-top: 30px;">
-    <a href="{{ '/writing/' | relative_url }}" style="font-family: var(--font-display); font-size: 2rem; background: var(--c-red); color: var(--c-white); padding: 10px 20px; border: var(--border-thick); display: inline-block; transform: rotate(-2deg);"><< RETURN TO ALL DEALS</a>
-  </div>
-</div>
+</article>

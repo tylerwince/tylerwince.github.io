@@ -1,15 +1,15 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="ed-book-line" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %} {% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div class="ed-bl-title">{{ include.book.title | upcase }}</div>
-  <div class="ed-bl-author">{{ include.book.author | upcase }}</div>
-  <div class="ed-bl-rating">
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="book-line"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <span class="book-line-title">{{ include.book.title }}</span>
+  <span class="book-line-author">{{ include.book.author }}</span>
+  <span class="book-line-rating">
     {% if include.unrated %}
-      [NR]
+      &mdash;
     {% else %}
       {% if include.book.currently_reading %}
-        [IN PROG]
+        reading
       {% elsif include.book.stars %}
-        {% for i in (1..include.book.stars) %}★{% endfor %}
+        {% for i in (1..include.book.stars) %}&#9733;{% endfor %}
       {% endif %}
     {% endif %}
-  </div>
+  </span>
 </a>

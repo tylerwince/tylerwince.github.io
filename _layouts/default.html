@@ -5,34 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% feed_meta %}
 </head>
-<body class="editorial-body">
-  
-  <div class="editorial-split">
-    <aside class="editorial-left">
-      <div class="ai-ticker-container">
-        <div class="ai-ticker-text">
-          <span>AI REDESIGN PROTOCOL ACTIVE &mdash; <a href="{{ '/archive/' | relative_url }}">VIEW ARCHIVE</a> &mdash; AI REDESIGN PROTOCOL ACTIVE &mdash; <a href="{{ '/archive/' | relative_url }}">VIEW ARCHIVE</a> &mdash; AI REDESIGN PROTOCOL ACTIVE &mdash; <a href="{{ '/archive/' | relative_url }}">VIEW ARCHIVE</a> &mdash;</span>
-        </div>
-      </div>
-      
-      <div class="editorial-masthead">
-        {% include header.html %}
-      </div>
-    </aside>
+<body>
 
-    <main class="editorial-right">
-      <div class="content-wrapper">
-        {{ content }}
-      </div>
-      {% include footer.html %}
-    </main>
+  <div class="site-banner">
+    <div class="banner-text">
+      <span class="banner-group">AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash;&nbsp;</span>
+      <span class="banner-group" aria-hidden="true">AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash;&nbsp;</span>
+    </div>
   </div>
+
+  {% include header.html %}
+
+  <main class="site-main">
+    <div class="content-area">
+      {{ content }}
+    </div>
+  </main>
+
+  {% include footer.html %}
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>

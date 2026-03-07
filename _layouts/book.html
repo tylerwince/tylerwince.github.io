@@ -2,41 +2,41 @@
 layout: default
 ---
 
-<article class="ed-article ed-book-review">
-  <header class="ed-article-header">
-    <div class="ed-article-kicker">CRITIQUE // {{ page.genre | upcase | default: "UNCATEGORIZED" }}</div>
-    <h1 class="ed-article-title">{{ page.title | upcase }}</h1>
-    <div class="ed-article-lede">BY {{ page.author | upcase }}</div>
+<article class="article">
+  <header class="article-header">
+    <div class="article-kicker">{{ page.genre | default: "Book" }}</div>
+    <h1 class="article-title">{{ page.title }}</h1>
+    <div class="article-description">by {{ page.author }}</div>
   </header>
-  
-  <div class="ed-article-meta">
-    <div class="ed-meta-item">
-      <strong>RATING</strong>
+
+  <div class="article-meta">
+    <div class="meta-item">
+      <strong>Rating</strong>
       <span>
         {% if page.stars %}
-          {% for i in (1..page.stars) %}★{% endfor %}
+          {% for i in (1..page.stars) %}&#9733;{% endfor %}
         {% else %}
-          UNRATED
+          Unrated
         {% endif %}
       </span>
     </div>
     {% assign year = page.date | date: "%Y" | to_integer %}
     {% if year >= 2020 %}
-    <div class="ed-meta-item">
-      <strong>LOGGED</strong>
-      <span>{{ page.date | date: "%B %d, %Y" | upcase }}</span>
+    <div class="meta-item">
+      <strong>Read</strong>
+      <span>{{ page.date | date: "%B %d, %Y" }}</span>
     </div>
     {% endif %}
   </div>
 
   {% if page.takeaway %}
-  <blockquote class="ed-takeaway">
-    <span class="ed-pull-quote-mark">&ldquo;</span>
+  <blockquote class="pull-quote">
+    <span class="pull-quote-mark">&ldquo;</span>
     {{ page.takeaway }}
   </blockquote>
   {% endif %}
 
-  <div class="ed-article-body ed-serif-body">
+  <div class="article-body">
     {{ content }}
   </div>
 </article>

@@ -1,25 +1,20 @@
-<footer class="ed-footer">
-  <div class="ed-footer-line"></div>
-  <div class="ed-footer-grid">
-    <div class="ed-footer-col">
-      <div class="ed-col-title">LOCATION</div>
-      <p>INTERNET, GLOBAL</p>
-    </div>
-    <div class="ed-footer-col">
-      <div class="ed-col-title">SOCIAL</div>
-      <ul class="ed-social-list">
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">Social</div>
+      <ul class="social-list">
         {% if site.github_username %}
-        <li><a href="https://github.com/{{ site.github_username }}">GITHUB</a></li>
+        <li><a href="https://github.com/{{ site.github_username }}">GitHub</a></li>
         {% endif %}
         {% if site.twitter_username %}
-        <li><a href="https://twitter.com/{{ site.twitter_username }}">TWITTER</a></li>
+        <li><a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a></li>
         {% endif %}
-        <li><a href="https://www.linkedin.com/in/tylerwince">LINKEDIN</a></li>
+        <li><a href="https://www.linkedin.com/in/tylerwince">LinkedIn</a></li>
       </ul>
     </div>
-    <div class="ed-footer-col">
-      <div class="ed-col-title">COLOPHON</div>
-      <p>&copy; {{ site.time | date: "%Y" }} TYLER WINCE.<br>ALL RIGHTS RESERVED.</p>
+    <div class="footer-col">
+      <div class="footer-col-title">Colophon</div>
+      <p>&copy; {{ site.time | date: "%Y" }} Tyler Wince</p>
     </div>
   </div>
 </footer>
