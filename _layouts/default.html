@@ -9,24 +9,61 @@
   {% feed_meta %}
 </head>
 <body>
-
   <div class="site-banner">
     <div class="banner-text">
-      <span class="banner-group">AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash;&nbsp;</span>
-      <span class="banner-group" aria-hidden="true">AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash; AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash;&nbsp;</span>
+      {% capture banner_content %}
+        AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View archive</a> &mdash;&nbsp;
+      {% endcapture %}
+      <span class="banner-group">
+        {% for i in (1..20) %}{{ banner_content }}{% endfor %}
+      </span>
+      <span class="banner-group" aria-hidden="true">
+        {% for i in (1..20) %}{{ banner_content }}{% endfor %}
+      </span>
     </div>
   </div>
 
-  {% include header.html %}
-
-  <main class="site-main">
-    <div class="content-area">
-      {{ content }}
+  <div class="ide-window">
+    <div class="ide-titlebar">
+      <div class="ide-title-text">tylerwince.github.io — Visual Studio Code</div>
     </div>
-  </main>
-
-  {% include footer.html %}
-
+    <div class="ide-body">
+      <div class="ide-activity-bar">
+        <div class="activity-icon active" title="Explorer">🗂️</div>
+        <div class="activity-icon" title="Search">🔍</div>
+        <div class="activity-icon" title="Source Control">🌿</div>
+        <div class="activity-icon" title="Extensions">📦</div>
+        <div style="flex:1"></div>
+        <div class="activity-icon" title="Settings" style="margin-bottom: 10px;">⚙️</div>
+      </div>
+      <div class="ide-sidebar">
+        <div class="ide-sidebar-title">EXPLORER</div>
+        {% include header.html %}
+      </div>
+      <div class="ide-main">
+        <div class="ide-tabs">
+          <div class="ide-tab active">
+            {% if page.url == '/' %}
+              index.ts
+            {% elsif page.url contains '/apps/' %}
+              {{ page.title | downcase | replace: ' ', '_' }}.ts
+            {% elsif page.url contains '/archive/' %}
+              archive.json
+            {% else %}
+              {{ page.title | default: 'untitled' | downcase | replace: ' ', '_' }}.md
+            {% endif %}
+          </div>
+        </div>
+        <div class="ide-breadcrumb">
+          tylerwince.github.io > src > {% if page.url == '/' %}index.ts{% elsif page.url contains '/apps/' %}apps > {{ page.title | downcase | replace: ' ', '_' }}.ts{% else %}{{ page.title | default: 'untitled' | downcase | replace: ' ', '_' }}.md{% endif %}
+        </div>
+        <div class="ide-content-scroll">
+          {{ content }}
+        </div>
+      </div>
+    </div>
+    {% include footer.html %}
+  </div>
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>

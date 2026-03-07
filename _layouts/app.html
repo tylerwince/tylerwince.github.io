@@ -1,26 +1,21 @@
 ---
 layout: default
 ---
-
-<article class="article">
-  <header class="article-header">
-    <div class="article-kicker">{{ page.platform }}</div>
-    <h1 class="article-title">{{ page.title }}</h1>
-    <div class="article-description">{{ page.tagline }}</div>
-  </header>
-
-  <div class="article-meta">
-    <div class="meta-item">
-      <strong>Built with</strong>
-      <span>{{ page.tech_stack | join: ", " }}</span>
-    </div>
-    <div class="meta-item">
-      <strong>Download</strong>
-      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener">App Store &rarr;</a>
-    </div>
+<article class="article ide-markdown-preview">
+  <div class="ide-frontmatter">
+    <div class="line"><span class="code-comment">---</span></div>
+    <div class="line"><span class="code-key">title:</span> <span class="code-string">"{{ page.title | escape }}"</span></div>
+    <div class="line"><span class="code-key">platform:</span> <span class="code-string">"{{ page.platform }}"</span></div>
+    <div class="line"><span class="code-key">tech_stack:</span> [{{ page.tech_stack | map: 'escape' | join: '", "' | prepend: '"' | append: '"' }}]</div>
+    {% if page.app_store_link %}
+    <div class="line"><span class="code-key">download:</span> <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="code-string">"App Store Link"</a></div>
+    {% endif %}
+    <div class="line"><span class="code-comment">---</span></div>
   </div>
 
   <div class="article-body">
+    <h1>{{ page.title }}</h1>
+    <p style="color: var(--ide-text-muted); font-size: 1.2rem; margin-bottom: 30px;">{{ page.tagline }}</p>
     {{ content }}
   </div>
 </article>

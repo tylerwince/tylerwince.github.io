@@ -1,84 +1,66 @@
 ---
 layout: default
 ---
+<div class="ide-code-view">
+  <div class="line"><span class="code-comment">/**</span></div>
+  <div class="line"><span class="code-comment"> * @title tylerwince</span></div>
+  <div class="line"><span class="code-comment"> * @description {{ site.description }}</span></div>
+  <div class="line"><span class="code-comment"> * @focus Software engineering & systems</span></div>
+  <div class="line"><span class="code-comment"> */</span></div>
+  <div class="line">&nbsp;</div>
 
-<div class="home">
+  <div class="line"><span class="code-keyword">export const</span> <span class="code-variable">apps</span> <span class="code-operator">=</span> [</div>
+  <div class="app-list-ide">
+    <a href="/apps/etch/" class="code-block-link">
+      <div class="line indent-1">{</div>
+      <div class="line indent-2"><span class="code-key">id:</span> <span class="code-number">1</span>,</div>
+      <div class="line indent-2"><span class="code-key">name:</span> <span class="code-string">"Etch"</span>,</div>
+      <div class="line indent-2"><span class="code-key">desc:</span> <span class="code-string">"Spaced repetition. Remember what matters."</span></div>
+      <div class="line indent-1">},</div>
+    </a>
+    <a href="/apps/little-quotes/" class="code-block-link">
+      <div class="line indent-1">{</div>
+      <div class="line indent-2"><span class="code-key">id:</span> <span class="code-number">2</span>,</div>
+      <div class="line indent-2"><span class="code-key">name:</span> <span class="code-string">"Little Quotes"</span>,</div>
+      <div class="line indent-2"><span class="code-key">desc:</span> <span class="code-string">"Youthful wisdom and words."</span></div>
+      <div class="line indent-1">},</div>
+    </a>
+    <a href="/apps/waymark/" class="code-block-link">
+      <div class="line indent-1">{</div>
+      <div class="line indent-2"><span class="code-key">id:</span> <span class="code-number">3</span>,</div>
+      <div class="line indent-2"><span class="code-key">name:</span> <span class="code-string">"Waymark"</span>,</div>
+      <div class="line indent-2"><span class="code-key">desc:</span> <span class="code-string">"Prayer and inner journaling."</span></div>
+      <div class="line indent-1">},</div>
+    </a>
+  </div>
+  <div class="line">];</div>
 
-  <section class="hero">
-    <h2 class="hero-title">The map is not<br>the territory.</h2>
-    <div class="hero-meta">Software engineering & systems</div>
-  </section>
+  <div class="line">&nbsp;</div>
+  <div class="line"><span class="code-keyword">export const</span> <span class="code-variable">latestWriting</span> <span class="code-operator">=</span> [</div>
+  <div class="post-list-ide">
+    {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
+    {% for post in latest_posts %}
+    <a href="{{ post.url | relative_url }}" class="code-block-link">
+      <div class="line indent-1">{ <span class="code-key">date:</span> <span class="code-string">"{{ post.date | date: '%Y-%m-%d' }}"</span>, <span class="code-key">title:</span> <span class="code-string">"{{ post.title | escape }}"</span> },</div>
+    </a>
+    {% endfor %}
+  </div>
+  <div class="line">];</div>
+  <div class="line"><span class="code-comment">// <a href="{{ '/writing/' | relative_url }}" style="color:var(--syn-comment); text-decoration:underline;">View all writing &rarr;</a></span></div>
 
-  <section class="home-section">
-    <div class="section-header">
-      <span class="section-label">01</span>
-      <h3 class="section-title">Apps</h3>
-    </div>
-    <div class="app-list">
-      <a href="/apps/etch/" class="app-card">
-        <div class="app-icon">1</div>
-        <div class="app-info">
-          <h4 class="app-name">Etch</h4>
-          <p class="app-desc">Spaced repetition. Remember what matters.</p>
-        </div>
-      </a>
-      <a href="/apps/little-quotes/" class="app-card">
-        <div class="app-icon">2</div>
-        <div class="app-info">
-          <h4 class="app-name">Little Quotes</h4>
-          <p class="app-desc">Youthful wisdom and words.</p>
-        </div>
-      </a>
-      <a href="/apps/waymark/" class="app-card">
-        <div class="app-icon">3</div>
-        <div class="app-info">
-          <h4 class="app-name">Waymark</h4>
-          <p class="app-desc">Prayer and inner journaling.</p>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <section class="home-section">
-    <div class="section-header">
-      <span class="section-label">02</span>
-      <h3 class="section-title">Writing</h3>
-    </div>
-    <div class="post-list">
-      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
-      {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="post-row">
-        <span class="post-title">{{ post.title }}</span>
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+  <div class="line">&nbsp;</div>
+  <div class="line"><span class="code-keyword">export const</span> <span class="code-variable">currentlyReading</span> <span class="code-operator">=</span> [</div>
+  <div class="book-list-ide">
+    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+    {% if currently_reading.size > 0 %}
+      {% for book in currently_reading limit:3 %}
+      <a href="{{ '/reading/' | relative_url }}" class="code-block-link">
+        <div class="line indent-1">{ <span class="code-key">author:</span> <span class="code-string">"{{ book.author | escape }}"</span>, <span class="code-key">title:</span> <span class="code-string">"{{ book.title | escape }}"</span> },</div>
       </a>
       {% endfor %}
-    </div>
-    <div class="view-all">
-      <a href="{{ '/writing/' | relative_url }}">All writing &rarr;</a>
-    </div>
-  </section>
-
-  <section class="home-section">
-    <div class="section-header">
-      <span class="section-label">03</span>
-      <h3 class="section-title">Reading</h3>
-    </div>
-    <div class="book-grid">
-      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-      {% if currently_reading.size > 0 %}
-        {% for book in currently_reading limit:3 %}
-        <a href="{{ '/reading/' | relative_url }}" class="book-card">
-          <div class="book-card-author">{{ book.author }}</div>
-          <div class="book-card-title">{{ book.title }}</div>
-          <div class="book-card-status">Currently reading</div>
-        </a>
-        {% endfor %}
-      {% else %}
-        <div class="book-card">
-          <div class="book-card-title">Nothing on deck right now</div>
-        </div>
-      {% endif %}
-    </div>
-  </section>
-
+    {% else %}
+      <div class="line indent-1"><span class="code-comment">// Nothing on deck right now</span></div>
+    {% endif %}
+  </div>
+  <div class="line">];</div>
 </div>

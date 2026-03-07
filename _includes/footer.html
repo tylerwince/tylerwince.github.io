@@ -1,20 +1,23 @@
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <div class="footer-col-title">Social</div>
-      <ul class="social-list">
-        {% if site.github_username %}
-        <li><a href="https://github.com/{{ site.github_username }}">GitHub</a></li>
-        {% endif %}
-        {% if site.twitter_username %}
-        <li><a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a></li>
-        {% endif %}
-        <li><a href="https://www.linkedin.com/in/tylerwince">LinkedIn</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Colophon</div>
-      <p>&copy; {{ site.time | date: "%Y" }} Tyler Wince</p>
-    </div>
+<footer class="ide-statusbar">
+  <div class="status-left">
+    <span class="status-item" title="Branch">main*</span>
+    <span class="status-item" title="No Problems">0 ❌ 0 ⚠️</span>
+  </div>
+  <div class="status-right">
+    {% if site.github_username %}
+    <span class="status-item">
+      <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
+    </span>
+    {% endif %}
+    {% if site.twitter_username %}
+    <span class="status-item">
+      <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank">Twitter</a>
+    </span>
+    {% endif %}
+    <span class="status-item">
+      <a href="https://www.linkedin.com/in/tylerwince" target="_blank">LinkedIn</a>
+    </span>
+    <span class="status-item">UTF-8</span>
+    <span class="status-item">&copy; {{ site.time | date: "%Y" }} Tyler Wince</span>
   </div>
 </footer>

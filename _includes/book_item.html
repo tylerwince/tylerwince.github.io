@@ -1,15 +1,7 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="book-line"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <span class="book-line-title">{{ include.book.title }}</span>
-  <span class="book-line-author">{{ include.book.author }}</span>
-  <span class="book-line-rating">
-    {% if include.unrated %}
-      &mdash;
-    {% else %}
-      {% if include.book.currently_reading %}
-        reading
-      {% elsif include.book.stars %}
-        {% for i in (1..include.book.stars) %}&#9733;{% endfor %}
-      {% endif %}
-    {% endif %}
-  </span>
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="code-block-link book-line" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <div class="line indent-1">{</div>
+  <div class="line indent-2"><span class="code-key">title:</span> <span class="code-string">"{{ include.book.title | escape }}"</span>,</div>
+  <div class="line indent-2"><span class="code-key">author:</span> <span class="code-string">"{{ include.book.author | escape }}"</span>,</div>
+  <div class="line indent-2"><span class="code-key">rating:</span> <span class="code-number">{% if include.unrated %}null{% else %}{% if include.book.currently_reading %}"reading"{% elsif include.book.stars %}{{ include.book.stars }}{% endif %}{% endif %}</span></div>
+  <div class="line indent-1">},</div>
 </a>
