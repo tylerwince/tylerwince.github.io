@@ -1,19 +1,18 @@
 ---
 layout: default
 ---
-<article class="article ide-markdown-preview">
-  <div class="ide-frontmatter">
-    <div class="line"><span class="code-comment">---</span></div>
-    <div class="line"><span class="code-key">title:</span> <span class="code-string">"{{ page.title | escape }}"</span></div>
+<article class="document-wrapper">
+  <div class="tape" style="width: 110px; height: 30px; top: -10px; left: 50%; transform: translateX(-50%) rotate(2deg);"></div>
+  
+  <div class="document-header">
+    <div class="document-title">{{ page.title | escape }}</div>
+    <div class="document-meta">RECORDED: {{ page.date | date: '%Y-%m-%d' }}</div>
     {% if page.description %}
-    <div class="line"><span class="code-key">description:</span> <span class="code-string">"{{ page.description | escape }}"</span></div>
+    <div class="document-meta">SUBJECT: {{ page.description | escape }}</div>
     {% endif %}
-    <div class="line"><span class="code-key">date:</span> <span class="code-string">"{{ page.date | date: '%Y-%m-%d' }}"</span></div>
-    <div class="line"><span class="code-comment">---</span></div>
   </div>
 
-  <div class="article-body">
-    <h1>{{ page.title }}</h1>
+  <div class="document-content">
     {{ content }}
   </div>
 </article>

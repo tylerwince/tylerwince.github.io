@@ -1,66 +1,67 @@
 ---
 layout: default
 ---
-<div class="ide-code-view">
-  <div class="line"><span class="code-comment">/**</span></div>
-  <div class="line"><span class="code-comment"> * @title tylerwince</span></div>
-  <div class="line"><span class="code-comment"> * @description {{ site.description }}</span></div>
-  <div class="line"><span class="code-comment"> * @focus Software engineering & systems</span></div>
-  <div class="line"><span class="code-comment"> */</span></div>
-  <div class="line">&nbsp;</div>
-
-  <div class="line"><span class="code-keyword">export const</span> <span class="code-variable">apps</span> <span class="code-operator">=</span> [</div>
-  <div class="app-list-ide">
-    <a href="/apps/etch/" class="code-block-link">
-      <div class="line indent-1">{</div>
-      <div class="line indent-2"><span class="code-key">id:</span> <span class="code-number">1</span>,</div>
-      <div class="line indent-2"><span class="code-key">name:</span> <span class="code-string">"Etch"</span>,</div>
-      <div class="line indent-2"><span class="code-key">desc:</span> <span class="code-string">"Spaced repetition. Remember what matters."</span></div>
-      <div class="line indent-1">},</div>
-    </a>
-    <a href="/apps/little-quotes/" class="code-block-link">
-      <div class="line indent-1">{</div>
-      <div class="line indent-2"><span class="code-key">id:</span> <span class="code-number">2</span>,</div>
-      <div class="line indent-2"><span class="code-key">name:</span> <span class="code-string">"Little Quotes"</span>,</div>
-      <div class="line indent-2"><span class="code-key">desc:</span> <span class="code-string">"Youthful wisdom and words."</span></div>
-      <div class="line indent-1">},</div>
-    </a>
-    <a href="/apps/waymark/" class="code-block-link">
-      <div class="line indent-1">{</div>
-      <div class="line indent-2"><span class="code-key">id:</span> <span class="code-number">3</span>,</div>
-      <div class="line indent-2"><span class="code-key">name:</span> <span class="code-string">"Waymark"</span>,</div>
-      <div class="line indent-2"><span class="code-key">desc:</span> <span class="code-string">"Prayer and inner journaling."</span></div>
-      <div class="line indent-1">},</div>
-    </a>
+<div class="evidence-board">
+  
+  <div class="evidence-section" id="apps-section">
+    <div class="tape" style="width: 120px; height: 30px; top: -10px; left: 10px; transform: rotate(-5deg);"></div>
+    <div class="section-label">Exhibit A: Applications</div>
+    
+    <div class="polaroid-container">
+      <a href="/apps/etch/" class="polaroid connect-point" data-id="app-1">
+        <div class="polaroid-photo">ETCH</div>
+        <div class="polaroid-caption">Etch</div>
+        <div class="polaroid-desc">Spaced repetition. Remember what matters.</div>
+      </a>
+      <a href="/apps/little-quotes/" class="polaroid connect-point" data-id="app-2">
+        <div class="polaroid-photo">LITTLE QUOTES</div>
+        <div class="polaroid-caption">Little Quotes</div>
+        <div class="polaroid-desc">Youthful wisdom and words.</div>
+      </a>
+      <a href="/apps/waymark/" class="polaroid connect-point" data-id="app-3">
+        <div class="polaroid-photo">WAYMARK</div>
+        <div class="polaroid-caption">Waymark</div>
+        <div class="polaroid-desc">Prayer and inner journaling.</div>
+      </a>
+    </div>
   </div>
-  <div class="line">];</div>
 
-  <div class="line">&nbsp;</div>
-  <div class="line"><span class="code-keyword">export const</span> <span class="code-variable">latestWriting</span> <span class="code-operator">=</span> [</div>
-  <div class="post-list-ide">
-    {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
-    {% for post in latest_posts %}
-    <a href="{{ post.url | relative_url }}" class="code-block-link">
-      <div class="line indent-1">{ <span class="code-key">date:</span> <span class="code-string">"{{ post.date | date: '%Y-%m-%d' }}"</span>, <span class="code-key">title:</span> <span class="code-string">"{{ post.title | escape }}"</span> },</div>
-    </a>
-    {% endfor %}
-  </div>
-  <div class="line">];</div>
-  <div class="line"><span class="code-comment">// <a href="{{ '/writing/' | relative_url }}" style="color:var(--syn-comment); text-decoration:underline;">View all writing &rarr;</a></span></div>
-
-  <div class="line">&nbsp;</div>
-  <div class="line"><span class="code-keyword">export const</span> <span class="code-variable">currentlyReading</span> <span class="code-operator">=</span> [</div>
-  <div class="book-list-ide">
-    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-    {% if currently_reading.size > 0 %}
-      {% for book in currently_reading limit:3 %}
-      <a href="{{ '/reading/' | relative_url }}" class="code-block-link">
-        <div class="line indent-1">{ <span class="code-key">author:</span> <span class="code-string">"{{ book.author | escape }}"</span>, <span class="code-key">title:</span> <span class="code-string">"{{ book.title | escape }}"</span> },</div>
+  <div class="evidence-section" id="writing-section">
+    <div class="tape" style="width: 140px; height: 30px; top: -5px; right: 20px; transform: rotate(3deg);"></div>
+    <div class="section-label" style="transform: rotate(2deg);">Exhibit B: Logs</div>
+    
+    <div class="sticky-container">
+      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
+      {% for post in latest_posts %}
+      <a href="{{ post.url | relative_url }}" class="sticky-note connect-point" data-id="post-{{ forloop.index }}">
+        <div class="pin {% cycle 'blue', 'red', 'yellow', 'green', 'black' %}"></div>
+        <div class="sticky-title">{{ post.title | escape }}</div>
+        <div class="sticky-date">{{ post.date | date: '%Y-%m-%d' }}</div>
       </a>
       {% endfor %}
-    {% else %}
-      <div class="line indent-1"><span class="code-comment">// Nothing on deck right now</span></div>
-    {% endif %}
+    </div>
   </div>
-  <div class="line">];</div>
+
+  <div class="evidence-section" id="reading-section">
+    <div class="tape" style="width: 90px; height: 30px; top: -15px; left: 30px; transform: rotate(-8deg);"></div>
+    <div class="section-label" style="transform: rotate(-1deg);">Exhibit C: Literature</div>
+    
+    <div class="index-container">
+      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      {% if currently_reading.size > 0 %}
+        {% for book in currently_reading limit:3 %}
+        <a href="{{ '/reading/' | relative_url }}" class="index-card connect-point" data-id="book-{{ forloop.index }}">
+          <div class="index-title">{{ book.title | escape }}</div>
+          <div class="index-author">{{ book.author | escape }}</div>
+          <div class="index-meta">Currently analyzing...</div>
+        </a>
+        {% endfor %}
+      {% else %}
+        <div class="index-card">
+          <div class="index-title">No current literature being analyzed.</div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
 </div>

@@ -1,29 +1,15 @@
-<nav class="ide-nav-tree">
-  <div class="ide-folder">
-    <div class="ide-folder-header">
-      <span class="folder-icon">📂</span> src
-    </div>
-    <ul class="ide-file-list">
-      <li>
-        <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">
-          <span class="file-icon ts-icon">TS</span> index.ts
-        </a>
-      </li>
-      {% for nav_page_name in site.header_pages %}
-        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-        {% if nav_page %}
-        <li>
-          <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
-            <span class="file-icon md-icon">M↓</span> {{ nav_page.title | downcase | replace: ' ', '_' }}.md
-          </a>
-        </li>
-        {% endif %}
-      {% endfor %}
-      <li>
-        <a href="{{ '/archive/' | relative_url }}" class="{% if page.url contains '/archive/' %}active{% endif %}">
-          <span class="file-icon json-icon">{}</span> archive.json
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<header class="case-file-nav connect-point" data-id="nav">
+  <div class="nav-title">Suspect: Tyler Wince</div>
+  <nav class="nav-links">
+    <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Profile</a>
+    {% for nav_page_name in site.header_pages %}
+      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+      {% if nav_page %}
+      <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
+        {{ nav_page.title }}
+      </a>
+      {% endif %}
+    {% endfor %}
+    <a href="{{ '/archive/' | relative_url }}" class="{% if page.url contains '/archive/' %}active{% endif %}">Archive File</a>
+  </nav>
+</header>

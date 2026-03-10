@@ -1,7 +1,7 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="code-block-link book-line" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div class="line indent-1">{</div>
-  <div class="line indent-2"><span class="code-key">title:</span> <span class="code-string">"{{ include.book.title | escape }}"</span>,</div>
-  <div class="line indent-2"><span class="code-key">author:</span> <span class="code-string">"{{ include.book.author | escape }}"</span>,</div>
-  <div class="line indent-2"><span class="code-key">rating:</span> <span class="code-number">{% if include.unrated %}null{% else %}{% if include.book.currently_reading %}"reading"{% elsif include.book.stars %}{{ include.book.stars }}{% endif %}{% endif %}</span></div>
-  <div class="line indent-1">},</div>
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="post-index-row connect-point" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %} data-id="book-idx-{{ include.book.title | slugify }}">
+  <div class="post-index-title">{{ include.book.title | escape }}</div>
+  <div class="post-index-date">{{ include.book.author | escape }}</div>
+  <div class="post-index-desc">
+    Status: {% if include.unrated %}Unrated{% else %}{% if include.book.currently_reading %}Active Analysis{% elsif include.book.stars %}Priority Level {{ include.book.stars }}{% endif %}{% endif %}
+  </div>
 </a>

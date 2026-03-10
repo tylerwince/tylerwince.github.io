@@ -1,23 +1,15 @@
-<footer class="ide-statusbar">
-  <div class="status-left">
-    <span class="status-item" title="Branch">main*</span>
-    <span class="status-item" title="No Problems">0 ❌ 0 ⚠️</span>
-  </div>
-  <div class="status-right">
+<footer class="evidence-footer connect-point" data-id="footer">
+  <div class="tape"></div>
+  <div class="footer-socials">
     {% if site.github_username %}
-    <span class="status-item">
-      <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
-    </span>
+    <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
     {% endif %}
     {% if site.twitter_username %}
-    <span class="status-item">
-      <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank">Twitter</a>
-    </span>
+    <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank">Twitter</a>
     {% endif %}
-    <span class="status-item">
-      <a href="https://www.linkedin.com/in/tylerwince" target="_blank">LinkedIn</a>
-    </span>
-    <span class="status-item">UTF-8</span>
-    <span class="status-item">&copy; {{ site.time | date: "%Y" }} Tyler Wince</span>
+    <a href="https://www.linkedin.com/in/tylerwince" target="_blank">LinkedIn</a>
+  </div>
+  <div class="footer-meta">
+    Case File &copy; {{ site.time | date: "%Y" }} Tyler Wince
   </div>
 </footer>

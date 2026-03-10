@@ -1,21 +1,22 @@
 ---
 layout: default
 ---
-<article class="article ide-markdown-preview">
-  <div class="ide-frontmatter">
-    <div class="line"><span class="code-comment">---</span></div>
-    <div class="line"><span class="code-key">title:</span> <span class="code-string">"{{ page.title | escape }}"</span></div>
-    <div class="line"><span class="code-key">platform:</span> <span class="code-string">"{{ page.platform }}"</span></div>
-    <div class="line"><span class="code-key">tech_stack:</span> [{{ page.tech_stack | map: 'escape' | join: '", "' | prepend: '"' | append: '"' }}]</div>
+<article class="document-wrapper">
+  <div class="tape" style="width: 130px; height: 30px; top: -10px; right: 20px; transform: rotate(-5deg);"></div>
+  <div class="tape" style="width: 90px; height: 35px; bottom: 20px; right: -20px; transform: rotate(88deg);"></div>
+  
+  <div class="document-header">
+    <div class="document-title">{{ page.title | escape }}</div>
+    <div class="document-meta">PLATFORM: {{ page.platform }} | STACK: {{ page.tech_stack | join: ', ' }}</div>
     {% if page.app_store_link %}
-    <div class="line"><span class="code-key">download:</span> <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" class="code-string">"App Store Link"</a></div>
+    <div class="document-meta">
+      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" style="text-decoration:underline;">[ACCESS DIGITAL EVIDENCE]</a>
+    </div>
     {% endif %}
-    <div class="line"><span class="code-comment">---</span></div>
   </div>
 
-  <div class="article-body">
-    <h1>{{ page.title }}</h1>
-    <p style="color: var(--ide-text-muted); font-size: 1.2rem; margin-bottom: 30px;">{{ page.tagline }}</p>
+  <div class="document-content">
+    <h2>{{ page.tagline }}</h2>
     {{ content }}
   </div>
 </article>
@@ -29,14 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       var response = await fetch(etchUrl);
       var data = await response.json();
-      var stackName = data.data?.stack?.name || 'Unknown Stack';
+      var stackName = data.data?.stack?.name || 'Unknown Subject';
       var cardCount = data.data?.stack?.flashcards?.length || 0;
       var titleEl = card.querySelector('.stack-card-title');
       var countEl = card.querySelector('.stack-card-count');
       if (titleEl) titleEl.textContent = stackName;
-      if (countEl) countEl.textContent = cardCount + ' cards';
+      if (countEl) countEl.textContent = cardCount + ' data points';
     } catch (error) {
-      console.error('Failed to load stack:', etchUrl, error);
+      console.error('Failed to access secure server:', etchUrl, error);
     }
   });
 });

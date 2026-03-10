@@ -1,17 +1,18 @@
 ---
 layout: default
 ---
-<article class="article ide-markdown-preview">
-  <div class="ide-frontmatter">
-    <div class="line"><span class="code-comment">---</span></div>
-    <div class="line"><span class="code-key">title:</span> <span class="code-string">"{{ page.title | escape }}"</span></div>
+<article class="document-wrapper">
+  <div class="tape" style="width: 150px; height: 35px; top: -15px; right: 40px; transform: rotate(4deg);"></div>
+  <div class="tape" style="width: 100px; height: 35px; bottom: -15px; left: 40px; transform: rotate(-3deg);"></div>
+  
+  <div class="document-header">
+    <div class="document-title">{{ page.title | escape }}</div>
     {% if page.description %}
-    <div class="line"><span class="code-key">description:</span> <span class="code-string">"{{ page.description | escape }}"</span></div>
+    <div class="document-meta">{{ page.description | escape }}</div>
     {% endif %}
-    <div class="line"><span class="code-comment">---</span></div>
   </div>
 
-  <div class="article-body">
+  <div class="document-content">
     {{ content }}
   </div>
 </article>
