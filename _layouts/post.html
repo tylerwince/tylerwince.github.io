@@ -2,13 +2,11 @@
 layout: default
 ---
 <article class="document-wrapper">
-  <div class="tape" style="width: 110px; height: 30px; top: -10px; left: 50%; transform: translateX(-50%) rotate(2deg);"></div>
-  
   <div class="document-header">
     <div class="document-title">{{ page.title | escape }}</div>
-    <div class="document-meta">RECORDED: {{ page.date | date: '%Y-%m-%d' }}</div>
+    <div class="document-meta">{{ page.date | date: '%Y-%m-%d' }}</div>
     {% if page.description %}
-    <div class="document-meta">SUBJECT: {{ page.description | escape }}</div>
+    <div class="document-meta">{{ page.description | escape }}</div>
     {% endif %}
   </div>
 

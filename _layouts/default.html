@@ -23,14 +23,15 @@
     </div>
   </div>
 
-  <div class="corkboard" id="corkboard">
-    <svg id="string-layer" xmlns="http://www.w3.org/2000/svg"></svg>
-    
-    {% include header.html %}
-    
-    {{ content }}
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">METAR</button>
 
-    {% include footer.html %}
+  <div class="weather-map-layout">
+    {% include header.html %}
+
+    <main class="map-main">
+      {{ content }}
+      {% include footer.html %}
+    </main>
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

@@ -2,15 +2,12 @@
 layout: default
 ---
 <article class="document-wrapper">
-  <div class="tape" style="width: 130px; height: 30px; top: -10px; right: 20px; transform: rotate(-5deg);"></div>
-  <div class="tape" style="width: 90px; height: 35px; bottom: 20px; right: -20px; transform: rotate(88deg);"></div>
-  
   <div class="document-header">
     <div class="document-title">{{ page.title | escape }}</div>
-    <div class="document-meta">PLATFORM: {{ page.platform }} | STACK: {{ page.tech_stack | join: ', ' }}</div>
+    <div class="document-meta">Platform: {{ page.platform }} &bull; Stack: {{ page.tech_stack | join: ', ' }}</div>
     {% if page.app_store_link %}
     <div class="document-meta">
-      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener" style="text-decoration:underline;">[ACCESS DIGITAL EVIDENCE]</a>
+      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener">Download on the App Store</a>
     </div>
     {% endif %}
   </div>
@@ -30,14 +27,14 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       var response = await fetch(etchUrl);
       var data = await response.json();
-      var stackName = data.data?.stack?.name || 'Unknown Subject';
+      var stackName = data.data?.stack?.name || 'Unknown';
       var cardCount = data.data?.stack?.flashcards?.length || 0;
       var titleEl = card.querySelector('.stack-card-title');
       var countEl = card.querySelector('.stack-card-count');
       if (titleEl) titleEl.textContent = stackName;
-      if (countEl) countEl.textContent = cardCount + ' data points';
+      if (countEl) countEl.textContent = cardCount + ' cards';
     } catch (error) {
-      console.error('Failed to access secure server:', etchUrl, error);
+      console.error('Failed to load stack:', etchUrl, error);
     }
   });
 });

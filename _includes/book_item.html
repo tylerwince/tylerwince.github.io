@@ -1,7 +1,9 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="post-index-row connect-point" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %} data-id="book-idx-{{ include.book.title | slugify }}">
-  <div class="post-index-title">{{ include.book.title | escape }}</div>
-  <div class="post-index-date">{{ include.book.author | escape }}</div>
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="post-index-row" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <div class="post-index-header">
+    <span class="post-index-title">{{ include.book.title | escape }}</span>
+    <span class="post-index-date">{{ include.book.author | escape }}</span>
+  </div>
   <div class="post-index-desc">
-    Status: {% if include.unrated %}Unrated{% else %}{% if include.book.currently_reading %}Active Analysis{% elsif include.book.stars %}Priority Level {{ include.book.stars }}{% endif %}{% endif %}
+    {% if include.unrated %}Unrated{% else %}{% if include.book.currently_reading %}In Progress{% elsif include.book.stars %}{{ include.book.stars }}/5{% endif %}{% endif %}
   </div>
 </a>

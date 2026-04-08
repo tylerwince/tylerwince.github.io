@@ -9,10 +9,12 @@ description: The historical index of design.
   {% assign sorted = site.data.archive | sort: "date" | reverse %}
   {% for entry in sorted %}
     {% if entry.date == today %}{% continue %}{% endif %}
-    <a href="/archive/{{ entry.date }}/" class="post-index-row connect-point" data-id="archive-{{ forloop.index }}">
-      <div class="post-index-title">{{ entry.theme | escape }}</div>
-      <div class="post-index-date">Logged: {{ entry.date | date: '%Y-%m-%d' }}</div>
-      <div class="post-index-desc">Notes: {{ entry.description | escape }}</div>
+    <a href="/archive/{{ entry.date }}/" class="post-index-row">
+      <div class="post-index-header">
+        <span class="post-index-title">{{ entry.theme | escape }}</span>
+        <span class="post-index-date">{{ entry.date | date: '%Y-%m-%d' }}</span>
+      </div>
+      <div class="post-index-desc">{{ entry.description | escape }}</div>
     </a>
   {% endfor %}
 </div>

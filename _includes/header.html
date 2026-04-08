@@ -1,15 +1,30 @@
-<header class="case-file-nav connect-point" data-id="nav">
-  <div class="nav-title">Suspect: Tyler Wince</div>
-  <nav class="nav-links">
-    <a href="{{ '/' | relative_url }}" class="{% if page.url == '/' %}active{% endif %}">Profile</a>
-    {% for nav_page_name in site.header_pages %}
-      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-      {% if nav_page %}
-      <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
-        {{ nav_page.title }}
-      </a>
-      {% endif %}
-    {% endfor %}
-    <a href="{{ '/archive/' | relative_url }}" class="{% if page.url contains '/archive/' %}active{% endif %}">Archive File</a>
-  </nav>
-</header>
+<nav class="map-legend" id="map-legend">
+  <div class="legend-title">Tyler Wince</div>
+  <div class="legend-subtitle">Surface Analysis</div>
+
+  <div class="legend-section-label">Chart Layers</div>
+
+  <a href="{{ '/' | relative_url }}" class="legend-link {% if page.url == '/' %}active{% endif %}">
+    <span class="legend-swatch sw-home"></span> Overview
+  </a>
+  {% for nav_page_name in site.header_pages %}
+    {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+    {% if nav_page %}
+    <a href="{{ nav_page.url | relative_url }}" class="legend-link {% if page.url contains nav_page.url %}active{% endif %}">
+      <span class="legend-swatch {% if nav_page.title == 'Apps' %}sw-apps{% elsif nav_page.title == 'Writing' %}sw-writing{% elsif nav_page.title == 'Reading' %}sw-reading{% elsif nav_page.title == 'Now' %}sw-now{% else %}sw-archive{% endif %}"></span>
+      {{ nav_page.title }}
+    </a>
+    {% endif %}
+  {% endfor %}
+  <a href="{{ '/archive/' | relative_url }}" class="legend-link {% if page.url contains '/archive/' %}active{% endif %}">
+    <span class="legend-swatch sw-archive"></span> Archive
+  </a>
+
+  <div class="legend-spacer"></div>
+
+  <div class="legend-coord">
+    OBS {{ site.time | date: "%Y-%m-%d" }}<br>
+    STN tylerwince.com<br>
+    TYPE AI-GENERATED
+  </div>
+</nav>

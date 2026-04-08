@@ -2,21 +2,17 @@
 layout: default
 ---
 <article class="document-wrapper">
-  <div class="tape" style="width: 140px; height: 35px; top: -12px; left: 30px; transform: rotate(-2deg);"></div>
-  <div class="pin red"></div>
-  
   <div class="document-header">
     <div class="document-title">{{ page.title | escape }}</div>
-    <div class="document-meta">AUTHOR: {{ page.author | escape }} | RATING: {{ page.stars | default: "UNRATED" }}</div>
+    <div class="document-meta">Author: {{ page.author | escape }} &bull; Rating: {{ page.stars | default: "Unrated" }}</div>
     {% assign year = page.date | date: "%Y" | to_integer %}
     {% if year >= 2020 %}
-    <div class="document-meta">DATE ANALYZED: {{ page.date | date: '%Y-%m-%d' }}</div>
+    <div class="document-meta">Observed: {{ page.date | date: '%Y-%m-%d' }}</div>
     {% endif %}
   </div>
 
   {% if page.takeaway %}
   <blockquote class="clipping-quote">
-    <div class="tape"></div>
     {{ page.takeaway }}
   </blockquote>
   {% endif %}
