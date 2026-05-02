@@ -1,9 +1,9 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="post-index-row" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div class="post-index-header">
-    <span class="post-index-title">{{ include.book.title | escape }}</span>
-    <span class="post-index-date">{{ include.book.author | escape }}</span>
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="album-sleeve" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <div class="sleeve-info">
+    <div class="sleeve-title">{{ include.book.title | escape }}</div>
+    <div class="sleeve-author">{{ include.book.author | escape }}</div>
   </div>
-  <div class="post-index-desc">
-    {% if include.unrated %}Unrated{% else %}{% if include.book.currently_reading %}In Progress{% elsif include.book.stars %}{{ include.book.stars }}/5{% endif %}{% endif %}
+  <div class="sleeve-rating">
+    {% if include.unrated %}UNRATED{% else %}{% if include.book.currently_reading %}PLAYING...{% elsif include.book.stars %}{{ include.book.stars }}.0 / 5.0{% endif %}{% endif %}
   </div>
 </a>

@@ -4,15 +4,16 @@ layout: default
 <article class="document-wrapper">
   <div class="document-header">
     <div class="document-title">{{ page.title | escape }}</div>
-    <div class="document-meta">Author: {{ page.author | escape }} &bull; Rating: {{ page.stars | default: "Unrated" }}</div>
+    <div class="document-meta">ARTIST: {{ page.author | escape }} &bull; SIGNAL STRENGTH: {{ page.stars | default: "0" }}.0 / 5.0</div>
     {% assign year = page.date | date: "%Y" | to_integer %}
     {% if year >= 2020 %}
-    <div class="document-meta">Observed: {{ page.date | date: '%Y-%m-%d' }}</div>
+    <div class="document-meta">LOGGED AT: {{ page.date | date: '%Y-%m-%d' }}</div>
     {% endif %}
   </div>
 
   {% if page.takeaway %}
-  <blockquote class="clipping-quote">
+  <blockquote class="hifi-takeaway">
+    <div class="panel-label">PRINCIPAL OUTPUT / TAKEAWAY</div>
     {{ page.takeaway }}
   </blockquote>
   {% endif %}

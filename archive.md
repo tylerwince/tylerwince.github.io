@@ -9,12 +9,14 @@ description: The historical index of design.
   {% assign sorted = site.data.archive | sort: "date" | reverse %}
   {% for entry in sorted %}
     {% if entry.date == today %}{% continue %}{% endif %}
-    <a href="/archive/{{ entry.date }}/" class="post-index-row">
-      <div class="post-index-header">
-        <span class="post-index-title">{{ entry.theme | escape }}</span>
-        <span class="post-index-date">{{ entry.date | date: '%Y-%m-%d' }}</span>
+    <a href="/archive/{{ entry.date }}/" class="album-sleeve">
+      <div class="sleeve-info">
+        <div class="sleeve-title">{{ entry.theme | escape }}</div>
+        <div class="sleeve-author">{{ entry.date | date: '%Y-%m-%d' }}</div>
       </div>
-      <div class="post-index-desc">{{ entry.description | escape }}</div>
+      <div class="sleeve-rating" style="font-size: 10px; opacity: 0.6;">
+        HISTORICAL LOG
+      </div>
     </a>
   {% endfor %}
 </div>

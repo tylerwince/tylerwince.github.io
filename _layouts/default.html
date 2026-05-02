@@ -12,7 +12,7 @@
   <div class="site-banner">
     <div class="banner-text">
       {% capture banner_content %}
-        AI-designed daily &mdash; <a href="{{ '/archive/' | relative_url }}">View evidence</a> &mdash;&nbsp;
+        ANALOG HI-FI SYSTEM &mdash; AI-DESIGNED &mdash; <a href="{{ '/archive/' | relative_url }}">View Archive</a> &mdash;&nbsp;
       {% endcapture %}
       <span class="banner-group">
         {% for i in (1..20) %}{{ banner_content }}{% endfor %}
@@ -23,15 +23,14 @@
     </div>
   </div>
 
-  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">METAR</button>
-
-  <div class="weather-map-layout">
+  <div class="hifi-cabinet">
     {% include header.html %}
 
-    <main class="map-main">
+    <main class="rack-main">
       {{ content }}
-      {% include footer.html %}
     </main>
+
+    {% include footer.html %}
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

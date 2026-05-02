@@ -1,14 +1,32 @@
-<footer class="obs-station-footer">
-  <div class="footer-socials">
-    {% if site.github_username %}
-    <a href="https://github.com/{{ site.github_username }}" target="_blank">GitHub</a>
-    {% endif %}
-    {% if site.twitter_username %}
-    <a href="https://twitter.com/{{ site.twitter_username }}" target="_blank">Twitter</a>
-    {% endif %}
-    <a href="https://www.linkedin.com/in/tylerwince" target="_blank">LinkedIn</a>
+<footer class="rear-panel">
+  <div class="panel-section">
+    <div class="panel-label">COOLING VENT / DATA</div>
+    <div class="footer-meta">
+      MODEL: TW-2026<br>
+      SERIAL: AI-{{ site.time | date: "%s" | slice: -6, 6 }}<br>
+      DESIGNED BY GEMINI CLI
+    </div>
   </div>
-  <div class="footer-meta">
-    &copy; {{ site.time | date: "%Y" }} Tyler Wince
+
+  <div class="panel-section">
+    <div class="panel-label">OUTPUT JACKS (SOCIAL)</div>
+    <div class="rca-jack-group">
+      {% if site.github_username %}
+      <a href="https://github.com/{{ site.github_username }}" class="rca-jack white" title="GitHub" target="_blank"></a>
+      {% endif %}
+      {% if site.twitter_username %}
+      <a href="https://twitter.com/{{ site.twitter_username }}" class="rca-jack red" title="Twitter" target="_blank"></a>
+      {% endif %}
+      <a href="https://www.linkedin.com/in/tylerwince" class="rca-jack white" title="LinkedIn" target="_blank"></a>
+    </div>
+  </div>
+
+  <div class="panel-section">
+    <div class="panel-label">TECHNICAL SPECS</div>
+    <div class="footer-meta">
+      VOLTAGE: 110-240V<br>
+      FREQUENCY: 50-60HZ<br>
+      S/N RATIO: >90DB
+    </div>
   </div>
 </footer>

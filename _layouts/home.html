@@ -1,78 +1,72 @@
 ---
 layout: default
 ---
-<div class="synoptic-chart">
-
-  <div class="system-header">
-    <div class="system-symbol high">H</div>
-    <div class="system-label">
-      High Pressure &mdash; Applications
-      <span>Stable systems, clear conditions</span>
+<div class="vu-meter-section">
+  <div class="vu-meter">
+    <div class="vu-scale">
+      <span>-20</span><span>-10</span><span>-5</span><span>0</span><span>+3</span>
     </div>
+    <div class="vu-needle"></div>
   </div>
-
-  <div class="station-cluster">
-    <a href="/apps/etch/" class="station-model">
-      <div class="station-id">ETCH</div>
-      <div class="station-name">Spaced Repetition</div>
-      <div class="station-obs">Remember what matters.</div>
-    </a>
-    <a href="/apps/little-quotes/" class="station-model">
-      <div class="station-id">LTQT</div>
-      <div class="station-name">Little Quotes</div>
-      <div class="station-obs">Youthful wisdom and words.</div>
-    </a>
-    <a href="/apps/waymark/" class="station-model">
-      <div class="station-id">WYMK</div>
-      <div class="station-name">Waymark</div>
-      <div class="station-obs">Prayer and inner journaling.</div>
-    </a>
-  </div>
-
-  <div class="system-header">
-    <div class="system-symbol low">L</div>
-    <div class="system-label">
-      Low Pressure &mdash; Writing
-      <span>Active conditions, developing systems</span>
+  <div class="vu-meter">
+    <div class="vu-scale">
+      <span>-20</span><span>-10</span><span>-5</span><span>0</span><span>+3</span>
     </div>
+    <div class="vu-needle" style="animation-delay: -0.5s;"></div>
   </div>
+</div>
 
-  <div class="metar-feed">
+<section class="hifi-section">
+  <div class="panel-label">COMPONENT 01: APPLICATION DECK</div>
+  <div class="cassette-grid">
+    <a href="/apps/etch/" class="cassette">
+      <div class="cassette-window"></div>
+      <div class="cassette-label">ETCH</div>
+      <div class="cassette-sub">Spaced Repetition System</div>
+    </a>
+    <a href="/apps/little-quotes/" class="cassette">
+      <div class="cassette-window"></div>
+      <div class="cassette-label">LTQT</div>
+      <div class="cassette-sub">Youthful Wisdom Collection</div>
+    </a>
+    <a href="/apps/waymark/" class="cassette">
+      <div class="cassette-window"></div>
+      <div class="cassette-label">WYMK</div>
+      <div class="cassette-sub">Prayer & Inner Journaling</div>
+    </a>
+  </div>
+</section>
+
+<section class="hifi-section">
+  <div class="panel-label">COMPONENT 02: RECENT RELEASES (WRITING)</div>
+  <div class="track-list">
     {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
     {% for post in latest_posts %}
-    <a href="{{ post.url | relative_url }}" class="metar-entry">
-      <span class="metar-time">{{ post.date | date: '%Y-%m-%d' }}</span>
-      <span class="metar-msg">{{ post.title | escape }}</span>
-      <span class="metar-wind">{% assign words = post.content | number_of_words %}{% assign minutes = words | divided_by: 200 %}{% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}~{{ minutes }} min</span>
+    <a href="{{ post.url | relative_url }}" class="track-item">
+      <div class="track-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+      <div class="track-title">{{ post.title | escape }}</div>
+      <div class="track-time">{% assign words = post.content | number_of_words %}{% assign minutes = words | divided_by: 200 %}{% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}{{ minutes }}:00</div>
     </a>
     {% endfor %}
   </div>
+</section>
 
-  <div class="system-header">
-    <div class="system-symbol warm">W</div>
-    <div class="system-label">
-      Warm Front &mdash; Reading
-      <span>Incoming observations</span>
-    </div>
-  </div>
-
-  <div class="briefing-stack">
+<section class="hifi-section" style="margin-top: 60px;">
+  <div class="panel-label">COMPONENT 03: VACUUM TUBE READINGS</div>
+  <div class="tube-rack">
     {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
     {% if currently_reading.size > 0 %}
-      {% for book in currently_reading limit:3 %}
-      <a href="{{ '/reading/' | relative_url }}" class="briefing-strip">
-        <div class="briefing-callsign">{{ book.title | escape }}</div>
-        <div class="briefing-route">{{ book.author | escape }}</div>
-        <div class="briefing-status">In Progress</div>
+      {% for book in currently_reading limit:4 %}
+      <a href="{{ '/reading/' | relative_url }}" class="vacuum-tube">
+        <div class="tube-glass">
+          <div class="filament"></div>
+        </div>
+        <div class="tube-base"></div>
+        <div class="tube-label">{{ book.title | escape }}</div>
       </a>
       {% endfor %}
     {% else %}
-      <div class="briefing-strip">
-        <div class="briefing-callsign">No active observations</div>
-        <div class="briefing-route"></div>
-        <div class="briefing-status">Clear</div>
-      </div>
+      <div class="panel-label">No tubes currently powered</div>
     {% endif %}
   </div>
-
-</div>
+</section>
