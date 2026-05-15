@@ -4,34 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% feed_meta %}
 </head>
 <body>
   <div class="site-banner">
     <div class="banner-text">
-      {% capture banner_content %}
-        ANALOG HI-FI SYSTEM &mdash; AI-DESIGNED &mdash; <a href="{{ '/archive/' | relative_url }}">View Archive</a> &mdash;&nbsp;
-      {% endcapture %}
-      <span class="banner-group">
-        {% for i in (1..20) %}{{ banner_content }}{% endfor %}
-      </span>
-      <span class="banner-group" aria-hidden="true">
-        {% for i in (1..20) %}{{ banner_content }}{% endfor %}
-      </span>
+      <span>Today's design baseline</span>
+      <a href="{{ '/archive/' | relative_url }}">View archive →</a>
     </div>
   </div>
 
-  <div class="hifi-cabinet">
-    {% include header.html %}
+  {% include header.html %}
 
-    <main class="rack-main">
+  <main class="site-main">
+    <div class="content-area">
       {{ content }}
-    </main>
+    </div>
+  </main>
 
-    {% include footer.html %}
-  </div>
+  {% include footer.html %}
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>

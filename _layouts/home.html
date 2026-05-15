@@ -1,72 +1,84 @@
 ---
 layout: default
 ---
-<div class="vu-meter-section">
-  <div class="vu-meter">
-    <div class="vu-scale">
-      <span>-20</span><span>-10</span><span>-5</span><span>0</span><span>+3</span>
+<div class="home">
+  <section class="hero">
+    <h1 class="hero-title">{{ site.description }}</h1>
+    <div class="hero-meta">product · writing · books</div>
+  </section>
+
+  <section class="home-section">
+    <div class="section-header">
+      <span class="section-label">apps</span>
+      <a href="{{ '/apps/' | relative_url }}" class="view-all">all →</a>
     </div>
-    <div class="vu-needle"></div>
-  </div>
-  <div class="vu-meter">
-    <div class="vu-scale">
-      <span>-20</span><span>-10</span><span>-5</span><span>0</span><span>+3</span>
+    <ul class="app-list">
+      <li>
+        <a href="/apps/etch/" class="app-card">
+          <span class="app-icon"></span>
+          <div class="app-info">
+            <h3 class="app-name">Etch</h3>
+            <div class="app-desc">Spaced repetition, built like Apple would.</div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="/apps/waymark/" class="app-card">
+          <span class="app-icon"></span>
+          <div class="app-info">
+            <h3 class="app-name">Waymark</h3>
+            <div class="app-desc">Prayer and inner journaling.</div>
+          </div>
+        </a>
+      </li>
+      <li>
+        <a href="/apps/little-quotes/" class="app-card">
+          <span class="app-icon"></span>
+          <div class="app-info">
+            <h3 class="app-name">Little Quotes</h3>
+            <div class="app-desc">A collection of youthful wisdom.</div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="home-section">
+    <div class="section-header">
+      <span class="section-label">writing</span>
+      <a href="{{ '/writing/' | relative_url }}" class="view-all">all →</a>
     </div>
-    <div class="vu-needle" style="animation-delay: -0.5s;"></div>
-  </div>
-</div>
-
-<section class="hifi-section">
-  <div class="panel-label">COMPONENT 01: APPLICATION DECK</div>
-  <div class="cassette-grid">
-    <a href="/apps/etch/" class="cassette">
-      <div class="cassette-window"></div>
-      <div class="cassette-label">ETCH</div>
-      <div class="cassette-sub">Spaced Repetition System</div>
-    </a>
-    <a href="/apps/little-quotes/" class="cassette">
-      <div class="cassette-window"></div>
-      <div class="cassette-label">LTQT</div>
-      <div class="cassette-sub">Youthful Wisdom Collection</div>
-    </a>
-    <a href="/apps/waymark/" class="cassette">
-      <div class="cassette-window"></div>
-      <div class="cassette-label">WYMK</div>
-      <div class="cassette-sub">Prayer & Inner Journaling</div>
-    </a>
-  </div>
-</section>
-
-<section class="hifi-section">
-  <div class="panel-label">COMPONENT 02: RECENT RELEASES (WRITING)</div>
-  <div class="track-list">
-    {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
-    {% for post in latest_posts %}
-    <a href="{{ post.url | relative_url }}" class="track-item">
-      <div class="track-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
-      <div class="track-title">{{ post.title | escape }}</div>
-      <div class="track-time">{% assign words = post.content | number_of_words %}{% assign minutes = words | divided_by: 200 %}{% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}{{ minutes }}:00</div>
-    </a>
-    {% endfor %}
-  </div>
-</section>
-
-<section class="hifi-section" style="margin-top: 60px;">
-  <div class="panel-label">COMPONENT 03: VACUUM TUBE READINGS</div>
-  <div class="tube-rack">
-    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-    {% if currently_reading.size > 0 %}
-      {% for book in currently_reading limit:4 %}
-      <a href="{{ '/reading/' | relative_url }}" class="vacuum-tube">
-        <div class="tube-glass">
-          <div class="filament"></div>
-        </div>
-        <div class="tube-base"></div>
-        <div class="tube-label">{{ book.title | escape }}</div>
+    <div class="post-list">
+      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
+      {% for post in latest_posts %}
+      <a href="{{ post.url | relative_url }}" class="post-row">
+        <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
+        <div class="post-title">{{ post.title | escape }}</div>
       </a>
       {% endfor %}
+    </div>
+  </section>
+
+  <section class="home-section">
+    <div class="section-header">
+      <span class="section-label">reading</span>
+      <a href="{{ '/reading/' | relative_url }}" class="view-all">all →</a>
+    </div>
+    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+    {% if currently_reading.size > 0 %}
+    <ul class="book-grid">
+      {% for book in currently_reading limit:4 %}
+      <li>
+        <a href="{{ '/reading/' | relative_url }}" class="book-card">
+          <span class="book-card-status">currently reading</span>
+          <span class="book-card-title">{{ book.title | escape }}</span>
+          {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
     {% else %}
-      <div class="panel-label">No tubes currently powered</div>
+    <p style="color: var(--color-muted);">No books on the desk right now.</p>
     {% endif %}
-  </div>
-</section>
+  </section>
+</div>

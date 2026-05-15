@@ -1,15 +1,15 @@
 ---
 layout: default
 ---
-<article class="document-wrapper">
-  <div class="document-header">
-    <div class="document-title">{{ page.title | escape }}</div>
+<article class="article">
+  <header class="article-header">
+    <h1 class="article-title">{{ page.title | escape }}</h1>
     {% if page.description %}
-    <div class="document-meta">{{ page.description | escape }}</div>
+    <p class="article-description">{{ page.description | escape }}</p>
     {% endif %}
-  </div>
+  </header>
 
-  <div class="document-content">
+  <div class="article-body">
     {{ content }}
   </div>
 </article>

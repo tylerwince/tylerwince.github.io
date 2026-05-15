@@ -1,25 +1,16 @@
-<header class="control-panel">
-  <div class="brand-plate">
-    TYLER WINCE
-    <span>HIGH-FIDELITY PRODUCT DESIGN</span>
-  </div>
+<header class="site-header">
+  <h1 class="site-title"><a href="{{ '/' | relative_url }}">tyler wince</a></h1>
 
-  <nav class="nav-buttons">
-    <a href="{{ '/' | relative_url }}" class="push-button {% if page.url == '/' %}active{% endif %}">
-      <div class="button-label">HOME</div>
-    </a>
-    
-    {% for nav_page_name in site.header_pages %}
-      {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-      {% if nav_page %}
-      <a href="{{ nav_page.url | relative_url }}" class="push-button {% if page.url contains nav_page.url %}active{% endif %}">
-        <div class="button-label">{{ nav_page.title }}</div>
-      </a>
-      {% endif %}
-    {% endfor %}
-
-    <a href="{{ '/archive/' | relative_url }}" class="push-button {% if page.url contains '/archive/' %}active{% endif %}">
-      <div class="button-label">ARCHIVE</div>
-    </a>
+  <nav class="site-nav" aria-label="Primary">
+    <ul class="nav-list">
+      {% for nav_page_name in site.header_pages %}
+        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+        {% if nav_page %}
+        <li class="nav-item">
+          <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">/{{ nav_page.title | downcase }}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   </nav>
 </header>

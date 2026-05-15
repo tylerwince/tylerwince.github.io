@@ -1,21 +1,23 @@
 ---
 layout: default
 ---
-<article class="document-wrapper">
-  <div class="document-header">
-    <div class="document-title">{{ page.title | escape }}</div>
-    <div class="document-meta">PLATFORM SPEC: {{ page.platform }} &bull; BUILD STACK: {{ page.tech_stack | join: ' + ' }}</div>
-    {% if page.app_store_link %}
-    <div class="document-meta">
-      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener">SIGNAL OUTPUT: DOWNLOAD ON APP STORE</a>
-    </div>
+<article class="article">
+  <header class="article-header">
+    <div class="article-kicker">app</div>
+    <h1 class="article-title">{{ page.title | escape }}</h1>
+    {% if page.tagline %}
+    <p class="article-description">{{ page.tagline }}</p>
     {% endif %}
-  </div>
+    <div class="article-meta">
+      {% if page.platform %}<span class="meta-item">{{ page.platform }}</span>{% endif %}
+      {% if page.tech_stack %}<span class="meta-item">{{ page.tech_stack | join: ' · ' }}</span>{% endif %}
+      {% if page.app_store_link %}
+      <span class="meta-item"><a href="{{ page.app_store_link }}" target="_blank" rel="noopener">Download →</a></span>
+      {% endif %}
+    </div>
+  </header>
 
-  <div class="document-content">
-    <div class="panel-label">COMPONENT TAGLINE</div>
-    <h2 style="margin-top: 0;">{{ page.tagline }}</h2>
-    
+  <div class="article-body">
     <div id="app-content-body">
       {{ content }}
     </div>
@@ -24,57 +26,7 @@ layout: default
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // --- Carousel Logic ---
-  const screenshotStrip = document.querySelector('.screenshot-strip');
-  if (screenshotStrip) {
-    const images = Array.from(screenshotStrip.querySelectorAll('img'));
-    if (images.length > 0) {
-      // Create carousel structure
-      const display = document.createElement('div');
-      display.className = 'oscilloscope-display';
-      
-      const viewport = document.createElement('div');
-      viewport.className = 'carousel-viewport';
-      
-      const controls = document.createElement('div');
-      controls.className = 'carousel-controls';
-      
-      images.forEach((img, idx) => {
-        const slide = document.createElement('div');
-        slide.className = 'carousel-slide';
-        // Clean up image styles
-        img.removeAttribute('style');
-        slide.appendChild(img);
-        viewport.appendChild(slide);
-        
-        const dot = document.createElement('button');
-        dot.className = 'carousel-dot' + (idx === 0 ? ' active' : '');
-        dot.addEventListener('click', () => {
-          viewport.scrollTo({
-            left: viewport.offsetWidth * idx,
-            behavior: 'smooth'
-          });
-        });
-        controls.appendChild(dot);
-      });
-      
-      display.appendChild(viewport);
-      display.appendChild(controls);
-      
-      // Sync dots with scroll
-      viewport.addEventListener('scroll', () => {
-        const activeIdx = Math.round(viewport.scrollLeft / viewport.offsetWidth);
-        controls.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === activeIdx);
-        });
-      });
-      
-      // Replace original strip
-      screenshotStrip.parentNode.replaceChild(display, screenshotStrip);
-    }
-  }
-
-  // --- Etch Stack Loader ---
+  // Etch Stack Loader — preserved from previous design
   var stackCards = document.querySelectorAll('.stack-card');
   stackCards.forEach(async function(card) {
     var etchUrl = card.getAttribute('href');

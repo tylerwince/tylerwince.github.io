@@ -1,9 +1,9 @@
-<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="album-sleeve" {% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div class="sleeve-info">
-    <div class="sleeve-title">{{ include.book.title | escape }}</div>
-    <div class="sleeve-author">{{ include.book.author | escape }}</div>
+<a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="book-line"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
+  <div>
+    <span class="book-line-title">{{ include.book.title | escape }}</span>
+    <span class="book-line-author">{{ include.book.author | escape }}</span>
   </div>
-  <div class="sleeve-rating">
-    {% if include.unrated %}UNRATED{% else %}{% if include.book.currently_reading %}PLAYING...{% elsif include.book.stars %}{{ include.book.stars }}.0 / 5.0{% endif %}{% endif %}
+  <div class="book-line-rating">
+    {% if include.unrated %}unrated{% else %}{% if include.book.currently_reading %}reading…{% elsif include.book.stars %}{{ include.book.stars }} / 5{% endif %}{% endif %}
   </div>
 </a>

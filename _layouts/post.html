@@ -1,16 +1,23 @@
 ---
 layout: default
 ---
-<article class="document-wrapper">
-  <div class="document-header">
-    <div class="document-title">{{ page.title | escape }}</div>
-    <div class="document-meta">{{ page.date | date: '%Y-%m-%d' }}</div>
+<article class="article">
+  <header class="article-header">
+    <div class="article-kicker">writing</div>
+    <h1 class="article-title">{{ page.title | escape }}</h1>
     {% if page.description %}
-    <div class="document-meta">{{ page.description | escape }}</div>
+    <p class="article-description">{{ page.description | escape }}</p>
     {% endif %}
-  </div>
+    <div class="article-meta">
+      <span class="meta-item">{{ page.date | date: "%B %-d, %Y" }}</span>
+      {% assign words = content | number_of_words %}
+      {% assign minutes = words | divided_by: 200 %}
+      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
+      <span class="meta-item">{{ minutes }} min read</span>
+    </div>
+  </header>
 
-  <div class="document-content">
+  <div class="article-body">
     {{ content }}
   </div>
 </article>
