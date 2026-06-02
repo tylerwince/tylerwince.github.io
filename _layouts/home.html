@@ -3,82 +3,114 @@ layout: default
 ---
 <div class="home">
   <section class="hero">
+    <div class="hero-board-label" data-flap="DEPARTURES">DEPARTURES</div>
     <h1 class="hero-title">{{ site.description }}</h1>
-    <div class="hero-meta">product · writing · books</div>
+    <div class="hero-meta">
+      <span class="hero-meta-pill">product</span>
+      <span class="hero-meta-pill">writing</span>
+      <span class="hero-meta-pill">books</span>
+    </div>
   </section>
 
-  <section class="home-section">
+  <section class="home-section board-section">
     <div class="section-header">
       <span class="section-label">apps</span>
-      <a href="{{ '/apps/' | relative_url }}" class="view-all">all →</a>
+      <a href="{{ '/apps/' | relative_url }}" class="view-all">all gates →</a>
     </div>
-    <ul class="app-list">
-      <li>
-        <a href="/apps/etch/" class="app-card">
-          <span class="app-icon"></span>
-          <div class="app-info">
-            <h3 class="app-name">Etch</h3>
-            <div class="app-desc">Spaced repetition, built like Apple would.</div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="/apps/waymark/" class="app-card">
-          <span class="app-icon"></span>
-          <div class="app-info">
-            <h3 class="app-name">Waymark</h3>
-            <div class="app-desc">Prayer and inner journaling.</div>
-          </div>
-        </a>
-      </li>
-      <li>
-        <a href="/apps/little-quotes/" class="app-card">
-          <span class="app-icon"></span>
-          <div class="app-info">
-            <h3 class="app-name">Little Quotes</h3>
-            <div class="app-desc">A collection of youthful wisdom.</div>
-          </div>
-        </a>
-      </li>
-    </ul>
+
+    <div class="board">
+      <div class="board-headrow" aria-hidden="true">
+        <span>flight</span>
+        <span>destination</span>
+        <span class="board-col-gate">gate</span>
+        <span class="board-col-status">status</span>
+      </div>
+      <ul class="app-list">
+        <li>
+          <a href="/apps/etch/" class="app-card">
+            <span class="app-icon" data-flap="ET 01">ET 01</span>
+            <div class="app-info">
+              <h3 class="app-name">Etch</h3>
+              <div class="app-desc">Spaced repetition, built like Apple would.</div>
+            </div>
+            <span class="board-gate">A1</span>
+            <span class="board-status board-status--go">boarding</span>
+          </a>
+        </li>
+        <li>
+          <a href="/apps/waymark/" class="app-card">
+            <span class="app-icon" data-flap="WY 02">WY 02</span>
+            <div class="app-info">
+              <h3 class="app-name">Waymark</h3>
+              <div class="app-desc">Prayer and inner journaling.</div>
+            </div>
+            <span class="board-gate">B4</span>
+            <span class="board-status">on time</span>
+          </a>
+        </li>
+        <li>
+          <a href="/apps/little-quotes/" class="app-card">
+            <span class="app-icon" data-flap="LQ 03">LQ 03</span>
+            <div class="app-info">
+              <h3 class="app-name">Little Quotes</h3>
+              <div class="app-desc">A collection of youthful wisdom.</div>
+            </div>
+            <span class="board-gate">C2</span>
+            <span class="board-status">on time</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </section>
 
-  <section class="home-section">
-    <div class="section-header">
-      <span class="section-label">writing</span>
-      <a href="{{ '/writing/' | relative_url }}" class="view-all">all →</a>
-    </div>
-    <div class="post-list">
-      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
-      {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="post-row">
-        <div class="post-date">{{ post.date | date: "%Y-%m-%d" }}</div>
-        <div class="post-title">{{ post.title | escape }}</div>
-      </a>
-      {% endfor %}
-    </div>
-  </section>
-
-  <section class="home-section">
-    <div class="section-header">
-      <span class="section-label">reading</span>
-      <a href="{{ '/reading/' | relative_url }}" class="view-all">all →</a>
-    </div>
-    {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
-    {% if currently_reading.size > 0 %}
-    <ul class="book-grid">
-      {% for book in currently_reading limit:4 %}
-      <li>
-        <a href="{{ '/reading/' | relative_url }}" class="book-card">
-          <span class="book-card-status">currently reading</span>
-          <span class="book-card-title">{{ book.title | escape }}</span>
-          {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
+  <div class="gates-area">
+    <section class="home-section gate-writing">
+      <div class="section-header">
+        <span class="section-label">writing</span>
+        <a href="{{ '/writing/' | relative_url }}" class="view-all">all →</a>
+      </div>
+      <div class="post-list">
+        {% assign latest_posts = site.posts | where: "published", true | slice: 0, 6 %}
+        {% for post in latest_posts %}
+        <a href="{{ post.url | relative_url }}" class="post-row">
+          <div class="bp-body">
+            <span class="bp-label">boarding pass</span>
+            <div class="post-title">{{ post.title | escape }}</div>
+            <div class="post-date">dep {{ post.date | date: "%Y.%m.%d" }}</div>
+          </div>
+          <div class="bp-stub">
+            <span class="bp-stub-label">seat</span>
+            <span class="bp-stub-seat">{{ forloop.index }}A</span>
+            <span class="bp-barcode" aria-hidden="true"></span>
+          </div>
         </a>
-      </li>
-      {% endfor %}
-    </ul>
-    {% else %}
-    <p style="color: var(--color-muted);">No books on the desk right now.</p>
-    {% endif %}
-  </section>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="home-section gate-reading">
+      <div class="section-header">
+        <span class="section-label">reading</span>
+        <a href="{{ '/reading/' | relative_url }}" class="view-all">all →</a>
+      </div>
+      {% assign currently_reading = site.books | where_exp: "book", "book.currently_reading == true" %}
+      {% if currently_reading.size > 0 %}
+      <ul class="book-grid">
+        {% for book in currently_reading limit:4 %}
+        <li>
+          <a href="{{ '/reading/' | relative_url }}" class="book-card">
+            <span class="tag-hole" aria-hidden="true"></span>
+            <span class="book-card-status">currently reading</span>
+            <span class="book-card-title">{{ book.title | escape }}</span>
+            {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
+            <span class="tag-route" aria-hidden="true">TWI → {{ book.title | slice: 0, 3 | upcase }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="carousel-empty">Carousel empty. No bags on the belt right now.</p>
+      {% endif %}
+    </section>
+  </div>
 </div>

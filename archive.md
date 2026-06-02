@@ -6,6 +6,10 @@ description: The historical index of designs. Every day, a different look.
 ---
 
 <div class="archive-table">
+  <div class="archive-header-row" aria-hidden="true">
+    <span>date</span>
+    <span>arrived from</span>
+  </div>
   {% assign today = site.time | date: "%Y-%m-%d" %}
   {% assign sorted = site.data.archive | sort: "date" | reverse %}
   {% for entry in sorted %}

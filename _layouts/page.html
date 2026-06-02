@@ -1,8 +1,10 @@
 ---
 layout: default
 ---
-<article class="article">
+<article class="article article--ticket">
   <header class="article-header">
+    <span class="ticket-rip" aria-hidden="true"></span>
+    <div class="article-kicker">terminal · information</div>
     <h1 class="article-title">{{ page.title | escape }}</h1>
     {% if page.description %}
     <p class="article-description">{{ page.description | escape }}</p>

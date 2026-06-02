@@ -1,13 +1,21 @@
 <header class="site-header">
-  <h1 class="site-title"><a href="{{ '/' | relative_url }}">tyler wince</a></h1>
+  <div class="terminal-id">
+    <span class="terminal-code" data-flap="TWI">TWI</span>
+    <h1 class="site-title"><a href="{{ '/' | relative_url }}">Tyler Wince <span class="terminal-intl">International</span></a></h1>
+  </div>
 
   <nav class="site-nav" aria-label="Primary">
+    <span class="nav-board-label" aria-hidden="true">destinations</span>
     <ul class="nav-list">
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
         <li class="nav-item">
-          <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">/{{ nav_page.title | downcase }}</a>
+          <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
+            <span class="flap-status" aria-hidden="true"></span>
+            <span class="flap-dest">/{{ nav_page.title | downcase }}</span>
+            <span class="flap-gate" aria-hidden="true">G{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          </a>
         </li>
         {% endif %}
       {% endfor %}

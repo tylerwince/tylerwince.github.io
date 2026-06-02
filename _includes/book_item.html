@@ -1,9 +1,10 @@
 <a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="book-line"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}>
-  <div>
+  <span class="book-line-flag" aria-hidden="true"></span>
+  <div class="book-line-main">
     <span class="book-line-title">{{ include.book.title | escape }}</span>
     <span class="book-line-author">{{ include.book.author | escape }}</span>
   </div>
   <div class="book-line-rating">
-    {% if include.unrated %}unrated{% else %}{% if include.book.currently_reading %}reading…{% elsif include.book.stars %}{{ include.book.stars }} / 5{% endif %}{% endif %}
+    {% if include.unrated %}unlisted{% else %}{% if include.book.currently_reading %}in transit{% elsif include.book.stars %}{{ include.book.stars }}/5{% endif %}{% endif %}
   </div>
 </a>

@@ -1,14 +1,17 @@
 <footer class="site-footer">
+  <div class="footer-marquee" aria-hidden="true">
+    <span>now boarding · thank you for flying tyler wince international · mind the gap · please retain your boarding pass · now boarding · thank you for flying tyler wince international · mind the gap · please retain your boarding pass · </span>
+  </div>
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="footer-col-title">site</div>
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">Design archive</a>
+      <div class="footer-col-title">terminal directory</div>
+      <a href="{{ '/' | relative_url }}">Departures · Home</a>
+      <a href="{{ '/now/' | relative_url }}">/now · Tower Status</a>
+      <a href="{{ '/archive/' | relative_url }}">Flight History · Archive</a>
     </div>
 
     <div class="footer-col">
-      <div class="footer-col-title">elsewhere</div>
+      <div class="footer-col-title">transfers · elsewhere</div>
       <ul class="social-list">
         {% if site.github_username %}
         <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
@@ -20,5 +23,12 @@
       </ul>
     </div>
 
+    <div class="footer-col footer-col--stamp">
+      <div class="footer-col-title">gate</div>
+      <div class="footer-stamp">
+        <span class="footer-stamp-code">TWI</span>
+        <span class="footer-stamp-sub">EST. on time, daily</span>
+      </div>
+    </div>
   </div>
 </footer>
