@@ -152,3 +152,8 @@
   theme: "ANALOG HI-FI"
   description: "ANALOG HI-FI — designed May 02, 2026"
   commit: "05704a71"
+
+- date: "2026-06-02"
+  theme: "THE DEPARTURES BOARD"
+  description: "THE DEPARTURES BOARD — designed June 02, 2026"
+  commit: "eddcadca"
