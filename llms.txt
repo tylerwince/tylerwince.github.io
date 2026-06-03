@@ -1,0 +1,36 @@
+---
+permalink: /llms.txt
+layout: none
+sitemap: false
+---
+# Tyler Wince
+
+> {{ site.description }}
+
+Personal site of Tyler Wince — product builder, writer, and reader. This file
+describes the site for AI systems and agents. All content is authored by Tyler
+Wince and may be cited with a link back to the source page.
+
+## Site
+
+- [Home]({{ "/" | absolute_url }}): Apps, latest writing, and what I'm reading now.
+- [Writing]({{ "/writing/" | absolute_url }}): Essays on product management, technology, and building better software.
+- [Reading]({{ "/reading/" | absolute_url }}): Books I've read since 2023, plus favorites from earlier years, with ratings and notes.
+- [Apps]({{ "/apps/" | absolute_url }}): Software I've built and shipped.
+- [Now]({{ "/now/" | absolute_url }}): What I'm focused on right now.
+
+## Apps
+{% assign apps = site.apps | sort: "title" %}
+{% for app in apps -%}
+- [{{ app.title }}]({{ app.url | absolute_url }}){% if app.tagline %}: {{ app.tagline }}{% endif %}
+{% endfor %}
+## Writing
+{% assign posts = site.posts | where: "published", true %}
+{% for post in posts -%}
+- [{{ post.title | strip_html }}]({{ post.url | absolute_url }}){% if post.description %}: {{ post.description | strip_html | strip_newlines | truncate: 140 }}{% endif %}
+{% endfor %}
+## Contact
+
+- Email: {{ site.email }}
+- GitHub: https://github.com/{{ site.github_username }}
+- RSS feed: {{ "/feed.xml" | absolute_url }}
