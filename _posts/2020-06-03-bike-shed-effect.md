@@ -5,6 +5,7 @@ description: Teams waste time debating trivial issues while ignoring complex, im
 date: 2020-06-03 19:00:35 +0100
 published: true
 tags: product-management
+topics: [leadership, mental-models]
 ---
 _This post is dedicated to George Floyd, Breonna Taylor, Ahmaud Arbery, and the countless others who have suffered racial injustice and systemic oppression around the world. If you only have time to read one thing today, please [read this from Barack Obama](https://medium.com/@BarackObama/how-to-make-this-moment-the-turning-point-for-real-change-9fa209806067) instead of this post. He is providing leadership at a time when our current President won’t._
 

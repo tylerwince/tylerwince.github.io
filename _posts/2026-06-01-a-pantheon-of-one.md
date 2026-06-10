@@ -5,6 +5,7 @@ description: The danger isn’t that AI gets theology wrong. It’s that it gets
 date: 2026-06-01 16:11:28 +0000
 published: true
 tags: product-management
+topics: [ai, faith]
 ---
 
 The “it’s just me and Jesus” version of Christianity is about to get a significant upgrade.

@@ -1,0 +1,39 @@
+# Current design manifest.
+# Rewritten by EVERY redesign (see redesign-site skill). On deploy, CI merges
+# these fields into the new _data/archive.yml entry, so this file is both the
+# live site's metadata source AND the design's permanent archive record.
+#
+# Fields:
+#   name                  — theme name, ALL CAPS, matches the commit message
+#   date                  — design date (YYYY-MM-DD)
+#   lane                  — one of: object-metaphor | design-movement | pure-typography |
+#                           motion-first | generative | digital-native
+#   manifesto             — 1–2 sentence point of view, written for visitors
+#   nav_paradigm          — short label for the navigation mechanism
+#   layout_skeleton       — short label for the homepage spatial structure
+#   signature_interaction — the one memorable interaction this theme ships
+#   color                 — browser theme-color (also used for archive swatch fallback)
+#   fonts                 — display / body / mono families used
+#   palette               — 3–5 representative hexes, bg first, accent last
+
+name: "THE DEPARTURES BOARD"
+date: "2026-06-02"
+lane: "object-metaphor"
+manifesto: >-
+  A 1970s split-flap Solari board in an airport terminal. Apps board at their
+  gates, posts are boarding-pass stubs, books ride the carousel as luggage
+  tags — and the board clacks itself awake on every visit.
+nav_paradigm: "split-flap destination chips with gate numbers and status lights"
+layout_skeleton: "full-width manifest board over a two-column gates area"
+signature_interaction: "split-flap character scramble that settles left to right"
+color: "#15171d"
+fonts:
+  display: "Oswald"
+  body: "Inter"
+  mono: "IBM Plex Mono"
+palette:
+  - "#e7e3da"
+  - "#15171d"
+  - "#f5b53d"
+  - "#54d17a"
+  - "#b8421c"

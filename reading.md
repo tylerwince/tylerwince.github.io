@@ -8,6 +8,30 @@ description: Books I've read since 2023, plus some favorites from earlier years.
 {% assign all_books = site.books | sort: "date" | reverse %}
 {% assign five_star_books = site.books | where: "stars", 5 %}
 
+{% assign year_now = site.time | date: '%Y' %}
+{% assign books_this_year = 0 %}
+{% for b in site.books %}{% assign by = b.date | date: '%Y' %}{% if by == year_now %}{% assign books_this_year = books_this_year | plus: 1 %}{% endif %}{% endfor %}
+{% assign in_transit = site.books | where: "currently_reading", true | size %}
+
+<div class="reading-stats">
+  <div class="stat-item" data-stat="total">
+    <span class="stat-value">{{ site.books | size }}</span>
+    <span class="stat-label">books logged</span>
+  </div>
+  <div class="stat-item" data-stat="favorites">
+    <span class="stat-value">{{ five_star_books | size }}</span>
+    <span class="stat-label">five-star reads</span>
+  </div>
+  <div class="stat-item" data-stat="this-year">
+    <span class="stat-value">{{ books_this_year }}</span>
+    <span class="stat-label">read in {{ year_now }}</span>
+  </div>
+  <div class="stat-item" data-stat="reading-now">
+    <span class="stat-value">{{ in_transit }}</span>
+    <span class="stat-label">in progress</span>
+  </div>
+</div>
+
 <div class="sort-controls">
   <span>Sort:</span>
   <a href="#" onclick="showList('date'); return false;" class="sort-link active" id="sort-date">Date</a>
@@ -30,7 +54,7 @@ description: Books I've read since 2023, plus some favorites from earlier years.
   {% for year_group in grouped_books %}
     {% assign year = year_group.name | to_integer %}
     {% if year >= 2020 %}
-      <div class="year-section">
+      <div class="year-section" data-year="{{ year }}">
         <h2 class="year-heading">{{ year }}</h2>
         <div class="book-list">
           {% for book in year_group.items %}

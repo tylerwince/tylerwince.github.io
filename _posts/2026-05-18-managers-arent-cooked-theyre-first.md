@@ -5,6 +5,7 @@ description: The skill AI agents demand is the one good managers have spent year
 date: 2026-05-18 09:00:00 +0000
 published: true
 tags: product-management
+topics: [ai, leadership]
 ---
 
 Everyone has decided managers are the most endangered species, that the coordinator class gets automated away first. I disagree.

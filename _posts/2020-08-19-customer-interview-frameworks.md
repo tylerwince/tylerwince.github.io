@@ -6,6 +6,7 @@ date: 2020-08-19 19:00:46 +0100
 published: true
 tags: product-management
 category: frameworks
+topics: [product, frameworks]
 ---
 
 > "It isn't the customer's job to know what they want." - Steve Jobs

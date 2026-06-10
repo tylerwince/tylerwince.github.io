@@ -5,6 +5,7 @@ description: Write in public from day one to generate better ideas, let people r
 date: 2020-07-01 19:00:46 +0100
 published: true
 tags: product-management
+topics: [product, writing]
 ---
 
 ![](/assets/5a097463-55a0-48db-8133-830ad790e72b_1777x980.png){: width="150" }

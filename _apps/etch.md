@@ -1,6 +1,7 @@
 ---
 layout: app
 title: Etch
+order: 1
 tagline: Spaced repetition, built like Apple would.
 platform: iOS, iPadOS, macOS
 app_store_link: https://apps.apple.com/us/app/etch-memory/id6741780207

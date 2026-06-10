@@ -54,7 +54,7 @@ jobs:
           # Find the most recent existing archive date to use as prev_date
           PREV_DATE=""
           if [ -f _data/archive.yml ]; then
-            PREV_DATE=$(grep 'date:' _data/archive.yml | tail -1 | sed 's/.*"\(.*\)"/\1/')
+            PREV_DATE=$(ruby -ryaml -rdate -e 'a = YAML.load_file("_data/archive.yml", permitted_classes: [Date]) || []; puts a.map { |e| e["date"].to_s }.max' 2>/dev/null || echo "")
           fi
           bash scripts/build_snapshot.sh \
             "${{ steps.check.outputs.commit }}" \
@@ -66,26 +66,32 @@ jobs:
       - name: Update archive manifest
         if: steps.check.outputs.is_redesign == 'true'
         run: |
-          DATE="${{ steps.check.outputs.date }}"
-          THEME="${{ steps.check.outputs.theme }}"
-          COMMIT="${{ steps.check.outputs.commit }}"
+          ruby scripts/update_archive_manifest.rb \
+            "${{ steps.check.outputs.date }}" \
+            "${{ steps.check.outputs.theme }}" \
+            "${{ steps.check.outputs.commit }}"
 
-          # Build description from theme name
-          DESC="${THEME} — designed $(date +%B\ %d,\ %Y)"
+      - name: Install Playwright browser
+        if: steps.check.outputs.is_redesign == 'true'
+        run: npx -y playwright@1.58.0 install --with-deps chromium
 
-          # Append new entry to archive.yml
-          cat >> _data/archive.yml <<EOF
-
-          - date: "${DATE}"
-            theme: "${THEME}"
-            description: "${DESC}"
-            commit: "${COMMIT}"
-          EOF
+      - name: Capture archive thumbnail
+        if: steps.check.outputs.is_redesign == 'true'
+        run: |
+          chmod +x scripts/capture_screenshots.sh
+          PLAYWRIGHT_VERSION=1.58.0 ./scripts/capture_screenshots.sh thumb "${{ steps.check.outputs.date }}"
 
       - name: Build Jekyll site
         run: JEKYLL_ENV=production bundle exec jekyll build
         env:
           JEKYLL_ENV: production
+
+      - name: Capture social/OG image
+        if: steps.check.outputs.is_redesign == 'true'
+        run: |
+          PLAYWRIGHT_VERSION=1.58.0 ./scripts/capture_screenshots.sh shot _site / assets/og/today.png 1200,630
+          mkdir -p _site/assets/og
+          cp assets/og/today.png _site/assets/og/today.png
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -101,6 +107,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add archive/ _data/archive.yml
+          git add archive/ _data/archive.yml assets/og/
           git commit -m "Archive: ${{ steps.check.outputs.theme }} (${{ steps.check.outputs.date }}) [skip ci]" || echo "Nothing to commit"
           git push

@@ -5,6 +5,7 @@ description: Use inversion thinking to ensure your team works on high-impact fea
 date: 2020-05-27 19:00:27 +0100
 published: true
 tags: product-management
+topics: [product, mental-models]
 ---
 
 What would it look like if you could ensure your team was working on the right stuff at all times?

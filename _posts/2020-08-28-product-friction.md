@@ -5,6 +5,7 @@ description: Removing too much friction can hurt user safety, impact other featu
 date: 2020-08-28 19:00:27 +0100
 published: true
 tags: product-management
+topics: [product, design]
 ---
 
 The main goal you have in building a product is to reduce friction from a process/problem your users currently experience. You aim to improve their lives. You unlock the ability to do things that were not possible without your products. This level of removing friction doesn’t happen accidentally. **Your entire job as a product manager is to make impossible things, possible.**

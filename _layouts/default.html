@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+  {% if site.data.theme.color %}<meta name="theme-color" content="{{ site.data.theme.color }}">{% endif %}
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:image" content="{{ '/assets/og/today.png' | absolute_url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <style>@view-transition { navigation: auto; }</style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -12,12 +21,15 @@
   {% feed_meta %}
 </head>
 <body>
+  {% assign archive_count = site.data.archive | size %}
+  {% assign last_entry = site.data.archive | sort: "date" | last %}
+  {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
   <div class="site-banner">
     <div class="banner-text">
       <span class="banner-tag">information</span>
       <span class="banner-msg">
         <span class="banner-dot" aria-hidden="true"></span>
-        today's design baseline · on time
+        design №{{ design_no }} · {{ site.data.theme.name | default: "today's design" }} · redesigned daily by AI
       </span>
       <span class="banner-side">
         <time class="banner-clock" data-clock aria-label="Local time">--:--:--</time>

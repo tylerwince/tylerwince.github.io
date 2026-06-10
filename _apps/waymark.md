@@ -1,6 +1,7 @@
 ---
 layout: app
 title: Waymark
+order: 2
 tagline: Remember God's faithfulness
 platform: iOS (iPhone & iPad)
 app_store_link: https://apps.apple.com/us/app/waymark-prayer/id6749036819

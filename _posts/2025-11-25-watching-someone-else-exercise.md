@@ -5,6 +5,7 @@ description: Re-reading tricks you into feeling smart; retrieval is the only thi
 date: 2025-11-25 10:24:30 +0000  
 published: true  
 tags: learning  
+topics: [learning]
 ---  
 
   

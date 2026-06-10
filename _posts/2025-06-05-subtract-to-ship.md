@@ -6,6 +6,7 @@ date: 2025-06-05 22:45:08 +0000
 published: true
 tags: product-management
 category: product
+topics: [product, building]
 ---
 
 

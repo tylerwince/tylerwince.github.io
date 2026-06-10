@@ -1,159 +1,150 @@
-- date: "2026-02-04"
-  theme: "NEUBRUTALISM"
-  description: "Bold borders, raw energy, anti-design design."
-  commit: "950d6b36"
-
-- date: "2026-02-05"
-  theme: "INK & PAPER"
-  description: "Minimal monochrome, typographic clarity."
-  commit: "21736167"
-
-- date: "2026-02-06"
-  theme: "SYNTHWAVE"
-  description: "Neon gradients, retro-futuristic glow."
-  commit: "765c47ae"
-
-- date: "2026-02-07"
-  theme: "DESERT DUSK"
-  description: "Warm earth tones, editorial elegance."
-  commit: "a179fe4c"
-
-- date: "2026-02-08"
-  theme: "BLUEPRINT"
-  description: "BLUEPRINT — designed February 08, 2026"
-  commit: "6598866"
-
-- date: "2026-02-09"
-  theme: "NOIR DOSSIER"
-  description: "NOIR DOSSIER — designed February 09, 2026"
-  commit: "bca0390"
-
-- date: "2026-02-10"
-  theme: "TROPICAL RESORT"
-  description: "TROPICAL RESORT — designed February 10, 2026"
-  commit: "391b64b"
-
-- date: "2026-02-11"
-  theme: "CITY TRANSIT ATLAS"
-  description: "CITY TRANSIT ATLAS — designed February 11, 2026"
-  commit: "80b8056"
-
-- date: "2026-02-12"
-  theme: "BROADSHEET GAZETTE"
-  description: "BROADSHEET GAZETTE — designed February 12, 2026"
-  commit: "c3ade006"
-
-- date: "2026-02-13"
-  theme: "control-room visual overhaul across layouts, styles, and scripts"
-  description: "control-room visual overhaul across layouts, styles, and scripts — designed February 13, 2026"
-  commit: "18675d8e"
-
-- date: "2026-02-14"
-  theme: "LOVE LETTERS Valentine's Day"
-  description: "LOVE LETTERS Valentine's Day — designed February 14, 2026"
-  commit: "eec4c9b30"
-
-- date: "2026-02-15"
-  theme: "PIXEL DESKTOP Windows 95"
-  description: "PIXEL DESKTOP Windows 95 — designed February 15, 2026"
-  commit: "5b44103f6"
-
-- date: "2026-02-16"
-  theme: "CONSTRUCTIVIST POSTER Bauhaus"
-  description: "CONSTRUCTIVIST POSTER Bauhaus — designed February 16, 2026"
-  commit: "f494bbe7ed"
-
-- date: "2026-02-17"
-  theme: "DEEP SEA BIOLUMINESCENCE"
-  description: "DEEP SEA BIOLUMINESCENCE — designed February 17, 2026"
-  commit: "093765d"
-
-- date: "2026-02-18"
-  theme: "AUCTION HOUSE CATALOGUE"
-  description: "AUCTION HOUSE CATALOGUE — designed February 18, 2026"
-  commit: "9cb31eb"
-
-- date: "2026-02-19"
-  theme: "FIELD EXPEDITION"
-  description: "FIELD EXPEDITION — designed February 19, 2026"
-  commit: "ad77658"
-
-- date: "2026-02-20"
-  theme: "COMIC BOOK PANELS"
-  description: "COMIC BOOK PANELS — designed February 20, 2026"
-  commit: "b50dea5"
-
-- date: "2026-02-21"
-  theme: "RECORD CRATE"
-  description: "RECORD CRATE — designed February 21, 2026"
-  commit: "190b4d2"
-
-- date: "2026-02-23"
-  theme: "PAPERCRAFT"
-  description: "PAPERCRAFT — designed February 23, 2026"
-  commit: "f7911d3"
-
-- date: "2026-02-24"
-  theme: "VHS RENTAL"
-  description: "VHS RENTAL — designed February 24, 2026"
-  commit: "632f294"
-
-- date: "2026-02-25"
-  theme: "HACKER CLI TERMINAL"
-  description: "HACKER CLI TERMINAL — designed February 25, 2026"
-  commit: "ab6f7f2"
-
-- date: "2026-02-26"
-  theme: "THE SPIRAL NOTEBOOK"
-  description: "THE SPIRAL NOTEBOOK — designed February 26, 2026"
-  commit: "5dd85ce5"
-
-- date: "2026-02-27"
-  theme: "THERMAL RECEIPT"
-  description: "THERMAL RECEIPT — designed February 27, 2026"
-  commit: "27405277"
-
-- date: "2026-02-28"
-  theme: "THE ARCANA SPREAD"
-  description: "THE ARCANA SPREAD — designed February 28, 2026"
-  commit: "6a29a143"
-
-- date: "2026-03-01"
-  theme: "THE SWISS ARCHIVE"
-  description: "THE SWISS ARCHIVE — designed March 01, 2026"
-  commit: "fcffc50f"
-
-- date: "2026-03-02"
-  theme: "THE SUPERMARKET CIRCULAR"
-  description: "THE SUPERMARKET CIRCULAR — designed March 02, 2026"
-  commit: "4c84389a"
-
-- date: "2026-03-06"
-  theme: "THE AVANT-GARDE EDITORIAL"
-  description: "THE AVANT-GARDE EDITORIAL — designed March 06, 2026"
-  commit: "54a6201f"
-
-- date: "2026-03-07"
-  theme: "THE CODE EDITOR"
-  description: "THE CODE EDITOR — designed March 07, 2026"
-  commit: "1ccf8b21"
-
-- date: "2026-03-10"
-  theme: "THE DETECTIVE'S CORKBOARD"
-  description: "THE DETECTIVE'S CORKBOARD — designed March 10, 2026"
-  commit: "0e1906d0"
-
-- date: "2026-04-08"
-  theme: "THE WEATHER MAP"
-  description: "THE WEATHER MAP — designed April 08, 2026"
-  commit: "11129d09"
-
-- date: "2026-05-02"
-  theme: "ANALOG HI-FI"
-  description: "ANALOG HI-FI — designed May 02, 2026"
-  commit: "05704a71"
-
-- date: "2026-06-02"
-  theme: "THE DEPARTURES BOARD"
-  description: "THE DEPARTURES BOARD — designed June 02, 2026"
-  commit: "eddcadca"
+---
+- date: '2026-02-04'
+  theme: NEUBRUTALISM
+  description: Bold borders, raw energy, anti-design design.
+  commit: 950d6b36
+- date: '2026-02-05'
+  theme: INK & PAPER
+  description: Minimal monochrome, typographic clarity.
+  commit: '21736167'
+- date: '2026-02-06'
+  theme: SYNTHWAVE
+  description: Neon gradients, retro-futuristic glow.
+  commit: 765c47ae
+- date: '2026-02-07'
+  theme: DESERT DUSK
+  description: Warm earth tones, editorial elegance.
+  commit: a179fe4c
+- date: '2026-02-08'
+  theme: BLUEPRINT
+  description: BLUEPRINT — designed February 08, 2026
+  commit: '6598866'
+- date: '2026-02-09'
+  theme: NOIR DOSSIER
+  description: NOIR DOSSIER — designed February 09, 2026
+  commit: bca0390
+- date: '2026-02-10'
+  theme: TROPICAL RESORT
+  description: TROPICAL RESORT — designed February 10, 2026
+  commit: 391b64b
+- date: '2026-02-11'
+  theme: CITY TRANSIT ATLAS
+  description: CITY TRANSIT ATLAS — designed February 11, 2026
+  commit: 80b8056
+- date: '2026-02-12'
+  theme: BROADSHEET GAZETTE
+  description: BROADSHEET GAZETTE — designed February 12, 2026
+  commit: c3ade006
+- date: '2026-02-13'
+  theme: control-room visual overhaul across layouts, styles, and scripts
+  description: control-room visual overhaul across layouts, styles, and scripts —
+    designed February 13, 2026
+  commit: 18675d8e
+- date: '2026-02-14'
+  theme: LOVE LETTERS Valentine's Day
+  description: LOVE LETTERS Valentine's Day — designed February 14, 2026
+  commit: eec4c9b30
+- date: '2026-02-15'
+  theme: PIXEL DESKTOP Windows 95
+  description: PIXEL DESKTOP Windows 95 — designed February 15, 2026
+  commit: 5b44103f6
+- date: '2026-02-16'
+  theme: CONSTRUCTIVIST POSTER Bauhaus
+  description: CONSTRUCTIVIST POSTER Bauhaus — designed February 16, 2026
+  commit: f494bbe7ed
+- date: '2026-02-17'
+  theme: DEEP SEA BIOLUMINESCENCE
+  description: DEEP SEA BIOLUMINESCENCE — designed February 17, 2026
+  commit: '093765d'
+- date: '2026-02-18'
+  theme: AUCTION HOUSE CATALOGUE
+  description: AUCTION HOUSE CATALOGUE — designed February 18, 2026
+  commit: 9cb31eb
+- date: '2026-02-19'
+  theme: FIELD EXPEDITION
+  description: FIELD EXPEDITION — designed February 19, 2026
+  commit: ad77658
+- date: '2026-02-20'
+  theme: COMIC BOOK PANELS
+  description: COMIC BOOK PANELS — designed February 20, 2026
+  commit: b50dea5
+- date: '2026-02-21'
+  theme: RECORD CRATE
+  description: RECORD CRATE — designed February 21, 2026
+  commit: 190b4d2
+- date: '2026-02-23'
+  theme: PAPERCRAFT
+  description: PAPERCRAFT — designed February 23, 2026
+  commit: f7911d3
+- date: '2026-02-24'
+  theme: VHS RENTAL
+  description: VHS RENTAL — designed February 24, 2026
+  commit: 632f294
+- date: '2026-02-25'
+  theme: HACKER CLI TERMINAL
+  description: HACKER CLI TERMINAL — designed February 25, 2026
+  commit: ab6f7f2
+- date: '2026-02-26'
+  theme: THE SPIRAL NOTEBOOK
+  description: THE SPIRAL NOTEBOOK — designed February 26, 2026
+  commit: 5dd85ce5
+- date: '2026-02-27'
+  theme: THERMAL RECEIPT
+  description: THERMAL RECEIPT — designed February 27, 2026
+  commit: '27405277'
+- date: '2026-02-28'
+  theme: THE ARCANA SPREAD
+  description: THE ARCANA SPREAD — designed February 28, 2026
+  commit: 6a29a143
+- date: '2026-03-01'
+  theme: THE SWISS ARCHIVE
+  description: THE SWISS ARCHIVE — designed March 01, 2026
+  commit: fcffc50f
+- date: '2026-03-02'
+  theme: THE SUPERMARKET CIRCULAR
+  description: THE SUPERMARKET CIRCULAR — designed March 02, 2026
+  commit: 4c84389a
+- date: '2026-03-06'
+  theme: THE AVANT-GARDE EDITORIAL
+  description: THE AVANT-GARDE EDITORIAL — designed March 06, 2026
+  commit: 54a6201f
+- date: '2026-03-07'
+  theme: THE CODE EDITOR
+  description: THE CODE EDITOR — designed March 07, 2026
+  commit: 1ccf8b21
+- date: '2026-03-10'
+  theme: THE DETECTIVE'S CORKBOARD
+  description: THE DETECTIVE'S CORKBOARD — designed March 10, 2026
+  commit: 0e1906d0
+- date: '2026-04-08'
+  theme: THE WEATHER MAP
+  description: THE WEATHER MAP — designed April 08, 2026
+  commit: 11129d09
+- date: '2026-05-02'
+  theme: ANALOG HI-FI
+  description: ANALOG HI-FI — designed May 02, 2026
+  commit: 05704a71
+- date: '2026-06-02'
+  theme: THE DEPARTURES BOARD
+  description: A 1970s split-flap Solari board in an airport terminal. Apps board
+    at their gates, posts are boarding-pass stubs, books ride the carousel as luggage
+    tags — and the board clacks itself awake on every visit.
+  commit: eddcadca
+  lane: object-metaphor
+  manifesto: A 1970s split-flap Solari board in an airport terminal. Apps board at
+    their gates, posts are boarding-pass stubs, books ride the carousel as luggage
+    tags — and the board clacks itself awake on every visit.
+  nav_paradigm: split-flap destination chips with gate numbers and status lights
+  layout_skeleton: full-width manifest board over a two-column gates area
+  signature_interaction: split-flap character scramble that settles left to right
+  color: "#15171d"
+  fonts:
+    display: Oswald
+    body: Inter
+    mono: IBM Plex Mono
+  palette:
+  - "#e7e3da"
+  - "#15171d"
+  - "#f5b53d"
+  - "#54d17a"
+  - "#b8421c"

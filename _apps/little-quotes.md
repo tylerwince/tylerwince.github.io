@@ -1,6 +1,7 @@
 ---
 layout: app
 title: Little Quotes
+order: 3
 tagline: Capture kids' priceless words.
 platform: iOS (iPhone & iPad)
 app_store_link: https://apps.apple.com/us/app/little-quotes/id6755783257

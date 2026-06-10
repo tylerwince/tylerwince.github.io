@@ -5,6 +5,7 @@ description: Great product managers understand that mental models and abstractio
 date: 2020-06-24 19:00:56 +0100
 published: true
 tags: product-management
+topics: [mental-models]
 ---
 
 ![](/assets/d4178cff-669c-4fde-b8ef-c3783b030a71_4752x3168.jpeg)

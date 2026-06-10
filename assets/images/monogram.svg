@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none">
+  <!-- Stable TW monogram. Drawn in currentColor so any theme can tint it
+       (e.g. <img> filter, inline via include, or mask-image + background). -->
+  <g stroke="currentColor" stroke-width="8" stroke-linecap="square">
+    <!-- T -->
+    <path d="M10 18 H50"/>
+    <path d="M30 18 V62"/>
+    <!-- W -->
+    <path d="M42 34 L52 78 L62 50 L72 78 L82 34"/>
+  </g>
+</svg>

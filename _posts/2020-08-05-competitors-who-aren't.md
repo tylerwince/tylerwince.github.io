@@ -5,6 +5,7 @@ description: Companies with the same problem space but different market spaces w
 date: 2020-08-05 19:00:46 +0100
 published: true
 tags: product-management
+topics: [product, strategy]
 ---
 
 # Introduction

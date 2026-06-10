@@ -5,6 +5,7 @@ description: Build a product sieve using problem statements, vision, and sieve q
 date: 2020-07-08 19:00:46 +0100
 published: true
 tags: product-management
+topics: [product, frameworks]
 ---
 This post is part 2 of a two-part series on the concept of a product sieve. If you haven’t read [part 1](https://tylerwince.com/2020/07/01/why-you-need-a-product-sieve.html), I would suggest you start there.
 

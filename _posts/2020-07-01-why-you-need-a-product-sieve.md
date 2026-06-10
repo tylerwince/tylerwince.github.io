@@ -5,6 +5,7 @@ description: Stop working on valueless features by creating a product sieve that
 date: 2020-07-01 19:00:46 +0100
 published: true
 tags: product-management
+topics: [product, frameworks]
 ---
 This is part 1 of a two-part series on the necessity of having a Product Sieve. Part 2 will focus on **Building a Product Sieve** , dropping July 15th.
 

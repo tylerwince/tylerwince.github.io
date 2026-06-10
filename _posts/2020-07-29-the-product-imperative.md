@@ -5,6 +5,7 @@ description: Product managers fall prey to six default behaviors that kill innov
 date: 2020-07-29 19:00:35 +0100
 published: true
 tags: product-management
+topics: [product, frameworks]
 ---
 
 ![](/assets/ef649d91-c075-4990-bf63-fd0b3afae65a_1200x799.jpeg)

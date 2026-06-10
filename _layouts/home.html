@@ -26,39 +26,21 @@ layout: default
         <span class="board-col-status">status</span>
       </div>
       <ul class="app-list">
+        {% assign apps = site.apps | sort: "order" %}
+        {% for app in apps %}
+        {% assign flap_code = app.title | slice: 0, 2 | upcase | append: " 0" | append: forloop.index %}
         <li>
-          <a href="/apps/etch/" class="app-card">
-            <span class="app-icon" data-flap="ET 01">ET 01</span>
+          <a href="{{ app.url | relative_url }}" class="app-card">
+            <span class="app-icon" data-flap="{{ flap_code }}">{{ flap_code }}</span>
             <div class="app-info">
-              <h3 class="app-name">Etch</h3>
-              <div class="app-desc">Spaced repetition, built like Apple would.</div>
+              <h3 class="app-name">{{ app.title | escape }}</h3>
+              <div class="app-desc">{{ app.tagline | escape }}</div>
             </div>
-            <span class="board-gate">A1</span>
-            <span class="board-status board-status--go">boarding</span>
+            <span class="board-gate">{{ "ABCDEFGH" | slice: forloop.index0, 1 }}{{ forloop.index }}</span>
+            <span class="board-status{% if forloop.first %} board-status--go{% endif %}">{% if forloop.first %}boarding{% else %}on time{% endif %}</span>
           </a>
         </li>
-        <li>
-          <a href="/apps/waymark/" class="app-card">
-            <span class="app-icon" data-flap="WY 02">WY 02</span>
-            <div class="app-info">
-              <h3 class="app-name">Waymark</h3>
-              <div class="app-desc">Prayer and inner journaling.</div>
-            </div>
-            <span class="board-gate">B4</span>
-            <span class="board-status">on time</span>
-          </a>
-        </li>
-        <li>
-          <a href="/apps/little-quotes/" class="app-card">
-            <span class="app-icon" data-flap="LQ 03">LQ 03</span>
-            <div class="app-info">
-              <h3 class="app-name">Little Quotes</h3>
-              <div class="app-desc">A collection of youthful wisdom.</div>
-            </div>
-            <span class="board-gate">C2</span>
-            <span class="board-status">on time</span>
-          </a>
-        </li>
+        {% endfor %}
       </ul>
     </div>
   </section>
@@ -100,6 +82,10 @@ layout: default
         <li>
           <a href="{{ '/reading/' | relative_url }}" class="book-card">
             <span class="tag-hole" aria-hidden="true"></span>
+            {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
+            {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
+            {% assign cover_file = site.static_files | where: "path", cover_path | first %}
+            {% if cover_file %}<img class="book-card-cover" src="{{ cover_file.path | relative_url }}" alt="" loading="lazy">{% endif %}
             <span class="book-card-status">currently reading</span>
             <span class="book-card-title">{{ book.title | escape }}</span>
             {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}

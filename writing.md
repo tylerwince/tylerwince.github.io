@@ -8,11 +8,16 @@ description: Essays on product management, technology, and building better softw
 <div class="post-index">
   {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
   {% for post in sorted_posts %}
-  <a href="{{ post.url | relative_url }}" class="post-index-row">
+  <a href="{{ post.url | relative_url }}" class="post-index-row" data-index="{{ forloop.index }}" data-year="{{ post.date | date: '%Y' }}"{% if post.topics %} data-topics="{{ post.topics | join: ',' }}"{% endif %}>
     <div class="post-index-date">{{ post.date | date: "%Y-%m-%d" }}</div>
     <div>
       <span class="post-index-title">{{ post.title | escape }}</span>
       {% if post.description %}<span class="post-index-desc">{{ post.description | escape }}</span>{% endif %}
+      {% if post.topics %}
+      <span class="post-index-meta">
+        {% for topic in post.topics %}<span class="post-index-topic">{{ topic }}</span>{% endfor %}
+      </span>
+      {% endif %}
     </div>
   </a>
   {% endfor %}

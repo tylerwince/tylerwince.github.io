@@ -5,6 +5,7 @@ description: From flashcards to forgetting everything—how I built Etch to help
 date: 2025-11-13 09:58:30 +0000
 published: true
 tags: product-management
+topics: [learning, building, ai]
 ---
 
 In college, I carried around this little stack of flashcards in a leather binding.  
