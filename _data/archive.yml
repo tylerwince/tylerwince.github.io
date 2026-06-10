@@ -148,3 +148,28 @@
   - "#f5b53d"
   - "#54d17a"
   - "#b8421c"
+- date: '2026-06-10'
+  theme: MOIRÉ
+  description: Nothing on this page is an image. Every texture is two fields of fine
+    concentric lines, a few hertz apart, drawn live by your browser in a single indigo
+    ink — move your pointer and the interference moves with you.
+  commit: b2a8db82
+  lane: generative
+  manifesto: Nothing on this page is an image. Every texture is two fields of fine
+    concentric lines, a few hertz apart, drawn live by your browser in a single indigo
+    ink — move your pointer and the interference moves with you.
+  nav_paradigm: orbital rail of ring nodes fixed to the right edge (bottom dock on
+    mobile)
+  layout_skeleton: full-bleed interference hero, overlapping ripple discs, frequency
+    bands, fanned cover strip
+  signature_interaction: pointer-driven moiré interference in the hero ring field
+  color: "#f3f3fc"
+  fonts:
+    display: Unbounded
+    body: Schibsted Grotesk
+    mono: Fragment Mono
+  palette:
+  - "#f3f3fc"
+  - "#16164a"
+  - "#6b6ba8"
+  - "#3a3aff"
