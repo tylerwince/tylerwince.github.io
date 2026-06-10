@@ -1,8 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- THE DEPARTURES BOARD — split-flap tile favicon. Redesigns replace this file. -->
-  <rect width="64" height="64" rx="12" fill="#15171d"/>
-  <rect x="7" y="11" width="50" height="42" rx="5" fill="#1c2028" stroke="#05070b" stroke-width="2"/>
-  <text x="32" y="41" font-family="Oswald, 'Arial Narrow', 'Helvetica Neue', sans-serif" font-size="26" font-weight="700" fill="#f5b53d" text-anchor="middle" letter-spacing="1">TW</text>
-  <rect x="7" y="31" width="50" height="2" fill="#05070b"/>
-  <rect x="7" y="33" width="50" height="1" fill="#ffffff" opacity="0.06"/>
+  <!-- MOIRÉ — two offset ring fields, one ink. Redesigns replace this file. -->
+  <rect width="64" height="64" rx="14" fill="#f3f3fc"/>
+  <g fill="none" stroke="#16164a" stroke-width="1.5">
+    <circle cx="30" cy="32" r="4"/>
+    <circle cx="30" cy="32" r="9"/>
+    <circle cx="30" cy="32" r="14"/>
+    <circle cx="30" cy="32" r="19"/>
+    <circle cx="30" cy="32" r="24"/>
+  </g>
+  <g fill="none" stroke="#3a3aff" stroke-width="1.5">
+    <circle cx="36" cy="30" r="4.5"/>
+    <circle cx="36" cy="30" r="10"/>
+    <circle cx="36" cy="30" r="15.5"/>
+    <circle cx="36" cy="30" r="21"/>
+    <circle cx="36" cy="30" r="26.5"/>
+  </g>
 </svg>

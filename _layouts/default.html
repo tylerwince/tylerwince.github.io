@@ -16,7 +16,7 @@
   <style>@view-transition { navigation: auto; }</style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,700;1,400&family=Fragment+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% feed_meta %}
 </head>
@@ -25,17 +25,12 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
   <div class="site-banner">
-    <div class="banner-text">
-      <span class="banner-tag">information</span>
-      <span class="banner-msg">
-        <span class="banner-dot" aria-hidden="true"></span>
-        design №{{ design_no }} · {{ site.data.theme.name | default: "today's design" }} · redesigned daily by AI
-      </span>
-      <span class="banner-side">
-        <time class="banner-clock" data-clock aria-label="Local time">--:--:--</time>
-        <a href="{{ '/archive/' | relative_url }}">gate → archive</a>
-      </span>
-    </div>
+    <p class="banner-text">
+      <span class="banner-no">design №{{ design_no }}</span>
+      <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
+      <span class="banner-note">one ink · two frequencies · redesigned daily by AI</span>
+      <a class="banner-link" href="{{ '/archive/' | relative_url }}">archive →</a>
+    </p>
   </div>
 
   {% include header.html %}

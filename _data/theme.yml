@@ -16,24 +16,23 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "THE DEPARTURES BOARD"
-date: "2026-06-02"
-lane: "object-metaphor"
+name: "MOIRÉ"
+date: "2026-06-10"
+lane: "generative"
 manifesto: >-
-  A 1970s split-flap Solari board in an airport terminal. Apps board at their
-  gates, posts are boarding-pass stubs, books ride the carousel as luggage
-  tags — and the board clacks itself awake on every visit.
-nav_paradigm: "split-flap destination chips with gate numbers and status lights"
-layout_skeleton: "full-width manifest board over a two-column gates area"
-signature_interaction: "split-flap character scramble that settles left to right"
-color: "#15171d"
+  Nothing on this page is an image. Every texture is two fields of fine
+  concentric lines, a few hertz apart, drawn live by your browser in a single
+  indigo ink — move your pointer and the interference moves with you.
+nav_paradigm: "orbital rail of ring nodes fixed to the right edge (bottom dock on mobile)"
+layout_skeleton: "full-bleed interference hero, overlapping ripple discs, frequency bands, fanned cover strip"
+signature_interaction: "pointer-driven moiré interference in the hero ring field"
+color: "#f3f3fc"
 fonts:
-  display: "Oswald"
-  body: "Inter"
-  mono: "IBM Plex Mono"
+  display: "Unbounded"
+  body: "Schibsted Grotesk"
+  mono: "Fragment Mono"
 palette:
-  - "#e7e3da"
-  - "#15171d"
-  - "#f5b53d"
-  - "#54d17a"
-  - "#b8421c"
+  - "#f3f3fc"
+  - "#16164a"
+  - "#6b6ba8"
+  - "#3a3aff"
