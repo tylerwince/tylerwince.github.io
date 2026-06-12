@@ -3,39 +3,45 @@ layout: default
 ---
 <div class="home">
   <section class="hero">
-    <p class="hero-eyebrow">pearl · brevier · pica · great primer · canon</p>
-    {% assign hero_words = site.description | strip | split: " " %}
-    <h1 class="hero-title">
-      {%- for word in hero_words -%}
-      <span class="hero-word" style="--i:{{ forloop.index }}">{{ word }}</span>
-      {%- endfor -%}
-    </h1>
-    <div class="hero-meta">
-      <span>product</span>
-      <span>writing</span>
-      <span>books</span>
+    <span class="hero-shape hero-shape--arc" aria-hidden="true"></span>
+    <span class="hero-shape hero-shape--ball" aria-hidden="true"></span>
+    <span class="hero-shape hero-shape--zig" aria-hidden="true"></span>
+    <div class="hero-plinth">
+      <p class="hero-eyebrow">nuovo design · milano 1981 energy</p>
+      {% assign hero_words = site.description | strip | split: " " %}
+      <h1 class="hero-title">
+        {%- for word in hero_words -%}
+        <span class="hero-word" style="--i:{{ forloop.index }}">{{ word }}</span>
+        {%- endfor -%}
+      </h1>
+      <div class="hero-meta">
+        <span>product</span>
+        <span>writing</span>
+        <span>books</span>
+      </div>
     </div>
   </section>
 
   <section class="home-section home-section--apps">
     <div class="section-header">
-      <span class="section-label">set in canon, the largest size</span>
+      <span class="section-label">esposizione 01</span>
       <h2 class="section-title">Apps</h2>
       <a href="{{ '/apps/' | relative_url }}" class="view-all">all apps&nbsp;→</a>
     </div>
     <ul class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <li class="app-entry">
+      <li class="app-podium">
         <a href="{{ app.url | relative_url }}" class="app-card">
+          <span class="app-pedestal" aria-hidden="true"></span>
           <span class="app-info">
             {% if app.icon_path %}
-            <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="40" height="40">
+            <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="56" height="56">
             {% else %}
             <span class="app-icon app-icon--glyph" aria-hidden="true">{{ app.title | slice: 0, 1 }}</span>
             {% endif %}
-            <span class="app-name">{{ app.title | escape }}</span><span class="app-comma" aria-hidden="true">,</span>
-            <span class="app-desc"><i>{{ app.tagline | escape }}</i></span>
+            <span class="app-name">{{ app.title | escape }}</span>
+            <span class="app-desc">{{ app.tagline | escape }}</span>
           </span>
         </a>
       </li>
@@ -45,7 +51,7 @@ layout: default
 
   <section class="home-section home-section--writing">
     <div class="section-header">
-      <span class="section-label">set in great primer, for reading aloud</span>
+      <span class="section-label">esposizione 02</span>
       <h2 class="section-title">Writing</h2>
       <a href="{{ '/writing/' | relative_url }}" class="view-all">all writing&nbsp;→</a>
     </div>
@@ -53,8 +59,8 @@ layout: default
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
       <a href="{{ post.url | relative_url }}" class="post-row">
+        <span class="post-num" aria-hidden="true">{{ forloop.index }}</span>
         <span class="post-title">{{ post.title | escape }}</span>
-        <span class="post-leader" aria-hidden="true"></span>
         <span class="post-date">{{ post.date | date: "%b %Y" | downcase }}</span>
       </a>
       {% endfor %}
@@ -63,14 +69,14 @@ layout: default
 
   <section class="home-section home-section--reading">
     <div class="section-header">
-      <span class="section-label">set in brevier, down among the footnotes</span>
+      <span class="section-label">esposizione 03</span>
       <h2 class="section-title">Reading</h2>
       <a href="{{ '/reading/' | relative_url }}" class="view-all">full shelf&nbsp;→</a>
     </div>
     <ul class="book-grid">
       {% assign recent_books = site.books | sort: "date" | reverse %}
       {% for book in recent_books limit: 8 %}
-      <li class="book-spine">
+      <li class="book-lean">
         <a href="{{ '/reading/' | relative_url }}" class="book-card">
           {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
           {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
@@ -89,5 +95,6 @@ layout: default
       </li>
       {% endfor %}
     </ul>
+    <div class="book-shelf" aria-hidden="true"></div>
   </section>
 </div>

@@ -16,24 +16,25 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "GREAT PRIMER"
-date: "2026-06-11"
-lane: "pure-typography"
+name: "MEMPHIS MILANO"
+date: "2026-06-12"
+lane: "design-movement"
 manifesto: >-
-  Printers once named their type sizes like jewels — pearl, brevier, pica,
-  great primer, canon. This page climbs that whole ladder in a single
-  typeface: nothing but Fraunces at every optical size, white space, and one
-  shot of vermilion ink.
-nav_paradigm: "table of contents with dot leaders and folio numbers"
-layout_skeleton: "title-page front matter, 14vw hero, numbered specimen sections with hanging ghost folios"
-signature_interaction: "the ink-in — display type settles from hairline to full weight, staggered like ink striking paper"
-color: "#f6f1e5"
+  In 1981 a Milanese gang led by Ettore Sottsass decided design didn't have
+  to behave. Terrazzo, squiggles, clashing candy colors, geometry stacked
+  like toys — a personal site dressed as a showroom totem, tilted a few
+  degrees off its axis.
+nav_paradigm: "totem nav — mismatched geometric blocks stacked on the left edge"
+layout_skeleton: "diagonal showroom — tilted hero plinth, staggered app podiums, ladder of posts, leaning bookshelf"
+signature_interaction: "the mobile — confetti shapes drift and spin at different rates as you scroll"
+color: "#fcf3e3"
 fonts:
-  display: "Fraunces"
-  body: "Fraunces"
-  mono: "Courier Prime"
+  display: "Bungee"
+  body: "Karla"
+  mono: "Martian Mono"
 palette:
-  - "#f6f1e5"
-  - "#211b12"
-  - "#837763"
-  - "#c93908"
+  - "#fcf3e3"
+  - "#221a33"
+  - "#00b7a8"
+  - "#ffc526"
+  - "#f2459e"

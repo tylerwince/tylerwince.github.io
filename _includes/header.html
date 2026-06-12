@@ -1,24 +1,23 @@
 <header class="site-header">
   <a class="site-title" href="{{ '/' | relative_url }}">
+    <span class="site-title-mark" aria-hidden="true"></span>
     <span class="site-title-text">Tyler Wince</span>
-    <span class="site-title-sub">a small book of work, reset daily</span>
+    <span class="site-title-sub">product · writing · reading</span>
   </a>
 
   <nav class="site-nav" aria-label="Primary">
-    <span class="site-nav-label" aria-hidden="true">contents</span>
-    <ol class="nav-list">
+    <ul class="nav-list">
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
-        <li class="nav-item">
+        <li class="nav-item nav-item--{{ forloop.index }}">
           <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
+            <span class="nav-shape" aria-hidden="true"></span>
             <span class="nav-text">{{ nav_page.title | downcase }}</span>
-            <span class="nav-leader" aria-hidden="true"></span>
-            <span class="nav-folio" aria-hidden="true"></span>
           </a>
         </li>
         {% endif %}
       {% endfor %}
-    </ol>
+    </ul>
   </nav>
 </header>
