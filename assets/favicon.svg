@@ -1,18 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- MOIRÉ — two offset ring fields, one ink. Redesigns replace this file. -->
-  <rect width="64" height="64" rx="14" fill="#f3f3fc"/>
-  <g fill="none" stroke="#16164a" stroke-width="1.5">
-    <circle cx="30" cy="32" r="4"/>
-    <circle cx="30" cy="32" r="9"/>
-    <circle cx="30" cy="32" r="14"/>
-    <circle cx="30" cy="32" r="19"/>
-    <circle cx="30" cy="32" r="24"/>
-  </g>
-  <g fill="none" stroke="#3a3aff" stroke-width="1.5">
-    <circle cx="36" cy="30" r="4.5"/>
-    <circle cx="36" cy="30" r="10"/>
-    <circle cx="36" cy="30" r="15.5"/>
-    <circle cx="36" cy="30" r="21"/>
-    <circle cx="36" cy="30" r="26.5"/>
-  </g>
+  <!-- GREAT PRIMER — an italic serif T full stop, in vermilion. Redesigns replace this file. -->
+  <rect width="64" height="64" fill="#f6f1e5"/>
+  <text x="29" y="47" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-weight="700" font-size="46" text-anchor="middle" fill="#211b12">T</text>
+  <circle cx="49" cy="44" r="5.5" fill="#c93908"/>
 </svg>

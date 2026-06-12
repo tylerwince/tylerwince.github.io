@@ -16,23 +16,24 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "MOIRÉ"
-date: "2026-06-10"
-lane: "generative"
+name: "GREAT PRIMER"
+date: "2026-06-11"
+lane: "pure-typography"
 manifesto: >-
-  Nothing on this page is an image. Every texture is two fields of fine
-  concentric lines, a few hertz apart, drawn live by your browser in a single
-  indigo ink — move your pointer and the interference moves with you.
-nav_paradigm: "orbital rail of ring nodes fixed to the right edge (bottom dock on mobile)"
-layout_skeleton: "full-bleed interference hero, overlapping ripple discs, frequency bands, fanned cover strip"
-signature_interaction: "pointer-driven moiré interference in the hero ring field"
-color: "#f3f3fc"
+  Printers once named their type sizes like jewels — pearl, brevier, pica,
+  great primer, canon. This page climbs that whole ladder in a single
+  typeface: nothing but Fraunces at every optical size, white space, and one
+  shot of vermilion ink.
+nav_paradigm: "table of contents with dot leaders and folio numbers"
+layout_skeleton: "title-page front matter, 14vw hero, numbered specimen sections with hanging ghost folios"
+signature_interaction: "the ink-in — display type settles from hairline to full weight, staggered like ink striking paper"
+color: "#f6f1e5"
 fonts:
-  display: "Unbounded"
-  body: "Schibsted Grotesk"
-  mono: "Fragment Mono"
+  display: "Fraunces"
+  body: "Fraunces"
+  mono: "Courier Prime"
 palette:
-  - "#f3f3fc"
-  - "#16164a"
-  - "#6b6ba8"
-  - "#3a3aff"
+  - "#f6f1e5"
+  - "#211b12"
+  - "#837763"
+  - "#c93908"
