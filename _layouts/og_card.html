@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>{{ page.title }} — social card</title>
+  {% include fonts.html %}
+  {%- assign p = site.data.theme.palette -%}
+  {%- assign bg = p[0] | default: site.data.theme.color | default: "#111111" -%}
+  {%- assign ink = p[1] | default: "#f5f0e6" -%}
+  {%- assign muted = p[2] | default: ink -%}
+  {%- assign accent = p | last | default: ink -%}
+  {%- assign disp = site.data.theme.fonts.display | default: "Georgia" -%}
+  {%- assign mono = site.data.theme.fonts.mono | default: "monospace" -%}
+  {%- assign archive_count = site.data.archive | size -%}
+  {%- assign last_entry = site.data.archive | sort: "date" | last -%}
+  {%- if last_entry.date == site.data.theme.date -%}{%- assign design_no = archive_count -%}{%- else -%}{%- assign design_no = archive_count | plus: 1 -%}{%- endif -%}
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 1200px; height: 630px; }
+    body {
+      background: {{ bg }};
+      color: {{ ink }};
+      font-family: "{{ disp }}", Georgia, "Times New Roman", serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 84px 96px;
+      overflow: hidden;
+    }
+    .og-kicker {
+      font-family: "{{ mono }}", ui-monospace, monospace;
+      font-size: 23px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: {{ muted }};
+    }
+    .og-kicker b { color: {{ accent }}; font-weight: 400; }
+    .og-body { display: flex; flex-direction: column; }
+    .og-title {
+      font-size: 86px;
+      line-height: 1.03;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      max-width: 17ch;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .og-rule { width: 132px; height: 6px; background: {{ accent }}; margin: 36px 0 26px; }
+    .og-foot {
+      font-family: "{{ mono }}", ui-monospace, monospace;
+      font-size: 27px;
+      letter-spacing: 0.04em;
+      color: {{ muted }};
+    }
+    .og-foot b { color: {{ ink }}; font-weight: 400; }
+  </style>
+</head>
+<body>
+  <div class="og-kicker">design №{{ design_no }} · <b>{{ site.data.theme.name }}</b></div>
+  <div class="og-body">
+    <h1 class="og-title">{{ page.title | escape }}</h1>
+    <div class="og-rule"></div>
+    <div class="og-foot"><b>Tyler Wince</b>{% if page.card_date %} · {{ page.card_date | date: "%B %-d, %Y" }}{% endif %}</div>
+  </div>
+</body>
+</html>

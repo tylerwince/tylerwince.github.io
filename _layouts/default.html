@@ -10,13 +10,12 @@
   <meta property="og:description" content="{% if page.description %}{{ page.description | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ page.url | absolute_url }}">
-  <meta property="og:image" content="{{ '/assets/og/today.png' | absolute_url }}">
+  {% if page.layout == "post" %}{% assign og_image = '/assets/og/posts/' | append: page.slug | append: '.png' %}{% else %}{% assign og_image = '/assets/og/today.png' %}{% endif %}
+  <meta property="og:image" content="{{ og_image | absolute_url }}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}?v={{ site.time | date: '%s' }}">
   <style>@view-transition { navigation: auto; }</style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&display=swap" rel="stylesheet">
+  {% include fonts.html %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% feed_meta %}
 </head>

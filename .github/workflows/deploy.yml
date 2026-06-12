@@ -46,6 +46,13 @@ jobs:
           else
             echo "is_redesign=false" >> "$GITHUB_OUTPUT"
           fi
+          # Did this push add or edit a blog post? New/edited posts need their
+          # per-post OG card (re)generated even when it isn't a redesign day.
+          if git diff --name-only HEAD~1 HEAD -- _posts/ 2>/dev/null | grep -q .; then
+            echo "posts_changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "posts_changed=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Build archive snapshot
         if: steps.check.outputs.is_redesign == 'true'
@@ -72,7 +79,7 @@ jobs:
             "${{ steps.check.outputs.commit }}"
 
       - name: Install Playwright browser
-        if: steps.check.outputs.is_redesign == 'true'
+        if: steps.check.outputs.is_redesign == 'true' || steps.check.outputs.posts_changed == 'true'
         run: npx -y playwright@1.58.0 install --with-deps chromium
 
       - name: Capture archive thumbnail
@@ -93,6 +100,13 @@ jobs:
           mkdir -p _site/assets/og
           cp assets/og/today.png _site/assets/og/today.png
 
+      - name: Capture per-post OG cards
+        if: steps.check.outputs.is_redesign == 'true' || steps.check.outputs.posts_changed == 'true'
+        run: |
+          PLAYWRIGHT_VERSION=1.58.0 ./scripts/capture_screenshots.sh ogcards _site assets/og/posts
+          mkdir -p _site/assets/og/posts
+          cp -r assets/og/posts/. _site/assets/og/posts/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -102,11 +116,16 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Commit archive back to repo
-        if: steps.check.outputs.is_redesign == 'true'
+      - name: Commit generated assets back to repo
+        if: steps.check.outputs.is_redesign == 'true' || steps.check.outputs.posts_changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add archive/ _data/archive.yml assets/og/
-          git commit -m "Archive: ${{ steps.check.outputs.theme }} (${{ steps.check.outputs.date }}) [skip ci]" || echo "Nothing to commit"
+          if [[ "${{ steps.check.outputs.is_redesign }}" == "true" ]]; then
+            MSG="Archive: ${{ steps.check.outputs.theme }} (${{ steps.check.outputs.date }}) [skip ci]"
+          else
+            MSG="Update OG cards [skip ci]"
+          fi
+          git commit -m "$MSG" || echo "Nothing to commit"
           git push

@@ -42,7 +42,7 @@ mkdir -p "${ARCHIVE_DIR}"
 # IMPORTANT: exclude archive/ to prevent recursive nesting of old snapshots
 echo "==> Copying HTML, CSS, JS to ${ARCHIVE_DIR}..."
 cd "${WORKTREE_DIR}/_site"
-find . -path './archive' -prune -o -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" \) -print | while read -r file; do
+find . -path './archive' -prune -o -path './og-cards' -prune -o -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" \) -print | while read -r file; do
   target_dir="${ARCHIVE_DIR}/$(dirname "${file}")"
   mkdir -p "${target_dir}"
   cp "${file}" "${target_dir}/"

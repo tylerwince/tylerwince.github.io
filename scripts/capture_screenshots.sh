@@ -72,8 +72,21 @@ case "${1:-}" in
     serve "${DOCROOT}"
     shoot "${URLPATH}" "${OUTFILE}" "${SIZE}" "${WAIT}"
     ;;
+  ogcards)
+    # Screenshot every per-post OG card (built at /og-cards/<slug>/ by
+    # _plugins/og_cards.rb) into <outdir>/<slug>.png at 1200x630.
+    DOCROOT="${2:?Usage: capture_screenshots.sh ogcards <docroot> <outdir>}"
+    OUTDIR="${3:?missing outdir}"
+    serve "${DOCROOT}"
+    mkdir -p "${OUTDIR}"
+    for dir in "${DOCROOT}"/og-cards/*/; do
+      [[ -f "${dir}index.html" ]] || continue
+      slug="$(basename "${dir}")"
+      shoot "/og-cards/${slug}/" "${OUTDIR}/${slug}.png" 1200,630 3000
+    done
+    ;;
   *)
-    echo "Usage: capture_screenshots.sh backfill | thumb <date> | shot <docroot> <urlpath> <outfile> [WxH] [wait_ms]" >&2
+    echo "Usage: capture_screenshots.sh backfill | thumb <date> | shot <docroot> <urlpath> <outfile> [WxH] [wait_ms] | ogcards <docroot> <outdir>" >&2
     exit 1
     ;;
 esac

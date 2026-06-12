@@ -21,7 +21,7 @@
 title: Tyler Wince
 email: me@tylerwince.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Building with intention.
+  Whispering to agents
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://tylerwince.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username: tylerwince
