@@ -173,3 +173,30 @@
   - "#16164a"
   - "#6b6ba8"
   - "#3a3aff"
+- date: '2026-06-12'
+  theme: GREAT PRIMER
+  description: 'Printers once named their type sizes like jewels — pearl, brevier,
+    pica, great primer, canon. This page climbs that whole ladder in a single typeface:
+    nothing but Fraunces at every optical size, white space, and one shot of vermilion
+    ink.'
+  commit: 79992fa3
+  lane: pure-typography
+  manifesto: 'Printers once named their type sizes like jewels — pearl, brevier, pica,
+    great primer, canon. This page climbs that whole ladder in a single typeface:
+    nothing but Fraunces at every optical size, white space, and one shot of vermilion
+    ink.'
+  nav_paradigm: table of contents with dot leaders and folio numbers
+  layout_skeleton: title-page front matter, 14vw hero, numbered specimen sections
+    with hanging ghost folios
+  signature_interaction: the ink-in — display type settles from hairline to full weight,
+    staggered like ink striking paper
+  color: "#f6f1e5"
+  fonts:
+    display: Fraunces
+    body: Fraunces
+    mono: Courier Prime
+  palette:
+  - "#f6f1e5"
+  - "#211b12"
+  - "#837763"
+  - "#c93908"
