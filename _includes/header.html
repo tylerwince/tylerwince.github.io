@@ -1,8 +1,7 @@
 <header class="site-header">
-  <a class="site-title" href="{{ '/' | relative_url }}">
+  <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
     <span class="site-title-mark" aria-hidden="true"></span>
     <span class="site-title-text">Tyler Wince</span>
-    <span class="site-title-sub">product · writing · reading</span>
   </a>
 
   <nav class="site-nav" aria-label="Primary">
@@ -12,7 +11,7 @@
         {% if nav_page %}
         <li class="nav-item nav-item--{{ forloop.index }}">
           <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
-            <span class="nav-shape" aria-hidden="true"></span>
+            <span class="nav-index" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
             <span class="nav-text">{{ nav_page.title | downcase }}</span>
           </a>
         </li>
@@ -20,4 +19,6 @@
       {% endfor %}
     </ul>
   </nav>
+
+  <span class="spine-progress" aria-hidden="true"><span class="spine-progress-bar"></span></span>
 </header>

@@ -16,25 +16,23 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "MEMPHIS MILANO"
-date: "2026-06-12"
-lane: "design-movement"
+name: "SLIPSTREAM"
+date: "2026-06-15"
+lane: "motion-first"
 manifesto: >-
-  In 1981 a Milanese gang led by Ettore Sottsass decided design didn't have
-  to behave. Terrazzo, squiggles, clashing candy colors, geometry stacked
-  like toys — a personal site dressed as a showroom totem, tilted a few
-  degrees off its axis.
-nav_paradigm: "totem nav — mismatched geometric blocks stacked on the left edge"
-layout_skeleton: "diagonal showroom — tilted hero plinth, staggered app podiums, ladder of posts, leaning bookshelf"
-signature_interaction: "the mobile — confetti shapes drift and spin at different rates as you scroll"
-color: "#fcf3e3"
+  A site tuned to your scroll. Headlines run against the current, type-bands
+  pick up speed with every flick of the wheel, and every section arrives at
+  velocity — here motion isn't decoration, it's the architecture.
+nav_paradigm: "fixed scroll-spine rail — monogram, stacked nav, and a progress track that fills as you scroll"
+layout_skeleton: "kinetic hero, scroll-reactive marquee, diagonal app slats, vertical timeline spine, auto-scrolling cover reel"
+signature_interaction: "scroll-velocity kinetic bands — marquees and the cover reel get thrown by how fast and which way you scroll"
+color: "#f2f0e8"
 fonts:
-  display: "Bungee"
-  body: "Karla"
-  mono: "Martian Mono"
+  display: "Big Shoulders Display"
+  body: "Hanken Grotesk"
+  mono: "Spline Sans Mono"
 palette:
-  - "#fcf3e3"
-  - "#221a33"
-  - "#00b7a8"
-  - "#ffc526"
-  - "#f2459e"
+  - "#f2f0e8"
+  - "#16150f"
+  - "#7c7a6f"
+  - "#c6f135"

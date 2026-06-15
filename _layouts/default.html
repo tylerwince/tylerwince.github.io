@@ -23,24 +23,31 @@
   {% assign archive_count = site.data.archive | size %}
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
-  <div class="site-banner">
-    <p class="banner-text">
-      <span class="banner-no">design №{{ design_no }}</span>
-      <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
-      <span class="banner-note">milano 1981 · design misbehaving · redesigned daily by AI</span>
-      <a class="banner-link" href="{{ '/archive/' | relative_url }}">archive →</a>
-    </p>
-  </div>
 
+  <!-- fixed scroll-spine rail (nav lives here) -->
   {% include header.html %}
 
-  <main class="site-main">
-    <div class="content-area">
-      {{ content }}
+  <div class="page">
+    <div class="site-banner">
+      <p class="banner-text">
+        <span class="banner-no">design №{{ design_no }}</span>
+        <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
+        <span class="banner-ticker" aria-hidden="true">
+          <span class="banner-note">scroll is the engine · headlines run against the current · redesigned daily by AI · scroll is the engine · headlines run against the current · redesigned daily by AI ·&nbsp;</span>
+          <span class="banner-note">scroll is the engine · headlines run against the current · redesigned daily by AI · scroll is the engine · headlines run against the current · redesigned daily by AI ·&nbsp;</span>
+        </span>
+        <a class="banner-link" href="{{ '/archive/' | relative_url }}">archive →</a>
+      </p>
     </div>
-  </main>
 
-  {% include footer.html %}
+    <main class="site-main">
+      <div class="content-area">
+        {{ content }}
+      </div>
+    </main>
+
+    {% include footer.html %}
+  </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
