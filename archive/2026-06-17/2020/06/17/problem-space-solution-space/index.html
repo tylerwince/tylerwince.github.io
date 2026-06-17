@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Product managers own the "what" by living in problem space—understanding target customers, their needs, and value proposition—while engineering focuses on th...">
+  <title>Problem Space vs Solution Space — Tyler Wince</title>
+  <meta name="theme-color" content="#f6f1e7">
+  <meta property="og:title" content="Problem Space vs Solution Space — Tyler Wince">
+  <meta property="og:description" content="Product managers own the "what" by living in problem space—understanding target customers, their needs, and value proposition—while engineering focuses on th...">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylerwince.com/archive/2026-06-17/2020/06/17/problem-space-solution-space/">
+  
+  <meta property="og:image" content="https://tylerwince.com/archive/2026-06-17/assets/og/posts/problem-space-solution-space.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/archive/2026-06-17/assets/favicon.svg?v=1781735396">
+  <style>@view-transition { navigation: auto; }</style>
+  <!-- Current theme's web fonts. Shared by default.html and the OG card layout so
+     per-article social images always render in the same faces as the live site.
+     REDESIGNS REWRITE THIS FILE (swap to your faces, ~4 weights max). -->
+<!-- THE SPECIMEN SHEET — Fraunces (variable optical serif, the specimen face) / Familjen Grotesk / Space Mono -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,600&family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/archive/2026-06-17/assets/css/main.css?v=1781735396">
+  <link type="application/atom+xml" rel="alternate" href="https://tylerwince.com/archive/2026-06-17/feed.xml" title="Tyler Wince" />
+<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;}.archive-banner a{color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;}.archive-banner a:hover{color:rgba(255,255,255,0.8);}.archive-banner-spacer{height:32px;}.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}(max-width:768px){.archive-banner{font-size:10px;padding:6px 10px;flex-wrap:wrap;justify-content:center;gap:4px;}.archive-banner-spacer{height:52px;}.site-header{top:52px!important;}}(max-width:480px){.archive-banner{flex-direction:column;gap:2px;padding:6px 8px;}.archive-banner-spacer{height:68px;}.site-header{top:68px!important;}}</style></head>
+<body><!-- Time Travel Banner --><div class="archive-banner"><a href="/archive/2026-06-15/">← 2026-06-15</a><span>THE SPECIMEN SHEET · 2026-06-17 · <a href="/archive/">Back to today's site →</a></span><span style="visibility:hidden;">0000-00-00 →</span></div><div class="archive-banner-spacer"></div>
+  
+  
+  
+
+  <!-- letterhead masthead + index overlay (nav lives here) -->
+  <header class="site-header">
+  <a class="site-title" href="/archive/2026-06-17/" aria-label="Tyler Wince — home">
+    <span class="site-title-mark" aria-hidden="true">T</span>
+    <span class="site-title-text">Tyler&nbsp;Wince</span>
+    <span class="site-title-sub" aria-hidden="true">a personal type foundry</span>
+  </a>
+
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="index-overlay">
+    <span class="nav-toggle-folio" aria-hidden="true">✱</span>
+    <span class="nav-toggle-label">Index</span>
+  </button>
+
+  <!-- index overlay: a full-screen specimen contents page -->
+  <nav class="site-nav" id="index-overlay" aria-label="Primary" aria-hidden="true">
+    <div class="nav-sheet">
+      <p class="nav-heading"><span class="nav-heading-folio">¶</span> Contents</p>
+      <ul class="nav-list">
+        <li class="nav-item nav-item--home">
+          <a href="/archive/2026-06-17/">
+            <span class="nav-index" aria-hidden="true">00</span>
+            <span class="nav-name">the sheet</span>
+            <span class="nav-leader" aria-hidden="true"></span>
+            <span class="nav-folio" aria-hidden="true">home</span>
+          </a>
+        </li>
+        
+          
+          
+          <li class="nav-item nav-item--1">
+            <a href="/archive/2026-06-17/apps/" class="">
+              <span class="nav-index" aria-hidden="true">01</span>
+              <span class="nav-name">apps</span>
+              <span class="nav-leader" aria-hidden="true"></span>
+              <span class="nav-folio" aria-hidden="true">p.01</span>
+            </a>
+          </li>
+          
+        
+          
+          
+          <li class="nav-item nav-item--2">
+            <a href="/archive/2026-06-17/writing/" class="">
+              <span class="nav-index" aria-hidden="true">02</span>
+              <span class="nav-name">writing</span>
+              <span class="nav-leader" aria-hidden="true"></span>
+              <span class="nav-folio" aria-hidden="true">p.02</span>
+            </a>
+          </li>
+          
+        
+          
+          
+          <li class="nav-item nav-item--3">
+            <a href="/archive/2026-06-17/reading/" class="">
+              <span class="nav-index" aria-hidden="true">03</span>
+              <span class="nav-name">reading</span>
+              <span class="nav-leader" aria-hidden="true"></span>
+              <span class="nav-folio" aria-hidden="true">p.03</span>
+            </a>
+          </li>
+          
+        
+          
+          
+          <li class="nav-item nav-item--4">
+            <a href="/archive/2026-06-17/now/" class="">
+              <span class="nav-index" aria-hidden="true">04</span>
+              <span class="nav-name">now</span>
+              <span class="nav-leader" aria-hidden="true"></span>
+              <span class="nav-folio" aria-hidden="true">p.04</span>
+            </a>
+          </li>
+          
+        
+          
+          
+          <li class="nav-item nav-item--5">
+            <a href="/archive/2026-06-17/archive/" class="">
+              <span class="nav-index" aria-hidden="true">05</span>
+              <span class="nav-name">archive</span>
+              <span class="nav-leader" aria-hidden="true"></span>
+              <span class="nav-folio" aria-hidden="true">p.05</span>
+            </a>
+          </li>
+          
+        
+      </ul>
+      <p class="nav-colophon">Set in Fraunces, Familjen Grotesk &amp; Space Mono · two inks &amp; one vermillion</p>
+    </div>
+  </nav>
+</header>
+
+
+  <div class="page">
+    <div class="site-banner">
+      <p class="banner-text">
+        <span class="banner-spec">Specimen №36</span>
+        <span class="banner-rule" aria-hidden="true"></span>
+        <span class="banner-name">THE SPECIMEN SHEET</span>
+        <span class="banner-set">a living type specimen · re-cut daily by AI</span>
+        <a class="banner-link" href="/archive/2026-06-17/archive/">Index of past sheets →</a>
+      </p>
+    </div>
+
+    <main class="site-main">
+      <div class="content-area">
+        <article class="article article--ticket">
+  <header class="article-header">
+    <span class="ticket-rip" aria-hidden="true"></span>
+    <div class="article-kicker">writing</div>
+    <h1 class="article-title">Problem Space vs Solution Space</h1>
+    
+    <p class="article-description">Product managers own the &quot;what&quot; by living in problem space—understanding target customers, their needs, and value proposition—while engineering focuses on the &quot;how.&quot;</p>
+    
+    <div class="article-meta">
+      <span class="meta-item">June 17, 2020</span>
+      
+      
+      
+      <span class="meta-item">5 min read</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+    <p><img src="/assets/4d7fe1d9-e419-4cf5-a3eb-5bf9083b4a7a_1844x965.jpeg" alt="" /></p>
+
+<blockquote>
+  <p>“You focus on the <em>what</em>, and stop telling me <em>how</em> to do it.” - Every Engineering Leader Ever</p>
+</blockquote>
+
+<p>Many people have heard that the product team focuses on the <em>what</em> and the engineering team focuses on the <em>how</em>. This is a great mental model to use when determining whose responsibilities are whose, but figuring out the <em>what</em> can be challenging. If you aren’t deciding how a product is built as a product manager, then what are you doing?</p>
+
+<p>The key here is to align your understanding of <em>what</em> and <em>how</em> to something more tangible, problem space and solution space.</p>
+
+<p><a href="https://dan-olsen.com/">Dan Olsen</a> introduces the idea of problem space and solution space in his book, <em><a href="https://www.amazon.com/Lean-Product-Playbook-Innovate-Products/dp/1118960874">The Lean Product Playbook</a></em>. This way of addressing how to build a product, or how to build the next iteration of your product, is extremely helpful to make sure you are building something that matters. It is your job as a product manager to live in the problem space.</p>
+
+<h3 id="what-is-the-problem-space-and-solution-space">What is the problem space and solution space?</h3>
+
+<h4 id="problem-space">Problem Space</h4>
+
+<p>Three main concepts make up the problem space: target customers, their underserved needs, and your value proposition. <strong>Problem space does not have any specific solutions or designs to serve those customer problems.</strong></p>
+
+<h5 id="target-customers">Target Customers</h5>
+
+<p>Identifying your target customer is the foundation of your success as you build a product. Build a persona to help your team understand who they are building the product for, and to help you ensure you are solving for the right customers’ needs.</p>
+
+<h5 id="underserved-needs">Underserved Needs</h5>
+
+<p>Needs is synonymous with wants or value. This can be challenging for your customers to communicate with you. Most of the time, customers are fairly bad at discussing the problem space. Instead, they do a better job of talking about what they like or dislike about particular solutions (solution space). Use this to your advantage. When they tell you what they like about a solution, bring yourself back into the problem space by asking yourself, <strong>Why would this create value for the customer?</strong></p>
+
+<h5 id="value-proposition">Value Proposition</h5>
+
+<p>The generation of your value proposition is dependent on a good list of underserved needs for your target customer. You are not creating anything new in the value proposition phase. You are making decisions about which needs you will address with your product and which needs you will ignore or push to a future version of the product. Every time you enter this stage, you should be thinking in terms of the MVP.</p>
+
+<blockquote>
+  <p><em>Aside on the term MVP:</em></p>
+
+  <p>Your MVP, or Minimum Viable Product, is not a complete version of your envisioned product with each feature half-implemented. MVP does not equal crappy. A true MVP involves ruthless and rigorous decision making about what the highest value features are while generating your value proposition. Your MVP should have very few features and it should do those things extremely well.</p>
+
+  <p><strong>MVP != Lots of half-baked features</strong></p>
+
+  <p><strong>MVP == Few fully-baked features</strong></p>
+</blockquote>
+
+<h4 id="solution-space">Solution Space</h4>
+
+<p>Solution space includes your product feature set and the UX. <strong>The solution space includes any type of product, product design, wireframes, prototypes, mock-ups, etc.</strong> Anything that describes the product the customer will use lives in solution space. In the solution space, you have decided upon a specific implementation of the product to solve the customer needs identified in your problem space.</p>
+
+<h5 id="feature-set">Feature Set</h5>
+
+<p>This is the list of things your product will do to provide the value proposition outlined in the problem space. The feature set selected is defining your solution and how it will work, getting into the <em>how</em> part of the implementation cycle.</p>
+
+<h5 id="ux">UX</h5>
+
+<p>As the last layer in the Product-Market fit pyramid, the UX, or user experience, is how your customers experience all the layers below it, namely your feature set. All the work done up to this point will be encapsulated in the UX. As this is the way your customers benefit from your product, the UX should be clean, easy to use, and make the value you are providing abundantly obvious.</p>
+
+<h3 id="your-job-is-to-live-in-the-problem-space">Your Job Is to Live in the Problem Space</h3>
+
+<blockquote>
+  <p>“Fall in love with the problem, not the solution, and the rest will follow” - Uri Levine</p>
+</blockquote>
+
+<p>As a product manager, your job is to live in the problem space. You should spend nearly all of your time focusing on your target customer, what needs they have, and what value you are going to provide to them. Nobody else in your organization is set up to spend time in the problem space like you are.</p>
+
+<p>Sales is focused on selling the product: solution space.</p>
+
+<p>Marketing is focused on marketing the product: solution space.</p>
+
+<p>Operations is focused on supporting the product: solution space.</p>
+
+<p>Engineering is focused on building the product: solution space.</p>
+
+<p>Design is focused on designing the product: solution space.</p>
+
+<p>Nobody else in your organization is worried about the problem space. That is why you are there. <strong>If you aren’t spending time in the problem space, you are very likely building something nobody is going to need.</strong></p>
+
+<h3 id="ask-yourself-why-would-this-create-value-for-the-customer">Ask yourself: Why would this create value for the customer?</h3>
+
+<p>The fastest way to get yourself back into problem space and out of solution space is to ask yourself: <strong>Why would this create value for the customer?</strong></p>
+
+<p>This single question forces you to think in terms of who your customer is and what problem you are solving for them. Then you can use these pieces to information to make sure the solution being suggested aligns with your value proposition. If not, toss it out or push it to a future version of the product. <strong>You have to be ruthless about ensuring you are only working on features that align with your current value proposition.</strong></p>
+
+<blockquote>
+  <p>NOTE: Your value proposition is likely to expand and change as your organization grows and matures. The value proposition will change as a result of customer feedback, expanding the product scope, and entering new target markets.</p>
+</blockquote>
+
+<h3 id="4-parting-thoughts">4 Parting Thoughts</h3>
+
+<ol>
+  <li>
+    <p>Problem Space == <em>What</em>; Solution Space == <em>How</em></p>
+  </li>
+  <li>
+    <p>As a product manager, focus on your customer, their needs, and your value proposition, and the rest of the work will follow.</p>
+  </li>
+  <li>
+    <p>Create artifacts along the way for your team to use, don’t let everything live in your head.</p>
+  </li>
+  <li>
+    <p>Keep finding opportunities to get yourself back into problem space and think about the customer, that is the reason why you are building a product in the first place.</p>
+  </li>
+</ol>
+
+  </div>
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-colophon">
+    <span class="footer-mark" aria-hidden="true">Aa</span>
+    <p class="footer-statement">
+      <span class="footer-statement-lead">Colophon.</span>
+      This sheet is set in <em>Fraunces</em> at optical sizes, with <em>Familjen Grotesk</em>
+      for text and <em>Space Mono</em> in the margins. Two inks, one shot of vermillion,
+      no boxes — only rules and space. A new specimen is cut every day by AI.
+    </p>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">Sheet</div>
+      <a href="/archive/2026-06-17/">home</a>
+      <a href="/archive/2026-06-17/now/">/now</a>
+      <a href="/archive/2026-06-17/archive/">specimen index</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Elsewhere</div>
+      <ul class="social-list">
+        
+        <li><a href="https://github.com/tylerwince" target="_blank" rel="noopener">GitHub</a></li>
+        
+        
+        <li><a href="https://twitter.com/tylerwince" target="_blank" rel="noopener">Twitter</a></li>
+        
+        <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-col--folio">
+      <div class="footer-col-title">Folio</div>
+      <p class="footer-folio">№ 2026</p>
+      <p class="footer-set">specimen of a person</p>
+    </div>
+  </div>
+</footer>
+
+  </div>
+
+  <script src="/archive/2026-06-17/assets/js/main.js?v=1781735396"></script>
+</body>
+</html>
