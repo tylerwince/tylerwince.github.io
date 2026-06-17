@@ -1,117 +1,97 @@
-/* tylerwince.com — SLIPSTREAM
- * Signature: scroll-velocity kinetic bands. Marquee text translates with a
- * constant drift plus a kick proportional to how fast (and which way) you
- * scroll; the cover reel gets thrown sideways by the same gesture. A spine
- * progress bar tracks how far down you are. Reduced-motion visitors get a
- * calm, fully static composition with everything revealed up front. */
+/* tylerwince.com — THE SPECIMEN SHEET
+ * A pure-typography foundry specimen. Three small behaviors:
+ *   1. nav active-state (covers nested URLs Liquid's `contains` misses)
+ *   2. the index overlay — a full-screen specimen contents page
+ *   3. the signature: a live type tester — edit the hero line and drag the
+ *      point-size scale; the display face re-sets in real time.
+ * Nothing here is gratuitous motion, so it all runs regardless of
+ * prefers-reduced-motion (the only animation, the hero fall, is CSS-gated). */
 (function () {
   'use strict';
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---- Nav active state (covers nested URLs Liquid's `contains` misses) ---- */
+  /* ---- Nav active state ---- */
   var path = window.location.pathname.replace(/\/+$/, '') || '/';
   document.querySelectorAll('.site-nav .nav-item a').forEach(function (link) {
     var href = (link.getAttribute('href') || '').replace(/\/+$/, '') || '/';
-    if (href !== '/' && path.indexOf(href) === 0) {
+    var match = (href === '/') ? (path === '/') : (path.indexOf(href) === 0);
+    if (match) {
       link.classList.add('active');
-    }
-    if (link.classList.contains('active')) {
       link.setAttribute('aria-current', 'page');
     }
   });
 
-  /* ---- Spine progress (runs for everyone — it's information, not motion) ---- */
-  var doc = document.documentElement;
-  var progressTicking = false;
-  function paintProgress() {
-    progressTicking = false;
-    var max = doc.scrollHeight - window.innerHeight;
-    var frac = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-    doc.style.setProperty('--progress', frac.toFixed(4));
-  }
-  window.addEventListener('scroll', function () {
-    if (!progressTicking) {
-      progressTicking = true;
-      window.requestAnimationFrame(paintProgress);
-    }
-  }, { passive: true });
-  paintProgress();
-  window.addEventListener('resize', paintProgress);
-
-  if (reduceMotion) return;
-
-  document.documentElement.classList.add('slip-motion');
-
-  /* ---- Reveal on scroll (sections slide in from the current) ---- */
-  var revealEls = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && revealEls.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
-    revealEls.forEach(function (el) { io.observe(el); });
-    /* safety net: never leave content hidden */
-    window.setTimeout(function () {
-      revealEls.forEach(function (el) { el.classList.add('is-in'); });
-    }, 2600);
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-in'); });
-  }
-
-  /* ---- Signature: scroll-velocity kinetic bands ---- */
-  var velocity = 0;
-  var lastY = window.scrollY || 0;
-  window.addEventListener('scroll', function () {
-    var y = window.scrollY || 0;
-    velocity += (y - lastY);
-    lastY = y;
-  }, { passive: true });
-
-  /* Text marquees: JS-driven so velocity layers on top of a constant drift. */
-  var marquees = [];
-  document.querySelectorAll('[data-slip]').forEach(function (el) {
-    var track = el.firstElementChild;
-    if (!track) return;
-    var factor = parseFloat(el.getAttribute('data-slip')) || 1;
-    marquees.push({ track: track, factor: factor, base: 0.45, offset: 0, seg: 0 });
-  });
-  function measure() {
-    marquees.forEach(function (m) {
-      /* track holds 4 identical copies; one segment is a quarter of its width */
-      m.seg = m.track.scrollWidth / 4 || 1;
+  /* ---- Index overlay ---- */
+  var toggle = document.getElementById('nav-toggle');
+  var overlay = document.getElementById('index-overlay');
+  if (toggle && overlay) {
+    var openNav = function () {
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.documentElement.classList.add('nav-open');
+      var first = overlay.querySelector('a');
+      if (first) { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
+    };
+    var closeNav = function () {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.documentElement.classList.remove('nav-open');
+    };
+    toggle.addEventListener('click', function () {
+      if (overlay.classList.contains('is-open')) { closeNav(); } else { openNav(); }
+    });
+    overlay.addEventListener('click', function (e) {
+      /* click on the backdrop (the nav itself, not the sheet) closes */
+      if (e.target === overlay) closeNav();
+    });
+    overlay.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeNav);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+        closeNav();
+        toggle.focus();
+      }
     });
   }
-  measure();
-  window.addEventListener('resize', measure);
 
-  /* Cover reels: velocity is added to native horizontal scroll position. */
-  var reels = [];
-  document.querySelectorAll('[data-slip-reel]').forEach(function (el) {
-    reels.push(el.parentElement || el);
-  });
+  /* ---- Signature: the live type tester ---- */
+  var tester = document.querySelector('[data-tester]');
+  if (tester) {
+    var line = tester.querySelector('[data-tester-line]');
+    var range = tester.querySelector('[data-tester-range]');
+    var readout = tester.querySelector('[data-tester-size]');
 
-  function frame() {
-    velocity *= 0.88;
-    if (Math.abs(velocity) < 0.01) velocity = 0;
-
-    for (var i = 0; i < marquees.length; i++) {
-      var m = marquees[i];
-      m.offset += m.base + velocity * m.factor * 0.4;
-      var seg = m.seg || 1;
-      var t = ((m.offset % seg) + seg) % seg;
-      m.track.style.transform = 'translate3d(' + (-t).toFixed(2) + 'px,0,0)';
+    if (range && line) {
+      var setSize = function () {
+        var pt = parseInt(range.value, 10) || 112;
+        line.style.setProperty('--pt', pt);
+        if (readout) readout.textContent = pt;
+      };
+      range.addEventListener('input', setSize);
+      setSize();
     }
 
-    for (var j = 0; j < reels.length; j++) {
-      if (velocity) reels[j].scrollLeft += velocity * 0.55;
+    if (line) {
+      /* tapping/focusing the line selects all so typing replaces the sample */
+      var selectAll = function () {
+        var sel = window.getSelection();
+        if (!sel) return;
+        var r = document.createRange();
+        r.selectNodeContents(line);
+        sel.removeAllRanges();
+        sel.addRange(r);
+      };
+      line.addEventListener('focus', function () { window.setTimeout(selectAll, 0); });
+      /* keep it a single line: Enter blurs instead of inserting a break */
+      line.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); line.blur(); }
+      });
+      /* never let it go fully empty (keeps the specimen readable) */
+      line.addEventListener('blur', function () {
+        if (!line.textContent.trim()) { line.textContent = 'Whispering to agents'; }
+      });
     }
-
-    window.requestAnimationFrame(frame);
   }
-  window.requestAnimationFrame(frame);
 })();

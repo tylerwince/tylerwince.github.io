@@ -1,13 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- SLIPSTREAM — speed-lines drawn against the current. Redesigns replace this file. -->
-  <rect width="64" height="64" rx="12" fill="#16150f"/>
-  <!-- accent slipstream bar -->
-  <rect x="0" y="27" width="64" height="10" fill="#c6f135"/>
-  <!-- motion lines being thrown to the left -->
-  <g stroke="#f2f0e8" stroke-width="5" stroke-linecap="round">
-    <line x1="14" y1="16" x2="40" y2="16"/>
-    <line x1="8"  y1="48" x2="34" y2="48"/>
+  <!-- THE SPECIMEN SHEET — a serif glyph on ruled specimen paper. Redesigns replace this file. -->
+  <rect width="64" height="64" rx="10" fill="#f6f1e7"/>
+  <!-- cap-height + baseline guides (specimen reference rules) -->
+  <g stroke="#c9bfa9" stroke-width="1">
+    <line x1="6" y1="15" x2="58" y2="15"/>
+    <line x1="6" y1="47" x2="58" y2="47"/>
   </g>
-  <!-- leading edge chevron -->
-  <path d="M40 8 L56 32 L40 56" fill="none" stroke="#16150f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- a high-contrast serif "T" -->
+  <g fill="#1a1813">
+    <rect x="14" y="14" width="36" height="7"/>      <!-- arm -->
+    <rect x="29" y="14" width="6" height="33"/>       <!-- stem -->
+    <rect x="14" y="14" width="3" height="6"/>         <!-- left arm serif -->
+    <rect x="47" y="14" width="3" height="6"/>         <!-- right arm serif -->
+    <rect x="24" y="44" width="16" height="3"/>        <!-- foot serif -->
+  </g>
+  <!-- foundry vermillion baseline rule -->
+  <rect x="6" y="49" width="52" height="4" fill="#d6371f"/>
 </svg>

@@ -1,28 +1,24 @@
 <footer class="site-footer">
-  <div class="footer-marquee" aria-hidden="true">
-    <span class="footer-marquee-track">
-      <span>END OF THE LINE&nbsp;·&nbsp;TYLER WINCE&nbsp;·&nbsp;SLIPSTREAM&nbsp;·&nbsp;</span>
-      <span>END OF THE LINE&nbsp;·&nbsp;TYLER WINCE&nbsp;·&nbsp;SLIPSTREAM&nbsp;·&nbsp;</span>
-      <span>END OF THE LINE&nbsp;·&nbsp;TYLER WINCE&nbsp;·&nbsp;SLIPSTREAM&nbsp;·&nbsp;</span>
-    </span>
+  <div class="footer-colophon">
+    <span class="footer-mark" aria-hidden="true">Aa</span>
+    <p class="footer-statement">
+      <span class="footer-statement-lead">Colophon.</span>
+      This sheet is set in <em>Fraunces</em> at optical sizes, with <em>Familjen Grotesk</em>
+      for text and <em>Space Mono</em> in the margins. Two inks, one shot of vermillion,
+      no boxes — only rules and space. A new specimen is cut every day by AI.
+    </p>
   </div>
 
   <div class="footer-grid">
-    <div class="footer-col footer-col--studio">
-      <span class="footer-monogram" aria-hidden="true"></span>
-      <div class="footer-col-title">the slipstream</div>
-      <p class="footer-note">Set in Big Shoulders Display and Hanken Grotesk, two colors and one shot of voltage, built to read like it's moving even when you stop. Redesigned daily by AI.</p>
-    </div>
-
     <div class="footer-col">
-      <div class="footer-col-title">site</div>
+      <div class="footer-col-title">Sheet</div>
       <a href="{{ '/' | relative_url }}">home</a>
       <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">design archive</a>
+      <a href="{{ '/archive/' | relative_url }}">specimen index</a>
     </div>
 
     <div class="footer-col">
-      <div class="footer-col-title">elsewhere</div>
+      <div class="footer-col-title">Elsewhere</div>
       <ul class="social-list">
         {% if site.github_username %}
         <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
@@ -32,6 +28,12 @@
         {% endif %}
         <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
       </ul>
+    </div>
+
+    <div class="footer-col footer-col--folio">
+      <div class="footer-col-title">Folio</div>
+      <p class="footer-folio">№ {{ site.time | date: "%Y" }}</p>
+      <p class="footer-set">specimen of a person</p>
     </div>
   </div>
 </footer>

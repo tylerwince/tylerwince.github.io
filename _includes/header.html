@@ -1,24 +1,43 @@
 <header class="site-header">
   <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
-    <span class="site-title-mark" aria-hidden="true"></span>
-    <span class="site-title-text">Tyler Wince</span>
+    <span class="site-title-mark" aria-hidden="true">T</span>
+    <span class="site-title-text">Tyler&nbsp;Wince</span>
+    <span class="site-title-sub" aria-hidden="true">a personal type foundry</span>
   </a>
 
-  <nav class="site-nav" aria-label="Primary">
-    <ul class="nav-list">
-      {% for nav_page_name in site.header_pages %}
-        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-        {% if nav_page %}
-        <li class="nav-item nav-item--{{ forloop.index }}">
-          <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
-            <span class="nav-index" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-            <span class="nav-text">{{ nav_page.title | downcase }}</span>
+  <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="index-overlay">
+    <span class="nav-toggle-folio" aria-hidden="true">✱</span>
+    <span class="nav-toggle-label">Index</span>
+  </button>
+
+  <!-- index overlay: a full-screen specimen contents page -->
+  <nav class="site-nav" id="index-overlay" aria-label="Primary" aria-hidden="true">
+    <div class="nav-sheet">
+      <p class="nav-heading"><span class="nav-heading-folio">¶</span> Contents</p>
+      <ul class="nav-list">
+        <li class="nav-item nav-item--home">
+          <a href="{{ '/' | relative_url }}">
+            <span class="nav-index" aria-hidden="true">00</span>
+            <span class="nav-name">the sheet</span>
+            <span class="nav-leader" aria-hidden="true"></span>
+            <span class="nav-folio" aria-hidden="true">home</span>
           </a>
         </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+        {% for nav_page_name in site.header_pages %}
+          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+          {% if nav_page %}
+          <li class="nav-item nav-item--{{ forloop.index }}">
+            <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
+              <span class="nav-index" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              <span class="nav-name">{{ nav_page.title | downcase }}</span>
+              <span class="nav-leader" aria-hidden="true"></span>
+              <span class="nav-folio" aria-hidden="true">p.{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            </a>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <p class="nav-colophon">Set in Fraunces, Familjen Grotesk &amp; Space Mono · two inks &amp; one vermillion</p>
+    </div>
   </nav>
-
-  <span class="spine-progress" aria-hidden="true"><span class="spine-progress-bar"></span></span>
 </header>
