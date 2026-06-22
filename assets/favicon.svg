@@ -1,19 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- THE SPECIMEN SHEET — a serif glyph on ruled specimen paper. Redesigns replace this file. -->
-  <rect width="64" height="64" rx="10" fill="#f6f1e7"/>
-  <!-- cap-height + baseline guides (specimen reference rules) -->
-  <g stroke="#c9bfa9" stroke-width="1">
-    <line x1="6" y1="15" x2="58" y2="15"/>
-    <line x1="6" y1="47" x2="58" y2="47"/>
-  </g>
-  <!-- a high-contrast serif "T" -->
-  <g fill="#1a1813">
-    <rect x="14" y="14" width="36" height="7"/>      <!-- arm -->
-    <rect x="29" y="14" width="6" height="33"/>       <!-- stem -->
-    <rect x="14" y="14" width="3" height="6"/>         <!-- left arm serif -->
-    <rect x="47" y="14" width="3" height="6"/>         <!-- right arm serif -->
-    <rect x="24" y="44" width="16" height="3"/>        <!-- foot serif -->
-  </g>
-  <!-- foundry vermillion baseline rule -->
-  <rect x="6" y="49" width="52" height="4" fill="#d6371f"/>
+  <!-- STRATA — three offset planes stacked in depth, the nearest in accent. Redesigns replace this file. -->
+  <rect width="64" height="64" rx="12" fill="#0b0e15"/>
+  <!-- far plane -->
+  <rect x="12" y="34" width="40" height="14" rx="3" fill="#686d7b"/>
+  <!-- mid plane -->
+  <rect x="14" y="24" width="36" height="14" rx="3" fill="#cdd1db"/>
+  <!-- near plane (accent) -->
+  <rect x="16" y="14" width="32" height="14" rx="3" fill="#ff5a14"/>
 </svg>

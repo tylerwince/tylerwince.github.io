@@ -3,24 +3,17 @@ layout: default
 ---
 <div class="home">
   <section class="hero">
-    <p class="hero-class"><span class="hero-class-tag">Specimen</span> of a person · classification: builder / writer / reader</p>
+    <span class="hero-elev" aria-hidden="true">elevation +000 · the surface</span>
+    <p class="hero-kicker"><span class="hero-kicker-tag">profile</span> builder · writer · reader</p>
 
-    <h1 class="hero-title" data-fall>
+    <h1 class="hero-title">
       {%- assign title_words = site.title | split: " " -%}
       {%- for word in title_words -%}
       <span class="hero-line" style="--ln:{{ forloop.index0 }}">{{ word }}</span>
       {%- endfor -%}
     </h1>
 
-    <div class="specimen-tester" data-tester>
-      <p class="tester-caption"><span class="tester-caption-mark">↓</span> Set the specimen — type your own line, drag the scale</p>
-      <div class="tester-line" data-tester-line contenteditable="true" spellcheck="false" role="textbox" aria-multiline="false" aria-label="Type to set the specimen line">{{ site.description | default: "Whispering to agents" | escape }}</div>
-      <div class="tester-controls">
-        <span class="tester-readout"><span data-tester-size>112</span>&nbsp;pt</span>
-        <input class="tester-range" type="range" min="44" max="220" value="112" step="1" aria-label="Specimen point size" data-tester-range>
-        <span class="tester-axis" aria-hidden="true">Fraunces · opsz</span>
-      </div>
-    </div>
+    <p class="hero-lead">{{ site.description | default: "Whispering to agents" | escape }}</p>
 
     <div class="hero-meta">
       <span>Product at DrFirst</span>
@@ -31,16 +24,16 @@ layout: default
 
   <section class="home-section home-section--apps">
     <div class="section-header">
-      <span class="section-label">Cut I — Display</span>
+      <span class="section-label">Stratum 01</span>
       <h2 class="section-title">Apps</h2>
-      <a href="{{ '/apps/' | relative_url }}" class="view-all">complete catalogue&nbsp;→</a>
+      <a href="{{ '/apps/' | relative_url }}" class="view-all">all apps&nbsp;→</a>
     </div>
     <ul class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <li class="app-entry">
+      <li class="app-slab" style="--i:{{ forloop.index0 }}">
         <a href="{{ app.url | relative_url }}" class="app-card">
-          <span class="app-folio" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="app-elev" aria-hidden="true">z{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
           {% if app.icon_path %}
           <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="56" height="56">
           {% else %}
@@ -50,7 +43,7 @@ layout: default
             <span class="app-name">{{ app.title | escape }}</span>
             <span class="app-desc">{{ app.tagline | escape }}</span>
           </span>
-          <span class="app-spec" aria-hidden="true">Display cut<br>read →</span>
+          <span class="app-go" aria-hidden="true">open&nbsp;→</span>
         </a>
       </li>
       {% endfor %}
@@ -59,17 +52,18 @@ layout: default
 
   <section class="home-section home-section--writing">
     <div class="section-header">
-      <span class="section-label">Cut II — Text</span>
+      <span class="section-label">Stratum 02</span>
       <h2 class="section-title">Writing</h2>
       <a href="{{ '/writing/' | relative_url }}" class="view-all">all writing&nbsp;→</a>
     </div>
     <div class="post-list">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="post-row">
+      <a href="{{ post.url | relative_url }}" class="post-row" style="--i:{{ forloop.index0 }}">
+        <span class="post-elev" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
         <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <span class="post-title">{{ post.title | escape }}</span>
-        <span class="post-arrow" aria-hidden="true">→</span>
+        <span class="post-go" aria-hidden="true">→</span>
       </a>
       {% endfor %}
     </div>
@@ -77,14 +71,14 @@ layout: default
 
   <section class="home-section home-section--reading">
     <div class="section-header">
-      <span class="section-label">Cut III — Plates</span>
+      <span class="section-label">Stratum 03</span>
       <h2 class="section-title">Reading</h2>
       <a href="{{ '/reading/' | relative_url }}" class="view-all">full shelf&nbsp;→</a>
     </div>
     <ul class="book-grid">
       {% assign recent_books = site.books | sort: "date" | reverse %}
       {% for book in recent_books limit: 10 %}
-      <li class="book-plate">
+      <li class="book-plate" style="--i:{{ forloop.index0 }}">
         <a href="{{ '/reading/' | relative_url }}" class="book-card">
           {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
           {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
@@ -94,10 +88,11 @@ layout: default
           {% else %}
           <span class="book-card-cover book-card-cover--blank" aria-hidden="true">{{ book.title | slice: 0, 1 }}</span>
           {% endif %}
-          <span class="book-card-plate-no" aria-hidden="true">Pl. {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-          <span class="book-card-title">{{ book.title | escape }}</span>
-          {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
-          <span class="book-card-status">{% if book.currently_reading %}in transit{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
+          <span class="book-card-info">
+            <span class="book-card-title">{{ book.title | escape }}</span>
+            {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
+            <span class="book-card-status">{% if book.currently_reading %}reading{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
+          </span>
         </a>
       </li>
       {% endfor %}

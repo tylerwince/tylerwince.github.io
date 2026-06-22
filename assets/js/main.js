@@ -1,11 +1,12 @@
-/* tylerwince.com — THE SPECIMEN SHEET
- * A pure-typography foundry specimen. Three small behaviors:
+/* tylerwince.com — STRATA
+ * Lane: digital-native. A site composed in depth. Three behaviors:
  *   1. nav active-state (covers nested URLs Liquid's `contains` misses)
- *   2. the index overlay — a full-screen specimen contents page
- *   3. the signature: a live type tester — edit the hero line and drag the
- *      point-size scale; the display face re-sets in real time.
- * Nothing here is gratuitous motion, so it all runs regardless of
- * prefers-reduced-motion (the only animation, the hero fall, is CSS-gated). */
+ *   2. the elevation index — a floating depth-stack of links that collapses
+ *      behind a "Layers" toggle on small screens
+ *   3. the signature: pointer-driven depth parallax. The decorative strata
+ *      planes drift by pointer offset × their own depth, so the page reads as
+ *      near-and-far rather than flat. Gated behind reduced-motion / coarse
+ *      pointers; pure ambience, never required to read the page. */
 (function () {
   'use strict';
 
@@ -20,78 +21,65 @@
     }
   });
 
-  /* ---- Index overlay ---- */
+  /* ---- Elevation index: mobile layers toggle ---- */
   var toggle = document.getElementById('nav-toggle');
-  var overlay = document.getElementById('index-overlay');
-  if (toggle && overlay) {
+  var nav = document.getElementById('site-nav');
+  if (toggle && nav) {
     var openNav = function () {
-      overlay.classList.add('is-open');
-      overlay.setAttribute('aria-hidden', 'false');
+      nav.classList.add('is-open');
       toggle.setAttribute('aria-expanded', 'true');
       document.documentElement.classList.add('nav-open');
-      var first = overlay.querySelector('a');
-      if (first) { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }
     };
     var closeNav = function () {
-      overlay.classList.remove('is-open');
-      overlay.setAttribute('aria-hidden', 'true');
+      nav.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
       document.documentElement.classList.remove('nav-open');
     };
     toggle.addEventListener('click', function () {
-      if (overlay.classList.contains('is-open')) { closeNav(); } else { openNav(); }
+      if (nav.classList.contains('is-open')) { closeNav(); } else { openNav(); }
     });
-    overlay.addEventListener('click', function (e) {
-      /* click on the backdrop (the nav itself, not the sheet) closes */
-      if (e.target === overlay) closeNav();
-    });
-    overlay.querySelectorAll('a').forEach(function (a) {
+    nav.querySelectorAll('a').forEach(function (a) {
       a.addEventListener('click', closeNav);
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
         closeNav();
         toggle.focus();
       }
     });
+    /* tapping outside the open stack closes it (mobile) */
+    document.addEventListener('click', function (e) {
+      if (!nav.classList.contains('is-open')) return;
+      if (nav.contains(e.target) || toggle.contains(e.target)) return;
+      closeNav();
+    });
   }
 
-  /* ---- Signature: the live type tester ---- */
-  var tester = document.querySelector('[data-tester]');
-  if (tester) {
-    var line = tester.querySelector('[data-tester-line]');
-    var range = tester.querySelector('[data-tester-range]');
-    var readout = tester.querySelector('[data-tester-size]');
+  /* ---- Signature: pointer-driven depth parallax ---- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var coarse = window.matchMedia('(pointer: coarse)').matches;
+  if (!reduce && !coarse) {
+    var root = document.documentElement;
+    var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
 
-    if (range && line) {
-      var setSize = function () {
-        var pt = parseInt(range.value, 10) || 112;
-        line.style.setProperty('--pt', pt);
-        if (readout) readout.textContent = pt;
-      };
-      range.addEventListener('input', setSize);
-      setSize();
-    }
+    var frame = function () {
+      /* ease the rendered offset toward the pointer target */
+      cx += (tx - cx) * 0.08;
+      cy += (ty - cy) * 0.08;
+      root.style.setProperty('--mx', cx.toFixed(3));
+      root.style.setProperty('--my', cy.toFixed(3));
+      if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) {
+        raf = window.requestAnimationFrame(frame);
+      } else {
+        raf = 0;
+      }
+    };
 
-    if (line) {
-      /* tapping/focusing the line selects all so typing replaces the sample */
-      var selectAll = function () {
-        var sel = window.getSelection();
-        if (!sel) return;
-        var r = document.createRange();
-        r.selectNodeContents(line);
-        sel.removeAllRanges();
-        sel.addRange(r);
-      };
-      line.addEventListener('focus', function () { window.setTimeout(selectAll, 0); });
-      /* keep it a single line: Enter blurs instead of inserting a break */
-      line.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') { e.preventDefault(); line.blur(); }
-      });
-      /* never let it go fully empty (keeps the specimen readable) */
-      line.addEventListener('blur', function () {
-        if (!line.textContent.trim()) { line.textContent = 'Whispering to agents'; }
-      });
-    }
+    window.addEventListener('pointermove', function (e) {
+      /* normalize pointer to roughly [-1, 1] from viewport center */
+      tx = (e.clientX / window.innerWidth) * 2 - 1;
+      ty = (e.clientY / window.innerHeight) * 2 - 1;
+      if (!raf) raf = window.requestAnimationFrame(frame);
+    }, { passive: true });
   }
 })();

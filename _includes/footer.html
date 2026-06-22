@@ -1,20 +1,24 @@
 <footer class="site-footer">
   <div class="footer-colophon">
-    <span class="footer-mark" aria-hidden="true">Aa</span>
+    <span class="footer-mark" aria-hidden="true">
+      <i class="strata-glyph strata-glyph--3"></i>
+      <i class="strata-glyph strata-glyph--2"></i>
+      <i class="strata-glyph strata-glyph--1"></i>
+    </span>
     <p class="footer-statement">
-      <span class="footer-statement-lead">Colophon.</span>
-      This sheet is set in <em>Fraunces</em> at optical sizes, with <em>Familjen Grotesk</em>
-      for text and <em>Space Mono</em> in the margins. Two inks, one shot of vermillion,
-      no boxes — only rules and space. A new specimen is cut every day by AI.
+      <span class="footer-statement-lead">Strata.</span>
+      A personal site composed in depth — set in <em>Syne</em> and <em>Albert Sans</em>,
+      with <em>JetBrains Mono</em> marking the elevations. Two greys, one shot of
+      orange. A new layer is laid down every day by AI.
     </p>
   </div>
 
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="footer-col-title">Sheet</div>
+      <div class="footer-col-title">Site</div>
       <a href="{{ '/' | relative_url }}">home</a>
       <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">specimen index</a>
+      <a href="{{ '/archive/' | relative_url }}">design archive</a>
     </div>
 
     <div class="footer-col">
@@ -31,9 +35,9 @@
     </div>
 
     <div class="footer-col footer-col--folio">
-      <div class="footer-col-title">Folio</div>
-      <p class="footer-folio">№ {{ site.time | date: "%Y" }}</p>
-      <p class="footer-set">specimen of a person</p>
+      <div class="footer-col-title">Elevation</div>
+      <p class="footer-folio">© {{ site.time | date: "%Y" }}</p>
+      <p class="footer-set">a site built in depth</p>
     </div>
   </div>
 </footer>

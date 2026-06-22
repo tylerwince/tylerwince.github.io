@@ -24,17 +24,25 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
-  <!-- letterhead masthead + index overlay (nav lives here) -->
+  <!-- ambient parallax depth-field (decorative, behind everything) -->
+  <div class="strata-field" aria-hidden="true">
+    <span class="strata-plane strata-plane--block" data-depth="34"></span>
+    <span class="strata-plane strata-plane--grid" data-depth="18"></span>
+    <span class="strata-plane strata-plane--ring" data-depth="-26"></span>
+    <span class="strata-plane strata-plane--bar" data-depth="48"></span>
+  </div>
+
+  <!-- elevation index masthead + floating nav -->
   {% include header.html %}
 
   <div class="page">
     <div class="site-banner">
       <p class="banner-text">
-        <span class="banner-spec">Specimen №{{ design_no }}</span>
+        <span class="banner-spec">Stratum №{{ design_no }}</span>
         <span class="banner-rule" aria-hidden="true"></span>
         <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
-        <span class="banner-set">a living type specimen · re-cut daily by AI</span>
-        <a class="banner-link" href="{{ '/archive/' | relative_url }}">Index of past sheets →</a>
+        <span class="banner-set">a site redrawn in depth · re-laid daily by AI</span>
+        <a class="banner-link" href="{{ '/archive/' | relative_url }}">Strata below ↓</a>
       </p>
     </div>
 

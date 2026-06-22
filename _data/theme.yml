@@ -16,24 +16,24 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "THE SPECIMEN SHEET"
-date: "2026-06-17"
-lane: "pure-typography"
+name: "STRATA"
+date: "2026-06-22"
+lane: "digital-native"
 manifesto: >-
-  A one-person foundry's specimen sheet — except the typeface on show is a
-  person. Names fall in waterfalls of size, every entry wears its point size and
-  weight in the margin, and the headline is yours: type into it and drag the
-  scale to re-set the specimen live.
-nav_paradigm: "index overlay — a full-screen specimen contents page summoned from the letterhead"
-layout_skeleton: "letterhead + colophon, oversized name with a live type tester, three annotated cuts (Display / Text / Plates)"
-signature_interaction: "live type tester — edit the hero specimen line and drag the point-size scale; Fraunces re-sets in real time"
-color: "#f6f1e7"
+  A site built in depth, not in scrolls. Every section is a plane floating at
+  its own altitude — panels shingle over each other and the hero sits proud of a
+  block of pure colour. Move your pointer and the layers drift apart to show the
+  air between them.
+nav_paradigm: "elevation index — monogram chip plus a floating corner depth-stack of links; layers toggle on mobile"
+layout_skeleton: "ambient parallax depth-field, oversized hero over an accent colour block, shingled app slabs, cascading post layers, a fanned cover deck"
+signature_interaction: "pointer-driven depth parallax across stacked strata planes"
+color: "#0b0e15"
 fonts:
-  display: "Fraunces"
-  body: "Familjen Grotesk"
-  mono: "Space Mono"
+  display: "Syne"
+  body: "Albert Sans"
+  mono: "JetBrains Mono"
 palette:
-  - "#f6f1e7"
-  - "#1a1813"
-  - "#8a8273"
-  - "#d6371f"
+  - "#e7e9ef"
+  - "#0b0e15"
+  - "#686d7b"
+  - "#ff5a14"
