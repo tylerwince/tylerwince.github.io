@@ -255,3 +255,30 @@
   - "#1a1813"
   - "#8a8273"
   - "#d6371f"
+- date: '2026-06-22'
+  theme: STRATA
+  description: A site built in depth, not in scrolls. Every section is a plane floating
+    at its own altitude — panels shingle over each other and the hero sits proud of
+    a block of pure colour. Move your pointer and the layers drift apart to show the
+    air between them.
+  commit: a11edf98
+  lane: digital-native
+  manifesto: A site built in depth, not in scrolls. Every section is a plane floating
+    at its own altitude — panels shingle over each other and the hero sits proud of
+    a block of pure colour. Move your pointer and the layers drift apart to show the
+    air between them.
+  nav_paradigm: elevation index — monogram chip plus a floating corner depth-stack
+    of links; layers toggle on mobile
+  layout_skeleton: ambient parallax depth-field, oversized hero over an accent colour
+    block, shingled app slabs, cascading post layers, a fanned cover deck
+  signature_interaction: pointer-driven depth parallax across stacked strata planes
+  color: "#0b0e15"
+  fonts:
+    display: Syne
+    body: Albert Sans
+    mono: JetBrains Mono
+  palette:
+  - "#e7e9ef"
+  - "#0b0e15"
+  - "#686d7b"
+  - "#ff5a14"
