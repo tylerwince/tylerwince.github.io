@@ -16,24 +16,24 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "STRATA"
-date: "2026-06-22"
-lane: "digital-native"
+name: "METROPOLIS"
+date: "2026-06-23"
+lane: "design-movement"
 manifesto: >-
-  A site built in depth, not in scrolls. Every section is a plane floating at
-  its own altitude — panels shingle over each other and the hero sits proud of a
-  block of pure colour. Move your pointer and the layers drift apart to show the
-  air between them.
-nav_paradigm: "elevation index — monogram chip plus a floating corner depth-stack of links; layers toggle on mobile"
-layout_skeleton: "ambient parallax depth-field, oversized hero over an accent colour block, shingled app slabs, cascading post layers, a fanned cover deck"
-signature_interaction: "pointer-driven depth parallax across stacked strata planes"
-color: "#0b0e15"
+  Art Deco for the machine age — gilt sunbursts, stepped skylines, chevron
+  friezes, every section mirrored on a central spine. A personal site built like
+  the lobby of a 1929 skyscraper, and the marquee lights itself the moment you
+  arrive.
+nav_paradigm: "the marquee crown — a symmetric multi-tier masthead: monogram medallion, spaced-caps title between chevron rules, nav links split by diamonds inside a stepped gold frame; full-screen playbill overlay on mobile"
+layout_skeleton: "a symmetric Deco facade — gilt hero over a CSS sunburst, apps as a skyline of stepped setback towers, writing as a centered theater program, reading as a gold-framed lobby gallery"
+signature_interaction: "the grand opening — sunburst rays sweep in, chevron rules draw outward from centre, and a single gilt shimmer passes across the name on load"
+color: "#16211f"
 fonts:
-  display: "Syne"
-  body: "Albert Sans"
-  mono: "JetBrains Mono"
+  display: "Poiret One"
+  body: "EB Garamond"
+  mono: "DM Mono"
 palette:
-  - "#e7e9ef"
-  - "#0b0e15"
-  - "#686d7b"
-  - "#ff5a14"
+  - "#f1e7d0"
+  - "#16211f"
+  - "#857a5f"
+  - "#9c7c2c"
