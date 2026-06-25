@@ -3,9 +3,9 @@ layout: default
 ---
 <div class="home">
   <section class="hero">
-    <p class="hero-kicker"><span class="hero-kicker-tag">profile</span> builder · writer · reader</p>
+    <p class="hero-kicker"><span class="hero-kicker-tag">field 01</span> builder · writer · reader</p>
 
-    <h1 class="hero-title">
+    <h1 class="hero-title" id="hero-title">
       {%- assign title_words = site.title | split: " " -%}
       {%- for word in title_words -%}
       <span class="hero-line">{{ word }}</span>
@@ -19,20 +19,23 @@ layout: default
       <span>iOS apps · Etch, Waymark</span>
       <span>essays &amp; book notes</span>
     </div>
+
+    <p class="hero-hint" aria-hidden="true">move your pointer — the weave reroutes</p>
   </section>
 
   <section class="home-section home-section--apps">
     <div class="section-header">
-      <span class="section-label">Now Showing</span>
+      <span class="section-label">Field A</span>
       <h2 class="section-title">Apps</h2>
       <a href="{{ '/apps/' | relative_url }}" class="view-all">all apps&nbsp;→</a>
     </div>
     <ul class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <li class="app-tower">
+      <li class="app-cell">
         <a href="{{ app.url | relative_url }}" class="app-card">
-          <span class="app-elev" aria-hidden="true">no. {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="app-arc" aria-hidden="true"></span>
+          <span class="app-elev" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
           {% if app.icon_path %}
           <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="56" height="56">
           {% else %}
@@ -42,7 +45,7 @@ layout: default
             <span class="app-name">{{ app.title | escape }}</span>
             <span class="app-desc">{{ app.tagline | escape }}</span>
           </span>
-          <span class="app-go" aria-hidden="true">enter&nbsp;→</span>
+          <span class="app-go" aria-hidden="true">→</span>
         </a>
       </li>
       {% endfor %}
@@ -51,7 +54,7 @@ layout: default
 
   <section class="home-section home-section--writing">
     <div class="section-header">
-      <span class="section-label">The Bulletin</span>
+      <span class="section-label">Field B</span>
       <h2 class="section-title">Writing</h2>
       <a href="{{ '/writing/' | relative_url }}" class="view-all">all writing&nbsp;→</a>
     </div>
@@ -59,6 +62,7 @@ layout: default
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
       <a href="{{ post.url | relative_url }}" class="post-row">
+        <span class="post-node" aria-hidden="true"></span>
         <span class="post-date">{{ post.date | date: "%Y · %m · %d" }}</span>
         <span class="post-title">{{ post.title | escape }}</span>
         <span class="post-go" aria-hidden="true">→</span>
@@ -69,14 +73,14 @@ layout: default
 
   <section class="home-section home-section--reading">
     <div class="section-header">
-      <span class="section-label">The Gallery</span>
+      <span class="section-label">Field C</span>
       <h2 class="section-title">Reading</h2>
       <a href="{{ '/reading/' | relative_url }}" class="view-all">full shelf&nbsp;→</a>
     </div>
     <ul class="book-grid">
       {% assign recent_books = site.books | sort: "date" | reverse %}
       {% for book in recent_books limit: 10 %}
-      <li class="book-plate">
+      <li class="book-cell">
         <a href="{{ '/reading/' | relative_url }}" class="book-card">
           {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
           {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}

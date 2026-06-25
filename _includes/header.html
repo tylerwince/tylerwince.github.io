@@ -1,21 +1,18 @@
+<!-- the tile rail : a column of Truchet tiles — monogram tile + nav tiles, the
+     cerise current threads through the active one. Bottom tile-bar on mobile. -->
 <header class="site-header">
   <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
     <span class="site-title-mark" aria-hidden="true"></span>
     <span class="site-title-text">Tyler&nbsp;Wince</span>
-    <span class="site-title-sub" aria-hidden="true">est. on the avenue</span>
+    <span class="site-title-sub" aria-hidden="true">the weave</span>
   </a>
 
-  <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
-    <span class="nav-toggle-bars" aria-hidden="true"><i></i><i></i><i></i></span>
-    <span class="nav-toggle-label">Directory</span>
-  </button>
-
-  <!-- the nav frieze : links split by diamonds inside a stepped gold frame -->
   <nav class="site-nav" id="site-nav" aria-label="Primary">
-    <p class="nav-heading" aria-hidden="true">Directory</p>
+    <p class="nav-heading" aria-hidden="true">paths</p>
     <ul class="nav-list">
       <li class="nav-item nav-item--home">
-        <a href="{{ '/' | relative_url }}">
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>
+          <span class="nav-tile" aria-hidden="true"></span>
           <span class="nav-name">home</span>
         </a>
       </li>
@@ -24,6 +21,7 @@
         {% if nav_page %}
         <li class="nav-item nav-item--{{ forloop.index }}">
           <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
+            <span class="nav-tile" aria-hidden="true"></span>
             <span class="nav-name">{{ nav_page.title | downcase }}</span>
           </a>
         </li>

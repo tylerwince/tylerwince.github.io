@@ -24,27 +24,32 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
+  <!-- the live Truchet weave : drawn by main.js, never an image -->
+  <canvas class="truchet-field" id="truchet-field" aria-hidden="true"></canvas>
+
   <div class="page">
-    <!-- the marquee crown : monogram medallion · spaced-caps title · nav frieze -->
+    <!-- the tile rail -->
     {% include header.html %}
 
-    <div class="site-banner">
-      <p class="banner-text">
-        <span class="banner-spec">Design №{{ design_no }}</span>
-        <span class="banner-rule" aria-hidden="true"></span>
-        <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
-        <span class="banner-set">a facade re-gilded every day by AI</span>
-        <a class="banner-link" href="{{ '/archive/' | relative_url }}">past marquees ↓</a>
-      </p>
-    </div>
-
-    <main class="site-main">
-      <div class="content-area">
-        {{ content }}
+    <div class="frame">
+      <div class="site-banner">
+        <p class="banner-text">
+          <span class="banner-spec">Tile №{{ design_no }}</span>
+          <span class="banner-rule" aria-hidden="true"></span>
+          <span class="banner-name">{{ site.data.theme.name | default: "today's weave" }}</span>
+          <span class="banner-set">a field re-seeded every day by AI</span>
+          <a class="banner-link" href="{{ '/archive/' | relative_url }}">past weaves ↓</a>
+        </p>
       </div>
-    </main>
 
-    {% include footer.html %}
+      <main class="site-main">
+        <div class="content-area">
+          {{ content }}
+        </div>
+      </main>
+
+      {% include footer.html %}
+    </div>
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
