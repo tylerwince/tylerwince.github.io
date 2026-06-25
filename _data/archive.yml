@@ -311,3 +311,32 @@
   - "#16211f"
   - "#857a5f"
   - "#9c7c2c"
+- date: '2026-06-25'
+  theme: TRUCHET
+  description: One square, two arcs, an endless weave. Sébastien Truchet's 1704 tile
+    — drawn live in your browser, never an image — paves every surface here. Nudge
+    the field and the current finds a new path around your pointer.
+  commit: c9cd0d48
+  lane: generative
+  manifesto: One square, two arcs, an endless weave. Sébastien Truchet's 1704 tile
+    — drawn live in your browser, never an image — paves every surface here. Nudge
+    the field and the current finds a new path around your pointer.
+  nav_paradigm: tile rail — a fixed column of Truchet tiles (monogram + nav); the
+    cerise current threads through the active tile, collapsing to a bottom tile-bar
+    on mobile
+  layout_skeleton: a paved field — oversized name over the live weave, apps as a woven
+    offset of arc-cut tiles, writing as a threaded labyrinth path, reading as a cover
+    quilt set into the grid
+  signature_interaction: the weave draws itself in on load and a cerise current sweeps
+    the name; on pointer-move nearby tiles flip and glow as the current reroutes around
+    you
+  color: "#ece3d1"
+  fonts:
+    display: Jost
+    body: Newsreader
+    mono: Red Hat Mono
+  palette:
+  - "#ece3d1"
+  - "#1b1813"
+  - "#8b8270"
+  - "#e01f63"
