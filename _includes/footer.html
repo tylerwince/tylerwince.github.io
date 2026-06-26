@@ -1,24 +1,24 @@
 <footer class="site-footer">
-  <div class="footer-colophon">
+  <div class="footer-endmark">
     <span class="footer-mark" aria-hidden="true"></span>
     <p class="footer-statement">
-      <span class="footer-statement-lead">Truchet.</span>
-      Every surface is paved with one square tile and two quarter-arcs, drawn
-      live in <em>Jost</em> and <em>Newsreader</em> over the weave — never an
-      image, never the same path twice. The field is re-seeded every day by AI.
+      <span class="footer-statement-lead">Fin.</span>
+      This site is staged as a film's opening titles — type cuts to its mark, bars
+      wipe the frame, and every section is a scene that hits on cue. The whole
+      sequence is re-cut every day by AI. Set in <em>Anton</em> and <em>Instrument&nbsp;Sans</em>.
     </p>
   </div>
 
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="footer-col-title">Paths</div>
+      <div class="footer-col-title">Reel</div>
       <a href="{{ '/' | relative_url }}">home</a>
       <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">design archive</a>
+      <a href="{{ '/archive/' | relative_url }}">title archive</a>
     </div>
 
     <div class="footer-col">
-      <div class="footer-col-title">Elsewhere</div>
+      <div class="footer-col-title">Credits</div>
       <ul class="social-list">
         {% if site.github_username %}
         <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
@@ -30,10 +30,10 @@
       </ul>
     </div>
 
-    <div class="footer-col footer-col--seed">
-      <div class="footer-col-title">Seed</div>
+    <div class="footer-col footer-col--print">
+      <div class="footer-col-title">Print</div>
       <p class="footer-folio">© {{ site.time | date: "%Y" }}</p>
-      <p class="footer-set">tiled live · re-seeded daily</p>
+      <p class="footer-set">cut live · re-cued daily</p>
     </div>
   </div>
 </footer>

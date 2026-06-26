@@ -1,6 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Truchet tile">
-  <!-- TRUCHET — Sébastien Truchet's tile: one square, two quarter-arcs. Redesigns replace this file. -->
-  <rect width="64" height="64" fill="#ece3d1"/>
-  <path d="M32 0 A32 32 0 0 1 64 32" fill="none" stroke="#1b1813" stroke-width="8"/>
-  <path d="M0 32 A32 32 0 0 1 32 64" fill="none" stroke="#e01f63" stroke-width="8"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Title Sequence — a film frame with a play cue">
+  <!-- TITLE SEQUENCE — a film frame: sprocket notches, a duotone wipe, a play cue. Redesigns replace this file. -->
+  <rect width="64" height="64" fill="#0c0c0f"/>
+  <!-- the blue wipe bar -->
+  <rect x="0" y="6" width="64" height="14" fill="#1f2fff"/>
+  <!-- sprocket holes -->
+  <rect x="5" y="30" width="6" height="6" fill="#ece9e0"/>
+  <rect x="5" y="44" width="6" height="6" fill="#ece9e0"/>
+  <rect x="53" y="30" width="6" height="6" fill="#ece9e0"/>
+  <rect x="53" y="44" width="6" height="6" fill="#ece9e0"/>
+  <!-- the play cue -->
+  <path d="M25 28 L45 40 L25 52 Z" fill="#e8331c"/>
 </svg>

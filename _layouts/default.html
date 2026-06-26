@@ -24,21 +24,21 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
-  <!-- the live Truchet weave : drawn by main.js, never an image -->
-  <canvas class="truchet-field" id="truchet-field" aria-hidden="true"></canvas>
+  <!-- filmic grain / scanline wash : decorative, never an image, never eats clicks -->
+  <div class="reel-grain" aria-hidden="true"></div>
 
-  <div class="page">
-    <!-- the tile rail -->
+  <div class="reel">
+    <!-- the cue sheet -->
     {% include header.html %}
 
     <div class="frame">
       <div class="site-banner">
         <p class="banner-text">
-          <span class="banner-spec">Tile №{{ design_no }}</span>
-          <span class="banner-rule" aria-hidden="true"></span>
-          <span class="banner-name">{{ site.data.theme.name | default: "today's weave" }}</span>
-          <span class="banner-set">a field re-seeded every day by AI</span>
-          <a class="banner-link" href="{{ '/archive/' | relative_url }}">past weaves ↓</a>
+          <span class="slate-roll">TAKE</span>
+          <span class="slate-no">№{{ design_no }}</span>
+          <span class="slate-name">{{ site.data.theme.name | default: "today's cut" }}</span>
+          <span class="slate-note">a new title sequence cut every day by AI</span>
+          <a class="slate-link" href="{{ '/archive/' | relative_url }}">past cuts →</a>
         </p>
       </div>
 

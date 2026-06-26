@@ -2,13 +2,19 @@
 layout: default
 ---
 <div class="home">
-  <section class="hero">
-    <p class="hero-kicker"><span class="hero-kicker-tag">field 01</span> builder · writer · reader</p>
+
+  <!-- ============ SCENE 01 · the title card ============ -->
+  <section class="hero" id="scene-home" data-cue>
+    <p class="hero-slate">
+      <span class="hero-slate-no">SCENE 01</span>
+      <span>title card</span>
+    </p>
 
     <h1 class="hero-title" id="hero-title">
+      <span class="hero-wipe" aria-hidden="true"></span>
       {%- assign title_words = site.title | split: " " -%}
       {%- for word in title_words -%}
-      <span class="hero-line">{{ word }}</span>
+      <span class="hero-line"><span class="hero-line-inner">{{ word }}</span></span>
       {%- endfor -%}
     </h1>
 
@@ -20,66 +26,72 @@ layout: default
       <span>essays &amp; book notes</span>
     </div>
 
-    <p class="hero-hint" aria-hidden="true">move your pointer — the weave reroutes</p>
+    <p class="hero-cue-hint" aria-hidden="true">scroll — the reel advances</p>
   </section>
 
-  <section class="home-section home-section--apps">
+  <!-- ============ SCENE 02 · apps as a billing block ============ -->
+  <section class="home-section home-section--apps" id="scene-apps" data-cue>
+    <span class="scene-ghost" aria-hidden="true">02</span>
     <div class="section-header">
-      <span class="section-label">Field A</span>
+      <span class="section-label">Scene 02 · billing</span>
       <h2 class="section-title">Apps</h2>
-      <a href="{{ '/apps/' | relative_url }}" class="view-all">all apps&nbsp;→</a>
+      <a href="{{ '/apps/' | relative_url }}" class="view-all">full cast&nbsp;→</a>
     </div>
     <ul class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <li class="app-cell">
+      <li class="app-credit">
         <a href="{{ app.url | relative_url }}" class="app-card">
-          <span class="app-arc" aria-hidden="true"></span>
-          <span class="app-elev" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <span class="app-num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
           {% if app.icon_path %}
-          <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="56" height="56">
+          <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="52" height="52">
           {% else %}
           <span class="app-icon app-icon--glyph" aria-hidden="true">{{ app.title | slice: 0, 1 }}</span>
           {% endif %}
           <span class="app-info">
             <span class="app-name">{{ app.title | escape }}</span>
+            <span class="app-leader" aria-hidden="true"></span>
             <span class="app-desc">{{ app.tagline | escape }}</span>
+            <span class="app-go" aria-hidden="true">cue&nbsp;→</span>
           </span>
-          <span class="app-go" aria-hidden="true">→</span>
         </a>
       </li>
       {% endfor %}
     </ul>
   </section>
 
-  <section class="home-section home-section--writing">
+  <!-- ============ SCENE 03 · writing as a shot list / EDL ============ -->
+  <section class="home-section home-section--writing" id="scene-writing" data-cue>
+    <span class="scene-ghost" aria-hidden="true">03</span>
     <div class="section-header">
-      <span class="section-label">Field B</span>
+      <span class="section-label">Scene 03 · shot list</span>
       <h2 class="section-title">Writing</h2>
-      <a href="{{ '/writing/' | relative_url }}" class="view-all">all writing&nbsp;→</a>
+      <a href="{{ '/writing/' | relative_url }}" class="view-all">roll all&nbsp;→</a>
     </div>
     <div class="post-list">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
       <a href="{{ post.url | relative_url }}" class="post-row">
-        <span class="post-node" aria-hidden="true"></span>
-        <span class="post-date">{{ post.date | date: "%Y · %m · %d" }}</span>
+        <span class="post-cut-no" aria-hidden="true">SH {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
         <span class="post-title">{{ post.title | escape }}</span>
-        <span class="post-go" aria-hidden="true">→</span>
+        <span class="post-go" aria-hidden="true">cut&nbsp;→</span>
       </a>
       {% endfor %}
     </div>
   </section>
 
-  <section class="home-section home-section--reading">
+  <!-- ============ SCENE 04 · reading as a filmstrip ============ -->
+  <section class="home-section home-section--reading" id="scene-reading" data-cue>
+    <span class="scene-ghost" aria-hidden="true">04</span>
     <div class="section-header">
-      <span class="section-label">Field C</span>
+      <span class="section-label">Scene 04 · lobby cards</span>
       <h2 class="section-title">Reading</h2>
-      <a href="{{ '/reading/' | relative_url }}" class="view-all">full shelf&nbsp;→</a>
+      <a href="{{ '/reading/' | relative_url }}" class="view-all">full reel&nbsp;→</a>
     </div>
     <ul class="book-grid">
       {% assign recent_books = site.books | sort: "date" | reverse %}
-      {% for book in recent_books limit: 10 %}
+      {% for book in recent_books limit: 12 %}
       <li class="book-cell">
         <a href="{{ '/reading/' | relative_url }}" class="book-card">
           {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
@@ -93,7 +105,7 @@ layout: default
           <span class="book-card-info">
             <span class="book-card-title">{{ book.title | escape }}</span>
             {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
-            <span class="book-card-status">{% if book.currently_reading %}reading{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
+            <span class="book-card-status">{% if book.currently_reading %}rolling{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
           </span>
         </a>
       </li>

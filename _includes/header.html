@@ -1,28 +1,32 @@
-<!-- the tile rail : a column of Truchet tiles — monogram tile + nav tiles, the
-     cerise current threads through the active one. Bottom tile-bar on mobile. -->
+<!-- THE CUE SHEET : a fixed column of numbered scenes with timecodes and a tally
+     light on the active cue. Collapses to a bottom scrubber bar on mobile. -->
 <header class="site-header">
   <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
     <span class="site-title-mark" aria-hidden="true"></span>
     <span class="site-title-text">Tyler&nbsp;Wince</span>
-    <span class="site-title-sub" aria-hidden="true">the weave</span>
+    <span class="site-title-sub" aria-hidden="true">title sequence</span>
   </a>
 
   <nav class="site-nav" id="site-nav" aria-label="Primary">
-    <p class="nav-heading" aria-hidden="true">paths</p>
+    <p class="nav-heading" aria-hidden="true">cue sheet</p>
     <ul class="nav-list">
       <li class="nav-item nav-item--home">
-        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active"{% endif %}>
-          <span class="nav-tile" aria-hidden="true"></span>
+        <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active" aria-current="page"{% endif %}>
+          <span class="cue-tally" aria-hidden="true"></span>
+          <span class="cue-no">01</span>
           <span class="nav-name">home</span>
+          <span class="cue-tc" aria-hidden="true">00:00</span>
         </a>
       </li>
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
         <li class="nav-item nav-item--{{ forloop.index }}">
-          <a href="{{ nav_page.url | relative_url }}" class="{% if page.url contains nav_page.url %}active{% endif %}">
-            <span class="nav-tile" aria-hidden="true"></span>
+          <a href="{{ nav_page.url | relative_url }}"{% if page.url contains nav_page.url %} class="active" aria-current="page"{% endif %}>
+            <span class="cue-tally" aria-hidden="true"></span>
+            <span class="cue-no">{{ forloop.index | plus: 1 | prepend: '0' | slice: -2, 2 }}</span>
             <span class="nav-name">{{ nav_page.title | downcase }}</span>
+            <span class="cue-tc" aria-hidden="true">00:{{ forloop.index | times: 11 | prepend: '00' | slice: -2, 2 }}</span>
           </a>
         </li>
         {% endif %}

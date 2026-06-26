@@ -16,23 +16,23 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "TRUCHET"
-date: "2026-06-24"
-lane: "generative"
+name: "TITLE SEQUENCE"
+date: "2026-06-26"
+lane: "motion-first"
 manifesto: >-
-  One square, two arcs, an endless weave. Sébastien Truchet's 1704 tile — drawn
-  live in your browser, never an image — paves every surface here. Nudge the
-  field and the current finds a new path around your pointer.
-nav_paradigm: "tile rail — a fixed column of Truchet tiles (monogram + nav); the cerise current threads through the active tile, collapsing to a bottom tile-bar on mobile"
-layout_skeleton: "a paved field — oversized name over the live weave, apps as a woven offset of arc-cut tiles, writing as a threaded labyrinth path, reading as a cover quilt set into the grid"
-signature_interaction: "the weave draws itself in on load and a cerise current sweeps the name; on pointer-move nearby tiles flip and glow as the current reroutes around you"
-color: "#ece3d1"
+  A personal site staged as a film's opening titles. Nothing fades in politely —
+  it cuts: kinetic type snaps to its mark, a duotone bar wipes the frame, and
+  every section is a scene that hits on cue. Scroll runs the reel.
+nav_paradigm: "the cue sheet — a fixed vertical list of numbered scenes with timecodes, a tally light on the active cue; collapses to a bottom scrubber on mobile"
+layout_skeleton: "a reel of scenes — full-bleed title-card hero over a wipe bar, apps as a billing block, writing as a shot-list / EDL, reading as a sprocketed filmstrip of lobby cards"
+signature_interaction: "the title sequence on load — the cue sheet rolls in and the name cuts up into frame as a duotone bar wipes across; thereafter each scene cuts itself in on scroll-entry, the cue sheet's tally tracks the scene you're in, and clicking a cue re-cues that scene"
+color: "#0c0c0f"
 fonts:
-  display: "Jost"
-  body: "Newsreader"
-  mono: "Red Hat Mono"
+  display: "Anton"
+  body: "Instrument Sans"
+  mono: "Overpass Mono"
 palette:
-  - "#ece3d1"
-  - "#1b1813"
-  - "#8b8270"
-  - "#e01f63"
+  - "#ece9e0"
+  - "#16161a"
+  - "#1f2fff"
+  - "#e8331c"
