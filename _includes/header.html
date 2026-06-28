@@ -1,21 +1,22 @@
-<!-- THE CUE SHEET : a fixed column of numbered scenes with timecodes and a tally
-     light on the active cue. Collapses to a bottom scrubber bar on mobile. -->
+<!-- THE INK CONTROL STRIP : the imprint sits top-left as a registration crosshair;
+     primary nav is a fixed colour-bar of labelled ink patches along the foot of the
+     sheet. The active patch inks up solid with a registration tick. Same strip on
+     mobile (thumb-reachable). -->
 <header class="site-header">
   <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
     <span class="site-title-mark" aria-hidden="true"></span>
     <span class="site-title-text">Tyler&nbsp;Wince</span>
-    <span class="site-title-sub" aria-hidden="true">title sequence</span>
+    <span class="site-title-sub" aria-hidden="true">two-colour press</span>
   </a>
 
   <nav class="site-nav" id="site-nav" aria-label="Primary">
-    <p class="nav-heading" aria-hidden="true">cue sheet</p>
+    <p class="nav-heading" aria-hidden="true">ink&nbsp;strip</p>
     <ul class="nav-list">
       <li class="nav-item nav-item--home">
         <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} class="active" aria-current="page"{% endif %}>
-          <span class="cue-tally" aria-hidden="true"></span>
-          <span class="cue-no">01</span>
+          <span class="ink-swatch" aria-hidden="true"></span>
           <span class="nav-name">home</span>
-          <span class="cue-tc" aria-hidden="true">00:00</span>
+          <span class="ink-reg" aria-hidden="true"></span>
         </a>
       </li>
       {% for nav_page_name in site.header_pages %}
@@ -23,10 +24,9 @@
         {% if nav_page %}
         <li class="nav-item nav-item--{{ forloop.index }}">
           <a href="{{ nav_page.url | relative_url }}"{% if page.url contains nav_page.url %} class="active" aria-current="page"{% endif %}>
-            <span class="cue-tally" aria-hidden="true"></span>
-            <span class="cue-no">{{ forloop.index | plus: 1 | prepend: '0' | slice: -2, 2 }}</span>
+            <span class="ink-swatch" aria-hidden="true"></span>
             <span class="nav-name">{{ nav_page.title | downcase }}</span>
-            <span class="cue-tc" aria-hidden="true">00:{{ forloop.index | times: 11 | prepend: '00' | slice: -2, 2 }}</span>
+            <span class="ink-reg" aria-hidden="true"></span>
           </a>
         </li>
         {% endif %}

@@ -1,13 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Title Sequence — a film frame with a play cue">
-  <!-- TITLE SEQUENCE — a film frame: sprocket notches, a duotone wipe, a play cue. Redesigns replace this file. -->
-  <rect width="64" height="64" fill="#0c0c0f"/>
-  <!-- the blue wipe bar -->
-  <rect x="0" y="6" width="64" height="14" fill="#1f2fff"/>
-  <!-- sprocket holes -->
-  <rect x="5" y="30" width="6" height="6" fill="#ece9e0"/>
-  <rect x="5" y="44" width="6" height="6" fill="#ece9e0"/>
-  <rect x="53" y="30" width="6" height="6" fill="#ece9e0"/>
-  <rect x="53" y="44" width="6" height="6" fill="#ece9e0"/>
-  <!-- the play cue -->
-  <path d="M25 28 L45 40 L25 52 Z" fill="#e8331c"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Overprint — two ink discs out of register, overlapping into a third colour">
+  <!-- OVERPRINT — a registration target: blue and red ink discs a hair out of register,
+       multiplying into a darker third where they overlap. Redesigns replace this file. -->
+  <rect width="64" height="64" fill="#f2ede1"/>
+  <!-- crop marks -->
+  <g stroke="#1a1322" stroke-width="2">
+    <path d="M6 14 V6 H14"/>
+    <path d="M58 14 V6 H50"/>
+    <path d="M6 50 V58 H14"/>
+    <path d="M58 50 V58 H50"/>
+  </g>
+  <!-- two ink discs, overprinting (multiply) -->
+  <g style="mix-blend-mode:multiply">
+    <circle cx="27" cy="34" r="15" fill="#2336e8"/>
+    <circle cx="37" cy="34" r="15" fill="#ff2748"/>
+  </g>
+  <!-- registration crosshair -->
+  <g stroke="#1a1322" stroke-width="1.4">
+    <path d="M32 22 V46 M20 34 H44"/>
+  </g>
+  <circle cx="32" cy="34" r="6.5" fill="none" stroke="#1a1322" stroke-width="1.4"/>
 </svg>

@@ -24,32 +24,36 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
-  <!-- filmic grain / scanline wash : decorative, never an image, never eats clicks -->
-  <div class="reel-grain" aria-hidden="true"></div>
+  <!-- crop & registration marks pinned to the trim edges : decorative, never eats clicks -->
+  <div class="press-marks" aria-hidden="true">
+    <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
+    <span class="crop crop--bl"></span><span class="crop crop--br"></span>
+    <span class="reg-target reg-target--a"></span>
+    <span class="reg-target reg-target--b"></span>
+  </div>
 
-  <div class="reel">
-    <!-- the cue sheet -->
+  <div class="press-sheet">
+    <!-- the ink control strip lives here (fixed to the foot of the sheet) -->
     {% include header.html %}
 
-    <div class="frame">
-      <div class="site-banner">
-        <p class="banner-text">
-          <span class="slate-roll">TAKE</span>
-          <span class="slate-no">№{{ design_no }}</span>
-          <span class="slate-name">{{ site.data.theme.name | default: "today's cut" }}</span>
-          <span class="slate-note">a new title sequence cut every day by AI</span>
-          <a class="slate-link" href="{{ '/archive/' | relative_url }}">past cuts →</a>
-        </p>
-      </div>
-
-      <main class="site-main">
-        <div class="content-area">
-          {{ content }}
-        </div>
-      </main>
-
-      {% include footer.html %}
+    <div class="site-banner">
+      <p class="banner-text">
+        <span class="slug-tick" aria-hidden="true"></span>
+        <span class="slug-name">{{ site.data.theme.name | default: "today's sheet" }}</span>
+        <span class="slug-spec" aria-hidden="true">two-colour offset</span>
+        <span class="slug-no">No.{{ design_no }}</span>
+        <span class="slug-note">a fresh sheet pulled every day by AI</span>
+        <a class="slug-link" href="{{ '/archive/' | relative_url }}">past sheets →</a>
+      </p>
     </div>
+
+    <main class="site-main">
+      <div class="content-area">
+        {{ content }}
+      </div>
+    </main>
+
+    {% include footer.html %}
   </div>
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

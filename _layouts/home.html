@@ -3,18 +3,21 @@ layout: default
 ---
 <div class="home">
 
-  <!-- ============ SCENE 01 · the title card ============ -->
-  <section class="hero" id="scene-home" data-cue>
-    <p class="hero-slate">
-      <span class="hero-slate-no">SCENE 01</span>
-      <span>title card</span>
+  <!-- ============ FORM 01 · the title impression ============ -->
+  <section class="hero" id="top">
+    <p class="hero-slug">
+      <span class="hero-slug-no">FORM 01</span>
+      <span>title impression</span>
     </p>
 
     <h1 class="hero-title" id="hero-title">
-      <span class="hero-wipe" aria-hidden="true"></span>
       {%- assign title_words = site.title | split: " " -%}
       {%- for word in title_words -%}
-      <span class="hero-line"><span class="hero-line-inner">{{ word }}</span></span>
+      <span class="hero-word">
+        <span class="ink-layer ink-layer--blue" aria-hidden="true">{{ word }}</span>
+        <span class="ink-layer ink-layer--red" aria-hidden="true">{{ word }}</span>
+        <span class="ink-layer ink-layer--key">{{ word }}</span>
+      </span>
       {%- endfor -%}
     </h1>
 
@@ -25,22 +28,19 @@ layout: default
       <span>iOS apps · Etch, Waymark</span>
       <span>essays &amp; book notes</span>
     </div>
-
-    <p class="hero-cue-hint" aria-hidden="true">scroll — the reel advances</p>
   </section>
 
-  <!-- ============ SCENE 02 · apps as a billing block ============ -->
-  <section class="home-section home-section--apps" id="scene-apps" data-cue>
-    <span class="scene-ghost" aria-hidden="true">02</span>
+  <!-- ============ FORM 02 · apps as a colour bar ============ -->
+  <section class="home-section home-section--apps" id="apps">
     <div class="section-header">
-      <span class="section-label">Scene 02 · billing</span>
+      <span class="section-label">Form 02 · the colour bar</span>
       <h2 class="section-title">Apps</h2>
-      <a href="{{ '/apps/' | relative_url }}" class="view-all">full cast&nbsp;→</a>
+      <a href="{{ '/apps/' | relative_url }}" class="view-all">all impressions&nbsp;→</a>
     </div>
     <ul class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <li class="app-credit">
+      <li class="app-chip">
         <a href="{{ app.url | relative_url }}" class="app-card">
           <span class="app-num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
           {% if app.icon_path %}
@@ -50,44 +50,41 @@ layout: default
           {% endif %}
           <span class="app-info">
             <span class="app-name">{{ app.title | escape }}</span>
-            <span class="app-leader" aria-hidden="true"></span>
             <span class="app-desc">{{ app.tagline | escape }}</span>
-            <span class="app-go" aria-hidden="true">cue&nbsp;→</span>
           </span>
+          <span class="app-go" aria-hidden="true">pull&nbsp;→</span>
         </a>
       </li>
       {% endfor %}
     </ul>
   </section>
 
-  <!-- ============ SCENE 03 · writing as a shot list / EDL ============ -->
-  <section class="home-section home-section--writing" id="scene-writing" data-cue>
-    <span class="scene-ghost" aria-hidden="true">03</span>
+  <!-- ============ FORM 03 · writing as a numbered galley ============ -->
+  <section class="home-section home-section--writing" id="writing">
     <div class="section-header">
-      <span class="section-label">Scene 03 · shot list</span>
+      <span class="section-label">Form 03 · the galley</span>
       <h2 class="section-title">Writing</h2>
-      <a href="{{ '/writing/' | relative_url }}" class="view-all">roll all&nbsp;→</a>
+      <a href="{{ '/writing/' | relative_url }}" class="view-all">full galley&nbsp;→</a>
     </div>
     <div class="post-list">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
       <a href="{{ post.url | relative_url }}" class="post-row">
-        <span class="post-cut-no" aria-hidden="true">SH {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <span class="post-folio" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
         <span class="post-date">{{ post.date | date: "%Y.%m.%d" }}</span>
         <span class="post-title">{{ post.title | escape }}</span>
-        <span class="post-go" aria-hidden="true">cut&nbsp;→</span>
+        <span class="post-go" aria-hidden="true">read&nbsp;→</span>
       </a>
       {% endfor %}
     </div>
   </section>
 
-  <!-- ============ SCENE 04 · reading as a filmstrip ============ -->
-  <section class="home-section home-section--reading" id="scene-reading" data-cue>
-    <span class="scene-ghost" aria-hidden="true">04</span>
+  <!-- ============ FORM 04 · reading as a duotone plate ============ -->
+  <section class="home-section home-section--reading" id="reading">
     <div class="section-header">
-      <span class="section-label">Scene 04 · lobby cards</span>
+      <span class="section-label">Form 04 · the plate</span>
       <h2 class="section-title">Reading</h2>
-      <a href="{{ '/reading/' | relative_url }}" class="view-all">full reel&nbsp;→</a>
+      <a href="{{ '/reading/' | relative_url }}" class="view-all">full plate&nbsp;→</a>
     </div>
     <ul class="book-grid">
       {% assign recent_books = site.books | sort: "date" | reverse %}
@@ -105,7 +102,7 @@ layout: default
           <span class="book-card-info">
             <span class="book-card-title">{{ book.title | escape }}</span>
             {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
-            <span class="book-card-status">{% if book.currently_reading %}rolling{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
+            <span class="book-card-status">{% if book.currently_reading %}on press{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
           </span>
         </a>
       </li>

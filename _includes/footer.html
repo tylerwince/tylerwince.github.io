@@ -1,24 +1,25 @@
 <footer class="site-footer">
-  <div class="footer-endmark">
+  <div class="footer-colophon">
     <span class="footer-mark" aria-hidden="true"></span>
     <p class="footer-statement">
-      <span class="footer-statement-lead">Fin.</span>
-      This site is staged as a film's opening titles — type cuts to its mark, bars
-      wipe the frame, and every section is a scene that hits on cue. The whole
-      sequence is re-cut every day by AI. Set in <em>Anton</em> and <em>Instrument&nbsp;Sans</em>.
+      <span class="footer-statement-lead">Colophon.</span>
+      Printed in two inks — ultramarine and vermilion — overprinting live in your
+      browser, never as an image. Where they cross they mix a third; nudge your
+      pointer and they fall out of register. Set in <em>Bricolage&nbsp;Grotesque</em>
+      &amp; <em>Figtree</em>, re-inked every day by AI.
     </p>
   </div>
 
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="footer-col-title">Reel</div>
+      <div class="footer-col-title">Sheet</div>
       <a href="{{ '/' | relative_url }}">home</a>
       <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">title archive</a>
+      <a href="{{ '/archive/' | relative_url }}">past sheets</a>
     </div>
 
     <div class="footer-col">
-      <div class="footer-col-title">Credits</div>
+      <div class="footer-col-title">Imprint</div>
       <ul class="social-list">
         {% if site.github_username %}
         <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
@@ -30,10 +31,10 @@
       </ul>
     </div>
 
-    <div class="footer-col footer-col--print">
-      <div class="footer-col-title">Print</div>
+    <div class="footer-col footer-col--reg">
+      <div class="footer-col-title">Register</div>
       <p class="footer-folio">© {{ site.time | date: "%Y" }}</p>
-      <p class="footer-set">cut live · re-cued daily</p>
+      <p class="footer-set">two-colour offset · re-inked daily</p>
     </div>
   </div>
 </footer>

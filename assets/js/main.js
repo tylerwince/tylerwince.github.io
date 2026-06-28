@@ -1,13 +1,11 @@
-/* tylerwince.com — TITLE SEQUENCE
- * Lane: motion-first. The site is staged as a film's opening titles.
- *   1. nav active-state on the cue sheet (covers nested URLs)
- *   2. the title-sequence reveal on load — the cue sheet rolls in and the
- *      hero name cuts up into frame (html.cues -> html.is-ready)
- *   3. scene cuts — each [data-cue] scene snaps in as it enters the frame and
- *      resets when it leaves, so scrolling re-cuts the reel
- *   4. the tally — on the home page the cue sheet tracks the scene you're in,
- *      and clicking a cue re-cues that scene instead of leaving the page
- * All choreography is gated behind prefers-reduced-motion.
+/* tylerwince.com — OVERPRINT
+ * Lane: digital-native. The page is printed live in two inks.
+ *   1. nav active-state on the ink control strip (covers nested URLs)
+ *   2. live registration on load — the blue & red separations of the name start
+ *      badly out of register and snap home as the crop marks draw in
+ *   3. pointer misregister — the two inks drift apart under your pointer, mixing
+ *      a third where they cross
+ * All motion is gated behind prefers-reduced-motion.
  */
 (function () {
   'use strict';
@@ -15,18 +13,11 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
 
-  /* ---- map a nav href to its home-scene id ---- */
-  function sceneIdFor(href) {
-    var p = (href || '').replace(/[#?].*$/, '').replace(/\/+$/, '');
-    var seg = p.split('/').pop();
-    return seg ? 'scene-' + seg : 'scene-home';
-  }
-
+  /* ---- Nav active state (URL based — authoritative on every page) ---- */
   var navLinks = Array.prototype.slice.call(
     document.querySelectorAll('.site-nav .nav-item a'));
-
-  /* ---- Nav active state (URL based — the default on every page) ---- */
   var path = window.location.pathname.replace(/\/+$/, '') || '/';
+
   function setActive(activeLink) {
     navLinks.forEach(function (link) {
       var on = link === activeLink;
@@ -35,81 +26,55 @@
       else { link.removeAttribute('aria-current'); }
     });
   }
+  var best = null, bestLen = -1;
   navLinks.forEach(function (link) {
     var href = (link.getAttribute('href') || '').replace(/\/+$/, '') || '/';
     var match = (href === '/') ? (path === '/') : (path.indexOf(href) === 0);
-    if (match) setActive(link);
+    if (match && href.length > bestLen) { best = link; bestLen = href.length; }
   });
-
-  var onHome = !!document.getElementById('scene-home');
+  if (best) setActive(best);
 
   /* ====================================================================
-     The title-sequence reveal + scene cuts
+     The press: crop marks ink in, the separations lock into register.
      ==================================================================== */
-  var scenes = Array.prototype.slice.call(document.querySelectorAll('[data-cue]'));
+  var hero = document.getElementById('hero-title');
 
-  function cue(el) { el.classList.add('is-cued'); }
-  function uncue(el) { el.classList.remove('is-cued'); }
-  function recue(el) {              /* force the cut to replay */
-    el.classList.remove('is-cued');
-    void el.offsetWidth;            /* reflow */
-    el.classList.add('is-cued');
-  }
-
-  if (!reduce && scenes.length) {
-    root.classList.add('cues');     /* arm the pre-cue states */
-
-    /* roll the cue sheet in once the first frame paints */
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () { root.classList.add('is-ready'); });
-    });
-
-    if ('IntersectionObserver' in window) {
-      var cueObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) cue(e.target);
-          else if (e.intersectionRatio === 0) uncue(e.target);
-        });
-      }, { threshold: [0, 0.18], rootMargin: '0px 0px -8% 0px' });
-      scenes.forEach(function (s) { cueObserver.observe(s); });
-    } else {
-      scenes.forEach(cue);
-    }
+  if (reduce) {
+    root.classList.add('inked');            /* show crop marks, skip the run-up */
   } else {
-    scenes.forEach(cue);            /* reduced motion: just show them */
+    root.classList.add('cued');             /* jump the inks out of register */
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        root.classList.add('printing');     /* slower transition for the lock-in */
+        root.classList.add('inked');        /* draw the crop marks */
+        root.classList.remove('cued');      /* -> separations animate into register */
+        window.setTimeout(function () {
+          root.classList.remove('printing');
+        }, 720);
+      });
+    });
   }
 
   /* ====================================================================
-     The tally — on the home page the cue sheet follows your scroll, and a
-     cue re-cues its scene rather than navigating away.
+     Pointer misregister — the inks separate as you move across the sheet.
      ==================================================================== */
-  if (onHome && navLinks.length) {
-    /* click-to-recue */
-    navLinks.forEach(function (link) {
-      var target = document.getElementById(sceneIdFor(link.getAttribute('href')));
-      if (!target) return;          /* no matching scene -> normal nav */
-      link.addEventListener('click', function (ev) {
-        ev.preventDefault();
-        setActive(link);
-        target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-        if (!reduce) recue(target);
-      });
-    });
+  if (hero && !reduce && window.matchMedia('(pointer: fine)').matches) {
+    var REST_B = [-0.028, -0.020];          /* blue rest offset (em) */
+    var REST_R = [ 0.030,  0.018];          /* red rest offset (em)  */
+    var SPREAD = 0.10;                       /* max extra separation (em) */
+    var queued = false, px = 0, py = 0;
 
-    /* scrollspy: light the cue for whichever scene crosses the centre line */
-    if ('IntersectionObserver' in window) {
-      var byScene = {};
-      navLinks.forEach(function (link) {
-        byScene[sceneIdFor(link.getAttribute('href'))] = link;
-      });
-      var spy = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (!e.isIntersecting) return;
-          var link = byScene[e.target.id];
-          if (link) setActive(link);
-        });
-      }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
-      scenes.forEach(function (s) { spy.observe(s); });
+    function apply() {
+      queued = false;
+      hero.style.setProperty('--reg-bx', (REST_B[0] - px * SPREAD).toFixed(4) + 'em');
+      hero.style.setProperty('--reg-by', (REST_B[1] - py * SPREAD).toFixed(4) + 'em');
+      hero.style.setProperty('--reg-rx', (REST_R[0] + px * SPREAD).toFixed(4) + 'em');
+      hero.style.setProperty('--reg-ry', (REST_R[1] + py * SPREAD).toFixed(4) + 'em');
     }
+    window.addEventListener('pointermove', function (e) {
+      px = (e.clientX / window.innerWidth) * 2 - 1;   /* -1 .. 1 */
+      py = (e.clientY / window.innerHeight) * 2 - 1;
+      if (!queued) { queued = true; requestAnimationFrame(apply); }
+    }, { passive: true });
   }
 })();

@@ -16,23 +16,23 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "TITLE SEQUENCE"
-date: "2026-06-26"
-lane: "motion-first"
+name: "OVERPRINT"
+date: "2026-06-27"
+lane: "digital-native"
 manifesto: >-
-  A personal site staged as a film's opening titles. Nothing fades in politely —
-  it cuts: kinetic type snaps to its mark, a duotone bar wipes the frame, and
-  every section is a scene that hits on cue. Scroll runs the reel.
-nav_paradigm: "the cue sheet — a fixed vertical list of numbered scenes with timecodes, a tally light on the active cue; collapses to a bottom scrubber on mobile"
-layout_skeleton: "a reel of scenes — full-bleed title-card hero over a wipe bar, apps as a billing block, writing as a shot-list / EDL, reading as a sprocketed filmstrip of lobby cards"
-signature_interaction: "the title sequence on load — the cue sheet rolls in and the name cuts up into frame as a duotone bar wipes across; thereafter each scene cuts itself in on scroll-entry, the cue sheet's tally tracks the scene you're in, and clicking a cue re-cues that scene"
-color: "#0c0c0f"
+  Two inks, one sheet, printed live in your browser. Blue and red lie a hair out
+  of register until the press locks them in — move your pointer and the colours
+  separate again, mixing a third wherever they overlap.
+nav_paradigm: "the ink control strip — a fixed bottom colour-bar of labelled ink patches; the active patch inks up solid with a registration tick (same strip on mobile)"
+layout_skeleton: "a press sheet under crop marks — a misregistered overprinted name, apps as a colour-bar of ink-chips, writing as a numbered ruled galley, reading as a duotone cover mosaic"
+signature_interaction: "live registration — the two ink separations snap into register on load as crop marks draw in, then drift apart under your pointer; covers rack from duotone to full colour on hover"
+color: "#16111d"
 fonts:
-  display: "Anton"
-  body: "Instrument Sans"
-  mono: "Overpass Mono"
+  display: "Bricolage Grotesque"
+  body: "Figtree"
+  mono: "Sometype Mono"
 palette:
-  - "#ece9e0"
-  - "#16161a"
-  - "#1f2fff"
-  - "#e8331c"
+  - "#f2ede1"
+  - "#1a1322"
+  - "#2336e8"
+  - "#ff2748"
