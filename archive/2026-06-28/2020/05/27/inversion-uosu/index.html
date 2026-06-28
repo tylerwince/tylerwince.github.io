@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Use inversion thinking to ensure your team works on high-impact features by defining what success looks like and what will guarantee failure.">
+  <title>Inversion <> uoᴉsɹǝʌuI — Tyler Wince</title>
+  <meta name="theme-color" content="#16111d">
+  <meta property="og:title" content="Inversion <> uoᴉsɹǝʌuI — Tyler Wince">
+  <meta property="og:description" content="Use inversion thinking to ensure your team works on high-impact features by defining what success looks like and what will guarantee failure.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylerwince.com/archive/2026-06-28/2020/05/27/inversion-uosu/">
+  
+  <meta property="og:image" content="https://tylerwince.com/archive/2026-06-28/assets/og/posts/inversion-uosu.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/archive/2026-06-28/assets/favicon.svg?v=1782624946">
+  <style>@view-transition { navigation: auto; }</style>
+  <!-- Current theme's web fonts. Shared by default.html and the OG card layout so
+     per-article social images always render in the same faces as the live site.
+     REDESIGNS REWRITE THIS FILE (swap to your faces, ~4 weights max). -->
+<!-- OVERPRINT — Bricolage Grotesque (characterful grotesque display, the overprinted name) / Figtree (clean body) / Sometype Mono (ink-strip labels, folios, registration text) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&family=Sometype+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/archive/2026-06-28/assets/css/main.css?v=1782624946">
+  <link type="application/atom+xml" rel="alternate" href="https://tylerwince.com/archive/2026-06-28/feed.xml" title="Tyler Wince" />
+<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;}.archive-banner a{color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;}.archive-banner a:hover{color:rgba(255,255,255,0.8);}.archive-banner-spacer{height:32px;}.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}(max-width:768px){.archive-banner{font-size:10px;padding:6px 10px;flex-wrap:wrap;justify-content:center;gap:4px;}.archive-banner-spacer{height:52px;}.site-header{top:52px!important;}}(max-width:480px){.archive-banner{flex-direction:column;gap:2px;padding:6px 8px;}.archive-banner-spacer{height:68px;}.site-header{top:68px!important;}}</style></head>
+<body><!-- Time Travel Banner --><div class="archive-banner"><a href="/archive/2026-06-26/">← 2026-06-26</a><span>OVERPRINT · 2026-06-28 · <a href="/archive/">Back to today's site →</a></span><span style="visibility:hidden;">0000-00-00 →</span></div><div class="archive-banner-spacer"></div>
+  
+  
+  
+
+  <!-- crop & registration marks pinned to the trim edges : decorative, never eats clicks -->
+  <div class="press-marks" aria-hidden="true">
+    <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
+    <span class="crop crop--bl"></span><span class="crop crop--br"></span>
+    <span class="reg-target reg-target--a"></span>
+    <span class="reg-target reg-target--b"></span>
+  </div>
+
+  <div class="press-sheet">
+    <!-- the ink control strip lives here (fixed to the foot of the sheet) -->
+    <!-- THE INK CONTROL STRIP : the imprint sits top-left as a registration crosshair;
+     primary nav is a fixed colour-bar of labelled ink patches along the foot of the
+     sheet. The active patch inks up solid with a registration tick. Same strip on
+     mobile (thumb-reachable). -->
+<header class="site-header">
+  <a class="site-title" href="/archive/2026-06-28/" aria-label="Tyler Wince — home">
+    <span class="site-title-mark" aria-hidden="true"></span>
+    <span class="site-title-text">Tyler&nbsp;Wince</span>
+    <span class="site-title-sub" aria-hidden="true">two-colour press</span>
+  </a>
+
+  <nav class="site-nav" id="site-nav" aria-label="Primary">
+    <p class="nav-heading" aria-hidden="true">ink&nbsp;strip</p>
+    <ul class="nav-list">
+      <li class="nav-item nav-item--home">
+        <a href="/archive/2026-06-28/">
+          <span class="ink-swatch" aria-hidden="true"></span>
+          <span class="nav-name">home</span>
+          <span class="ink-reg" aria-hidden="true"></span>
+        </a>
+      </li>
+      
+        
+        
+        <li class="nav-item nav-item--1">
+          <a href="/archive/2026-06-28/apps/">
+            <span class="ink-swatch" aria-hidden="true"></span>
+            <span class="nav-name">apps</span>
+            <span class="ink-reg" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--2">
+          <a href="/archive/2026-06-28/writing/">
+            <span class="ink-swatch" aria-hidden="true"></span>
+            <span class="nav-name">writing</span>
+            <span class="ink-reg" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--3">
+          <a href="/archive/2026-06-28/reading/">
+            <span class="ink-swatch" aria-hidden="true"></span>
+            <span class="nav-name">reading</span>
+            <span class="ink-reg" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--4">
+          <a href="/archive/2026-06-28/now/">
+            <span class="ink-swatch" aria-hidden="true"></span>
+            <span class="nav-name">now</span>
+            <span class="ink-reg" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--5">
+          <a href="/archive/2026-06-28/archive/">
+            <span class="ink-swatch" aria-hidden="true"></span>
+            <span class="nav-name">archive</span>
+            <span class="ink-reg" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </nav>
+</header>
+
+
+    <div class="site-banner">
+      <p class="banner-text">
+        <span class="slug-tick" aria-hidden="true"></span>
+        <span class="slug-name">OVERPRINT</span>
+        <span class="slug-spec" aria-hidden="true">two-colour offset</span>
+        <span class="slug-no">No.41</span>
+        <span class="slug-note">a fresh sheet pulled every day by AI</span>
+        <a class="slug-link" href="/archive/2026-06-28/archive/">past sheets →</a>
+      </p>
+    </div>
+
+    <main class="site-main">
+      <div class="content-area">
+        <article class="article article--ticket">
+  <header class="article-header">
+    <span class="ticket-rip" aria-hidden="true"></span>
+    <div class="article-kicker">writing</div>
+    <h1 class="article-title">Inversion &lt;&gt; uoᴉsɹǝʌuI</h1>
+    
+    <p class="article-description">Use inversion thinking to ensure your team works on high-impact features by defining what success looks like and what will guarantee failure.</p>
+    
+    <div class="article-meta">
+      <span class="meta-item">May 27, 2020</span>
+      
+      
+      
+      <span class="meta-item">6 min read</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+    <p>What would it look like if you could ensure your team was working on the right stuff at all times?</p>
+
+<p>They would be able to translate between where you are now with where you are going. They would be able to make good decisions about the architecture of the product to ensure future success. They might even highlight flaws with the direction of the product and work with you on ensuring it is correct.</p>
+
+<p>Unfortunately, this isn’t a reality for most of us. Between urgent requests from stakeholders, customer bugs, and an overly-optimistic roadmap, most of us are barely keeping our heads above water, let alone spend enough time with our team to ensure they are never wasting any effort.</p>
+
+<p><strong>Using inversion will help you work on the high impact features you know your customers will love and ensure your team knows where you are headed.</strong></p>
+
+<p>We should operate with certainty that we are always working on the most important things. So that begs the question, which customer requests should we work on? Which requests should we avoid? Most of us have a set of criteria to evaluate a new feature request, but it doesn’t have to be complex if we start at the end and work backward.</p>
+
+<h3 id="what-is-inversion">What is Inversion</h3>
+
+<p><img src="/assets/d9eb674d-537c-4d40-868c-c9235484a4bb_1024x683.jpeg" alt="Grass reflecting on water." /></p>
+
+<p>Starting at the end and working backward is called inversion. Inversion is a powerful mental model popularized by the vice-chairman of Berkshire Hathaway, Charlie Munger, but it has its roots in mathematics. <strong>The main principle of inversion is to turn your problem around, start at the end, and work from there.</strong> This will ensure you see your problem in a new light and end up at the destination you set out for.</p>
+
+<p>By combining forward and backward thinking we can <strong>see a better picture of reality</strong> and solve problems that seemed unsolvable. Take the following problem: what is the square root of two? Today, we know the square root of two is an irrational number, but in 200BC the Greek mathematician, Hippasus, was trying to figure that out. Other mathematicians at the time were trying to solve the problem by continually dividing larger numbers into each other. Instead, Hippasus turned it around and thought about what the implications of a solution to the square root of two would be. By thinking about what has to be true about mathematics and the world if we knew the square root of two, he discovered the first irrational number.</p>
+
+<p>This type of thinking, achievement thinking, forces us to think about <strong>what the world would look like if we succeed in our pursuits</strong>. But there is another side of the inversion coin that can be even more valuable, failure thinking.</p>
+
+<p>Investing in the stock market is typically viewed in one direction, how do I maximize my gains? Failure thinking is going to turn that goal on its head and instead investigate how to minimize losses. This type of thinking resulted in one of the greatest ideas in investment history, index funds. Finding ways that will guarantee your failure enables you to steer clear of paths that you may otherwise be blind to.</p>
+
+<p>Applying these two types of inversion, achievement and failure thinking, to building products may not always be clear… let’s dive in.</p>
+
+<h3 id="achievement-thinking">Achievement Thinking</h3>
+
+<blockquote>
+  <p>“All I want to know is where I’m going to die, so I’ll never go there.” - Charlie Munger</p>
+</blockquote>
+
+<p>Find assumptions about the problem you are solving by identifying what else must be true if you succeed. By working backward and breaking down those assumptions, you can find roadblocks you may not have anticipated.</p>
+
+<p>Start by defining what the best-case scenario is. It could be what a feature looks like or what the optimal outcome to a problem would be. In the new world you have created, answer two questions:</p>
+
+<ol>
+  <li>
+    <p><strong>What are my users now doing?</strong></p>
+  </li>
+  <li>
+    <p><strong>What are my users no longer doing?</strong></p>
+  </li>
+</ol>
+
+<p>The answer to these two questions should inform how you market, build, and train users on your product.</p>
+
+<p>In the B2B space, the answers to these two questions can mean less manual labor as a result of implementing your product. One of the greatest problems you will have to ensure you answer when implementing your product is “what will my current employees do if they no longer do X.” Make sure your product explains positively how your users’ future world will look. Change the world around them so they can utilize your product without hesitation.</p>
+
+<p><strong>Achievement thinking will help you find new steps you might have missed or gaps that need to be addressed.</strong> While this technique is easy to implement, it enables you to cast a vision of where the team is headed, and help people think about how you are going to get there in a different way.</p>
+
+<p>Even though this is the most common way to implement inversion, <strong>I would argue failure thinking is an even better way to implement inversion in your product team.</strong></p>
+
+<h3 id="failure-thinking">Failure Thinking</h3>
+
+<p>To apply inversion to your everyday work as a product person, you must be able to use it when deciding a grand vision of the product, and also when deciding on the smaller details of running a product team every day. Do this by <strong>listing everything that will make your product fail</strong>. Maybe it is adding too many features before others are finished. It could be ignoring technical debt and not building your product for scale. Sometimes it is as simple as not communicating clear expectations to your team.</p>
+
+<p>Compiling a list of things that will ensure your product fails gives you a filter through which to pass every request that comes your way. It doesn’t have to be a long list, about <strong>5-10 criteria that will guarantee failure.</strong></p>
+
+<p>Let’s think of an example:</p>
+
+<p>A stakeholder comes to you asking for a new feature to be implemented immediately for a customer. You ask for some more details and compare that to your list of failure criteria. You remember that one of the items on your list is that leaving any feature halfway done will ensure your product fails. You look at your roadmap and realize you are halfway through implementing another big feature. Because executing on this feature immediately is going to leave another half-baked, you have the confidence to let them know it can’t be worked on right now.</p>
+
+<p>One thing I have found to be successful in implementing this model is <strong>getting buy-in from your stakeholders.</strong> Let them know you have created a “how we fail” list and iterate until everyone agrees. Getting this buy-in enables you to direct them to that list whenever you use it to say no to a stakeholder request.</p>
+
+<p>Providing your team with a “how we fail” list also gives you the confidence that your team can act autonomously without steering off in the wrong direction. Failure thinking provides guardrails to ensure your product stays on the path to success.</p>
+
+<blockquote>
+  <p>“It is remarkable how much long-term advantage people like us have gotten by trying to be consistently not stupid, instead of trying to be very intelligent.” - Charlie Munger</p>
+</blockquote>
+
+<p><strong>Achievement thinking provides your team with insight into what the world looks like when you have reached your destination.</strong> Calling out any assumptions explicitly to ensure you address them while you are on your way.</p>
+
+<p><strong>Failure thinking gives your team guardrails</strong> to ensure they aren’t working on the wrong things and gives you confidence they are on the straight and narrow.</p>
+
+<p>Using both achievement and failure thinking together gives you a framework to think about building your product from an inverted point of view. Combining this with your forward-thinking roadmap will make you unstoppable in ensuring your product is a success.</p>
+
+<p>The biggest question we are always asking ourselves as product people, “Am I working on the right things? The biggest value and highest impact things?”. If you have a set of criteria you have developed using inversion, you don’t have to worry about ensuring you are working on the right things. <strong>As long as you are not working on the wrong things, you are moving in the right direction.</strong></p>
+
+  </div>
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-colophon">
+    <span class="footer-mark" aria-hidden="true"></span>
+    <p class="footer-statement">
+      <span class="footer-statement-lead">Colophon.</span>
+      Printed in two inks — ultramarine and vermilion — overprinting live in your
+      browser, never as an image. Where they cross they mix a third; nudge your
+      pointer and they fall out of register. Set in <em>Bricolage&nbsp;Grotesque</em>
+      &amp; <em>Figtree</em>, re-inked every day by AI.
+    </p>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">Sheet</div>
+      <a href="/archive/2026-06-28/">home</a>
+      <a href="/archive/2026-06-28/now/">/now</a>
+      <a href="/archive/2026-06-28/archive/">past sheets</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Imprint</div>
+      <ul class="social-list">
+        
+        <li><a href="https://github.com/tylerwince" target="_blank" rel="noopener">GitHub</a></li>
+        
+        
+        <li><a href="https://twitter.com/tylerwince" target="_blank" rel="noopener">Twitter</a></li>
+        
+        <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-col--reg">
+      <div class="footer-col-title">Register</div>
+      <p class="footer-folio">© 2026</p>
+      <p class="footer-set">two-colour offset · re-inked daily</p>
+    </div>
+  </div>
+</footer>
+
+  </div>
+
+  <script src="/archive/2026-06-28/assets/js/main.js?v=1782624946"></script>
+</body>
+</html>

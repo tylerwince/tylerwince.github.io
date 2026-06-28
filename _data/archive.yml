@@ -369,3 +369,32 @@
   - "#16161a"
   - "#1f2fff"
   - "#e8331c"
+- date: '2026-06-28'
+  theme: OVERPRINT
+  description: Two inks, one sheet, printed live in your browser. Blue and red lie
+    a hair out of register until the press locks them in — move your pointer and the
+    colours separate again, mixing a third wherever they overlap.
+  commit: 84f40cd3
+  lane: digital-native
+  manifesto: Two inks, one sheet, printed live in your browser. Blue and red lie a
+    hair out of register until the press locks them in — move your pointer and the
+    colours separate again, mixing a third wherever they overlap.
+  nav_paradigm: the ink control strip — a fixed bottom colour-bar of labelled ink
+    patches; the active patch inks up solid with a registration tick (same strip on
+    mobile)
+  layout_skeleton: a press sheet under crop marks — a misregistered overprinted name,
+    apps as a colour-bar of ink-chips, writing as a numbered ruled galley, reading
+    as a duotone cover mosaic
+  signature_interaction: live registration — the two ink separations snap into register
+    on load as crop marks draw in, then drift apart under your pointer; covers rack
+    from duotone to full colour on hover
+  color: "#16111d"
+  fonts:
+    display: Bricolage Grotesque
+    body: Figtree
+    mono: Sometype Mono
+  palette:
+  - "#f2ede1"
+  - "#1a1322"
+  - "#2336e8"
+  - "#ff2748"
