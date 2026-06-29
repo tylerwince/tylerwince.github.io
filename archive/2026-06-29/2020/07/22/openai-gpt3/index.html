@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GPT-3 shows us how creating better primers—the right medium, direction, and quality—helps product managers generate novel and valuable solutions.">
+  <title>OpenAI's GPT-3 Will Change How We Build, With or Without It — Tyler Wince</title>
+  <meta name="theme-color" content="#1c3b30">
+  <meta property="og:title" content="OpenAI's GPT-3 Will Change How We Build, With or Without It — Tyler Wince">
+  <meta property="og:description" content="GPT-3 shows us how creating better primers—the right medium, direction, and quality—helps product managers generate novel and valuable solutions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylerwince.com/archive/2026-06-29/2020/07/22/openai-gpt3/">
+  
+  <meta property="og:image" content="https://tylerwince.com/archive/2026-06-29/assets/og/posts/openai-gpt3.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/archive/2026-06-29/assets/favicon.svg?v=1782772158">
+  <style>@view-transition { navigation: auto; }</style>
+  <!-- Current theme's web fonts. Shared by default.html and the OG card layout so
+     per-article social images always render in the same faces as the live site.
+     REDESIGNS REWRITE THIS FILE (swap to your faces, ~4 weights max). -->
+<!-- ARABESQUE — Yeseva One (curvy high-contrast Art Nouveau poster display) /
+     Spectral (refined reading serif) / Cutive Mono (period typewriter mono for
+     labels, folios & edition lines). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Cutive+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/archive/2026-06-29/assets/css/main.css?v=1782772158">
+  <link type="application/atom+xml" rel="alternate" href="https://tylerwince.com/archive/2026-06-29/feed.xml" title="Tyler Wince" />
+<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;}.archive-banner a{color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;}.archive-banner a:hover{color:rgba(255,255,255,0.8);}.archive-banner-spacer{height:32px;}.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}(max-width:768px){.archive-banner{font-size:10px;padding:6px 10px;flex-wrap:wrap;justify-content:center;gap:4px;}.archive-banner-spacer{height:52px;}.site-header{top:52px!important;}}(max-width:480px){.archive-banner{flex-direction:column;gap:2px;padding:6px 8px;}.archive-banner-spacer{height:68px;}.site-header{top:68px!important;}}</style></head>
+<body><!-- Time Travel Banner --><div class="archive-banner"><a href="/archive/2026-06-28/">← 2026-06-28</a><span>ARABESQUE · 2026-06-29 · <a href="/archive/">Back to today's site →</a></span><span style="visibility:hidden;">0000-00-00 →</span></div><div class="archive-banner-spacer"></div>
+  
+  
+  
+
+  <!-- THE BORDER : Art Nouveau corner tendrils that draw themselves in on load.
+       Decorative, pinned to the trim, never eats clicks. -->
+  <div class="page-frame" aria-hidden="true">
+    <svg class="frame-corner frame-corner--tl" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M2 60 C2 26 26 2 60 2 M2 60 C2 38 14 24 38 22 C58 20 64 36 54 44 C46 50 38 44 42 36"/>
+      <circle class="vine-bud" cx="42" cy="34" r="4"/>
+      <path class="vine-leaf" d="M16 30 C8 28 4 33 3 41 C13 41 18 37 16 30 Z"/>
+    </svg>
+    <svg class="frame-corner frame-corner--tr" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M118 60 C118 26 94 2 60 2 M118 60 C118 38 106 24 82 22 C62 20 56 36 66 44 C74 50 82 44 78 36"/>
+      <circle class="vine-bud" cx="78" cy="34" r="4"/>
+      <path class="vine-leaf" d="M104 30 C112 28 116 33 117 41 C107 41 102 37 104 30 Z"/>
+    </svg>
+    <svg class="frame-corner frame-corner--bl" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M2 60 C2 94 26 118 60 118 M2 60 C2 82 14 96 38 98 C58 100 64 84 54 76 C46 70 38 76 42 84"/>
+      <circle class="vine-bud" cx="42" cy="86" r="4"/>
+      <path class="vine-leaf" d="M16 90 C8 92 4 87 3 79 C13 79 18 83 16 90 Z"/>
+    </svg>
+    <svg class="frame-corner frame-corner--br" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M118 60 C118 94 94 118 60 118 M118 60 C118 82 106 96 82 98 C62 100 56 84 66 76 C74 70 82 76 78 84"/>
+      <circle class="vine-bud" cx="78" cy="86" r="4"/>
+      <path class="vine-leaf" d="M104 90 C112 92 116 87 117 79 C107 79 102 83 104 90 Z"/>
+    </svg>
+  </div>
+
+  <div class="sheet">
+    <!-- the ironwork portal (masthead + nav) -->
+    <!-- THE IRONWORK PORTAL : a Guimard Métropolitain entrance. The imprint is a
+     gilt monogram keystone (top-left); primary nav hangs from a wrought-iron
+     lintel as enamel cartouche plaques, the active one lit gilt with a rivet.
+     On mobile the lintel collapses to a gate latch that swings a full-screen
+     ironwork overlay open. The site.header_pages loop is preserved. -->
+<header class="site-header">
+  <div class="portal-bar">
+    <a class="site-title" href="/archive/2026-06-29/" aria-label="Tyler Wince — home">
+      <span class="site-title-mark" aria-hidden="true"><span class="monogram">TW</span></span>
+      <span class="site-title-group">
+        <span class="site-title-text">Tyler&nbsp;Wince</span>
+        <span class="site-title-sub" aria-hidden="true">essays · iOS apps · book notes</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav" aria-label="Open the gate">
+      <span class="nav-toggle-latch" aria-hidden="true"></span>
+      <span class="nav-toggle-text">gate</span>
+    </button>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Primary">
+    <svg class="nav-scroll nav-scroll--l" viewBox="0 0 64 40" fill="none" aria-hidden="true">
+      <path class="vine-stroke" pathLength="1" d="M0 20 H28 C40 20 46 9 39 7 C34 5.5 33 12 38 12.5 C42 13 43 9.5 41 8"/>
+    </svg>
+    <ul class="nav-list">
+      <li class="nav-item nav-item--home">
+        <a href="/archive/2026-06-29/">
+          <span class="plaque-rivet" aria-hidden="true"></span>
+          <span class="nav-name">home</span>
+        </a>
+      </li>
+      
+        
+        
+        <li class="nav-item nav-item--1">
+          <a href="/archive/2026-06-29/apps/">
+            <span class="plaque-rivet" aria-hidden="true"></span>
+            <span class="nav-name">apps</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--2">
+          <a href="/archive/2026-06-29/writing/">
+            <span class="plaque-rivet" aria-hidden="true"></span>
+            <span class="nav-name">writing</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--3">
+          <a href="/archive/2026-06-29/reading/">
+            <span class="plaque-rivet" aria-hidden="true"></span>
+            <span class="nav-name">reading</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--4">
+          <a href="/archive/2026-06-29/now/">
+            <span class="plaque-rivet" aria-hidden="true"></span>
+            <span class="nav-name">now</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--5">
+          <a href="/archive/2026-06-29/archive/">
+            <span class="plaque-rivet" aria-hidden="true"></span>
+            <span class="nav-name">archive</span>
+          </a>
+        </li>
+        
+      
+    </ul>
+    <svg class="nav-scroll nav-scroll--r" viewBox="0 0 64 40" fill="none" aria-hidden="true">
+      <path class="vine-stroke" pathLength="1" d="M0 20 H28 C40 20 46 9 39 7 C34 5.5 33 12 38 12.5 C42 13 43 9.5 41 8"/>
+    </svg>
+  </nav>
+</header>
+
+
+    <div class="site-banner">
+      <p class="banner-text">
+        <span class="banner-fleuron" aria-hidden="true">❧</span>
+        <span class="banner-no">Plate No.42</span>
+        <span class="banner-name">ARABESQUE</span>
+        <span class="banner-note">a fresh plate engraved every day by AI</span>
+        <a class="banner-link" href="/archive/2026-06-29/archive/">the portfolio →</a>
+      </p>
+    </div>
+
+    <main class="site-main">
+      <div class="content-area">
+        <article class="article article--ticket">
+  <header class="article-header">
+    <span class="ticket-rip" aria-hidden="true"></span>
+    <div class="article-kicker">writing</div>
+    <h1 class="article-title">OpenAI&#39;s GPT-3 Will Change How We Build, With or Without It</h1>
+    
+    <p class="article-description">GPT-3 shows us how creating better primers—the right medium, direction, and quality—helps product managers generate novel and valuable solutions.</p>
+    
+    <div class="article-meta">
+      <span class="meta-item">July 22, 2020</span>
+      
+      
+      
+      <span class="meta-item">10 min read</span>
+    </div>
+  </header>
+
+  <div class="article-body">
+    <p><img src="/assets/35e7cc82-ee99-48c8-8c1a-cb0234e00f08_1600x1363.png" alt="" /></p>
+<h6 id="image-credit-leo-gao">Image Credit: <a href="https://leogao.dev/2020/05/29/GPT-3-A-Brief-Summary/">Leo Gao</a></h6>
+
+<p>For years, there have been warnings that AI is going to eliminate routine, manual jobs. While this hasn’t yet come to fruition, the mood about AI and job elimination seemed to change this past week. GPT-3, an AI model that performs next-word prediction, plastered Twitter feeds with examples of how AI could not only replace manual workers, but knowledge workers as well.</p>
+
+<p>I’m a skeptic. I don’t think AI will completely displace workers anytime soon. However, I also think there are valuable lessons in how AI models like GPT-3 generate novel content. These learnings can help us in our work now. AI such as GPT-3 may soon augment some of the product creation process, but the biggest help it provides is in showing us how to be better thinkers, and thus, build better products.</p>
+
+<h1 id="what-is-gpt-3">What is GPT-3?</h1>
+
+<p>The <a href="https://arxiv.org/abs/2005.14165">scientific paper</a> describing GPT-3 was released back in June, and the API was made available in a limited, private beta this past week. And, for those of you who don’t spend all your time on Twitter, GPT-3 made waves with examples of how it could <a href="https://twitter.com/sharifshameem/status/1282676454690451457?s=20">create websites from natural language</a>, <a href="https://twitter.com/RunwayFinancial/status/1284639711386955776?s=20">write product requirements based on a problem statement</a>, and <a href="https://thoughts.sushant-kumar.com/product%20solving">create novel tweets</a>.</p>
+
+<p>GPT-3 is an AI model developed by <a href="https://openai.com/">OpenAI</a>. It is the third generation of the Generative Pretrained Transformer (GPT) models. GPT models are a type of machine learning trained with a large, diverse corpus of text. These models are not given a variable to predict during training—as is the case with supervised machine learning models—and are used to predict the best next word given a section of text. Because the performance of these models is highly dependent on the amount of data consumed during the training phase, the team at OpenAI upped the training set two orders of magnitude between GPT-2 and GPT-3. The training corpus for GPT-3 is essentially the entirety of the open internet as of October 2019.</p>
+
+<h1 id="how-does-it-work">How does it work?</h1>
+
+<p><strong>One important characteristic of GPT-3 is that it requires priming to work.</strong> Priming is when you expose someone (or something) to a specific stimulus that then results in the identification of other things that were previously unnoticed. Here’s an example:</p>
+
+<blockquote>
+  <p><em>Imagine you are in the market for a new car. You want to be original but not too flashy, so you start looking for a Volvo. You poke around on Carvana, Volvo.com, and a few other car sites before deciding on a model you like. You still don’t feel quite ready to buy, so you put it on the back burner and hop in the car to get lunch. On your way to the fast-food joint down the street, you notice the exact car you were just looking at online! “What a coincidence!” you think to yourself. “I never see any Volvos out on the road, let alone the exact model I was just looking at.” Throughout the rest of your trip, you notice four more Volvos. This makes you wonder if you were original at all by assuming a Volvo was a less-than-popular car.</em></p>
+</blockquote>
+
+<p>I am sure this has happened to you, if not a car then with something else. Nobody read your search history and bought a bunch of Volvos just to mess you with you. You just weren’t looking for them before. This is priming. Your initial stimulus was the decision that a Volvo is a fairly uncommon car so you looked at a few online. It’s only after this stimulus that you recognize there are more Volvos on the road than you thought (In fact, I bet the next time you are out driving on the road you will notice a Volvo. You’ve been primed by reading this example!).</p>
+
+<p><strong>Just like you need priming to recognize something you haven’t noticed before, GPT-3 needs priming to generate new content that hasn’t been seen before.</strong> The priming is done by providing a prompt as an input to the model. This could be the beginning part of an essay, a question, or even a partial block of code. All GPT-3 will do is determine what the best next word(s) is to complete your prompt and repeat that process until you tell it to stop.</p>
+
+<h1 id="primers-to-building">Primers to Building</h1>
+
+<p><strong>While GPT-3 is certainly an amazing step-change in the functionality of AI, it isn’t going to replace the generation of new product ideas anytime soon.</strong> The biggest reason is that it needs an effective primer to build anything novel. You need to see the world in a unique way to create a primer that generates a meaningful new insight. GPT-3 may become a very useful tool for product managers: changing how they write requirements, discover missing features, and validate new market opportunities. But above all, I believe it best serves as an example of how creating better primers helps us build better products.</p>
+
+<p>The hardest phase of building any new product is making the decisions about novel features. These are the parts that are at the core of solving the customer’s problem. Often we try to do this by brainstorming with our colleagues. You stand next to a blank whiteboard, your colleagues staring back at you, waiting for someone to have an idea. When they finally say something, it seems fairly predictable, lacking any true ingenuity and creativity. Though this may be a common experience during brainstorming with others or by yourself, <strong>the thing that takes your decision making from mediocre to amazing is a good primer</strong>.</p>
+
+<p>There are some basic things we can learn about creating primers by studying the types of primers that result in quality GPT-3 outputs. Just like GPT-3 needs a primer to generate output, product managers need a primer to create novel and valuable solutions to their customer’s problems.</p>
+
+<h2 id="1-the-medium-of-your-primer-matters">1. The Medium Of Your Primer Matters</h2>
+
+<p>For GPT-3 to generate a novel bit of code, it needs partially complete code as the primer. To generate an answer, a question must be the primer. The generated output will match the format of the primer.</p>
+
+<p>Our minds work in the same way. Some of the world’s best writers spend an inordinate amount of time reading. Reading is the same medium as writing (written language) and thus provides an effective primer to generating new ideas through writing. Reading not only helps you generate and realize new ideas to write about, but it also helps you become a better writer.</p>
+
+<p>In the same way, artists paint scenes from the world around them. Their environment and the visual imagery they immerse themselves in inspires future works of art.</p>
+
+<p>So what type of medium should product managers consume if they want to build better products? It depends on the task. If you are trying to generate new ideas for how to display data on a webpage, scour the internet for dashboards and data formatting tools. Take note of how they display information and use that as inputs to your design.</p>
+
+<p>If you are trying to create a completely new product idea, you should be looking at niche and novel products that uniquely solve other problems. When doing this, look at the ways the product solves the user’s core problem. These nuggets of inspiration will get your mind primed for generating novel techniques to solve your user’s problems, even if it is a completely different domain.</p>
+
+<p>Trying to convert from one medium to another adds cognitive load. <strong>Lower the activation energy of these new ideas by using a primer that matches the expected medium of your output.</strong></p>
+
+<h2 id="2-your-primer-should-be-something-directional">2. Your Primer Should be Something Directional</h2>
+
+<p>But having a primer that matches the medium of your output isn’t enough. The primer must also direct your thinking around the specific problem you are trying to solve. Priming GPT-3 with something that is too open-ended and ambiguous results in aimless rambling unrelated to the user’s intended output. And, you guessed it, our brains work similarly. This is why writer’s block exists. You are staring at a blank page, unsure of what to write because there are too many options for what could come next.</p>
+
+<p><img src="/assets/ac066ce5-dc15-4140-9b6a-c0f6993d6cca_1000x594.png" alt="" /></p>
+
+<p>When trying to design a new website, you don’t want to start with a blank browser shell. This provides too little direction. Instead, collect examples of elements you think look nice, choose a color scheme, and decide on a set of basic needs. <strong>Creating this palate of ideas will help you create something more valuable because it provides enough direction to get you moving and enough ambiguity to allow your creativity to shine.</strong></p>
+
+<p>A highly effective way to provide directionality in your primer is to leave an idea incomplete, even if you think you know the best way to solve it. Leaving a problem half solved allows your mind to wander, thinking about all the possible ways to complete the half-baked solution. Because our minds don’t like the cognitive dissonance of an incomplete problem, it is forced to think of ways to solve it.</p>
+
+<h2 id="3-consume-the-output-of-your-work-as-an-input-to-the-next">3. Consume the Output of Your Work as an Input to the Next</h2>
+
+<p>If you are creating a feature list of what your product can do, use each new feature as an input to the next. This is something that differentiates the human ability to generate unique and cohesive ideas from models such as GPT-3. GPT-3 cannot understand what the previous inputs <em>mean</em>, only that they are a collection of inputs to generate an output. When you are building a list of features, you can understand how one might impact another, or how a basic feature could inform more complex workflows downstream.</p>
+
+<p>The other thing humans can do that GPT-3 cannot is change the inputs. You can see how a design choice made previously acts as a poor primer to drive further development in other parts of the application. Changing the upstream design has large downstream consequences, both good and bad. <strong>Don’t be afraid to tinker with decisions that were made previously to see how they change the later outputs.</strong></p>
+
+<h2 id="4-the-quality-of-your-primer-matters">4. The Quality of Your Primer Matters</h2>
+
+<p>Writers don’t get better at writing by reading crappy books. Painters don’t get better at painting by looking at bland landscapes. <strong>Product Managers don’t get better at building products by studying boring solutions.</strong></p>
+
+<p>A primer that is both the appropriate medium and provides clear direction isn’t enough to ensure great output. The quality of the primer must also match the quality of the desired output. For product managers, this means studying highly creative and successful products (both niche and mainstream).</p>
+
+<p>Increasing the quality of your inputs also requires a wider breadth of industries as inspiration. If healthcare companies never lifted their head to look at how other industries were managing data, electronic medical records would not exist. You should take time to lift your head, look out at other industries that have a similar core problem to yours, and take inspiration from the products that are solving it best.</p>
+
+<p><strong>Low-quality primers lead to low-quality outputs.</strong> But the inverse is also true. Always ask yourself if you are using the highest quality primers for your own thinking. If not, search for where can the highest quality inspiration be found. Only use the best possible primers for your product, it is the easiest way to increase the quality of your output.</p>
+
+<h1 id="tldr-with-gpt-3-or-without-it">TL;DR: With GPT-3 or Without It</h1>
+
+<p>Models such as GPT-3 may have a profound impact on how we design, build, and create new products. The future is bright and the possibilities endless for how this type of model could be applied. Whether or not GPT-3 truly has the capability to replace some knowledge workers is yet to be proven. Though while the applications begin to appear, we should take advantage of how these models can generate so much novel content. Identifying what makes a great primer and applying that to the way we think and build could have a profound impact on our ability to create.</p>
+
+<p>Here’s how we can apply what makes GPT-3 great to our current product management style:</p>
+
+<p>1) The medium of your primer should match your expected output medium</p>
+
+<p>2) Your primer should be directional</p>
+
+<p>3) You should consume the output of your work as a primer to any future work</p>
+
+<p>4) High-quality primers lead to high-quality outputs</p>
+
+<p><strong>However, as we learn more about these generative models and what makes them work most effectively, we should adapt ourselves.</strong> The things that make the best primers for GPT-3 also make great primers for us.</p>
+
+<p><em>Thank you to <a href="https://lelon.io">Josh Mitchell</a> and <a href="https://gridology.co">Ross Gordon</a> for reviewing this post.</em></p>
+
+  </div>
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+  <div class="footer-rule" aria-hidden="true">
+    <span class="footer-rule-line"></span>
+    <span class="footer-fleuron">❧</span>
+    <span class="footer-rule-line"></span>
+  </div>
+
+  <div class="footer-colophon">
+    <span class="footer-mark" aria-hidden="true"><span class="monogram">TW</span></span>
+    <p class="footer-statement">
+      <span class="footer-statement-lead">Colophon.</span>
+      Engraved in two inks — viridian on warm paper — and gilt; the ironwork,
+      tendrils and rules are drawn live by your browser, never as images, and grow
+      themselves in on arrival. Set in <em>Yeseva&nbsp;One</em> &amp;
+      <em>Spectral</em>, re-cut every day by AI.
+    </p>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">The Plate</div>
+      <a href="/archive/2026-06-29/">home</a>
+      <a href="/archive/2026-06-29/now/">/now</a>
+      <a href="/archive/2026-06-29/archive/">the portfolio</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">Imprint</div>
+      <ul class="social-list">
+        
+        <li><a href="https://github.com/tylerwince" target="_blank" rel="noopener">GitHub</a></li>
+        
+        
+        <li><a href="https://twitter.com/tylerwince" target="_blank" rel="noopener">Twitter</a></li>
+        
+        <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-col--reg">
+      <div class="footer-col-title">Edition</div>
+      <p class="footer-folio">© 2026</p>
+      <p class="footer-set">two-ink lithograph · re-cut daily</p>
+    </div>
+  </div>
+</footer>
+
+  </div>
+
+  <script src="/archive/2026-06-29/assets/js/main.js?v=1782772158"></script>
+</body>
+</html>

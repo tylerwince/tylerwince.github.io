@@ -398,3 +398,36 @@
   - "#1a1322"
   - "#2336e8"
   - "#ff2748"
+- date: '2026-06-29'
+  theme: ARABESQUE
+  description: Paris, 1900 — the whiplash line takes over. Wrought-iron arches, climbing
+    tendrils and gilt rules are drawn live by your browser, never as images; every
+    section is a panel in an illuminated programme, and the vines grow themselves
+    in the moment you arrive.
+  commit: 5d7d4c6f
+  lane: design-movement
+  manifesto: Paris, 1900 — the whiplash line takes over. Wrought-iron arches, climbing
+    tendrils and gilt rules are drawn live by your browser, never as images; every
+    section is a panel in an illuminated programme, and the vines grow themselves
+    in the moment you arrive.
+  nav_paradigm: the ironwork portal — a wrought-iron lintel with a monogram keystone
+    and scrollwork brackets; nav links hang beneath as enamel cartouche plaques, the
+    active one lit gilt (mobile collapses to a gate latch that swings a full-screen
+    ironwork overlay open)
+  layout_skeleton: an illuminated programme — an arched frontispiece with a climbing
+    margin vine, apps as lancet-arched enamel panels overlapping a vine spine, writing
+    as a drop-cap sommaire on gilt leader lines, reading as a stained-glass gallery
+    of covers in arched gilt frames
+  signature_interaction: the vines grow in — iron scrollwork and the margin tendrils
+    self-draw on load as a gilt shimmer sweeps the name, section vine-spines draw
+    as you scroll, and cover plates bloom from sepia to full colour on hover
+  color: "#1c3b30"
+  fonts:
+    display: Yeseva One
+    body: Spectral
+    mono: Cutive Mono
+  palette:
+  - "#f3ead4"
+  - "#1c3b30"
+  - "#6e7b6a"
+  - "#8f6a1f"
