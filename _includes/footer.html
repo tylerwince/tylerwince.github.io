@@ -1,21 +1,27 @@
 <footer class="site-footer">
+  <div class="footer-rule" aria-hidden="true">
+    <span class="footer-rule-line"></span>
+    <span class="footer-fleuron">❧</span>
+    <span class="footer-rule-line"></span>
+  </div>
+
   <div class="footer-colophon">
-    <span class="footer-mark" aria-hidden="true"></span>
+    <span class="footer-mark" aria-hidden="true"><span class="monogram">TW</span></span>
     <p class="footer-statement">
       <span class="footer-statement-lead">Colophon.</span>
-      Printed in two inks — ultramarine and vermilion — overprinting live in your
-      browser, never as an image. Where they cross they mix a third; nudge your
-      pointer and they fall out of register. Set in <em>Bricolage&nbsp;Grotesque</em>
-      &amp; <em>Figtree</em>, re-inked every day by AI.
+      Engraved in two inks — viridian on warm paper — and gilt; the ironwork,
+      tendrils and rules are drawn live by your browser, never as images, and grow
+      themselves in on arrival. Set in <em>Yeseva&nbsp;One</em> &amp;
+      <em>Spectral</em>, re-cut every day by AI.
     </p>
   </div>
 
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="footer-col-title">Sheet</div>
+      <div class="footer-col-title">The Plate</div>
       <a href="{{ '/' | relative_url }}">home</a>
       <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">past sheets</a>
+      <a href="{{ '/archive/' | relative_url }}">the portfolio</a>
     </div>
 
     <div class="footer-col">
@@ -32,9 +38,9 @@
     </div>
 
     <div class="footer-col footer-col--reg">
-      <div class="footer-col-title">Register</div>
+      <div class="footer-col-title">Edition</div>
       <p class="footer-folio">© {{ site.time | date: "%Y" }}</p>
-      <p class="footer-set">two-colour offset · re-inked daily</p>
+      <p class="footer-set">two-ink lithograph · re-cut daily</p>
     </div>
   </div>
 </footer>

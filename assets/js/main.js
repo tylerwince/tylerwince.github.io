@@ -1,17 +1,20 @@
-/* tylerwince.com — OVERPRINT
- * Lane: digital-native. The page is printed live in two inks.
- *   1. nav active-state on the ink control strip (covers nested URLs)
- *   2. live registration on load — the blue & red separations of the name start
- *      badly out of register and snap home as the crop marks draw in
- *   3. pointer misregister — the two inks drift apart under your pointer, mixing
- *      a third where they cross
- * All motion is gated behind prefers-reduced-motion.
+/* tylerwince.com — ARABESQUE
+ * Lane: design-movement (Art Nouveau, 1900). The page is forged, not loaded.
+ *   1. nav active-state on the enamel plaques (covers nested URLs)
+ *   2. THE SIGNATURE — the vines grow in: iron scrollwork and the margin
+ *      tendrils self-draw via stroke-dashoffset, buds open, and a gilt shimmer
+ *      sweeps the name; thereafter each section's vine-spine draws as it enters
+ *   3. the mobile gate — a latch swings a full-screen ironwork overlay open
+ * All motion is gated behind prefers-reduced-motion (handled in CSS too).
  */
 (function () {
   'use strict';
 
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
+  /* signal that JS is live so CSS can hold ornaments back, then grow them in */
+  root.classList.add('js');
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- Nav active state (URL based — authoritative on every page) ---- */
   var navLinks = Array.prototype.slice.call(
@@ -35,46 +38,64 @@
   if (best) setActive(best);
 
   /* ====================================================================
-     The press: crop marks ink in, the separations lock into register.
+     THE GATE — mobile nav overlay
      ==================================================================== */
-  var hero = document.getElementById('hero-title');
+  var toggle = document.getElementById('nav-toggle');
+  var nav = document.getElementById('site-nav');
 
+  function setGate(open) {
+    root.classList.toggle('nav-open', open);
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close the gate' : 'Open the gate');
+    }
+  }
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      setGate(!root.classList.contains('nav-open'));
+    });
+    /* a tap on any plaque closes the gate */
+    navLinks.forEach(function (link) {
+      link.addEventListener('click', function () { setGate(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && root.classList.contains('nav-open')) {
+        setGate(false);
+        toggle.focus();
+      }
+    });
+  }
+
+  /* ====================================================================
+     THE PRESS — grow the vines in on load
+     ==================================================================== */
   if (reduce) {
-    root.classList.add('inked');            /* show crop marks, skip the run-up */
+    root.classList.add('grown');           /* show final state, CSS skips the draw */
   } else {
-    root.classList.add('cued');             /* jump the inks out of register */
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        root.classList.add('printing');     /* slower transition for the lock-in */
-        root.classList.add('inked');        /* draw the crop marks */
-        root.classList.remove('cued');      /* -> separations animate into register */
-        window.setTimeout(function () {
-          root.classList.remove('printing');
-        }, 720);
+        root.classList.add('grown');       /* -> tendrils draw, buds open, name gilds */
       });
     });
   }
 
   /* ====================================================================
-     Pointer misregister — the inks separate as you move across the sheet.
+     Section vine-spines draw as each plate enters the frame
      ==================================================================== */
-  if (hero && !reduce && window.matchMedia('(pointer: fine)').matches) {
-    var REST_B = [-0.028, -0.020];          /* blue rest offset (em) */
-    var REST_R = [ 0.030,  0.018];          /* red rest offset (em)  */
-    var SPREAD = 0.10;                       /* max extra separation (em) */
-    var queued = false, px = 0, py = 0;
-
-    function apply() {
-      queued = false;
-      hero.style.setProperty('--reg-bx', (REST_B[0] - px * SPREAD).toFixed(4) + 'em');
-      hero.style.setProperty('--reg-by', (REST_B[1] - py * SPREAD).toFixed(4) + 'em');
-      hero.style.setProperty('--reg-rx', (REST_R[0] + px * SPREAD).toFixed(4) + 'em');
-      hero.style.setProperty('--reg-ry', (REST_R[1] + py * SPREAD).toFixed(4) + 'em');
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.home-section'));
+  if (sections.length) {
+    if (reduce || !('IntersectionObserver' in window)) {
+      sections.forEach(function (s) { s.classList.add('in-view'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+      sections.forEach(function (s) { io.observe(s); });
     }
-    window.addEventListener('pointermove', function (e) {
-      px = (e.clientX / window.innerWidth) * 2 - 1;   /* -1 .. 1 */
-      py = (e.clientY / window.innerHeight) * 2 - 1;
-      if (!queued) { queued = true; requestAnimationFrame(apply); }
-    }, { passive: true });
   }
 })();

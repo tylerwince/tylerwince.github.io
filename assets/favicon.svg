@@ -1,22 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Overprint — two ink discs out of register, overlapping into a third colour">
-  <!-- OVERPRINT — a registration target: blue and red ink discs a hair out of register,
-       multiplying into a darker third where they overlap. Redesigns replace this file. -->
-  <rect width="64" height="64" fill="#f2ede1"/>
-  <!-- crop marks -->
-  <g stroke="#1a1322" stroke-width="2">
-    <path d="M6 14 V6 H14"/>
-    <path d="M58 14 V6 H50"/>
-    <path d="M6 50 V58 H14"/>
-    <path d="M58 50 V58 H50"/>
-  </g>
-  <!-- two ink discs, overprinting (multiply) -->
-  <g style="mix-blend-mode:multiply">
-    <circle cx="27" cy="34" r="15" fill="#2336e8"/>
-    <circle cx="37" cy="34" r="15" fill="#ff2748"/>
-  </g>
-  <!-- registration crosshair -->
-  <g stroke="#1a1322" stroke-width="1.4">
-    <path d="M32 22 V46 M20 34 H44"/>
-  </g>
-  <circle cx="32" cy="34" r="6.5" fill="none" stroke="#1a1322" stroke-width="1.4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Arabesque — a wrought-iron arch over a gilt whiplash tendril">
+  <!-- ARABESQUE — an Art Nouveau roundel: a viridian iron arch framing a gilt
+       whiplash tendril that buds into a single flower. Redesigns replace this. -->
+  <rect width="64" height="64" rx="10" fill="#f3ead4"/>
+  <!-- the round-arch portal -->
+  <path d="M14 52 V30 a18 18 0 0 1 36 0 V52" fill="none" stroke="#1c3b30" stroke-width="3.4" stroke-linecap="round"/>
+  <!-- scrollwork brackets at the springing of the arch -->
+  <path d="M14 32 q-6 0 -6 6 q0 5 5 5" fill="none" stroke="#1c3b30" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M50 32 q6 0 6 6 q0 5 -5 5" fill="none" stroke="#1c3b30" stroke-width="2.4" stroke-linecap="round"/>
+  <!-- the gilt whiplash tendril growing up the centre -->
+  <path d="M32 52 C32 44 24 42 26 34 C27 29 33 30 33 25" fill="none" stroke="#8f6a1f" stroke-width="3" stroke-linecap="round"/>
+  <!-- the bud / flower -->
+  <circle cx="33" cy="22" r="4.4" fill="#8f6a1f"/>
+  <circle cx="33" cy="22" r="1.7" fill="#f3ead4"/>
+  <!-- a leaf off the stem -->
+  <path d="M27 37 C22 36 20 39 19 43 C24 43 27 41 27 37 Z" fill="#1c3b30"/>
 </svg>

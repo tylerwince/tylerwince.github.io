@@ -1,12 +1,11 @@
-# Current design manifest.
-# Rewritten by EVERY redesign (see redesign-site skill). On deploy, CI merges
-# these fields into the new _data/archive.yml entry, so this file is both the
-# live site's metadata source AND the design's permanent archive record.
+# Current theme manifest. Drives the banner (design № + name), the browser
+# theme-color, and the per-post OG cards. CI merges this into _data/archive.yml
+# on deploy and captures the snapshot — never edit archive.yml by hand.
 #
 # Fields:
-#   name                  — theme name, ALL CAPS, matches the commit message
-#   date                  — design date (YYYY-MM-DD)
-#   lane                  — one of: object-metaphor | design-movement | pure-typography |
+#   name                  — THEME NAME (all caps), shown in the banner + archive
+#   date                  — YYYY-MM-DD, today
+#   lane                  — object-metaphor | design-movement | pure-typography |
 #                           motion-first | generative | digital-native
 #   manifesto             — 1–2 sentence point of view, written for visitors
 #   nav_paradigm          — short label for the navigation mechanism
@@ -16,23 +15,24 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "OVERPRINT"
-date: "2026-06-27"
-lane: "digital-native"
+name: "ARABESQUE"
+date: "2026-06-29"
+lane: "design-movement"
 manifesto: >-
-  Two inks, one sheet, printed live in your browser. Blue and red lie a hair out
-  of register until the press locks them in — move your pointer and the colours
-  separate again, mixing a third wherever they overlap.
-nav_paradigm: "the ink control strip — a fixed bottom colour-bar of labelled ink patches; the active patch inks up solid with a registration tick (same strip on mobile)"
-layout_skeleton: "a press sheet under crop marks — a misregistered overprinted name, apps as a colour-bar of ink-chips, writing as a numbered ruled galley, reading as a duotone cover mosaic"
-signature_interaction: "live registration — the two ink separations snap into register on load as crop marks draw in, then drift apart under your pointer; covers rack from duotone to full colour on hover"
-color: "#16111d"
+  Paris, 1900 — the whiplash line takes over. Wrought-iron arches, climbing
+  tendrils and gilt rules are drawn live by your browser, never as images;
+  every section is a panel in an illuminated programme, and the vines grow
+  themselves in the moment you arrive.
+nav_paradigm: "the ironwork portal — a wrought-iron lintel with a monogram keystone and scrollwork brackets; nav links hang beneath as enamel cartouche plaques, the active one lit gilt (mobile collapses to a gate latch that swings a full-screen ironwork overlay open)"
+layout_skeleton: "an illuminated programme — an arched frontispiece with a climbing margin vine, apps as lancet-arched enamel panels overlapping a vine spine, writing as a drop-cap sommaire on gilt leader lines, reading as a stained-glass gallery of covers in arched gilt frames"
+signature_interaction: "the vines grow in — iron scrollwork and the margin tendrils self-draw on load as a gilt shimmer sweeps the name, section vine-spines draw as you scroll, and cover plates bloom from sepia to full colour on hover"
+color: "#1c3b30"
 fonts:
-  display: "Bricolage Grotesque"
-  body: "Figtree"
-  mono: "Sometype Mono"
+  display: "Yeseva One"
+  body: "Spectral"
+  mono: "Cutive Mono"
 palette:
-  - "#f2ede1"
-  - "#1a1322"
-  - "#2336e8"
-  - "#ff2748"
+  - "#f3ead4"
+  - "#1c3b30"
+  - "#6e7b6a"
+  - "#8f6a1f"

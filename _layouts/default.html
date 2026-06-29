@@ -24,26 +24,42 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
-  <!-- crop & registration marks pinned to the trim edges : decorative, never eats clicks -->
-  <div class="press-marks" aria-hidden="true">
-    <span class="crop crop--tl"></span><span class="crop crop--tr"></span>
-    <span class="crop crop--bl"></span><span class="crop crop--br"></span>
-    <span class="reg-target reg-target--a"></span>
-    <span class="reg-target reg-target--b"></span>
+  <!-- THE BORDER : Art Nouveau corner tendrils that draw themselves in on load.
+       Decorative, pinned to the trim, never eats clicks. -->
+  <div class="page-frame" aria-hidden="true">
+    <svg class="frame-corner frame-corner--tl" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M2 60 C2 26 26 2 60 2 M2 60 C2 38 14 24 38 22 C58 20 64 36 54 44 C46 50 38 44 42 36"/>
+      <circle class="vine-bud" cx="42" cy="34" r="4"/>
+      <path class="vine-leaf" d="M16 30 C8 28 4 33 3 41 C13 41 18 37 16 30 Z"/>
+    </svg>
+    <svg class="frame-corner frame-corner--tr" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M118 60 C118 26 94 2 60 2 M118 60 C118 38 106 24 82 22 C62 20 56 36 66 44 C74 50 82 44 78 36"/>
+      <circle class="vine-bud" cx="78" cy="34" r="4"/>
+      <path class="vine-leaf" d="M104 30 C112 28 116 33 117 41 C107 41 102 37 104 30 Z"/>
+    </svg>
+    <svg class="frame-corner frame-corner--bl" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M2 60 C2 94 26 118 60 118 M2 60 C2 82 14 96 38 98 C58 100 64 84 54 76 C46 70 38 76 42 84"/>
+      <circle class="vine-bud" cx="42" cy="86" r="4"/>
+      <path class="vine-leaf" d="M16 90 C8 92 4 87 3 79 C13 79 18 83 16 90 Z"/>
+    </svg>
+    <svg class="frame-corner frame-corner--br" viewBox="0 0 120 120" fill="none">
+      <path class="vine-stroke" pathLength="1" d="M118 60 C118 94 94 118 60 118 M118 60 C118 82 106 96 82 98 C62 100 56 84 66 76 C74 70 82 76 78 84"/>
+      <circle class="vine-bud" cx="78" cy="86" r="4"/>
+      <path class="vine-leaf" d="M104 90 C112 92 116 87 117 79 C107 79 102 83 104 90 Z"/>
+    </svg>
   </div>
 
-  <div class="press-sheet">
-    <!-- the ink control strip lives here (fixed to the foot of the sheet) -->
+  <div class="sheet">
+    <!-- the ironwork portal (masthead + nav) -->
     {% include header.html %}
 
     <div class="site-banner">
       <p class="banner-text">
-        <span class="slug-tick" aria-hidden="true"></span>
-        <span class="slug-name">{{ site.data.theme.name | default: "today's sheet" }}</span>
-        <span class="slug-spec" aria-hidden="true">two-colour offset</span>
-        <span class="slug-no">No.{{ design_no }}</span>
-        <span class="slug-note">a fresh sheet pulled every day by AI</span>
-        <a class="slug-link" href="{{ '/archive/' | relative_url }}">past sheets →</a>
+        <span class="banner-fleuron" aria-hidden="true">❧</span>
+        <span class="banner-no">Plate No.{{ design_no }}</span>
+        <span class="banner-name">{{ site.data.theme.name | default: "today's plate" }}</span>
+        <span class="banner-note">a fresh plate engraved every day by AI</span>
+        <a class="banner-link" href="{{ '/archive/' | relative_url }}">the portfolio →</a>
       </p>
     </div>
 
