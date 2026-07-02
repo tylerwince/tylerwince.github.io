@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Whispering to agents">
+  <title>The Art of Asking Better Questions — Tyler Wince</title>
+  <meta name="theme-color" content="#f8f4ea">
+  <meta property="og:title" content="The Art of Asking Better Questions — Tyler Wince">
+  <meta property="og:description" content="Whispering to agents">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylerwince.com/archive/2026-07-02/books/the-art-of-asking-better-questions/">
+  
+  <meta property="og:image" content="https://tylerwince.com/archive/2026-07-02/assets/og/today.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/archive/2026-07-02/assets/favicon.svg?v=1783015063">
+  <style>@view-transition { navigation: auto; }</style>
+  <!-- Current theme's web fonts. Shared by default.html and the OG card layout so
+     per-article social images always render in the same faces as the live site.
+     REDESIGNS REWRITE THIS FILE (swap to your faces, ~4 weights max). -->
+<!-- MANICULE — Cormorant (high-contrast oldstyle display, huge at 13vw) /
+     Literata (bookish reading serif with optical sizes) / Courier Prime
+     (typewriter mono for folios, line counts & apparatus). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Courier+Prime&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/archive/2026-07-02/assets/css/main.css?v=1783015063">
+  <link type="application/atom+xml" rel="alternate" href="https://tylerwince.com/archive/2026-07-02/feed.xml" title="Tyler Wince" />
+<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;}.archive-banner a{color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;}.archive-banner a:hover{color:rgba(255,255,255,0.8);}.archive-banner-spacer{height:32px;}.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}(max-width:768px){.archive-banner{font-size:10px;padding:6px 10px;flex-wrap:wrap;justify-content:center;gap:4px;}.archive-banner-spacer{height:52px;}.site-header{top:52px!important;}}(max-width:480px){.archive-banner{flex-direction:column;gap:2px;padding:6px 8px;}.archive-banner-spacer{height:68px;}.site-header{top:68px!important;}}</style></head>
+<body data-archived="true" class="layout-book">
+  
+  
+  
+
+  <!-- the imprimatur — one small line across the head of the leaf -->
+  <div class="site-banner">
+    <p class="banner-text">
+      <span class="banner-no">edition no.&nbsp;43</span>
+      <span class="banner-name">MANICULE</span>
+      <span class="banner-note">a new edition is set every day by AI</span>
+      <a class="banner-link" href="/archive/2026-07-02/archive/">every edition&nbsp;→</a>
+    </p>
+  </div>
+
+  <!-- the half-title + ribbon markers -->
+  <!-- THE RIBBON MARKERS : navigation as silk bookmark ribbons hanging over the
+     top edge of the page, one per destination, swallowtail-cut, labels reading
+     down the ribbon. The current page's ribbon hangs longest. On small screens
+     the ribbons retract and a "contents" tassel unrolls them over the page.
+     The site.header_pages loop is preserved. -->
+<header class="site-header">
+  <a class="site-title" href="/archive/2026-07-02/" aria-label="Tyler Wince — home">
+    <svg class="manicule-glyph site-title-hand" viewBox="0 0 44 26" aria-hidden="true">
+      <rect x="0.5" y="5.5" width="6" height="15" rx="1" fill="currentColor"/>
+      <path fill="currentColor" d="M8 7 C10 5.6 13 5 15.6 5.6 L18 6.2 L39.5 7.4 A2.3 2.3 0 0 1 39.5 12 L19 12.6 C21.4 13.1 22.4 14 22.1 15.2 C21.8 16.4 19.8 16.7 18 16.3 C20 17 20.9 18 20.5 19.1 C20.1 20.2 18 20.4 16.4 19.9 C17.8 20.7 18 21.8 17 22.5 C15.4 23.6 12 22.9 10.2 21.6 C8.6 20.4 8 18.6 8 16.5 Z"/>
+    </svg>
+    <span class="site-title-text">Tyler&nbsp;Wince</span>
+    <span class="site-title-sub">essays&nbsp;· iOS&nbsp;apps&nbsp;· book&nbsp;notes</span>
+  </a>
+
+  <button class="nav-toggle" id="nav-toggle" type="button"
+          aria-expanded="false" aria-controls="site-nav" aria-label="Open the contents">
+    <span class="nav-toggle-tassels" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="nav-toggle-text">contents</span>
+  </button>
+
+  <nav class="site-nav" id="site-nav" aria-label="Primary">
+    <ul class="nav-list">
+      <li class="nav-item nav-item--home">
+        <a class="ribbon" href="/archive/2026-07-02/">
+          <span class="ribbon-label">home</span>
+        </a>
+      </li>
+      
+        
+        
+        <li class="nav-item nav-item--1">
+          <a class="ribbon" href="/archive/2026-07-02/apps/">
+            <span class="ribbon-label">apps</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--2">
+          <a class="ribbon" href="/archive/2026-07-02/writing/">
+            <span class="ribbon-label">writing</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--3">
+          <a class="ribbon" href="/archive/2026-07-02/reading/">
+            <span class="ribbon-label">reading</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--4">
+          <a class="ribbon" href="/archive/2026-07-02/now/">
+            <span class="ribbon-label">now</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item nav-item--5">
+          <a class="ribbon" href="/archive/2026-07-02/archive/">
+            <span class="ribbon-label">archive</span>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </nav>
+</header>
+
+
+  <!-- THE APPARATUS : the margin rule the manicule walks, with a live line
+       count. Purely typographic furniture — hidden where the margin is. -->
+  <aside class="margin-rail" id="margin-rail" aria-hidden="true">
+    <span class="rail-rule"></span>
+    <span class="manicule" id="manicule">
+      <svg class="manicule-glyph" viewBox="0 0 44 26">
+        <rect x="0.5" y="5.5" width="6" height="15" rx="1" fill="currentColor"/>
+        <path fill="currentColor" d="M8 7 C10 5.6 13 5 15.6 5.6 L18 6.2 L39.5 7.4 A2.3 2.3 0 0 1 39.5 12 L19 12.6 C21.4 13.1 22.4 14 22.1 15.2 C21.8 16.4 19.8 16.7 18 16.3 C20 17 20.9 18 20.5 19.1 C20.1 20.2 18 20.4 16.4 19.9 C17.8 20.7 18 21.8 17 22.5 C15.4 23.6 12 22.9 10.2 21.6 C8.6 20.4 8 18.6 8 16.5 Z"/>
+      </svg>
+      <span class="line-no" id="line-no">l.&nbsp;1</span>
+    </span>
+  </aside>
+
+  <main class="site-main">
+    <div class="content-area">
+      <article class="article article--ticket">
+  <header class="article-header">
+    <span class="ticket-rip" aria-hidden="true"></span>
+    <div class="article-kicker">book note</div>
+    <h1 class="article-title">The Art of Asking Better Questions</h1>
+    <div class="article-meta">
+      <span class="meta-item">J.R. Briggs</span>
+      <span class="meta-item">4 / 5</span>
+      
+      
+      <span class="meta-item">read 2026-06-17</span>
+      
+    </div>
+  </header>
+
+  
+
+  <div class="article-body">
+    <h2 id="summary">Summary</h2>
+
+<p>J.R. Briggs’ argument is that most of us are far more comfortable with our answers than with our questions. We treat questions as a sign of weakness – proof that we haven’t done the homework, that we don’t belong in the room. <em>The Art of Asking Better Questions</em> pushes back on that. Briggs argues that questions are tools for curiosity, humility, deeper conversation, and spiritual formation. The book is practical and gives you the frameworks, the starter phrases, the self-diagnostic prompts, and the conversational structure to actually do this.</p>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li>
+    <p><strong>Questions are an act of humility.</strong> To ask is to admit what you do not know. That costs something, especially professionally, which is exactly why most people skip it.</p>
+  </li>
+  <li>
+    <p><strong>If you have the question, someone else in the room has it too.</strong> The person willing to ask it out loud does everyone a favor. They just also have to be willing to look like the one who didn’t get it.</p>
+  </li>
+  <li>
+    <p><strong>Better questions go one level deeper.</strong> The goal is not small talk with a question mark on it. The goal is the conversation underneath the conversation, and that requires preparation, curiosity, and a few good stems.</p>
+  </li>
+  <li>
+    <p><strong>Questions are a spiritual discipline.</strong> Briggs’ framing: asking questions is part of how we grow. You don’t stunt your spiritual formation by asking questions. You stunt it by assuming you already have the answers.</p>
+  </li>
+  <li>
+    <p><strong>The best filter isn’t efficiency. It’s love.</strong> Briggs asks: “How will this help us love God and love neighbor more fully?” That question reorients what you’re optimizing for in conversations, decisions, and what you build and use.</p>
+  </li>
+  <li>
+    <p><strong>Great questions require four things.</strong> Curiosity, wisdom, humility, and courage. Miss any one of them and the question either doesn’t land or doesn’t get asked at all.</p>
+  </li>
+</ol>
+
+<h2 id="favorite-quotes">Favorite Quotes</h2>
+
+<blockquote>
+  <p>“Are we confident in our answers but insecure in our questions?”</p>
+</blockquote>
+
+<blockquote>
+  <p>“Students enter school as question marks and leave as periods.”</p>
+</blockquote>
+
+<blockquote>
+  <p>“We don’t stunt our spiritual formation by asking questions.”</p>
+</blockquote>
+
+<h2 id="personal-thoughts">Personal Thoughts</h2>
+
+<h3 id="how-this-book-changed-my-perspective">How this book changed my perspective</h3>
+
+<p>I read this book and immediately tried to start applying it, which is the only real test of whether a book worked.</p>
+
+<p>The most direct change: I put two questions on my iPhone home screen – “What am I assuming?” and “What else could be true?” They’re visible every time I pick up my phone. The point is to catch myself before I’ve already decided. I jump to conclusions fast, and those two prompts have started to slow the jump down. Even a half-second of re-examination is better than zero.</p>
+
+<p>I also built an Obsidian note that functions as a question bank. Whenever I hear someone ask a great question – in a meeting, in a conversation, in a book – I add it. I set up OpenClaw to surface a random question from that bank at the top of the note, which then feeds to my iPhone home screen. So next to my two standing prompts, there’s a rotating wildcard question I didn’t expect that helps prime me to always be in question-asking mode.</p>
+
+<p>The section on professional courage hit hard. Briggs is right that asking a question can expose you and I’ve felt this before. It gives you away as someone who didn’t already know. That’s the implicit cost, and it’s why people stay quiet in rooms where they should be asking. The person willing to look uninformed is often the one doing the room a favor.</p>
+
+<p>In college, I had a mentor who had this move where he would plant an idea so naturally that you thought it was your own. I started calling it “Houdini-ing.” Briggs describes something adjacent: a well-placed question can inject a thought into someone’s head without forcing it on them. This is something I’m trying to apply as a leader: talk less and make them think more.</p>
+
+<p>The line that’s going to stay with me longest is the one about loving God and loving people. Briggs asks it as a discernment question for information: “How will this help me love God and love neighbor more fully?” I’ve started applying it to everything. AI especially. The question isn’t whether something can be automated. It’s whether using it makes me more loving or less. That’s a better filter than most of the frameworks I’ve seen for thinking about technology. It also explains why AI is not a great spiritual growth tool – asking questions is part of how formation happens, and outsourcing the questions to a model skips the part that matters.</p>
+
+<h3 id="practical-applications">Practical applications</h3>
+
+<ul>
+  <li>Two standing questions on the iPhone home screen. They interrupt the jump to conclusion.</li>
+  <li>Obsidian question bank, refreshed by OpenClaw with a random question at the top. Rotating exposure to unfamiliar prompts.</li>
+  <li>Before any significant conversation, prep with three questions: how do I hope this unfolds, what obstacles might come up, what could both of us gain?</li>
+  <li>Treat question-asking at work as a public service, not a liability exposure. You’re not the only one who doesn’t know.</li>
+  <li>Use the God/neighbor filter as a discernment tool for spiritual decisions, tools, habits, and what you spend time on.</li>
+</ul>
+
+<h3 id="questions-for-further-exploration">Questions for further exploration</h3>
+
+<ul>
+  <li>Where in my life am I answering when I should still be asking?</li>
+  <li>Which relationships would go one level deeper if I prepared one real question before walking in?</li>
+  <li>What would it mean to build a question bank for leadership specifically, beyond normal conversation?</li>
+</ul>
+
+<h2 id="connections">Connections</h2>
+
+<h3 id="related-books">Related Books</h3>
+
+<ul>
+  <li><a href="/archive/2026-07-02/books/tiny-experiments/"><em>Tiny Experiments</em></a> by Anne-Laure Le Cunff – I’m reading this at the same time, and the pairing has been useful. Questions don’t have to stay abstract; they can become small experiments. Briggs gives you the questions. Le Cunff gives you the structure to test them.</li>
+  <li><a href="/archive/2026-07-02/books/supercommunicators/"><em>Supercommunicators</em></a> by Charles Duhigg – Duhigg argues for conversation preparation and getting below the surface level. Briggs gives you the question toolkit that makes Duhigg’s framework executable.</li>
+  <li><a href="/archive/2026-07-02/books/the-righteous-mind/"><em>The Righteous Mind</em></a> by Jonathan Haidt – Haidt’s whole case is that direct rational argument rarely changes minds. Curiosity and genuine interest do more. Briggs is the practical application of that posture.</li>
+  <li><a href="/archive/2026-07-02/books/atomic-habits/"><em>Atomic Habits</em></a> by James Clear – Putting questions on my home screen is just Clear’s visibility principle applied to a mental habit. The question is the cue. Formation follows exposure.</li>
+</ul>
+
+<hr />
+<p>Last updated: 2026-06-29</p>
+
+  </div>
+</article>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-asterism" aria-hidden="true">⁂</div>
+
+  <p class="footer-colophon">
+    <span class="footer-colophon-lead">Colophon.</span>
+    Set to one narrow measure in <em>Cormorant</em> &amp; <em>Literata</em>,
+    with <em>Courier&nbsp;Prime</em> for the apparatus; rubricated in a single
+    red; no boxes were used in the making of this page. Re-set every day by AI.
+  </p>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">the edition</div>
+      <a href="/archive/2026-07-02/">home</a>
+      <a href="/archive/2026-07-02/now/">/now</a>
+      <a href="/archive/2026-07-02/archive/">every edition</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">elsewhere</div>
+      <ul class="social-list">
+        
+        <li><a href="https://github.com/tylerwince" target="_blank" rel="noopener">GitHub</a></li>
+        
+        
+        <li><a href="https://twitter.com/tylerwince" target="_blank" rel="noopener">Twitter</a></li>
+        
+        <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-col--imprint">
+      <div class="footer-col-title">imprint</div>
+      <p class="footer-imprint-line">© 2026 Tyler Wince</p>
+      <p class="footer-imprint-line">printed in the margin · l. ∞</p>
+    </div>
+  </div>
+
+  <div class="footer-mark" aria-hidden="true"><span class="monogram"></span></div>
+</footer>
+
+
+  <script src="/archive/2026-07-02/assets/js/main.js?v=1783015063"></script>
+</body>
+</html>

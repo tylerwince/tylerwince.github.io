@@ -1,0 +1,1807 @@
+/* ============================================================================
+   tylerwince.com — MANICULE
+   Lane: pure-typography. Constraints rolled: NO BOXES (separation by space,
+   rules and type alone — no card backgrounds, no panels) + OVERSIZED TYPE
+   (hero > 12vw).
+
+   Five hundred years of book typography with nowhere to hide: one narrow
+   measure, one wide living margin, black ink for the text and red for what
+   matters. Navigation hangs from the top edge as silk ribbon markers; a small
+   pointing hand — the manicule — walks the margin rule as you read, keeping
+   a live line count.
+
+   Faces: Cormorant (display) · Literata (text) · Courier Prime (apparatus).
+   ========================================================================== */
+
+/* ----------------------------------------------------------------------------
+   1. Tokens
+---------------------------------------------------------------------------- */
+:root {
+  --color-bg: #f8f4ea;      /* laid paper */
+  --color-fg: #211c15;      /* iron-gall ink */
+  --color-accent: #c22d17;  /* the rubric */
+  --color-muted: #867969;   /* faded ink */
+  --color-border: #ddd3bf;  /* hairline rules */
+
+  --font-display: "Cormorant", "Iowan Old Style", Georgia, serif;
+  --font-body: "Literata", Georgia, "Times New Roman", serif;
+  --font-mono: "Courier Prime", "Courier New", Courier, monospace;
+
+  --measure: 46rem;         /* the one narrow measure */
+  --gutter: 2.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #171310;     /* the lamp goes out */
+    --color-fg: #ece3d2;
+    --color-accent: #e0563c; /* ember red */
+    --color-muted: #9c8e7b;
+    --color-border: #3a322a;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   2. Reset + base
+---------------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html {
+  scrollbar-color: var(--color-border) var(--color-bg);
+  scrollbar-width: thin;
+}
+
+html.nav-open { overflow: hidden; }
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px dotted var(--color-accent);
+  outline-offset: 3px;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+
+a { color: var(--color-accent); }
+
+img { max-width: 100%; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* the shared manicule glyph */
+.manicule-glyph { display: block; }
+
+/* ----------------------------------------------------------------------------
+   3. The imprimatur (site banner)
+---------------------------------------------------------------------------- */
+.site-banner {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.banner-text {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.banner-no { color: var(--color-accent); }
+.banner-name { color: var(--color-fg); }
+
+.banner-link {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.banner-link:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ----------------------------------------------------------------------------
+   4. The half-title (header) + ribbon markers (nav)
+---------------------------------------------------------------------------- */
+.site-header {
+  width: min(var(--measure), calc(100% - var(--gutter)));
+  margin: 2.4rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.site-title {
+  display: block;
+  text-decoration: none;
+  color: var(--color-fg);
+}
+
+.site-title-hand {
+  width: 2.3rem;
+  color: var(--color-accent);
+  margin-bottom: 0.55rem;
+  transition: transform 0.35s ease;
+}
+.site-title:hover .site-title-hand { transform: translateX(0.4rem); }
+
+.site-title-text {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.site-title-sub {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/* --- the contents tassel (small screens) --- */
+.nav-toggle {
+  position: fixed;
+  top: 0;
+  right: 1rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0 0.5rem 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-accent);
+}
+
+.nav-toggle-tassels {
+  display: flex;
+  gap: 4px;
+  align-items: flex-start;
+}
+.nav-toggle-tassels i {
+  display: block;
+  width: 5px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 3px), 0 100%);
+}
+.nav-toggle-tassels i:nth-child(1) { height: 1.3rem; }
+.nav-toggle-tassels i:nth-child(2) { height: 1.8rem; }
+.nav-toggle-tassels i:nth-child(3) { height: 1.5rem; }
+
+.nav-toggle-text {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* --- the ribbons themselves --- */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ribbon {
+  text-decoration: none;
+  background: var(--color-fg);
+  color: var(--color-bg);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 0.55rem), 0 100%);
+}
+
+.ribbon-label {
+  writing-mode: vertical-rl;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+/* small screens: ribbons retract; the tassel unrolls them over the page */
+@media (max-width: 1099.98px) {
+  .site-nav {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: var(--color-bg);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+  }
+  html.nav-open .site-nav {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .nav-list {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: clamp(0.7rem, 3.5vw, 1.6rem);
+    padding: 0 1rem;
+  }
+
+  .ribbon {
+    width: clamp(2.7rem, 11vw, 3.4rem);
+    height: min(var(--hm, 18rem), 62vh);
+    padding-bottom: 1.4rem;
+    transform: translateY(-105%);
+    transition: transform 0.45s cubic-bezier(0.22, 0.7, 0.3, 1);
+  }
+  .ribbon-label { font-size: 0.8rem; }
+
+  html.nav-open .ribbon { transform: translateY(0); }
+  html.nav-open .nav-item:nth-child(2) .ribbon { transition-delay: 0.04s; }
+  html.nav-open .nav-item:nth-child(3) .ribbon { transition-delay: 0.08s; }
+  html.nav-open .nav-item:nth-child(4) .ribbon { transition-delay: 0.12s; }
+  html.nav-open .nav-item:nth-child(5) .ribbon { transition-delay: 0.16s; }
+  html.nav-open .nav-item:nth-child(6) .ribbon { transition-delay: 0.2s; }
+
+  .nav-item:nth-child(1) .ribbon { --hm: 15rem; }
+  .nav-item:nth-child(2) .ribbon { --hm: 19rem; }
+  .nav-item:nth-child(3) .ribbon { --hm: 16.5rem; }
+  .nav-item:nth-child(4) .ribbon { --hm: 20.5rem; }
+  .nav-item:nth-child(5) .ribbon { --hm: 15.5rem; }
+  .nav-item:nth-child(6) .ribbon { --hm: 18rem; }
+
+  .ribbon.active { background: var(--color-accent); }
+}
+
+/* wide screens: the ribbons hang over the top edge of the leaf */
+@media (min-width: 1100px) {
+  .nav-toggle { display: none; }
+
+  .site-nav {
+    position: fixed;
+    top: 0;
+    right: clamp(1.75rem, 6vw, 5.5rem);
+    z-index: 50;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .ribbon {
+    width: 2.15rem;
+    height: var(--h, 6.5rem);
+    padding-bottom: 1.05rem;
+    transition: height 0.3s ease, background-color 0.3s ease;
+  }
+
+  .nav-item:nth-child(1) .ribbon { --h: 6.4rem; }
+  .nav-item:nth-child(2) .ribbon { --h: 7.6rem; }
+  .nav-item:nth-child(3) .ribbon { --h: 6.9rem; }
+  .nav-item:nth-child(4) .ribbon { --h: 8.1rem; }
+  .nav-item:nth-child(5) .ribbon { --h: 6.6rem; }
+  .nav-item:nth-child(6) .ribbon { --h: 7.3rem; }
+
+  .ribbon:hover,
+  .ribbon:focus-visible { height: calc(var(--h) + 0.9rem); }
+
+  .ribbon.active {
+    background: var(--color-accent);
+    height: calc(var(--h) + 2.3rem);
+  }
+
+  /* the ribbons drop in on arrival */
+  html.js:not(.inked) .ribbon { transform: translateY(-110%); }
+  html.js.inked .ribbon {
+    animation: ribbon-drop 0.65s cubic-bezier(0.22, 0.7, 0.3, 1) backwards;
+  }
+  html.js.inked .nav-item:nth-child(2) .ribbon { animation-delay: 0.06s; }
+  html.js.inked .nav-item:nth-child(3) .ribbon { animation-delay: 0.12s; }
+  html.js.inked .nav-item:nth-child(4) .ribbon { animation-delay: 0.18s; }
+  html.js.inked .nav-item:nth-child(5) .ribbon { animation-delay: 0.24s; }
+  html.js.inked .nav-item:nth-child(6) .ribbon { animation-delay: 0.3s; }
+}
+
+@keyframes ribbon-drop {
+  from { transform: translateY(-110%); }
+  to { transform: translateY(0); }
+}
+
+/* ----------------------------------------------------------------------------
+   5. The apparatus — margin rule + the manicule (signature)
+---------------------------------------------------------------------------- */
+.margin-rail { display: none; }
+
+@media (min-width: 1100px) {
+  .margin-rail {
+    display: block;
+    position: fixed;
+    top: 10.5rem;
+    bottom: 2.5rem;
+    left: calc(50% - (var(--measure) / 2) - 3.6rem);
+    width: 1px;
+    z-index: 5;
+  }
+
+  .rail-rule {
+    position: absolute;
+    inset: 0;
+    background: var(--color-border);
+  }
+
+  .manicule {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: var(--color-accent);
+    transition: transform 0.18s ease-out;
+  }
+
+  .manicule .manicule-glyph { width: 2.5rem; }
+
+  .line-no {
+    margin-top: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  html.js .margin-rail { opacity: 0; transition: opacity 0.9s ease 0.45s; }
+  html.js.inked .margin-rail { opacity: 1; }
+}
+
+/* ----------------------------------------------------------------------------
+   6. The measure
+---------------------------------------------------------------------------- */
+.site-main {
+  padding-top: clamp(3rem, 7vw, 5.5rem);
+}
+
+.content-area {
+  width: min(var(--measure), calc(100% - var(--gutter)));
+  margin: 0 auto;
+}
+
+/* ----------------------------------------------------------------------------
+   7. Home — the critical edition
+---------------------------------------------------------------------------- */
+.home { display: block; }
+
+/* --- the incipit --- */
+.hero { margin-bottom: clamp(4rem, 9vw, 7rem); }
+
+.hero-incipit {
+  margin: 0 0 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero-pilcrow { font-size: 1.15rem; vertical-align: -0.08em; margin-right: 0.3rem; }
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(4.2rem, 13.5vw, 12.5rem);
+  line-height: 0.82;
+  letter-spacing: -0.015em;
+}
+
+.hero-word { display: block; }
+.hero-word::first-letter { color: var(--color-accent); }
+.hero-word--2 {
+  margin-left: clamp(2.5rem, 11vw, 10rem);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.hero-meta {
+  margin: 2.2rem 0 0 clamp(0rem, 11vw, 10rem);
+  max-width: 34ch;
+  font-size: 1rem;
+  color: var(--color-fg);
+}
+
+.hero-epigraph {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+/* --- section anatomy --- */
+.home-section {
+  position: relative;
+  margin-top: clamp(5rem, 10vw, 7.5rem);
+}
+
+.section-header {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 3.4rem);
+  line-height: 1;
+}
+.section-title::before {
+  content: "¶";
+  color: var(--color-accent);
+  font-size: 0.5em;
+  vertical-align: 0.5em;
+  margin-right: 0.45em;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+}
+.section-label br { display: none; }
+
+.view-all {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.view-all:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* sidenotes live in the margin when there is one */
+@media (min-width: 1280px) {
+  .section-label {
+    position: absolute;
+    left: -14.5rem;
+    top: 0.5rem;
+    width: 9.5rem;
+    margin: 0;
+    text-align: right;
+    color: var(--color-accent);
+  }
+  .section-label br { display: inline; }
+
+  html.js .section-label {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  html.js .home-section.in-view .section-label {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- apps · the catalogue raisonné --- */
+.app-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: opus;
+}
+
+.app-entry + .app-entry { margin-top: 2.8rem; }
+
+.app-card {
+  position: relative;
+  display: block;
+  padding-left: clamp(3.6rem, 8vw, 5.5rem);
+  text-decoration: none;
+  color: var(--color-fg);
+}
+
+.app-card::before {
+  counter-increment: opus;
+  content: "op. " counter(opus, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+
+.app-headline {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.app-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: none;
+  filter: grayscale(1);
+  opacity: 0.85;
+  transition: filter 0.35s ease, opacity 0.35s ease;
+}
+
+.app-icon--glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--color-accent);
+  border: 1px solid var(--color-border);
+}
+
+.app-card:hover .app-icon,
+.app-card:focus-visible .app-icon { filter: none; opacity: 1; }
+
+.app-info { display: block; }
+
+.app-name {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 3.4vw, 2.5rem);
+  line-height: 1.05;
+  transition: color 0.25s ease;
+}
+
+.app-card:hover .app-name,
+.app-card:focus-visible .app-name { color: var(--color-accent); }
+
+.app-desc {
+  display: block;
+  margin-top: 0.3rem;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-muted);
+  max-width: 46ch;
+}
+
+.app-go {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.app-card:hover .app-go,
+.app-card:focus-visible .app-go { opacity: 1; transform: none; }
+
+/* --- writing · the table of contents --- */
+.post-list { margin: 0; }
+
+.post-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.95rem 0;
+  text-decoration: none;
+  color: var(--color-fg);
+}
+
+.post-folio {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-accent);
+}
+
+.post-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  line-height: 1.15;
+  transition: color 0.25s ease;
+}
+.post-row:hover .post-title,
+.post-row:focus-visible .post-title { color: var(--color-accent); }
+
+.post-leader {
+  flex: 1;
+  min-width: 1.5rem;
+  align-self: flex-end;
+  margin-bottom: 0.45em;
+  border-bottom: 2px dotted var(--color-border);
+}
+
+.post-date {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* --- reading · the tipped-in plates --- */
+.book-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 2.4rem 1.7rem;
+  counter-reset: plate;
+}
+
+.book-plate { flex: none; width: 6.4rem; }
+.book-plate:nth-child(5n + 1) { width: 7.4rem; }
+.book-plate:nth-child(5n + 2) { width: 5.6rem; margin-bottom: 1.1rem; }
+.book-plate:nth-child(5n + 3) { width: 6.6rem; }
+.book-plate:nth-child(5n + 4) { width: 5.9rem; margin-bottom: 0.7rem; }
+.book-plate:nth-child(5n + 5) { width: 7rem; margin-bottom: 0.35rem; }
+
+.book-card {
+  display: block;
+  text-decoration: none;
+  color: var(--color-fg);
+}
+
+.book-card-cover {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-border);
+}
+
+.book-card-cover--blank {
+  aspect-ratio: 2 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.book-card-info { display: block; margin-top: 0.55rem; }
+
+.book-card-info::before {
+  counter-increment: plate;
+  content: "pl. " counter(plate, lower-roman);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.56rem;
+  letter-spacing: 0.16em;
+  color: var(--color-muted);
+  margin-bottom: 0.25rem;
+}
+
+.book-card-title {
+  display: block;
+  font-weight: 600;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  transition: color 0.25s ease;
+}
+.book-card:hover .book-card-title,
+.book-card:focus-visible .book-card-title { color: var(--color-accent); }
+
+.book-card-author {
+  display: block;
+  font-style: italic;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  margin-top: 0.15rem;
+}
+
+.book-card-status {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+
+/* ----------------------------------------------------------------------------
+   8. Articles (posts, books, pages, apps)
+---------------------------------------------------------------------------- */
+.article { display: block; }
+
+.article-header {
+  position: relative;
+  margin-bottom: 2.8rem;
+}
+
+/* the old ticket-rip span becomes the asterism at the head of the leaf */
+.ticket-rip { display: block; margin-bottom: 1.8rem; }
+.ticket-rip::before {
+  content: "⁂";
+  color: var(--color-accent);
+  font-size: 1.05rem;
+  letter-spacing: 0.4em;
+}
+
+.article-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.1rem;
+}
+.article-kicker::before { content: "¶ "; }
+
+.article-title {
+  font-size: clamp(2.7rem, 7vw, 4.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+
+.article-description {
+  margin: 1.2rem 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.45rem;
+  line-height: 1.3;
+  color: var(--color-muted);
+  max-width: 30em;
+}
+
+.article-meta {
+  margin-top: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.meta-item + .meta-item::before {
+  content: "· ";
+  color: var(--color-accent);
+  margin: 0 0.25rem;
+}
+
+.meta-item a { color: var(--color-accent); text-decoration: none; }
+.meta-item a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* --- the text block --- */
+.article-body {
+  max-width: var(--measure);
+}
+
+.article-body :is(p, li, blockquote, figcaption, td, dd, h2, h3, h4) a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+.article-body :is(p, li, blockquote, figcaption, td, dd, h2, h3, h4) a:hover {
+  color: var(--color-accent);
+}
+
+.article-body h2 {
+  margin: 2.6em 0 0.8em;
+  font-size: 1.9rem;
+}
+.article-body h2::before {
+  content: "¶";
+  color: var(--color-accent);
+  font-size: 0.6em;
+  vertical-align: 0.4em;
+  margin-right: 0.45em;
+}
+
+.article-body h3 {
+  margin: 2.2em 0 0.7em;
+  font-size: 1.45rem;
+  font-style: italic;
+}
+
+.article-body h4 {
+  margin: 2em 0 0.6em;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.article-body p { margin: 0 0 1.4em; }
+
+.article-body ul, .article-body ol { padding-left: 1.5rem; margin: 0 0 1.4em; }
+.article-body li { margin-bottom: 0.4em; }
+.article-body li::marker { color: var(--color-accent); }
+
+.article-body :is(p, li, blockquote, figcaption, td, dd) > img {
+  display: block;
+  border: 1px solid var(--color-border);
+  margin: 2rem auto;
+}
+
+/* rubricated drop cap on essays and book notes */
+.layout-post .article-body > p:first-of-type::first-letter,
+.layout-book .article-body > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 4.4em;
+  line-height: 0.78;
+  padding: 0.06em 0.12em 0 0;
+  color: var(--color-accent);
+}
+
+/* ----------------------------------------------------------------------------
+   9. Content elements — quotes, rules, code
+---------------------------------------------------------------------------- */
+blockquote {
+  margin: 2.2rem 0;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--color-accent);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+  line-height: 1.45;
+}
+blockquote p { margin: 0 0 0.6em; }
+
+.pull-quote {
+  position: relative;
+  margin: 2.6rem 0;
+  padding-left: 3.2rem;
+  border-left: none;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.4rem, 3vw, 1.75rem);
+  line-height: 1.4;
+}
+
+.pull-quote-mark {
+  position: absolute;
+  left: 0;
+  top: -0.55rem;
+  font-family: var(--font-display);
+  font-style: normal;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+hr {
+  border: none;
+  margin: 3rem 0;
+  text-align: center;
+}
+hr::after {
+  content: "⁂";
+  color: var(--color-muted);
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
+  font-size: 1rem;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+}
+
+pre {
+  margin: 2rem 0;
+  padding: 0.4rem 0 0.4rem 1.5rem;
+  border-left: 1px solid var(--color-border);
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+pre code { font-size: 1em; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.92rem;
+}
+th {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--color-muted);
+}
+th, td {
+  padding: 0.55rem 1rem 0.55rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ----------------------------------------------------------------------------
+   10. Writing page — the full contents
+---------------------------------------------------------------------------- */
+.post-index { margin-top: 0.5rem; }
+
+.post-index-header {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.post-index-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 6.4rem 1fr;
+  gap: 1.4rem;
+  padding: 1.5rem 4rem 1.5rem 0;
+  text-decoration: none;
+  color: var(--color-fg);
+  border-top: 1px dotted var(--color-border);
+}
+.post-index-row:first-child { border-top: none; }
+
+.post-index-row::after {
+  content: "no. " attr(data-index);
+  position: absolute;
+  right: 0;
+  top: 1.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  transition: color 0.25s ease;
+}
+.post-index-row:hover::after { color: var(--color-accent); }
+
+.post-index-date {
+  padding-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.post-index-title {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.55rem;
+  line-height: 1.1;
+  transition: color 0.25s ease;
+}
+.post-index-row:hover .post-index-title,
+.post-index-row:focus-visible .post-index-title { color: var(--color-accent); }
+
+.post-index-desc {
+  display: block;
+  margin-top: 0.35rem;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  max-width: 52ch;
+}
+
+.post-index-meta { display: block; margin-top: 0.55rem; }
+
+.post-index-topic {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.post-index-topic + .post-index-topic::before {
+  content: "· ";
+  color: var(--color-muted);
+  margin: 0 0.35rem 0 0.15rem;
+}
+
+/* ----------------------------------------------------------------------------
+   11. Reading page — the ledger
+---------------------------------------------------------------------------- */
+.reading-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.8rem 3.2rem;
+  margin: 0.5rem 0 2.4rem;
+  padding-bottom: 2.2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.stat-item { display: flex; flex-direction: column; }
+
+.stat-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.9rem;
+  line-height: 1;
+}
+.stat-item[data-stat="favorites"] .stat-value::after {
+  content: "*";
+  color: var(--color-accent);
+  font-size: 0.6em;
+  vertical-align: 0.55em;
+}
+.stat-item[data-stat="reading-now"] .stat-value { color: var(--color-accent); }
+
+.stat-label {
+  margin-top: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.sort-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.3rem;
+  margin: 2rem 0 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.sort-link {
+  color: var(--color-muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+}
+.sort-link:hover { color: var(--color-fg); }
+.sort-link.active {
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.year-section { margin-top: 3.4rem; }
+
+.year-heading {
+  font-size: 2.6rem;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.year-heading::before {
+  content: "anno";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.4rem;
+}
+
+.book-list { margin: 0; }
+
+.book-line {
+  display: grid;
+  grid-template-columns: 1rem 2.2rem 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.7rem 0;
+  text-decoration: none;
+  color: var(--color-fg);
+  border-top: 1px dotted var(--color-border);
+}
+.book-line:first-child { border-top: none; }
+
+.book-line-flag { font-family: var(--font-mono); }
+.book-line[data-rating="5"] .book-line-flag::before {
+  content: "*";
+  color: var(--color-accent);
+  font-size: 1.1rem;
+}
+
+.book-line-cover {
+  width: 2.2rem;
+  height: 3.2rem;
+  display: block;
+}
+.book-line-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  display: block;
+}
+.book-line-cover:empty {
+  border: 1px dotted var(--color-border);
+}
+
+.book-line-main { min-width: 0; }
+
+.book-line-title {
+  display: block;
+  font-weight: 600;
+  font-size: 0.98rem;
+  line-height: 1.3;
+  transition: color 0.25s ease;
+}
+.book-line:hover .book-line-title,
+.book-line:focus-visible .book-line-title { color: var(--color-accent); }
+
+.book-line-author {
+  display: block;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  margin-top: 0.1rem;
+}
+
+.book-line-rating {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+.book-line[data-rating] .book-line-rating { color: var(--color-accent); }
+
+/* ----------------------------------------------------------------------------
+   12. Apps page — the full catalogue
+---------------------------------------------------------------------------- */
+.app-showcase {
+  margin: 0.5rem 0 3.5rem;
+  counter-reset: opus;
+}
+
+.app-showcase-card {
+  position: relative;
+  display: block;
+  padding: 1.7rem 0 1.7rem clamp(3.6rem, 8vw, 5.5rem);
+  text-decoration: none;
+  color: var(--color-fg);
+  border-top: 1px dotted var(--color-border);
+}
+.app-showcase-card:first-child { border-top: none; }
+
+.app-showcase-card::before {
+  counter-increment: opus;
+  content: "op. " counter(opus, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  top: 2.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+
+.app-showcase-name {
+  font-size: 2.2rem;
+  line-height: 1.05;
+  transition: color 0.25s ease;
+}
+.app-showcase-card:hover .app-showcase-name,
+.app-showcase-card:focus-visible .app-showcase-name { color: var(--color-accent); }
+
+.app-showcase-detail {
+  margin-top: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.philosophy-section { margin-top: 4rem; }
+
+.philosophy-heading {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+.philosophy-heading::before {
+  content: "¶";
+  color: var(--color-accent);
+  font-size: 0.55em;
+  vertical-align: 0.45em;
+  margin-right: 0.45em;
+}
+
+.philosophy-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 2.2rem 3rem;
+  counter-reset: nb;
+}
+
+.philosophy-item {
+  position: relative;
+  padding-left: 2.4rem;
+}
+.philosophy-item::before {
+  counter-increment: nb;
+  content: counter(nb) ".";
+  position: absolute;
+  left: 0;
+  top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent);
+}
+
+.philosophy-title {
+  font-weight: 600;
+  font-size: 1.02rem;
+}
+
+.philosophy-desc {
+  margin-top: 0.4rem;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+/* ----------------------------------------------------------------------------
+   13. App-page content — features, plates, stacks, N.B.
+---------------------------------------------------------------------------- */
+.feature-grid, .feature {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.8rem 2.6rem;
+  margin: 2.2rem 0;
+  counter-reset: feat;
+}
+
+.feature-card {
+  position: relative;
+  padding-left: 2.3rem;
+}
+.feature-card::before {
+  counter-increment: feat;
+  content: "n." counter(feat);
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--color-accent);
+}
+.feature-card h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.feature-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+.callout {
+  margin: 2.4rem 0;
+  padding: 0.2rem 0 0.2rem 1.5rem;
+  border-left: 1px solid var(--color-accent);
+}
+.callout::before {
+  content: "N.B.";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+.callout p { margin: 0.4rem 0; font-size: 0.95rem; }
+
+.screenshot-strip {
+  display: flex;
+  gap: 1.2rem;
+  margin: 2.2rem 0;
+  padding-bottom: 1.2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.screenshot-card {
+  flex: none;
+  width: min(200px, 58vw);
+  margin: 0;
+  scroll-snap-align: start;
+}
+.screenshot-card img {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--color-border);
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: 1.6rem 2rem;
+  margin: 2.2rem 0;
+}
+
+.stack-card {
+  display: block;
+  text-decoration: none;
+  color: var(--color-fg);
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--color-border);
+  transition: border-color 0.25s ease;
+}
+.stack-card:hover { border-left-color: var(--color-accent); }
+
+.stack-card-stack, .stack-card-front, .stack-card-content { display: block; }
+
+.stack-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.stack-card-count {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.stack-card-download-icon {
+  font-family: var(--font-mono);
+  color: var(--color-accent);
+}
+
+.stack-card-title {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.02rem;
+  transition: color 0.25s ease;
+}
+.stack-card:hover .stack-card-title { color: var(--color-accent); }
+
+.stack-card-loading { opacity: 0.75; }
+
+/* ----------------------------------------------------------------------------
+   14. Archive — the catalogue of editions
+---------------------------------------------------------------------------- */
+.archive-today {
+  position: relative;
+  margin: 0.5rem 0 2.8rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.archive-today-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.archive-today-theme {
+  display: block;
+  margin: 0.7rem 0 0.4rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 0.95;
+}
+
+.archive-today-manifesto {
+  margin: 0.8rem 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  max-width: 52ch;
+}
+
+.archive-today-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.4rem;
+  margin-top: 1.3rem;
+}
+
+.archive-meta-item {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.archive-palette {
+  display: inline-flex;
+  gap: 0.45rem;
+}
+.archive-palette i {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+}
+
+.archive-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem 1.5rem;
+  margin: 2.2rem 0 2rem;
+}
+
+.archive-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.archive-surprise {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+.archive-surprise:hover { text-decoration-style: solid; }
+
+.archive-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr));
+  gap: 2.6rem 1.8rem;
+}
+
+.archive-card {
+  display: block;
+  text-decoration: none;
+  color: var(--color-fg);
+}
+
+.archive-thumb {
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+.archive-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  filter: grayscale(1);
+  transition: filter 0.4s ease;
+}
+.archive-card:hover .archive-thumb img,
+.archive-card:focus-visible .archive-thumb img { filter: none; }
+
+.archive-thumb-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-muted);
+}
+
+.archive-card--lost { opacity: 0.55; }
+.archive-card--lost .archive-thumb { border-style: dotted; }
+
+.archive-card-info { display: block; margin-top: 0.65rem; }
+
+.archive-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.archive-theme {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  line-height: 1.05;
+  transition: color 0.25s ease;
+}
+.archive-card:hover .archive-theme,
+.archive-card:focus-visible .archive-theme { color: var(--color-accent); }
+
+.archive-desc {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ----------------------------------------------------------------------------
+   15. Now page
+---------------------------------------------------------------------------- */
+.currently-reading { margin: 1.6rem 0; }
+
+.reading-card {
+  position: relative;
+  padding-left: 2.1rem;
+  margin: 1rem 0;
+}
+.reading-card::before {
+  content: "☛";
+  position: absolute;
+  left: 0;
+  top: 0.05rem;
+  color: var(--color-accent);
+}
+
+.reading-card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.reading-card-author {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  margin-left: 0.45rem;
+}
+
+.page-footer-note {
+  margin-top: 3rem;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+/* ----------------------------------------------------------------------------
+   16. 404 — the missing leaf
+---------------------------------------------------------------------------- */
+.error-page { padding: 3rem 0 4rem; }
+
+.error-code {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(7rem, 26vw, 14rem);
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.error-code::before,
+.error-code::after {
+  content: "*";
+  color: var(--color-accent);
+  font-size: 0.32em;
+  vertical-align: 1.15em;
+  margin: 0 0.15em;
+}
+
+.error-page h2 {
+  margin-top: 1.4rem;
+  font-style: italic;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+
+.error-message {
+  margin-top: 0.8rem;
+  font-style: italic;
+  color: var(--color-muted);
+  max-width: 42ch;
+}
+
+.error-page a {
+  display: inline-block;
+  margin-top: 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+.error-page a::before { content: "☛ "; }
+.error-page a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ----------------------------------------------------------------------------
+   17. The colophon (footer)
+---------------------------------------------------------------------------- */
+.site-footer {
+  width: min(var(--measure), calc(100% - var(--gutter)));
+  margin: clamp(5rem, 10vw, 7.5rem) auto 0;
+  padding: 2.8rem 0 2.4rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.footer-asterism {
+  color: var(--color-accent);
+  font-size: 1.15rem;
+  letter-spacing: 0.5em;
+  padding-left: 0.5em;
+  margin-bottom: 1.8rem;
+}
+
+.footer-colophon {
+  margin: 0 auto 2.6rem;
+  max-width: 46ch;
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--color-muted);
+}
+
+.footer-colophon-lead {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-right: 0.4rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.footer-col-title {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.7rem;
+}
+
+.footer-col a {
+  display: block;
+  padding: 0.16rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  color: var(--color-fg);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--color-accent); }
+
+.social-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-imprint-line {
+  margin: 0.2rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.footer-mark {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.6rem;
+}
+.footer-mark .monogram {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-muted);
+  -webkit-mask: url("../images/monogram.svg") center / contain no-repeat;
+  mask: url("../images/monogram.svg") center / contain no-repeat;
+}
+
+/* ----------------------------------------------------------------------------
+   18. Small screens — the edition in the hand
+---------------------------------------------------------------------------- */
+@media (max-width: 720px) {
+  body { font-size: 1rem; }
+
+  .banner-note { display: none; }
+
+  .site-header { margin-top: 1.8rem; }
+
+  .hero-meta { margin-left: 0; }
+
+  .post-row { flex-wrap: wrap; row-gap: 0.15rem; }
+  .post-leader { display: none; }
+  .post-date { margin-left: auto; }
+
+  .post-index-row {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+    padding-right: 3.4rem;
+  }
+  .post-index-date { padding-top: 0; }
+
+  .book-line { grid-template-columns: 0.8rem 2rem 1fr auto; gap: 0.75rem; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+
+  .screenshot-card { width: min(180px, 62vw); }
+}
+
+/* ----------------------------------------------------------------------------
+   19. Reduced motion — the book lies still
+---------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  html.js:not(.inked) .ribbon { transform: none; }
+  .manicule { transition: none; }
+}

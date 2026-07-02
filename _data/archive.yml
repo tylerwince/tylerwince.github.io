@@ -431,3 +431,34 @@
   - "#1c3b30"
   - "#6e7b6a"
   - "#8f6a1f"
+- date: '2026-07-02'
+  theme: MANICULE
+  description: 'Five hundred years of book typography with nowhere to hide: one narrow
+    measure, one wide living margin, black ink for the text and red for what matters.
+    A little hand walks the margin as you read — follow it.'
+  commit: ef60e920
+  lane: pure-typography
+  manifesto: 'Five hundred years of book typography with nowhere to hide: one narrow
+    measure, one wide living margin, black ink for the text and red for what matters.
+    A little hand walks the margin as you read — follow it.'
+  nav_paradigm: ribbon markers — silk bookmark ribbons hang from the top edge, one
+    per page, swallowtail-cut with vertical labels; the current page's ribbon hangs
+    longest, and on small screens they retract to a tassel that unrolls them over
+    the page
+  layout_skeleton: an opened critical edition — a rubricated oversized name over an
+    incipit line, apps as a numbered catalogue raisonné, writing as a table of contents
+    on leader dots, reading as tipped-in plates with numbered captions, a centered
+    colophon
+  signature_interaction: the manicule — a small pointing hand glides down the margin
+    rule as you read, keeping a live line count; sidenotes and rubrication ink themselves
+    in as each section arrives
+  color: "#f8f4ea"
+  fonts:
+    display: Cormorant
+    body: Literata
+    mono: Courier Prime
+  palette:
+  - "#f8f4ea"
+  - "#211c15"
+  - "#867969"
+  - "#c22d17"
