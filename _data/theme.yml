@@ -15,24 +15,23 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "ARABESQUE"
-date: "2026-06-29"
-lane: "design-movement"
+name: "MANICULE"
+date: "2026-07-02"
+lane: "pure-typography"
 manifesto: >-
-  Paris, 1900 — the whiplash line takes over. Wrought-iron arches, climbing
-  tendrils and gilt rules are drawn live by your browser, never as images;
-  every section is a panel in an illuminated programme, and the vines grow
-  themselves in the moment you arrive.
-nav_paradigm: "the ironwork portal — a wrought-iron lintel with a monogram keystone and scrollwork brackets; nav links hang beneath as enamel cartouche plaques, the active one lit gilt (mobile collapses to a gate latch that swings a full-screen ironwork overlay open)"
-layout_skeleton: "an illuminated programme — an arched frontispiece with a climbing margin vine, apps as lancet-arched enamel panels overlapping a vine spine, writing as a drop-cap sommaire on gilt leader lines, reading as a stained-glass gallery of covers in arched gilt frames"
-signature_interaction: "the vines grow in — iron scrollwork and the margin tendrils self-draw on load as a gilt shimmer sweeps the name, section vine-spines draw as you scroll, and cover plates bloom from sepia to full colour on hover"
-color: "#1c3b30"
+  Five hundred years of book typography with nowhere to hide: one narrow
+  measure, one wide living margin, black ink for the text and red for what
+  matters. A little hand walks the margin as you read — follow it.
+nav_paradigm: "ribbon markers — silk bookmark ribbons hang from the top edge, one per page, swallowtail-cut with vertical labels; the current page's ribbon hangs longest, and on small screens they retract to a tassel that unrolls them over the page"
+layout_skeleton: "an opened critical edition — a rubricated oversized name over an incipit line, apps as a numbered catalogue raisonné, writing as a table of contents on leader dots, reading as tipped-in plates with numbered captions, a centered colophon"
+signature_interaction: "the manicule — a small pointing hand glides down the margin rule as you read, keeping a live line count; sidenotes and rubrication ink themselves in as each section arrives"
+color: "#f8f4ea"
 fonts:
-  display: "Yeseva One"
-  body: "Spectral"
-  mono: "Cutive Mono"
+  display: "Cormorant"
+  body: "Literata"
+  mono: "Courier Prime"
 palette:
-  - "#f3ead4"
-  - "#1c3b30"
-  - "#6e7b6a"
-  - "#8f6a1f"
+  - "#f8f4ea"
+  - "#211c15"
+  - "#867969"
+  - "#c22d17"

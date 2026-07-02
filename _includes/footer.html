@@ -1,31 +1,23 @@
 <footer class="site-footer">
-  <div class="footer-rule" aria-hidden="true">
-    <span class="footer-rule-line"></span>
-    <span class="footer-fleuron">❧</span>
-    <span class="footer-rule-line"></span>
-  </div>
+  <div class="footer-asterism" aria-hidden="true">⁂</div>
 
-  <div class="footer-colophon">
-    <span class="footer-mark" aria-hidden="true"><span class="monogram">TW</span></span>
-    <p class="footer-statement">
-      <span class="footer-statement-lead">Colophon.</span>
-      Engraved in two inks — viridian on warm paper — and gilt; the ironwork,
-      tendrils and rules are drawn live by your browser, never as images, and grow
-      themselves in on arrival. Set in <em>Yeseva&nbsp;One</em> &amp;
-      <em>Spectral</em>, re-cut every day by AI.
-    </p>
-  </div>
+  <p class="footer-colophon">
+    <span class="footer-colophon-lead">Colophon.</span>
+    Set to one narrow measure in <em>Cormorant</em> &amp; <em>Literata</em>,
+    with <em>Courier&nbsp;Prime</em> for the apparatus; rubricated in a single
+    red; no boxes were used in the making of this page. Re-set every day by AI.
+  </p>
 
   <div class="footer-grid">
     <div class="footer-col">
-      <div class="footer-col-title">The Plate</div>
+      <div class="footer-col-title">the edition</div>
       <a href="{{ '/' | relative_url }}">home</a>
       <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">the portfolio</a>
+      <a href="{{ '/archive/' | relative_url }}">every edition</a>
     </div>
 
     <div class="footer-col">
-      <div class="footer-col-title">Imprint</div>
+      <div class="footer-col-title">elsewhere</div>
       <ul class="social-list">
         {% if site.github_username %}
         <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
@@ -37,10 +29,12 @@
       </ul>
     </div>
 
-    <div class="footer-col footer-col--reg">
-      <div class="footer-col-title">Edition</div>
-      <p class="footer-folio">© {{ site.time | date: "%Y" }}</p>
-      <p class="footer-set">two-ink lithograph · re-cut daily</p>
+    <div class="footer-col footer-col--imprint">
+      <div class="footer-col-title">imprint</div>
+      <p class="footer-imprint-line">© {{ site.time | date: "%Y" }} Tyler Wince</p>
+      <p class="footer-imprint-line">printed in the margin · l. ∞</p>
     </div>
   </div>
+
+  <div class="footer-mark" aria-hidden="true"><span class="monogram"></span></div>
 </footer>

@@ -3,68 +3,56 @@ layout: default
 ---
 <div class="home">
 
-  <!-- ============ PLATE I · the frontispiece ============ -->
+  <!-- ============ the incipit ============ -->
   <section class="hero" id="top">
-    <svg class="hero-vine" viewBox="0 0 120 520" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMin meet">
-      <path class="vine-stroke" pathLength="1" d="M60 516 C60 470 22 452 40 404 C54 366 92 372 78 326 C68 292 30 300 44 252 C56 214 96 220 80 172 C70 140 36 148 50 100 C58 70 88 70 72 28"/>
-      <circle class="vine-bud" cx="72" cy="22" r="6"/>
-      <path class="vine-leaf" d="M40 392 C20 384 8 398 8 420 C32 420 44 410 40 392 Z"/>
-      <path class="vine-leaf" d="M80 240 C100 232 112 246 112 268 C88 268 76 258 80 240 Z"/>
-      <path class="vine-leaf" d="M50 112 C30 104 18 118 18 140 C42 140 54 130 50 112 Z"/>
-    </svg>
-
-    <p class="hero-slug">
-      <span class="hero-slug-no">Plate&nbsp;I</span>
-      <span>the frontispiece</span>
-    </p>
-
-    <h1 class="hero-title" id="hero-title">
-      {%- assign title_words = site.title | split: " " -%}
-      {%- for word in title_words -%}
-      <span class="hero-word">{{ word }}</span>
-      {%- endfor -%}
+    <p class="hero-incipit"><span class="hero-pilcrow" aria-hidden="true">¶</span> Here begins the personal site of</p>
+    <h1 class="hero-title">
+      <span class="hero-word">Tyler</span>
+      <span class="hero-word hero-word--2">Wince</span>
     </h1>
-
-    <p class="hero-lead">{{ site.description | default: "Whispering to agents" | escape }}</p>
+    <p class="hero-meta">
+      <em class="hero-epigraph">“{{ site.description | strip | escape }}”</em>
+      — essays on product, small iOS apps built with care, and an honest ledger
+      of books; set to a narrow measure, rubricated where it matters.
+    </p>
   </section>
 
-  <!-- ============ PLATE II · apps as arched enamel panels ============ -->
+  <!-- ============ the works · a catalogue raisonné ============ -->
   <section class="home-section home-section--apps" id="apps">
     <div class="section-header">
-      <span class="section-label">Plate II · the atelier</span>
+      <span class="section-label">the works,<br>numbered as<br>a catalogue<br>raisonné</span>
       <h2 class="section-title">Apps</h2>
-      <a href="{{ '/apps/' | relative_url }}" class="view-all">every panel&nbsp;→</a>
+      <a href="{{ '/apps/' | relative_url }}" class="view-all">the full catalogue&nbsp;→</a>
     </div>
-    <ul class="app-list">
+    <ol class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <li class="app-panel">
+      <li class="app-entry">
         <a href="{{ app.url | relative_url }}" class="app-card">
-          <span class="app-num" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-          <span class="app-icon-frame" aria-hidden="true">
-          {% if app.icon_path %}
-          <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="56" height="56">
-          {% else %}
-          <span class="app-icon app-icon--glyph">{{ app.title | slice: 0, 1 }}</span>
-          {% endif %}
+          <span class="app-headline">
+            {% if app.icon_path %}
+            <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="40" height="40">
+            {% else %}
+            <span class="app-icon app-icon--glyph" aria-hidden="true">{{ app.title | slice: 0, 1 }}</span>
+            {% endif %}
+            <span class="app-info">
+              <span class="app-name">{{ app.title | escape }}</span>
+              <span class="app-desc">{{ app.tagline | escape }}</span>
+            </span>
           </span>
-          <span class="app-info">
-            <span class="app-name">{{ app.title | escape }}</span>
-            <span class="app-desc">{{ app.tagline | escape }}</span>
-          </span>
-          <span class="app-go" aria-hidden="true">voir&nbsp;→</span>
+          <span class="app-go" aria-hidden="true">see the entry&nbsp;→</span>
         </a>
       </li>
       {% endfor %}
-    </ul>
+    </ol>
   </section>
 
-  <!-- ============ PLATE III · writing as an illuminated sommaire ============ -->
+  <!-- ============ writing · a table of contents ============ -->
   <section class="home-section home-section--writing" id="writing">
     <div class="section-header">
-      <span class="section-label">Plate III · the sommaire</span>
+      <span class="section-label">lately set<br>in type, five<br>most recent</span>
       <h2 class="section-title">Writing</h2>
-      <a href="{{ '/writing/' | relative_url }}" class="view-all">the full index&nbsp;→</a>
+      <a href="{{ '/writing/' | relative_url }}" class="view-all">the full contents&nbsp;→</a>
     </div>
     <div class="post-list">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
@@ -74,38 +62,35 @@ layout: default
         <span class="post-title">{{ post.title | escape }}</span>
         <span class="post-leader" aria-hidden="true"></span>
         <span class="post-date">{{ post.date | date: "%-d %b %Y" }}</span>
-        <span class="post-go" aria-hidden="true">read&nbsp;→</span>
       </a>
       {% endfor %}
     </div>
   </section>
 
-  <!-- ============ PLATE IV · reading as a stained-glass gallery ============ -->
+  <!-- ============ reading · the tipped-in plates ============ -->
   <section class="home-section home-section--reading" id="reading">
     <div class="section-header">
-      <span class="section-label">Plate IV · the gallery</span>
+      <span class="section-label">the plates,<br>tipped in from<br>the reading<br>ledger</span>
       <h2 class="section-title">Reading</h2>
-      <a href="{{ '/reading/' | relative_url }}" class="view-all">the whole shelf&nbsp;→</a>
+      <a href="{{ '/reading/' | relative_url }}" class="view-all">the whole ledger&nbsp;→</a>
     </div>
     <ul class="book-grid">
       {% assign recent_books = site.books | sort: "date" | reverse %}
-      {% for book in recent_books limit: 12 %}
-      <li class="book-cell">
+      {% for book in recent_books limit: 10 %}
+      <li class="book-plate">
         <a href="{{ '/reading/' | relative_url }}" class="book-card">
           {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
           {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
           {% assign cover_file = site.static_files | where: "path", cover_path | first %}
-          <span class="book-card-frame" aria-hidden="true">
           {% if cover_file %}
           <img class="book-card-cover" src="{{ cover_file.path | relative_url }}" alt="" loading="lazy">
           {% else %}
-          <span class="book-card-cover book-card-cover--blank">{{ book.title | slice: 0, 1 }}</span>
+          <span class="book-card-cover book-card-cover--blank" aria-hidden="true">{{ book.title | slice: 0, 1 }}</span>
           {% endif %}
-          </span>
           <span class="book-card-info">
             <span class="book-card-title">{{ book.title | escape }}</span>
             {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
-            <span class="book-card-status">{% if book.currently_reading %}reading{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
+            <span class="book-card-status">{% if book.currently_reading %}in hand{% elsif book.stars %}{% for i in (1..book.stars) %}*{% endfor %}{% else %}logged{% endif %}</span>
           </span>
         </a>
       </li>

@@ -1,17 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Arabesque — a wrought-iron arch over a gilt whiplash tendril">
-  <!-- ARABESQUE — an Art Nouveau roundel: a viridian iron arch framing a gilt
-       whiplash tendril that buds into a single flower. Redesigns replace this. -->
-  <rect width="64" height="64" rx="10" fill="#f3ead4"/>
-  <!-- the round-arch portal -->
-  <path d="M14 52 V30 a18 18 0 0 1 36 0 V52" fill="none" stroke="#1c3b30" stroke-width="3.4" stroke-linecap="round"/>
-  <!-- scrollwork brackets at the springing of the arch -->
-  <path d="M14 32 q-6 0 -6 6 q0 5 5 5" fill="none" stroke="#1c3b30" stroke-width="2.4" stroke-linecap="round"/>
-  <path d="M50 32 q6 0 6 6 q0 5 -5 5" fill="none" stroke="#1c3b30" stroke-width="2.4" stroke-linecap="round"/>
-  <!-- the gilt whiplash tendril growing up the centre -->
-  <path d="M32 52 C32 44 24 42 26 34 C27 29 33 30 33 25" fill="none" stroke="#8f6a1f" stroke-width="3" stroke-linecap="round"/>
-  <!-- the bud / flower -->
-  <circle cx="33" cy="22" r="4.4" fill="#8f6a1f"/>
-  <circle cx="33" cy="22" r="1.7" fill="#f3ead4"/>
-  <!-- a leaf off the stem -->
-  <path d="M27 37 C22 36 20 39 19 43 C24 43 27 41 27 37 Z" fill="#1c3b30"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Manicule — a rubricated pilcrow on paper">
+  <!-- MANICULE — a rubricated pilcrow on paper. Redesigns replace this. -->
+  <rect width="64" height="64" rx="14" fill="#f8f4ea"/>
+  <g fill="#c22d17">
+    <circle cx="27" cy="25" r="13"/>
+    <rect x="27" y="12" width="7" height="41"/>
+    <rect x="42" y="12" width="7" height="41"/>
+    <rect x="27" y="12" width="22" height="7"/>
+  </g>
 </svg>

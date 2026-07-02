@@ -1,17 +1,17 @@
-/* tylerwince.com — ARABESQUE
- * Lane: design-movement (Art Nouveau, 1900). The page is forged, not loaded.
- *   1. nav active-state on the enamel plaques (covers nested URLs)
- *   2. THE SIGNATURE — the vines grow in: iron scrollwork and the margin
- *      tendrils self-draw via stroke-dashoffset, buds open, and a gilt shimmer
- *      sweeps the name; thereafter each section's vine-spine draws as it enters
- *   3. the mobile gate — a latch swings a full-screen ironwork overlay open
+/* tylerwince.com — MANICULE
+ * Lane: pure-typography. The page is a critical edition; the interactions are
+ * its apparatus:
+ *   1. nav active-state on the ribbon markers (covers nested URLs)
+ *   2. THE SIGNATURE — the manicule: a small pointing hand glides down the
+ *      margin rule as you read, keeping a live line count ("l. 142");
+ *      sidenotes ink themselves in as each section arrives
+ *   3. the contents tassel — on small screens the ribbons unroll over the page
  * All motion is gated behind prefers-reduced-motion (handled in CSS too).
  */
 (function () {
   'use strict';
 
   var root = document.documentElement;
-  /* signal that JS is live so CSS can hold ornaments back, then grow them in */
   root.classList.add('js');
 
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -38,49 +38,84 @@
   if (best) setActive(best);
 
   /* ====================================================================
-     THE GATE — mobile nav overlay
+     THE CONTENTS TASSEL — small-screen nav: the ribbons unroll over the page
      ==================================================================== */
   var toggle = document.getElementById('nav-toggle');
   var nav = document.getElementById('site-nav');
 
-  function setGate(open) {
+  function setContents(open) {
     root.classList.toggle('nav-open', open);
     if (toggle) {
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggle.setAttribute('aria-label', open ? 'Close the gate' : 'Open the gate');
+      toggle.setAttribute('aria-label', open ? 'Close the contents' : 'Open the contents');
     }
   }
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
-      setGate(!root.classList.contains('nav-open'));
+      setContents(!root.classList.contains('nav-open'));
     });
-    /* a tap on any plaque closes the gate */
     navLinks.forEach(function (link) {
-      link.addEventListener('click', function () { setGate(false); });
+      link.addEventListener('click', function () { setContents(false); });
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target === nav || e.target.classList.contains('nav-list')) {
+        setContents(false);
+      }
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && root.classList.contains('nav-open')) {
-        setGate(false);
+        setContents(false);
         toggle.focus();
       }
     });
   }
 
   /* ====================================================================
-     THE PRESS — grow the vines in on load
+     THE MANICULE — walks the margin rule, counting lines as you read
      ==================================================================== */
+  var rail = document.getElementById('margin-rail');
+  var hand = document.getElementById('manicule');
+  var lineNo = document.getElementById('line-no');
+
+  if (rail && hand) {
+    var lineHeight = 30;
+    try {
+      var probe = parseFloat(getComputedStyle(document.body).lineHeight);
+      if (probe > 12) { lineHeight = probe; }
+    } catch (err) { /* keep fallback */ }
+
+    var ticking = false;
+    function placeHand() {
+      ticking = false;
+      var span = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = span > 0 ? Math.min(1, Math.max(0, window.scrollY / span)) : 0;
+      var travel = rail.clientHeight - hand.offsetHeight;
+      hand.style.transform = 'translateY(' + (progress * travel) + 'px)';
+      if (lineNo) {
+        lineNo.textContent = 'l. ' + (Math.round(window.scrollY / lineHeight) + 1);
+      }
+    }
+    function requestPlace() {
+      if (!ticking) { ticking = true; requestAnimationFrame(placeHand); }
+    }
+    window.addEventListener('scroll', requestPlace, { passive: true });
+    window.addEventListener('resize', requestPlace);
+    placeHand();
+  }
+
+  /* the hand arrives, the rubric inks in */
   if (reduce) {
-    root.classList.add('grown');           /* show final state, CSS skips the draw */
+    root.classList.add('inked');
   } else {
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        root.classList.add('grown');       /* -> tendrils draw, buds open, name gilds */
+        root.classList.add('inked');
       });
     });
   }
 
   /* ====================================================================
-     Section vine-spines draw as each plate enters the frame
+     Sidenotes ink in as each section enters the measure
      ==================================================================== */
   var sections = Array.prototype.slice.call(document.querySelectorAll('.home-section'));
   if (sections.length) {
@@ -94,7 +129,7 @@
             io.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.1 });
       sections.forEach(function (s) { io.observe(s); });
     }
   }
