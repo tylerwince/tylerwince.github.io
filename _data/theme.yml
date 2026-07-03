@@ -15,23 +15,24 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "MANICULE"
-date: "2026-07-02"
-lane: "pure-typography"
+name: "CHLADNI"
+date: "2026-07-03"
+lane: "generative"
 manifesto: >-
-  Five hundred years of book typography with nowhere to hide: one narrow
-  measure, one wide living margin, black ink for the text and red for what
-  matters. A little hand walks the margin as you read — follow it.
-nav_paradigm: "ribbon markers — silk bookmark ribbons hang from the top edge, one per page, swallowtail-cut with vertical labels; the current page's ribbon hangs longest, and on small screens they retract to a tassel that unrolls them over the page"
-layout_skeleton: "an opened critical edition — a rubricated oversized name over an incipit line, apps as a numbered catalogue raisonné, writing as a table of contents on leader dots, reading as tipped-in plates with numbered captions, a centered colophon"
-signature_interaction: "the manicule — a small pointing hand glides down the margin rule as you read, keeping a live line count; sidenotes and rubrication ink themselves in as each section arrives"
-color: "#f8f4ea"
+  Dust a plate with sand and bow its edge: the grains flee everything that
+  vibrates and gather where the wave stands still. Ernst Chladni's 1787
+  figures, computed live in your browser — strike the plate and watch the
+  sand find silence.
+nav_paradigm: "the standing wave — links sit at the nodes of a live oscillating string, each pinned to its own harmonic (110 Hz, 220 Hz…); the active node is clamped with a violet ring, and on small screens a 'tune' button opens the harmonic series full-screen"
+layout_skeleton: "a resonance bench — a full-bleed sand-simulation plate under a dot-matrix name, apps as three stippled circular plates, writing as a harmonic ladder, reading as covers riding a standing wave, bench-notes colophon"
+signature_interaction: "the strike — thousands of live sand grains scatter on arrival and random-walk into the nodal lines of a random (m,n) mode; strike the plate again and the sand finds a new figure"
+color: "#0e100f"
 fonts:
-  display: "Cormorant"
-  body: "Literata"
-  mono: "Courier Prime"
+  display: "Doto"
+  body: "Geologica"
+  mono: "Azeret Mono"
 palette:
-  - "#f8f4ea"
-  - "#211c15"
-  - "#867969"
-  - "#c22d17"
+  - "#0e100f"
+  - "#eae3d1"
+  - "#8f8b7c"
+  - "#9d7dff"

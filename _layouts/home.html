@@ -3,81 +3,91 @@ layout: default
 ---
 <div class="home">
 
-  <!-- ============ the incipit ============ -->
-  <section class="hero" id="top">
-    <p class="hero-incipit"><span class="hero-pilcrow" aria-hidden="true">¶</span> Here begins the personal site of</p>
-    <h1 class="hero-title">
-      <span class="hero-word">Tyler</span>
-      <span class="hero-word hero-word--2">Wince</span>
-    </h1>
-    <p class="hero-meta">
-      <em class="hero-epigraph">“{{ site.description | strip | escape }}”</em>
-      — essays on product, small iOS apps built with care, and an honest ledger
-      of books; set to a narrow measure, rubricated where it matters.
-    </p>
+  <!-- ============ the plate ============ -->
+  <section class="hero" id="plate">
+    <canvas class="plate-canvas" id="plate-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">after Ernst Chladni, 1787 · every grain is live</p>
+      <h1 class="hero-title">
+        <span class="hero-line">Tyler</span>
+        <span class="hero-line">Wince</span>
+      </h1>
+      <p class="hero-meta">
+        {{ site.description | strip | escape }} — essays on product, small iOS
+        apps built with care, and an honest ledger of books. The sand goes
+        where the wave stands still.
+      </p>
+    </div>
+    <div class="hero-readout">
+      <span class="readout-item readout-f" id="readout-f">f = ··· Hz</span>
+      <span class="readout-item readout-mode" id="readout-mode">mode (—,—)</span>
+      <button class="strike-btn" id="strike-btn" type="button">strike the plate&nbsp;<span aria-hidden="true">◌</span></button>
+    </div>
   </section>
 
-  <!-- ============ the works · a catalogue raisonné ============ -->
+  <!-- ============ apps · three plates ============ -->
   <section class="home-section home-section--apps" id="apps">
     <div class="section-header">
-      <span class="section-label">the works,<br>numbered as<br>a catalogue<br>raisonné</span>
+      <span class="section-label">resonances 01–03</span>
       <h2 class="section-title">Apps</h2>
-      <a href="{{ '/apps/' | relative_url }}" class="view-all">the full catalogue&nbsp;→</a>
+      <a href="{{ '/apps/' | relative_url }}" class="view-all">all three plates&nbsp;→</a>
     </div>
     <ol class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <li class="app-entry">
+      <li class="app-plate">
         <a href="{{ app.url | relative_url }}" class="app-card">
-          <span class="app-headline">
+          <span class="plate-figure" data-figure="{{ forloop.index | plus: 1 }},{{ forloop.index | plus: 3 }}" aria-hidden="true">
             {% if app.icon_path %}
-            <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="40" height="40">
+            <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="56" height="56">
             {% else %}
             <span class="app-icon app-icon--glyph" aria-hidden="true">{{ app.title | slice: 0, 1 }}</span>
             {% endif %}
-            <span class="app-info">
-              <span class="app-name">{{ app.title | escape }}</span>
-              <span class="app-desc">{{ app.tagline | escape }}</span>
-            </span>
           </span>
-          <span class="app-go" aria-hidden="true">see the entry&nbsp;→</span>
+          <span class="app-info">
+            <span class="app-name">{{ app.title | escape }}</span>
+            <span class="app-desc">{{ app.tagline | escape }}</span>
+            <span class="app-freq" aria-hidden="true">plate {{ forloop.index | prepend: '0' | slice: -2, 2 }} · {{ forloop.index | times: 137 | plus: 349 }}&nbsp;Hz</span>
+          </span>
         </a>
       </li>
       {% endfor %}
     </ol>
   </section>
 
-  <!-- ============ writing · a table of contents ============ -->
+  <!-- ============ writing · the harmonic ladder ============ -->
   <section class="home-section home-section--writing" id="writing">
     <div class="section-header">
-      <span class="section-label">lately set<br>in type, five<br>most recent</span>
+      <span class="section-label">overtones, five most recent</span>
       <h2 class="section-title">Writing</h2>
-      <a href="{{ '/writing/' | relative_url }}" class="view-all">the full contents&nbsp;→</a>
+      <a href="{{ '/writing/' | relative_url }}" class="view-all">the full series&nbsp;→</a>
     </div>
     <div class="post-list">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
       <a href="{{ post.url | relative_url }}" class="post-row">
-        <span class="post-folio" aria-hidden="true">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-        <span class="post-title">{{ post.title | escape }}</span>
-        <span class="post-leader" aria-hidden="true"></span>
-        <span class="post-date">{{ post.date | date: "%-d %b %Y" }}</span>
+        <span class="post-harmonic" data-harmonic="{{ forloop.index }}" aria-hidden="true"></span>
+        <span class="post-main">
+          <span class="post-title">{{ post.title | escape }}</span>
+          <span class="post-n" aria-hidden="true">n&nbsp;=&nbsp;{{ forloop.index }}</span>
+        </span>
+        <span class="post-date">{{ post.date | date: "%d·%m·%Y" }}</span>
       </a>
       {% endfor %}
     </div>
   </section>
 
-  <!-- ============ reading · the tipped-in plates ============ -->
+  <!-- ============ reading · covers on a standing wave ============ -->
   <section class="home-section home-section--reading" id="reading">
     <div class="section-header">
-      <span class="section-label">the plates,<br>tipped in from<br>the reading<br>ledger</span>
+      <span class="section-label">amplitudes, lately read</span>
       <h2 class="section-title">Reading</h2>
       <a href="{{ '/reading/' | relative_url }}" class="view-all">the whole ledger&nbsp;→</a>
     </div>
     <ul class="book-grid">
       {% assign recent_books = site.books | sort: "date" | reverse %}
       {% for book in recent_books limit: 10 %}
-      <li class="book-plate">
+      <li class="book-node">
         <a href="{{ '/reading/' | relative_url }}" class="book-card">
           {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
           {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
@@ -90,7 +100,7 @@ layout: default
           <span class="book-card-info">
             <span class="book-card-title">{{ book.title | escape }}</span>
             {% if book.author %}<span class="book-card-author">{{ book.author | escape }}</span>{% endif %}
-            <span class="book-card-status">{% if book.currently_reading %}in hand{% elsif book.stars %}{% for i in (1..book.stars) %}*{% endfor %}{% else %}logged{% endif %}</span>
+            <span class="book-card-status">{% if book.currently_reading %}resonating{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</span>
           </span>
         </a>
       </li>

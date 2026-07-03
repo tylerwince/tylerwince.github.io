@@ -24,31 +24,18 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
-  <!-- the imprimatur — one small line across the head of the leaf -->
+  <!-- the bench log — one line across the top of the experiment -->
   <div class="site-banner">
     <p class="banner-text">
-      <span class="banner-no">edition no.&nbsp;{{ design_no }}</span>
-      <span class="banner-name">{{ site.data.theme.name | default: "today's edition" }}</span>
-      <span class="banner-note">a new edition is set every day by AI</span>
-      <a class="banner-link" href="{{ '/archive/' | relative_url }}">every edition&nbsp;→</a>
+      <span class="banner-no">fig.&nbsp;{{ design_no }}</span>
+      <span class="banner-name">{{ site.data.theme.name | default: "today's figure" }}</span>
+      <span class="banner-note">a new figure is derived every day by AI</span>
+      <a class="banner-link" href="{{ '/archive/' | relative_url }}">every figure&nbsp;→</a>
     </p>
   </div>
 
-  <!-- the half-title + ribbon markers -->
+  <!-- the string + its nodes -->
   {% include header.html %}
-
-  <!-- THE APPARATUS : the margin rule the manicule walks, with a live line
-       count. Purely typographic furniture — hidden where the margin is. -->
-  <aside class="margin-rail" id="margin-rail" aria-hidden="true">
-    <span class="rail-rule"></span>
-    <span class="manicule" id="manicule">
-      <svg class="manicule-glyph" viewBox="0 0 44 26">
-        <rect x="0.5" y="5.5" width="6" height="15" rx="1" fill="currentColor"/>
-        <path fill="currentColor" d="M8 7 C10 5.6 13 5 15.6 5.6 L18 6.2 L39.5 7.4 A2.3 2.3 0 0 1 39.5 12 L19 12.6 C21.4 13.1 22.4 14 22.1 15.2 C21.8 16.4 19.8 16.7 18 16.3 C20 17 20.9 18 20.5 19.1 C20.1 20.2 18 20.4 16.4 19.9 C17.8 20.7 18 21.8 17 22.5 C15.4 23.6 12 22.9 10.2 21.6 C8.6 20.4 8 18.6 8 16.5 Z"/>
-      </svg>
-      <span class="line-no" id="line-no">l.&nbsp;1</span>
-    </span>
-  </aside>
 
   <main class="site-main">
     <div class="content-area">
