@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Whispering to agents">
+  <title>Tyler Wince</title>
+  <meta name="theme-color" content="#0e100f">
+  <meta property="og:title" content="Tyler Wince">
+  <meta property="og:description" content="Whispering to agents">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylerwince.com/archive/2026-07-03/">
+  
+  <meta property="og:image" content="https://tylerwince.com/archive/2026-07-03/assets/og/today.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/archive/2026-07-03/assets/favicon.svg?v=1783118452">
+  <style>@view-transition { navigation: auto; }</style>
+  <!-- Current theme's web fonts. Shared by default.html and the OG card layout so
+     per-article social images always render in the same faces as the live site.
+     REDESIGNS REWRITE THIS FILE (swap to your faces, ~4 weights max). -->
+<!-- CHLADNI — Doto (dot-matrix display: a name set in grains of sand) /
+     Geologica (clean geological sans for prose) / Azeret Mono (frequency
+     readouts, Hz labels & bench apparatus). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@600;900&family=Geologica:wght@300;400;600&family=Azeret+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/archive/2026-07-03/assets/css/main.css?v=1783118452">
+  <link type="application/atom+xml" rel="alternate" href="https://tylerwince.com/archive/2026-07-03/feed.xml" title="Tyler Wince" />
+<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;}.archive-banner a{color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;}.archive-banner a:hover{color:rgba(255,255,255,0.8);}.archive-banner-spacer{height:32px;}.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}(max-width:768px){.archive-banner{font-size:10px;padding:6px 10px;flex-wrap:wrap;justify-content:center;gap:4px;}.archive-banner-spacer{height:52px;}.site-header{top:52px!important;}}(max-width:480px){.archive-banner{flex-direction:column;gap:2px;padding:6px 8px;}.archive-banner-spacer{height:68px;}.site-header{top:68px!important;}}</style></head>
+<body data-archived="true" class="layout-home">
+  
+  
+  
+
+  <!-- the bench log — one line across the top of the experiment -->
+  <div class="site-banner">
+    <p class="banner-text">
+      <span class="banner-no">fig.&nbsp;44</span>
+      <span class="banner-name">CHLADNI</span>
+      <span class="banner-note">a new figure is derived every day by AI</span>
+      <a class="banner-link" href="/archive/2026-07-03/archive/">every figure&nbsp;→</a>
+    </p>
+  </div>
+
+  <!-- the string + its nodes -->
+  <!-- THE STANDING WAVE : navigation as nodes on a live oscillating string.
+     In a standing wave the nodes are the only still points — and touching a
+     string at a node is how you select a harmonic. Every destination sits at
+     a node, pinned to its own frequency in the harmonic series of 110 Hz.
+     The current page's node is clamped with a ring. On small screens the
+     string retracts and a "tune" button opens the series full-screen.
+     The site.header_pages loop is preserved. -->
+<header class="site-header" id="site-header">
+  <a class="site-title" href="/archive/2026-07-03/" aria-label="Tyler Wince — home">
+    <span class="site-title-mark monogram" aria-hidden="true"></span>
+    <span class="site-title-stack">
+      <span class="site-title-text">Tyler&nbsp;Wince</span>
+      <span class="site-title-sub">f&#8320; · essays · iOS apps · book notes</span>
+    </span>
+  </a>
+
+  <button class="nav-toggle" id="nav-toggle" type="button"
+          aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+    <span class="nav-toggle-wave" aria-hidden="true"></span>
+    <span class="nav-toggle-text">tune</span>
+  </button>
+
+  <nav class="site-nav" id="site-nav" aria-label="Primary">
+    <svg class="nav-string" id="nav-string" aria-hidden="true" preserveAspectRatio="none">
+      <path class="nav-string-path" id="nav-string-path" d="M0 34 L1000 34"/>
+    </svg>
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="node-link active" href="/archive/2026-07-03/" aria-current="page">
+          <span class="node-dot" aria-hidden="true"></span>
+          <span class="node-label">home</span>
+          <span class="node-hz" aria-hidden="true">110&nbsp;Hz</span>
+        </a>
+      </li>
+      
+        
+        
+        <li class="nav-item">
+          <a class="node-link" href="/archive/2026-07-03/apps/">
+            <span class="node-dot" aria-hidden="true"></span>
+            <span class="node-label">apps</span>
+            <span class="node-hz" aria-hidden="true">220&nbsp;Hz</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="node-link" href="/archive/2026-07-03/writing/">
+            <span class="node-dot" aria-hidden="true"></span>
+            <span class="node-label">writing</span>
+            <span class="node-hz" aria-hidden="true">330&nbsp;Hz</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="node-link" href="/archive/2026-07-03/reading/">
+            <span class="node-dot" aria-hidden="true"></span>
+            <span class="node-label">reading</span>
+            <span class="node-hz" aria-hidden="true">440&nbsp;Hz</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="node-link" href="/archive/2026-07-03/now/">
+            <span class="node-dot" aria-hidden="true"></span>
+            <span class="node-label">now</span>
+            <span class="node-hz" aria-hidden="true">550&nbsp;Hz</span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="node-link" href="/archive/2026-07-03/archive/">
+            <span class="node-dot" aria-hidden="true"></span>
+            <span class="node-label">archive</span>
+            <span class="node-hz" aria-hidden="true">660&nbsp;Hz</span>
+          </a>
+        </li>
+        
+      
+    </ul>
+  </nav>
+</header>
+
+
+  <main class="site-main">
+    <div class="content-area">
+      <div class="home">
+
+  <!-- ============ the plate ============ -->
+  <section class="hero" id="plate">
+    <canvas class="plate-canvas" id="plate-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">after Ernst Chladni, 1787 · every grain is live</p>
+      <h1 class="hero-title">
+        <span class="hero-line">Tyler</span>
+        <span class="hero-line">Wince</span>
+      </h1>
+      <p class="hero-meta">
+        Whispering to agents — essays on product, small iOS
+        apps built with care, and an honest ledger of books. The sand goes
+        where the wave stands still.
+      </p>
+    </div>
+    <div class="hero-readout">
+      <span class="readout-item readout-f" id="readout-f">f = ··· Hz</span>
+      <span class="readout-item readout-mode" id="readout-mode">mode (—,—)</span>
+      <button class="strike-btn" id="strike-btn" type="button">strike the plate&nbsp;<span aria-hidden="true">◌</span></button>
+    </div>
+  </section>
+
+  <!-- ============ apps · three plates ============ -->
+  <section class="home-section home-section--apps" id="apps">
+    <div class="section-header">
+      <span class="section-label">resonances 01–03</span>
+      <h2 class="section-title">Apps</h2>
+      <a href="/archive/2026-07-03/apps/" class="view-all">all three plates&nbsp;→</a>
+    </div>
+    <ol class="app-list">
+      
+      
+      <li class="app-plate">
+        <a href="/archive/2026-07-03/apps/etch/" class="app-card">
+          <span class="plate-figure" data-figure="2,4" aria-hidden="true">
+            
+            <img class="app-icon" src="/archive/2026-07-03/assets/etch_logo.png" alt="" loading="lazy" width="56" height="56">
+            
+          </span>
+          <span class="app-info">
+            <span class="app-name">Etch</span>
+            <span class="app-desc">Spaced repetition, built like Apple would.</span>
+            <span class="app-freq" aria-hidden="true">plate 01 · 486&nbsp;Hz</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="app-plate">
+        <a href="/archive/2026-07-03/apps/waymark/" class="app-card">
+          <span class="plate-figure" data-figure="3,5" aria-hidden="true">
+            
+            <img class="app-icon" src="/archive/2026-07-03/assets/waymark_icon.png" alt="" loading="lazy" width="56" height="56">
+            
+          </span>
+          <span class="app-info">
+            <span class="app-name">Waymark</span>
+            <span class="app-desc">Remember God&#39;s faithfulness</span>
+            <span class="app-freq" aria-hidden="true">plate 02 · 623&nbsp;Hz</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="app-plate">
+        <a href="/archive/2026-07-03/apps/little-quotes/" class="app-card">
+          <span class="plate-figure" data-figure="4,6" aria-hidden="true">
+            
+            <img class="app-icon" src="/archive/2026-07-03/assets/littleQuotes_icon.png" alt="" loading="lazy" width="56" height="56">
+            
+          </span>
+          <span class="app-info">
+            <span class="app-name">Little Quotes</span>
+            <span class="app-desc">Capture kids&#39; priceless words.</span>
+            <span class="app-freq" aria-hidden="true">plate 03 · 760&nbsp;Hz</span>
+          </span>
+        </a>
+      </li>
+      
+    </ol>
+  </section>
+
+  <!-- ============ writing · the harmonic ladder ============ -->
+  <section class="home-section home-section--writing" id="writing">
+    <div class="section-header">
+      <span class="section-label">overtones, five most recent</span>
+      <h2 class="section-title">Writing</h2>
+      <a href="/archive/2026-07-03/writing/" class="view-all">the full series&nbsp;→</a>
+    </div>
+    <div class="post-list">
+      
+      
+      <a href="/archive/2026-07-03/2026/06/01/a-pantheon-of-one/" class="post-row">
+        <span class="post-harmonic" data-harmonic="1" aria-hidden="true"></span>
+        <span class="post-main">
+          <span class="post-title">A Pantheon of One</span>
+          <span class="post-n" aria-hidden="true">n&nbsp;=&nbsp;1</span>
+        </span>
+        <span class="post-date">01·06·2026</span>
+      </a>
+      
+      <a href="/archive/2026-07-03/2026/05/18/managers-arent-cooked-theyre-first/" class="post-row">
+        <span class="post-harmonic" data-harmonic="2" aria-hidden="true"></span>
+        <span class="post-main">
+          <span class="post-title">Managers Aren&#39;t Cooked. They&#39;re First.</span>
+          <span class="post-n" aria-hidden="true">n&nbsp;=&nbsp;2</span>
+        </span>
+        <span class="post-date">18·05·2026</span>
+      </a>
+      
+      <a href="/archive/2026-07-03/2025/12/02/one-day-theyll-stop-calling-it-basgetti/" class="post-row">
+        <span class="post-harmonic" data-harmonic="3" aria-hidden="true"></span>
+        <span class="post-main">
+          <span class="post-title">One day, they&#39;ll stop calling it &quot;basgetti&quot;</span>
+          <span class="post-n" aria-hidden="true">n&nbsp;=&nbsp;3</span>
+        </span>
+        <span class="post-date">02·12·2025</span>
+      </a>
+      
+      <a href="/archive/2026-07-03/2025/11/25/watching-someone-else-exercise/" class="post-row">
+        <span class="post-harmonic" data-harmonic="4" aria-hidden="true"></span>
+        <span class="post-main">
+          <span class="post-title">Watching Someone Else Exercise</span>
+          <span class="post-n" aria-hidden="true">n&nbsp;=&nbsp;4</span>
+        </span>
+        <span class="post-date">25·11·2025</span>
+      </a>
+      
+      <a href="/archive/2026-07-03/2025/11/13/choosing-what-i-keep/" class="post-row">
+        <span class="post-harmonic" data-harmonic="5" aria-hidden="true"></span>
+        <span class="post-main">
+          <span class="post-title">Choosing What I Keep</span>
+          <span class="post-n" aria-hidden="true">n&nbsp;=&nbsp;5</span>
+        </span>
+        <span class="post-date">13·11·2025</span>
+      </a>
+      
+    </div>
+  </section>
+
+  <!-- ============ reading · covers on a standing wave ============ -->
+  <section class="home-section home-section--reading" id="reading">
+    <div class="section-header">
+      <span class="section-label">amplitudes, lately read</span>
+      <h2 class="section-title">Reading</h2>
+      <a href="/archive/2026-07-03/reading/" class="view-all">the whole ledger&nbsp;→</a>
+    </div>
+    <ul class="book-grid">
+      
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/tiny-experiments.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">Tiny Experiments</span>
+            <span class="book-card-author">Anne-Laure Le Cunff</span>
+            <span class="book-card-status">resonating</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/the-lifecycle-of-software-objects.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">The Lifecycle of Software Objects</span>
+            <span class="book-card-author">Ted Chiang</span>
+            <span class="book-card-status">3/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/the-last-question.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">The Last Question</span>
+            <span class="book-card-author">Isaac Asimov</span>
+            <span class="book-card-status">2/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/a-short-stay-in-hell.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">A Short Stay in Hell</span>
+            <span class="book-card-author">Steven L. Peck</span>
+            <span class="book-card-status">5/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/the-art-of-asking-better-questions.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">The Art of Asking Better Questions</span>
+            <span class="book-card-author">J.R. Briggs</span>
+            <span class="book-card-status">4/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/there-is-no-antimemetics-division.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">There is No Antimemetics Division</span>
+            <span class="book-card-author">qntm</span>
+            <span class="book-card-status">5/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/antimemetics.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">Antimemetics</span>
+            <span class="book-card-author">Nadia Asparouhova</span>
+            <span class="book-card-status">4/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/pontius-pilate.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">Pontius Pilate</span>
+            <span class="book-card-author">Ann Wroe</span>
+            <span class="book-card-status">4/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/abundance.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">Abundance</span>
+            <span class="book-card-author">Ezra Klein and Derek Thompson</span>
+            <span class="book-card-status">3/5</span>
+          </span>
+        </a>
+      </li>
+      
+      <li class="book-node">
+        <a href="/archive/2026-07-03/reading/" class="book-card">
+          
+          
+          
+          
+          <img class="book-card-cover" src="/archive/2026-07-03/assets/covers/bubbles-and-the-end-of-stagnation.jpg" alt="" loading="lazy">
+          
+          <span class="book-card-info">
+            <span class="book-card-title">Bubbles and the End of Stagnation</span>
+            <span class="book-card-author">Byrne Hobart and Tobias Huber</span>
+            <span class="book-card-status">4/5</span>
+          </span>
+        </a>
+      </li>
+      
+    </ul>
+  </section>
+</div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-figure" aria-hidden="true" data-figure="4,5"></div>
+
+  <p class="footer-colophon">
+    <span class="footer-colophon-lead">Bench notes.</span>
+    Set in <em>Doto</em> — a name in grains — with <em>Geologica</em> for the
+    prose and <em>Azeret&nbsp;Mono</em> for the readouts. Two colours, one
+    violet signal; every figure on this page is computed live, never an image.
+    A new resonance is found every day by AI.
+  </p>
+
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-col-title">still points</div>
+      <a href="/archive/2026-07-03/">home</a>
+      <a href="/archive/2026-07-03/now/">/now</a>
+      <a href="/archive/2026-07-03/archive/">every figure</a>
+    </div>
+
+    <div class="footer-col">
+      <div class="footer-col-title">elsewhere</div>
+      <ul class="social-list">
+        
+        <li><a href="https://github.com/tylerwince" target="_blank" rel="noopener">GitHub</a></li>
+        
+        
+        <li><a href="https://twitter.com/tylerwince" target="_blank" rel="noopener">Twitter</a></li>
+        
+        <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col footer-col--imprint">
+      <div class="footer-col-title">imprint</div>
+      <p class="footer-imprint-line">© 2026 Tyler Wince</p>
+      <p class="footer-imprint-line">measured at f&#8320; = 110&nbsp;Hz · the plate is quiet</p>
+    </div>
+  </div>
+
+  <div class="footer-mark" aria-hidden="true"><span class="monogram"></span></div>
+</footer>
+
+
+  <script src="/archive/2026-07-03/assets/js/main.js?v=1783118452"></script>
+</body>
+</html>

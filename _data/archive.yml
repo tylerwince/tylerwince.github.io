@@ -462,3 +462,33 @@
   - "#211c15"
   - "#867969"
   - "#c22d17"
+- date: '2026-07-03'
+  theme: CHLADNI
+  description: 'Dust a plate with sand and bow its edge: the grains flee everything
+    that vibrates and gather where the wave stands still. Ernst Chladni''s 1787 figures,
+    computed live in your browser — strike the plate and watch the sand find silence.'
+  commit: 6d6f8bb2
+  lane: generative
+  manifesto: 'Dust a plate with sand and bow its edge: the grains flee everything
+    that vibrates and gather where the wave stands still. Ernst Chladni''s 1787 figures,
+    computed live in your browser — strike the plate and watch the sand find silence.'
+  nav_paradigm: the standing wave — links sit at the nodes of a live oscillating string,
+    each pinned to its own harmonic (110 Hz, 220 Hz…); the active node is clamped
+    with a violet ring, and on small screens a 'tune' button opens the harmonic series
+    full-screen
+  layout_skeleton: a resonance bench — a full-bleed sand-simulation plate under a
+    dot-matrix name, apps as three stippled circular plates, writing as a harmonic
+    ladder, reading as covers riding a standing wave, bench-notes colophon
+  signature_interaction: the strike — thousands of live sand grains scatter on arrival
+    and random-walk into the nodal lines of a random (m,n) mode; strike the plate
+    again and the sand finds a new figure
+  color: "#0e100f"
+  fonts:
+    display: Doto
+    body: Geologica
+    mono: Azeret Mono
+  palette:
+  - "#0e100f"
+  - "#eae3d1"
+  - "#8f8b7c"
+  - "#9d7dff"
