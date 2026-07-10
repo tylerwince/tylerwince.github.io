@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Whispering to agents">
+  <title>Exporting Your Anki Deck for Etch — Tyler Wince</title>
+  <meta name="theme-color" content="#160909">
+  <meta property="og:title" content="Exporting Your Anki Deck for Etch — Tyler Wince">
+  <meta property="og:description" content="Whispering to agents">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tylerwince.com/archive/2026-07-10/etch/anki-export-instructions/">
+  
+  <meta property="og:image" content="https://tylerwince.com/archive/2026-07-10/assets/og/today.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="/archive/2026-07-10/assets/favicon.svg?v=1783705367">
+  <style>@view-transition { navigation: auto; }</style>
+  <!-- THE PINBALL AUTHOR — cabinet lettering / readable instructions / score reels. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Chivo:ital,wght@0,400;0,600;0,800;1,400&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/archive/2026-07-10/assets/css/main.css?v=1783705367">
+  <link type="application/atom+xml" rel="alternate" href="https://tylerwince.com/archive/2026-07-10/feed.xml" title="Tyler Wince" />
+<!-- Archive Banner Styles --><style>.archive-banner{position:fixed;top:0;left:0;right:0;z-index:9999;background:#111;color:rgba(255,255,255,0.7);text-align:center;padding:6px 20px;font-family:ui-monospace,SFMono-Regular,SF Mono,Menlo,monospace;font-size:11.5px;font-weight:500;letter-spacing:0.03em;display:flex;align-items:center;justify-content:space-between;}.archive-banner a{color:rgba(255,255,255,0.5);text-decoration:none;font-weight:500;transition:color 0.2s;}.archive-banner a:hover{color:rgba(255,255,255,0.8);}.archive-banner-spacer{height:32px;}.daily-design-badge,.ai-design-banner{display:none!important;}.site-header{top:32px!important;}(max-width:768px){.archive-banner{font-size:10px;padding:6px 10px;flex-wrap:wrap;justify-content:center;gap:4px;}.archive-banner-spacer{height:52px;}.site-header{top:52px!important;}}(max-width:480px){.archive-banner{flex-direction:column;gap:2px;padding:6px 8px;}.archive-banner-spacer{height:68px;}.site-header{top:68px!important;}}</style></head>
+<body data-archived="true" class="layout-page">
+  
+  
+  
+
+  <div class="cabinet-shell">
+    <div class="ai-design-banner site-banner" role="note">
+      <span class="banner-screw" aria-hidden="true"></span>
+      <p class="banner-text">
+        <span class="banner-no">machine 45</span>
+        <span class="banner-name">THE PINBALL AUTHOR</span>
+        <span class="banner-note">a new cabinet is built every day by AI</span>
+        <a class="banner-link" href="/archive/2026-07-10/archive/">open the arcade</a>
+      </p>
+      <span class="banner-screw" aria-hidden="true"></span>
+    </div>
+
+    <!-- THE BACKGLASS: identity, score and navigation share the cabinet display. -->
+<header class="site-header" id="site-header">
+  <div class="backglass-brand">
+    <a class="site-title" href="/archive/2026-07-10/" aria-label="Tyler Wince — home">
+      <span class="site-title-mark monogram" aria-hidden="true"></span>
+      <span class="site-title-stack">
+        <span class="site-title-text">Tyler Wince</span>
+        <span class="site-title-sub">Whispering to agents</span>
+      </span>
+    </a>
+
+    <div class="score-bank" aria-live="polite" aria-atomic="true">
+      <span class="score-label">player one</span>
+      <span class="score-digits" id="cabinet-score">000000</span>
+      <span class="score-ball" id="ball-readout">ball 1</span>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+      <span class="nav-toggle-lamp" aria-hidden="true"></span>
+      <span class="nav-toggle-text">routes</span>
+    </button>
+  </div>
+
+  <nav class="site-nav" id="site-nav" aria-label="Primary">
+    <div class="nav-instruction" aria-hidden="true">
+      <span>select a lane</span>
+      <span>machine 45</span>
+    </div>
+    <ol class="nav-list">
+      <li class="nav-item">
+        <a class="reel-link" href="/archive/2026-07-10/">
+          <span class="reel-number">00</span>
+          <span class="reel-label">home</span>
+          <span class="reel-lamp" aria-hidden="true"></span>
+        </a>
+      </li>
+      
+        
+        
+        <li class="nav-item">
+          <a class="reel-link" href="/archive/2026-07-10/apps/">
+            <span class="reel-number">01</span>
+            <span class="reel-label">apps</span>
+            <span class="reel-lamp" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="reel-link" href="/archive/2026-07-10/writing/">
+            <span class="reel-number">02</span>
+            <span class="reel-label">writing</span>
+            <span class="reel-lamp" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="reel-link" href="/archive/2026-07-10/reading/">
+            <span class="reel-number">03</span>
+            <span class="reel-label">reading</span>
+            <span class="reel-lamp" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="reel-link" href="/archive/2026-07-10/now/">
+            <span class="reel-number">04</span>
+            <span class="reel-label">now</span>
+            <span class="reel-lamp" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+        
+        
+        <li class="nav-item">
+          <a class="reel-link" href="/archive/2026-07-10/archive/">
+            <span class="reel-number">05</span>
+            <span class="reel-label">archive</span>
+            <span class="reel-lamp" aria-hidden="true"></span>
+          </a>
+        </li>
+        
+      
+    </ol>
+  </nav>
+</header>
+
+
+    <main class="cabinet-main" id="main-content">
+      <div class="cabinet-rail cabinet-rail--left" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="playfield-frame">
+        <div class="playfield-surface">
+          <div class="pinball-ball" id="pinball-ball" aria-hidden="true"></div>
+          <div class="content-area">
+            <article class="service-manual">
+  <header class="manual-plate reveal-zone">
+    <div class="manual-index" aria-hidden="true">
+      <span>operator file</span>
+      <span> · etch · anki-export-instructions · </span>
+    </div>
+    <div class="manual-title-block">
+      <p class="article-kicker">playfield instructions</p>
+      <h1 class="article-title">Exporting Your Anki Deck for Etch</h1>
+      
+    </div>
+    <div class="manual-badge" aria-hidden="true"><span class="monogram"></span></div>
+  </header>
+
+  <div class="manual-body article-body">
+    <aside class="manual-rail" aria-hidden="true">
+      <span>read</span><i></i><span>play</span><i></i><span>repeat</span>
+    </aside>
+    <div class="manual-copy"><p>To import your Anki flashcards into Etch Flashcards, you’ll need to export your deck in a specific format. Follow these steps to ensure a smooth transition:</p>
+
+<h2 id="export-settings">Export Settings</h2>
+
+<ol>
+  <li>Open Anki and navigate to the deck you want to export.</li>
+  <li>Click on “File” &gt; “Export” in the main menu.</li>
+  <li>In the export dialog, use these settings:</li>
+</ol>
+
+<p><img src="/assets/anki-export-instruction.png" alt="anki-export-instruction-image" /></p>
+
+<ul>
+  <li>Set “Export format” to “Anki Deck Package (.apkg)”</li>
+  <li>Check “Include scheduling information”</li>
+  <li>Check “Support older Anki versions (slower/larger files)”</li>
+  <li>Leave all other options unchecked</li>
+</ul>
+
+<ol>
+  <li>Click “Export” and choose a location to save the file.</li>
+</ol>
+
+<h2 id="supported-card-types">Supported Card Types</h2>
+
+<p>Etch currently supports the following Anki card types:</p>
+
+<ul>
+  <li>Basic cards</li>
+  <li>Basic and reversed cards</li>
+</ul>
+
+<p>Please note that Etch does not currently support:</p>
+
+<ul>
+  <li>Cloze deletion cards</li>
+  <li>Image occlusion cards</li>
+  <li>Audio cards</li>
+</ul>
+
+<p>If your deck contains unsupported card types, they will not be imported into Etch.</p>
+
+<h2 id="preserving-your-progress">Preserving Your Progress</h2>
+
+<p>Good news! Etch Flashcards will automatically parse the scheduling information from your Anki deck and convert it to the Free Spaced Repetition Scheduler (FSRS) parameters used in Etch. This means you won’t lose any of your learning progress when transitioning to Etch.</p>
+
+<h2 id="additional-information">Additional Information</h2>
+
+<ul>
+  <li>Make sure your Anki deck is up-to-date and synced before exporting.</li>
+  <li>The exported file may be larger than expected due to the “Support older Anki versions” option. This is normal and ensures compatibility with Etch.</li>
+  <li>If you have multiple decks you want to import, repeat this process for each deck separately.</li>
+  <li>After importing into Etch, it’s recommended to review a few cards to ensure the content and scheduling have been transferred correctly.</li>
+</ul>
+
+<p>If you encounter any issues during the import process or notice any discrepancies in your imported cards, please copy the import log and email to Etch.</p>
+</div>
+  </div>
+</article>
+
+          </div>
+        </div>
+      </div>
+      <div class="cabinet-rail cabinet-rail--right" aria-hidden="true"><i></i><i></i><i></i></div>
+    </main>
+
+    <footer class="site-footer">
+  <div class="apron-instructions">
+    <span class="apron-number">T·W / 2026</span>
+    <p>
+      Keep the ball moving. Follow a lit lane, strike a bumper, open a book,
+      build something useful. The cabinet changes; the work remains.
+    </p>
+  </div>
+
+  <div class="apron-service-panel">
+    <div class="service-slot">
+      <span class="service-label">replay</span>
+      <a href="/archive/2026-07-10/">home</a>
+      <a href="/archive/2026-07-10/archive/">archive</a>
+      <a href="/archive/2026-07-10/now/">now</a>
+    </div>
+
+    <div class="service-slot service-slot--social">
+      <span class="service-label">multiplayer</span>
+      <ul class="social-list">
+        
+        <li><a href="https://github.com/tylerwince" target="_blank" rel="noopener">GitHub</a></li>
+        
+        
+        <li><a href="https://twitter.com/tylerwince" target="_blank" rel="noopener">Twitter</a></li>
+        
+        <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div class="coin-door" aria-hidden="true">
+      <span class="coin-return"></span>
+      <span class="coin-lettering">© Tyler Wince</span>
+      <span class="coin-return"></span>
+    </div>
+  </div>
+
+  <a class="footer-mark" href="#main-content" aria-label="Back to the top">
+    <span class="monogram" aria-hidden="true"></span>
+    <span>tilt again</span>
+  </a>
+</footer>
+
+  </div>
+
+  <script src="/archive/2026-07-10/assets/js/main.js?v=1783705367"></script>
+</body>
+</html>

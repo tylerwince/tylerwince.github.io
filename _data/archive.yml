@@ -492,3 +492,33 @@
   - "#eae3d1"
   - "#8f8b7c"
   - "#9d7dff"
+- date: '2026-07-10'
+  theme: THE PINBALL AUTHOR
+  description: A personal site built as an electromechanical pinball table. Apps are
+    pop bumpers, essays are rollover lanes, and books stand in a bank of drop targets
+    — launch the ball and keep the work in play.
+  commit: '09965855'
+  lane: object-metaphor
+  manifesto: A personal site built as an electromechanical pinball table. Apps are
+    pop bumpers, essays are rollover lanes, and books stand in a bank of drop targets
+    — launch the ball and keep the work in play.
+  nav_paradigm: the backglass scorebox — identity, live score and numbered page reels
+    share a cabinet marquee; on mobile the backglass hinges open into a full-screen
+    route selector
+  layout_skeleton: a playable cabinet — reading drop targets beside a plunger-lane
+    hero, three circular app bumpers, long essay rollovers, service-manual interiors
+    and a coin-door footer
+  signature_interaction: launch ball — a live steel ball ricochets around the viewport,
+    flashes any visible targets it strikes and advances the electromechanical score
+    reel
+  color: "#160909"
+  fonts:
+    display: Bowlby One SC
+    body: Chivo
+    mono: Roboto Mono
+  palette:
+  - "#160909"
+  - "#f3e4bb"
+  - "#ef3e36"
+  - "#42c8b4"
+  - "#ffd23f"
