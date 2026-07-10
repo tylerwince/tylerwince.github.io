@@ -1,49 +1,52 @@
-<!-- THE STANDING WAVE : navigation as nodes on a live oscillating string.
-     In a standing wave the nodes are the only still points — and touching a
-     string at a node is how you select a harmonic. Every destination sits at
-     a node, pinned to its own frequency in the harmonic series of 110 Hz.
-     The current page's node is clamped with a ring. On small screens the
-     string retracts and a "tune" button opens the series full-screen.
-     The site.header_pages loop is preserved. -->
+<!-- THE BACKGLASS: identity, score and navigation share the cabinet display. -->
 <header class="site-header" id="site-header">
-  <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
-    <span class="site-title-mark monogram" aria-hidden="true"></span>
-    <span class="site-title-stack">
-      <span class="site-title-text">Tyler&nbsp;Wince</span>
-      <span class="site-title-sub">f&#8320; · essays · iOS apps · book notes</span>
-    </span>
-  </a>
+  <div class="backglass-brand">
+    <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
+      <span class="site-title-mark monogram" aria-hidden="true"></span>
+      <span class="site-title-stack">
+        <span class="site-title-text">Tyler Wince</span>
+        <span class="site-title-sub">Whispering to agents</span>
+      </span>
+    </a>
 
-  <button class="nav-toggle" id="nav-toggle" type="button"
-          aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-    <span class="nav-toggle-wave" aria-hidden="true"></span>
-    <span class="nav-toggle-text">tune</span>
-  </button>
+    <div class="score-bank" aria-live="polite" aria-atomic="true">
+      <span class="score-label">player one</span>
+      <span class="score-digits" id="cabinet-score">000000</span>
+      <span class="score-ball" id="ball-readout">ball 1</span>
+    </div>
+
+    <button class="nav-toggle" id="nav-toggle" type="button"
+            aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+      <span class="nav-toggle-lamp" aria-hidden="true"></span>
+      <span class="nav-toggle-text">routes</span>
+    </button>
+  </div>
 
   <nav class="site-nav" id="site-nav" aria-label="Primary">
-    <svg class="nav-string" id="nav-string" aria-hidden="true" preserveAspectRatio="none">
-      <path class="nav-string-path" id="nav-string-path" d="M0 34 L1000 34"/>
-    </svg>
-    <ul class="nav-list">
+    <div class="nav-instruction" aria-hidden="true">
+      <span>select a lane</span>
+      <span>machine {{ design_no }}</span>
+    </div>
+    <ol class="nav-list">
       <li class="nav-item">
-        <a class="node-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>
-          <span class="node-dot" aria-hidden="true"></span>
-          <span class="node-label">home</span>
-          <span class="node-hz" aria-hidden="true">110&nbsp;Hz</span>
+        <a class="reel-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>
+          <span class="reel-number">00</span>
+          <span class="reel-label">home</span>
+          <span class="reel-lamp" aria-hidden="true"></span>
         </a>
       </li>
       {% for nav_page_name in site.header_pages %}
         {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
         {% if nav_page %}
         <li class="nav-item">
-          <a class="node-link{% if page.url contains nav_page.url %} active{% endif %}" href="{{ nav_page.url | relative_url }}"{% if page.url contains nav_page.url %} aria-current="page"{% endif %}>
-            <span class="node-dot" aria-hidden="true"></span>
-            <span class="node-label">{{ nav_page.title | downcase }}</span>
-            <span class="node-hz" aria-hidden="true">{{ forloop.index | plus: 1 | times: 110 }}&nbsp;Hz</span>
+          <a class="reel-link{% if page.url contains nav_page.url %} active{% endif %}" href="{{ nav_page.url | relative_url }}"{% if page.url contains nav_page.url %} aria-current="page"{% endif %}>
+            <span class="reel-number">0{{ forloop.index }}</span>
+            <span class="reel-label">{{ nav_page.title | downcase }}</span>
+            <span class="reel-lamp" aria-hidden="true"></span>
           </a>
         </li>
         {% endif %}
       {% endfor %}
-    </ul>
+    </ol>
   </nav>
 </header>

@@ -15,24 +15,24 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "CHLADNI"
-date: "2026-07-03"
-lane: "generative"
+name: "THE PINBALL AUTHOR"
+date: "2026-07-10"
+lane: "object-metaphor"
 manifesto: >-
-  Dust a plate with sand and bow its edge: the grains flee everything that
-  vibrates and gather where the wave stands still. Ernst Chladni's 1787
-  figures, computed live in your browser — strike the plate and watch the
-  sand find silence.
-nav_paradigm: "the standing wave — links sit at the nodes of a live oscillating string, each pinned to its own harmonic (110 Hz, 220 Hz…); the active node is clamped with a violet ring, and on small screens a 'tune' button opens the harmonic series full-screen"
-layout_skeleton: "a resonance bench — a full-bleed sand-simulation plate under a dot-matrix name, apps as three stippled circular plates, writing as a harmonic ladder, reading as covers riding a standing wave, bench-notes colophon"
-signature_interaction: "the strike — thousands of live sand grains scatter on arrival and random-walk into the nodal lines of a random (m,n) mode; strike the plate again and the sand finds a new figure"
-color: "#0e100f"
+  A personal site built as an electromechanical pinball table. Apps are pop
+  bumpers, essays are rollover lanes, and books stand in a bank of drop
+  targets — launch the ball and keep the work in play.
+nav_paradigm: "the backglass scorebox — identity, live score and numbered page reels share a cabinet marquee; on mobile the backglass hinges open into a full-screen route selector"
+layout_skeleton: "a playable cabinet — reading drop targets beside a plunger-lane hero, three circular app bumpers, long essay rollovers, service-manual interiors and a coin-door footer"
+signature_interaction: "launch ball — a live steel ball ricochets around the viewport, flashes any visible targets it strikes and advances the electromechanical score reel"
+color: "#160909"
 fonts:
-  display: "Doto"
-  body: "Geologica"
-  mono: "Azeret Mono"
+  display: "Bowlby One SC"
+  body: "Chivo"
+  mono: "Roboto Mono"
 palette:
-  - "#0e100f"
-  - "#eae3d1"
-  - "#8f8b7c"
-  - "#9d7dff"
+  - "#160909"
+  - "#f3e4bb"
+  - "#ef3e36"
+  - "#42c8b4"
+  - "#ffd23f"

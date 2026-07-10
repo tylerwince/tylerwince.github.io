@@ -1,24 +1,22 @@
 <footer class="site-footer">
-  <div class="footer-figure" aria-hidden="true" data-figure="4,5"></div>
+  <div class="apron-instructions">
+    <span class="apron-number">T·W / {{ site.time | date: "%Y" }}</span>
+    <p>
+      Keep the ball moving. Follow a lit lane, strike a bumper, open a book,
+      build something useful. The cabinet changes; the work remains.
+    </p>
+  </div>
 
-  <p class="footer-colophon">
-    <span class="footer-colophon-lead">Bench notes.</span>
-    Set in <em>Doto</em> — a name in grains — with <em>Geologica</em> for the
-    prose and <em>Azeret&nbsp;Mono</em> for the readouts. Two colours, one
-    violet signal; every figure on this page is computed live, never an image.
-    A new resonance is found every day by AI.
-  </p>
-
-  <div class="footer-grid">
-    <div class="footer-col">
-      <div class="footer-col-title">still points</div>
+  <div class="apron-service-panel">
+    <div class="service-slot">
+      <span class="service-label">replay</span>
       <a href="{{ '/' | relative_url }}">home</a>
-      <a href="{{ '/now/' | relative_url }}">/now</a>
-      <a href="{{ '/archive/' | relative_url }}">every figure</a>
+      <a href="{{ '/archive/' | relative_url }}">archive</a>
+      <a href="{{ '/now/' | relative_url }}">now</a>
     </div>
 
-    <div class="footer-col">
-      <div class="footer-col-title">elsewhere</div>
+    <div class="service-slot service-slot--social">
+      <span class="service-label">multiplayer</span>
       <ul class="social-list">
         {% if site.github_username %}
         <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
@@ -30,12 +28,15 @@
       </ul>
     </div>
 
-    <div class="footer-col footer-col--imprint">
-      <div class="footer-col-title">imprint</div>
-      <p class="footer-imprint-line">© {{ site.time | date: "%Y" }} Tyler Wince</p>
-      <p class="footer-imprint-line">measured at f&#8320; = 110&nbsp;Hz · the plate is quiet</p>
+    <div class="coin-door" aria-hidden="true">
+      <span class="coin-return"></span>
+      <span class="coin-lettering">© Tyler Wince</span>
+      <span class="coin-return"></span>
     </div>
   </div>
 
-  <div class="footer-mark" aria-hidden="true"><span class="monogram"></span></div>
+  <a class="footer-mark" href="#main-content" aria-label="Back to the top">
+    <span class="monogram" aria-hidden="true"></span>
+    <span>tilt again</span>
+  </a>
 </footer>

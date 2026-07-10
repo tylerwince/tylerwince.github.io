@@ -1,33 +1,33 @@
 ---
 layout: default
 ---
-<article class="article article--ticket">
-  <header class="article-header">
-    <span class="ticket-rip" aria-hidden="true"></span>
-    <div class="article-kicker">app · ripples</div>
-    <h1 class="article-title">{{ page.title | escape }}</h1>
-    {% if page.tagline %}
-    <p class="article-description">{{ page.tagline }}</p>
-    {% endif %}
-    <div class="article-meta">
-      {% if page.platform %}<span class="meta-item">{{ page.platform }}</span>{% endif %}
-      {% if page.tech_stack %}<span class="meta-item">{{ page.tech_stack | join: ' · ' }}</span>{% endif %}
+<article class="operator-sheet operator-sheet--app">
+  <header class="app-machine-header reveal-zone">
+    <div class="app-medallion" data-pin="app">
+      <span class="app-medallion-ring" aria-hidden="true"></span>
+      {% if page.icon_path %}<img src="{{ page.icon_path | relative_url }}" alt="" width="120" height="120">{% endif %}
+    </div>
+    <div class="app-title-panel">
+      <p class="article-kicker">machine in the field</p>
+      <h1 class="article-title">{{ page.title | escape }}</h1>
+      {% if page.tagline %}<p class="article-description">{{ page.tagline }}</p>{% endif %}
+    </div>
+    <div class="app-spec-panel">
+      {% if page.platform %}<span><b>platform</b>{{ page.platform }}</span>{% endif %}
+      {% if page.tech_stack %}<span><b>system</b>{{ page.tech_stack | join: ' · ' }}</span>{% endif %}
       {% if page.app_store_link %}
-      <span class="meta-item"><a href="{{ page.app_store_link }}" target="_blank" rel="noopener">Download →</a></span>
+      <a class="download-plunger" href="{{ page.app_store_link }}" target="_blank" rel="noopener">Download <span aria-hidden="true">↗</span></a>
       {% endif %}
     </div>
   </header>
 
-  <div class="article-body">
-    <div id="app-content-body">
-      {{ content }}
-    </div>
+  <div class="operator-sheet-body article-body" id="app-content-body">
+    {{ content }}
   </div>
 </article>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Etch Stack Loader — preserved from previous design
   var stackCards = document.querySelectorAll('.stack-card');
   stackCards.forEach(async function(card) {
     var etchUrl = card.getAttribute('href');

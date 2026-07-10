@@ -1,14 +1,18 @@
 <a href="{% if include.book.content != '' %}{{ include.book.url }}{% else %}#{% endif %}" class="book-line"{% if include.last_name %} data-last-name="{{ include.last_name }}"{% endif %}{% if include.book.genre %} data-genre="{{ include.book.genre }}"{% endif %}{% if include.book.stars %} data-rating="{{ include.book.stars }}"{% endif %} data-year="{{ include.book.date | date: '%Y' }}">
-  <span class="book-line-flag" aria-hidden="true"></span>
   {% assign book_slug = include.book.path | split: "/" | last | replace: ".md", "" %}
   {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
   {% assign cover_file = site.static_files | where: "path", cover_path | first %}
-  <span class="book-line-cover" aria-hidden="true">{% if cover_file %}<img src="{{ cover_file.path | relative_url }}" alt="" loading="lazy">{% endif %}</span>
-  <div class="book-line-main">
+  <span class="book-target-hinge" aria-hidden="true"><i></i><i></i></span>
+  <span class="book-line-cover" aria-hidden="true">
+    {% if cover_file %}<img src="{{ cover_file.path | relative_url }}" alt="" loading="lazy">{% else %}<b>{{ include.book.title | slice: 0, 1 }}</b>{% endif %}
+  </span>
+  <span class="book-line-main">
     <span class="book-line-title">{{ include.book.title | escape }}</span>
     <span class="book-line-author">{{ include.book.author | escape }}</span>
-  </div>
-  <div class="book-line-rating">
-    {% if include.unrated %}unlisted{% else %}{% if include.book.currently_reading %}in transit{% elsif include.book.stars %}{{ include.book.stars }}/5{% endif %}{% endif %}
-  </div>
+  </span>
+  <span class="book-line-rating">
+    <span class="rating-lamps" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+    <span>{% if include.unrated %}unlisted{% else %}{% if include.book.currently_reading %}in progress{% elsif include.book.stars %}{{ include.book.stars }}/5{% endif %}{% endif %}</span>
+  </span>
+  <span class="book-target-arrow" aria-hidden="true">↗</span>
 </a>

@@ -1,15 +1,6 @@
-/* tylerwince.com — CHLADNI
- * Lane: generative. Every figure on the site is computed live from the
- * Chladni plate equation — never an image:
- *   1. THE SIGNATURE — the strike: thousands of sand grains scatter and
- *      random-walk into the nodal lines of a random (m,n) mode on the hero
- *      plate; strike again (button or click the plate) for a new figure
- *   2. static stipple figures on the app plates, footer, article headers
- *      and the 404 — one-shot renders of the same equation
- *   3. the nav string — a standing wave oscillating through the nav nodes
- *   4. harmonic glyphs on the writing ladder (post n gets n antinodes)
- *   5. the tune button — small screens open the harmonic series full-screen
- * All motion is gated behind prefers-reduced-motion.
+/* tylerwince.com — THE PINBALL AUTHOR
+ * Cabinet behavior: hinged mobile routes, reveal sequencing, copy controls,
+ * target lamps and a lightweight live pinball that scores visible collisions.
  */
 (function () {
   'use strict';
@@ -18,390 +9,297 @@
   root.classList.add('js');
 
   var reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobileMq = window.matchMedia('(max-width: 760px)');
   function reduced() { return reduceMq.matches; }
 
-  /* ---- palette (raw hexes live on :root; muted/border are mixes) ---- */
-  var colors = { bg: '#0e100f', fg: '#eae3d1', accent: '#9d7dff' };
-  function readColors() {
-    var cs = getComputedStyle(root);
-    var bg = cs.getPropertyValue('--color-bg').trim();
-    var fg = cs.getPropertyValue('--color-fg').trim();
-    var ac = cs.getPropertyValue('--color-accent').trim();
-    if (bg) colors.bg = bg;
-    if (fg) colors.fg = fg;
-    if (ac) colors.accent = ac;
-  }
-  readColors();
+  /* ---- hinged backglass navigation --------------------------------- */
+  var navToggle = document.getElementById('nav-toggle');
+  var siteNav = document.getElementById('site-nav');
 
-  function hexToRgb(hex) {
-    var h = hex.replace('#', '');
-    if (h.length === 3) { h = h[0] + h[0] + h[1] + h[1] + h[2] + h[2]; }
-    var num = parseInt(h, 16);
-    return [(num >> 16) & 255, (num >> 8) & 255, num & 255];
+  function setNav(open) {
+    root.classList.toggle('nav-open', open);
+    if (!navToggle) return;
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    navToggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    var text = navToggle.querySelector('.nav-toggle-text');
+    if (text) text.textContent = open ? 'close' : 'routes';
   }
 
-  /* ---- the plate equation (square plate, free edges, unit domain) ---- */
-  function chladni(m, n, x, y) {
-    return Math.cos(n * Math.PI * x) * Math.cos(m * Math.PI * y) -
-           Math.cos(m * Math.PI * x) * Math.cos(n * Math.PI * y);
-  }
-
-  /* curated modes that draw well */
-  var MODES = [
-    [1, 2], [1, 3], [2, 3], [1, 4], [3, 4], [2, 5],
-    [3, 5], [4, 5], [1, 5], [5, 6], [2, 7], [4, 7]
-  ];
-
-  function modeFreq(m, n) {
-    /* a plausible bench frequency for the mode — deterministic, not physics */
-    return Math.round(46 * (m * m + n * n) + 118 + 13 * m);
-  }
-
-  /* =====================================================================
-     1. static stipple figures — sand pre-settled on the nodal lines
-     ===================================================================== */
-  var stipples = [];
-
-  function drawStipple(canvas, m, n, opts) {
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var w = canvas.clientWidth, h = canvas.clientHeight;
-    if (!w || !h) { return; }
-    canvas.width = Math.round(w * dpr);
-    canvas.height = Math.round(h * dpr);
-    var ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    var circle = !!(opts && opts.circle);
-    var tries = Math.max(3000, Math.round(w * h / 6));
-    var fg = colors.fg, accent = colors.accent;
-
-    /* a faint dusting everywhere */
-    ctx.fillStyle = fg;
-    for (var d = 0; d < tries / 24; d++) {
-      var dx = Math.random(), dy = Math.random();
-      if (circle) { var ddx = dx - .5, ddy = dy - .5; if (ddx * ddx + ddy * ddy > .22) continue; }
-      ctx.globalAlpha = 0.05 + Math.random() * 0.05;
-      ctx.fillRect(dx * canvas.width, dy * canvas.height, dpr, dpr);
-    }
-
-    /* sand gathered where the wave stands still */
-    for (var i = 0; i < tries; i++) {
-      var x = Math.random(), y = Math.random();
-      if (circle) { var cx = x - .5, cy = y - .5; if (cx * cx + cy * cy > .22) continue; }
-      var v = Math.abs(chladni(m, n, x, y));
-      if (v < 0.12) {
-        var near = 1 - v / 0.12;
-        ctx.fillStyle = (Math.random() < 0.055) ? accent : fg;
-        ctx.globalAlpha = 0.25 + near * 0.65 * (0.5 + Math.random() * 0.5);
-        var s = dpr * (Math.random() < 0.2 ? 2 : 1.35);
-        ctx.fillRect(x * canvas.width, y * canvas.height, s, s);
-      }
-    }
-    ctx.globalAlpha = 1;
-  }
-
-  function addStipple(host, m, n, opts) {
-    var canvas = document.createElement('canvas');
-    host.appendChild(canvas);
-    var entry = { canvas: canvas, m: m, n: n, opts: opts || {} };
-    stipples.push(entry);
-    requestAnimationFrame(function () { drawStipple(canvas, m, n, entry.opts); });
-  }
-
-  function redrawStipples() {
-    stipples.forEach(function (s) { drawStipple(s.canvas, s.m, s.n, s.opts); });
-  }
-
-  /* app plates + footer figure declare their mode via data-figure="m,n" */
-  document.querySelectorAll('[data-figure]').forEach(function (el) {
-    var parts = (el.getAttribute('data-figure') || '2,3').split(',');
-    addStipple(el, parseInt(parts[0], 10) || 2, parseInt(parts[1], 10) || 3,
-      { circle: el.classList.contains('plate-figure') });
-  });
-
-  /* the apps-page plates get figures injected (markup is stable there) */
-  document.querySelectorAll('.app-showcase-card').forEach(function (card, i) {
-    var mode = MODES[(i * 3 + 1) % MODES.length];
-    addStipple(card, mode[0], mode[1], {});
-  });
-
-  /* article headers get a faint figure keyed to the title */
-  var articleHeader = document.querySelector('.article-header');
-  if (articleHeader) {
-    var title = (document.querySelector('.article-title') || {}).textContent || 'x';
-    var hash = 0;
-    for (var ti = 0; ti < title.length; ti++) { hash = (hash * 31 + title.charCodeAt(ti)) >>> 0; }
-    var amode = MODES[hash % MODES.length];
-    var fig = document.createElement('div');
-    fig.className = 'article-figure';
-    fig.setAttribute('aria-hidden', 'true');
-    articleHeader.appendChild(fig);
-    addStipple(fig, amode[0], amode[1], {});
-  }
-
-  /* the 404 — the plate is silent, the figure barely settled */
-  var errorPage = document.querySelector('.error-page');
-  if (errorPage) {
-    var efig = document.createElement('div');
-    efig.className = 'error-figure';
-    efig.setAttribute('aria-hidden', 'true');
-    errorPage.insertBefore(efig, errorPage.firstChild);
-    addStipple(efig, 1, 3, {});
-  }
-
-  /* =====================================================================
-     2. harmonic glyphs — post n rings at the nth harmonic
-     ===================================================================== */
-  document.querySelectorAll('.post-harmonic[data-harmonic]').forEach(function (el) {
-    var n = Math.max(1, parseInt(el.getAttribute('data-harmonic'), 10) || 1);
-    var W = 100, H = 30, mid = H / 2, A = 11;
-    var pts = [];
-    for (var i = 0; i <= 48; i++) {
-      var x = i / 48;
-      pts.push((x * W).toFixed(1) + ',' + (mid - A * Math.sin(n * Math.PI * x)).toFixed(1));
-    }
-    var nodes = '';
-    for (var k = 0; k <= n; k++) {
-      nodes += '<circle cx="' + (k * W / n).toFixed(1) + '" cy="' + mid +
-               '" r="1.8" fill="currentColor"/>';
-    }
-    el.innerHTML =
-      '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" aria-hidden="true">' +
-      '<polyline points="' + pts.join(' ') + '" fill="none" stroke="currentColor" stroke-width="1.4"/>' +
-      nodes + '</svg>';
-  });
-
-  /* =====================================================================
-     3. the nav string — a standing wave through the nodes
-     ===================================================================== */
-  var navSvg = document.getElementById('nav-string');
-  var navPath = document.getElementById('nav-string-path');
-  var navItems = document.querySelectorAll('.nav-item').length || 6;
-  var desktopMq = window.matchMedia('(min-width: 881px)');
-
-  function navWaveFrame(time) {
-    if (!navSvg || !navPath || !desktopMq.matches) { return; }
-    var W = navSvg.clientWidth, H = navSvg.clientHeight;
-    if (!W || !H) { return; }
-    navSvg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
-    var A = reduced() ? 4 : 6.5 * Math.sin(time / 620);
-    var mid = H / 2;
-    var d = 'M0 ' + mid.toFixed(1);
-    for (var i = 1; i <= 56; i++) {
-      var x = (i / 56) * W;
-      var y = mid + A * Math.cos(navItems * Math.PI * (x / W));
-      d += ' L' + x.toFixed(1) + ' ' + y.toFixed(1);
-    }
-    navPath.setAttribute('d', d);
-  }
-
-  if (navSvg && navPath) {
-    if (reduced()) {
-      navWaveFrame(0);
-      window.addEventListener('resize', function () { navWaveFrame(0); });
-    } else {
-      (function loop(t) {
-        navWaveFrame(t || 0);
-        requestAnimationFrame(loop);
-      })(0);
-    }
-  }
-
-  /* =====================================================================
-     4. the tune button — the harmonic series, full-screen
-     ===================================================================== */
-  var toggle = document.getElementById('nav-toggle');
-  if (toggle) {
-    var toggleText = toggle.querySelector('.nav-toggle-text');
-    function setNav(open) {
-      root.classList.toggle('nav-open', open);
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (toggleText) { toggleText.textContent = open ? 'damp' : 'tune'; }
-    }
-    toggle.addEventListener('click', function () {
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
       setNav(!root.classList.contains('nav-open'));
     });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && root.classList.contains('nav-open')) { setNav(false); }
+
+    siteNav.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setNav(false);
     });
-    desktopMq.addEventListener('change', function (e) {
-      if (e.matches) { setNav(false); }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && root.classList.contains('nav-open')) {
+        setNav(false);
+        navToggle.focus();
+      }
+    });
+
+    if (mobileMq.addEventListener) {
+      mobileMq.addEventListener('change', function (event) {
+        if (!event.matches) setNav(false);
+      });
+    }
+  }
+
+  /* ---- assemble each playfield zone as it enters view -------------- */
+  var revealZones = document.querySelectorAll('.reveal-zone');
+  if (reduced() || !('IntersectionObserver' in window)) {
+    revealZones.forEach(function (zone) { zone.classList.add('is-revealed'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    revealZones.forEach(function (zone) { revealObserver.observe(zone); });
+
+    /* CSS reorders the mobile hero ahead of the reading bank. Some engines
+       can calculate the first observer frame from DOM order before that
+       visual reorder settles, so reveal anything already in the viewport
+       and keep a fail-safe that never strands readable content at opacity 0. */
+    requestAnimationFrame(function () {
+      revealZones.forEach(function (zone) {
+        var rect = zone.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < window.innerHeight) {
+          zone.classList.add('is-revealed');
+          revealObserver.unobserve(zone);
+        }
+      });
+    });
+    window.setTimeout(function () {
+      revealZones.forEach(function (zone) { zone.classList.add('is-revealed'); });
+    }, 900);
+  }
+
+  /* ---- code-copy service buttons ----------------------------------- */
+  document.querySelectorAll('pre').forEach(function (pre) {
+    var code = pre.querySelector('code');
+    if (!code || !navigator.clipboard) return;
+    var button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'copy-code';
+    button.textContent = 'copy';
+    button.addEventListener('click', function () {
+      navigator.clipboard.writeText(code.textContent).then(function () {
+        button.textContent = 'copied';
+        window.setTimeout(function () { button.textContent = 'copy'; }, 1400);
+      });
+    });
+    pre.appendChild(button);
+  });
+
+  /* ---- cabinet score ------------------------------------------------ */
+  var scoreEl = document.getElementById('cabinet-score');
+  var ballReadout = document.getElementById('ball-readout');
+  var score = 0;
+  var ballNumber = 1;
+
+  function renderScore() {
+    if (scoreEl) scoreEl.textContent = String(Math.max(0, Math.round(score))).padStart(6, '0').slice(-6);
+    if (ballReadout) ballReadout.textContent = 'ball ' + ballNumber;
+  }
+
+  function addScore(points) {
+    score += points;
+    renderScore();
+    if (!scoreEl || reduced()) return;
+    scoreEl.animate([
+      { opacity: .45, transform: 'translateY(2px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ], { duration: 150, easing: 'steps(2, end)' });
+  }
+
+  renderScore();
+
+  /* Targets answer to pointer input even before the ball is launched. */
+  var targets = Array.prototype.slice.call(document.querySelectorAll('[data-pin]'));
+  targets.forEach(function (target, index) {
+    target.addEventListener('pointerenter', function () {
+      target.classList.remove('pin-hit');
+      void target.offsetWidth;
+      target.classList.add('pin-hit');
+      if (root.classList.contains('ball-in-play')) addScore(25 + (index % 5) * 25);
+    });
+    target.addEventListener('animationend', function () { target.classList.remove('pin-hit'); });
+  });
+
+  /* ---- THE SIGNATURE: launch ball ---------------------------------- */
+  var ball = document.getElementById('pinball-ball');
+  var launchButton = document.getElementById('launch-ball');
+  var animationFrame = 0;
+  var inPlay = false;
+  var x = 0;
+  var y = 0;
+  var vx = 0;
+  var vy = 0;
+  var lastFrame = 0;
+  var activeUntil = 0;
+  var lastScrollY = window.scrollY;
+  var hitTimes = new WeakMap();
+
+  function visibleTargets() {
+    return targets.filter(function (target) {
+      var rect = target.getBoundingClientRect();
+      return rect.bottom > 0 && rect.top < window.innerHeight && rect.right > 0 && rect.left < window.innerWidth;
     });
   }
 
-  /* =====================================================================
-     5. THE SIGNATURE — the struck plate
-     ===================================================================== */
-  var hero = document.getElementById('plate');
-  var plateCanvas = document.getElementById('plate-canvas');
+  function flashTarget(target) {
+    target.classList.remove('pin-hit');
+    void target.offsetWidth;
+    target.classList.add('pin-hit');
+  }
 
-  if (hero && plateCanvas) {
-    var ctx = plateCanvas.getContext('2d');
-    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    var W = 0, H = 0;
-    var grains = null, grainCount = 0;
-    var mode = MODES[new Date().getDate() % MODES.length];
-    var agitation = 1;
-    var pointer = { x: -1, y: -1 };
-    var running = true, inView = true;
-    var bgRgb = hexToRgb(colors.bg);
-    var shownFreq = 0;
+  function finishBall() {
+    inPlay = false;
+    root.classList.remove('ball-in-play');
+    if (ball) ball.classList.remove('is-live');
+    if (launchButton) launchButton.classList.remove('is-playing');
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    animationFrame = 0;
+    ballNumber = ballNumber === 3 ? 1 : ballNumber + 1;
+    renderScore();
+  }
 
-    var readoutF = document.getElementById('readout-f');
-    var readoutMode = document.getElementById('readout-mode');
+  function collideWithTarget(target, now) {
+    var rect = target.getBoundingClientRect();
+    var radius = 12;
+    var centerX = x + radius;
+    var centerY = y + radius;
+    if (centerX < rect.left || centerX > rect.right || centerY < rect.top || centerY > rect.bottom) return false;
 
-    function sizePlate() {
-      W = hero.clientWidth; H = hero.clientHeight;
-      plateCanvas.width = Math.round(W * dpr);
-      plateCanvas.height = Math.round(H * dpr);
+    var lastHit = hitTimes.get(target) || 0;
+    if (now - lastHit < 420) return false;
+    hitTimes.set(target, now);
+
+    var fromLeft = Math.abs(centerX - rect.left);
+    var fromRight = Math.abs(rect.right - centerX);
+    var fromTop = Math.abs(centerY - rect.top);
+    var fromBottom = Math.abs(rect.bottom - centerY);
+    var nearest = Math.min(fromLeft, fromRight, fromTop, fromBottom);
+
+    if (nearest === fromLeft || nearest === fromRight) {
+      vx = -vx * 1.04 + (Math.random() - .5) * 2;
+      x += nearest === fromLeft ? -radius : radius;
+    } else {
+      vy = -Math.max(4, Math.abs(vy)) * .92;
+      y += nearest === fromTop ? -radius : radius;
     }
 
-    function seedGrains() {
-      grainCount = Math.min(4200, Math.max(1400, Math.round(W * H / 420)));
-      grains = new Float32Array(grainCount * 2);
-      for (var i = 0; i < grainCount; i++) {
-        grains[i * 2] = Math.random();
-        grains[i * 2 + 1] = Math.random();
-      }
+    flashTarget(target);
+    var multiplier = target.classList.contains('bumper-assembly') ? 250 :
+      target.classList.contains('drop-target') ? 100 : 50;
+    addScore(multiplier);
+    activeUntil = Math.min(now + 9000, activeUntil + 750);
+    return true;
+  }
+
+  function ballLoop(now) {
+    if (!inPlay || !ball) return;
+    if (!lastFrame) lastFrame = now;
+    var delta = Math.min(2.2, Math.max(.5, (now - lastFrame) / 16.67));
+    lastFrame = now;
+
+    vy += .24 * delta;
+    x += vx * delta;
+    y += vy * delta;
+
+    var header = document.getElementById('site-header');
+    var topBound = header ? Math.min(header.getBoundingClientRect().bottom, window.innerHeight * .34) : 8;
+    var maxX = Math.max(10, window.innerWidth - 28);
+    var maxY = Math.max(topBound + 80, window.innerHeight - 28);
+
+    if (x < 5) { x = 5; vx = Math.abs(vx) * .94; addScore(10); }
+    if (x > maxX) { x = maxX; vx = -Math.abs(vx) * .94; addScore(10); }
+    if (y < topBound) { y = topBound; vy = Math.abs(vy) * .86; addScore(10); }
+    if (y > maxY) {
+      y = maxY;
+      vy = -Math.max(8, Math.abs(vy) * .86);
+      vx += (Math.random() - .5) * 3;
+      addScore(25);
     }
 
-    /* one settling step for every grain — random walk scaled by |amplitude|,
-       biased downhill so the sand drifts to where the wave stands still */
-    function step(kick) {
-      for (var i = 0; i < grainCount; i++) {
-        var x = grains[i * 2], y = grains[i * 2 + 1];
-        var v = Math.abs(chladni(mode[0], mode[1], x, y));
-        var amp = 0.004 + v * (0.012 + kick * 0.05);
+    visibleTargets().some(function (target) { return collideWithTarget(target, now); });
 
-        /* the pointer stirs nearby sand */
-        if (pointer.x >= 0) {
-          var pdx = x - pointer.x, pdy = y - pointer.y;
-          var pd = pdx * pdx + pdy * pdy;
-          if (pd < 0.008) { amp += (1 - pd / 0.008) * 0.02; }
-        }
+    vx *= .999;
+    if (Math.abs(vx) < 1.8) vx += vx < 0 ? -.3 : .3;
+    if (Math.abs(vx) > 10) vx *= .92;
+    if (Math.abs(vy) > 15) vy *= .94;
 
-        var nx = x + (Math.random() - 0.5) * amp * 2;
-        var ny = y + (Math.random() - 0.5) * amp * 2;
-        if (nx < 0.002) nx = 0.002; else if (nx > 0.998) nx = 0.998;
-        if (ny < 0.002) ny = 0.002; else if (ny > 0.998) ny = 0.998;
+    ball.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
 
-        var nv = Math.abs(chladni(mode[0], mode[1], nx, ny));
-        if (nv <= v || Math.random() < 0.12 + kick * 0.55) {
-          grains[i * 2] = nx; grains[i * 2 + 1] = ny;
-        }
-      }
+    if (now >= activeUntil) {
+      finishBall();
+      return;
     }
+    animationFrame = requestAnimationFrame(ballLoop);
+  }
 
-    function render(alpha) {
-      bgRgb = hexToRgb(colors.bg);
-      ctx.fillStyle = 'rgba(' + bgRgb[0] + ',' + bgRgb[1] + ',' + bgRgb[2] + ',' + alpha + ')';
-      ctx.fillRect(0, 0, plateCanvas.width, plateCanvas.height);
-      var s = 1.5 * dpr;
-      var cw = plateCanvas.width, ch = plateCanvas.height;
-      ctx.globalAlpha = 0.82;
-      ctx.fillStyle = colors.fg;
-      var accentEvery = 17;
-      for (var i = 0; i < grainCount; i++) {
-        if (i % accentEvery === 0) { continue; }
-        ctx.fillRect(grains[i * 2] * cw, grains[i * 2 + 1] * ch, s, s);
-      }
-      ctx.fillStyle = colors.accent;
-      for (var j = 0; j < grainCount; j += accentEvery) {
-        ctx.fillRect(grains[j * 2] * cw, grains[j * 2 + 1] * ch, s, s);
-      }
-      ctx.globalAlpha = 1;
-    }
-
-    function updateReadout() {
-      var target = modeFreq(mode[0], mode[1]);
-      if (!shownFreq) { shownFreq = target; }
-      shownFreq += (target - shownFreq) * 0.14;
-      if (Math.abs(target - shownFreq) < 1) { shownFreq = target; }
-      if (readoutF) { readoutF.textContent = 'f = ' + Math.round(shownFreq) + ' Hz'; }
-      if (readoutMode) {
-        readoutMode.textContent = 'mode (' + mode[0] + ',' + mode[1] + ') · ' +
-          grainCount + ' grains';
-      }
-    }
-
-    function settleInstantly() {
-      for (var r = 0; r < 300; r++) { step(r < 40 ? 0.4 : 0); }
-      ctx.clearRect(0, 0, plateCanvas.width, plateCanvas.height);
-      render(1);
-      shownFreq = 0;
-      updateReadout();
-      if (readoutF) { readoutF.textContent = 'f = ' + modeFreq(mode[0], mode[1]) + ' Hz'; }
-    }
-
-    function strike() {
-      var next = mode;
-      while (next === mode || (next[0] === mode[0] && next[1] === mode[1])) {
-        next = MODES[Math.floor(Math.random() * MODES.length)];
-      }
-      mode = next;
-      if (reduced()) { settleInstantly(); return; }
-      agitation = 1;
-    }
-
-    function frame() {
-      if (running && inView && !reduced()) {
-        agitation *= 0.972;
-        if (agitation < 0.002) { agitation = 0; }
-        step(agitation);
-        render(0.3);
-        updateReadout();
-      }
-      requestAnimationFrame(frame);
-    }
-
-    sizePlate();
-    seedGrains();
+  function launchBall() {
+    if (!ball) return;
 
     if (reduced()) {
-      settleInstantly();
-    } else {
-      updateReadout();
-      requestAnimationFrame(frame);
+      addScore(500);
+      var first = visibleTargets()[0];
+      if (first) flashTarget(first);
+      return;
     }
 
-    var strikeBtn = document.getElementById('strike-btn');
-    if (strikeBtn) { strikeBtn.addEventListener('click', strike); }
-    hero.addEventListener('click', function (e) {
-      if (e.target.closest('.hero-readout')) { return; }
-      strike();
-    });
-
-    hero.addEventListener('pointermove', function (e) {
-      var rect = hero.getBoundingClientRect();
-      pointer.x = (e.clientX - rect.left) / rect.width;
-      pointer.y = (e.clientY - rect.top) / rect.height;
-    });
-    hero.addEventListener('pointerleave', function () { pointer.x = -1; pointer.y = -1; });
-
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        inView = entries[0].isIntersecting;
-      }, { threshold: 0.02 }).observe(hero);
-    }
-    document.addEventListener('visibilitychange', function () {
-      running = !document.hidden;
-    });
-
-    var resizeTimer = null;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () {
-        sizePlate();
-        if (reduced()) { settleInstantly(); }
-      }, 150);
-    });
+    if (animationFrame) cancelAnimationFrame(animationFrame);
+    inPlay = true;
+    root.classList.add('ball-in-play');
+    ball.classList.add('is-live');
+    if (launchButton) launchButton.classList.add('is-playing');
+    x = Math.max(12, window.innerWidth - 64);
+    y = Math.max(140, window.innerHeight - 72);
+    vx = -(4.3 + Math.random() * 3.2);
+    vy = -(11.5 + Math.random() * 3);
+    lastFrame = 0;
+    activeUntil = performance.now() + 12000;
+    addScore(100);
+    animationFrame = requestAnimationFrame(ballLoop);
   }
 
-  /* ---- keep the figures honest if the colour scheme flips live ---- */
-  var schemeMq = window.matchMedia('(prefers-color-scheme: light)');
-  function onSchemeChange() {
-    readColors();
-    redrawStipples();
+  if (launchButton) launchButton.addEventListener('click', launchBall);
+
+  window.addEventListener('scroll', function () {
+    var current = window.scrollY;
+    var travel = current - lastScrollY;
+    lastScrollY = current;
+    if (!inPlay) return;
+    vy += Math.max(-2.5, Math.min(2.5, travel * .018));
+    activeUntil = Math.min(performance.now() + 9000, activeUntil + Math.min(500, Math.abs(travel) * 2));
+  }, { passive: true });
+
+  window.addEventListener('pointermove', function (event) {
+    if (!inPlay || event.pointerType === 'touch') return;
+    var center = x + 12;
+    var distance = event.clientX - center;
+    if (Math.abs(distance) < 140) vx += distance * .0008;
+  }, { passive: true });
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden && inPlay) finishBall();
+  });
+
+  window.addEventListener('resize', function () {
+    x = Math.min(x, window.innerWidth - 28);
+    y = Math.min(y, window.innerHeight - 28);
+  });
+
+  if (reduceMq.addEventListener) {
+    reduceMq.addEventListener('change', function (event) {
+      if (event.matches && inPlay) finishBall();
+      revealZones.forEach(function (zone) { zone.classList.add('is-revealed'); });
+    });
   }
-  if (schemeMq.addEventListener) { schemeMq.addEventListener('change', onSchemeChange); }
 })();

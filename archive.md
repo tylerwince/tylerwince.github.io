@@ -11,21 +11,26 @@ description: The historical index of designs. Every day, a different look.
 {% assign last_entry = sorted | first %}
 {% if last_entry.date == theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
+<div class="archive-arcade">
 {% if theme %}
-<div class="archive-today"{% if theme.lane %} data-lane="{{ theme.lane }}"{% endif %}>
-  <span class="archive-today-label">currently showing · design №{{ design_no }}</span>
-  <span class="archive-today-theme">{{ theme.name }}</span>
-  {% if theme.manifesto %}<p class="archive-today-manifesto">{{ theme.manifesto }}</p>{% endif %}
-  <div class="archive-today-meta">
-    {% if theme.lane %}<span class="archive-meta-item">{{ theme.lane }}</span>{% endif %}
-    {% if theme.fonts.display %}<span class="archive-meta-item">{{ theme.fonts.display }}{% if theme.fonts.body %} + {{ theme.fonts.body }}{% endif %}</span>{% endif %}
-    {% if theme.palette %}
-    <span class="archive-palette" aria-hidden="true">
-      {%- for c in theme.palette -%}<i style="background:{{ c }}"></i>{%- endfor -%}
-    </span>
-    {% endif %}
+<section class="archive-today"{% if theme.lane %} data-lane="{{ theme.lane }}"{% endif %}>
+  <div class="archive-marquee">
+    <span class="archive-today-label">currently playing · machine №{{ design_no }}</span>
+    <span class="archive-today-theme">{{ theme.name }}</span>
   </div>
-</div>
+  <div class="archive-current-copy">
+    {% if theme.manifesto %}<p class="archive-today-manifesto">{{ theme.manifesto }}</p>{% endif %}
+    <div class="archive-today-meta">
+      {% if theme.lane %}<span class="archive-meta-item">{{ theme.lane }}</span>{% endif %}
+      {% if theme.fonts.display %}<span class="archive-meta-item">{{ theme.fonts.display }}{% if theme.fonts.body %} + {{ theme.fonts.body }}{% endif %}</span>{% endif %}
+      {% if theme.palette %}
+      <span class="archive-palette" aria-hidden="true">
+        {%- for c in theme.palette -%}<i style="background:{{ c }}"></i>{%- endfor -%}
+      </span>
+      {% endif %}
+    </div>
+  </div>
+</section>
 {% endif %}
 
 {% comment %} Collect dates that actually have a snapshot, for the surprise button. {% endcomment %}
@@ -37,11 +42,11 @@ description: The historical index of designs. Every day, a different look.
 {% endfor %}
 
 <div class="archive-controls">
-  <span class="archive-count">{{ archive_count }} past designs, one per day</span>
-  <button type="button" class="archive-surprise" id="archive-surprise" data-dates="{{ snap_dates }}">surprise me → random day</button>
+  <span class="archive-count"><b>{{ archive_count }}</b> past designs, one per day</span>
+  <button type="button" class="archive-surprise" id="archive-surprise" data-dates="{{ snap_dates }}"><span aria-hidden="true">●</span> surprise me → random day</button>
 </div>
 
-<div class="archive-gallery">
+<div class="archive-gallery" aria-label="Past design machines">
   {% for entry in sorted %}
     {% if entry.date == theme.date %}{% continue %}{% endif %}
     {% assign snap_path = "/archive/" | append: entry.date | append: "/index.html" %}
@@ -68,6 +73,7 @@ description: The historical index of designs. Every day, a different look.
       </span>
     {% if snap %}</a>{% else %}</div>{% endif %}
   {% endfor %}
+</div>
 </div>
 
 <script src="{{ '/assets/js/archive.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>

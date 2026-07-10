@@ -1,17 +1,24 @@
 ---
 layout: default
 ---
-<article class="article article--ticket">
-  <header class="article-header">
-    <span class="ticket-rip" aria-hidden="true"></span>
-    <div class="article-kicker">index</div>
-    <h1 class="article-title">{{ page.title | escape }}</h1>
-    {% if page.description %}
-    <p class="article-description">{{ page.description | escape }}</p>
-    {% endif %}
+<article class="service-manual">
+  <header class="manual-plate reveal-zone">
+    <div class="manual-index" aria-hidden="true">
+      <span>operator file</span>
+      <span>{{ page.url | replace: '/', ' · ' }}</span>
+    </div>
+    <div class="manual-title-block">
+      <p class="article-kicker">playfield instructions</p>
+      <h1 class="article-title">{{ page.title | escape }}</h1>
+      {% if page.description %}<p class="article-description">{{ page.description | escape }}</p>{% endif %}
+    </div>
+    <div class="manual-badge" aria-hidden="true"><span class="monogram"></span></div>
   </header>
 
-  <div class="article-body">
-    {{ content }}
+  <div class="manual-body article-body">
+    <aside class="manual-rail" aria-hidden="true">
+      <span>read</span><i></i><span>play</span><i></i><span>repeat</span>
+    </aside>
+    <div class="manual-copy">{{ content }}</div>
   </div>
 </article>

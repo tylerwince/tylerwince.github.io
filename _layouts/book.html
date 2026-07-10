@@ -1,28 +1,40 @@
 ---
 layout: default
 ---
-<article class="article article--ticket">
-  <header class="article-header">
-    <span class="ticket-rip" aria-hidden="true"></span>
-    <div class="article-kicker">book note</div>
-    <h1 class="article-title">{{ page.title | escape }}</h1>
-    <div class="article-meta">
-      <span class="meta-item">{{ page.author | escape }}</span>
-      {% if page.stars %}<span class="meta-item">{{ page.stars }} / 5</span>{% endif %}
-      {% assign year = page.date | date: "%Y" | to_integer %}
-      {% if year >= 2020 %}
-      <span class="meta-item">read {{ page.date | date: "%Y-%m-%d" }}</span>
+{% assign book_slug = page.path | split: "/" | last | replace: ".md", "" %}
+{% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
+{% assign cover_file = site.static_files | where: "path", cover_path | first %}
+
+<article class="book-score-sheet">
+  <header class="book-score-header reveal-zone">
+    <div class="book-score-cover" data-pin="book">
+      {% if cover_file %}
+      <img src="{{ cover_file.path | relative_url }}" alt="Cover of {{ page.title | escape }}">
+      {% else %}
+      <span aria-hidden="true">{{ page.title | slice: 0, 1 }}</span>
       {% endif %}
+    </div>
+    <div class="book-score-title">
+      <p class="article-kicker">reading score sheet</p>
+      <h1 class="article-title">{{ page.title | escape }}</h1>
+      <p class="book-byline">{{ page.author | escape }}</p>
+    </div>
+    <div class="book-score-meta">
+      {% if page.stars %}<span><b>score</b>{{ page.stars }} / 5</span>{% endif %}
+      {% assign year = page.date | date: "%Y" | to_integer %}
+      {% if year >= 2020 %}<span><b>logged</b>{{ page.date | date: "%Y-%m-%d" }}</span>{% endif %}
     </div>
   </header>
 
   {% if page.takeaway %}
-  <blockquote class="pull-quote">
-    <span class="pull-quote-mark">“</span>{{ page.takeaway }}
+  <blockquote class="pull-quote reveal-zone">
+    <span class="pull-quote-light" aria-hidden="true"></span>
+    <span>{{ page.takeaway }}</span>
   </blockquote>
   {% endif %}
 
-  <div class="article-body">
-    {{ content }}
+  <div class="book-score-body article-body">
+    <aside class="score-margin" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></aside>
+    <div class="score-copy">{{ content }}</div>
   </div>
 </article>
