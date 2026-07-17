@@ -781,11 +781,12 @@ pre code { padding: 0; border: 0; color: inherit; background: none; }
 }
 .home-zone--apps .zone-number { background: var(--teal); }
 .home-zone--apps .zone-link { color: var(--paper); }
-.bumper-field { position: relative; z-index: 2; height: 520px; max-width: 1220px; margin: 0 auto; }
+.bumper-field { position: relative; z-index: 2; height: 900px; max-width: 1220px; margin: 0 auto; }
 .bumper-assembly { position: absolute; width: 300px; text-align: center; }
-.bumper-assembly--1 { left: 2%; top: 10%; transform: rotate(-7deg); }
-.bumper-assembly--2 { left: 50%; top: -5%; transform: translateX(-50%) rotate(2deg); }
-.bumper-assembly--3 { right: 2%; top: 15%; transform: rotate(8deg); }
+.bumper-assembly--1 { left: 2%; top: 52px; transform: rotate(-7deg); }
+.bumper-assembly--2 { left: 50%; top: -26px; transform: translateX(-50%) rotate(2deg); }
+.bumper-assembly--3 { right: 2%; top: 78px; transform: rotate(8deg); }
+.bumper-assembly--4 { left: 50%; top: 462px; transform: translateX(-50%) rotate(-4deg); }
 .bumper-cap {
   position: relative;
   display: grid;
@@ -832,8 +833,8 @@ pre code { padding: 0; border: 0; color: inherit; background: none; }
 }
 .bumper-score { display: block; color: var(--yellow); font: 600 .6rem var(--font-mono); letter-spacing: .12em; }
 .bumper-rail { position: absolute; z-index: -1; display: block; height: 210px; border: 8px double var(--chrome); border-top: 0; border-radius: 0 0 50% 50%; }
-.bumper-rail--a { left: 18%; right: 18%; top: 34%; transform: rotate(-5deg); }
-.bumper-rail--b { left: 33%; right: 33%; top: 48%; transform: rotate(14deg); }
+.bumper-rail--a { left: 18%; right: 18%; top: 177px; transform: rotate(-5deg); }
+.bumper-rail--b { left: 33%; right: 33%; top: 250px; transform: rotate(14deg); }
 
 /* writing rollover lanes ------------------------------------------------ */
 
@@ -1044,7 +1045,7 @@ pre code { padding: 0; border: 0; color: inherit; background: none; }
 .app-medallion img { width: 48%; border-radius: 24%; box-shadow: 0 5px 0 var(--ink); }
 .app-medallion-ring { position: absolute; inset: -18px; border: 5px double var(--chrome); border-radius: 50%; }
 .app-title-panel { position: relative; z-index: 2; min-width: 0; }
-.app-title-panel .article-title { font-size: clamp(3.2rem, 7vw, 7.5rem); }
+.app-title-panel .article-title { font-size: clamp(3rem, 5.8vw, 6.5rem); }
 .app-spec-panel {
   position: relative;
   z-index: 2;
@@ -1199,7 +1200,7 @@ pre code { padding: 0; border: 0; color: inherit; background: none; }
 .app-showcase-card {
   position: relative;
   display: grid;
-  width: clamp(180px, 27%, 280px);
+  width: clamp(180px, 21%, 280px);
   aspect-ratio: 1;
   place-items: center;
   padding: 2rem;
@@ -1213,8 +1214,10 @@ pre code { padding: 0; border: 0; color: inherit; background: none; }
   transition: transform .18s ease;
 }
 .app-showcase-card:nth-child(2) { margin-top: -6rem; }
+.app-showcase-card:nth-child(4) { margin-top: -6rem; }
 .app-showcase-card:hover { color: var(--ink); transform: translateY(-8px) scale(1.025); }
-.app-showcase-name { margin: 0; font-size: clamp(1.1rem, 2.4vw, 2rem); }
+.app-showcase-name,
+.article-body .app-showcase-name { margin: 0; font-size: clamp(1.1rem, 2.4vw, 2rem); }
 .app-showcase-detail { position: absolute; bottom: 18%; max-width: 70%; font-size: .7rem; line-height: 1.2; }
 .philosophy-section { margin-top: 4rem; }
 .philosophy-heading { font-size: 1rem; font-family: var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
@@ -1499,6 +1502,7 @@ pre code { padding: 0; border: 0; color: inherit; background: none; }
   .app-showcase-card { width: min(72vw,260px); }
   .app-showcase-card:nth-child(2) { margin-top: 0; margin-left: 3rem; }
   .app-showcase-card:nth-child(3) { margin-left: -2rem; }
+  .app-showcase-card:nth-child(4) { margin-top: 0; margin-left: 2.5rem; }
   .philosophy-item { grid-template-columns: 1fr; gap: .4rem; }
   .post-index-row { grid-template-columns: 1fr; gap: .35rem; }
   .reading-stats { grid-template-columns: 1fr 1fr; }

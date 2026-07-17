@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Apps
-description: Purpose-built iOS products crafted with native design and thoughtful systems.
+description: Purpose-built products crafted with native design and thoughtful systems.
 ---
 
 <div class="app-showcase">
@@ -18,6 +18,11 @@ description: Purpose-built iOS products crafted with native design and thoughtfu
   <a href="/apps/little-quotes/" class="app-showcase-card">
     <h3 class="app-showcase-name">Little Quotes</h3>
     <div class="app-showcase-detail">youthful wisdom archive · free</div>
+  </a>
+
+  <a href="/apps/yapware/" class="app-showcase-card">
+    <h3 class="app-showcase-name">Yapware</h3>
+    <div class="app-showcase-detail">software built by yapping · web</div>
   </a>
 </div>
 

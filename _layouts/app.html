@@ -17,6 +17,8 @@ layout: default
       {% if page.tech_stack %}<span><b>system</b>{{ page.tech_stack | join: ' · ' }}</span>{% endif %}
       {% if page.app_store_link %}
       <a class="download-plunger" href="{{ page.app_store_link }}" target="_blank" rel="noopener">Download <span aria-hidden="true">↗</span></a>
+      {% elsif page.website %}
+      <a class="download-plunger" href="{{ page.website }}" target="_blank" rel="noopener">Visit <span aria-hidden="true">↗</span></a>
       {% endif %}
     </div>
   </header>

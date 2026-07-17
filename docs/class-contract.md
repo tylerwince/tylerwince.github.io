@@ -34,7 +34,9 @@ keep the Liquid logic, restyle/reposition freely.
 `.book-card-title`, `.book-card-status`, `.book-card-cover` (cover `<img>`, may be absent)
 
 Apps are looped from `site.apps` (front matter: `title`, `tagline`, `icon_path`,
-`order`) — never hardcode app entries.
+`order`) — never hardcode app entries. App pages link out via `app_store_link`
+("Download") or `website` ("Visit") — app.html renders whichever is present.
+There are currently FOUR apps; don't assume three in constellation/showcase CSS.
 
 ## Articles (page.html, post.html, book.html, app.html — NOT redesign scope)
 
@@ -101,5 +103,6 @@ the one allowed inline style), `.archive-controls`, `.archive-count`,
 
 - `assets/images/monogram.svg` — TW monogram drawn in `currentColor`
 - `assets/covers/<book-slug>.jpg` — book cover images (most books have one)
-- `assets/etch_logo.png`, `assets/waymark_icon.png`, `assets/littleQuotes_icon.png` — app icons
+- `assets/etch_logo.png`, `assets/waymark_icon.png`, `assets/littleQuotes_icon.png`,
+  `assets/yapware_logo.png` — app icons
 - `assets/favicon.svg` — REPLACED by each theme to match its identity
