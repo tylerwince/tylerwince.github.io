@@ -522,3 +522,30 @@
   - "#ef3e36"
   - "#42c8b4"
   - "#ffd23f"
+- date: '2026-07-17'
+  theme: UNIBODY
+  description: 'Milled from a single block: one typeface, two tones, one accent. Everything
+    that couldn''t justify itself was machined away — what remains is air, light,
+    and the work.'
+  commit: ebe0c6d4
+  lane: digital-native
+  manifesto: 'Milled from a single block: one typeface, two tones, one accent. Everything
+    that couldn''t justify itself was machined away — what remains is air, light,
+    and the work.'
+  nav_paradigm: floating frosted capsule — a detached glass pill that condenses as
+    you scroll and folds open into a rounded sheet on small screens
+  layout_skeleton: a product page for a person — statement hero, apps as an asymmetric
+    bento with one inverted tile, writing as an editorial index on a quiet surface
+    band, reading as an edge-bleed cover gallery
+  signature_interaction: the machining pass — the name resolves from soft blur as
+    a specular gleam sweeps across it, like light over brushed aluminum
+  color: "#fbfbfd"
+  fonts:
+    display: Geist
+    body: Geist
+    mono: Geist Mono
+  palette:
+  - "#fbfbfd"
+  - "#1d1d1f"
+  - "#6e6e73"
+  - "#0071e3"
