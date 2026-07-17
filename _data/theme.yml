@@ -15,24 +15,23 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "THE PINBALL AUTHOR"
-date: "2026-07-10"
-lane: "object-metaphor"
+name: "UNIBODY"
+date: "2026-07-17"
+lane: "digital-native"
 manifesto: >-
-  A personal site built as an electromechanical pinball table. Apps are pop
-  bumpers, essays are rollover lanes, and books stand in a bank of drop
-  targets — launch the ball and keep the work in play.
-nav_paradigm: "the backglass scorebox — identity, live score and numbered page reels share a cabinet marquee; on mobile the backglass hinges open into a full-screen route selector"
-layout_skeleton: "a playable cabinet — reading drop targets beside a plunger-lane hero, three circular app bumpers, long essay rollovers, service-manual interiors and a coin-door footer"
-signature_interaction: "launch ball — a live steel ball ricochets around the viewport, flashes any visible targets it strikes and advances the electromechanical score reel"
-color: "#160909"
+  Milled from a single block: one typeface, two tones, one accent. Everything
+  that couldn't justify itself was machined away — what remains is air, light,
+  and the work.
+nav_paradigm: "floating frosted capsule — a detached glass pill that condenses as you scroll and folds open into a rounded sheet on small screens"
+layout_skeleton: "a product page for a person — statement hero, apps as an asymmetric bento with one inverted tile, writing as an editorial index on a quiet surface band, reading as an edge-bleed cover gallery"
+signature_interaction: "the machining pass — the name resolves from soft blur as a specular gleam sweeps across it, like light over brushed aluminum"
+color: "#fbfbfd"
 fonts:
-  display: "Bowlby One SC"
-  body: "Chivo"
-  mono: "Roboto Mono"
+  display: "Geist"
+  body: "Geist"
+  mono: "Geist Mono"
 palette:
-  - "#160909"
-  - "#f3e4bb"
-  - "#ef3e36"
-  - "#42c8b4"
-  - "#ffd23f"
+  - "#fbfbfd"
+  - "#1d1d1f"
+  - "#6e6e73"
+  - "#0071e3"

@@ -1,42 +1,42 @@
+<!-- UNIBODY — the quiet end of the page. -->
 <footer class="site-footer">
-  <div class="apron-instructions">
-    <span class="apron-number">T·W / {{ site.time | date: "%Y" }}</span>
-    <p>
-      Keep the ball moving. Follow a lit lane, strike a bumper, open a book,
-      build something useful. The cabinet changes; the work remains.
+  <div class="footer-inner">
+    <p class="footer-line">
+      <span class="monogram" aria-hidden="true"></span>
+      <span>Fewer things, made better.</span>
     </p>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h2 class="footer-col-title">Work</h2>
+        <ul class="footer-links">
+          <li><a href="{{ '/apps/' | relative_url }}">Apps</a></li>
+          <li><a href="{{ '/writing/' | relative_url }}">Writing</a></li>
+          <li><a href="{{ '/reading/' | relative_url }}">Reading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col-title">Meanwhile</h2>
+        <ul class="footer-links">
+          <li><a href="{{ '/now/' | relative_url }}">Now</a></li>
+          <li><a href="{{ '/archive/' | relative_url }}">Design archive</a></li>
+          <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2 class="footer-col-title">Elsewhere</h2>
+        <ul class="social-list">
+          {% if site.github_username %}
+          <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
+          {% endif %}
+          {% if site.twitter_username %}
+          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
+          {% endif %}
+          <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="footer-legal">© {{ site.time | date: "%Y" }} Tyler Wince. Designed by AI, remade every morning.</p>
   </div>
-
-  <div class="apron-service-panel">
-    <div class="service-slot">
-      <span class="service-label">replay</span>
-      <a href="{{ '/' | relative_url }}">home</a>
-      <a href="{{ '/archive/' | relative_url }}">archive</a>
-      <a href="{{ '/now/' | relative_url }}">now</a>
-    </div>
-
-    <div class="service-slot service-slot--social">
-      <span class="service-label">multiplayer</span>
-      <ul class="social-list">
-        {% if site.github_username %}
-        <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
-        {% endif %}
-        {% if site.twitter_username %}
-        <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
-        {% endif %}
-        <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
-    </div>
-
-    <div class="coin-door" aria-hidden="true">
-      <span class="coin-return"></span>
-      <span class="coin-lettering">© Tyler Wince</span>
-      <span class="coin-return"></span>
-    </div>
-  </div>
-
-  <a class="footer-mark" href="#main-content" aria-label="Back to the top">
-    <span class="monogram" aria-hidden="true"></span>
-    <span>tilt again</span>
-  </a>
 </footer>

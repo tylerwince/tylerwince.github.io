@@ -24,35 +24,24 @@
   {% assign last_entry = site.data.archive | sort: "date" | last %}
   {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
 
-  <div class="cabinet-shell">
-    <div class="ai-design-banner site-banner" role="note">
-      <span class="banner-screw" aria-hidden="true"></span>
-      <p class="banner-text">
-        <span class="banner-no">machine {{ design_no }}</span>
-        <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
-        <span class="banner-note">a new cabinet is built every day by AI</span>
-        <a class="banner-link" href="{{ '/archive/' | relative_url }}">open the arcade</a>
-      </p>
-      <span class="banner-screw" aria-hidden="true"></span>
-    </div>
-
-    {% include header.html %}
-
-    <main class="cabinet-main" id="main-content">
-      <div class="cabinet-rail cabinet-rail--left" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="playfield-frame">
-        <div class="playfield-surface">
-          <div class="pinball-ball" id="pinball-ball" aria-hidden="true"></div>
-          <div class="content-area">
-            {{ content }}
-          </div>
-        </div>
-      </div>
-      <div class="cabinet-rail cabinet-rail--right" aria-hidden="true"><i></i><i></i><i></i></div>
-    </main>
-
-    {% include footer.html %}
+  <div class="ai-design-banner site-banner" role="note">
+    <p class="banner-text">
+      <span class="banner-no">Design №{{ design_no }}</span>
+      <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
+      <span class="banner-note">— this site is redesigned by AI every day.</span>
+      <a class="banner-link" href="{{ '/archive/' | relative_url }}">See every one</a>
+    </p>
   </div>
+
+  {% include header.html %}
+
+  <main class="site-main" id="main-content">
+    <div class="content-area">
+      {{ content }}
+    </div>
+  </main>
+
+  {% include footer.html %}
 
   <script src="{{ '/assets/js/main.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>

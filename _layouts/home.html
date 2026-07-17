@@ -1,118 +1,88 @@
 ---
 layout: default
 ---
-<div class="home home-playfield">
-  <div class="home-top-deck">
-    <section class="home-zone home-zone--reading reveal-zone" id="reading" aria-labelledby="reading-title">
-      <div class="zone-heading zone-heading--vertical">
-        <span class="zone-number">01</span>
-        <div>
-          <p class="zone-kicker">drop target bank</p>
-          <h2 id="reading-title">Reading</h2>
-        </div>
-        <a href="{{ '/reading/' | relative_url }}" class="zone-link">open ledger</a>
-      </div>
-
-      <div class="drop-bank">
-        {% assign recent_books = site.books | sort: "date" | reverse %}
-        {% for book in recent_books limit: 8 %}
-        <a href="{{ '/reading/' | relative_url }}" class="drop-target" data-pin="{{ forloop.index }}">
-          {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
-          {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
-          {% assign cover_file = site.static_files | where: "path", cover_path | first %}
-          <span class="drop-target-face">
-            <span class="drop-target-number">{{ forloop.index }}</span>
-            {% if cover_file %}
-            <img src="{{ cover_file.path | relative_url }}" alt="" loading="lazy">
-            {% else %}
-            <span class="drop-target-letter">{{ book.title | slice: 0, 1 }}</span>
-            {% endif %}
-          </span>
-          <span class="drop-target-caption">
-            <span>{{ book.title | escape }}</span>
-            <small>{% if book.currently_reading %}in progress{% elsif book.stars %}{{ book.stars }}/5{% else %}logged{% endif %}</small>
-          </span>
-        </a>
-        {% endfor %}
-      </div>
-    </section>
-
-    <section class="hero shooter-lane reveal-zone" id="launch" aria-labelledby="hero-title">
-      <div class="hero-star hero-star--one" aria-hidden="true"></div>
-      <div class="hero-star hero-star--two" aria-hidden="true"></div>
-      <div class="hero-copy">
-        <p class="hero-eyebrow">player one · product / apps / books</p>
-        <h1 class="hero-title" id="hero-title">
-          <span>Tyler</span>
-          <span>Wince</span>
-        </h1>
-        <p class="hero-meta">{{ site.description | strip | escape }}</p>
-        <button class="launch-button" id="launch-ball" type="button">
-          <span class="launch-button-light" aria-hidden="true"></span>
-          launch ball
-        </button>
-      </div>
-      <div class="plunger-track" aria-hidden="true">
-        <span class="plunger-ball"></span>
-        <span class="plunger-spring"></span>
-        <span class="plunger-knob"></span>
-      </div>
-      <p class="hero-instruction">Pull to begin. Scroll to keep the ball alive.</p>
-    </section>
-  </div>
-
-  <section class="home-zone home-zone--apps reveal-zone" id="apps" aria-labelledby="apps-title">
-    <div class="zone-heading zone-heading--centered">
-      <span class="zone-number">02</span>
-      <div>
-        <p class="zone-kicker">pop bumper field</p>
-        <h2 id="apps-title">Apps</h2>
-      </div>
-      <a href="{{ '/apps/' | relative_url }}" class="zone-link">inspect all four</a>
+<div class="home">
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 class="hero-title" id="hero-title">Tyler Wince.</h1>
+    <p class="hero-meta">{{ site.description | strip | escape }}</p>
+    <div class="hero-actions">
+      <a class="button button--fill" href="{{ '/apps/' | relative_url }}">See the apps</a>
+      <a class="button button--text" href="{{ '/writing/' | relative_url }}">Read the writing <span aria-hidden="true">›</span></a>
     </div>
+  </section>
 
-    <div class="bumper-field">
-      <span class="bumper-rail bumper-rail--a" aria-hidden="true"></span>
-      <span class="bumper-rail bumper-rail--b" aria-hidden="true"></span>
+  <section class="home-section home-section--apps" id="apps" aria-labelledby="apps-title">
+    <header class="section-header">
+      <p class="section-label">Apps</p>
+      <h2 class="section-title" id="apps-title">Small tools, taken seriously.</h2>
+      <a class="view-all" href="{{ '/apps/' | relative_url }}">All apps <span aria-hidden="true">›</span></a>
+    </header>
+    <div class="app-list">
       {% assign apps = site.apps | sort: "order" %}
       {% for app in apps %}
-      <article class="bumper-assembly bumper-assembly--{{ forloop.index }}" data-pin="{{ forloop.index | plus: 8 }}">
-        <a href="{{ app.url | relative_url }}" class="bumper-cap">
-          <span class="bumper-ring" aria-hidden="true"></span>
-          {% if app.icon_path %}
-          <img class="bumper-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="72" height="72">
-          {% else %}
-          <span class="bumper-icon bumper-icon--glyph" aria-hidden="true">{{ app.title | slice: 0, 1 }}</span>
-          {% endif %}
-          <span class="bumper-name">{{ app.title | escape }}</span>
-        </a>
-        <p class="bumper-desc">{{ app.tagline | escape }}</p>
-        <span class="bumper-score" aria-hidden="true">+{{ forloop.index | times: 250 }}</span>
-      </article>
+      <a href="{{ app.url | relative_url }}" class="app-card">
+        {% if app.icon_path %}
+        <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="88" height="88">
+        {% else %}
+        <span class="app-icon app-icon--glyph" aria-hidden="true">{{ app.title | slice: 0, 1 }}</span>
+        {% endif %}
+        <span class="app-info">
+          <span class="app-name">{{ app.title | escape }}</span>
+          <span class="app-desc">{{ app.tagline | escape }}</span>
+        </span>
+        <span class="app-more" aria-hidden="true">Learn more ›</span>
+      </a>
       {% endfor %}
     </div>
   </section>
 
-  <section class="home-zone home-zone--writing reveal-zone" id="writing" aria-labelledby="writing-title">
-    <div class="zone-heading">
-      <span class="zone-number">03</span>
-      <div>
-        <p class="zone-kicker">illuminated rollover lanes</p>
-        <h2 id="writing-title">Writing</h2>
-      </div>
-      <a href="{{ '/writing/' | relative_url }}" class="zone-link">all essays</a>
-    </div>
-
-    <div class="rollover-bank">
+  <section class="home-section home-section--writing" id="writing" aria-labelledby="writing-title">
+    <header class="section-header">
+      <p class="section-label">Writing</p>
+      <h2 class="section-title" id="writing-title">Notes from the workbench.</h2>
+      <a class="view-all" href="{{ '/writing/' | relative_url }}">All essays <span aria-hidden="true">›</span></a>
+    </header>
+    <ol class="post-list">
       {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
       {% for post in latest_posts %}
-      <a href="{{ post.url | relative_url }}" class="rollover-lane rollover-lane--{{ forloop.index }}" data-pin="{{ forloop.index | plus: 11 }}">
-        <span class="rollover-lamp" aria-hidden="true">{{ forloop.index }}</span>
-        <span class="rollover-title">{{ post.title | escape }}</span>
-        <time class="rollover-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d·%m·%Y" }}</time>
-        <span class="rollover-arrow" aria-hidden="true">↗</span>
-      </a>
+      <li>
+        <a href="{{ post.url | relative_url }}" class="post-row">
+          <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+          <span class="post-title">{{ post.title | escape }}</span>
+          <span class="post-open" aria-hidden="true">›</span>
+        </a>
+      </li>
       {% endfor %}
-    </div>
+    </ol>
+  </section>
+
+  <section class="home-section home-section--reading" id="reading" aria-labelledby="reading-title">
+    <header class="section-header">
+      <p class="section-label">Reading</p>
+      <h2 class="section-title" id="reading-title">The shelf, lately.</h2>
+      <a class="view-all" href="{{ '/reading/' | relative_url }}">Full shelf <span aria-hidden="true">›</span></a>
+    </header>
+    <ul class="book-grid">
+      {% assign recent_books = site.books | sort: "date" | reverse %}
+      {% for book in recent_books limit: 10 %}
+      <li class="book-card">
+        <a href="{{ '/reading/' | relative_url }}" aria-label="{{ book.title | escape }} — see the reading list">
+          <span class="book-card-cover">
+            {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
+            {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
+            {% assign cover_file = site.static_files | where: "path", cover_path | first %}
+            {% if cover_file %}
+            <img src="{{ cover_file.path | relative_url }}" alt="" loading="lazy">
+            {% else %}
+            <b aria-hidden="true">{{ book.title | slice: 0, 1 }}</b>
+            {% endif %}
+          </span>
+          <span class="book-card-title">{{ book.title | escape }}</span>
+          <span class="book-card-author">{{ book.author | escape }}</span>
+          <span class="book-card-status">{% if book.currently_reading %}Reading now{% elsif book.stars %}{{ book.stars }}/5{% else %}Logged{% endif %}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
   </section>
 </div>

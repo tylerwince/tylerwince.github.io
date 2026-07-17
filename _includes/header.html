@@ -1,52 +1,25 @@
-<!-- THE BACKGLASS: identity, score and navigation share the cabinet display. -->
+<!-- UNIBODY — the capsule: one floating piece of glass holding identity and routes. -->
 <header class="site-header" id="site-header">
-  <div class="backglass-brand">
-    <a class="site-title" href="{{ '/' | relative_url }}" aria-label="Tyler Wince — home">
-      <span class="site-title-mark monogram" aria-hidden="true"></span>
-      <span class="site-title-stack">
-        <span class="site-title-text">Tyler Wince</span>
-        <span class="site-title-sub">Whispering to agents</span>
-      </span>
-    </a>
-
-    <div class="score-bank" aria-live="polite" aria-atomic="true">
-      <span class="score-label">player one</span>
-      <span class="score-digits" id="cabinet-score">000000</span>
-      <span class="score-ball" id="ball-readout">ball 1</span>
-    </div>
-
-    <button class="nav-toggle" id="nav-toggle" type="button"
-            aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
-      <span class="nav-toggle-lamp" aria-hidden="true"></span>
-      <span class="nav-toggle-text">routes</span>
-    </button>
-  </div>
-
   <nav class="site-nav" id="site-nav" aria-label="Primary">
-    <div class="nav-instruction" aria-hidden="true">
-      <span>select a lane</span>
-      <span>machine {{ design_no }}</span>
+    <div class="nav-capsule">
+      <a class="site-title" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %} aria-label="Tyler Wince — home">
+        <span class="site-title-mark monogram" aria-hidden="true"></span>
+        <span class="site-title-text">Tyler Wince</span>
+      </a>
+      <ul class="nav-list" id="nav-list">
+        {% for nav_page_name in site.header_pages %}
+          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
+          {% if nav_page %}
+          <li class="nav-item">
+            <a class="nav-link{% if page.url contains nav_page.url %} active{% endif %}" href="{{ nav_page.url | relative_url }}"{% if page.url contains nav_page.url %} aria-current="page"{% endif %}>{{ nav_page.title }}</a>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list" aria-label="Open menu">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
     </div>
-    <ol class="nav-list">
-      <li class="nav-item">
-        <a class="reel-link{% if page.url == '/' %} active{% endif %}" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>
-          <span class="reel-number">00</span>
-          <span class="reel-label">home</span>
-          <span class="reel-lamp" aria-hidden="true"></span>
-        </a>
-      </li>
-      {% for nav_page_name in site.header_pages %}
-        {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-        {% if nav_page %}
-        <li class="nav-item">
-          <a class="reel-link{% if page.url contains nav_page.url %} active{% endif %}" href="{{ nav_page.url | relative_url }}"{% if page.url contains nav_page.url %} aria-current="page"{% endif %}>
-            <span class="reel-number">0{{ forloop.index }}</span>
-            <span class="reel-label">{{ nav_page.title | downcase }}</span>
-            <span class="reel-lamp" aria-hidden="true"></span>
-          </a>
-        </li>
-        {% endif %}
-      {% endfor %}
-    </ol>
   </nav>
 </header>
