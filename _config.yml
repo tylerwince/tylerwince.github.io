@@ -70,5 +70,6 @@ include:
 exclude:
   - scripts
   - docs
+  - test
   - Gemfile
   - Gemfile.lock
