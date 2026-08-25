@@ -1,0 +1,19 @@
+---
+layout: null
+permalink: /webmcp/articles.json
+---
+{% assign articles = site.posts | sort: "date" | reverse %}
+[
+{% for article in articles %}
+  {
+    "slug": {{ article.slug | jsonify }},
+    "title": {{ article.title | jsonify }},
+    "date": {{ article.date | date_to_xmlschema | jsonify }},
+    "description": {{ article.description | jsonify }},
+    "topics": {{ article.topics | jsonify }},
+    "url": {{ article.url | absolute_url | jsonify }},
+    "path": {{ article.url | jsonify }},
+    "content": {{ article.content | markdownify | strip_html | strip | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]

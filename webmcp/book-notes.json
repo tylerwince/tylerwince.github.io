@@ -1,0 +1,26 @@
+---
+layout: null
+permalink: /webmcp/book-notes.json
+---
+{% assign sorted_books = site.books | sort_natural: "title" %}
+{% assign first_book = true %}
+[
+{% for book in sorted_books %}
+{% assign note_content = book.content | strip %}
+{% unless note_content == empty %}
+  {% unless first_book %},{% endunless %}
+  {
+    "slug": {{ book.slug | jsonify }},
+    "title": {{ book.title | jsonify }},
+    "author": {{ book.author | jsonify }},
+    "date": {{ book.date | date: "%Y-%m-%d" | jsonify }},
+    "rating": {{ book.stars | jsonify }},
+    "genre": {{ book.genre | jsonify }},
+    "url": {{ book.url | absolute_url | jsonify }},
+    "path": {{ book.url | jsonify }},
+    "content": {{ book.content | markdownify | strip_html | strip | jsonify }}
+  }
+  {% assign first_book = false %}
+{% endunless %}
+{% endfor %}
+]
