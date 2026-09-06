@@ -56,7 +56,6 @@ header_pages:
   - apps.md
   - writing.md
   - reading.md
-  - now.md
   - archive.md
 
 plugins:

@@ -72,13 +72,13 @@ If you add in a surprising feature, you will win over customers that you didn’
 
 # Making the move
 
-Once you have done this, you are ready to make the move into the next market space. You should ship early, often, and get as much feedback as possible. Your new customers will have complaints, and that is okay. Determine the right way to handle any complaints by separating the ones that are meaningful from the ones that aren’t aligned with your vision. A great way to do this is by using a [product sieve, which I wrote about a few weeks ago](https://tylerwince.com/2020/07/01/why-you-need-a-product-sieve.html).
+Once you have done this, you are ready to make the move into the next market space. You should ship early, often, and get as much feedback as possible. Your new customers will have complaints, and that is okay. Determine the right way to handle any complaints by separating the ones that are meaningful from the ones that aren’t aligned with your vision. A great way to do this is by using a [product sieve, which I wrote about a few weeks ago](https://tylerwince.com/2020/07/01/why-you-need-a-product-sieve/).
 
 # Securing your monopoly for the long haul
 
 It is easy and short-sighted to only look at current competitors in the market space you are moving into. The solution your target customers use today is definitely something that should be considered, but it is not enough to ensure you win. Remember, you don’t want part of the market share, you want a monopoly.
 
-As a product manager, what you need to be doing is researching other companies that are not yet competitors. These are companies that have the same [problem space](https://tylerwince.com/2020/06/17/problem-space-solution-space.html) you have but a different market space and thus a different twist on the solution. They may have different corporate values due to the market space they entered into, and they will sell the product differently because of that.
+As a product manager, what you need to be doing is researching other companies that are not yet competitors. These are companies that have the same [problem space](https://tylerwince.com/2020/06/17/problem-space-solution-space/) you have but a different market space and thus a different twist on the solution. They may have different corporate values due to the market space they entered into, and they will sell the product differently because of that.
 
 ![](/assets/4425bdd4-3516-4d10-a74c-39f94b46b02f_1600x1058.jpeg)
 

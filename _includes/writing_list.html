@@ -1,0 +1,18 @@
+{% assign writing_years = include.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
+<div class="writing-list">
+  {% for year in writing_years %}
+  <div class="writing-year">
+    <h2 class="year-label">{{ year.name }}</h2>
+    <ol class="post-list">
+      {% for post in year.items %}
+      <li{% if include.searchable %} data-article-search="{{ post.title | escape }} {{ post.description | escape }} {{ post.topics | join: ' ' | escape }} {{ post.content | markdownify | strip_html | normalize_whitespace | escape }}"{% endif %}>
+        <a class="post-row" href="{{ post.url | relative_url }}">
+          <span class="post-title">{{ post.title | escape }}</span>
+          <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d' }}</time>
+        </a>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+  {% endfor %}
+</div>

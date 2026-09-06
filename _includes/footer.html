@@ -1,42 +1,9 @@
-<!-- UNIBODY — the quiet end of the page. -->
 <footer class="site-footer">
-  <div class="footer-inner">
-    <p class="footer-line">
-      <span class="monogram" aria-hidden="true"></span>
-      <span>Fewer things, made better.</span>
-    </p>
-
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h2 class="footer-col-title">Work</h2>
-        <ul class="footer-links">
-          <li><a href="{{ '/apps/' | relative_url }}">Apps</a></li>
-          <li><a href="{{ '/writing/' | relative_url }}">Writing</a></li>
-          <li><a href="{{ '/reading/' | relative_url }}">Reading</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h2 class="footer-col-title">Meanwhile</h2>
-        <ul class="footer-links">
-          <li><a href="{{ '/now/' | relative_url }}">Now</a></li>
-          <li><a href="{{ '/archive/' | relative_url }}">Design archive</a></li>
-          <li><a href="{{ '/' | relative_url }}">Home</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h2 class="footer-col-title">Elsewhere</h2>
-        <ul class="social-list">
-          {% if site.github_username %}
-          <li><a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a></li>
-          {% endif %}
-          {% if site.twitter_username %}
-          <li><a href="https://twitter.com/{{ site.twitter_username }}" target="_blank" rel="noopener">Twitter</a></li>
-          {% endif %}
-          <li><a href="https://www.linkedin.com/in/tylerwince" target="_blank" rel="noopener">LinkedIn</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="footer-legal">© {{ site.time | date: "%Y" }} Tyler Wince. Designed by AI, remade every morning.</p>
-  </div>
+  <nav class="footer-links" aria-label="Elsewhere">
+    <a href="mailto:{{ site.email }}">Email</a>
+    <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+    <a href="https://x.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer">X</a>
+    <a href="https://www.linkedin.com/in/{{ site.linkedin_username }}">LinkedIn</a>
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+  </nav>
 </footer>

@@ -7,7 +7,7 @@ published: true
 tags: product-management
 topics: [product, frameworks]
 ---
-This post is part 2 of a two-part series on the concept of a product sieve. If you haven’t read [part 1](https://tylerwince.com/2020/07/01/why-you-need-a-product-sieve.html), I would suggest you start there.
+This post is part 2 of a two-part series on the concept of a product sieve. If you haven’t read [part 1](https://tylerwince.com/2020/07/01/why-you-need-a-product-sieve/), I would suggest you start there.
 
 Part 1 explored the need for a product sieve. Our dislike of boredom and the chase of consistently performing at peak productivity result in building products that don’t solve a real problem.
 

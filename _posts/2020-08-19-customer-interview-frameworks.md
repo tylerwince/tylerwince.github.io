@@ -11,7 +11,7 @@ topics: [product, frameworks]
 
 > "It isn't the customer's job to know what they want." - Steve Jobs
 
-A couple months ago I wrote about the [Problem Space and the Solution Space](https://tylerwince.com/2020/06/17/problem-space-solution-space.html). The main idea of the article, if you haven't read it, is that product managers should be spending an unbalanced amount of time in the problem space. You are the one in the organization who has the opportunity to do so and you owe it to your team to do it well.
+A couple months ago I wrote about the [Problem Space and the Solution Space](https://tylerwince.com/2020/06/17/problem-space-solution-space/). The main idea of the article, if you haven't read it, is that product managers should be spending an unbalanced amount of time in the problem space. You are the one in the organization who has the opportunity to do so and you owe it to your team to do it well.
 
 _What does this have to do with customer interviews?_
 

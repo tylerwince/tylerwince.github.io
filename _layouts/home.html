@@ -2,87 +2,43 @@
 layout: default
 ---
 <div class="home">
-  <section class="hero" aria-labelledby="hero-title">
-    <h1 class="hero-title" id="hero-title">Tyler Wince.</h1>
-    <p class="hero-meta">{{ site.description | strip | escape }}</p>
-    <div class="hero-actions">
-      <a class="button button--fill" href="{{ '/apps/' | relative_url }}">See the apps</a>
-      <a class="button button--text" href="{{ '/writing/' | relative_url }}">Read the writing <span aria-hidden="true">›</span></a>
+  <header class="intro">
+    <h1 class="intro-name">Tyler Wince</h1>
+    <div class="intro-copy">
+      <p>I live in Arizona with my wife and kids. I'm a molecular biologist by training and started my career in research and teaching before finding my way into software.</p>
+      <p>In 2016, I co-founded <a href="https://myndshft.com" target="_blank" rel="noopener noreferrer">Myndshft</a>, where we built software to automate the paperwork that gets between patients and care. <a href="https://drfirst.com" target="_blank" rel="noopener noreferrer">DrFirst</a> acquired the company in 2024, and I joined to lead product and technology.</p>
+      <p>Today, I work with companies as a product and technology leader. I spend much of my time building with AI and helping teams rethink how they build software.</p>
+      <p>I also make apps for things I care about: <a href="{{ '/apps/etch/' | relative_url }}">Etch</a> for remembering what I learn, <a href="{{ '/apps/waymark/' | relative_url }}">Waymark</a> for deciding what I'm formed by, and <a href="{{ '/apps/little-quotes/' | relative_url }}">Little Quotes</a> for the things my kids say that I never want to forget.</p>
+      <p>You can find me on <a href="https://x.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer">X</a> or shoot me an <a href="mailto:{{ site.email }}">email</a>.</p>
     </div>
-  </section>
+  </header>
 
-  <section class="home-section home-section--apps" id="apps" aria-labelledby="apps-title">
-    <header class="section-header">
-      <p class="section-label">Apps</p>
-      <h2 class="section-title" id="apps-title">Small tools, taken seriously.</h2>
-      <a class="view-all" href="{{ '/apps/' | relative_url }}">All apps <span aria-hidden="true">›</span></a>
-    </header>
-    <div class="app-list">
-      {% assign apps = site.apps | sort: "order" %}
-      {% for app in apps %}
-      <a href="{{ app.url | relative_url }}" class="app-card">
-        {% if app.icon_path %}
-        <img class="app-icon" src="{{ app.icon_path | relative_url }}" alt="" loading="lazy" width="88" height="88">
-        {% else %}
-        <span class="app-icon app-icon--glyph" aria-hidden="true">{{ app.title | slice: 0, 1 }}</span>
-        {% endif %}
-        <span class="app-info">
-          <span class="app-name">{{ app.title | escape }}</span>
-          <span class="app-desc">{{ app.tagline | escape }}</span>
-        </span>
-        <span class="app-more" aria-hidden="true">Learn more ›</span>
-      </a>
-      {% endfor %}
-    </div>
-  </section>
+  <div class="home-index" data-home-tabs>
+    <nav class="index-tabs" aria-label="Explore">
+      <a id="tab-writing" href="{{ '/writing/' | relative_url }}" data-tab="writing">Writing</a>
+      <a id="tab-reading" href="{{ '/reading/' | relative_url }}" data-tab="reading">Reading</a>
+      <a id="tab-building" href="{{ '/apps/' | relative_url }}" data-tab="building">Building</a>
+    </nav>
 
-  <section class="home-section home-section--writing" id="writing" aria-labelledby="writing-title">
-    <header class="section-header">
-      <p class="section-label">Writing</p>
-      <h2 class="section-title" id="writing-title">Notes from the workbench.</h2>
-      <a class="view-all" href="{{ '/writing/' | relative_url }}">All essays <span aria-hidden="true">›</span></a>
-    </header>
-    <ol class="post-list">
-      {% assign latest_posts = site.posts | where: "published", true | slice: 0, 5 %}
-      {% for post in latest_posts %}
-      <li>
-        <a href="{{ post.url | relative_url }}" class="post-row">
-          <time class="post-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time>
-          <span class="post-title">{{ post.title | escape }}</span>
-          <span class="post-open" aria-hidden="true">›</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ol>
-  </section>
+    <section class="index-panel" id="panel-writing" data-panel="writing" aria-labelledby="tab-writing">
+      {% assign recent_posts = site.posts | sort: 'date' | reverse | slice: 0, 8 %}
+      {% include writing_list.html posts=recent_posts %}
+      <a class="view-all" href="{{ '/writing/' | relative_url }}">All writing <span aria-hidden="true">↗</span></a>
+    </section>
 
-  <section class="home-section home-section--reading" id="reading" aria-labelledby="reading-title">
-    <header class="section-header">
-      <p class="section-label">Reading</p>
-      <h2 class="section-title" id="reading-title">The shelf, lately.</h2>
-      <a class="view-all" href="{{ '/reading/' | relative_url }}">Full shelf <span aria-hidden="true">›</span></a>
-    </header>
-    <ul class="book-grid">
-      {% assign recent_books = site.books | sort: "date" | reverse %}
-      {% for book in recent_books limit: 10 %}
-      <li class="book-card">
-        <a href="{{ '/reading/' | relative_url }}" aria-label="{{ book.title | escape }} — see the reading list">
-          <span class="book-card-cover">
-            {% assign book_slug = book.path | split: "/" | last | replace: ".md", "" %}
-            {% assign cover_path = "/assets/covers/" | append: book_slug | append: ".jpg" %}
-            {% assign cover_file = site.static_files | where: "path", cover_path | first %}
-            {% if cover_file %}
-            <img src="{{ cover_file.path | relative_url }}" alt="" loading="lazy">
-            {% else %}
-            <b aria-hidden="true">{{ book.title | slice: 0, 1 }}</b>
-            {% endif %}
-          </span>
-          <span class="book-card-title">{{ book.title | escape }}</span>
-          <span class="book-card-author">{{ book.author | escape }}</span>
-          <span class="book-card-status">{% if book.currently_reading %}Reading now{% elsif book.stars %}{{ book.stars }}/5{% else %}Logged{% endif %}</span>
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
+    <section class="index-panel" id="panel-reading" data-panel="reading" aria-labelledby="tab-reading">
+      <div class="book-list">
+        {% assign current_books = site.books | where: 'currently_reading', true | sort: 'date' | reverse %}
+        {% for book in current_books %}{% include book_item.html book=book %}{% endfor %}
+        {% assign recent_books = site.books | where_exp: 'book', 'book.currently_reading != true' | sort: 'date' | reverse %}
+        {% for book in recent_books limit: 8 %}{% include book_item.html book=book %}{% endfor %}
+      </div>
+      <a class="view-all" href="{{ '/reading/' | relative_url }}">All {{ site.books.size }} books <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="index-panel" id="panel-building" data-panel="building" aria-labelledby="tab-building">
+      {% include building_list.html %}
+      <a class="view-all" href="{{ '/apps/' | relative_url }}">All projects <span aria-hidden="true">↗</span></a>
+    </section>
+  </div>
 </div>

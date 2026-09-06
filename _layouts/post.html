@@ -1,24 +1,17 @@
 ---
 layout: default
 ---
-<article class="article article--ticket">
+<article class="article">
   <header class="article-header">
-    <span class="ticket-rip" aria-hidden="true"></span>
-    <div class="article-kicker">writing</div>
+    <a class="article-kicker" href="{{ '/#writing' | relative_url }}">← Writing</a>
     <h1 class="article-title">{{ page.title | escape }}</h1>
-    {% if page.description %}
-    <p class="article-description">{{ page.description | escape }}</p>
-    {% endif %}
+    {% if page.description %}<p class="article-description">{{ page.description | escape }}</p>{% endif %}
     <div class="article-meta">
-      <span class="meta-item">{{ page.date | date: "%B %-d, %Y" }}</span>
-      {% assign words = content | number_of_words %}
-      {% assign minutes = words | divided_by: 200 %}
-      {% if minutes < 1 %}{% assign minutes = 1 %}{% endif %}
-      <span class="meta-item">{{ minutes }} min read</span>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time>
+      {% assign minutes = content | number_of_words | divided_by: 200 | at_least: 1 %}
+      <span>{{ minutes }} min read</span>
     </div>
   </header>
-
-  <div class="article-body">
-    {{ content }}
-  </div>
+  <div class="article-body">{{ content }}</div>
+  <a class="back-link" href="{{ '/#writing' | relative_url }}">← Back to writing</a>
 </article>

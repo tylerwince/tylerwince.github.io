@@ -1,9 +1,9 @@
-# Current theme manifest. Drives the banner (design № + name), the browser
+# Current theme manifest. Drives the archive (design № + name), the browser
 # theme-color, and the per-post OG cards. CI merges this into _data/archive.yml
 # on deploy and captures the snapshot — never edit archive.yml by hand.
 #
 # Fields:
-#   name                  — THEME NAME (all caps), shown in the banner + archive
+#   name                  — theme name, shown in the archive
 #   date                  — YYYY-MM-DD, today
 #   lane                  — object-metaphor | design-movement | pure-typography |
 #                           motion-first | generative | digital-native
@@ -15,23 +15,22 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "UNIBODY"
-date: "2026-07-17"
-lane: "digital-native"
+name: "Commonplace"
+date: "2026-09-06"
+lane: "pure-typography"
 manifesto: >-
-  Milled from a single block: one typeface, two tones, one accent. Everything
-  that couldn't justify itself was machined away — what remains is air, light,
-  and the work.
-nav_paradigm: "floating frosted capsule — a detached glass pill that condenses as you scroll and folds open into a rounded sheet on small screens"
-layout_skeleton: "a product page for a person — statement hero, apps as an asymmetric bento with one inverted tile, writing as an editorial index on a quiet surface band, reading as an edge-bleed cover gallery"
-signature_interaction: "the machining pass — the name resolves from soft blur as a specular gleam sweeps across it, like light over brushed aluminum"
-color: "#fbfbfd"
+  A place for writing, reading, and things in the making.
+  A comfortable column, a little space, and room to follow your curiosity.
+nav_paradigm: "three quiet text tabs beneath a personal introduction"
+layout_skeleton: "one reading column with an introduction and a changing index"
+signature_interaction: "writing, reading, and building share the same space; the introduction stays put"
+color: "#fdfdfc"
 fonts:
-  display: "Geist"
-  body: "Geist"
-  mono: "Geist Mono"
+  display: "Public Sans"
+  body: "Public Sans"
+  mono: "Public Sans"
 palette:
-  - "#fbfbfd"
-  - "#1d1d1f"
-  - "#6e6e73"
-  - "#0071e3"
+  - "#fdfdfc"
+  - "#30332f"
+  - "#70746d"
+  - "#444444"

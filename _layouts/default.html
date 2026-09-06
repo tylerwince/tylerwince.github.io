@@ -14,25 +14,12 @@
   <meta property="og:image" content="{{ og_image | absolute_url }}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}?v={{ site.time | date: '%s' }}">
-  <style>@view-transition { navigation: auto; }</style>
   {% include fonts.html %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% feed_meta %}
 </head>
 <body class="layout-{{ page.layout | default: 'default' }}">
-  {% assign archive_count = site.data.archive | size %}
-  {% assign last_entry = site.data.archive | sort: "date" | last %}
-  {% if last_entry.date == site.data.theme.date %}{% assign design_no = archive_count %}{% else %}{% assign design_no = archive_count | plus: 1 %}{% endif %}
-
-  <div class="ai-design-banner site-banner" role="note">
-    <p class="banner-text">
-      <span class="banner-no">Design №{{ design_no }}</span>
-      <span class="banner-name">{{ site.data.theme.name | default: "today's design" }}</span>
-      <span class="banner-note">— this site is redesigned by AI every day.</span>
-      <a class="banner-link" href="{{ '/archive/' | relative_url }}">See every one</a>
-    </p>
-  </div>
-
+  <a class="skip-link" href="#main-content">Skip to content</a>
   {% include header.html %}
 
   <main class="site-main" id="main-content">

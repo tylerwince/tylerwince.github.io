@@ -15,14 +15,14 @@ description: The historical index of designs. Every day, a different look.
 {% if theme %}
 <section class="archive-today"{% if theme.lane %} data-lane="{{ theme.lane }}"{% endif %}>
   <div class="archive-marquee">
-    <span class="archive-today-label">currently playing · machine №{{ design_no }}</span>
+    <span class="archive-today-label">Current design · №{{ design_no }}</span>
     <span class="archive-today-theme">{{ theme.name }}</span>
   </div>
   <div class="archive-current-copy">
     {% if theme.manifesto %}<p class="archive-today-manifesto">{{ theme.manifesto }}</p>{% endif %}
     <div class="archive-today-meta">
       {% if theme.lane %}<span class="archive-meta-item">{{ theme.lane }}</span>{% endif %}
-      {% if theme.fonts.display %}<span class="archive-meta-item">{{ theme.fonts.display }}{% if theme.fonts.body %} + {{ theme.fonts.body }}{% endif %}</span>{% endif %}
+      {% if theme.fonts.display %}<span class="archive-meta-item">{{ theme.fonts.display }}{% if theme.fonts.body and theme.fonts.body != theme.fonts.display %} + {{ theme.fonts.body }}{% endif %}</span>{% endif %}
       {% if theme.palette %}
       <span class="archive-palette" aria-hidden="true">
         {%- for c in theme.palette -%}<i style="background:{{ c }}"></i>{%- endfor -%}
@@ -42,11 +42,11 @@ description: The historical index of designs. Every day, a different look.
 {% endfor %}
 
 <div class="archive-controls">
-  <span class="archive-count"><b>{{ archive_count }}</b> past designs, one per day</span>
-  <button type="button" class="archive-surprise" id="archive-surprise" data-dates="{{ snap_dates }}"><span aria-hidden="true">●</span> surprise me → random day</button>
+  <span class="archive-count">{{ archive_count }} past designs</span>
+  <button type="button" class="archive-surprise" id="archive-surprise" data-dates="{{ snap_dates }}">Surprise me ↗</button>
 </div>
 
-<div class="archive-gallery" aria-label="Past design machines">
+<div class="archive-gallery" aria-label="Past designs">
   {% for entry in sorted %}
     {% if entry.date == theme.date %}{% continue %}{% endif %}
     {% assign snap_path = "/archive/" | append: entry.date | append: "/index.html" %}

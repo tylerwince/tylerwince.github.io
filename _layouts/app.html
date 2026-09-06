@@ -1,29 +1,27 @@
 ---
 layout: default
 ---
-<article class="operator-sheet operator-sheet--app">
-  <header class="app-machine-header reveal-zone">
-    <div class="app-medallion" data-pin="app">
-      <span class="app-medallion-ring" aria-hidden="true"></span>
-      {% if page.icon_path %}<img src="{{ page.icon_path | relative_url }}" alt="" width="120" height="120">{% endif %}
+<article class="article">
+  <header class="article-header">
+    <a class="article-kicker" href="{{ '/#building' | relative_url }}">← Building</a>
+    <div class="app-header">
+      {% if page.icon_path %}<img class="app-detail-icon" src="{{ page.icon_path | relative_url }}" alt="" width="56" height="56">{% endif %}
+      <div>
+        <h1 class="article-title">{{ page.title | escape }}</h1>
+        {% if page.tagline %}<p class="article-description">{{ page.tagline | escape }}</p>{% endif %}
+      </div>
     </div>
-    <div class="app-title-panel">
-      <p class="article-kicker">machine in the field</p>
-      <h1 class="article-title">{{ page.title | escape }}</h1>
-      {% if page.tagline %}<p class="article-description">{{ page.tagline }}</p>{% endif %}
-    </div>
-    <div class="app-spec-panel">
-      {% if page.platform %}<span><b>platform</b>{{ page.platform }}</span>{% endif %}
-      {% if page.tech_stack %}<span><b>system</b>{{ page.tech_stack | join: ' · ' }}</span>{% endif %}
+    <div class="article-meta app-links">
+      {% if page.platform %}<span>{{ page.platform }}</span>{% endif %}
       {% if page.app_store_link %}
-      <a class="download-plunger" href="{{ page.app_store_link }}" target="_blank" rel="noopener">Download <span aria-hidden="true">↗</span></a>
+      <a href="{{ page.app_store_link }}" target="_blank" rel="noopener">Download <span aria-hidden="true">↗</span></a>
       {% elsif page.website %}
-      <a class="download-plunger" href="{{ page.website }}" target="_blank" rel="noopener">Visit <span aria-hidden="true">↗</span></a>
+      <a href="{{ page.website }}" target="_blank" rel="noopener">Visit website <span aria-hidden="true">↗</span></a>
       {% endif %}
     </div>
   </header>
 
-  <div class="operator-sheet-body article-body" id="app-content-body">
+  <div class="article-body" id="app-content-body">
     {{ content }}
   </div>
 </article>

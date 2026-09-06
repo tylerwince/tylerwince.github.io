@@ -1,25 +1,10 @@
-<!-- UNIBODY — the capsule: one floating piece of glass holding identity and routes. -->
-<header class="site-header" id="site-header">
-  <nav class="site-nav" id="site-nav" aria-label="Primary">
-    <div class="nav-capsule">
-      <a class="site-title" href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %} aria-label="Tyler Wince — home">
-        <span class="site-title-mark monogram" aria-hidden="true"></span>
-        <span class="site-title-text">Tyler Wince</span>
-      </a>
-      <ul class="nav-list" id="nav-list">
-        {% for nav_page_name in site.header_pages %}
-          {% assign nav_page = site.pages | where: "name", nav_page_name | first %}
-          {% if nav_page %}
-          <li class="nav-item">
-            <a class="nav-link{% if page.url contains nav_page.url %} active{% endif %}" href="{{ nav_page.url | relative_url }}"{% if page.url contains nav_page.url %} aria-current="page"{% endif %}>{{ nav_page.title }}</a>
-          </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-list" aria-label="Open menu">
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-      </button>
-    </div>
+{% unless page.url == '/' %}
+<header class="site-header">
+  <a class="site-title" href="{{ '/' | relative_url }}">Tyler Wince</a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="{{ '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.layout == 'post' %} aria-current="page"{% endif %}>Writing</a>
+    <a href="{{ '/reading/' | relative_url }}"{% if page.url == '/reading/' or page.layout == 'book' %} aria-current="page"{% endif %}>Reading</a>
+    <a href="{{ '/apps/' | relative_url }}"{% if page.url contains '/apps/' %} aria-current="page"{% endif %}>Building</a>
   </nav>
 </header>
+{% endunless %}

@@ -3,132 +3,37 @@ title: Reading
 permalink: /reading/
 layout: page
 description: Books I've read since 2023, plus some favorites from earlier years.
+show_description: false
 ---
 
-{% assign all_books = site.books | sort: "date" | reverse %}
-{% assign five_star_books = site.books | where: "stars", 5 %}
-
-{% assign year_now = site.time | date: '%Y' %}
-{% assign books_this_year = 0 %}
-{% for b in site.books %}{% assign by = b.date | date: '%Y' %}{% if by == year_now %}{% assign books_this_year = books_this_year | plus: 1 %}{% endif %}{% endfor %}
-{% assign in_transit = site.books | where: "currently_reading", true | size %}
-
-<div class="reading-stats">
-  <div class="stat-item" data-stat="total">
-    <span class="stat-value">{{ site.books | size }}</span>
-    <span class="stat-label">books logged</span>
-  </div>
-  <div class="stat-item" data-stat="favorites">
-    <span class="stat-value">{{ five_star_books | size }}</span>
-    <span class="stat-label">five-star reads</span>
-  </div>
-  <div class="stat-item" data-stat="this-year">
-    <span class="stat-value">{{ books_this_year }}</span>
-    <span class="stat-label">read in {{ year_now }}</span>
-  </div>
-  <div class="stat-item" data-stat="reading-now">
-    <span class="stat-value">{{ in_transit }}</span>
-    <span class="stat-label">in progress</span>
-  </div>
-</div>
-
-<div class="sort-controls">
-  <span>Sort:</span>
-  <a href="#" onclick="showList('date'); return false;" class="sort-link active" id="sort-date">Date</a>
-  <a href="#" onclick="showList('rating'); return false;" class="sort-link" id="sort-rating">Rating</a>
-  <a href="#" onclick="showList('title'); return false;" class="sort-link" id="sort-title">Title</a>
-  <a href="#" onclick="showList('author'); return false;" class="sort-link" id="sort-author">Author</a>
-  <a href="#" onclick="showList('favorites'); return false;" class="sort-link" id="sort-favorites">Favorites</a>
-</div>
-
-<div id="favorites-list" style="display: none;">
-  <div class="book-list">
-    {% for book in five_star_books %}
-      {% include book_item.html book=book %}
-    {% endfor %}
-  </div>
-</div>
-
-<div id="date-list">
-  {% assign grouped_books = all_books | group_by_exp: "book", "book.date | date: '%Y' | to_integer" %}
-  {% for year_group in grouped_books %}
-    {% assign year = year_group.name | to_integer %}
-    {% if year >= 2020 %}
-      <div class="year-section" data-year="{{ year }}">
-        <h2 class="year-heading">{{ year }}</h2>
-        <div class="book-list">
-          {% for book in year_group.items %}
-            {% include book_item.html book=book %}
-          {% endfor %}
-        </div>
+{% assign all_books = site.books | sort: 'date' | reverse %}
+<div data-library>
+  <div class="library-controls" hidden>
+    <div class="library-search">
+      <label class="search-label">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.25"/><path d="m13 13 4.25 4.25" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/></svg>
+        <span class="sr-only">Search books or authors</span>
+        <input type="search" data-book-search placeholder="Search books or authors" autocomplete="off">
+      </label>
+      <button class="search-clear" type="button" data-search-clear aria-label="Clear search" hidden>×</button>
+    </div>
+    <div class="library-options">
+      <div class="library-option-group" role="group" aria-label="Sort books">
+        <button class="library-option" type="button" data-book-sort="date" aria-pressed="true">Recent</button>
+        <button class="library-option" type="button" data-book-sort="rating" aria-pressed="false">Rating</button>
+        <button class="library-option" type="button" data-book-sort="title" aria-pressed="false">Title</button>
+        <button class="library-option" type="button" data-book-sort="author" aria-pressed="false">Author</button>
       </div>
-    {% elsif forloop.last %}
-      <div class="year-section">
-        <h2 class="year-heading">Previous</h2>
-        <div class="book-list">
-          {% for book in year_group.items %}
-            {% include book_item.html book=book %}
-          {% endfor %}
-        </div>
+      <div class="library-option-group" role="group" aria-label="Filter books">
+        <button class="library-option" type="button" data-book-filter="all" aria-pressed="true">All</button>
+        <button class="library-option" type="button" data-book-filter="favorites" aria-pressed="false">Favorites</button>
+        <button class="library-option" type="button" data-book-filter="notes" aria-pressed="false">With notes</button>
       </div>
-    {% endif %}
-  {% endfor %}
-</div>
-
-<div id="rating-list" style="display: none;">
-  {% assign rated_books = site.books | where_exp: "book", "book.stars" | sort: "stars" | reverse %}
-  {% assign unrated_books = site.books | where_exp: "book", "book.stars == nil" %}
-  <div class="book-list">
-    {% for book in rated_books %}
-      {% include book_item.html book=book %}
-    {% endfor %}
-    {% for book in unrated_books %}
-      {% include book_item.html book=book unrated=true %}
-    {% endfor %}
+    </div>
   </div>
-</div>
-
-<div id="title-list" style="display: none;">
-  {% assign sorted_books = site.books | sort: "title" %}
-  <div class="book-list">
-    {% for book in sorted_books %}
-      {% include book_item.html book=book %}
-    {% endfor %}
+  <p class="library-count" role="status" aria-live="polite" data-book-count>{{ site.books.size }} books</p>
+  <div class="book-list" data-book-list>
+    {% for book in all_books %}{% include book_item.html book=book %}{% endfor %}
   </div>
+  <p class="empty-state" data-book-empty hidden>No books found. Try a different title, author, or filter.</p>
 </div>
-
-<div id="author-list" style="display: none;">
-  {% assign sorted_books = site.books | sort_natural: "author" %}
-  <div class="book-list" id="author-list-container">
-    {% for book in sorted_books %}
-      {% assign words = book.author | split: ' ' %}
-      {% assign last_name = words | last %}
-      {% include book_item.html book=book last_name=last_name %}
-    {% endfor %}
-  </div>
-</div>
-
-<script>
-function showList(type) {
-  ['date', 'rating', 'title', 'author', 'favorites'].forEach(function(id) {
-    document.getElementById(id + '-list').style.display = 'none';
-  });
-  document.querySelectorAll('.sort-link').forEach(function(link) {
-    link.classList.remove('active');
-  });
-  document.getElementById(type + '-list').style.display = 'block';
-  document.getElementById('sort-' + type).classList.add('active');
-  if (type === 'author') sortAuthorList();
-}
-
-function sortAuthorList() {
-  var container = document.getElementById('author-list-container');
-  if (!container) return;
-  var items = Array.from(container.querySelectorAll('.book-line'));
-  items.sort(function(a, b) {
-    return (a.getAttribute('data-last-name') || '').toLowerCase()
-      .localeCompare((b.getAttribute('data-last-name') || '').toLowerCase());
-  });
-  items.forEach(function(item) { container.appendChild(item); });
-}
-</script>

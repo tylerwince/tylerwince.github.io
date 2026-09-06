@@ -184,6 +184,61 @@
     };
   }
 
+  function searchArticles(entries, query, requestedLimit) {
+    var normalizedQuery = normalize(query);
+    var terms = normalizedQuery.split(' ').filter(Boolean);
+    var limit = Math.max(1, Math.min(Math.floor(Number(requestedLimit) || 5), 10));
+    var result = { query: String(query || ''), count: 0, totalMatches: 0, totalArticles: entries.length, results: [] };
+
+    if (!normalizedQuery) {
+      result.error = 'Provide a non-empty search query.';
+      return result;
+    }
+
+    var matches = entries.map(function (entry) {
+      var title = normalize(entry.title);
+      var topics = normalize((entry.topics || []).join(' '));
+      var description = normalize(entry.description);
+      var content = normalize(entry.content);
+      var searchable = [title, topics, description, content].join(' ');
+      if (!terms.every(function (term) { return searchable.includes(term); })) return null;
+
+      var score = title === normalizedQuery ? 120 : title.includes(normalizedQuery) ? 70 : 0;
+      if (topics.includes(normalizedQuery)) score += 45;
+      if (description.includes(normalizedQuery)) score += 25;
+      if (content.includes(normalizedQuery)) score += 15;
+      terms.forEach(function (term) {
+        if (title.includes(term)) score += 14;
+        if (topics.includes(term)) score += 9;
+        if (description.includes(term)) score += 6;
+        if (content.includes(term)) score += 3;
+      });
+
+      return {
+        score: score,
+        slug: entry.slug,
+        title: entry.title,
+        date: entry.date,
+        description: entry.description,
+        topics: entry.topics || [],
+        url: entry.url,
+        matchedTerms: terms,
+        excerpt: excerptFor(entry.content, terms, 320)
+      };
+    }).filter(Boolean);
+
+    matches.sort(function (a, b) {
+      return b.score - a.score || String(a.title).localeCompare(String(b.title));
+    });
+    result.totalMatches = matches.length;
+    result.results = matches.slice(0, limit).map(function (match) {
+      delete match.score;
+      return match;
+    });
+    result.count = result.results.length;
+    return result;
+  }
+
   function createSiteTools(options) {
     options = options || {};
     var fetchFn = options.fetch || global.fetch;
@@ -216,6 +271,36 @@
               error: resolved.candidates.length ? 'The article selector is ambiguous.' : 'No matching article was found.',
               candidates: resolved.candidates
             };
+          });
+        }
+      },
+      {
+        name: 'search_articles',
+        description: "Search Tyler Wince's published articles by title, topics, description, and full text. All search words must match. Returns ranked matches with excerpts and URLs; use read_article for the complete text.",
+        inputSchema: {
+          type: 'object',
+          properties: {
+            query: {
+              type: 'string',
+              minLength: 1,
+              description: 'Words or a phrase to find across article titles, topics, descriptions, and text.'
+            },
+            limit: {
+              type: 'integer',
+              minimum: 1,
+              maximum: 10,
+              default: 5,
+              description: 'Maximum number of ranked results to return.'
+            }
+          },
+          required: ['query'],
+          additionalProperties: false
+        },
+        annotations: { readOnlyHint: true },
+        execute: function (input) {
+          input = input || {};
+          return loadArticles().then(function (articles) {
+            return searchArticles(articles, input.query, input.limit);
           });
         }
       },
@@ -305,6 +390,7 @@
     createSiteTools: createSiteTools,
     registerSiteTools: registerSiteTools,
     resolveEntry: resolveEntry,
+    searchArticles: searchArticles,
     searchBookNotes: searchBookNotes
   };
 

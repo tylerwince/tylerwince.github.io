@@ -9,6 +9,7 @@ const {
   createSiteTools,
   registerSiteTools,
   resolveEntry,
+  searchArticles,
   searchBookNotes
 } = require('../assets/js/webmcp.js');
 
@@ -22,6 +23,16 @@ const articlesFixture = [
     url: 'https://tylerwince.com/2025/11/13/choosing-what-i-keep/',
     path: '/2025/11/13/choosing-what-i-keep/',
     content: 'In college, I carried around this little stack of flashcards.'
+  },
+  {
+    slug: 'flashcards',
+    title: 'Flashcards',
+    date: '2025-01-10T00:00:00-07:00',
+    description: 'A learning habit.',
+    topics: ['learning'],
+    url: 'https://tylerwince.com/2025/01/10/flashcards/',
+    path: '/2025/01/10/flashcards/',
+    content: 'A few minutes of practice each day.'
   }
 ];
 
@@ -61,11 +72,12 @@ function toolsByName(tools) {
   return Object.fromEntries(tools.map((tool) => [tool.name, tool]));
 }
 
-test('defines the three requested read-only Site tools with strict schemas', () => {
+test('defines four read-only Site tools with strict schemas', () => {
   const tools = createSiteTools({ fetch: async () => ({ ok: true, json: async () => [] }) });
 
   assert.deepEqual(tools.map((tool) => tool.name), [
     'read_article',
+    'search_articles',
     'read_book_notes',
     'search_book_notes'
   ]);
@@ -118,6 +130,38 @@ test('reads book notes by URL, title, slug, or unique author', async () => {
   assert.deepEqual(requests, ['/books.json'], 'book-note index should be fetched once and cached');
 });
 
+test('searches article metadata and full text, ranking titles before body matches', () => {
+  const ranked = searchArticles(articlesFixture, 'flashcards', 1);
+  assert.equal(ranked.totalMatches, 2);
+  assert.equal(ranked.count, 1);
+  assert.equal(ranked.results[0].slug, 'flashcards');
+
+  for (const query of ['Etch', 'mémory', 'college', 'college memory']) {
+    const result = searchArticles(articlesFixture, query, 5);
+    assert.equal(result.count, 1, query);
+    assert.equal(result.results[0].slug, 'choosing-what-i-keep', query);
+    assert.match(result.results[0].excerpt, /stack of flashcards/);
+    assert.ok(result.results[0].excerpt.length <= 322);
+  }
+
+  assert.equal(searchArticles(articlesFixture, 'college nonexistent', 5).count, 0);
+  assert.match(searchArticles(articlesFixture, ' --- ', 5).error, /non-empty/);
+  const many = Array.from({ length: 12 }, (_, index) => ({ ...articlesFixture[0], slug: 'article-' + index }));
+  assert.equal(searchArticles(many, 'college', 100).count, 10);
+});
+
+test('article search and reading share one cached index', async () => {
+  const requests = [];
+  const tools = toolsByName(createSiteTools({
+    fetch: fakeFetch({ '/articles.json': articlesFixture }, requests),
+    articlesUrl: '/articles.json'
+  }));
+  const result = await tools.search_articles.execute({ query: 'college', limit: 3 });
+  const article = await tools.read_article.execute({ article: result.results[0].url });
+  assert.equal(article.article.slug, 'choosing-what-i-keep');
+  assert.deepEqual(requests, ['/articles.json']);
+});
+
 test('reports missing and ambiguous selectors without inventing content', () => {
   const duplicateAuthor = booksFixture.concat({
     ...booksFixture[0],
@@ -160,7 +204,7 @@ test('registers every tool through document.modelContext', async () => {
   });
 
   assert.equal(result.supported, true);
-  assert.deepEqual(result.registered, ['read_article', 'read_book_notes', 'search_book_notes']);
+  assert.deepEqual(result.registered, ['read_article', 'search_articles', 'read_book_notes', 'search_book_notes']);
   assert.deepEqual(registered.map((tool) => tool.name), result.registered);
 });
 
@@ -189,6 +233,9 @@ test('built Jekyll indexes contain complete article and book-note content', { sk
   return Promise.all([
     articleTools.read_article.execute({}).then((result) => {
       assert.equal(result.article.slug, 'choosing-what-i-keep');
+    }),
+    articleTools.search_articles.execute({ query: 'stack of flashcards', limit: 3 }).then((result) => {
+      assert.equal(result.results[0].slug, 'choosing-what-i-keep');
     }),
     articleTools.read_book_notes.execute({ book: 'Co-Intelligence' }).then((result) => {
       assert.match(result.bookNotes.content, /Invite AI to the table/i);
