@@ -72,9 +72,9 @@ returns excerpts and URLs. Article reading and search share a cached index.
 
 ## Content layouts
 
-Shared: `.article`, `.article-header`, `.article-kicker`, `.article-title`,
+Shared: `.article`, `.article-header`, `.article-title`,
 `.article-description`, `.article-meta`, `.article-body`, `.pull-quote`,
-`.back-link`, and `.page-number`.
+and `.page-number`.
 
 Published article headings retain Jekyll's generated IDs. JavaScript appends
 a `.heading-anchor` to each body heading with an ID, preserving its text and
@@ -87,9 +87,10 @@ and a scroll margin so shared section URLs work without JavaScript too.
 The Writing, Reading, and Building indexes set `show_description: false` to
 keep their headings plain while retaining descriptions in page metadata.
 
+Article, book, and app pages use the main header for collection navigation
+without repeating back links above or below their content.
+
 Books: `.book-header`, `.book-cover`, `.book-byline`.
-Book pages use the main header's Reading link without repeating it above or
-below the book details.
 Apps: `.app-header`, `.app-detail-icon`, `.app-links`.
 App destinations continue to use `app_store_link` or `website` frontmatter.
 

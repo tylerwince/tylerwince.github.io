@@ -3,7 +3,6 @@ layout: default
 ---
 <article class="article">
   <header class="article-header">
-    <a class="article-kicker" href="{{ '/#writing' | relative_url }}">← Writing</a>
     <h1 class="article-title">{{ page.title | escape }}</h1>
     {% if page.description %}<p class="article-description">{{ page.description | escape }}</p>{% endif %}
     <div class="article-meta">
@@ -13,5 +12,4 @@ layout: default
     </div>
   </header>
   <div class="article-body">{{ content }}</div>
-  <a class="back-link" href="{{ '/#writing' | relative_url }}">← Back to writing</a>
 </article>
