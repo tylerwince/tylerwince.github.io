@@ -549,3 +549,25 @@
   - "#1d1d1f"
   - "#6e6e73"
   - "#0071e3"
+- date: '2026-09-06'
+  theme: Commonplace
+  description: A place for writing, reading, and things in the making. A comfortable
+    column, a little space, and room to follow your curiosity.
+  commit: b524fe98
+  lane: pure-typography
+  manifesto: A place for writing, reading, and things in the making. A comfortable
+    column, a little space, and room to follow your curiosity.
+  nav_paradigm: three quiet text tabs beneath a personal introduction
+  layout_skeleton: one reading column with an introduction and a changing index
+  signature_interaction: writing, reading, and building share the same space; the
+    introduction stays put
+  color: "#fdfdfc"
+  fonts:
+    display: Public Sans
+    body: Public Sans
+    mono: Public Sans
+  palette:
+  - "#fdfdfc"
+  - "#30332f"
+  - "#70746d"
+  - "#444444"
