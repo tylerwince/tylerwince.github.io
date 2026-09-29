@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% feed_meta %}
 </head>
-<body class="layout-{{ page.layout | default: 'default' }}">
+<body class="layout-{{ page.layout | default: 'default' }}{% if page.collection_index %} layout-collection{% endif %}">
   <a class="skip-link" href="#main-content">Skip to content</a>
   {% include header.html %}
 

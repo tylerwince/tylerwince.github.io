@@ -1,4 +1,4 @@
-/* Commonplace: progressively enhanced tabs and collection search. */
+/* Phantom: progressively enhanced tabs and collection search. */
 (function () {
   'use strict';
 
@@ -49,12 +49,13 @@
     });
 
     function positionTabIndicator() {
+      tablist.setAttribute('aria-orientation', window.matchMedia('(max-width: 600px)').matches ? 'vertical' : 'horizontal');
       var selected = tablist.querySelector('[aria-selected="true"]');
       if (!selected) return;
       var bounds = selected.getBoundingClientRect();
       var listBounds = tablist.getBoundingClientRect();
       indicator.style.width = bounds.width + 'px';
-      indicator.style.transform = 'translateX(' + (bounds.left - listBounds.left) + 'px)';
+      indicator.style.transform = 'translate(' + (bounds.left - listBounds.left) + 'px, ' + (bounds.bottom - listBounds.top + 2) + 'px)';
     }
 
     function selectTab(name, focus) {
@@ -93,8 +94,8 @@
       });
       tab.addEventListener('keydown', function (event) {
         var next;
-        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
-        if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % tabs.length;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index + tabs.length - 1) % tabs.length;
         if (event.key === 'Home') next = 0;
         if (event.key === 'End') next = tabs.length - 1;
         if (event.key === ' ') next = index;
@@ -213,6 +214,12 @@
     }
 
     library.querySelector('.library-controls').hidden = false;
+    var requestedFilter = new URLSearchParams(window.location.search).get('filter');
+    if (filterButtons.some(function (button) { return button.dataset.bookFilter === requestedFilter; })) {
+      filterButtons.forEach(function (button) {
+        button.setAttribute('aria-pressed', String(button.dataset.bookFilter === requestedFilter));
+      });
+    }
     search.addEventListener('input', updateLibrary);
     [sortButtons, filterButtons].forEach(function (group) {
       group.forEach(function (button) {

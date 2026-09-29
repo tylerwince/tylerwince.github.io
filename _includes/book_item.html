@@ -3,15 +3,25 @@
 {% assign cover_path = '/assets/covers/' | append: book_slug | append: '.jpg' %}
 {% assign cover_file = site.static_files | where: 'path', cover_path | first %}
 {% if notes_text != '' %}<a href="{{ include.book.url | relative_url }}"{% else %}<div{% endif %} class="book-line" data-title="{{ include.book.title | escape }}" data-author="{{ include.book.author | escape }}" data-date="{{ include.book.date | date: '%Y-%m-%d' }}" data-rating="{{ include.book.stars | default: 0 }}" data-notes="{% if notes_text != '' %}true{% else %}false{% endif %}" data-year="{{ include.book.date | date: '%Y' }}">
+  {% if include.editorial %}
+  <span class="book-index-rating">
+    {% if include.book.currently_reading %}<span class="reading-now">Reading now</span>{% elsif include.book.stars %}
+    {% include rating.html stars=include.book.stars %}
+    {% else %}<span class="sr-only">Not yet rated</span>{% endif %}
+  </span>
+  <span class="book-index-title">{{ include.book.title | escape }}{% if notes_text != '' %}<span class="sr-only"> — read notes</span>{% endif %}</span>
+  <span class="book-index-author">{{ include.book.author | escape }}</span>
+  {% else %}
   <span class="book-line-cover" aria-hidden="true">
-    {% if cover_file %}<img src="{{ cover_file.path | relative_url }}" alt="" loading="lazy" width="28" height="40">{% else %}<span>{{ include.book.title | slice: 0, 1 }}</span>{% endif %}
+    {% if cover_file %}<img src="{{ cover_file.path | relative_url }}" alt="" loading="lazy" width="44" height="64">{% else %}<span>{{ include.book.title | slice: 0, 1 }}</span>{% endif %}
   </span>
   <span class="book-line-main">
     <span class="book-line-title">{{ include.book.title | escape }}</span>
     <span class="book-line-author">{{ include.book.author | escape }}</span>
   </span>
   <span class="book-line-meta">
-    {% if include.book.currently_reading %}<span class="book-line-rating reading-now">Reading now</span>{% elsif include.book.stars %}<span class="book-line-rating" aria-label="{{ include.book.stars }} out of 5 stars">{{ include.book.stars }}<span aria-hidden="true"> / 5</span></span>{% endif %}
+    {% if include.book.currently_reading %}<span class="book-line-rating reading-now">Reading now</span>{% elsif include.book.stars %}{% include rating.html stars=include.book.stars %}{% endif %}
     {% if notes_text != '' %}<span class="book-line-flag">Notes <span aria-hidden="true">↗</span></span>{% endif %}
   </span>
+  {% endif %}
 {% if notes_text != '' %}</a>{% else %}</div>{% endif %}

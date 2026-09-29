@@ -1,9 +1,7 @@
 ---
-type: page
+layout: page
 title: Waymark Prayer Privacy Policy
 ---
-
-# Privacy
 
 Waymark Prayer does not collect any of your data.
 

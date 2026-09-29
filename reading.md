@@ -4,6 +4,7 @@ permalink: /reading/
 layout: page
 description: Books I've read since 2023, plus some favorites from earlier years.
 show_description: false
+collection_index: true
 ---
 
 {% assign all_books = site.books | sort: 'date' | reverse %}

@@ -11,12 +11,12 @@ layout: default
         <h1 class="article-title">{{ page.title | escape }}</h1>
         <p class="book-byline">{{ page.author | escape }}</p>
         <div class="article-meta">
-          {% if page.currently_reading %}<span>Reading now</span>{% elsif page.stars %}<span>{{ page.stars }} / 5</span>{% endif %}
+          {% if page.currently_reading %}<span class="reading-now">Reading now</span>{% elsif page.stars %}{% include rating.html stars=page.stars %}{% endif %}
           {% assign year = page.date | date: '%Y' | to_integer %}
           {% if year >= 2020 and page.currently_reading != true %}<span>Read {{ page.date | date: '%B %Y' }}</span>{% endif %}
         </div>
       </div>
-      {% if cover_file %}<img class="book-cover" src="{{ cover_file.path | relative_url }}" alt="Cover of {{ page.title | escape }}" width="76">{% endif %}
+      {% if cover_file %}<img class="book-cover" src="{{ cover_file.path | relative_url }}" alt="Cover of {{ page.title | escape }}" width="104">{% endif %}
     </div>
   </header>
   {% if page.takeaway %}<blockquote class="pull-quote">{{ page.takeaway }}</blockquote>{% endif %}

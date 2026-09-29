@@ -15,15 +15,15 @@
 #   fonts                 — display / body / mono families used
 #   palette               — 3–5 representative hexes, bg first, accent last
 
-name: "Commonplace"
-date: "2026-09-06"
+name: "Phantom"
+date: "2026-09-28"
 lane: "pure-typography"
 manifesto: >-
-  A place for writing, reading, and things in the making.
-  A comfortable column, a little space, and room to follow your curiosity.
-nav_paradigm: "three quiet text tabs beneath a personal introduction"
-layout_skeleton: "one reading column with an introduction and a changing index"
-signature_interaction: "writing, reading, and building share the same space; the introduction stays put"
+  An oversized name, a personal introduction, and room for the words.
+  Writing, Reading & Building form an index with a little flourish of blue.
+nav_paradigm: "a sentence of oversized tabs beneath a split introduction"
+layout_skeleton: "large masthead, two-column introduction, and an editorial index"
+signature_interaction: "Writing, Reading & Building swap the index in place beneath a cobalt italic ampersand"
 color: "#fdfdfc"
 fonts:
   display: "Fraunces"
@@ -32,5 +32,5 @@ fonts:
 palette:
   - "#fdfdfc"
   - "#30332f"
-  - "#70746d"
+  - "#6e726b"
   - "#0045ea"

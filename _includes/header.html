@@ -4,7 +4,7 @@
   <nav class="site-nav" aria-label="Primary">
     <a href="{{ '/writing/' | relative_url }}"{% if page.url == '/writing/' or page.layout == 'post' %} aria-current="page"{% endif %}>Writing</a>
     <a href="{{ '/reading/' | relative_url }}"{% if page.url == '/reading/' or page.layout == 'book' %} aria-current="page"{% endif %}>Reading</a>
-    <a href="{{ '/apps/' | relative_url }}"{% if page.url contains '/apps/' %} aria-current="page"{% endif %}>Building</a>
+    <a href="{{ '/apps/' | relative_url }}"{% if page.url contains '/apps/' or page.url contains '/etch/' or page.url contains '/waymark/' or page.url contains '/littlequotes/' %} aria-current="page"{% endif %}>Building</a>
   </nav>
 </header>
 {% endunless %}

@@ -1,9 +1,7 @@
 ---
-type: page
+layout: page
 title: Etch Flashcards Privacy Policy
 ---
-
-# Privacy
 
 Etch Flashcards does not collect any of your data.
 

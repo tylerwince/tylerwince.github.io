@@ -4,19 +4,21 @@ layout: default
 <div class="home">
   <header class="intro">
     <h1 class="intro-name">Tyler Wince</h1>
-    <div class="intro-copy">
-      <p>I live in Arizona with my wife and kids. I trained as a molecular biologist and ended up building software.</p>
-      <p>These days, I help companies figure out what to build and lead the teams that build it. I'm also building with AI myself and helping teams work out where it's useful. Before this, I co-founded <a href="https://myndshft.com" target="_blank" rel="noopener noreferrer">Myndshft</a>, which <a href="https://drfirst.com" target="_blank" rel="noopener noreferrer">DrFirst</a> acquired in 2024.</p>
-      <p>A lot of what I make starts with something I want to keep: an idea from a book, something I've learned, a funny thing one of my kids said. You'll find some of those <a href="{{ '/apps/' | relative_url }}">projects</a> here, along with my writing and <a href="{{ '/reading/' | relative_url }}">book notes</a>.</p>
-      <p>Find me on <a href="https://x.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer">X</a> or shoot me an <a href="mailto:{{ site.email }}">email</a>.</p>
+    <div class="intro-columns">
+      <p class="intro-lede">I build software and help teams figure out what's worth building.</p>
+      <div class="intro-copy">
+        <p>I trained as a molecular biologist and ended up building software. I co-founded <a class="narrative-link" href="https://myndshft.com" target="_blank" rel="noopener noreferrer">Myndshft</a>, which <a class="narrative-link" href="https://drfirst.com" target="_blank" rel="noopener noreferrer">DrFirst</a> acquired in 2024. These days, I'm building with AI and helping teams work out where it's useful.</p>
+        <p>A lot of what I make starts with something I want to keep: an idea from a book, something I've learned, a funny thing one of my kids said. You'll find some of those <a class="narrative-link" href="{{ '/apps/' | relative_url }}">projects</a> here, along with my <a class="narrative-link" href="{{ '/writing/' | relative_url }}">writing</a> and <a class="narrative-link" href="{{ '/reading/' | relative_url }}">book notes</a>.</p>
+        <p>Find me on <a class="narrative-link" href="https://x.com/{{ site.twitter_username }}" target="_blank" rel="noopener noreferrer">X</a> or shoot me an <a class="narrative-link" href="mailto:{{ site.email }}">email</a>.</p>
+      </div>
     </div>
   </header>
 
   <div class="home-index" data-home-tabs>
     <nav class="index-tabs" aria-label="Explore">
-      <a id="tab-writing" href="{{ '/writing/' | relative_url }}" data-tab="writing">Writing</a>
-      <a id="tab-reading" href="{{ '/reading/' | relative_url }}" data-tab="reading">Reading</a>
-      <a id="tab-building" href="{{ '/apps/' | relative_url }}" data-tab="building">Building</a>
+      <span class="index-tab-group" role="presentation"><a id="tab-writing" href="{{ '/writing/' | relative_url }}" data-tab="writing">Writing</a><span class="index-comma" aria-hidden="true">,</span></span>
+      <span class="index-tab-group" role="presentation"><a id="tab-reading" href="{{ '/reading/' | relative_url }}" data-tab="reading">Reading</a><span class="index-ampersand" aria-hidden="true">&amp;</span></span>
+      <span class="index-tab-group" role="presentation"><a id="tab-building" href="{{ '/apps/' | relative_url }}" data-tab="building">Building</a></span>
     </nav>
 
     <section class="index-panel" id="panel-writing" data-panel="writing" aria-labelledby="tab-writing">
@@ -28,15 +30,18 @@ layout: default
     <section class="index-panel" id="panel-reading" data-panel="reading" aria-labelledby="tab-reading">
       <div class="book-list">
         {% assign current_books = site.books | where: 'currently_reading', true | sort: 'date' | reverse %}
-        {% for book in current_books %}{% include book_item.html book=book %}{% endfor %}
+        {% for book in current_books %}{% include book_item.html book=book editorial=true %}{% endfor %}
         {% assign recent_books = site.books | where_exp: 'book', 'book.currently_reading != true' | sort: 'date' | reverse %}
-        {% for book in recent_books limit: 8 %}{% include book_item.html book=book %}{% endfor %}
+        {% for book in recent_books limit: 8 %}{% include book_item.html book=book editorial=true %}{% endfor %}
       </div>
-      <a class="view-all" href="{{ '/reading/' | relative_url }}">All {{ site.books.size }} books <span aria-hidden="true">↗</span></a>
+      <div class="panel-links">
+        <a class="view-all" href="{{ '/reading/' | relative_url }}">All {{ site.books.size }} books <span aria-hidden="true">↗</span></a>
+        <a class="view-all" href="{{ '/reading/' | relative_url }}?filter=notes">Notes <span aria-hidden="true">↗</span></a>
+      </div>
     </section>
 
     <section class="index-panel" id="panel-building" data-panel="building" aria-labelledby="tab-building">
-      {% include building_list.html %}
+      {% include building_list.html editorial=true %}
       <a class="view-all" href="{{ '/apps/' | relative_url }}">All projects <span aria-hidden="true">↗</span></a>
     </section>
   </div>

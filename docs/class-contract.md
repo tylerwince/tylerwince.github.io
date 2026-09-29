@@ -1,7 +1,12 @@
-# Commonplace layout and behavior contract
+# Phantom layout and behavior contract
 
-The current design uses one reading column across the homepage, collection
-indexes, articles, book notes, and app pages. Keep the light and dark color
+The homepage uses a broad masthead, split introduction, and editorial indexes.
+Full collection indexes use a 1040px maximum column; essays, book notes, app
+details, and utility pages use a quieter 680px reading column. Fraunces titles
+and section headings retain the same broad, playful letterforms throughout
+(optical size 9, softness 60, wonk enabled). Public Sans carries prose and
+controls, with 18px reading text on desktop and 17px on phones.
+Keep the light and dark color
 schemes, readable muted text, visible keyboard focus, and narrow-screen layouts.
 Structural wrappers do not need their own style when their children define the
 layout. If changing templates, update this contract with them.
@@ -23,6 +28,10 @@ Do not edit historical archive data or snapshots as part of a redesign.
 ## Homepage and collection indexes
 
 - `.intro`, `.intro-name`, `.intro-copy`: name and personal introduction.
+- `.layout-collection`: added by `collection_index: true` on Writing, Reading,
+  and Building; gives their headings and lists more space without widening
+  long-form reading pages. Inner pages retain compact navigation and a cobalt
+  underline on the active collection.
 - `.home-index`, `.index-tabs`, `.index-panel`, `.view-all`:
   three indexes below the introduction.
 - `writing_list.html`: `.writing-list`, `.writing-year`, `.year-label`,
@@ -34,11 +43,15 @@ Do not edit historical archive data or snapshots as part of a redesign.
   `.book-line-title`, `.book-line-author`, `.book-line-meta`, `.book-line-rating`,
   `.book-line-flag`. Only books with nonblank notes are links. All books remain
   in the reading log. Keep the cover fallback and the reading-now status.
+- `rating.html`: five cobalt dots with a spoken numeric rating. Reused on the
+  homepage, full reading log, and book detail pages. Covers and explicit Notes
+  links remain in the full reading log; homepage rows use their lighter
+  editorial layout without covers.
 - Reading controls: `.library-controls`, `.library-search`, `.search-label`,
   `.search-icon`, `.search-clear`, `.library-options`, `.library-option-group`,
   `.library-option`, `.library-count`, `.empty-state`. Use plain text buttons
   for sorting and filtering, not a native dropdown. Search focus changes its
-  bottom rule; keyboard focus underlines links and buttons. No green boxes.
+  bottom rule to cobalt; keyboard focus underlines links and buttons.
 
 `assets/js/main.js` enhances real collection links into accessible tabs. The
 home states are `#writing`, `#reading`, and `#building`. Keep URL restoration,

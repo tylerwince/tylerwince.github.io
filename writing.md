@@ -4,6 +4,7 @@ title: Writing
 permalink: /writing/
 description: On building things, paying attention, and figuring things out.
 show_description: false
+collection_index: true
 ---
 
 {% assign sorted_posts = site.posts | sort: 'date' | reverse %}
