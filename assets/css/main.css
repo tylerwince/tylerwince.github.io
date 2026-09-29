@@ -4,11 +4,12 @@
   --color-bg: #fdfdfc;
   --color-fg: #30332f;
   --color-muted: #70746d;
-  --color-accent: #444444;
-  --color-selection: #e8e8e6;
+  /* Etch Whimsy's icon blue; lightened below for dark-mode text contrast. */
+  --color-accent: #0045ea;
+  --color-selection: #dce5ff;
   --color-border: #eaece7;
   --color-surface: #f4f5f1;
-  --font-display: "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
   --font-body: "Public Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --content-width: 620px;
@@ -18,8 +19,8 @@
     --color-bg: #1c1e1b;
     --color-fg: #e0e3db;
     --color-muted: #a0a69a;
-    --color-accent: #eeeeec;
-    --color-selection: #40413f;
+    --color-accent: #85a9ff;
+    --color-selection: #253967;
     --color-border: #32372f;
     --color-surface: #252922;
   }
@@ -58,15 +59,16 @@ iframe { max-width: 100%; }
 .layout-home .site-main { padding-top: 94px; }
 
 /* The introduction and the three indexes. */
-.intro-name { margin: 0 0 28px; font-size: 16px; line-height: 1.5; font-weight: 500; letter-spacing: -.2px; }
+.intro-name { margin: 0 0 28px; font-family: var(--font-display); font-size: clamp(38px, 5vw, 46px); line-height: 1.12; font-weight: 550; letter-spacing: -1.4px; font-optical-sizing: auto; font-variation-settings: "SOFT" 60, "WONK" 1; }
 .intro-copy p { margin: 0 0 20px; }
 .intro-copy p:last-child { margin-bottom: 0; }
-.intro-copy a { text-decoration-color: #c7ccc2; }
+.intro-copy a, .article-body p a:not([class]) { color: var(--color-accent); text-decoration-color: color-mix(in srgb, var(--color-accent) 40%, transparent); }
+.intro-copy a:hover, .article-body p a:not([class]):hover { text-decoration-color: currentColor; }
 .home-index { margin-top: 48px; }
 .index-tabs { position: relative; display: flex; gap: 28px; border-bottom: 1px solid var(--color-border); }
 .index-tabs a { position: relative; display: block; padding: 10px 0 13px; color: var(--color-muted); text-decoration: none; }
-.index-tabs a:hover, .index-tabs a[aria-selected="true"] { color: var(--color-fg); }
-.tab-indicator { position: absolute; left: 0; bottom: -1px; height: 1px; background: var(--color-fg); pointer-events: none; }
+.index-tabs a:hover, .index-tabs a[aria-selected="true"] { color: var(--color-accent); }
+.tab-indicator { position: absolute; left: 0; bottom: -1px; height: 1px; background: var(--color-accent); pointer-events: none; }
 .tab-indicator.is-ready { transition: transform 260ms cubic-bezier(.22, 1, .36, 1), width 260ms cubic-bezier(.22, 1, .36, 1); }
 @media (prefers-reduced-motion: reduce) {
   .tab-indicator.is-ready { transition: none; }
@@ -84,7 +86,7 @@ iframe { max-width: 100%; }
 .post-list li, .article-body .post-list li { margin: 0; padding: 0; }
 .post-row { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; padding: 13px 0; line-height: 23px; text-decoration: none; }
 .post-list li:not([hidden]) ~ li:not([hidden]) .post-row { border-top: 1px solid var(--color-border); }
-.post-title { min-width: 0; overflow-wrap: anywhere; }
+.post-title { min-width: 0; overflow-wrap: anywhere; font-family: var(--font-display); font-size: 20px; line-height: 1.3; font-weight: 450; font-optical-sizing: auto; font-variation-settings: "SOFT" 60, "WONK" 1; }
 .post-date { flex: 0 0 52px; text-align: right; font-size: 12px; font-variant-numeric: tabular-nums; color: var(--color-muted); white-space: nowrap; }
 
 /* Books: every book can be logged, only books with notes are links. */
@@ -130,6 +132,7 @@ iframe { max-width: 100%; }
 /* The same column continues into the writing. */
 .article-header { margin-bottom: 38px; }
 .article-title { margin: 0; font-size: 28px; font-weight: 500; letter-spacing: -.8px; line-height: 1.3; text-wrap: balance; overflow-wrap: anywhere; }
+.layout-post .article-title { font-family: var(--font-display); font-size: clamp(32px, 5vw, 40px); font-weight: 500; line-height: 1.2; font-optical-sizing: auto; font-variation-settings: "SOFT" 60, "WONK" 1; }
 .article-description { margin: 12px 0 0; color: var(--color-muted); line-height: 1.65; }
 .article-meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 20px; margin-top: 17px; color: var(--color-muted); font-size: 12px; }
 .article-body { font-size: 15px; line-height: 1.8; overflow-wrap: anywhere; }
@@ -235,6 +238,7 @@ pre code { padding: 0; background: transparent; overflow-wrap: normal; }
   .home-index { margin-top: 36px; }
   .writing-year { grid-template-columns: 38px minmax(0, 1fr); gap: 12px; }
   .post-row { gap: 10px; font-size: 14px; }
+  .post-title { font-size: 19px; }
   .post-date { flex-basis: 44px; font-size: 11px; }
   .year-label, .article-body .year-label { font-size: 12px; }
   .book-line { gap: 12px; }
